@@ -55,18 +55,28 @@ export function createIntentController(
     fastForward?: () => void;
   },
 ) {
+  let durable = true;
   function pending(
     envelope: CommandEnvelope | null,
     status: "SENDING" | "UNCERTAIN" = "SENDING",
   ) {
     store.setPending(envelope ? { envelope, status } : null);
-    options.persistPending?.(envelope);
+    try {
+      options.persistPending?.(envelope);
+    } catch {
+      durable = false;
+    }
   }
   async function send(envelope: CommandEnvelope) {
     pending(envelope);
     store.setMessage(null);
     try {
-      store.acceptResponse(await options.send(envelope));
+      const response = await options.send(envelope);
+      store.acceptResponse(response);
+      if (response.eventsThroughSeq < response.latestSeq) {
+        options.fastForward?.();
+        store.setPresentationCursor(store.getSnapshot().latestSeq);
+      }
       pending(null);
       store.setSelection(null);
     } catch (error) {
@@ -75,13 +85,17 @@ export function createIntentController(
         error.body.error.code === "STALE_REVISION"
       ) {
         store.acceptResponse(error.body.error.details.snapshot);
+        options.fastForward?.();
+        store.setPresentationCursor(store.getSnapshot().latestSeq);
         pending(null);
         store.setSelection(null);
         store.setMessage("Bàn chơi đã thay đổi. Hãy chọn lại hành động.");
       } else if (!(error instanceof ApiError) || error.status >= 500) {
         pending(envelope, "UNCERTAIN");
         store.setMessage(
-          "Chưa xác định kết quả gửi. Thử lại cùng yêu cầu để xác nhận.",
+          durable
+            ? "Chưa xác định kết quả gửi. Thử lại cùng yêu cầu để xác nhận."
+            : "Không lưu được yêu cầu trên thiết bị. Giữ trang này và thử lại; tải lại sẽ mất khả năng khôi phục yêu cầu.",
         );
       } else {
         pending(null);

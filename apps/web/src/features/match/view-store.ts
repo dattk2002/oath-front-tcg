@@ -18,6 +18,8 @@ export interface MatchSnapshot {
   latestSeq: number;
   presentationCursor: number;
   events: readonly VisibleEvent[];
+  logCursor: number;
+  logExpired: boolean;
   needsAdvance: boolean;
   pendingCommand: PendingCommand | null;
   selection: Selection | null;
@@ -27,6 +29,11 @@ export interface MatchViewStore {
   subscribe(listener: () => void): () => void;
   getSnapshot(): MatchSnapshot;
   acceptResponse(response: CommandResponse): void;
+  mergeLog(
+    events: readonly VisibleEvent[],
+    cursor: number,
+    expired: boolean,
+  ): void;
   setSelection(selection: Selection | null): void;
   setPending(command: PendingCommand | null): void;
   setMessage(message: string | null): void;
@@ -39,6 +46,8 @@ export function createMatchViewStore(initial: CommandResponse): MatchViewStore {
     latestSeq: initial.latestSeq,
     presentationCursor: 0,
     events: [...initial.events],
+    logCursor: 0,
+    logExpired: false,
     needsAdvance: initial.needsAdvance,
     pendingCommand: null,
     selection: null,
@@ -60,13 +69,16 @@ export function createMatchViewStore(initial: CommandResponse): MatchViewStore {
     acceptResponse(response) {
       if (response.view.matchId !== snapshot.authoritativeView.matchId) return;
       const bySequence = new Map(
-        snapshot.events.map((event) => [event.sequence, event]),
+        snapshot.events.map((event) => [event.eventId, event]),
       );
-      response.events.forEach((event) => bySequence.set(event.sequence, event));
+      response.events.forEach((event) => bySequence.set(event.eventId, event));
       const events = [...bySequence.values()].sort(
         (a, b) => a.sequence - b.sequence,
       );
-      if (response.revision < snapshot.revision) {
+      if (
+        response.revision < snapshot.revision ||
+        response.latestSeq < snapshot.latestSeq
+      ) {
         if (events.length !== snapshot.events.length) update({ events });
         return;
       }
@@ -78,6 +90,17 @@ export function createMatchViewStore(initial: CommandResponse): MatchViewStore {
         events,
         selection:
           response.revision > snapshot.revision ? null : snapshot.selection,
+      });
+    },
+    mergeLog(incoming, cursor, expired) {
+      const byId = new Map(
+        snapshot.events.map((event) => [event.eventId, event]),
+      );
+      incoming.forEach((event) => byId.set(event.eventId, event));
+      update({
+        events: [...byId.values()].sort((a, b) => a.sequence - b.sequence),
+        logCursor: Math.max(snapshot.logCursor, cursor),
+        logExpired: snapshot.logExpired || expired,
       });
     },
     setSelection: (selection) => update({ selection }),

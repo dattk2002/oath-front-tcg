@@ -179,3 +179,43 @@ it("semantic intent equality ignores JSON property order without allowing differ
   });
   expect(sent).toHaveLength(1);
 });
+it("throwing persistence still sends and retains the exact uncertain envelope in memory", async () => {
+  const store = createMatchViewStore(response());
+  const sent: CommandEnvelope[] = [];
+  const controller = createIntentController(store, {
+    makeId: () => commandId,
+    persistPending: () => {
+      throw Error("storage denied");
+    },
+    send: async (envelope) => {
+      sent.push(structuredClone(envelope));
+      if (sent.length === 1) throw Error("offline");
+      return response(2);
+    },
+  });
+  await controller.submitIntent({ kind: "PASS_PHASE" });
+  expect(store.getSnapshot().pendingCommand?.status).toBe("UNCERTAIN");
+  expect(store.getSnapshot().message).toContain("tải lại");
+  await controller.retryPending();
+  expect(sent).toHaveLength(2);
+  expect(sent[1]).toEqual(sent[0]);
+  expect(store.getSnapshot().pendingCommand).toBeNull();
+});
+it("truncated command events fast-forward presentation to accepted state while the log cursor stays unread", async () => {
+  const store = createMatchViewStore(response());
+  let checkpoints = 0;
+  const next = response(2);
+  next.latestSeq = 205;
+  next.eventsThroughSeq = 100;
+  const controller = createIntentController(store, {
+    makeId: () => commandId,
+    send: async () => next,
+    fastForward: () => {
+      checkpoints++;
+    },
+  });
+  await controller.submitIntent({ kind: "PASS_PHASE" });
+  expect(checkpoints).toBe(1);
+  expect(store.getSnapshot().presentationCursor).toBe(205);
+  expect(store.getSnapshot().logCursor).toBe(0);
+});
