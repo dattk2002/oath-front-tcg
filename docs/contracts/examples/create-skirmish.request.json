@@ -1,0 +1,11 @@
+{
+  "commandId": "44444444-4444-4444-8444-444444444444",
+  "mode": "SKIRMISH",
+  "deck": {
+    "kind": "PRESET",
+    "presetId": "D_G_BV"
+  },
+  "opponentHeroId": "H_E_FX",
+  "difficulty": "NORMAL",
+  "expectedContentVersion": "core_v1"
+}

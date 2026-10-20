@@ -1,0 +1,278 @@
+{
+  "error": {
+    "code": "STALE_REVISION",
+    "messageKey": "error.stale_revision",
+    "requestId": "33333333-3333-4333-8333-333333333333",
+    "retryable": false,
+    "details": {
+      "snapshot": {
+        "view": {
+          "schemaVersion": "api_v1",
+          "matchId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+          "mode": "TUTORIAL",
+          "lifecycle": "ACTIVE",
+          "humanSide": "GOOD",
+          "turn": 4,
+          "phase": "COMBAT",
+          "activeSide": "GOOD",
+          "versions": {
+            "rules": "rules_v1",
+            "content": "core_v1",
+            "locations": "locations_v1",
+            "bot": "bot_v1"
+          },
+          "players": {
+            "GOOD": {
+              "heroId": "H_G_BV",
+              "hp": 10,
+              "maxHp": 20,
+              "energy": {
+                "current": 0,
+                "max": 4
+              },
+              "block": {
+                "charge": 0,
+                "used": 1,
+                "active": true
+              },
+              "handCount": 0,
+              "deckCount": 29,
+              "reserveCount": 2,
+              "discard": [],
+              "usedPowers": [],
+              "fatigueCounter": 0
+            },
+            "EVIL": {
+              "heroId": "H_E_FX",
+              "hp": 20,
+              "maxHp": 20,
+              "energy": {
+                "current": 0,
+                "max": 4
+              },
+              "block": {
+                "charge": 0,
+                "used": 0,
+                "active": true
+              },
+              "handCount": 0,
+              "deckCount": 29,
+              "reserveCount": 1,
+              "discard": [],
+              "usedPowers": [],
+              "fatigueCounter": 0
+            }
+          },
+          "board": [
+            {
+              "laneId": 1,
+              "location": {
+                "state": "REVEALED",
+                "definitionId": "quiet_meadow",
+                "revealTurn": 1
+              },
+              "good": null,
+              "evil": {
+                "instanceId": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+                "definitionId": "EC01",
+                "owner": "EVIL",
+                "laneId": 1,
+                "isToken": false,
+                "printed": {
+                  "attack": 2,
+                  "hp": 1,
+                  "maxHp": 1
+                },
+                "current": {
+                  "attack": 2,
+                  "hp": 1,
+                  "maxHp": 1
+                },
+                "statuses": {
+                  "shield": false,
+                  "armor": 0,
+                  "poisoned": false,
+                  "stunned": false,
+                  "exhausted": false,
+                  "pierce": false
+                },
+                "modifiers": [],
+                "lastRegularAttackTurn": null
+              }
+            },
+            {
+              "laneId": 2,
+              "location": {
+                "state": "NORMAL"
+              },
+              "good": {
+                "instanceId": "44444444444444444444444444444444",
+                "definitionId": "TK_G_LANTERN",
+                "owner": "GOOD",
+                "laneId": 2,
+                "isToken": true,
+                "printed": {
+                  "attack": 0,
+                  "hp": 3,
+                  "maxHp": 3
+                },
+                "current": {
+                  "attack": 0,
+                  "hp": 3,
+                  "maxHp": 3
+                },
+                "statuses": {
+                  "shield": true,
+                  "armor": 0,
+                  "poisoned": false,
+                  "stunned": false,
+                  "exhausted": false,
+                  "pierce": false
+                },
+                "modifiers": [],
+                "lastRegularAttackTurn": null
+              },
+              "evil": null
+            },
+            {
+              "laneId": 3,
+              "location": {
+                "state": "REVEALED",
+                "definitionId": "ancient_forest",
+                "revealTurn": 3
+              },
+              "good": null,
+              "evil": null
+            },
+            {
+              "laneId": 4,
+              "location": {
+                "state": "NORMAL"
+              },
+              "good": {
+                "instanceId": "33333333333333333333333333333333",
+                "definitionId": "GC02",
+                "owner": "GOOD",
+                "laneId": 4,
+                "isToken": false,
+                "printed": {
+                  "attack": 2,
+                  "hp": 3,
+                  "maxHp": 3
+                },
+                "current": {
+                  "attack": 2,
+                  "hp": 3,
+                  "maxHp": 3
+                },
+                "statuses": {
+                  "shield": false,
+                  "armor": 0,
+                  "poisoned": false,
+                  "stunned": false,
+                  "exhausted": false,
+                  "pierce": false
+                },
+                "modifiers": [],
+                "lastRegularAttackTurn": null
+              },
+              "evil": null
+            },
+            {
+              "laneId": 5,
+              "location": {
+                "state": "HIDDEN",
+                "revealTurn": 5
+              },
+              "good": null,
+              "evil": null
+            }
+          ],
+          "self": {
+            "side": "GOOD",
+            "hand": [],
+            "reserve": [
+              {
+                "instanceId": "11111111111111111111111111111111",
+                "definitionId": "P_V1",
+                "normalCost": 1
+              },
+              {
+                "instanceId": "22222222222222222222222222222222",
+                "definitionId": "S_G_BV",
+                "normalCost": 1
+              }
+            ],
+            "mulliganCommitted": true
+          },
+          "legalActions": [
+            {
+              "kind": "USE_BLOCK_POWER",
+              "powerInstanceId": "22222222222222222222222222222222",
+              "target": {
+                "kind": "UNIT",
+                "instanceId": "33333333333333333333333333333333"
+              }
+            },
+            {
+              "kind": "KEEP_BLOCK_POWER"
+            },
+            {
+              "kind": "PAUSE"
+            },
+            {
+              "kind": "SURRENDER"
+            },
+            {
+              "kind": "TUTORIAL_SKIP"
+            },
+            {
+              "kind": "TUTORIAL_RESTART",
+              "chapterId": "D"
+            }
+          ],
+          "blockResponse": {
+            "visibility": "OWN",
+            "side": "GOOD",
+            "laneId": 1,
+            "powerInstanceId": "22222222222222222222222222222222",
+            "costNow": 0
+          },
+          "combat": {
+            "laneId": 1,
+            "stage": "BLOCK_RESPONSES"
+          },
+          "outcome": null,
+          "tutorial": {
+            "scenarioId": "tutorial_v1",
+            "chapterId": "D",
+            "stepId": "G07",
+            "stepState": "ACTIVE",
+            "completedStepIds": [
+              "G01",
+              "G02",
+              "G03",
+              "G04",
+              "G05",
+              "G06"
+            ],
+            "copyKey": "tutorial.g07.choose",
+            "focusTargets": [
+              {
+                "kind": "UNIT",
+                "instanceId": "33333333333333333333333333333333",
+                "laneId": 4,
+                "side": "GOOD"
+              }
+            ]
+          }
+        },
+        "revision": 28,
+        "latestSeq": 101,
+        "events": [],
+        "eventsThroughSeq": 101,
+        "needsAdvance": false
+      }
+    }
+  }
+}

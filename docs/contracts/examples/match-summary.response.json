@@ -1,0 +1,30 @@
+{
+  "matchId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "mode": "SKIRMISH",
+  "lifecycle": "COMPLETED",
+  "humanHeroId": "H_G_BV",
+  "opponentHeroId": "H_E_FX",
+  "difficulty": "NORMAL",
+  "outcome": {
+    "result": "WIN",
+    "winner": "GOOD",
+    "reason": "HERO_DEFEATED"
+  },
+  "turns": 8,
+  "activeDurationMs": 432000,
+  "damageDealt": 24,
+  "blocksUsed": 2,
+  "createdAt": "2026-10-20T10:00:00Z",
+  "endedAt": "2026-10-20T10:07:12Z",
+  "resumable": false,
+  "rematch": {
+    "deck": {
+      "kind": "SAVED",
+      "deckId": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "deckRevision": 3
+    },
+    "opponentHeroId": "H_E_FX",
+    "difficulty": "NORMAL",
+    "expectedContentVersion": "core_v1"
+  }
+}

@@ -1,0 +1,5715 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ngu Lo public API v1 — proposed specification, not runtime implementation",
+  "definitions": {
+    "Uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "InstanceId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "Side": {
+      "type": "string",
+      "enum": [
+        "GOOD",
+        "EVIL"
+      ]
+    },
+    "LaneId": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "Version": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,63}$"
+    },
+    "Versions": {
+      "type": "object",
+      "properties": {
+        "rules": {
+          "$ref": "#/definitions/Version"
+        },
+        "content": {
+          "$ref": "#/definitions/Version"
+        },
+        "locations": {
+          "$ref": "#/definitions/Version"
+        },
+        "bot": {
+          "$ref": "#/definitions/Version"
+        }
+      },
+      "required": [
+        "rules",
+        "content",
+        "locations",
+        "bot"
+      ],
+      "additionalProperties": false
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "CardId": {
+      "type": "string",
+      "enum": [
+        "GC01",
+        "GC02",
+        "GC03",
+        "GC04",
+        "GC05",
+        "GC06",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "V01",
+        "V02",
+        "V03",
+        "V04",
+        "V05",
+        "V06",
+        "V07",
+        "V08",
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "EC01",
+        "EC02",
+        "EC03",
+        "EC04",
+        "EC05",
+        "EC06",
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05",
+        "F06",
+        "F07",
+        "F08",
+        "X01",
+        "X02",
+        "X03",
+        "X04",
+        "X05",
+        "X06",
+        "X07",
+        "X08",
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ]
+    },
+    "HeroId": {
+      "type": "string",
+      "enum": [
+        "H_G_BV",
+        "H_G_BP",
+        "H_G_VP",
+        "H_E_FX",
+        "H_E_FS",
+        "H_E_XS"
+      ]
+    },
+    "PowerId": {
+      "type": "string",
+      "enum": [
+        "P_B1",
+        "P_B2",
+        "P_V1",
+        "P_V2",
+        "P_P1",
+        "P_P2",
+        "P_F1",
+        "P_F2",
+        "P_X1",
+        "P_X2",
+        "P_S1",
+        "P_S2",
+        "S_G_BV",
+        "S_G_BP",
+        "S_G_VP",
+        "S_E_FX",
+        "S_E_FS",
+        "S_E_XS"
+      ]
+    },
+    "TokenId": {
+      "type": "string",
+      "enum": [
+        "TK_G_SEED",
+        "TK_G_LANTERN",
+        "TK_E_CINDER"
+      ]
+    },
+    "LocationId": {
+      "type": "string",
+      "enum": [
+        "ancient_forest",
+        "volcano",
+        "storm_peak",
+        "frozen_lake",
+        "desert",
+        "healing_spring",
+        "ruined_arena",
+        "quiet_meadow"
+      ]
+    },
+    "DefinitionId": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/CardId"
+        },
+        {
+          "$ref": "#/definitions/PowerId"
+        },
+        {
+          "$ref": "#/definitions/TokenId"
+        }
+      ]
+    },
+    "Phase": {
+      "type": "string",
+      "enum": [
+        "MULLIGAN",
+        "TURN_START",
+        "EVIL_DEPLOY",
+        "GOOD_PLAY",
+        "EVIL_TRICKS",
+        "COMBAT",
+        "TURN_END",
+        "GAME_OVER"
+      ]
+    },
+    "Lifecycle": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "PAUSED",
+        "COMPLETED",
+        "ABANDONED",
+        "FAULTED"
+      ]
+    },
+    "EntityRef": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "UNIT"
+            },
+            "instanceId": {
+              "$ref": "#/definitions/InstanceId"
+            }
+          },
+          "required": [
+            "kind",
+            "instanceId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "HERO"
+            },
+            "side": {
+              "$ref": "#/definitions/Side"
+            }
+          },
+          "required": [
+            "kind",
+            "side"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Target": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "NONE"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "UNIT"
+            },
+            "instanceId": {
+              "$ref": "#/definitions/InstanceId"
+            }
+          },
+          "required": [
+            "kind",
+            "instanceId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "HERO"
+            },
+            "side": {
+              "$ref": "#/definitions/Side"
+            }
+          },
+          "required": [
+            "kind",
+            "side"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "LANE"
+            },
+            "laneId": {
+              "$ref": "#/definitions/LaneId"
+            }
+          },
+          "required": [
+            "kind",
+            "laneId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "UNIT_AND_LANE"
+            },
+            "instanceId": {
+              "$ref": "#/definitions/InstanceId"
+            },
+            "laneId": {
+              "$ref": "#/definitions/LaneId"
+            }
+          },
+          "required": [
+            "kind",
+            "instanceId",
+            "laneId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "StepId": {
+      "type": "string",
+      "enum": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "E01",
+        "E02"
+      ]
+    },
+    "ChapterId": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "PlayerAction": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "MULLIGAN"
+            },
+            "cardInstanceIds": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InstanceId"
+              },
+              "minItems": 0,
+              "maxItems": 4,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "cardInstanceIds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "PLAY_UNIT"
+            },
+            "cardInstanceId": {
+              "$ref": "#/definitions/InstanceId"
+            },
+            "laneId": {
+              "$ref": "#/definitions/LaneId"
+            }
+          },
+          "required": [
+            "kind",
+            "cardInstanceId",
+            "laneId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "PLAY_TRICK"
+            },
+            "cardInstanceId": {
+              "$ref": "#/definitions/InstanceId"
+            },
+            "target": {
+              "$ref": "#/definitions/Target"
+            }
+          },
+          "required": [
+            "kind",
+            "cardInstanceId",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "USE_POWER"
+            },
+            "powerInstanceId": {
+              "$ref": "#/definitions/InstanceId"
+            },
+            "target": {
+              "$ref": "#/definitions/Target"
+            }
+          },
+          "required": [
+            "kind",
+            "powerInstanceId",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "USE_BLOCK_POWER"
+            },
+            "powerInstanceId": {
+              "$ref": "#/definitions/InstanceId"
+            },
+            "target": {
+              "$ref": "#/definitions/Target"
+            }
+          },
+          "required": [
+            "kind",
+            "powerInstanceId",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "PASS_PHASE"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "KEEP_BLOCK_POWER"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "ADVANCE"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "PAUSE"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "RESUME"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "SURRENDER"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "TUTORIAL_CONTINUE"
+            },
+            "stepId": {
+              "$ref": "#/definitions/StepId"
+            }
+          },
+          "required": [
+            "kind",
+            "stepId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "TUTORIAL_RESTART"
+            },
+            "chapterId": {
+              "$ref": "#/definitions/ChapterId"
+            }
+          },
+          "required": [
+            "kind",
+            "chapterId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "TUTORIAL_SKIP"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "CommandEnvelope": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "action": {
+          "$ref": "#/definitions/PlayerAction"
+        }
+      },
+      "required": [
+        "commandId",
+        "expectedRevision",
+        "action"
+      ],
+      "additionalProperties": false
+    },
+    "Stats": {
+      "type": "object",
+      "properties": {
+        "attack": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "hp": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "maxHp": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "attack",
+        "hp",
+        "maxHp"
+      ],
+      "additionalProperties": false
+    },
+    "Statuses": {
+      "type": "object",
+      "properties": {
+        "shield": {
+          "type": "boolean"
+        },
+        "armor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "poisoned": {
+          "type": "boolean"
+        },
+        "stunned": {
+          "type": "boolean"
+        },
+        "exhausted": {
+          "type": "boolean"
+        },
+        "pierce": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "shield",
+        "armor",
+        "poisoned",
+        "stunned",
+        "exhausted",
+        "pierce"
+      ],
+      "additionalProperties": false
+    },
+    "ModifierView": {
+      "type": "object",
+      "properties": {
+        "sourceDefinitionId": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DefinitionId"
+            },
+            {
+              "$ref": "#/definitions/LocationId"
+            }
+          ]
+        },
+        "sourceInstanceId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/InstanceId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourceLaneAtCreation": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/LaneId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "createdEventSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "attackDelta": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "healthDelta": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "trait": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "SHIELD",
+                "ARMOR",
+                "POISONED",
+                "STUNNED",
+                "EXHAUSTED",
+                "PIERCE"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "duration": {
+          "type": "string",
+          "enum": [
+            "PERMANENT",
+            "TURN_END"
+          ]
+        },
+        "expiryTurn": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "sourceDefinitionId",
+        "sourceInstanceId",
+        "sourceLaneAtCreation",
+        "createdEventSeq",
+        "attackDelta",
+        "healthDelta",
+        "trait",
+        "duration",
+        "expiryTurn"
+      ],
+      "additionalProperties": false
+    },
+    "UnitView": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "$ref": "#/definitions/InstanceId"
+        },
+        "definitionId": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/CardId"
+            },
+            {
+              "$ref": "#/definitions/TokenId"
+            }
+          ]
+        },
+        "owner": {
+          "$ref": "#/definitions/Side"
+        },
+        "laneId": {
+          "$ref": "#/definitions/LaneId"
+        },
+        "isToken": {
+          "type": "boolean"
+        },
+        "printed": {
+          "$ref": "#/definitions/Stats"
+        },
+        "current": {
+          "$ref": "#/definitions/Stats"
+        },
+        "statuses": {
+          "$ref": "#/definitions/Statuses"
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ModifierView"
+          },
+          "minItems": 0,
+          "maxItems": 256
+        },
+        "lastRegularAttackTurn": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "instanceId",
+        "definitionId",
+        "owner",
+        "laneId",
+        "isToken",
+        "printed",
+        "current",
+        "statuses",
+        "modifiers",
+        "lastRegularAttackTurn"
+      ],
+      "additionalProperties": false
+    },
+    "LocationView": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "NORMAL"
+            }
+          },
+          "required": [
+            "state"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "HIDDEN"
+            },
+            "revealTurn": {
+              "type": "integer",
+              "enum": [
+                1,
+                3,
+                5
+              ]
+            }
+          },
+          "required": [
+            "state",
+            "revealTurn"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "REVEALED"
+            },
+            "definitionId": {
+              "$ref": "#/definitions/LocationId"
+            },
+            "revealTurn": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            }
+          },
+          "required": [
+            "state",
+            "definitionId",
+            "revealTurn"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "LaneView": {
+      "type": "object",
+      "properties": {
+        "laneId": {
+          "$ref": "#/definitions/LaneId"
+        },
+        "location": {
+          "$ref": "#/definitions/LocationView"
+        },
+        "good": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/UnitView"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evil": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/UnitView"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "laneId",
+        "location",
+        "good",
+        "evil"
+      ],
+      "additionalProperties": false
+    },
+    "DiscardEntry": {
+      "type": "object",
+      "properties": {
+        "definitionId": {
+          "$ref": "#/definitions/CardId"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "definitionId",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "HeroView": {
+      "type": "object",
+      "properties": {
+        "heroId": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "hp": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 20
+        },
+        "maxHp": {
+          "const": 20
+        },
+        "energy": {
+          "type": "object",
+          "properties": {
+            "current": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "max": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            }
+          },
+          "required": [
+            "current",
+            "max"
+          ],
+          "additionalProperties": false
+        },
+        "block": {
+          "type": "object",
+          "properties": {
+            "charge": {
+              "type": "integer",
+              "enum": [
+                0,
+                2,
+                4,
+                6
+              ]
+            },
+            "used": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "active": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "charge",
+            "used",
+            "active"
+          ],
+          "additionalProperties": false
+        },
+        "handCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "deckCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30
+        },
+        "reserveCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "discard": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DiscardEntry"
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "usedPowers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PowerId"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "fatigueCounter": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "heroId",
+        "hp",
+        "maxHp",
+        "energy",
+        "block",
+        "handCount",
+        "deckCount",
+        "reserveCount",
+        "discard",
+        "usedPowers",
+        "fatigueCounter"
+      ],
+      "additionalProperties": false
+    },
+    "HandCard": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "$ref": "#/definitions/InstanceId"
+        },
+        "definitionId": {
+          "$ref": "#/definitions/CardId"
+        }
+      },
+      "required": [
+        "instanceId",
+        "definitionId"
+      ],
+      "additionalProperties": false
+    },
+    "ReservePower": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "$ref": "#/definitions/InstanceId"
+        },
+        "definitionId": {
+          "$ref": "#/definitions/PowerId"
+        },
+        "normalCost": {
+          "const": 1
+        }
+      },
+      "required": [
+        "instanceId",
+        "definitionId",
+        "normalCost"
+      ],
+      "additionalProperties": false
+    },
+    "OwnZone": {
+      "type": "object",
+      "properties": {
+        "side": {
+          "$ref": "#/definitions/Side"
+        },
+        "hand": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HandCard"
+          },
+          "minItems": 0,
+          "maxItems": 10
+        },
+        "reserve": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReservePower"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "mulliganCommitted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "side",
+        "hand",
+        "reserve",
+        "mulliganCommitted"
+      ],
+      "additionalProperties": false
+    },
+    "BlockResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "visibility": {
+              "const": "OWN"
+            },
+            "side": {
+              "$ref": "#/definitions/Side"
+            },
+            "laneId": {
+              "$ref": "#/definitions/LaneId"
+            },
+            "powerInstanceId": {
+              "$ref": "#/definitions/InstanceId"
+            },
+            "costNow": {
+              "const": 0
+            }
+          },
+          "required": [
+            "visibility",
+            "side",
+            "laneId",
+            "powerInstanceId",
+            "costNow"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "visibility": {
+              "const": "OPPONENT"
+            },
+            "side": {
+              "$ref": "#/definitions/Side"
+            },
+            "laneId": {
+              "$ref": "#/definitions/LaneId"
+            }
+          },
+          "required": [
+            "visibility",
+            "side",
+            "laneId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Outcome": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string",
+          "enum": [
+            "WIN",
+            "LOSS",
+            "DRAW",
+            "NONE"
+          ]
+        },
+        "winner": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Side"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "HERO_DEFEATED",
+            "SIMULTANEOUS_LETHAL",
+            "TURN_LIMIT",
+            "SURRENDER",
+            "EXPIRED",
+            "ACCOUNT_MERGE",
+            "ENGINE_FAULT",
+            "TUTORIAL_COMPLETED",
+            "TUTORIAL_SKIPPED"
+          ]
+        }
+      },
+      "required": [
+        "result",
+        "winner",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "TutorialView": {
+      "type": "object",
+      "properties": {
+        "scenarioId": {
+          "type": "string",
+          "enum": [
+            "tutorial_v1",
+            "tutorial_evil_v1"
+          ]
+        },
+        "chapterId": {
+          "$ref": "#/definitions/ChapterId"
+        },
+        "stepId": {
+          "$ref": "#/definitions/StepId"
+        },
+        "stepState": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "AWAITING_CONTINUE",
+            "COMPLETED",
+            "SKIPPED"
+          ]
+        },
+        "completedStepIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StepId"
+          },
+          "minItems": 0,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "copyKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "focusTargets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "CARD",
+                  "UNIT",
+                  "LANE",
+                  "ENERGY",
+                  "PHASE",
+                  "BLOCK",
+                  "CONTINUE"
+                ]
+              },
+              "instanceId": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/InstanceId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "laneId": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/LaneId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "side": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/Side"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "kind",
+              "instanceId",
+              "laneId",
+              "side"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 10
+        }
+      },
+      "required": [
+        "scenarioId",
+        "chapterId",
+        "stepId",
+        "stepState",
+        "completedStepIds",
+        "copyKey",
+        "focusTargets"
+      ],
+      "additionalProperties": false
+    },
+    "PlayerView": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": "api_v1"
+        },
+        "matchId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "SKIRMISH",
+            "TUTORIAL"
+          ]
+        },
+        "lifecycle": {
+          "$ref": "#/definitions/Lifecycle"
+        },
+        "humanSide": {
+          "$ref": "#/definitions/Side"
+        },
+        "turn": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "phase": {
+          "$ref": "#/definitions/Phase"
+        },
+        "activeSide": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Side"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "versions": {
+          "$ref": "#/definitions/Versions"
+        },
+        "players": {
+          "type": "object",
+          "properties": {
+            "GOOD": {
+              "$ref": "#/definitions/HeroView"
+            },
+            "EVIL": {
+              "$ref": "#/definitions/HeroView"
+            }
+          },
+          "required": [
+            "GOOD",
+            "EVIL"
+          ],
+          "additionalProperties": false
+        },
+        "board": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LaneView"
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "self": {
+          "$ref": "#/definitions/OwnZone"
+        },
+        "legalActions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlayerAction"
+          },
+          "minItems": 0,
+          "maxItems": 2048
+        },
+        "blockResponse": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/BlockResponse"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "combat": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "laneId": {
+                  "$ref": "#/definitions/LaneId"
+                },
+                "stage": {
+                  "type": "string",
+                  "enum": [
+                    "BEFORE_PAIR",
+                    "PAIR",
+                    "BLOCK_RESPONSES",
+                    "AFTER_LANE"
+                  ]
+                }
+              },
+              "required": [
+                "laneId",
+                "stage"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Outcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tutorial": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/TutorialView"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "matchId",
+        "mode",
+        "lifecycle",
+        "humanSide",
+        "turn",
+        "phase",
+        "activeSide",
+        "versions",
+        "players",
+        "board",
+        "self",
+        "legalActions",
+        "blockResponse",
+        "combat",
+        "outcome",
+        "tutorial"
+      ],
+      "additionalProperties": false
+    },
+    "DamagePacket": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/EntityRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "target": {
+          "$ref": "#/definitions/EntityRef"
+        },
+        "damageType": {
+          "type": "string",
+          "enum": [
+            "COMBAT",
+            "EFFECT",
+            "POISON",
+            "LOCATION",
+            "FATIGUE"
+          ]
+        },
+        "rawDamage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "mitigatedDamage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "finalDamage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "blocked": {
+          "type": "boolean"
+        },
+        "shieldConsumed": {
+          "type": "boolean"
+        },
+        "displayOrder": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "damageType",
+        "rawDamage",
+        "mitigatedDamage",
+        "finalDamage",
+        "blocked",
+        "shieldConsumed",
+        "displayOrder"
+      ],
+      "additionalProperties": false
+    },
+    "HpChange": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/definitions/EntityRef"
+        },
+        "before": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "after": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "target",
+        "before",
+        "after"
+      ],
+      "additionalProperties": false
+    },
+    "VisibleEvent": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "MatchStarted"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "SKIRMISH",
+                    "TUTORIAL"
+                  ]
+                },
+                "heroes": {
+                  "type": "object",
+                  "properties": {
+                    "GOOD": {
+                      "$ref": "#/definitions/HeroId"
+                    },
+                    "EVIL": {
+                      "$ref": "#/definitions/HeroId"
+                    }
+                  },
+                  "required": [
+                    "GOOD",
+                    "EVIL"
+                  ],
+                  "additionalProperties": false
+                },
+                "versions": {
+                  "$ref": "#/definitions/Versions"
+                }
+              },
+              "required": [
+                "mode",
+                "heroes",
+                "versions"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "MulliganCommitted"
+            },
+            "visibility": {
+              "const": "OWNER"
+            },
+            "ownerSide": {
+              "$ref": "#/definitions/Side"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "replacedCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4
+                }
+              },
+              "required": [
+                "side",
+                "replacedCount"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "TurnStarted"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "turn": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 20
+                }
+              },
+              "required": [
+                "turn"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "LocationRevealed"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "laneId": {
+                  "$ref": "#/definitions/LaneId"
+                },
+                "definitionId": {
+                  "$ref": "#/definitions/LocationId"
+                }
+              },
+              "required": [
+                "laneId",
+                "definitionId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "EnergyRefilled"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "before": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "after": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10
+                }
+              },
+              "required": [
+                "side",
+                "before",
+                "after",
+                "max"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "CardDrawn"
+            },
+            "visibility": {
+              "const": "OWNER"
+            },
+            "ownerSide": {
+              "$ref": "#/definitions/Side"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "card": {
+                  "$ref": "#/definitions/HandCard"
+                },
+                "handCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "deckCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 30
+                }
+              },
+              "required": [
+                "side",
+                "card",
+                "handCount",
+                "deckCount"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "HandCountChanged"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "handCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "deckCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 30
+                }
+              },
+              "required": [
+                "side",
+                "handCount",
+                "deckCount"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "CardDiscarded"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "definitionId": {
+                  "$ref": "#/definitions/CardId"
+                },
+                "reason": {
+                  "type": "string",
+                  "enum": [
+                    "OVERDRAW",
+                    "TRICK_RESOLVED",
+                    "UNIT_DESTROYED"
+                  ]
+                },
+                "discardQuantity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2
+                }
+              },
+              "required": [
+                "side",
+                "definitionId",
+                "reason",
+                "discardQuantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "CardPlayed"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "cardInstanceId": {
+                  "$ref": "#/definitions/InstanceId"
+                },
+                "definitionId": {
+                  "$ref": "#/definitions/CardId"
+                },
+                "target": {
+                  "$ref": "#/definitions/Target"
+                },
+                "energySpent": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 11
+                }
+              },
+              "required": [
+                "side",
+                "cardInstanceId",
+                "definitionId",
+                "target",
+                "energySpent"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "UnitCreated"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "unit": {
+                  "$ref": "#/definitions/UnitView"
+                },
+                "cause": {
+                  "type": "string",
+                  "enum": [
+                    "PLAY",
+                    "SUMMON"
+                  ]
+                }
+              },
+              "required": [
+                "unit",
+                "cause"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "UnitMoved"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "instanceId": {
+                  "$ref": "#/definitions/InstanceId"
+                },
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "fromLane": {
+                  "$ref": "#/definitions/LaneId"
+                },
+                "toLane": {
+                  "$ref": "#/definitions/LaneId"
+                }
+              },
+              "required": [
+                "instanceId",
+                "side",
+                "fromLane",
+                "toLane"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "StatsChanged"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "instanceId": {
+                  "$ref": "#/definitions/InstanceId"
+                },
+                "before": {
+                  "$ref": "#/definitions/Stats"
+                },
+                "after": {
+                  "$ref": "#/definitions/Stats"
+                },
+                "modifiers": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ModifierView"
+                  },
+                  "minItems": 0,
+                  "maxItems": 256
+                }
+              },
+              "required": [
+                "instanceId",
+                "before",
+                "after",
+                "modifiers"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "StatusChanged"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "instanceId": {
+                  "$ref": "#/definitions/InstanceId"
+                },
+                "before": {
+                  "$ref": "#/definitions/Statuses"
+                },
+                "after": {
+                  "$ref": "#/definitions/Statuses"
+                }
+              },
+              "required": [
+                "instanceId",
+                "before",
+                "after"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "AttackDeclared"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "batchId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "attacks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sourceUnitId": {
+                        "$ref": "#/definitions/InstanceId"
+                      },
+                      "side": {
+                        "$ref": "#/definitions/Side"
+                      },
+                      "laneId": {
+                        "$ref": "#/definitions/LaneId"
+                      },
+                      "attack": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      "targets": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/EntityRef"
+                        },
+                        "minItems": 1,
+                        "maxItems": 2
+                      },
+                      "displayOrder": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2
+                      }
+                    },
+                    "required": [
+                      "sourceUnitId",
+                      "side",
+                      "laneId",
+                      "attack",
+                      "targets",
+                      "displayOrder"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1,
+                  "maxItems": 2
+                }
+              },
+              "required": [
+                "batchId",
+                "attacks"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "DamageBatchResolved"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "batchId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "packets": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/DamagePacket"
+                  },
+                  "minItems": 1,
+                  "maxItems": 20
+                },
+                "hpChanges": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/HpChange"
+                  },
+                  "minItems": 0,
+                  "maxItems": 12
+                }
+              },
+              "required": [
+                "batchId",
+                "packets",
+                "hpChanges"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "HeroHealed"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "amount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "before": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 20
+                },
+                "after": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 20
+                }
+              },
+              "required": [
+                "side",
+                "amount",
+                "before",
+                "after"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "UnitDestroyed"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "instanceId": {
+                  "$ref": "#/definitions/InstanceId"
+                },
+                "definitionId": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/CardId"
+                    },
+                    {
+                      "$ref": "#/definitions/TokenId"
+                    }
+                  ]
+                },
+                "owner": {
+                  "$ref": "#/definitions/Side"
+                },
+                "laneId": {
+                  "$ref": "#/definitions/LaneId"
+                },
+                "isToken": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "instanceId",
+                "definitionId",
+                "owner",
+                "laneId",
+                "isToken"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "BlockMeterChanged"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "chargeBefore": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 6
+                },
+                "chargeAfter": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 6
+                },
+                "blocksUsed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3
+                }
+              },
+              "required": [
+                "side",
+                "chargeBefore",
+                "chargeAfter",
+                "blocksUsed"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "BlockOccurred"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "preventedDamage": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                "blocksUsed": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3
+                }
+              },
+              "required": [
+                "side",
+                "preventedDamage",
+                "blocksUsed"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "PowerGranted"
+            },
+            "visibility": {
+              "const": "OWNER"
+            },
+            "ownerSide": {
+              "$ref": "#/definitions/Side"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "power": {
+                  "$ref": "#/definitions/ReservePower"
+                },
+                "reason": {
+                  "type": "string",
+                  "enum": [
+                    "INITIAL",
+                    "BLOCK"
+                  ]
+                }
+              },
+              "required": [
+                "side",
+                "power",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "ReserveCountChanged"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "reserveCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4
+                }
+              },
+              "required": [
+                "side",
+                "reserveCount"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "BlockResponseOpened"
+            },
+            "visibility": {
+              "const": "OWNER"
+            },
+            "ownerSide": {
+              "$ref": "#/definitions/Side"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "laneId": {
+                  "$ref": "#/definitions/LaneId"
+                },
+                "powerInstanceId": {
+                  "$ref": "#/definitions/InstanceId"
+                }
+              },
+              "required": [
+                "side",
+                "laneId",
+                "powerInstanceId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "BlockResponseClosed"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "choice": {
+                  "type": "string",
+                  "enum": [
+                    "USED",
+                    "KEPT"
+                  ]
+                }
+              },
+              "required": [
+                "side",
+                "choice"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "PowerUsed"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "$ref": "#/definitions/Side"
+                },
+                "powerInstanceId": {
+                  "$ref": "#/definitions/InstanceId"
+                },
+                "definitionId": {
+                  "$ref": "#/definitions/PowerId"
+                },
+                "target": {
+                  "$ref": "#/definitions/Target"
+                },
+                "energySpent": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "side",
+                "powerInstanceId",
+                "definitionId",
+                "target",
+                "energySpent"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "PhaseChanged"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "$ref": "#/definitions/Phase"
+                },
+                "to": {
+                  "$ref": "#/definitions/Phase"
+                },
+                "turn": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 20
+                }
+              },
+              "required": [
+                "from",
+                "to",
+                "turn"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "MatchEnded"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "outcome": {
+                  "$ref": "#/definitions/Outcome"
+                },
+                "turn": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 20
+                }
+              },
+              "required": [
+                "outcome",
+                "turn"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "LifecycleChanged"
+            },
+            "visibility": {
+              "const": "PUBLIC"
+            },
+            "ownerSide": {
+              "type": "null"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "$ref": "#/definitions/Lifecycle"
+                },
+                "to": {
+                  "$ref": "#/definitions/Lifecycle"
+                },
+                "reason": {
+                  "type": "string",
+                  "enum": [
+                    "PAUSE",
+                    "RESUME",
+                    "EXPIRED",
+                    "ACCOUNT_MERGE",
+                    "FAULT"
+                  ]
+                }
+              },
+              "required": [
+                "from",
+                "to",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "eventId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "rootId": {
+              "type": "string",
+              "pattern": "^[0-9a-f-]{36}:[0-9]+$"
+            },
+            "kind": {
+              "const": "TutorialAdvanced"
+            },
+            "visibility": {
+              "const": "OWNER"
+            },
+            "ownerSide": {
+              "$ref": "#/definitions/Side"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "tutorial": {
+                  "$ref": "#/definitions/TutorialView"
+                }
+              },
+              "required": [
+                "tutorial"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "eventId",
+            "sequence",
+            "rootId",
+            "kind",
+            "visibility",
+            "ownerSide",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "CommandResponse": {
+      "type": "object",
+      "properties": {
+        "view": {
+          "$ref": "#/definitions/PlayerView"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "latestSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VisibleEvent"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "eventsThroughSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "needsAdvance": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "view",
+        "revision",
+        "latestSeq",
+        "events",
+        "eventsThroughSeq",
+        "needsAdvance"
+      ],
+      "additionalProperties": false
+    },
+    "EventPage": {
+      "type": "object",
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VisibleEvent"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "nextCursor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "scannedThroughSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "hasMore": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "events",
+        "nextCursor",
+        "scannedThroughSeq",
+        "hasMore"
+      ],
+      "additionalProperties": false
+    },
+    "DeckEntry": {
+      "type": "object",
+      "properties": {
+        "cardId": {
+          "$ref": "#/definitions/CardId"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "cardId",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "DeckInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "heroId": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "contentVersion": {
+          "$ref": "#/definitions/Version"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeckEntry"
+          },
+          "minItems": 0,
+          "maxItems": 30
+        }
+      },
+      "required": [
+        "name",
+        "heroId",
+        "contentVersion",
+        "entries"
+      ],
+      "additionalProperties": false
+    },
+    "DeckIssue": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "TOTAL_NOT_30",
+            "TOO_MANY_COPIES",
+            "WRONG_FACTION",
+            "WRONG_CLASS",
+            "DUPLICATE_CARD_ID",
+            "UNKNOWN_CARD",
+            "VERSION_UNSUPPORTED"
+          ]
+        },
+        "cardId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "messageKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "code",
+        "cardId",
+        "messageKey"
+      ],
+      "additionalProperties": false
+    },
+    "DeckValidation": {
+      "type": "object",
+      "properties": {
+        "playable": {
+          "type": "boolean"
+        },
+        "totalCards": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 60
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeckIssue"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "playable",
+        "totalCards",
+        "issues"
+      ],
+      "additionalProperties": false
+    },
+    "DeckDTO": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "heroId": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "contentVersion": {
+          "$ref": "#/definitions/Version"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeckEntry"
+          },
+          "minItems": 0,
+          "maxItems": 30
+        },
+        "id": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "validation": {
+          "$ref": "#/definitions/DeckValidation"
+        },
+        "updatedAt": {
+          "$ref": "#/definitions/DateTime"
+        }
+      },
+      "required": [
+        "name",
+        "heroId",
+        "contentVersion",
+        "entries",
+        "id",
+        "revision",
+        "validation",
+        "updatedAt"
+      ],
+      "additionalProperties": false
+    },
+    "PresetDTO": {
+      "type": "object",
+      "properties": {
+        "presetId": {
+          "type": "string",
+          "enum": [
+            "D_G_BV",
+            "D_G_BP",
+            "D_G_VP",
+            "D_E_FX",
+            "D_E_FS",
+            "D_E_XS"
+          ]
+        },
+        "heroId": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "contentVersion": {
+          "$ref": "#/definitions/Version"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeckEntry"
+          },
+          "minItems": 15,
+          "maxItems": 15
+        },
+        "strategyKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "presetId",
+        "heroId",
+        "name",
+        "contentVersion",
+        "entries",
+        "strategyKey"
+      ],
+      "additionalProperties": false
+    },
+    "SaveDeckRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "deck": {
+          "$ref": "#/definitions/DeckInput"
+        }
+      },
+      "required": [
+        "commandId",
+        "deck"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateDeckRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "expectedDeckRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "deck": {
+          "$ref": "#/definitions/DeckInput"
+        }
+      },
+      "required": [
+        "commandId",
+        "expectedDeckRevision",
+        "deck"
+      ],
+      "additionalProperties": false
+    },
+    "DeckList": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeckDTO"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "presets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PresetDTO"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "presets",
+        "nextCursor"
+      ],
+      "additionalProperties": false
+    },
+    "DeckSource": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "PRESET"
+            },
+            "presetId": {
+              "type": "string",
+              "enum": [
+                "D_G_BV",
+                "D_G_BP",
+                "D_G_VP",
+                "D_E_FX",
+                "D_E_FS",
+                "D_E_XS"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "presetId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "SAVED"
+            },
+            "deckId": {
+              "$ref": "#/definitions/Uuid"
+            },
+            "deckRevision": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "kind",
+            "deckId",
+            "deckRevision"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "CreateMatchRequest": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "$ref": "#/definitions/Uuid"
+            },
+            "mode": {
+              "const": "SKIRMISH"
+            },
+            "deck": {
+              "$ref": "#/definitions/DeckSource"
+            },
+            "opponentHeroId": {
+              "$ref": "#/definitions/HeroId"
+            },
+            "difficulty": {
+              "type": "string",
+              "enum": [
+                "EASY",
+                "NORMAL"
+              ]
+            },
+            "expectedContentVersion": {
+              "$ref": "#/definitions/Version"
+            }
+          },
+          "required": [
+            "commandId",
+            "mode",
+            "deck",
+            "opponentHeroId",
+            "difficulty",
+            "expectedContentVersion"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "commandId": {
+              "$ref": "#/definitions/Uuid"
+            },
+            "mode": {
+              "const": "TUTORIAL"
+            },
+            "scenarioId": {
+              "type": "string",
+              "enum": [
+                "tutorial_v1",
+                "tutorial_evil_v1"
+              ]
+            }
+          },
+          "required": [
+            "commandId",
+            "mode",
+            "scenarioId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Principal": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "GUEST",
+            "ACCOUNT"
+          ]
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "expiresAt": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/DateTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tutorialCompletedAt": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/DateTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evilTutorialCompletedAt": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/DateTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "displayName",
+        "expiresAt",
+        "tutorialCompletedAt",
+        "evilTutorialCompletedAt"
+      ],
+      "additionalProperties": false
+    },
+    "Secret256": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{43}$"
+    },
+    "SessionResponse": {
+      "type": "object",
+      "properties": {
+        "principal": {
+          "$ref": "#/definitions/Principal"
+        },
+        "csrfToken": {
+          "$ref": "#/definitions/Secret256"
+        },
+        "sessionExpiresAt": {
+          "$ref": "#/definitions/DateTime"
+        },
+        "activeMatchId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "principal",
+        "csrfToken",
+        "sessionExpiresAt",
+        "activeMatchId"
+      ],
+      "additionalProperties": false
+    },
+    "GuestRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "recoverySecret": {
+          "$ref": "#/definitions/Secret256"
+        }
+      },
+      "required": [
+        "commandId",
+        "recoverySecret"
+      ],
+      "additionalProperties": false
+    },
+    "AuthExchangeRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "identityToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        }
+      },
+      "required": [
+        "commandId",
+        "identityToken"
+      ],
+      "additionalProperties": false
+    },
+    "ClaimGuestRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "identityToken": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        },
+        "keepMatchId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "commandId",
+        "identityToken",
+        "keepMatchId"
+      ],
+      "additionalProperties": false
+    },
+    "MatchSummary": {
+      "type": "object",
+      "properties": {
+        "matchId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "SKIRMISH",
+            "TUTORIAL"
+          ]
+        },
+        "lifecycle": {
+          "$ref": "#/definitions/Lifecycle"
+        },
+        "humanHeroId": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "opponentHeroId": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "EASY",
+                "NORMAL"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Outcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "turns": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "activeDurationMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "damageDealt": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "createdAt": {
+          "$ref": "#/definitions/DateTime"
+        },
+        "endedAt": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/DateTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resumable": {
+          "type": "boolean"
+        },
+        "blocksUsed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "rematch": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RematchConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "matchId",
+        "mode",
+        "lifecycle",
+        "humanHeroId",
+        "opponentHeroId",
+        "difficulty",
+        "outcome",
+        "turns",
+        "activeDurationMs",
+        "damageDealt",
+        "createdAt",
+        "endedAt",
+        "resumable",
+        "blocksUsed",
+        "rematch"
+      ],
+      "additionalProperties": false
+    },
+    "MatchList": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MatchSummary"
+          },
+          "minItems": 0,
+          "maxItems": 20
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "nextCursor"
+      ],
+      "additionalProperties": false
+    },
+    "HealthLive": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "ok"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "HealthReady": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "ready",
+            "not_ready"
+          ]
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "ErrorResponse": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "VALIDATION_FAILED"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "issues": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "minLength": 0,
+                            "maxLength": 160
+                          },
+                          "rule": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 60
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "rule"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 50
+                    }
+                  },
+                  "required": [
+                    "issues"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "SESSION_EXPIRED"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "FORBIDDEN"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "CSRF"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "NOT_FOUND"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "IDEMPOTENCY_CONFLICT"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "VERSION_UNSUPPORTED"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "INTERNAL"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "TEMPORARILY_UNAVAILABLE"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {},
+                  "required": [],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "STALE_REVISION"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "snapshot": {
+                      "$ref": "#/definitions/CommandResponse"
+                    }
+                  },
+                  "required": [
+                    "snapshot"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "STALE_DECK_REVISION"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "deck": {
+                      "$ref": "#/definitions/DeckDTO"
+                    }
+                  },
+                  "required": [
+                    "deck"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "ACTIVE_MATCH_EXISTS"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "matchId": {
+                      "$ref": "#/definitions/Uuid"
+                    }
+                  },
+                  "required": [
+                    "matchId"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "MERGE_MATCH_CONFLICT"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "guestMatch": {
+                      "$ref": "#/definitions/MatchSummary"
+                    },
+                    "accountMatch": {
+                      "$ref": "#/definitions/MatchSummary"
+                    }
+                  },
+                  "required": [
+                    "guestMatch",
+                    "accountMatch"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "INVALID_DECK"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "validation": {
+                      "$ref": "#/definitions/DeckValidation"
+                    }
+                  },
+                  "required": [
+                    "validation"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "ILLEGAL_ACTION"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "reason": {
+                      "type": "string",
+                      "enum": [
+                        "NOT_YOUR_TURN",
+                        "WRONG_PHASE",
+                        "INSUFFICIENT_ENERGY",
+                        "CARD_UNAVAILABLE",
+                        "INVALID_TARGET",
+                        "LANE_OCCUPIED",
+                        "POWER_UNAVAILABLE",
+                        "MATCH_PAUSED",
+                        "MATCH_ENDED",
+                        "TUTORIAL_STEP_MISMATCH"
+                      ]
+                    },
+                    "field": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 80
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "reason",
+                    "field"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "RATE_LIMITED"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "retryAfterSeconds": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 3600
+                    }
+                  },
+                  "required": [
+                    "retryAfterSeconds"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "LOG_EXPIRED"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "earliestAvailableSeq": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "earliestAvailableSeq"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "MATCH_DETAILS_EXPIRED"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "summaryAvailable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "summaryAvailable"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ClassId": {
+      "type": "string",
+      "enum": [
+        "BASTION",
+        "VERDANT",
+        "PRISM",
+        "FURNACE",
+        "HEX",
+        "VEIL"
+      ]
+    },
+    "ArtKey": {
+      "type": "string",
+      "pattern": "^[a-z0-9_/-]+\\.(webp|png)$"
+    },
+    "AbilityView": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "hook": {
+          "type": "string",
+          "enum": [
+            "ON_PLAY",
+            "BEFORE_COMBAT_HERE",
+            "ON_DAMAGED",
+            "ON_DESTROYED",
+            "ON_TURN_END"
+          ]
+        },
+        "exactTextVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "id",
+        "hook",
+        "exactTextVi"
+      ],
+      "additionalProperties": false
+    },
+    "CardDefinitionView": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/CardId"
+            },
+            "faction": {
+              "$ref": "#/definitions/Side"
+            },
+            "classId": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/ClassId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "nameVi": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "cost": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "keywords": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "SHIELD",
+                  "ARMOR",
+                  "POISONED",
+                  "STUNNED",
+                  "PIERCE",
+                  "MOVE"
+                ]
+              },
+              "minItems": 0,
+              "maxItems": 6,
+              "uniqueItems": true
+            },
+            "abilities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AbilityView"
+              },
+              "minItems": 0,
+              "maxItems": 8
+            },
+            "exactTextVi": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "artKey": {
+              "$ref": "#/definitions/ArtKey"
+            },
+            "type": {
+              "const": "UNIT"
+            },
+            "printed": {
+              "type": "object",
+              "properties": {
+                "attack": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                "hp": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "attack",
+                "hp"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "faction",
+            "classId",
+            "nameVi",
+            "cost",
+            "keywords",
+            "abilities",
+            "exactTextVi",
+            "artKey",
+            "type",
+            "printed"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/CardId"
+            },
+            "faction": {
+              "$ref": "#/definitions/Side"
+            },
+            "classId": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/ClassId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "nameVi": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 60
+            },
+            "cost": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10
+            },
+            "keywords": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "SHIELD",
+                  "ARMOR",
+                  "POISONED",
+                  "STUNNED",
+                  "PIERCE",
+                  "MOVE"
+                ]
+              },
+              "minItems": 0,
+              "maxItems": 6,
+              "uniqueItems": true
+            },
+            "abilities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AbilityView"
+              },
+              "minItems": 0,
+              "maxItems": 8
+            },
+            "exactTextVi": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "artKey": {
+              "$ref": "#/definitions/ArtKey"
+            },
+            "type": {
+              "const": "TRICK"
+            },
+            "printed": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "id",
+            "faction",
+            "classId",
+            "nameVi",
+            "cost",
+            "keywords",
+            "abilities",
+            "exactTextVi",
+            "artKey",
+            "type",
+            "printed"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "PowerDefinitionView": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/PowerId"
+        },
+        "faction": {
+          "$ref": "#/definitions/Side"
+        },
+        "classId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ClassId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "signatureOwner": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/HeroId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "const": "SUPERPOWER"
+        },
+        "nameVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "baseCost": {
+          "const": 1
+        },
+        "targetKind": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "UNIT",
+            "HERO_OR_UNIT",
+            "LANE",
+            "UNIT_AND_LANE"
+          ]
+        },
+        "exactTextVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "artKey": {
+          "$ref": "#/definitions/ArtKey"
+        }
+      },
+      "required": [
+        "id",
+        "faction",
+        "classId",
+        "signatureOwner",
+        "type",
+        "nameVi",
+        "baseCost",
+        "targetKind",
+        "exactTextVi",
+        "artKey"
+      ],
+      "additionalProperties": false
+    },
+    "HeroDefinitionView": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "faction": {
+          "$ref": "#/definitions/Side"
+        },
+        "nameVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "titleVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "classes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClassId"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "powerIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PowerId"
+          },
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "signaturePowerId": {
+          "$ref": "#/definitions/PowerId"
+        },
+        "strategyKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "portraitKey": {
+          "$ref": "#/definitions/ArtKey"
+        }
+      },
+      "required": [
+        "id",
+        "faction",
+        "nameVi",
+        "titleVi",
+        "classes",
+        "powerIds",
+        "signaturePowerId",
+        "strategyKey",
+        "portraitKey"
+      ],
+      "additionalProperties": false
+    },
+    "LocationDefinitionView": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/LocationId"
+        },
+        "nameVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "group": {
+          "type": "string",
+          "enum": [
+            "BUFF",
+            "NEUTRAL",
+            "HAZARD",
+            "CONTROL",
+            "COST"
+          ]
+        },
+        "hook": {
+          "type": "string",
+          "enum": [
+            "ON_UNIT_PLAYED",
+            "BEFORE_ATTACK",
+            "AFTER_LANE_COMBAT",
+            "END_TURN",
+            "COST_MODIFIER",
+            "NONE"
+          ]
+        },
+        "exactTextVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "artKey": {
+          "$ref": "#/definitions/ArtKey"
+        }
+      },
+      "required": [
+        "id",
+        "nameVi",
+        "group",
+        "hook",
+        "exactTextVi",
+        "artKey"
+      ],
+      "additionalProperties": false
+    },
+    "TokenDefinitionView": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/TokenId"
+        },
+        "faction": {
+          "$ref": "#/definitions/Side"
+        },
+        "nameVi": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "printed": {
+          "type": "object",
+          "properties": {
+            "attack": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "hp": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "attack",
+            "hp"
+          ],
+          "additionalProperties": false
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "SHIELD"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 1
+        },
+        "tutorialOnly": {
+          "type": "boolean"
+        },
+        "artKey": {
+          "$ref": "#/definitions/ArtKey"
+        }
+      },
+      "required": [
+        "id",
+        "faction",
+        "nameVi",
+        "printed",
+        "keywords",
+        "tutorialOnly",
+        "artKey"
+      ],
+      "additionalProperties": false
+    },
+    "PublicCatalog": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/definitions/Version"
+        },
+        "rulesVersion": {
+          "$ref": "#/definitions/Version"
+        },
+        "locationVersion": {
+          "$ref": "#/definitions/Version"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardDefinitionView"
+          },
+          "minItems": 60,
+          "maxItems": 60
+        },
+        "heroes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HeroDefinitionView"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "powers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PowerDefinitionView"
+          },
+          "minItems": 18,
+          "maxItems": 18
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocationDefinitionView"
+          },
+          "minItems": 8,
+          "maxItems": 8
+        },
+        "tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TokenDefinitionView"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "presets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PresetDTO"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        }
+      },
+      "required": [
+        "version",
+        "rulesVersion",
+        "locationVersion",
+        "sha256",
+        "cards",
+        "heroes",
+        "powers",
+        "locations",
+        "tokens",
+        "presets"
+      ],
+      "additionalProperties": false
+    },
+    "EmptyBody": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "ListQuery": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "EventQuery": {
+      "type": "object",
+      "properties": {
+        "afterSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "throughSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "afterSeq",
+        "throughSeq"
+      ],
+      "additionalProperties": false
+    },
+    "MatchParams": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/Uuid"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "DeckParams": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/Uuid"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "CatalogParams": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/definitions/Version"
+        }
+      },
+      "required": [
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "RematchConfig": {
+      "type": "object",
+      "properties": {
+        "deck": {
+          "$ref": "#/definitions/DeckSource"
+        },
+        "opponentHeroId": {
+          "$ref": "#/definitions/HeroId"
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "EASY",
+            "NORMAL"
+          ]
+        },
+        "expectedContentVersion": {
+          "$ref": "#/definitions/Version"
+        }
+      },
+      "required": [
+        "deck",
+        "opponentHeroId",
+        "difficulty",
+        "expectedContentVersion"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

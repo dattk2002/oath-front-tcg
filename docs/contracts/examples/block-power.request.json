@@ -1,0 +1,12 @@
+{
+  "commandId": "22222222-2222-4222-8222-222222222222",
+  "expectedRevision": 28,
+  "action": {
+    "kind": "USE_BLOCK_POWER",
+    "powerInstanceId": "22222222222222222222222222222222",
+    "target": {
+      "kind": "UNIT",
+      "instanceId": "33333333333333333333333333333333"
+    }
+  }
+}

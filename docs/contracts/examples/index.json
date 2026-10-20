@@ -1,0 +1,47 @@
+[
+  {
+    "file": "play-unit.request.json",
+    "schemaDefinition": "CommandEnvelope",
+    "expected": "VALID"
+  },
+  {
+    "file": "block-power.request.json",
+    "schemaDefinition": "CommandEnvelope",
+    "expected": "VALID"
+  },
+  {
+    "file": "block-owner.response.json",
+    "schemaDefinition": "CommandResponse",
+    "expected": "VALID"
+  },
+  {
+    "file": "block-opponent.view.json",
+    "schemaDefinition": "PlayerView",
+    "expected": "VALID"
+  },
+  {
+    "file": "events-private-page.response.json",
+    "schemaDefinition": "EventPage",
+    "expected": "VALID"
+  },
+  {
+    "file": "stale-revision.error.json",
+    "schemaDefinition": "ErrorResponse",
+    "expected": "VALID"
+  },
+  {
+    "file": "create-skirmish.request.json",
+    "schemaDefinition": "CreateMatchRequest",
+    "expected": "VALID"
+  },
+  {
+    "file": "create-tutorial.request.json",
+    "schemaDefinition": "CreateMatchRequest",
+    "expected": "VALID"
+  },
+  {
+    "file": "match-summary.response.json",
+    "schemaDefinition": "MatchSummary",
+    "expected": "VALID"
+  }
+]
