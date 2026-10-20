@@ -37,7 +37,8 @@ test.afterEach(async ({ page }, info) => {
       !(
         /status of 401/.test(line) ||
         (/merge choice/.test(info.title) && /status of 409/.test(line)) ||
-        (/expired paused/.test(info.title) && /status of 400/.test(line)) ||
+        (/expired paused|provider-only logout retry/.test(info.title) &&
+          /status of 400/.test(line)) ||
         (/throwing storage/.test(info.title) && /net::ERR_FAILED/.test(line))
       ),
   );
@@ -472,4 +473,232 @@ test("managed callback consumes verifier before token exchange and removes it fr
   expect(
     new URL(page.url()).searchParams.has("neon_auth_session_verifier"),
   ).toBe(false);
+});
+
+test("review: throwing storage renews in place and preserves exact auth and save intents for explicit retry", async ({
+  page,
+}) => {
+  const jwt = await token(page, "storage-renew-" + randomUUID());
+  const a = await (
+    await page.request.post("/api/v1/auth/exchange", {
+      headers: { Origin: "http://localhost:3100" },
+      data: { commandId: randomUUID(), identityToken: jwt },
+    })
+  ).json();
+  await page.route("**/api/auth/token*", (r) =>
+    r.fulfill({ json: { token: jwt } }),
+  );
+  await page.goto("/decks/new?hero=H_G_BV");
+  await page.getByLabel("Tên bộ bài").fill("Nháp cần khôi phục trong trang");
+  await page.evaluate(() => {
+    Storage.prototype.setItem = () => {
+      throw Error("storage unavailable");
+    };
+  });
+  const owner = ownerPool();
+  await owner.query(
+    "UPDATE app_sessions SET expires_at=now()-interval '1 second' WHERE principal_id=$1 AND revoked_at IS NULL",
+    [a.principal.id],
+  );
+  await owner.end();
+  const saves: string[] = [],
+    exchanges: string[] = [];
+  page.on("request", (r) => {
+    if (r.url().endsWith("/api/v1/decks") && r.method() === "POST")
+      saves.push(r.postData()!);
+  });
+  await page.route("**/api/v1/auth/exchange", (r) => {
+    exchanges.push(r.request().postData()!);
+    return exchanges.length === 1 ? r.abort() : r.continue();
+  });
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await expect.poll(() => exchanges.length).toBe(1);
+  const auth = page.getByRole("region", { name: "Tài khoản" });
+  await expect(auth.getByRole("alert")).toContainText("Không tải lại trang");
+  await expect(auth.getByRole("status")).toContainText(
+    "Chưa hoàn tất đăng nhập",
+  );
+  expect(saves).toHaveLength(1);
+  let redirectRequested = false;
+  await page.route("**/api/auth/sign-in/social", (r) => {
+    redirectRequested = true;
+    return r.fulfill({ json: { redirect: false } });
+  });
+  await auth
+    .getByRole("button", { name: "Đăng nhập Google", exact: true })
+    .click();
+  await expect(auth.getByRole("status")).toContainText(
+    "Không thể chuyển sang Google",
+  );
+  expect(redirectRequested).toBe(false);
+  const renewed = page.waitForResponse(
+    (r) => r.url().endsWith("/api/v1/auth/exchange") && r.status() === 200,
+  );
+  await auth
+    .getByRole("button", { name: "Khôi phục phiên", exact: true })
+    .click();
+  await renewed;
+  await expect(
+    auth.getByRole("button", { name: "Đăng xuất", exact: true }),
+  ).toBeVisible();
+  await expect(auth.getByRole("alert")).toContainText("Không tải lại trang");
+  expect(exchanges).toHaveLength(2);
+  expect(exchanges[1]).toBe(exchanges[0]);
+  expect(saves).toHaveLength(1);
+  for (const [name, width, height] of [
+    ["desktop", 1440, 900],
+    ["tablet", 768, 1024],
+    ["mobile", 375, 812],
+  ] as const) {
+    await page.setViewportSize({ width, height });
+    await page.screenshot({
+      path: `${evidence}/review-storage-renewal-${name}.png`,
+    });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+  }
+  await expect(page.getByLabel("Tên bộ bài")).toHaveValue(
+    "Nháp cần khôi phục trong trang",
+  );
+  const saved = page.waitForResponse(
+    (r) => r.url().endsWith("/api/v1/decks") && r.status() === 201,
+  );
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await saved;
+  expect(saves).toHaveLength(2);
+  expect(saves[1]).toBe(saves[0]);
+});
+
+test("review: history refreshes on an in-place claim into an existing account", async ({
+  page,
+}) => {
+  const jwt = await token(page, "history-refresh-" + randomUUID());
+  const a = await (
+    await page.request.post("/api/v1/auth/exchange", {
+      headers: { Origin: "http://localhost:3100" },
+      data: { commandId: randomUUID(), identityToken: jwt },
+    })
+  ).json();
+  const match = await make(page, a.csrfToken);
+  expect(
+    (
+      await page.request.post(
+        `/api/v1/matches/${match.view.matchId}/commands`,
+        {
+          headers: {
+            Origin: "http://localhost:3100",
+            "X-CSRF-Token": a.csrfToken,
+          },
+          data: {
+            commandId: randomUUID(),
+            expectedRevision: 0,
+            action: { kind: "SURRENDER" },
+          },
+        },
+      )
+    ).status(),
+  ).toBe(200);
+  await page.request.post("/api/v1/auth/logout", {
+    headers: { Origin: "http://localhost:3100", "X-CSRF-Token": a.csrfToken },
+    data: {},
+  });
+  const g = await guest(page);
+  await page.goto("/history");
+  await expect(page.getByText("Chưa có trận đấu.")).toBeVisible();
+  let release: () => void;
+  const ready = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  await page.route("**/api/auth/token*", async (r) => {
+    await ready;
+    return r.fulfill({ json: { token: jwt } });
+  });
+  await page.evaluate(
+    (s) =>
+      sessionStorage.setItem(
+        "oathfront.auth-intent",
+        JSON.stringify({
+          commandId: crypto.randomUUID(),
+          keepMatchId: null,
+          sourceId: s.principal.id,
+          csrf: s.csrfToken,
+          kind: "claim",
+        }),
+      ),
+    g,
+  );
+  await page.reload();
+  await expect(page.getByText("Chưa có trận đấu.")).toBeVisible();
+  release!();
+  await expect(
+    page.getByRole("button", { name: "Đăng xuất", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.locator(`.history-list a[href="/history/${match.view.matchId}"]`),
+  ).toBeVisible();
+  await expect(page.getByText("Chưa có trận đấu.")).not.toBeVisible();
+  await expect(page).toHaveURL(/\/history$/);
+});
+
+test("review: provider-only logout retry survives guest navigation without revoking its app session", async ({
+  page,
+}) => {
+  const jwt = await token(page, "provider-logout-" + randomUUID());
+  await page.request.post("/api/v1/auth/exchange", {
+    headers: { Origin: "http://localhost:3100" },
+    data: { commandId: randomUUID(), identityToken: jwt },
+  });
+  await page.goto("/");
+  let appLogouts = 0,
+    providerLogouts = 0;
+  page.on("request", (r) => {
+    if (r.url().endsWith("/api/v1/auth/logout")) appLogouts++;
+  });
+  await page.route("**/api/auth/sign-out", (r) => {
+    providerLogouts++;
+    return r.fulfill(
+      providerLogouts === 1
+        ? {
+            status: 400,
+            json: { message: "Test provider cleanup unavailable" },
+          }
+        : { json: { success: true } },
+    );
+  });
+  await page.getByRole("button", { name: "Đăng xuất", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Thử đăng xuất Google lại", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Chơi với bot", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Chọn người dẫn lối" }),
+  ).toBeVisible();
+  const guestBefore = await (await page.request.get("/api/v1/session")).json();
+  expect(guestBefore.principal.kind).toBe("GUEST");
+  const retry = page.getByRole("button", {
+    name: "Thử đăng xuất Google lại",
+    exact: true,
+  });
+  await expect(retry).toBeVisible();
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.screenshot({
+    path: `${evidence}/review-provider-retry-mobile.png`,
+  });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await retry.click();
+  await expect(retry).not.toBeVisible();
+  const guestAfter = await (await page.request.get("/api/v1/session")).json();
+  expect(guestAfter).toEqual(guestBefore);
+  expect(appLogouts).toBe(1);
+  expect(providerLogouts).toBe(2);
+  await expect(
+    page.getByRole("heading", { name: "Chọn người dẫn lối" }),
+  ).toBeVisible();
 });

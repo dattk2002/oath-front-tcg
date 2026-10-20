@@ -1,4 +1,10 @@
-import { useEffect, useEffectEvent, useRef, useState } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import type {
   MatchSummary,
   PublicCatalog,
@@ -10,6 +16,11 @@ import { authReturnUrl } from "./return-url";
 import { managedToken, neonClient } from "./neon-client";
 import MergeConflictDialog from "./MergeConflictDialog";
 import { rememberSession, readRememberedSession } from "../../app/session";
+import {
+  providerSignOutStore,
+  retireProviderSignOut,
+  signOutProviderSession,
+} from "./provider-signout";
 const pendingKey = "oathfront.auth-intent";
 type Intent = {
   commandId: string;
@@ -66,6 +77,7 @@ export default function AuthPanel({
 }) {
   const [busy, setBusy] = useState(false),
     [message, setMessage] = useState(""),
+    [storageUnavailable, setStorageUnavailable] = useState(false),
     [conflict, setConflict] = useState<{
       guestMatch: MatchSummary;
       accountMatch: MatchSummary;
@@ -74,6 +86,21 @@ export default function AuthPanel({
     started = useRef(false),
     renewed = useRef<string | null>(null),
     lock = useRef(false);
+  const providerCleanup = useSyncExternalStore(
+    providerSignOutStore.subscribe,
+    providerSignOutStore.getSnapshot,
+    providerSignOutStore.getServerSnapshot,
+  );
+  const authBusy = busy || providerCleanup === "running";
+  function persistIntent(pending: Intent) {
+    try {
+      sessionStorage.setItem(pendingKey, JSON.stringify(pending));
+      return true;
+    } catch {
+      setStorageUnavailable(true);
+      return false;
+    }
+  }
   function prepare(): Intent {
     intent.current ??= readIntent();
     if (!intent.current) {
@@ -89,7 +116,7 @@ export default function AuthPanel({
     return intent.current;
   }
   async function complete(choice?: string) {
-    if (lock.current) return;
+    if (lock.current || providerCleanup === "running") return;
     lock.current = true;
     setBusy(true);
     setMessage("");
@@ -104,7 +131,7 @@ export default function AuthPanel({
         };
         intent.current = pending;
       }
-      sessionStorage.setItem(pendingKey, JSON.stringify(pending));
+      persistIntent(pending);
       const identityToken = await managedToken();
       api.bindSession(
         pending.kind === "claim" && session?.principal.kind === "ACCOUNT"
@@ -125,11 +152,13 @@ export default function AuthPanel({
         next,
         pending.kind === "claim" ? (pending.sourceId ?? undefined) : undefined,
       );
+      retireProviderSignOut();
       intent.current = null;
       try {
         sessionStorage.removeItem(pendingKey);
       } catch {
-        /* Cookie/identity transition is already committed; never undo it for local storage. */
+        /* The committed cookie transition must survive local storage failure. */
+        setStorageUnavailable(true);
       }
       setConflict(null);
       setMessage(
@@ -194,12 +223,17 @@ export default function AuthPanel({
     }
   }, [ready, expired, session?.csrfToken]);
   async function login() {
-    if (lock.current) return;
+    if (lock.current || providerCleanup === "running") return;
     lock.current = true;
     setBusy(true);
     setMessage("");
     try {
-      sessionStorage.setItem(pendingKey, JSON.stringify(prepare()));
+      if (!persistIntent(prepare())) {
+        setMessage(
+          "Không thể chuyển sang Google vì bộ nhớ thiết bị không lưu được yêu cầu. Chuyển trang sẽ mất dữ liệu đang giữ trong bộ nhớ; hãy thử Khôi phục phiên tại đây.",
+        );
+        return;
+      }
       const result = await neonClient.signIn.social({
         provider: "google",
         callbackURL: authReturnUrl(window.location.href),
@@ -215,24 +249,27 @@ export default function AuthPanel({
     }
   }
   async function signOut() {
-    if (lock.current) return;
+    if (lock.current || providerCleanup === "running") return;
     lock.current = true;
     setBusy(true);
+    setMessage("");
     try {
       await api.logout();
       try {
         sessionStorage.removeItem(pendingKey);
       } catch {
-        /* Cookie/identity transition is already committed; never undo it for local storage. */
+        /* The committed cookie transition must survive local storage failure. */
+        setStorageUnavailable(true);
       }
-      rememberSession(sessionStorage, null);
+      try {
+        rememberSession(sessionStorage, null);
+      } catch {
+        setStorageUnavailable(true);
+      }
       intent.current = null;
+      const cleanup = signOutProviderSession();
       onLogout();
-      const result = await neonClient.signOut();
-      if (result.error)
-        setMessage(
-          "Đã kết thúc phiên chơi. Chưa kết thúc được phiên Google; hãy thử đăng xuất Google lại.",
-        );
+      await cleanup;
     } catch {
       setMessage("Chưa xác nhận được đăng xuất. Hãy thử lại.");
     } finally {
@@ -245,7 +282,7 @@ export default function AuthPanel({
       {session?.principal.kind === "ACCOUNT" && !expired ? (
         <>
           <span>{session.principal.displayName}</span>
-          <button disabled={busy} onClick={() => void signOut()}>
+          <button disabled={authBusy} onClick={() => void signOut()}>
             Đăng xuất
           </button>
         </>
@@ -258,14 +295,14 @@ export default function AuthPanel({
                 ? "Lưu bộ bài và trận đấu với tài khoản."
                 : "Chơi ngay bằng phiên khách hoặc lưu tiến trình với Google."}
           </span>
-          <button disabled={busy || !ready} onClick={() => void login()}>
+          <button disabled={authBusy || !ready} onClick={() => void login()}>
             Đăng nhập Google
           </button>
         </>
       )}
       {intent.current?.kind === "claim" && message && (
         <button
-          disabled={busy}
+          disabled={authBusy}
           onClick={() => {
             intent.current = {
               ...prepare(),
@@ -280,16 +317,38 @@ export default function AuthPanel({
         </button>
       )}
       {(expired || message) && (
-        <button disabled={busy} onClick={() => void complete()}>
+        <button disabled={authBusy} onClick={() => void complete()}>
           {busy ? "Đang khôi phục…" : "Khôi phục phiên"}
         </button>
       )}
       {message && <p role="status">{message}</p>}
+      {storageUnavailable && (
+        <p role="alert">
+          Bộ nhớ thiết bị không lưu được dữ liệu. Yêu cầu hiện tại được giữ
+          trong bộ nhớ của trang. Không tải lại trang hoặc chuyển trang; dữ liệu
+          này sẽ không theo bạn sang Google.
+        </p>
+      )}
+      {providerCleanup !== "idle" && (
+        <>
+          <p role="status">
+            {providerCleanup === "running"
+              ? "Đang kết thúc phiên Google…"
+              : "Phiên chơi đã kết thúc. Chưa kết thúc được phiên Google; bạn có thể thử lại bên dưới."}
+          </p>
+          <button
+            disabled={authBusy}
+            onClick={() => void signOutProviderSession()}
+          >
+            Thử đăng xuất Google lại
+          </button>
+        </>
+      )}
       {conflict && catalog && (
         <MergeConflictDialog
           {...conflict}
           catalog={catalog}
-          busy={busy}
+          busy={authBusy}
           onChoose={(id) => void complete(id)}
           onClose={() => setConflict(null)}
         />

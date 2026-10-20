@@ -87,7 +87,13 @@ export default function App({
       setOwnerEpoch((v) => v + 1);
     setStorageOwner(nextStorageOwner);
     api.bindSession(next);
-    rememberSession(sessionStorage, next);
+    try {
+      rememberSession(sessionStorage, next);
+    } catch {
+      setStorageWarning(
+        "Phiên được giữ trên trang này vì bộ nhớ thiết bị không truy cập được. Không tải lại trang.",
+      );
+    }
     setSession(next);
     setExpired(false);
   }
@@ -227,7 +233,11 @@ export default function App({
                 <p role="status">Đang tải dữ liệu trò chơi…</p>
               </section>
             ) : screen === "history" && catalog && session ? (
-              <HistoryScreen api={api} catalog={catalog} />
+              <HistoryScreen
+                key={session.csrfToken}
+                api={api}
+                catalog={catalog}
+              />
             ) : screen === "match" && matchId && catalog && session ? (
               <MatchScreen
                 key={matchId}
