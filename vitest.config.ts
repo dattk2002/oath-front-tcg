@@ -4,6 +4,7 @@ export default defineConfig({
     fileParallelism: false,
     include: [
       "tools/assets/tests/**/*.test.ts",
+      "tools/simulation/tests/**/*.test.ts",
       "packages/*/tests/**/*.test.ts",
       "apps/api/tests/**/*.test.{ts,mjs}",
       "apps/web/tests/**/*.test.ts",
