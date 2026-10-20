@@ -33,6 +33,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 
 - [Acceptance cases](ACCEPTANCE.md), [tiến độ giai đoạn tài liệu](PROGRESS.md).
 - [Kiểm tra tài liệu baseline](VERIFICATION.md), [kiểm tra phụ lục v1.1](VERIFICATION-v1.1.md).
+- [Coverage milestone M1 — engine](implementation/m1-engine-coverage.md): acceptance cases, kiểm thử card/skill, replay và giới hạn cần kiểm chứng ở API/trình duyệt.
 - [Nguồn tham khảo PvZ Heroes và công nghệ](REFERENCES.md).
 - [Specification v0.1 gốc](reference/SPECIFICATION.v0.1.md), [kế hoạch trước khi chuyển sang Next.js](superpowers/plans/2026-10-20-ngulo-implementation.md).
 
