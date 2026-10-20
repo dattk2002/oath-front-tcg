@@ -9,7 +9,8 @@ export default function PhaseControl({
   controller: IntentController;
   disabled: boolean;
 }) {
-  const legal = snapshot.authoritativeView.legalActions;
+  const view = snapshot.authoritativeView;
+  const legal = view.legalActions;
   const keep = legal.some((action) => action.kind === "KEEP_BLOCK_POWER");
   return (
     <div className="phase-controls">
@@ -28,7 +29,13 @@ export default function PhaseControl({
           })
         }
       >
-        {keep ? "Để dành" : "Kết thúc hành động"}
+        {keep
+          ? "Để dành"
+          : view.tutorial?.stepId === "E01"
+            ? "Kết thúc triển khai"
+            : view.tutorial?.stepId === "E02"
+              ? "Kết thúc trick"
+              : "Kết thúc hành động"}
       </button>
       <p className="muted">
         {snapshot.needsAdvance

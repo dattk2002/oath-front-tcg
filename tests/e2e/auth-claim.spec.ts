@@ -1,3 +1,4 @@
+import { testOrigin } from "./test-origin.js";
 import { test, expect } from "@playwright/test";
 test("guest can reach Google login and history without making guest play require identity", async ({
   page,
@@ -52,7 +53,7 @@ test.afterEach(async ({ page }, info) => {
 
 async function guest(page: import("@playwright/test").Page) {
   const r = await page.request.post("/api/v1/guest", {
-    headers: { Origin: "http://localhost:3100" },
+    headers: { Origin: testOrigin },
     data: {
       commandId: randomUUID(),
       recoverySecret: randomBytes(32).toString("base64url"),
@@ -182,7 +183,7 @@ test("local auth handler remains separate from the Fastify API rewrite", async (
 });
 async function make(page: import("@playwright/test").Page, csrfToken: string) {
   const r = await page.request.post("/api/v1/matches", {
-    headers: { Origin: "http://localhost:3100", "X-CSRF-Token": csrfToken },
+    headers: { Origin: testOrigin, "X-CSRF-Token": csrfToken },
     data: {
       commandId: randomUUID(),
       mode: "SKIRMISH",
@@ -201,7 +202,7 @@ test("merge choice keeps guest draft and selected match, preserves abandoned his
   const jwt = await token(page, "merge-" + randomUUID());
   const account = await (
     await page.request.post("/api/v1/auth/exchange", {
-      headers: { Origin: "http://localhost:3100" },
+      headers: { Origin: testOrigin },
       data: { commandId: randomUUID(), identityToken: jwt },
     })
   ).json();
@@ -210,7 +211,7 @@ test("merge choice keeps guest draft and selected match, preserves abandoned his
     (
       await page.request.post("/api/v1/auth/logout", {
         headers: {
-          Origin: "http://localhost:3100",
+          Origin: testOrigin,
           "X-CSRF-Token": account.csrfToken,
         },
         data: {},
@@ -288,13 +289,13 @@ test("expired paused session exposes login inside the modal and explicitly retri
     g = await guest(page);
   const a = await (
     await page.request.post("/api/v1/auth/claim-guest", {
-      headers: { Origin: "http://localhost:3100", "X-CSRF-Token": g.csrfToken },
+      headers: { Origin: testOrigin, "X-CSRF-Token": g.csrfToken },
       data: { commandId: randomUUID(), identityToken: jwt, keepMatchId: null },
     })
   ).json();
   const made = await make(page, a.csrfToken);
   await page.request.post(`/api/v1/matches/${made.view.matchId}/commands`, {
-    headers: { Origin: "http://localhost:3100", "X-CSRF-Token": a.csrfToken },
+    headers: { Origin: testOrigin, "X-CSRF-Token": a.csrfToken },
     data: {
       commandId: randomUUID(),
       expectedRevision: 0,
@@ -333,7 +334,7 @@ test("expired paused session exposes login inside the modal and explicitly retri
     loginRequested = true;
     expect(r.request().postDataJSON()).toMatchObject({
       provider: "google",
-      callbackURL: `http://localhost:3100/matches/${made.view.matchId}`,
+      callbackURL: `${testOrigin}/matches/${made.view.matchId}`,
     });
     return r.fulfill({
       status: 400,
@@ -481,7 +482,7 @@ test("review: throwing storage renews in place and preserves exact auth and save
   const jwt = await token(page, "storage-renew-" + randomUUID());
   const a = await (
     await page.request.post("/api/v1/auth/exchange", {
-      headers: { Origin: "http://localhost:3100" },
+      headers: { Origin: testOrigin },
       data: { commandId: randomUUID(), identityToken: jwt },
     })
   ).json();
@@ -578,7 +579,7 @@ test("review: history refreshes on an in-place claim into an existing account", 
   const jwt = await token(page, "history-refresh-" + randomUUID());
   const a = await (
     await page.request.post("/api/v1/auth/exchange", {
-      headers: { Origin: "http://localhost:3100" },
+      headers: { Origin: testOrigin },
       data: { commandId: randomUUID(), identityToken: jwt },
     })
   ).json();
@@ -589,7 +590,7 @@ test("review: history refreshes on an in-place claim into an existing account", 
         `/api/v1/matches/${match.view.matchId}/commands`,
         {
           headers: {
-            Origin: "http://localhost:3100",
+            Origin: testOrigin,
             "X-CSRF-Token": a.csrfToken,
           },
           data: {
@@ -602,7 +603,7 @@ test("review: history refreshes on an in-place claim into an existing account", 
     ).status(),
   ).toBe(200);
   await page.request.post("/api/v1/auth/logout", {
-    headers: { Origin: "http://localhost:3100", "X-CSRF-Token": a.csrfToken },
+    headers: { Origin: testOrigin, "X-CSRF-Token": a.csrfToken },
     data: {},
   });
   const g = await guest(page);
@@ -648,7 +649,7 @@ test("review: provider-only logout retry survives guest navigation without revok
 }) => {
   const jwt = await token(page, "provider-logout-" + randomUUID());
   await page.request.post("/api/v1/auth/exchange", {
-    headers: { Origin: "http://localhost:3100" },
+    headers: { Origin: testOrigin },
     data: { commandId: randomUUID(), identityToken: jwt },
   });
   await page.goto("/");

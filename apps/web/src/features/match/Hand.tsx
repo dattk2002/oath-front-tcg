@@ -54,6 +54,9 @@ export default function Hand({
               key={card.instanceId}
               className={`hand-card ${def.faction.toLowerCase()}`}
               data-card-id={card.instanceId}
+              data-tutorial-focus={view.tutorial?.focusTargets.some(
+                (t) => t.kind === "CARD" && t.instanceId === card.instanceId,
+              )}
               data-playable={playable && !disabled && !mulligan}
               data-playable-unit={
                 def.type === "UNIT" && playable && !disabled && !mulligan

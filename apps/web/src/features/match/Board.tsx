@@ -147,6 +147,9 @@ export default function Board({
               <button
                 className="lane-target"
                 data-lane-id={lane.laneId}
+                data-tutorial-focus={view.tutorial?.focusTargets.some(
+                  (t) => t.kind === "LANE" && t.laneId === lane.laneId,
+                )}
                 data-target={JSON.stringify(target)}
                 data-legal-target={!!action}
                 disabled={!action}

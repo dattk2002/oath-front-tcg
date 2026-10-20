@@ -1,3 +1,4 @@
+import { testOrigin } from "./test-origin.js";
 import { expect, type Page } from "@playwright/test";
 import { randomUUID, randomBytes } from "node:crypto";
 import { ownerPool } from "../../packages/db/tests/helpers.js";
@@ -18,7 +19,7 @@ import {
 } from "../../packages/contracts/src/index.js";
 export async function create(page: Page, faction: "GOOD" | "EVIL" = "GOOD") {
   const guest = await page.request.post("/api/v1/guest", {
-    headers: { Origin: "http://localhost:3100" },
+    headers: { Origin: testOrigin },
     data: {
       commandId: randomUUID(),
       recoverySecret: randomBytes(32).toString("base64url"),
@@ -35,7 +36,7 @@ export async function create(page: Page, faction: "GOOD" | "EVIL" = "GOOD") {
   );
   const made = await page.request.post("/api/v1/matches", {
     headers: {
-      Origin: "http://localhost:3100",
+      Origin: testOrigin,
       "X-CSRF-Token": auth.csrfToken,
     },
     data: {
@@ -116,7 +117,7 @@ export async function command(
 ) {
   const current = await snapshot(page, id);
   const result = await page.request.post(`/api/v1/matches/${id}/commands`, {
-    headers: { Origin: "http://localhost:3100", "X-CSRF-Token": csrf },
+    headers: { Origin: testOrigin, "X-CSRF-Token": csrf },
     data: {
       commandId: randomUUID(),
       expectedRevision: current.revision,

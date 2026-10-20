@@ -1,3 +1,5 @@
+import { useSettings } from "../settings/SettingsDialog";
+import { soundFamily } from "../settings/audio-manager";
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import type { MatchViewStore } from "./view-store";
@@ -15,16 +17,19 @@ export default function BattleScene({
   presentation: MutableRefObject<PresentationController | null>;
   onView: (view: PlayerView) => void;
 }) {
+  const { audio, settings, update } = useSettings();
+  const sound = useRef(audio);
+  sound.current = audio;
   const canvas = useRef<HTMLCanvasElement>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "fallback">(
     "loading",
   );
   const [playing, setPlaying] = useState(false),
-    [reduced, setReduced] = useState(false),
     [attempt, setAttempt] = useState(0),
     [announcement, setAnnouncement] = useState("");
+  const reduced = settings.reducedMotion;
   const reducedSetting = useRef(reduced);
-  reducedSetting.current = reduced;
+  reducedSetting.current = reduced || settings.reducedMotion;
   useEffect(() => {
     let cancelled = false,
       release = () => {};
@@ -51,6 +56,10 @@ export default function BattleScene({
           reducedMotion: () => os.matches() || reducedSetting.current,
           getLatestView: () => store.getSnapshot().authoritativeView,
           onPlaying: setPlaying,
+          onEvent: (event) => {
+            const family = soundFamily(event);
+            if (family) sound.current?.play(family);
+          },
           unitCardIds: new Set(
             catalog.cards
               .filter((card) => card.type === "UNIT")
@@ -205,7 +214,9 @@ export default function BattleScene({
           <input
             type="checkbox"
             checked={reduced}
-            onChange={(event) => setReduced(event.target.checked)}
+            onChange={(event) =>
+              update({ reducedMotion: event.target.checked })
+            }
           />{" "}
           Giảm chuyển động / VFX
         </label>

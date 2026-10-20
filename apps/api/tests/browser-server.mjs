@@ -29,7 +29,7 @@ const verifyIdentity = neonJwtVerifier({
 const app = buildApp({
   verifyIdentity,
   pool,
-  origin: "http://localhost:3100",
+  origin: process.env.OATHFRONT_E2E_ORIGIN ?? "http://localhost:3200",
   secret: randomBytes(32).toString("hex"),
 });
 // This route exists only in this explicitly disposable loopback test harness.

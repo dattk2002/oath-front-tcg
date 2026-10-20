@@ -732,3 +732,44 @@ main {
     padding: 0 16px;
   }
 }
+
+.settings-dialog label {
+  display: block;
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+.settings-dialog input[type="range"] {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  accent-color: var(--good);
+}
+.settings-dialog .setting-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+}
+.settings-dialog input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--good);
+}
+.settings-dialog output {
+  float: right;
+}
+.settings-tutorial {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.tutorial-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.tutorial-entry p {
+  flex-basis: 100%;
+}
+
+.home-copy button + button { margin-left:8px; }

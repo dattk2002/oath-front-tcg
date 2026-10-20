@@ -204,7 +204,7 @@
   padding-left: 36px;
   min-height: 52px;
 }
-.card-cost {
+.collection-card .card-cost {
   position: absolute;
   top: 20px;
   left: 16px;
@@ -367,7 +367,7 @@
   .collection-card .card-title {
     font-size: 18px;
   }
-  .card-cost {
+  .collection-card .card-cost {
     left: 10px;
   }
   .quantity-controls {

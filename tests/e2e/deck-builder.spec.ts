@@ -1,3 +1,4 @@
+import { testOrigin } from "./test-origin.js";
 import { test, expect, type Page } from "@playwright/test";
 import { randomUUID, randomBytes } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -31,7 +32,7 @@ test.afterEach(async ({ page }, info) => {
 });
 async function guest(page: Page) {
   const r = await page.request.post("/api/v1/guest", {
-    headers: { Origin: "http://localhost:3100" },
+    headers: { Origin: testOrigin },
     data: {
       commandId: randomUUID(),
       recoverySecret: randomBytes(32).toString("base64url"),
@@ -278,7 +279,7 @@ test("stale revision offers load latest and save copy without overwriting", asyn
     entries: p.entries,
   };
   const headers = {
-    Origin: "http://localhost:3100",
+    Origin: testOrigin,
     "X-CSRF-Token": auth.csrfToken,
   };
   const saved = await (
@@ -347,7 +348,7 @@ for (const kind of ["PRESET", "SAVED"] as const)
           await page.request.get("/api/v1/catalog/core_v1")
         ).json(),
         p = catalog.presets[0];
-      const headers = { Origin: "http://localhost:3100", "X-CSRF-Token": csrf };
+      const headers = { Origin: testOrigin, "X-CSRF-Token": csrf };
       const deck = {
         name: "Nguồn chính xác",
         heroId: p.heroId,
@@ -534,7 +535,7 @@ async function savedFixture(page: Page) {
     entries: p.entries,
   };
   const headers = {
-    Origin: "http://localhost:3100",
+    Origin: testOrigin,
     "X-CSRF-Token": auth.csrfToken,
   };
   const response = await page.request.post("/api/v1/decks", {
@@ -605,6 +606,9 @@ test("draft revision migration: same route save edit reload retains unsaved edit
   await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
     "Chưa lưu sau phiên bản hai",
   );
+  await expect(
+    page.getByRole("status").filter({ hasText: "chưa lưu trên máy chủ" }),
+  ).toBeVisible();
 });
 test("offline committed save reload preserves original receipt and requires stale choice for later revision", async ({
   page,

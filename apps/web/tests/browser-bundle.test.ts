@@ -18,14 +18,14 @@ it("split browser app excludes private engine/compiler and confines retained cod
   const paths = Object.keys(app.metafile!.inputs);
   expect(
     paths.some((path) =>
-      /ajv\/dist\/(compile|core)|\/wire\.ts$|\/game-engine\/src\/(rng|identity|setup|automatic|actions|projection|hash|replay|model|server-events)\.ts$/.test(
+      /ajv\/dist\/(compile|core)|\/wire\.ts$|\/game-engine\/src\/(rng|identity|setup|automatic|actions|projection|hash|replay|model|server-events|tutorial)\.ts$/.test(
         path,
       ),
     ),
   ).toBe(false);
   const text = app.outputFiles!.map((file) => file.text).join("\n");
   expect(text).not.toMatch(
-    /node:crypto|identityKey|createRandomStreams|MatchState/,
+    /node:crypto|identityKey|createRandomStreams|MatchState|sceneSeedHex/,
   );
   // Pixi's documented CSP adapter replaces these implementations before renderer init.
   // Strict-CSP production E2E verifies the paths actually used by WebGL and effects.

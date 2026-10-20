@@ -1,3 +1,4 @@
+import { testOrigin } from "./test-origin.js";
 import { test, expect } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
 import { ownerPool } from "../../packages/db/tests/helpers.js";
@@ -23,7 +24,7 @@ for (const faction of ["GOOD", "EVIL"] as const) {
       const url = new URL(response.url());
       if (url.pathname.startsWith("/api/v1/")) {
         network.push({ path: url.pathname, status: response.status() });
-        expect(url.origin).toBe("http://localhost:3100");
+        expect(url.origin).toBe(testOrigin);
         if (url.pathname.endsWith("/commands")) commands++;
       }
     });

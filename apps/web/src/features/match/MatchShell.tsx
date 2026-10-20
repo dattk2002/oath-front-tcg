@@ -1,3 +1,5 @@
+import { useState } from "react";
+import SettingsDialog from "../settings/SettingsDialog";
 import type { ReactNode } from "react";
 import type { MatchSnapshot } from "./view-store";
 import type { IntentController } from "./intent-controller";
@@ -22,6 +24,7 @@ export default function MatchShell({
   onRecover: () => void;
   children: ReactNode;
 }) {
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const view = snapshot.authoritativeView;
   const enemy = view.self.side === "GOOD" ? "EVIL" : "GOOD";
   return (
@@ -46,8 +49,10 @@ export default function MatchShell({
             {view.activeSide ? ` · Phe ${sideLabel[view.activeSide]}` : ""}
           </span>
         </p>
+        <button onClick={() => setSettingsOpen(true)}>Cài đặt</button>
         {
           <button
+            data-pause-control
             disabled={
               disabled ||
               view.lifecycle !== "ACTIVE" ||
@@ -95,6 +100,9 @@ export default function MatchShell({
           thước màn hình.
         </p>
       </section>
+      {settingsOpen && (
+        <SettingsDialog onClose={() => setSettingsOpen(false)} />
+      )}
       {children}
       {view.lifecycle !== "PAUSED" && (
         <RecoveryControls

@@ -19,6 +19,10 @@ import {
 import { readRememberedSession, rememberSession } from "./session";
 import { startGuestSession } from "./session";
 import { Brand, routes } from "./router";
+import SettingsDialog, {
+  SettingsProvider,
+} from "../features/settings/SettingsDialog";
+import { TutorialEntry } from "../features/tutorial/tutorial-controller";
 const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
   ssr: false,
   loading: () => (
@@ -27,7 +31,14 @@ const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
     </p>
   ),
 });
-export default function App({
+export default function App(props: Parameters<typeof AppContent>[0]) {
+  return (
+    <SettingsProvider match={props.screen === "match"}>
+      <AppContent {...props} />
+    </SettingsProvider>
+  );
+}
+function AppContent({
   screen = "home",
   matchId,
   heroId,
@@ -51,6 +62,10 @@ export default function App({
   matchId?: string;
 }) {
   const router = useRouter();
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [tutorialSide, setTutorialSide] = useState<"GOOD" | "EVIL" | null>(
+    null,
+  );
   const [session, setSession] = useState<SessionResponse | null>(null);
   const [catalog, setCatalog] = useState<PublicCatalog | null>(null),
     [loading, setLoading] = useState(true),
@@ -164,6 +179,19 @@ export default function App({
       setBusy(false);
     }
   }
+  async function startTutorial(side: "GOOD" | "EVIL") {
+    if (busy) return;
+    setBusy(true);
+    try {
+      const current = session ?? (await startGuestSession(api, sessionStorage));
+      adoptSession(current);
+      setTutorialSide(side);
+    } catch {
+      setError("Không thể mở phiên hướng dẫn. Hãy thử lại.");
+    } finally {
+      setBusy(false);
+    }
+  }
   return (
     <>
       <a className="skip-link" href="#main">
@@ -174,6 +202,7 @@ export default function App({
       >
         <Brand />
         <nav aria-label="Điều hướng chính">
+          <button onClick={() => setSettingsOpen(true)}>Cài đặt</button>
           <Link href={routes.home}>Trang chủ</Link>
           {session?.activeMatchId && (
             <Link href={routes.match(session.activeMatchId)}>
@@ -207,6 +236,22 @@ export default function App({
       />
       <SessionRecoveryContext.Provider value={expired}>
         <PrivateStorageContext.Provider value={storage}>
+          {settingsOpen && (
+            <SettingsDialog
+              onClose={() => setSettingsOpen(false)}
+              onTutorial={(side) => void startTutorial(side)}
+            />
+          )}
+          {tutorialSide && session && (
+            <TutorialEntry
+              key={tutorialSide}
+              api={api}
+              side={tutorialSide}
+              label="Mở hướng dẫn"
+              autoStart
+              onDismiss={() => setTutorialSide(null)}
+            />
+          )}
           {storageWarning && (
             <p className="notice" role="alert">
               {storageWarning}
@@ -283,6 +328,12 @@ export default function App({
                       : session?.activeMatchId
                         ? "Tiếp tục trận"
                         : "Chơi với bot"}
+                  </button>
+                  <button
+                    disabled={busy || !catalog}
+                    onClick={() => void startTutorial("GOOD")}
+                  >
+                    Học cách chơi
                   </button>
                   <p className="muted">
                     Sáu hero · Sáu bộ bài mẫu · Bot Dễ và Thường

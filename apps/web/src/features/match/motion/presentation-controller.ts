@@ -16,6 +16,7 @@ export function createPresentationController(
     getLatestView: () => PlayerView;
     onCursor: (sequence: number) => void;
     onPlaying?: (playing: boolean) => void;
+    onEvent?: (event: VisibleEvent) => void;
     maxBacklogSeconds?: number;
     unitCardIds?: ReadonlySet<string>;
   },
@@ -52,6 +53,7 @@ export function createPresentationController(
       return;
     }
     active = event;
+    options.onEvent?.(event);
     playing(true);
     const commit = () => {
       if (!disposed) {

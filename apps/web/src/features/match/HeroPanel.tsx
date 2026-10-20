@@ -8,7 +8,9 @@ export default function HeroPanel({
   targetable,
   onTarget,
   onPreview,
+  tutorialEnergyFocus = false,
 }: {
+  tutorialEnergyFocus?: boolean;
   hero: HeroView;
   side: Side;
   own: boolean;
@@ -44,7 +46,10 @@ export default function HeroPanel({
         </span>
       </button>
       <div className="hero-resources">
-        <span data-testid={own ? "own-energy" : "opponent-energy"}>
+        <span
+          data-tutorial-focus={tutorialEnergyFocus}
+          data-testid={own ? "own-energy" : "opponent-energy"}
+        >
           Năng lượng{" "}
           <b>
             {hero.energy.current} / {hero.energy.max}

@@ -1,3 +1,6 @@
+import TutorialOverlay from "../tutorial/TutorialOverlay";
+import { useSettings } from "../settings/SettingsDialog";
+import { useEffect } from "react";
 import { useState } from "react";
 import type {
   CommandResponse,
@@ -83,6 +86,11 @@ function MatchRuntime({
     recover,
   } = useMatchStore(initial, api);
   const authoritativeView = snapshot.authoritativeView;
+  const { audio } = useSettings();
+  useEffect(() => {
+    audio?.setPaused(authoritativeView.lifecycle === "PAUSED");
+    return () => audio?.setPaused(false);
+  }, [audio, authoritativeView.lifecycle]);
   const [presentationView, setPresentationView] =
     useState<PlayerView>(authoritativeView);
   const view = {
@@ -182,6 +190,9 @@ function MatchRuntime({
               hero={view.players[view.self.side]}
               side={view.self.side}
               own
+              tutorialEnergyFocus={
+                !!view.tutorial?.focusTargets.some((t) => t.kind === "ENERGY")
+              }
               catalog={catalog}
               targetable={
                 !disabled &&
@@ -345,6 +356,11 @@ function MatchRuntime({
             />
           )}
         </div>
+        <TutorialOverlay
+          view={authoritativeView}
+          disabled={disabled}
+          onAction={(action) => void controller.submitIntent(action)}
+        />
         <BattleLog snapshot={snapshot} compact />
         <p className="art-note">
           Hình khối minh họa tạm · Chỉ số và hiệu ứng là văn bản thật.

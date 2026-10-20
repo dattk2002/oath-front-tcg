@@ -3,7 +3,7 @@ const config: NextConfig = {
   output: "standalone",
   // Separate lock/cache for a user-driven dev server alongside test dev servers.
   distDir:
-    process.env.OATHFRONT_INTERACTIVE === "1" ? ".next-interactive" : ".next",
+    process.env.OATHFRONT_INTERACTIVE === "1" ? ".next-interactive" : process.env.OATHFRONT_TEST_DEV === "1" ? ".next-e2e" : ".next",
   // OAuth callbacks can contain one-time verifiers; never log raw request URLs.
   logging: false,
   experimental: { extensionAlias: { ".js": [".ts", ".tsx", ".js"] } },

@@ -1,3 +1,4 @@
+import { TutorialEntry } from "../tutorial/tutorial-controller";
 import { usePrivateStorage } from "../auth/private-storage";
 import SessionRecovery from "../auth/SessionRecovery";
 import { useEffect, useRef, useState } from "react";
@@ -235,7 +236,11 @@ export default function ResultDialog({
         )
       )}
       {summary.mode === "TUTORIAL" ? (
-        <Link href="/heroes">Chơi với bot</Link>
+        <>
+          <Link href="/heroes">Chơi với bot</Link>
+          <TutorialEntry api={api} side="EVIL" label="Học phe Ác" />
+          <TutorialEntry api={api} side="GOOD" label="Học lại" />
+        </>
       ) : (
         <Link href="/heroes">Đổi bộ bài</Link>
       )}

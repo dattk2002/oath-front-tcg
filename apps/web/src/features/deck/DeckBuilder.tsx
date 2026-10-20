@@ -123,14 +123,25 @@ export default function DeckBuilder({
         storedLocation.current = restored.location;
         setDeck(restored.draft.deck);
         setBase(restored.draft.base ?? undefined);
+        let matchesSavedBase = false;
         if (restored.draft.base) {
           const { name, heroId, entries, contentVersion } = restored.draft.base;
-          setBaseline(
-            JSON.stringify({ name, heroId, entries, contentVersion }),
-          );
+          const savedBaseline = JSON.stringify({
+            name,
+            heroId,
+            entries,
+            contentVersion,
+          });
+          setBaseline(savedBaseline);
+          matchesSavedBase =
+            JSON.stringify(restored.draft.deck) === savedBaseline;
         }
         pending.current = restored.draft.pending;
-        setMessage("Đã khôi phục bản nháp cục bộ; chưa lưu trên máy chủ.");
+        setMessage(
+          matchesSavedBase && !restored.draft.pending
+            ? "Đã lưu"
+            : "Đã khôi phục bản nháp cục bộ; chưa lưu trên máy chủ.",
+        );
       }
     } catch {
       setMessage(

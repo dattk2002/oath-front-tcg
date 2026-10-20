@@ -675,3 +675,42 @@
     padding: 20px;
   }
 }
+
+.tutorial-panel {
+  margin: 12px 0;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-left: 3px solid var(--primary);
+}
+.tutorial-panel h2 {
+  font-size: 1.125rem;
+  margin: 4px 0;
+}
+.tutorial-panel p {
+  margin: 4px 0;
+}
+.tutorial-panel > div:first-child {
+  flex: 1;
+}
+.tutorial-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 440px;
+}
+[data-tutorial-focus="true"] {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+@media (max-width: 1100px) {
+  .tutorial-panel {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tutorial-actions {
+    max-width: none;
+  }
+}
