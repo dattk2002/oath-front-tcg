@@ -20,7 +20,13 @@ import { publicCatalog } from "./content/registry.js";
 import type { Scheduler } from "./matches/commands.js";
 import { mutationLifetime } from "./deadline.js";
 import { PersistenceError } from "./matches/checkpoint.js";
+import { verifyNeonJwt } from "./auth/neon-jwt.js";
+import type { VerifiedIdentity } from "./auth/neon-jwt.js";
+import { exchangeIdentity } from "./auth/exchange.js";
+import { claimGuest } from "./auth/claim.js";
+import { logout } from "./auth/logout.js";
 export interface AppDependencies {
+  verifyIdentity?: (token: string) => Promise<VerifiedIdentity>;
   pool: Pool;
   origin: string;
   secret: string;
@@ -121,6 +127,68 @@ export function buildApp(deps: AppDependencies) {
       .header("Set-Cookie", cookie(issued.token, issued.expiresAt))
       .code(201)
       .send(await sessionResponse(deps.pool, value, deps.secret));
+  });
+  async function authReply(
+    reply: import("fastify").FastifyReply,
+    issued: Awaited<ReturnType<typeof exchangeIdentity>>,
+  ) {
+    const value = await authenticate(
+      deps.pool,
+      `${cookieName}=${issued.token}`,
+      deps.secret,
+      now(),
+    );
+    return reply
+      .header("Set-Cookie", cookie(issued.token, issued.expiresAt))
+      .send(await sessionResponse(deps.pool, value, deps.secret));
+  }
+  app.post("/api/v1/auth/exchange", async (req, reply) => {
+    const body = checked("AuthExchangeRequest", req.body);
+    const identity = await (deps.verifyIdentity ?? verifyNeonJwt)(
+      body.identityToken,
+    );
+    await limit("COMMAND", identity.subject);
+    return authReply(
+      reply,
+      await exchangeIdentity(
+        deps.pool,
+        identity,
+        body.commandId,
+        deps.secret,
+        now(),
+        req.headers.cookie?.includes(cookieName + "=")
+          ? { cookie: req.headers.cookie, csrf: req.headers["x-csrf-token"] }
+          : undefined,
+      ),
+    );
+  });
+  app.post("/api/v1/auth/claim-guest", async (req, reply) => {
+    const body = checked("ClaimGuestRequest", req.body);
+    const identity = await (deps.verifyIdentity ?? verifyNeonJwt)(
+      body.identityToken,
+    );
+    await limit("COMMAND", identity.subject);
+    return authReply(
+      reply,
+      await claimGuest(
+        deps.pool,
+        { cookie: req.headers.cookie, csrf: req.headers["x-csrf-token"] },
+        identity,
+        body,
+        deps.secret,
+        now(),
+      ),
+    );
+  });
+  app.post("/api/v1/auth/logout", async (req, reply) => {
+    checked("EmptyBody", req.body);
+    const s = await session(req);
+    requireCsrf(req.headers["x-csrf-token"], s.csrfHash);
+    await logout(deps.pool, s, now());
+    return reply
+      .header("Set-Cookie", cookie("", new Date(0)))
+      .code(204)
+      .send();
   });
   app.get("/api/v1/session", async (req) =>
     sessionResponse(deps.pool, await session(req), deps.secret),

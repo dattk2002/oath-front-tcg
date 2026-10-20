@@ -9,6 +9,7 @@ export interface SessionPrincipal {
   id: string;
   kind: "GUEST" | "ACCOUNT";
   expiresAt: Date | null;
+  sessionId?: string;
 }
 export interface AuthenticatedSession {
   principal: SessionPrincipal;
@@ -79,6 +80,7 @@ export async function authenticate(
   return {
     principal: {
       id: principal.id,
+      sessionId: row.session_id,
       kind: principal.kind,
       expiresAt: row.expires_at,
     },
@@ -108,4 +110,46 @@ export async function sessionResponse(
 export function requirePrincipal(principal: SessionPrincipal) {
   if (!validateWire("Uuid", principal.id))
     throw new HttpError(401, "SESSION_EXPIRED");
+}
+
+/** Read only a cookie proof, including revoked records, for the narrowly scoped auth routes. */
+export async function readSourceSession(
+  db: Pool | PoolClient,
+  header: unknown,
+  secret: string,
+) {
+  const parts =
+    typeof header === "string"
+      ? header
+          .split(";")
+          .map((s) => s.trim())
+          .filter((s) => s.startsWith(cookieName + "="))
+      : [];
+  if (parts.length !== 1) throw new HttpError(401, "SESSION_EXPIRED");
+  const token = parts[0]!.slice(cookieName.length + 1);
+  if (!/^[a-f0-9]{64}$/.test(token))
+    throw new HttpError(401, "SESSION_EXPIRED");
+  const row = (
+    await db.query("SELECT * FROM app_sessions WHERE token_hash=$1", [
+      digest(token),
+    ])
+  ).rows[0];
+  if (!row || !equalHash(row.csrf_hash, digest(csrfToken(token, secret))))
+    throw new HttpError(401, "SESSION_EXPIRED");
+  return row;
+}
+/** Caller already holds the principal lock; closes authentication-to-mutation races. */
+export async function revalidateSession(
+  tx: PoolClient,
+  principal: SessionPrincipal,
+  now: Date,
+) {
+  if (!principal.sessionId) return; // Internal engine/service callers do not carry HTTP credentials.
+  const row = (
+    await tx.query(
+      "SELECT 1 FROM app_sessions s JOIN principals p ON p.id=s.principal_id WHERE s.id=$1 AND s.principal_id=$2 AND s.revoked_at IS NULL AND s.expires_at>$3 AND p.merged_into_principal_id IS NULL AND (p.expires_at IS NULL OR p.expires_at>$3)",
+      [principal.sessionId, principal.id, now],
+    )
+  ).rows[0];
+  if (!row) throw new HttpError(401, "SESSION_EXPIRED");
 }

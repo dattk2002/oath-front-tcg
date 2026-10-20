@@ -1,10 +1,10 @@
-import type { Pool } from "@oathfront/db";
+import type { Pool, PoolClient } from "@oathfront/db";
 import { safeInteger } from "@oathfront/db";
 import type { MatchSummary, ListQuery, MatchList } from "@oathfront/contracts";
 import type { SessionPrincipal } from "../auth/sessions.js";
 import { HttpError, output } from "../http.js";
-import { createRepository } from "./repository.js";
-export function summaryReader(pool: Pool, now: () => Date) {
+import { readRecord } from "./repository.js";
+export function summaryReader(pool: Pool | PoolClient, now: () => Date) {
   async function readMatchSummary(
     principal: SessionPrincipal,
     matchId: string,
@@ -28,7 +28,7 @@ export function summaryReader(pool: Pool, now: () => Date) {
     ).rows[0];
     const active = ["ACTIVE", "PAUSED"].includes(row.status);
     const current = active
-      ? await createRepository(pool, { now }).loadMatch(principal.id, matchId)
+      ? await readRecord(pool, principal.id, matchId, false, now())
       : null;
     return output("MatchSummary", {
       matchId: row.id,
@@ -44,7 +44,9 @@ export function summaryReader(pool: Pool, now: () => Date) {
           : (row.difficulty ?? row.rematch?.difficulty),
       outcome: row.outcome
         ? {
-            result: row.outcome,
+            result: ["ABANDONED", "FAULTED"].includes(row.outcome)
+              ? "NONE"
+              : row.outcome,
             winner:
               row.outcome === "WIN"
                 ? row.human_side

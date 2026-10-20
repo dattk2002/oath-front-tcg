@@ -3,6 +3,7 @@ import { coreCatalog, validateDeck } from "@oathfront/game-content";
 import { validateWire } from "@oathfront/contracts";
 import type { DeckDTO, DeckInput, ListQuery } from "@oathfront/contracts";
 import type { Pool, PoolClient } from "@oathfront/db";
+import { revalidateSession } from "../auth/sessions.js";
 import type { SessionPrincipal } from "../auth/sessions.js";
 import { HttpError, output, checked } from "../http.js";
 import { createRepository } from "../matches/repository.js";
@@ -45,6 +46,7 @@ export function deckService(pool: Pool, now: () => Date = () => new Date()) {
     commandId: string,
   ): Promise<DeckDTO> {
     return repository.withPrincipalTransaction([principal.id], async (tx) => {
+      await revalidateSession(tx, principal, now());
       const hash = hashJson({
         route: "saveDeck",
         input,

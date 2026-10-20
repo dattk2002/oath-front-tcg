@@ -51,8 +51,8 @@ export async function lockPrincipals(tx: PoolClient, ids: readonly string[]) {
   if (result.rowCount !== unique.length)
     throw new PersistenceError("NOT_FOUND");
 }
-async function readRecord(
-  tx: PoolClient,
+export async function readRecord(
+  tx: Pool | PoolClient,
   principalId: string,
   matchId: string,
   lock: boolean,
@@ -197,9 +197,16 @@ export async function persistTransition(
   tx: MatchTransaction,
   transition: TransitionResult,
   journal: readonly JournalEntry[],
-  receipt: Receipt,
+  receipt: Receipt | null,
   options: { now?: Date; botIntentsThisTurn?: number } = {},
 ) {
+  if (
+    !receipt &&
+    (journal.length !== 1 ||
+      journal[0]?.origin !== "AUTO" ||
+      journal[0].action.kind !== "ADMIN_ABANDON")
+  )
+    throw new PersistenceError("INVALID_ADMIN_TRANSITION");
   const { record, client } = tx,
     now = options.now ?? new Date();
   const replay = validateJournalBatch(
@@ -267,7 +274,7 @@ export async function persistTransition(
         record.id,
         e.stepSeq,
         e.origin,
-        receipt.commandId,
+        receipt?.commandId ?? null,
         json(e.action),
         e.nextBotRandomState === null ? null : json(e.nextBotRandomState),
         e.preStateHash,
@@ -293,16 +300,17 @@ export async function persistTransition(
     );
   }
   // Receipt is last: any error here must roll back every preceding durable change.
-  await insertMatchReceipt(client, {
-    principalId: record.principalId,
-    state,
-    revision,
-    receipt: {
-      ...receipt,
-      expiresAt: terminal ? days(now, 30) : receipt.expiresAt,
-    },
-    now,
-  });
+  if (receipt)
+    await insertMatchReceipt(client, {
+      principalId: record.principalId,
+      state,
+      revision,
+      receipt: {
+        ...receipt,
+        expiresAt: terminal ? days(now, 30) : receipt.expiresAt,
+      },
+      now,
+    });
   record.botIntentsThisTurn = replay.botIntentsThisTurn;
   record.state = state;
   record.revision = revision;

@@ -6,6 +6,7 @@ import {
   setupDatabase,
   resetDatabase,
 } from "../../../packages/db/tests/helpers.js";
+import type { AppDependencies } from "../src/app.js";
 import { buildApp } from "../src/app.js";
 export const origin = "https://oathfront.test";
 export const createBody = () => ({
@@ -16,7 +17,7 @@ export const createBody = () => ({
   difficulty: "EASY",
   expectedContentVersion: "core_v1",
 });
-export function harness(options: { commandDeadlineMs?: number } = {}) {
+export function harness(options: Partial<AppDependencies> = {}) {
   const owner = ownerPool();
   const pool = new Pool({
     connectionString: process.env.TEST_DATABASE_URL,

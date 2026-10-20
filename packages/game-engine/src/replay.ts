@@ -1,11 +1,13 @@
 import { validateWire } from "@oathfront/contracts";
 import type { EngineAction, GameEvent, MatchState } from "./model.js";
 import type { RandomState } from "./rng.js";
+import { abandonMatch } from "./terminal.js";
 import { applyAction } from "./actions.js";
 import { applyBotGuardFault, hasBotDecision } from "./bot-guard.js";
 import { advanceAutomatic } from "./automatic.js";
 import { hashState, canonicalJson } from "./hash.js";
 export type AutomaticOperation =
+  | { kind: "ADMIN_ABANDON"; reason: "ACCOUNT_MERGE" | "EXPIRED" }
   | {
       kind: "COMBAT_ROOT";
       continuation: NonNullable<MatchState["continuation"]>;
@@ -99,6 +101,7 @@ export function replayJournal(
     if (hashState(current) !== entry.preStateHash) return fail("PRE_HASH");
     if (
       entry.origin === "AUTO" &&
+      entry.action.kind !== "ADMIN_ABANDON" &&
       canonicalJson(describeAutomaticOperation(current, botIntentsThisTurn)) !==
         canonicalJson(entry.action)
     )
@@ -124,11 +127,21 @@ export function replayJournal(
       return fail("INVALID_ACTION");
     if (entry.origin === "BOT" && botIntentsThisTurn >= 64)
       return fail("BOT_GUARD");
+    if (
+      entry.origin === "AUTO" &&
+      entry.action.kind === "ADMIN_ABANDON" &&
+      (Object.keys(entry.action).sort().join(",") !== "kind,reason" ||
+        !["ACCOUNT_MERGE", "EXPIRED"].includes(entry.action.reason) ||
+        !["ACTIVE", "PAUSED"].includes(current.lifecycle))
+    )
+      return fail("INVALID_ACTION");
     const result =
       entry.origin === "AUTO"
-        ? entry.action.kind === "BOT_GUARD_FAULT"
-          ? applyBotGuardFault(current, botIntentsThisTurn)
-          : advanceAutomatic(current, { maxRoots: 1 })
+        ? entry.action.kind === "ADMIN_ABANDON"
+          ? abandonMatch(current, entry.action.reason)
+          : entry.action.kind === "BOT_GUARD_FAULT"
+            ? applyBotGuardFault(current, botIntentsThisTurn)
+            : advanceAutomatic(current, { maxRoots: 1 })
         : applyAction(current, entry.action);
     if (result.kind !== "transition") return fail("INVALID_ACTION");
     const after = result.nextState;

@@ -10,6 +10,7 @@ import type {
 } from "@oathfront/contracts";
 import type { Pool, PoolClient } from "@oathfront/db";
 import type { MatchConfig } from "@oathfront/game-engine";
+import { revalidateSession } from "../auth/sessions.js";
 import type { SessionPrincipal } from "../auth/sessions.js";
 import { HttpError, output } from "../http.js";
 import { createRepository, persistTransition } from "./repository.js";
@@ -52,6 +53,7 @@ export function matchService(
     request: CreateMatchRequest,
   ): Promise<CommandResponse> {
     return repository.withPrincipalTransaction([principal.id], async (tx) => {
+      await revalidateSession(tx, principal, now());
       const hash = hashJson({ route: "create", request }),
         previous = await receipt(tx, principal, request.commandId, hash);
       if (previous) return previous;
@@ -187,6 +189,7 @@ export function matchService(
       principal.id,
       matchId,
       async (tx, record) => {
+        await revalidateSession(tx.client, principal, now());
         const hash = hashJson({ route: "command", matchId, envelope }),
           previous = await receipt(
             tx.client,

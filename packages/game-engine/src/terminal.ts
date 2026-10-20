@@ -80,3 +80,24 @@ export function applyControlAction(
   }
   return transition(draft, events);
 }
+
+/** Server-only administrative closure; never exposed as a PlayerAction. */
+export function abandonMatch(
+  state: MatchState,
+  reason: "ACCOUNT_MERGE" | "EXPIRED",
+): TransitionResult {
+  if (!["ACTIVE", "PAUSED"].includes(state.lifecycle))
+    throw new RangeError("Match already terminal");
+  const draft = structuredClone(state),
+    events: GameEvent[] = [];
+  ++draft.rootSeq;
+  finishMatchOnDraft(draft, events, { result: "NONE", winner: null, reason });
+  draft.lifecycle = "ABANDONED";
+  emitEvent(draft, events, {
+    kind: "LifecycleChanged",
+    visibility: "PUBLIC",
+    ownerSide: null,
+    payload: { from: state.lifecycle, to: "ABANDONED", reason },
+  });
+  return transition(draft, events);
+}

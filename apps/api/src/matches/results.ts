@@ -88,8 +88,7 @@ export async function persistResult(
   ).rows;
   const events: GameEvent[] = rows.map((r) => {
     const e: unknown = { ...r, sequence: safeInteger(r.sequence) };
-    if (!validateGameEvent(e))
-      throw new PersistenceError("INVALID_EVENT");
+    if (!validateGameEvent(e)) throw new PersistenceError("INVALID_EVENT");
     return e;
   });
   const stats = resultStatistics(input.before, state, events),
@@ -102,7 +101,9 @@ export async function persistResult(
       state.players[state.humanSide].heroId,
       state.players[bot].heroId,
       state.difficulty,
-      state.outcome?.result ?? state.lifecycle,
+      state.outcome && state.outcome.result !== "NONE"
+        ? state.outcome.result
+        : state.lifecycle,
       state.outcome?.reason ?? state.lifecycle,
       state.turn,
       duration,
