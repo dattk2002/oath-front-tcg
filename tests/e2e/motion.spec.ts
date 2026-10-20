@@ -8,7 +8,7 @@ import {
   type UnitView,
 } from "../../packages/contracts/src/index.js";
 const evidence =
-  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-10-evidence";
+  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-10-evidence/final";
 // Validated public DTOs isolate choreography from random decks and bot decisions.
 function checkpoint(revision = 1) {
   const result = response(revision);
@@ -89,6 +89,7 @@ async function prepare(page: Page, initial: CommandResponse) {
   return errors;
 }
 async function enter(page: Page, id: string) {
+  const started = Date.now();
   await page.goto(`/matches/${id}`);
   await expect(page.getByRole("region", { name: "Bàn năm lộ" })).toBeVisible();
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
@@ -100,10 +101,34 @@ async function enter(page: Page, id: string) {
     return gl?.getParameter(gl.VERSION) as string | null;
   });
   expect(renderer).toContain("WebGL 2.0");
-  return renderer;
+  const lazyResources = await page.evaluate(() =>
+    performance
+      .getEntriesByType("resource")
+      .filter(
+        (entry) => entry.name.includes("/_next/") && entry.name.includes(".js"),
+      )
+      .map((entry) => ({
+        path: new URL(entry.name).pathname,
+        durationMs: Math.round(entry.duration),
+      })),
+  );
+  return {
+    version: renderer,
+    readinessMs: Date.now() - started,
+    lazyResources,
+  };
 }
 const pass = (page: Page) =>
   page.getByRole("button", { name: "Kết thúc hành động", exact: true });
+async function requestPass(page: Page) {
+  const received = page.waitForResponse(
+    (response) =>
+      new URL(response.url()).pathname.endsWith("/commands") &&
+      response.request().method() === "POST",
+  );
+  await pass(page).click();
+  await received;
+}
 test("actual WebGL signature can be interrupted and remounted, then fast-forwarded before keyboard selection", async ({
   page,
 }) => {
@@ -139,15 +164,19 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
     },
   );
   const renderer = await enter(page, initial.view.matchId);
-  const before = await page.locator("canvas").screenshot();
-  await pass(page).click();
+  const before = await page
+    .locator("canvas")
+    .screenshot({ path: `${evidence}/canvas-before.png` });
+  await requestPass(page);
   await expect(page.locator('[data-presentation="playing"]')).toBeVisible();
-  const during = await page.locator("canvas").screenshot();
+  const during = await page
+    .locator("canvas")
+    .screenshot({ path: `${evidence}/canvas-signature.png` });
   expect(during.equals(before)).toBe(false);
   await page.screenshot({ path: `${evidence}/signature.png`, fullPage: true });
   await page.getByRole("link", { name: /OathFront/ }).click();
   await enter(page, initial.view.matchId);
-  await pass(page).click();
+  await requestPass(page);
   await expect(page.locator('[data-presentation="playing"]')).toBeVisible();
   await page.locator(".hand-card").first().focus();
   await page.keyboard.press("Enter");
@@ -156,11 +185,19 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
     page.getByRole("region", { name: /Hero đối thủ/ }),
   ).toContainText("11");
   expect(commands).toBe(2);
-  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.keyboard.press("Escape");
-  await pass(page).click();
+  await requestPass(page);
+  await expect(page.locator('[data-presentation="playing"]')).toBeVisible();
+  await page.context().setOffline(true);
+  await page.waitForTimeout(100);
+  await page.context().setOffline(false);
   await expect(page.locator('[data-presentation="idle"]')).toBeVisible();
   expect(commands).toBe(3);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.keyboard.press("Escape");
+  await requestPass(page);
+  await expect(page.locator('[data-presentation="idle"]')).toBeVisible();
+  expect(commands).toBe(4);
   // Explicit reduction can only add to the OS preference.
   await page.getByRole("checkbox", { name: "Giảm chuyển động / VFX" }).check();
   for (const [name, width, height] of [
@@ -184,6 +221,7 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
         renderer,
         pixi: "8.22.0",
         commands,
+        pixelsDiffer: !during.equals(before),
         errors,
         fixture:
           "validated public presentation DTO; real API flows verified separately",
@@ -303,6 +341,17 @@ for (const reduced of [false, true])
       },
     );
     const renderer = await enter(page, initial.view.matchId);
+    await page.setViewportSize({ width: 1280, height: 720 });
+    expect(
+      await page.locator(".unit-stats").evaluateAll((elements) =>
+        elements.every((el) => {
+          const r = el.getBoundingClientRect(),
+            parent = el.closest("button")!.getBoundingClientRect();
+          return r.left >= parent.left && r.right <= parent.right;
+        }),
+      ),
+    ).toBe(true);
+    await page.setViewportSize({ width: 1440, height: 900 });
     const durations: number[] = [];
     // Read the real semantic text each animation frame, so a one-sided HP commit is observable.
     await page.evaluate(() => {
@@ -328,7 +377,7 @@ for (const reduced of [false, true])
     });
     for (let lane = 1; lane <= 5; lane++) {
       const start = Date.now();
-      await pass(page).click();
+      await requestPass(page);
       await expect(
         page.locator(`.lane:nth-child(${lane}) .unit-stats`).first(),
       ).toContainText("4 HP");
@@ -371,3 +420,269 @@ for (const reduced of [false, true])
       ),
     );
   });
+
+test("failed renderer keeps the latest semantic board and retries with one canvas", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const original = HTMLCanvasElement.prototype.getContext;
+    let fail = true;
+    Object.defineProperty(HTMLCanvasElement.prototype, "getContext", {
+      value: function (
+        this: HTMLCanvasElement,
+        contextId: string,
+        options?: object,
+      ) {
+        if (
+          fail &&
+          this.classList.contains("battle-canvas") &&
+          contextId.includes("webgl")
+        ) {
+          fail = false;
+          throw Error("Expected transient WebGL initialization failure");
+        }
+        return Reflect.apply(original, this, [contextId, options]);
+      },
+    });
+  });
+  const initial = checkpoint(),
+    errors = await prepare(page, initial);
+  await page.route(
+    `**/api/v1/matches/${initial.view.matchId}/commands`,
+    (route) => {
+      const next = checkpoint(2);
+      next.view.players.EVIL.hp = 9;
+      return route.fulfill({ json: next });
+    },
+  );
+  await page.goto(`/matches/${initial.view.matchId}`);
+  await expect(
+    page.getByText("Đang dùng bàn văn bản.", { exact: false }),
+  ).toBeVisible({ timeout: 15000 });
+  await requestPass(page);
+  await expect(
+    page.getByRole("region", { name: /Hero đối thủ/ }),
+  ).toContainText("9");
+  await page.getByRole("button", { name: "Thử lại hình khối" }).click();
+  await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
+    timeout: 15000,
+  });
+  await expect(page.locator("canvas")).toHaveCount(1);
+  await expect(
+    page.getByRole("region", { name: /Hero đối thủ/ }),
+  ).toContainText("9");
+  expect(errors).toEqual([]);
+});
+
+test("used effect families render through the strict-CSP WebGL path", async ({
+  page,
+}) => {
+  const initial = checkpoint();
+  initial.view.board[0].good = null;
+  initial.view.board[1].good = null;
+  initial.view.players.GOOD.hp = 10;
+  initial.view.board[0].location = { state: "HIDDEN", revealTurn: 1 };
+  const errors = await prepare(page, initial),
+    unit = checkpoint().view.board[0].good!;
+  let current = structuredClone(initial),
+    seq = 1,
+    index = 0;
+  const envelope = { visibility: "PUBLIC" as const, ownerSide: null };
+  const events: VisibleEvent[] = [
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "UnitCreated",
+      payload: { unit, cause: "PLAY" },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "UnitMoved",
+      payload: {
+        instanceId: unit.instanceId,
+        side: "GOOD",
+        fromLane: 1,
+        toLane: 2,
+      },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "StatsChanged",
+      payload: {
+        instanceId: unit.instanceId,
+        before: unit.current,
+        after: { attack: 3, hp: 6, maxHp: 6 },
+        modifiers: [],
+      },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "StatusChanged",
+      payload: {
+        instanceId: unit.instanceId,
+        before: unit.statuses,
+        after: { ...unit.statuses, shield: true },
+      },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "LocationRevealed",
+      payload: { laneId: 1, definitionId: "ancient_forest" },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "CardPlayed",
+      payload: {
+        side: "GOOD",
+        cardInstanceId: "a".repeat(32),
+        definitionId: "GC06",
+        target: { kind: "LANE", laneId: 3 },
+        energySpent: 1,
+      },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "BlockOccurred",
+      payload: { side: "GOOD", preventedDamage: 2, blocksUsed: 1 },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "HeroHealed",
+      payload: { side: "GOOD", amount: 2, before: 10, after: 12 },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "HandCountChanged",
+      payload: { side: "EVIL", handCount: 2, deckCount: 25 },
+    },
+    {
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "CardDrawn",
+      visibility: "OWNER",
+      ownerSide: "GOOD",
+      payload: {
+        side: "GOOD",
+        card: { instanceId: "d".repeat(32), definitionId: "GC02" },
+        handCount: 2,
+        deckCount: 25,
+      },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "UnitDestroyed",
+      payload: {
+        instanceId: unit.instanceId,
+        definitionId: unit.definitionId,
+        owner: "GOOD",
+        laneId: 2,
+        isToken: false,
+      },
+    },
+    {
+      ...envelope,
+      eventId: "",
+      rootId: "",
+      sequence: 0,
+      kind: "MatchEnded",
+      payload: {
+        outcome: { result: "WIN", winner: "GOOD", reason: "SURRENDER" },
+        turn: 1,
+      },
+    },
+  ];
+  await page.route(
+    `**/api/v1/matches/${initial.view.matchId}/commands`,
+    async (route) => {
+      const event = structuredClone(events[index++]!);
+      event.sequence = ++seq;
+      event.eventId = `${initial.view.matchId}:${seq}`;
+      event.rootId = `${initial.view.matchId}:1`;
+      // Public fixture checkpoints intentionally contain explicit after values; no engine state is imported.
+      if (event.kind === "UnitCreated")
+        current.view.board[0].good = structuredClone(unit);
+      if (event.kind === "UnitMoved") {
+        current.view.board[0].good = null;
+        current.view.board[1].good = { ...structuredClone(unit), laneId: 2 };
+      }
+      if (event.kind === "StatsChanged")
+        current.view.board[1].good!.current = event.payload.after;
+      if (event.kind === "StatusChanged")
+        current.view.board[1].good!.statuses = event.payload.after;
+      if (event.kind === "LocationRevealed")
+        current.view.board[0].location = {
+          state: "REVEALED",
+          definitionId: "ancient_forest",
+          revealTurn: 1,
+        };
+      if (event.kind === "HeroHealed") current.view.players.GOOD.hp = 12;
+      if (event.kind === "CardDrawn")
+        current.view.self.hand.push(event.payload.card);
+      if (event.kind === "UnitDestroyed") current.view.board[1].good = null;
+      if (event.kind === "MatchEnded") {
+        current.view.lifecycle = "COMPLETED";
+        current.view.outcome = event.payload.outcome;
+        current.view.legalActions = [];
+      }
+      current = {
+        ...current,
+        revision: current.revision + 1,
+        latestSeq: seq,
+        eventsThroughSeq: seq,
+        events: [event],
+      };
+      expect(validateWire("CommandResponse", current)).toBe(true);
+      await route.fulfill({ json: current });
+    },
+  );
+  await enter(page, initial.view.matchId);
+  for (let i = 0; i < events.length; i++) {
+    await requestPass(page);
+    await expect(page.locator(".battle-log li")).toHaveCount(i + 1);
+    await expect(page.locator('[data-presentation="idle"]')).toBeVisible();
+  }
+  expect(errors).toEqual([]);
+  await page.screenshot({ path: `${evidence}/result-dim.png`, fullPage: true });
+  await writeFile(
+    `${evidence}/effect-families.json`,
+    JSON.stringify(
+      {
+        families: events.map((event) => event.kind),
+        errors,
+        fixture: "validated public presentation DTO",
+      },
+      null,
+      2,
+    ),
+  );
+});

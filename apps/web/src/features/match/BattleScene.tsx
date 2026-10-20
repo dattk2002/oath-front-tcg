@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
-import type { PlayerView } from "@oathfront/contracts";
+import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import type { MatchViewStore } from "./view-store";
 import type { PresentationController } from "./motion/presentation-controller";
 import { eventLabel } from "./labels";
@@ -8,8 +8,10 @@ export default function BattleScene({
   store,
   presentation,
   onView,
+  catalog,
 }: {
   store: MatchViewStore;
+  catalog: PublicCatalog;
   presentation: MutableRefObject<PresentationController | null>;
   onView: (view: PlayerView) => void;
 }) {
@@ -49,6 +51,11 @@ export default function BattleScene({
           reducedMotion: () => os.matches() || reducedSetting.current,
           getLatestView: () => store.getSnapshot().authoritativeView,
           onPlaying: setPlaying,
+          unitCardIds: new Set(
+            catalog.cards
+              .filter((card) => card.type === "UNIT")
+              .map((card) => card.id),
+          ),
           onCursor: (sequence) => {
             store.setPresentationCursor(sequence);
             const event = store
@@ -63,7 +70,32 @@ export default function BattleScene({
                 "MatchEnded",
               ].includes(event.kind)
             )
-              setAnnouncement(eventLabel[event.kind] ?? "Bàn chơi đã cập nhật");
+              setAnnouncement(
+                event.kind === "DamageBatchResolved"
+                  ? [
+                      "Sát thương đồng thời",
+                      ...event.payload.hpChanges.map((change) => {
+                        if (change.target.kind === "HERO")
+                          return `Hero ${change.target.side === "GOOD" ? "Thiện" : "Ác"}: ${change.after} HP`;
+                        const id = change.target.instanceId;
+                        const unit = scene
+                          .getView()
+                          ?.board.flatMap((lane) => [lane.good, lane.evil])
+                          .find((unit) => unit?.instanceId === id);
+                        return `${unit ? `Lộ ${unit.laneId}, ${unit.owner === "GOOD" ? "Thiện" : "Ác"}` : "Quân"}: ${change.after} HP`;
+                      }),
+                      ...event.payload.packets.flatMap((packet) =>
+                        packet.blocked
+                          ? ["Chặn"]
+                          : packet.shieldConsumed
+                            ? ["Khiên"]
+                            : packet.mitigatedDamage > 0
+                              ? [`Giáp −${packet.mitigatedDamage}`]
+                              : [],
+                      ),
+                    ].join(" · ")
+                  : (eventLabel[event.kind] ?? "Bàn chơi đã cập nhật"),
+              );
           },
         });
         let unsubscribeStore = () => {},
@@ -149,7 +181,7 @@ export default function BattleScene({
       cancelled = true;
       release();
     };
-  }, [attempt, onView, presentation, store]);
+  }, [attempt, onView, presentation, store, catalog]);
   useEffect(() => {
     presentation.current?.fastForward(store.getSnapshot().authoritativeView);
   }, [reduced, presentation, store]);

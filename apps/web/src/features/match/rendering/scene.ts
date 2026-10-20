@@ -156,6 +156,15 @@ export function createBattleScene(
     }
     fx.clear();
     terrain.clear();
+    // Result dim is a stable public-view decoration after the entrance cue ends.
+    if (
+      (view?.lifecycle === "COMPLETED" || view?.lifecycle === "ABANDONED") &&
+      current?.event.kind !== "MatchEnded"
+    )
+      fx.rect(0, 0, app.screen.width, app.screen.height).fill({
+        color: 0x101923,
+        alpha: 0.22,
+      });
     if (view)
       for (const lane of view.board)
         if (lane.location.state === "REVEALED") {

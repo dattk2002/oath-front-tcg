@@ -114,6 +114,7 @@ function MatchRuntime({
       <div className="gameplay" data-battle-root>
         <BattleScene
           store={store}
+          catalog={catalog}
           presentation={presentation}
           onView={setPresentationView}
         />

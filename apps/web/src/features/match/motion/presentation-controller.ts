@@ -17,6 +17,7 @@ export function createPresentationController(
     onCursor: (sequence: number) => void;
     onPlaying?: (playing: boolean) => void;
     maxBacklogSeconds?: number;
+    unitCardIds?: ReadonlySet<string>;
   },
 ): PresentationController {
   let queue: VisibleEvent[] = [],
@@ -26,6 +27,10 @@ export function createPresentationController(
     disposed = false,
     seen = 0;
   const context = gsap.context(() => {});
+  const eventContext = () => ({
+    ownSide: scene.getView()?.self.side,
+    unitCardIds: options.unitCardIds,
+  });
   function playing(value: boolean) {
     options.onPlaying?.(value);
   }
@@ -64,7 +69,7 @@ export function createPresentationController(
       pump();
     };
     // Zero-duration events commit synchronously; don't rely on GSAP's zero-time callbacks.
-    if (eventDuration(event, options.reducedMotion()) === 0) {
+    if (eventDuration(event, options.reducedMotion(), eventContext()) === 0) {
       commit();
       active = null;
       pump();
@@ -77,6 +82,7 @@ export function createPresentationController(
         options.reducedMotion(),
         commit,
         done,
+        eventContext(),
       );
       timeline.play();
     });
@@ -106,7 +112,8 @@ export function createPresentationController(
       const seconds =
         (timeline ? Math.max(0, timeline.duration() - timeline.time()) : 0) +
         queue.reduce(
-          (n, event) => n + eventDuration(event, options.reducedMotion()),
+          (n, event) =>
+            n + eventDuration(event, options.reducedMotion(), eventContext()),
           0,
         );
       if (seconds > (options.maxBacklogSeconds ?? 2)) {

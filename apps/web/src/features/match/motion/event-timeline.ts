@@ -1,21 +1,38 @@
 import { gsap } from "gsap";
 import type { VisibleEvent } from "@oathfront/contracts";
 import type { BattleScene, Cue } from "../rendering/scene";
-export function eventDuration(event: VisibleEvent, reduced: boolean): number {
+export interface EventContext {
+  ownSide?: "GOOD" | "EVIL" | undefined;
+  unitCardIds?: ReadonlySet<string> | undefined;
+}
+export function eventDuration(
+  event: VisibleEvent,
+  reduced: boolean,
+  context: EventContext = {},
+): number {
   switch (event.kind) {
     case "CardDrawn":
-    case "HandCountChanged":
       return reduced ? 0.06 : 0.22;
+    case "HandCountChanged":
+      return event.payload.side === context.ownSide ? 0 : reduced ? 0.06 : 0.22;
     case "UnitCreated":
       return reduced ? 0.08 : 0.3;
     case "CardPlayed":
-      return event.payload.target.kind === "LANE" ? 0 : reduced ? 0.08 : 0.3;
+      return context.unitCardIds?.has(event.payload.definitionId)
+        ? 0
+        : reduced
+          ? 0.04
+          : 0.1;
     case "UnitMoved":
       return reduced ? 0.08 : 0.3;
     case "AttackDeclared":
       return reduced ? 0.04 : 0.18;
     case "DamageBatchResolved":
-      return reduced ? 0.06 : 0.3;
+      return reduced
+        ? 0.06
+        : event.payload.packets.some((packet) => packet.damageType === "COMBAT")
+          ? 0.3
+          : 0.2;
     case "StatsChanged":
     case "StatusChanged":
       return reduced ? 0 : 0.15;
@@ -28,7 +45,7 @@ export function eventDuration(event: VisibleEvent, reduced: boolean): number {
         ? 0.08
         : event.payload.definitionId.startsWith("S_")
           ? 0.55
-          : 0.35;
+          : 0.1;
     case "BlockOccurred":
       return reduced ? 0 : 0.25;
     case "HeroHealed":
@@ -46,8 +63,9 @@ export function createEventTimeline(
   reduced: boolean,
   commit: () => void,
   done: () => void,
+  context: EventContext = {},
 ) {
-  const duration = eventDuration(event, reduced);
+  const duration = eventDuration(event, reduced, context);
   const cue: Cue = { progress: 0, alpha: 1, evil: 0, good: 0, reduced };
   const timeline = gsap.timeline({ paused: true, onComplete: done });
   timeline.to(

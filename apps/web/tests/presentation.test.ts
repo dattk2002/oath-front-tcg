@@ -7,6 +7,9 @@ import {
 import type { PlayerView, VisibleEvent } from "@oathfront/contracts";
 import { response } from "./fixtures.js";
 import { gsap } from "gsap";
+import { eventDuration } from "../src/features/match/motion/event-timeline.js";
+import { createMatchViewStore } from "../src/features/match/view-store.js";
+import { createIntentController } from "../src/features/match/intent-controller.js";
 
 const batch: VisibleEvent = {
   eventId: "ev_damage",
@@ -237,6 +240,8 @@ const resources = vi.hoisted(() => ({
   created: new Set<object>(),
   disposed: new Set<object>(),
   gate: null as Promise<void> | null,
+  failTexture: false,
+  dims: [] as number[],
 }));
 vi.mock("pixi.js/unsafe-eval", () => ({}));
 vi.mock("pixi.js", () => {
@@ -247,10 +252,19 @@ vi.mock("pixi.js", () => {
   };
   class Graphics {
     destroy = tracked();
+    screenDim = false;
     circle() {
       return this;
     }
-    fill() {
+    fill(value?: unknown) {
+      if (
+        this.screenDim &&
+        typeof value === "object" &&
+        value !== null &&
+        "alpha" in value &&
+        typeof value.alpha === "number"
+      )
+        resources.dims.push(value.alpha);
       return this;
     }
     poly() {
@@ -263,9 +277,11 @@ vi.mock("pixi.js", () => {
       return this;
     }
     clear() {
+      this.screenDim = false;
       return this;
     }
     rect() {
+      this.screenDim = true;
       return this;
     }
     moveTo() {
@@ -285,7 +301,11 @@ vi.mock("pixi.js", () => {
       addChildAt: (item: Graphics) => this.stage.children.push(item),
     };
     renderer = {
-      generateTexture: () => ({ destroy: tracked() }),
+      generateTexture: () => {
+        if (resources.failTexture && resources.created.size > 4)
+          throw new Error("texture allocation failed");
+        return { destroy: tracked() };
+      },
       resize: (width: number, height: number) => {
         this.screen = { width, height };
       },
@@ -306,6 +326,8 @@ function resourceEnvironment() {
   resources.created.clear();
   resources.disposed.clear();
   resources.gate = null;
+  resources.failTexture = false;
+  resources.dims = [];
   class Observer {
     release = (() => {
       const id = {};
@@ -408,3 +430,104 @@ it("HP projection uses explicit server after values; death removes a unit only o
   };
   expect(applyVisibleEvent(hitView, death).board[0].good).toBeNull();
 });
+
+it("play/draw context avoids duplicate UNIT/count animations and gives lane TRICKs an effect beat", () => {
+  const play: VisibleEvent = {
+    eventId: "play",
+    rootId: "root",
+    sequence: 1,
+    kind: "CardPlayed",
+    visibility: "PUBLIC",
+    ownerSide: null,
+    payload: {
+      side: "GOOD",
+      cardInstanceId: "card0001",
+      definitionId: "GC01",
+      target: { kind: "LANE", laneId: 1 },
+      energySpent: 1,
+    },
+  };
+  const context = { ownSide: "GOOD" as const, unitCardIds: new Set(["GC01"]) };
+  expect(eventDuration(play, false, context)).toBe(0);
+  expect(
+    eventDuration(
+      { ...play, payload: { ...play.payload, definitionId: "GC06" } },
+      false,
+      context,
+    ),
+  ).toBe(0.1);
+  const count: VisibleEvent = {
+    eventId: "count",
+    rootId: "root",
+    sequence: 2,
+    kind: "HandCountChanged",
+    visibility: "PUBLIC",
+    ownerSide: null,
+    payload: { side: "GOOD", handCount: 2, deckCount: 25 },
+  };
+  expect(eventDuration(count, false, context)).toBe(0);
+  expect(
+    eventDuration(
+      { ...count, payload: { ...count.payload, side: "EVIL" } },
+      false,
+      context,
+    ),
+  ).toBe(0.22);
+});
+it("presentation completion can update the cursor without submitting any gameplay commands", async () => {
+  const initial = response(),
+    store = createMatchViewStore(initial),
+    gameplayCommandsFromTimeline: unknown[] = [];
+  createIntentController(store, {
+    makeId: () => "command",
+    send: async (command) => {
+      gameplayCommandsFromTimeline.push(command);
+      return response(2);
+    },
+  });
+  const f = sceneDouble(),
+    controller = createPresentationController(f.scene, {
+      getLatestView: () => store.getSnapshot().authoritativeView,
+      reducedMotion: () => true,
+      onCursor: (seq) => store.setPresentationCursor(seq),
+    });
+  controllers.push(controller);
+  initial.events = [attack, batch];
+  initial.latestSeq = 12;
+  store.acceptResponse(initial);
+  controller.enqueue(store.getSnapshot().events);
+  await settle();
+  expect(store.getSnapshot().presentationCursor).toBe(12);
+  expect(gameplayCommandsFromTimeline).toHaveLength(0);
+});
+
+it("failed initialization releases already-created placeholder textures and graphics", async () => {
+  const canvas = resourceEnvironment();
+  resources.failTexture = true;
+  const { createBattleScene } =
+    await import("../src/features/match/rendering/scene.js");
+  const scene = createBattleScene(canvas, { kind: "PLACEHOLDER" });
+  await expect(scene.ready).rejects.toThrow("texture allocation failed");
+  scene.dispose();
+  expect(resources.disposed.size).toBe(resources.created.size);
+  vi.unstubAllGlobals();
+});
+
+it.each(["COMPLETED", "ABANDONED"] as const)(
+  "terminal %s view retains the board dim after cosmetic cleanup",
+  async (lifecycle) => {
+    const canvas = resourceEnvironment();
+    const { createBattleScene } =
+      await import("../src/features/match/rendering/scene.js");
+    const scene = createBattleScene(canvas, { kind: "PLACEHOLDER" });
+    await scene.ready;
+    const view = response().view;
+    view.lifecycle = lifecycle;
+    view.outcome = { result: "WIN", winner: "GOOD", reason: "SURRENDER" };
+    scene.applyView(view);
+    scene.clearEffects();
+    scene.dispose();
+    vi.unstubAllGlobals();
+    expect(resources.dims.at(-1)).toBe(0.22);
+  },
+);

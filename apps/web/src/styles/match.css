@@ -579,3 +579,11 @@
     display: none;
   }
 }
+
+.motion-announcement {
+  min-height: 24px;
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 24px;
+}
