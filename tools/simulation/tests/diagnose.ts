@@ -1,6 +1,15 @@
 /** Offline causal probes. Replays a bounded subset; never merges these metrics into baseline. */
 import { readFileSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { fileURLToPath } from "node:url";
+import {
+  advanceProbeToBoundary,
+  hashDiagnosticFiles,
+} from "./diagnostic-guards.js";
+import {
+  matchConfig as fixtureMatchConfig,
+  seed as fixtureSeed,
+} from "../../../tests/fixtures/match-fixture.js";
 import { coreCatalog } from "../../../packages/game-content/src/index.js";
 import { chooseBotAction } from "../../../packages/bot/src/index.js";
 import { evaluateAction } from "../../../packages/bot/src/evaluate.js";
@@ -254,12 +263,7 @@ function utilityProbe(id: "B06" | "X06" | "P06" | "S06" | "S07") {
     };
     for (const p of Object.values(st.players))
       p.block = { charge: 0, used: 3, active: false };
-    for (
-      let i = 0;
-      i < 200 && st.lifecycle === "ACTIVE" && st.phase !== "TURN_START";
-      i++
-    )
-      st = advanceAutomatic(st, { maxRoots: 1 }).nextState;
+    st = advanceProbeToBoundary(st);
     return {
       lifecycle: st.lifecycle,
       outcome: st.outcome,
@@ -328,8 +332,34 @@ for (const g of traces)
       p.positivePowersBlockedByDeploy.length > 0,
     );
   }
+const dependencies = hashDiagnosticFiles(
+  fileURLToPath(new URL("../../../", import.meta.url)),
+  [
+    "tools/simulation/tests/diagnose.ts",
+    "tools/simulation/tests/diagnostic-guards.ts",
+    "packages/game-engine/tests/helpers.ts",
+    "tests/fixtures/match-fixture.ts",
+  ],
+);
+const diagnosticDependencies = {
+  schemaVersion: "diagnostic_dependencies_v1",
+  ...dependencies,
+  fixtureInputsHash: createHash("sha256")
+    .update(
+      canonicalJson({
+        config: fixtureMatchConfig(),
+        seedHex: Buffer.from(fixtureSeed).toString("hex"),
+      }),
+    )
+    .digest("hex"),
+};
 const report = {
   kind: "diagnostic_subset_not_baseline",
+  diagnosticVersion: "diagnostic_v2",
+  diagnosticDependencies,
+  dependencyIdentityHash: createHash("sha256")
+    .update(canonicalJson(diagnosticDependencies))
+    .digest("hex"),
   baselineInputHash: baseline.inputHash,
   versions: baseline.inputs.versions,
   matrixIndices,

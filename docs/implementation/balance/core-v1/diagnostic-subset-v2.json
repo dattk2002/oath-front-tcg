@@ -1,0 +1,5190 @@
+{
+  "kind": "diagnostic_subset_not_baseline",
+  "diagnosticVersion": "diagnostic_v2",
+  "diagnosticDependencies": {
+    "schemaVersion": "diagnostic_dependencies_v1",
+    "files": [
+      {
+        "path": "packages/game-engine/tests/helpers.ts",
+        "sha256": "786eb977a01b6a8479c9d8b7c970af0f6aed465c05ae47c9ca572a126ba3dadc"
+      },
+      {
+        "path": "tests/fixtures/match-fixture.ts",
+        "sha256": "4922ea87c48643b5b9832486c9958610ad550f49a078947c35d663672f61130b"
+      },
+      {
+        "path": "tools/simulation/tests/diagnose.ts",
+        "sha256": "e418ed097381a168383e5995f060b9df21049deec1610e3e57318fda81f79d14"
+      },
+      {
+        "path": "tools/simulation/tests/diagnostic-guards.ts",
+        "sha256": "add579c884941bbad24bb50e241d951bd8f2bb51773e070398c81ce0de7b02a7"
+      }
+    ],
+    "sha256": "7d20b071c0678a6b037300425e976fb43063d95c8673811c028cd35849b51ad8",
+    "fixtureInputsHash": "9ac715c7708e7d92ccf88161dacd33220cb8e698131a270a751fd06d1f43df11"
+  },
+  "dependencyIdentityHash": "626c4ea3c1e7346f6fd8bb827cb37af8fcf0265dca350901c5fdea1133478f03",
+  "baselineInputHash": "2e49b453a7ff87701841bbc212018a9607ed1d9af7ade56ddb078e6709d9515a",
+  "versions": {
+    "rules": "rules_v1",
+    "content": "core_v1",
+    "locations": "locations_v1",
+    "bot": "bot_v1",
+    "rng": "hmac-sha256-xoshiro128ss-v1",
+    "node": "v24.20.0",
+    "contentHash": "37ec966ce1e734e8e5f85310e384ea0d1c4a126eea4618471ea874d60546cdcc",
+    "engineHash": "f8dc1c6ba9ed3fcd300f4b5306fc3950340dec131cc24e9874969e680eae1ae1",
+    "botHash": "7629956b10d3b855818b4863676e65eb50df6b898e5284a47ee78fadd5d6d7ab",
+    "contractsHash": "e6a1f7cf84564e629ec010e976924e4b1db9aee94e06ebb625f06b57645f2e6f",
+    "runnerHash": "42a0a2dfa96ed8a7d8a974ebccc2fd7a3ffa36f2e790127870773a43381df56b",
+    "lockfileHash": "8f5591c5d678b3728376f82d856cb101112ba2f5bf72879f4f59781d5820dd04"
+  },
+  "matrixIndices": [
+    0,
+    5,
+    7
+  ],
+  "seedIndices": [
+    0,
+    1,
+    2
+  ],
+  "sourceHash": "e418ed097381a168383e5995f060b9df21049deec1610e3e57318fda81f79d14",
+  "matchingFinalHashes": 9,
+  "phaseSummary": {
+    "MULLIGAN": {
+      "phases": 18,
+      "entryEnergy": 0,
+      "spent": 0,
+      "exitEnergy": 0,
+      "zeroEnergyEntries": 18,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    },
+    "EVIL_DEPLOY": {
+      "phases": 96,
+      "entryEnergy": 557,
+      "spent": 176,
+      "exitEnergy": 381,
+      "zeroEnergyEntries": 0,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    },
+    "GOOD_PLAY": {
+      "phases": 96,
+      "entryEnergy": 557,
+      "spent": 343,
+      "exitEnergy": 214,
+      "zeroEnergyEntries": 0,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    },
+    "EVIL_TRICKS": {
+      "phases": 96,
+      "entryEnergy": 381,
+      "spent": 73,
+      "exitEnergy": 308,
+      "zeroEnergyEntries": 29,
+      "withBlockedPositiveTrick": 19,
+      "withBlockedPositivePower": 16
+    },
+    "COMBAT": {
+      "phases": 26,
+      "entryEnergy": 106,
+      "spent": 0,
+      "exitEnergy": 0,
+      "zeroEnergyEntries": 7,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    }
+  },
+  "traces": [
+    {
+      "matchup": "H_G_BV/H_E_FX/baseline",
+      "seed": "9611c9257e6963a9c1c47e6f8315596774abf4747aee5530feca15f8aee94fd1",
+      "finalHash": "74379ca0657fbf78d0591c65a76d305d61082e228f0c068631261cc204d53b41",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FX"
+          ]
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02",
+            "X02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05",
+            "F06"
+          ],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FX"
+          ]
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 2,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "X02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC02",
+            "V06",
+            "B06",
+            "GC03",
+            "B02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05",
+            "F06"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 3,
+          "exitEnergy": 1,
+          "decisions": 3,
+          "legalCardIds": [
+            "X02",
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC02",
+            "B02",
+            "B03",
+            "V01",
+            "V06",
+            "B06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05",
+            "F06"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 2,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 5,
+          "exitEnergy": 0,
+          "decisions": 4,
+          "legalCardIds": [
+            "V06",
+            "B06",
+            "B03",
+            "V01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 2,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "F06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 2,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "F02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 5,
+          "exitEnergy": 1,
+          "decisions": 3,
+          "legalCardIds": [
+            "V06",
+            "B06",
+            "B03",
+            "GC01",
+            "V02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 2,
+          "exitEnergy": 2,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 5,
+          "exitEnergy": 2,
+          "decisions": 3,
+          "legalCardIds": [
+            "V06",
+            "B06",
+            "GC01",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 4,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "F08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 3,
+          "exitEnergy": 5,
+          "decisions": 3,
+          "legalCardIds": [
+            "B06",
+            "GC01",
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 3,
+          "exitEnergy": 5,
+          "decisions": 2,
+          "legalCardIds": [
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 3,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "X03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 9,
+          "spent": 2,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "X01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "B01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 12,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 12,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 12,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 13,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "X03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 13,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 2,
+          "exitEnergy": 8,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 13,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 14,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "F03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 14,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "B01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 14,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 14,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 15,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 15,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 4,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "B04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 15,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 16,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 16,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 16,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 17,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "F03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 17,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 17,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 18,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "X01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 18,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 4,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "B04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 18,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 19,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 19,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 2,
+          "exitEnergy": 8,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 19,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 3,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "X06",
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 20,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 20,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 6,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "V05",
+            "B06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 20,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06",
+            "F08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_BV/H_E_FX/baseline",
+      "seed": "96d00c625b2e71c9ea508ac3545abd28853ed1d03c1c73171f6f60bc135f760c",
+      "finalHash": "545d8c9a3c0d820a550b13f75546a71400cbdab91ea2f1b9228120fc3b7d89cd",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "X01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "B01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FX"
+          ]
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "X02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FX"
+          ]
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 0,
+          "exitEnergy": 3,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "B03",
+            "V02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "EC05",
+            "X06",
+            "F06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "F04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "V02",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 2,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 5,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "V02",
+            "V03",
+            "GC02",
+            "B06",
+            "V06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 2,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "X06",
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 2,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "X02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "B06",
+            "V06",
+            "V02",
+            "B04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 3,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "X06",
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 1,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 3,
+          "exitEnergy": 4,
+          "decisions": 3,
+          "legalCardIds": [
+            "B06",
+            "V06",
+            "V01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 2,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 4,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "X06",
+            "F08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 2,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 9,
+          "spent": 1,
+          "exitEnergy": 8,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 4,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "F04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [
+            "B06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 12,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "F03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 12,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 9,
+          "exitEnergy": 1,
+          "decisions": 4,
+          "legalCardIds": [
+            "V05",
+            "B06",
+            "B07"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 12,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 12,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_BV/H_E_FX/baseline",
+      "seed": "1757a133df26793fe6454c61311f7224fb844e49bb18b5f4ee010572a082962c",
+      "finalHash": "b499dcaf63aa5f76c480b0139607c7475fd30e248deae5b82957170ea32ae095",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02",
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "B02",
+            "GC02",
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": [
+            "P_F2"
+          ]
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02",
+            "X03",
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC03",
+            "GC02",
+            "GC05",
+            "B06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": [
+            "P_F2"
+          ]
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 4,
+          "legalCardIds": [
+            "EC02",
+            "F01",
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC02",
+            "GC05",
+            "B06",
+            "V06",
+            "V02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": [
+            "P_F2"
+          ]
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 1,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "X01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 5,
+          "exitEnergy": 0,
+          "decisions": 4,
+          "legalCardIds": [
+            "GC05",
+            "B06",
+            "V06",
+            "B07"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 1,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "B06",
+            "B07",
+            "B04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 5,
+          "exitEnergy": 1,
+          "decisions": 3,
+          "legalCardIds": [
+            "EC05",
+            "X06",
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 6,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 2,
+          "exitEnergy": 5,
+          "decisions": 2,
+          "legalCardIds": [
+            "X06",
+            "F06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 1,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 1,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "V01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 9,
+          "spent": 1,
+          "exitEnergy": 8,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "B01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 4,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "F04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 2,
+          "exitEnergy": 8,
+          "decisions": 2,
+          "legalCardIds": [
+            "B06",
+            "B02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_BP/H_E_XS/baseline",
+      "seed": "9611c9257e6963a9c1c47e6f8315596774abf4747aee5530feca15f8aee94fd1",
+      "finalHash": "c364bcdf858ea377eba4241f6511ba80b28ddb93b171d71f66ca991d2a62b8e6",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "X01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": [
+            "S_E_XS"
+          ]
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "S03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC02",
+            "P08",
+            "GC03",
+            "B02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "S03",
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC02",
+            "GC03",
+            "B02",
+            "B03",
+            "P01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": [
+            "S_E_XS"
+          ]
+        },
+        {
+          "turn": 4,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 2,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 5,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC03",
+            "B03",
+            "P01",
+            "GC01",
+            "P02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "EC05",
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 2,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "X02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "B05",
+            "B03",
+            "P01",
+            "GC01",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 0,
+          "exitEnergy": 4,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 7,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "B03",
+            "P01",
+            "GC01",
+            "GC03",
+            "B05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 3,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "X06",
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 6,
+          "exitEnergy": 2,
+          "decisions": 3,
+          "legalCardIds": [
+            "B03",
+            "P01",
+            "GC01",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 4,
+          "exitEnergy": 5,
+          "decisions": 2,
+          "legalCardIds": [
+            "S04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 9,
+          "spent": 3,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC05",
+            "P08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 0,
+          "exitEnergy": 5,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_BP/H_E_XS/baseline",
+      "seed": "96d00c625b2e71c9ea508ac3545abd28853ed1d03c1c73171f6f60bc135f760c",
+      "finalHash": "9c68d36b19cf91482cbba13b294a10cca9a7ee1e1cd8025b60a29c75b9f6e733",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "X01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "B01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_XS"
+          ]
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "S02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 1,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "P08",
+            "B03",
+            "GC05",
+            "P02",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_XS"
+          ]
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "X02",
+            "S04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 3,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "P08",
+            "B03",
+            "GC05",
+            "P02",
+            "P03",
+            "GC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_XS"
+          ]
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 2,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "X02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 4,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "P08",
+            "B03",
+            "GC05",
+            "P02",
+            "GC02",
+            "B04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "S06",
+            "EC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "X05",
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "B05",
+            "P08",
+            "B03",
+            "GC05",
+            "P02",
+            "GC02",
+            "P01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 7,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "X05",
+            "EC01",
+            "EC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 7,
+          "exitEnergy": 0,
+          "decisions": 4,
+          "legalCardIds": [
+            "P08",
+            "B03",
+            "GC05",
+            "P02",
+            "GC02",
+            "P01",
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 5,
+          "exitEnergy": 3,
+          "decisions": 3,
+          "legalCardIds": [
+            "EC03",
+            "S02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 8,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "P08",
+            "B03",
+            "GC05",
+            "P01",
+            "GC01",
+            "B05",
+            "B06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 0,
+          "exitEnergy": 3,
+          "decisions": 1,
+          "legalCardIds": [
+            "S06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 9,
+          "spent": 9,
+          "exitEnergy": 0,
+          "decisions": 5,
+          "legalCardIds": [
+            "P08",
+            "B03",
+            "P01",
+            "GC01",
+            "B06",
+            "P06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 3,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "S06",
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 1,
+          "exitEnergy": 9,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 2,
+          "exitEnergy": 8,
+          "decisions": 3,
+          "legalCardIds": [
+            "B06",
+            "P06",
+            "B01",
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 10,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [
+            "S06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 0,
+          "exitEnergy": 10,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 10,
+          "spent": 8,
+          "exitEnergy": 2,
+          "decisions": 3,
+          "legalCardIds": [
+            "B06",
+            "P06",
+            "GC03",
+            "B04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 11,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 10,
+          "spent": 3,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "S06",
+            "X08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_BP/H_E_XS/baseline",
+      "seed": "1757a133df26793fe6454c61311f7224fb844e49bb18b5f4ee010572a082962c",
+      "finalHash": "328747040a56f5c87095faca320c4c166cee9f00c40032546677c9b1189249de",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02",
+            "X01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "B02",
+            "GC02",
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "EC02",
+            "X01",
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC03",
+            "GC02",
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "S04",
+            "X01",
+            "S02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC02",
+            "GC05",
+            "P08",
+            "P02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 3,
+          "exitEnergy": 2,
+          "decisions": 3,
+          "legalCardIds": [
+            "X01",
+            "S02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 4,
+          "exitEnergy": 1,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC05",
+            "P08",
+            "B06",
+            "P06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "S06",
+            "S07"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC05",
+            "B05",
+            "B06",
+            "B04",
+            "P06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [
+            "S06",
+            "S07",
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 1,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 7,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC05",
+            "B06",
+            "B04",
+            "P06",
+            "B05",
+            "P01",
+            "B01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [
+            "S06",
+            "S07",
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 8,
+          "exitEnergy": 0,
+          "decisions": 4,
+          "legalCardIds": [
+            "GC05",
+            "B06",
+            "B04",
+            "P06",
+            "B01",
+            "B02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 6,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "X05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 9,
+          "spent": 0,
+          "exitEnergy": 9,
+          "decisions": 1,
+          "legalCardIds": [
+            "B06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 0,
+          "exitEnergy": 3,
+          "decisions": 1,
+          "legalCardIds": [
+            "S06",
+            "X06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_VP/H_E_FS/baseline",
+      "seed": "9611c9257e6963a9c1c47e6f8315596774abf4747aee5530feca15f8aee94fd1",
+      "finalHash": "7a13d0b0092a12ebe8ddd56915a9368c14d1ef1da3d9529d1ad575fbafcbdf35",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FS"
+          ]
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02",
+            "S02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05",
+            "F06"
+          ],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FS"
+          ]
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 2,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "S02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC02",
+            "P08",
+            "V06",
+            "GC03",
+            "V02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05",
+            "F06"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 3,
+          "exitEnergy": 1,
+          "decisions": 3,
+          "legalCardIds": [
+            "S02",
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC02",
+            "P08",
+            "V06",
+            "V02",
+            "V03",
+            "P01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05",
+            "F06"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 2,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 5,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC02",
+            "P08",
+            "V06",
+            "V02",
+            "V03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 2,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "F06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 2,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "F02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "P08",
+            "V06",
+            "V02",
+            "GC01",
+            "P03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 2,
+          "exitEnergy": 2,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 7,
+          "exitEnergy": 0,
+          "decisions": 5,
+          "legalCardIds": [
+            "V06",
+            "V02",
+            "GC01",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 4,
+          "exitEnergy": 4,
+          "decisions": 3,
+          "legalCardIds": [
+            "V06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 9,
+          "spent": 3,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "S03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 9,
+          "spent": 4,
+          "exitEnergy": 5,
+          "decisions": 3,
+          "legalCardIds": [
+            "GC05",
+            "P08",
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 9,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_VP/H_E_FS/baseline",
+      "seed": "96d00c625b2e71c9ea508ac3545abd28853ed1d03c1c73171f6f60bc135f760c",
+      "finalHash": "bc558a8acac33c44e911fb87a43f338ca33deeb8c46063c0996dfd93f5f2c9ae",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "S01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "V01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FS"
+          ]
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "S02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 1,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": [
+            "S_E_FS"
+          ]
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 0,
+          "exitEnergy": 3,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "P08",
+            "V03",
+            "GC05",
+            "P03",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "EC05",
+            "S06",
+            "F06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "F04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 3,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "V06",
+            "P08",
+            "V03",
+            "GC05",
+            "GC03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05",
+            "S08"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 2,
+          "exitEnergy": 3,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 5,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "V03",
+            "GC05",
+            "GC03",
+            "GC02",
+            "V04",
+            "V06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 2,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "S06",
+            "S08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 3,
+          "exitEnergy": 3,
+          "decisions": 3,
+          "legalCardIds": [
+            "S02",
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "V06",
+            "GC05",
+            "GC03",
+            "P05",
+            "V04",
+            "P01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 2,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "S06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 0,
+          "exitEnergy": 7,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 7,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "V06",
+            "GC05",
+            "GC03",
+            "V04",
+            "P01",
+            "P08"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 1,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "S06",
+            "F07"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 2,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 8,
+          "exitEnergy": 0,
+          "decisions": 5,
+          "legalCardIds": [
+            "V06",
+            "GC05",
+            "GC03",
+            "P01",
+            "GC01",
+            "V07"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 1,
+          "exitEnergy": 5,
+          "decisions": 2,
+          "legalCardIds": [
+            "S06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    },
+    {
+      "matchup": "H_G_VP/H_E_FS/baseline",
+      "seed": "1757a133df26793fe6454c61311f7224fb844e49bb18b5f4ee010572a082962c",
+      "finalHash": "5fd5537a1c4a61c35d61173cd3718b7f144695e69a2e202f40078307366b3b19",
+      "phases": [
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 0,
+          "phase": "MULLIGAN",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 1,
+          "spent": 1,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "GC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 1,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 1,
+          "spent": 0,
+          "exitEnergy": 1,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02",
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 2,
+          "spent": 2,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "V02",
+            "GC02",
+            "GC05"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 2,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC02",
+            "S03",
+            "F01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 3,
+          "spent": 3,
+          "exitEnergy": 0,
+          "decisions": 2,
+          "legalCardIds": [
+            "V02",
+            "GC03",
+            "GC05",
+            "V06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 3,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [
+            "EC05"
+          ],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 4,
+          "legalCardIds": [
+            "EC02",
+            "F01",
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 4,
+          "spent": 4,
+          "exitEnergy": 0,
+          "decisions": 3,
+          "legalCardIds": [
+            "V02",
+            "GC05",
+            "P08",
+            "P03"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 4,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": 0,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 5,
+          "spent": 1,
+          "exitEnergy": 4,
+          "decisions": 2,
+          "legalCardIds": [
+            "S01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 5,
+          "spent": 4,
+          "exitEnergy": 1,
+          "decisions": 2,
+          "legalCardIds": [
+            "V02",
+            "GC05",
+            "V06",
+            "P08",
+            "V07",
+            "V04"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 5,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 4,
+          "spent": 2,
+          "exitEnergy": 2,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC05",
+            "S06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 6,
+          "spent": 6,
+          "exitEnergy": 0,
+          "decisions": 4,
+          "legalCardIds": [
+            "V02",
+            "GC05",
+            "V06",
+            "P08",
+            "V07",
+            "P06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 4,
+          "exitEnergy": 2,
+          "decisions": 3,
+          "legalCardIds": [
+            "S06",
+            "S08",
+            "F06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "COMBAT",
+          "side": "EVIL",
+          "entryEnergy": 2,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 6,
+          "phase": "COMBAT",
+          "side": "GOOD",
+          "entryEnergy": 0,
+          "spent": 0,
+          "exitEnergy": null,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 7,
+          "spent": 1,
+          "exitEnergy": 6,
+          "decisions": 2,
+          "legalCardIds": [
+            "EC01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 7,
+          "spent": 6,
+          "exitEnergy": 1,
+          "decisions": 4,
+          "legalCardIds": [
+            "GC05",
+            "P08",
+            "P06",
+            "V06",
+            "P01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 7,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 6,
+          "spent": 0,
+          "exitEnergy": 6,
+          "decisions": 1,
+          "legalCardIds": [
+            "S06"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_DEPLOY",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "GOOD_PLAY",
+          "side": "GOOD",
+          "entryEnergy": 8,
+          "spent": 1,
+          "exitEnergy": 7,
+          "decisions": 2,
+          "legalCardIds": [
+            "P06",
+            "V01"
+          ],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        },
+        {
+          "turn": 8,
+          "phase": "EVIL_TRICKS",
+          "side": "EVIL",
+          "entryEnergy": 8,
+          "spent": 0,
+          "exitEnergy": 8,
+          "decisions": 1,
+          "legalCardIds": [],
+          "positiveTricksBlockedByDeploy": [],
+          "positivePowersBlockedByDeploy": []
+        }
+      ]
+    }
+  ],
+  "utilityProbes": [
+    {
+      "id": "B06",
+      "side": "GOOD",
+      "score": -0.5500000000000004,
+      "heuristic": 0,
+      "preview": {
+        "deltaBoardValue": 0.9999999999999996,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 20
+        },
+        "units": []
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 20
+        },
+        "units": [
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 1,
+            "poisoned": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "X06",
+      "side": "EVIL",
+      "score": -0.04999999999999993,
+      "heuristic": 0,
+      "preview": {
+        "deltaBoardValue": 1.5,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 19
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "GOOD",
+            "hp": 1,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 19
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "P06",
+      "side": "GOOD",
+      "score": -0.04999999999999982,
+      "heuristic": 1.5,
+      "preview": {
+        "deltaBoardValue": 0,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "COMPLETED",
+        "outcome": {
+          "result": "LOSS",
+          "winner": "EVIL",
+          "reason": "HERO_DEFEATED"
+        },
+        "hp": {
+          "GOOD": 0,
+          "EVIL": 19
+        },
+        "units": [
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 2,
+          "EVIL": 20
+        },
+        "units": []
+      }
+    },
+    {
+      "id": "S06",
+      "side": "EVIL",
+      "score": -0.04999999999999982,
+      "heuristic": 1.5,
+      "preview": {
+        "deltaBoardValue": 0,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "COMPLETED",
+        "outcome": {
+          "result": "WIN",
+          "winner": "GOOD",
+          "reason": "HERO_DEFEATED"
+        },
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 0
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 1
+        },
+        "units": []
+      }
+    },
+    {
+      "id": "S07",
+      "side": "EVIL",
+      "score": -1.9,
+      "heuristic": 0,
+      "preview": {
+        "deltaBoardValue": 0,
+        "netCardsGained": -1,
+        "energySpent": 2,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "COMPLETED",
+        "outcome": {
+          "result": "WIN",
+          "winner": "GOOD",
+          "reason": "HERO_DEFEATED"
+        },
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 0
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 1
+        },
+        "units": []
+      }
+    }
+  ],
+  "catalogVersion": "core_v1"
+}
