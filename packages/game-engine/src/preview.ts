@@ -299,7 +299,10 @@ export function previewPublicLaneCombat(
       lane.evil = null;
     }
   local.phase = "COMBAT";
-  local.combat = { laneId, stage: "BEFORE_PAIR" };
+  // Earlier pairs are resolved; the current pair must retain its actual stage.
+  // A later lane still has a known pair to evaluate independently of intervening responses.
+  if (!local.combat || laneId > local.combat.laneId)
+    local.combat = { laneId, stage: "BEFORE_PAIR" };
   local.legalActions = [{ kind: "ADVANCE" }];
   return previewPublicAction(local, { kind: "ADVANCE" });
 }

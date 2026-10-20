@@ -1,5 +1,8 @@
 import { it, expect } from "vitest";
-import { previewPublicAction } from "../src/preview.js";
+import {
+  previewPublicAction,
+  previewPublicLaneCombat,
+} from "../src/preview.js";
 import { projectPlayerView } from "../src/projection.js";
 import { advanceAutomatic } from "../src/automatic.js";
 import { applyAction } from "../src/actions.js";
@@ -217,3 +220,63 @@ it("B04 healing history stays private and suppresses a certain win when the unkn
   expect(afterCombat(unused).players.GOOD.hp).toBe(1);
   expect(afterCombat(used).players.GOOD.hp).toBe(0);
 });
+
+it("lane forecasts never repeat an earlier resolved pair during a legal block-response move", () => {
+  const s = ready();
+  s.phase = "COMBAT";
+  s.activeSide = null;
+  s.continuation = {
+    laneId: 3,
+    stage: "BLOCK_RESPONSES",
+    pendingResponders: [],
+  };
+  const mover = unit(s, "GC01", "GOOD", 5),
+    freshEnemy = unit(s, "EC01", "EVIL", 2);
+  const powerInstanceId = "f".repeat(32);
+  s.players.GOOD.reserve.push({
+    definitionId: "P_P1",
+    instanceId: powerInstanceId,
+    normalCost: 1,
+  });
+  s.blockResponse = { side: "GOOD", laneId: 3, powerInstanceId };
+  const v = projectPlayerView(s, "GOOD"),
+    before = structuredClone(v);
+  const action = {
+    kind: "USE_BLOCK_POWER" as const,
+    powerInstanceId,
+    target: {
+      kind: "UNIT_AND_LANE" as const,
+      instanceId: mover.instanceId,
+      laneId: 2,
+    },
+  };
+  expect(v.legalActions).toContainEqual(action);
+  const lane = previewPublicLaneCombat(v, 2);
+  expect(lane.ownHeroDamage).toBe(0);
+  expect(lane.board[1]!.evil?.lastRegularAttackTurn).toBeNull();
+  const moved = applyAction(s, { actor: "GOOD", action });
+  if (moved.kind !== "transition") throw Error(moved.code);
+  const resumed = advanceAutomatic(moved.nextState, { maxRoots: 8 });
+  expect(resumed.nextState.players.GOOD.hp).toBe(s.players.GOOD.hp);
+  expect(resumed.nextState.board[1]!.evil?.instanceId).toBe(
+    freshEnemy.instanceId,
+  );
+  expect(resumed.nextState.board[1]!.evil?.lastRegularAttackTurn).toBeNull();
+  expect(v).toEqual(before);
+});
+it.each(["BEFORE_PAIR", "PAIR", "BLOCK_RESPONSES", "AFTER_LANE"] as const)(
+  "lane forecasts respect the current %s stage and retain future pairs",
+  (stage) => {
+    const s = ready();
+    s.phase = "COMBAT";
+    s.activeSide = null;
+    s.continuation = { laneId: 3, stage, pendingResponders: [] };
+    unit(s, "EC01", "EVIL", 3);
+    unit(s, "EC01", "EVIL", 4);
+    const v = projectPlayerView(s, "GOOD");
+    expect(previewPublicLaneCombat(v, 3).ownHeroDamage).toBe(
+      stage === "BEFORE_PAIR" || stage === "PAIR" ? 2 : 0,
+    );
+    expect(previewPublicLaneCombat(v, 4).ownHeroDamage).toBe(2);
+  },
+);

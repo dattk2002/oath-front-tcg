@@ -208,3 +208,48 @@ it("target ties use the public target lane before target instance ID", () => {
     target: { kind: "UNIT", instanceId: laneOne.instanceId },
   });
 });
+
+it.each([false, true])(
+  "block-response moves ignore resolved lanes and retain a future-lane %s trade/block bonus",
+  (stunned) => {
+    const s = ready();
+    s.humanSide = "EVIL";
+    s.phase = "COMBAT";
+    s.activeSide = null;
+    s.continuation = {
+      laneId: 3,
+      stage: "BLOCK_RESPONSES",
+      pendingResponders: [],
+    };
+    const mover = unit(s, "GC01", "GOOD", 5);
+    unit(s, "EC01", "EVIL", 2);
+    unit(s, "EC01", "EVIL", 3);
+    const futureEnemy = unit(s, "EC01", "EVIL", 4);
+    futureEnemy.statuses.stunned = stunned;
+    futureEnemy.current.hp = 1;
+    const powerInstanceId = "f".repeat(32);
+    s.players.GOOD.reserve.push({
+      definitionId: "P_P1",
+      instanceId: powerInstanceId,
+      normalCost: 1,
+    });
+    s.blockResponse = { side: "GOOD", laneId: 3, powerInstanceId };
+    const v = projectPlayerView(s, "GOOD");
+    const move = (laneId: number) => ({
+      kind: "USE_BLOCK_POWER" as const,
+      powerInstanceId,
+      target: {
+        kind: "UNIT_AND_LANE" as const,
+        instanceId: mover.instanceId,
+        laneId,
+      },
+    });
+    for (const lane of [2, 3]) {
+      expect(v.legalActions).toContainEqual(move(lane));
+      expect(evaluateAction(v, move(lane)).heuristic).toBe(0);
+      expect(evaluateAction(v, move(lane)).score).toBeCloseTo(1.6);
+    }
+    expect(evaluateAction(v, move(4)).heuristic).toBe(stunned ? 1 : 1.5);
+    expect(chooseBotAction(v, v.legalActions, context).action).toEqual(move(4));
+  },
+);
