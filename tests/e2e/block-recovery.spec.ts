@@ -373,7 +373,7 @@ test("hidden lifecycle stops snapshot polling and foreground resumes server reco
     page.getByRole("button", { name: "Để dành", exact: true }),
   ).toBeEnabled();
 });
-test("failed snapshot recovery disables actions until explicit retry and clears the failure after success", async ({
+test("lost RESUME before commit retries the identical envelope inside the pause modal by keyboard and pointer", async ({
   page,
 }) => {
   const { id } = await blockFixture(page);
@@ -381,36 +381,144 @@ test("failed snapshot recovery disables actions until explicit retry and clears 
   await expect(
     page.getByRole("button", { name: "Để dành", exact: true }),
   ).toBeEnabled();
-  let fail = true;
-  await page.route(`**/api/v1/matches/${id}`, async (route) => {
-    if (fail) {
-      fail = false;
-      await route.fulfill({
-        status: 503,
-        json: {
-          error: {
-            code: "TEMPORARILY_UNAVAILABLE",
-            messageKey: "unavailable",
-            requestId: "10000000-0000-4000-8000-000000000001",
-            retryable: true,
-            details: {},
-          },
-        },
-      });
-    } else await route.continue();
-  });
-  await page.evaluate(() => window.dispatchEvent(new Event("online")));
-  await expect(page.getByTestId("command-status")).toContainText(
-    "Không tải được bàn mới nhất",
-  );
+  await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
+  const modal = page.getByRole("dialog", { name: "Tạm dừng", exact: true });
   await expect(
-    page.getByRole("button", { name: "Để dành", exact: true }),
+    modal.getByRole("button", { name: "Tiếp tục", exact: true }),
+  ).toBeEnabled();
+  const paused = await snapshot(page, id);
+  const sent: unknown[] = [];
+  await page.route(`**/api/v1/matches/${id}/commands`, async (route) => {
+    const body = route.request().postDataJSON();
+    if (body.action.kind !== "RESUME") return route.continue();
+    sent.push(body);
+    // Fail before forwarding: the server must remain PAUSED, with no receipt.
+    if (sent.length <= 2) await route.abort("failed");
+    else await route.continue();
+  });
+  await modal.getByRole("button", { name: "Tiếp tục", exact: true }).click();
+  await expect(page.getByTestId("command-status")).toContainText(
+    "Chưa xác định",
+  );
+  const unchanged = await snapshot(page, id);
+  expect(unchanged.revision).toBe(paused.revision);
+  expect(unchanged.view.lifecycle).toBe("PAUSED");
+  expect(sent[0]).toMatchObject({ action: { kind: "RESUME" } });
+  const retry = modal.getByRole("button", {
+    name: "Thử lại yêu cầu",
+    exact: true,
+  });
+  await expect(retry).toBeEnabled();
+  await page.keyboard.press("Escape");
+  await expect(modal).toBeVisible();
+  expect(sent).toHaveLength(1);
+  await modal.locator("h2").focus();
+  for (let tab = 0; tab < 5; tab++) {
+    await page.keyboard.press("Tab");
+    if (await retry.evaluate((element) => element === document.activeElement))
+      break;
+  }
+  await expect(retry).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(modal.getByTestId("command-status")).toContainText(
+    "Chưa xác định",
+  );
+  expect(sent).toEqual([sent[0], sent[0]]);
+  await page.reload();
+  await expect(retry).toBeEnabled();
+  await expect(
+    modal.getByRole("button", { name: "Tiếp tục", exact: true }),
   ).toBeDisabled();
-  await page.getByRole("button", { name: "Kết nối lại", exact: true }).click();
+  await captureEvidence(page, "pause-uncertain-retry");
+  for (const [name, width, height] of [
+    ["tablet", 1024, 768],
+    ["mobile", 375, 812],
+  ] as const) {
+    await page.setViewportSize({ width, height });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await expect(retry).toBeEnabled();
+    await captureEvidence(page, `pause-uncertain-${name}`);
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await retry.click();
+  await expect(modal).not.toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Tạm dừng", exact: true }),
+  ).toBeFocused();
   await expect(
     page.getByRole("button", { name: "Để dành", exact: true }),
   ).toBeEnabled();
-  await expect(page.getByTestId("command-status")).not.toContainText(
-    "Không tải được bàn mới nhất",
-  );
+  expect((await snapshot(page, id)).view.lifecycle).toBe("ACTIVE");
+  expect(sent).toEqual([sent[0], sent[0], sent[0]]);
 });
+for (const paused of [false, true])
+  test(`${paused ? "paused " : ""}failed snapshot recovery disables actions until explicit retry and clears the failure after success`, async ({
+    page,
+  }) => {
+    const { id } = await blockFixture(page);
+    await page.goto(`/matches/${id}`);
+    await expect(
+      page.getByRole("button", { name: "Để dành", exact: true }),
+    ).toBeEnabled();
+    if (paused) {
+      await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
+      await expect(
+        page
+          .getByRole("dialog")
+          .getByRole("button", { name: "Tiếp tục", exact: true }),
+      ).toBeEnabled();
+    }
+    const surface = paused
+      ? page.getByRole("dialog", { name: "Tạm dừng", exact: true })
+      : page.locator(".match-screen");
+    const action = surface.getByRole("button", {
+      name: paused ? "Tiếp tục" : "Để dành",
+      exact: true,
+    });
+    let fail = true;
+    await page.route(`**/api/v1/matches/${id}`, async (route) => {
+      if (fail) {
+        fail = false;
+        await route.fulfill({
+          status: 503,
+          json: {
+            error: {
+              code: "TEMPORARILY_UNAVAILABLE",
+              messageKey: "unavailable",
+              requestId: "10000000-0000-4000-8000-000000000001",
+              retryable: true,
+              details: {},
+            },
+          },
+        });
+      } else await route.continue();
+    });
+    await page.evaluate(() => window.dispatchEvent(new Event("online")));
+    await expect(surface.getByTestId("command-status")).toContainText(
+      "Không tải được bàn mới nhất",
+    );
+    await expect(action).toBeDisabled();
+    if (paused) {
+      await page.keyboard.press("Escape");
+      expect((await snapshot(page, id)).view.lifecycle).toBe("PAUSED");
+      await captureEvidence(page, "pause-snapshot-recovery");
+    }
+    await surface
+      .getByRole("button", { name: "Kết nối lại", exact: true })
+      .click();
+    await expect(action).toBeEnabled();
+    await expect(surface.getByTestId("command-status")).not.toContainText(
+      "Không tải được bàn mới nhất",
+    );
+    if (paused) {
+      await action.click();
+      await expect(surface).not.toBeVisible();
+      await expect(
+        page.getByRole("button", { name: "Tạm dừng", exact: true }),
+      ).toBeFocused();
+    }
+  });

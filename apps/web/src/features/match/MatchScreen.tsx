@@ -351,7 +351,14 @@ function MatchRuntime({
         </p>
       </div>
       {view.lifecycle === "PAUSED" && (
-        <PauseDialog controller={controller} disabled={disabled} />
+        <PauseDialog
+          controller={controller}
+          disabled={disabled}
+          snapshot={snapshot}
+          online={online}
+          recovering={recovering}
+          onRecover={recover}
+        />
       )}
       {["COMPLETED", "ABANDONED", "FAULTED"].includes(view.lifecycle) && (
         <ResultDetail matchId={view.matchId} api={api} catalog={catalog} />

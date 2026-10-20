@@ -628,6 +628,10 @@
 .match-dialog h2 {
   font-size: clamp(24px, 4vw, 36px);
 }
+.match-dialog .command-status {
+  display: block;
+  min-height: 0;
+}
 .match-dialog button,
 .match-dialog a {
   display: block;

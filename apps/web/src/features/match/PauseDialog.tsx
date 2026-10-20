@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import type { IntentController } from "./intent-controller";
 import { openDialog } from "./keyboard";
+import RecoveryControls, {
+  type RecoveryControlsProps,
+} from "./RecoveryControls";
 export default function PauseDialog({
   controller,
   disabled,
-}: {
-  controller: IntentController;
+  snapshot,
+  online,
+  recovering,
+  onRecover,
+}: RecoveryControlsProps & {
   disabled: boolean;
 }) {
   const dialog = useRef<HTMLDialogElement>(null),
@@ -62,6 +67,13 @@ export default function PauseDialog({
           <a href="/">Về trang chủ</a>
         </>
       )}
+      <RecoveryControls
+        snapshot={snapshot}
+        controller={controller}
+        online={online}
+        recovering={recovering}
+        onRecover={onRecover}
+      />
     </dialog>
   );
 }
