@@ -4,7 +4,7 @@ The user approved the full game spec and requested implementation on 2026-10-20.
 
 ## Latest user requirements
 
-- Next.js frontend in `/home/bia/Works/Coding/OathFront`, monorepo with separate frontend/backend.
+- Next.js frontend in `/home/bia/Works/Coding/oath-front-tcg`, monorepo with separate frontend/backend.
 - Push small coherent commits to existing public repository `https://github.com/dattk2002/oath-front-tcg` after completion and verification. Repository inspected empty before clone.
 - Images named `oath-front-ui`, `oath-front-api`, `oath-front-db`. A Docker Compose stack runs three containers; a container cannot combine three independent images.
 - Vercel Hobby chosen for noncommercial free-tier hosting; Neon Free is the production database. No production deploy requested in this turn.

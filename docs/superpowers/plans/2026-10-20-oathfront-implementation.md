@@ -462,7 +462,7 @@ Không ước lượng ngày giao khi chưa biết nhân lực, ngân sách art,
 
 ## Yêu cầu triển khai mới — 2026-10-20
 
-- Project `/home/bia/Works/Coding/OathFront`, repo `https://github.com/dattk2002/oath-front-tcg` (đã xác minh rỗng). Dùng main của repo mới, không tạo worktree không cần thiết.
+- Project `/home/bia/Works/Coding/oath-front-tcg`, repo `https://github.com/dattk2002/oath-front-tcg` (đã xác minh rỗng). Dùng main của repo mới, không tạo worktree không cần thiết.
 - pnpm monorepo: `apps/web` Next.js, `apps/api` Fastify, các shared packages namespace `@oathfront/*`.
 - Task 1 chốt dependencies Next.js nhưng chỉ scaffold UI có ý nghĩa ở Task 9; không thay game rules.
 - Task 6 thêm `docker/db/Dockerfile`, Postgres local test chỉ dành riêng OathFront.
