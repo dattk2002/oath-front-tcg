@@ -1,0 +1,1742 @@
+{
+  "provenance": {
+    "sourceCommit": "f2dbfac73f6698725781f9ab55649964cad348b8",
+    "method": "git archive; esbuild bundle with @oathfront aliases pinned to archived source; only third-party npm dependencies reused",
+    "actionPath": "GOOD MULLIGAN [] -> BOT EVIL MULLIGAN [] -> BOT EVIL PASS_PHASE -> HUMAN PAUSE"
+  },
+  "config": {
+    "matchId": "00000000-0000-4000-8000-000000000001",
+    "mode": "SKIRMISH",
+    "humanSide": "GOOD",
+    "difficulty": "NORMAL",
+    "versions": {
+      "rules": "rules_v1",
+      "content": "core_v1",
+      "locations": "locations_v1",
+      "bot": "bot_v1"
+    },
+    "decks": {
+      "GOOD": {
+        "name": "An Nhiên",
+        "heroId": "H_G_BV",
+        "contentVersion": "core_v1",
+        "entries": [
+          {
+            "cardId": "GC01",
+            "quantity": 2
+          },
+          {
+            "cardId": "GC02",
+            "quantity": 2
+          },
+          {
+            "cardId": "GC03",
+            "quantity": 2
+          },
+          {
+            "cardId": "GC05",
+            "quantity": 2
+          },
+          {
+            "cardId": "B01",
+            "quantity": 2
+          },
+          {
+            "cardId": "B02",
+            "quantity": 2
+          },
+          {
+            "cardId": "B03",
+            "quantity": 2
+          },
+          {
+            "cardId": "B04",
+            "quantity": 2
+          },
+          {
+            "cardId": "B06",
+            "quantity": 2
+          },
+          {
+            "cardId": "B07",
+            "quantity": 2
+          },
+          {
+            "cardId": "V01",
+            "quantity": 2
+          },
+          {
+            "cardId": "V02",
+            "quantity": 2
+          },
+          {
+            "cardId": "V03",
+            "quantity": 2
+          },
+          {
+            "cardId": "V05",
+            "quantity": 2
+          },
+          {
+            "cardId": "V06",
+            "quantity": 2
+          }
+        ]
+      },
+      "EVIL": {
+        "name": "Hắc Luyện",
+        "heroId": "H_E_FX",
+        "contentVersion": "core_v1",
+        "entries": [
+          {
+            "cardId": "EC01",
+            "quantity": 2
+          },
+          {
+            "cardId": "EC02",
+            "quantity": 2
+          },
+          {
+            "cardId": "EC03",
+            "quantity": 2
+          },
+          {
+            "cardId": "EC05",
+            "quantity": 2
+          },
+          {
+            "cardId": "F01",
+            "quantity": 2
+          },
+          {
+            "cardId": "F02",
+            "quantity": 2
+          },
+          {
+            "cardId": "F03",
+            "quantity": 2
+          },
+          {
+            "cardId": "F04",
+            "quantity": 2
+          },
+          {
+            "cardId": "F06",
+            "quantity": 2
+          },
+          {
+            "cardId": "F08",
+            "quantity": 2
+          },
+          {
+            "cardId": "X01",
+            "quantity": 2
+          },
+          {
+            "cardId": "X02",
+            "quantity": 2
+          },
+          {
+            "cardId": "X03",
+            "quantity": 2
+          },
+          {
+            "cardId": "X06",
+            "quantity": 2
+          },
+          {
+            "cardId": "X08",
+            "quantity": 2
+          }
+        ]
+      }
+    }
+  },
+  "seedHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+  "rngAlgorithmVersion": "hmac-sha256-xoshiro128ss-v1",
+  "initialization": {
+    "stateSchemaVersion": "match_state_v1",
+    "state": {
+      "matchId": "00000000-0000-4000-8000-000000000001",
+      "mode": "SKIRMISH",
+      "humanSide": "GOOD",
+      "difficulty": "NORMAL",
+      "versions": {
+        "rules": "rules_v1",
+        "content": "core_v1",
+        "locations": "locations_v1",
+        "bot": "bot_v1"
+      },
+      "deckSnapshots": {
+        "GOOD": {
+          "name": "An Nhiên",
+          "heroId": "H_G_BV",
+          "contentVersion": "core_v1",
+          "entries": [
+            {
+              "cardId": "GC01",
+              "quantity": 2
+            },
+            {
+              "cardId": "GC02",
+              "quantity": 2
+            },
+            {
+              "cardId": "GC03",
+              "quantity": 2
+            },
+            {
+              "cardId": "GC05",
+              "quantity": 2
+            },
+            {
+              "cardId": "B01",
+              "quantity": 2
+            },
+            {
+              "cardId": "B02",
+              "quantity": 2
+            },
+            {
+              "cardId": "B03",
+              "quantity": 2
+            },
+            {
+              "cardId": "B04",
+              "quantity": 2
+            },
+            {
+              "cardId": "B06",
+              "quantity": 2
+            },
+            {
+              "cardId": "B07",
+              "quantity": 2
+            },
+            {
+              "cardId": "V01",
+              "quantity": 2
+            },
+            {
+              "cardId": "V02",
+              "quantity": 2
+            },
+            {
+              "cardId": "V03",
+              "quantity": 2
+            },
+            {
+              "cardId": "V05",
+              "quantity": 2
+            },
+            {
+              "cardId": "V06",
+              "quantity": 2
+            }
+          ]
+        },
+        "EVIL": {
+          "name": "Hắc Luyện",
+          "heroId": "H_E_FX",
+          "contentVersion": "core_v1",
+          "entries": [
+            {
+              "cardId": "EC01",
+              "quantity": 2
+            },
+            {
+              "cardId": "EC02",
+              "quantity": 2
+            },
+            {
+              "cardId": "EC03",
+              "quantity": 2
+            },
+            {
+              "cardId": "EC05",
+              "quantity": 2
+            },
+            {
+              "cardId": "F01",
+              "quantity": 2
+            },
+            {
+              "cardId": "F02",
+              "quantity": 2
+            },
+            {
+              "cardId": "F03",
+              "quantity": 2
+            },
+            {
+              "cardId": "F04",
+              "quantity": 2
+            },
+            {
+              "cardId": "F06",
+              "quantity": 2
+            },
+            {
+              "cardId": "F08",
+              "quantity": 2
+            },
+            {
+              "cardId": "X01",
+              "quantity": 2
+            },
+            {
+              "cardId": "X02",
+              "quantity": 2
+            },
+            {
+              "cardId": "X03",
+              "quantity": 2
+            },
+            {
+              "cardId": "X06",
+              "quantity": 2
+            },
+            {
+              "cardId": "X08",
+              "quantity": 2
+            }
+          ]
+        }
+      },
+      "lifecycle": "ACTIVE",
+      "turn": 0,
+      "phase": "MULLIGAN",
+      "activeSide": null,
+      "players": {
+        "EVIL": {
+          "heroId": "H_E_FX",
+          "hp": 20,
+          "maxHp": 20,
+          "energy": {
+            "current": 0,
+            "max": 0
+          },
+          "block": {
+            "charge": 0,
+            "used": 0,
+            "active": true
+          },
+          "hand": [
+            {
+              "instanceId": "871641ce939fbfcdbe08e3cc76e73915",
+              "definitionId": "X03"
+            },
+            {
+              "instanceId": "4e6dab9e1ae6cbcf961d9def8251b1f7",
+              "definitionId": "X08"
+            },
+            {
+              "instanceId": "b11c084522c982d7d6882359d913e395",
+              "definitionId": "X06"
+            },
+            {
+              "instanceId": "23f96925a93e7e17284af87a010d27a1",
+              "definitionId": "X01"
+            }
+          ],
+          "deck": [
+            {
+              "instanceId": "826caac9e2c10010bb8af535b1f5ed18",
+              "definitionId": "X08"
+            },
+            {
+              "instanceId": "69b57142e148921a3c4a423b87e2968e",
+              "definitionId": "F08"
+            },
+            {
+              "instanceId": "f207f7fcb27690f1912ee1a8c972fcb1",
+              "definitionId": "EC05"
+            },
+            {
+              "instanceId": "4bfdd402b8bbffb14f2026ac15f97d9f",
+              "definitionId": "F04"
+            },
+            {
+              "instanceId": "6296f1bb8856a1ae04299b5df1c15f4c",
+              "definitionId": "F06"
+            },
+            {
+              "instanceId": "b6615b868fc432b4b27f620bbb5bda6c",
+              "definitionId": "F06"
+            },
+            {
+              "instanceId": "90c030cc6a2c3345e8f1d86ad9d6b7ec",
+              "definitionId": "F03"
+            },
+            {
+              "instanceId": "b71e9cdac59dee9b3a7629303719c2dd",
+              "definitionId": "F01"
+            },
+            {
+              "instanceId": "1da1c795fbdd32b6fe6d9b9a5e2d66a0",
+              "definitionId": "X02"
+            },
+            {
+              "instanceId": "82f92582add2cc4697c7050f3f79b90d",
+              "definitionId": "EC03"
+            },
+            {
+              "instanceId": "75e47ae5853edbdec02afe4171294952",
+              "definitionId": "F04"
+            },
+            {
+              "instanceId": "68385509ce1d75b2f7c1c332b5384c09",
+              "definitionId": "EC01"
+            },
+            {
+              "instanceId": "c9a5f1850ff315f053c55ae450d97161",
+              "definitionId": "EC05"
+            },
+            {
+              "instanceId": "97e9c8792e06b5354d01ef9997fc917b",
+              "definitionId": "X03"
+            },
+            {
+              "instanceId": "ef88f975679a42b7dfb2f85f8b9ccf1d",
+              "definitionId": "X01"
+            },
+            {
+              "instanceId": "cce44ef225b1f9a8155a07396f6b7fd7",
+              "definitionId": "F01"
+            },
+            {
+              "instanceId": "87f768e402c2841b4a885450f743666c",
+              "definitionId": "F02"
+            },
+            {
+              "instanceId": "8d5cf77be5b9e72c5e1c32ec28085f21",
+              "definitionId": "X02"
+            },
+            {
+              "instanceId": "68c7fba99524ef7d2e38e290dab9a1e6",
+              "definitionId": "EC01"
+            },
+            {
+              "instanceId": "e8c10cceb61dbccce701d8922dc2bf71",
+              "definitionId": "F08"
+            },
+            {
+              "instanceId": "e93f3d3b12b1f1bab99d85269b67e6ac",
+              "definitionId": "EC02"
+            },
+            {
+              "instanceId": "87a1efb281a31d8147c135d82b1533e6",
+              "definitionId": "EC02"
+            },
+            {
+              "instanceId": "3b2923f2c77053274c53f83cccbeb64d",
+              "definitionId": "F03"
+            },
+            {
+              "instanceId": "7317351a5ed929ba598f64dbb9a2ac31",
+              "definitionId": "X06"
+            },
+            {
+              "instanceId": "fb684db851f8ab3820b63115256f1f8a",
+              "definitionId": "EC03"
+            },
+            {
+              "instanceId": "75c22ebf1f1a36d574347b873b6d0c24",
+              "definitionId": "F02"
+            }
+          ],
+          "discard": [],
+          "reserve": [],
+          "receivedPowerIds": [],
+          "usedPowers": [],
+          "fatigueCounter": 0,
+          "mulliganCommitted": false
+        },
+        "GOOD": {
+          "heroId": "H_G_BV",
+          "hp": 20,
+          "maxHp": 20,
+          "energy": {
+            "current": 0,
+            "max": 0
+          },
+          "block": {
+            "charge": 0,
+            "used": 0,
+            "active": true
+          },
+          "hand": [
+            {
+              "instanceId": "16088f8bb598a68e80955f3ac2f5713a",
+              "definitionId": "V03"
+            },
+            {
+              "instanceId": "3980db60c6e203680864d9e9007f238d",
+              "definitionId": "GC02"
+            },
+            {
+              "instanceId": "bd90e41988913e4383c4b4eb411be25c",
+              "definitionId": "B04"
+            },
+            {
+              "instanceId": "60814b08ceff3e84a561dafe78e34aef",
+              "definitionId": "B01"
+            }
+          ],
+          "deck": [
+            {
+              "instanceId": "102e95f5b956947e1a2b9b5fd7f39ee7",
+              "definitionId": "B06"
+            },
+            {
+              "instanceId": "80f017e94befd3c1a143509c42ea6e39",
+              "definitionId": "V01"
+            },
+            {
+              "instanceId": "9eb5877cd1b64247fb5cbc7ebf37388b",
+              "definitionId": "GC03"
+            },
+            {
+              "instanceId": "0c57d834959728dd9520ccc0773f2dae",
+              "definitionId": "GC01"
+            },
+            {
+              "instanceId": "aa66736bc9e3a13d4e7a9d7d71a2de31",
+              "definitionId": "V02"
+            },
+            {
+              "instanceId": "186636f38e37c83246a85a70a73823ee",
+              "definitionId": "GC03"
+            },
+            {
+              "instanceId": "38f6d5d81e39985279f88b4b44fab963",
+              "definitionId": "GC01"
+            },
+            {
+              "instanceId": "8547012dd0cd99ed8794c8a29aeb781a",
+              "definitionId": "V05"
+            },
+            {
+              "instanceId": "b36d1f3b5aa08c56de5751488e605ae0",
+              "definitionId": "B06"
+            },
+            {
+              "instanceId": "712d24f3ac238fafc86577c4f8826a96",
+              "definitionId": "B01"
+            },
+            {
+              "instanceId": "34f3291867fed2dab9756624d955867e",
+              "definitionId": "V03"
+            },
+            {
+              "instanceId": "4466f062ed788318939fae1167fbdb4b",
+              "definitionId": "V06"
+            },
+            {
+              "instanceId": "6b96ac1afa2a9fbf4ae139a443cb67e2",
+              "definitionId": "V05"
+            },
+            {
+              "instanceId": "b497ae07bbf881f1603d316262dc1928",
+              "definitionId": "GC05"
+            },
+            {
+              "instanceId": "8be5a7d2c61eedc1b6367d04f3a225ce",
+              "definitionId": "GC05"
+            },
+            {
+              "instanceId": "a4f99ff0358125f482ed0110887d5fdb",
+              "definitionId": "B07"
+            },
+            {
+              "instanceId": "3ee3e204f04bd153a0c7e4b17797a83e",
+              "definitionId": "B07"
+            },
+            {
+              "instanceId": "697cd45dae585e7225a74522d258236d",
+              "definitionId": "V02"
+            },
+            {
+              "instanceId": "76c0f2db1332a4b2e03e2d9eb81ffb5d",
+              "definitionId": "V06"
+            },
+            {
+              "instanceId": "7be614d1c0fd935b3a7dda56292c3c72",
+              "definitionId": "V01"
+            },
+            {
+              "instanceId": "a041b086beecb1a6c932c2f3c519cfa4",
+              "definitionId": "B03"
+            },
+            {
+              "instanceId": "d2a3309f100382a1c4d5cc5d3c45272c",
+              "definitionId": "B02"
+            },
+            {
+              "instanceId": "444a83f7a4a3600290e24889577c0347",
+              "definitionId": "GC02"
+            },
+            {
+              "instanceId": "6e5b70cd2eaee91be1bd119f6541da0e",
+              "definitionId": "B04"
+            },
+            {
+              "instanceId": "8477adf4e82721bad9dbc3326e6087ba",
+              "definitionId": "B02"
+            },
+            {
+              "instanceId": "88ce27da270f4dab6e99fadf3651ce04",
+              "definitionId": "B03"
+            }
+          ],
+          "discard": [],
+          "reserve": [],
+          "receivedPowerIds": [],
+          "usedPowers": [],
+          "fatigueCounter": 0,
+          "mulliganCommitted": false
+        }
+      },
+      "board": [
+        {
+          "laneId": 1,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "HIDDEN",
+            "definitionId": "healing_spring",
+            "revealTurn": 1
+          }
+        },
+        {
+          "laneId": 2,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "NORMAL"
+          }
+        },
+        {
+          "laneId": 3,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "HIDDEN",
+            "definitionId": "ancient_forest",
+            "revealTurn": 3
+          }
+        },
+        {
+          "laneId": 4,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "NORMAL"
+          }
+        },
+        {
+          "laneId": 5,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "HIDDEN",
+            "definitionId": "quiet_meadow",
+            "revealTurn": 5
+          }
+        }
+      ],
+      "random": {
+        "algorithmVersion": "hmac-sha256-xoshiro128ss-v1",
+        "identityKey": "890a829833b69281c5a45e6943d94cf156360f14ddd0b185a0088ab5ce4daeb8",
+        "states": {
+          "location": [
+            3232365399,
+            4207751818,
+            1939755254,
+            3831242230
+          ],
+          "deck:evil": [
+            3160306124,
+            2066286579,
+            2233945046,
+            2718939859
+          ],
+          "deck:good": [
+            3495251180,
+            1576813194,
+            1038151965,
+            4104853625
+          ],
+          "power:evil": [
+            331136399,
+            3618803810,
+            3203827855,
+            2867019660
+          ],
+          "power:good": [
+            1973010063,
+            3659279554,
+            4140512375,
+            171179949
+          ],
+          "bot:easy": [
+            2224007171,
+            3331645701,
+            3355696955,
+            3628513220
+          ]
+        }
+      },
+      "instanceSeq": 60,
+      "creationSeq": 0,
+      "eventSeq": 11,
+      "rootSeq": 1,
+      "turnCounters": {},
+      "continuation": null,
+      "blockResponse": null,
+      "outcome": null
+    }
+  },
+  "initialHash": "a968d4ae5f6afe5b3e386589f9bb7e7c059c443acb0a2a3bf5d0296451df55ad",
+  "checkpoint": {
+    "stateSchemaVersion": "match_state_v1",
+    "state": {
+      "matchId": "00000000-0000-4000-8000-000000000001",
+      "mode": "SKIRMISH",
+      "humanSide": "GOOD",
+      "difficulty": "NORMAL",
+      "versions": {
+        "rules": "rules_v1",
+        "content": "core_v1",
+        "locations": "locations_v1",
+        "bot": "bot_v1"
+      },
+      "deckSnapshots": {
+        "GOOD": {
+          "name": "An Nhiên",
+          "heroId": "H_G_BV",
+          "contentVersion": "core_v1",
+          "entries": [
+            {
+              "cardId": "GC01",
+              "quantity": 2
+            },
+            {
+              "cardId": "GC02",
+              "quantity": 2
+            },
+            {
+              "cardId": "GC03",
+              "quantity": 2
+            },
+            {
+              "cardId": "GC05",
+              "quantity": 2
+            },
+            {
+              "cardId": "B01",
+              "quantity": 2
+            },
+            {
+              "cardId": "B02",
+              "quantity": 2
+            },
+            {
+              "cardId": "B03",
+              "quantity": 2
+            },
+            {
+              "cardId": "B04",
+              "quantity": 2
+            },
+            {
+              "cardId": "B06",
+              "quantity": 2
+            },
+            {
+              "cardId": "B07",
+              "quantity": 2
+            },
+            {
+              "cardId": "V01",
+              "quantity": 2
+            },
+            {
+              "cardId": "V02",
+              "quantity": 2
+            },
+            {
+              "cardId": "V03",
+              "quantity": 2
+            },
+            {
+              "cardId": "V05",
+              "quantity": 2
+            },
+            {
+              "cardId": "V06",
+              "quantity": 2
+            }
+          ]
+        },
+        "EVIL": {
+          "name": "Hắc Luyện",
+          "heroId": "H_E_FX",
+          "contentVersion": "core_v1",
+          "entries": [
+            {
+              "cardId": "EC01",
+              "quantity": 2
+            },
+            {
+              "cardId": "EC02",
+              "quantity": 2
+            },
+            {
+              "cardId": "EC03",
+              "quantity": 2
+            },
+            {
+              "cardId": "EC05",
+              "quantity": 2
+            },
+            {
+              "cardId": "F01",
+              "quantity": 2
+            },
+            {
+              "cardId": "F02",
+              "quantity": 2
+            },
+            {
+              "cardId": "F03",
+              "quantity": 2
+            },
+            {
+              "cardId": "F04",
+              "quantity": 2
+            },
+            {
+              "cardId": "F06",
+              "quantity": 2
+            },
+            {
+              "cardId": "F08",
+              "quantity": 2
+            },
+            {
+              "cardId": "X01",
+              "quantity": 2
+            },
+            {
+              "cardId": "X02",
+              "quantity": 2
+            },
+            {
+              "cardId": "X03",
+              "quantity": 2
+            },
+            {
+              "cardId": "X06",
+              "quantity": 2
+            },
+            {
+              "cardId": "X08",
+              "quantity": 2
+            }
+          ]
+        }
+      },
+      "lifecycle": "PAUSED",
+      "turn": 1,
+      "phase": "GOOD_PLAY",
+      "activeSide": "GOOD",
+      "players": {
+        "EVIL": {
+          "heroId": "H_E_FX",
+          "hp": 20,
+          "maxHp": 20,
+          "energy": {
+            "current": 1,
+            "max": 1
+          },
+          "block": {
+            "charge": 0,
+            "used": 0,
+            "active": true
+          },
+          "hand": [
+            {
+              "instanceId": "871641ce939fbfcdbe08e3cc76e73915",
+              "definitionId": "X03"
+            },
+            {
+              "instanceId": "4e6dab9e1ae6cbcf961d9def8251b1f7",
+              "definitionId": "X08"
+            },
+            {
+              "instanceId": "b11c084522c982d7d6882359d913e395",
+              "definitionId": "X06"
+            },
+            {
+              "instanceId": "23f96925a93e7e17284af87a010d27a1",
+              "definitionId": "X01"
+            }
+          ],
+          "deck": [
+            {
+              "instanceId": "826caac9e2c10010bb8af535b1f5ed18",
+              "definitionId": "X08"
+            },
+            {
+              "instanceId": "69b57142e148921a3c4a423b87e2968e",
+              "definitionId": "F08"
+            },
+            {
+              "instanceId": "f207f7fcb27690f1912ee1a8c972fcb1",
+              "definitionId": "EC05"
+            },
+            {
+              "instanceId": "4bfdd402b8bbffb14f2026ac15f97d9f",
+              "definitionId": "F04"
+            },
+            {
+              "instanceId": "6296f1bb8856a1ae04299b5df1c15f4c",
+              "definitionId": "F06"
+            },
+            {
+              "instanceId": "b6615b868fc432b4b27f620bbb5bda6c",
+              "definitionId": "F06"
+            },
+            {
+              "instanceId": "90c030cc6a2c3345e8f1d86ad9d6b7ec",
+              "definitionId": "F03"
+            },
+            {
+              "instanceId": "b71e9cdac59dee9b3a7629303719c2dd",
+              "definitionId": "F01"
+            },
+            {
+              "instanceId": "1da1c795fbdd32b6fe6d9b9a5e2d66a0",
+              "definitionId": "X02"
+            },
+            {
+              "instanceId": "82f92582add2cc4697c7050f3f79b90d",
+              "definitionId": "EC03"
+            },
+            {
+              "instanceId": "75e47ae5853edbdec02afe4171294952",
+              "definitionId": "F04"
+            },
+            {
+              "instanceId": "68385509ce1d75b2f7c1c332b5384c09",
+              "definitionId": "EC01"
+            },
+            {
+              "instanceId": "c9a5f1850ff315f053c55ae450d97161",
+              "definitionId": "EC05"
+            },
+            {
+              "instanceId": "97e9c8792e06b5354d01ef9997fc917b",
+              "definitionId": "X03"
+            },
+            {
+              "instanceId": "ef88f975679a42b7dfb2f85f8b9ccf1d",
+              "definitionId": "X01"
+            },
+            {
+              "instanceId": "cce44ef225b1f9a8155a07396f6b7fd7",
+              "definitionId": "F01"
+            },
+            {
+              "instanceId": "87f768e402c2841b4a885450f743666c",
+              "definitionId": "F02"
+            },
+            {
+              "instanceId": "8d5cf77be5b9e72c5e1c32ec28085f21",
+              "definitionId": "X02"
+            },
+            {
+              "instanceId": "68c7fba99524ef7d2e38e290dab9a1e6",
+              "definitionId": "EC01"
+            },
+            {
+              "instanceId": "e8c10cceb61dbccce701d8922dc2bf71",
+              "definitionId": "F08"
+            },
+            {
+              "instanceId": "e93f3d3b12b1f1bab99d85269b67e6ac",
+              "definitionId": "EC02"
+            },
+            {
+              "instanceId": "87a1efb281a31d8147c135d82b1533e6",
+              "definitionId": "EC02"
+            },
+            {
+              "instanceId": "3b2923f2c77053274c53f83cccbeb64d",
+              "definitionId": "F03"
+            },
+            {
+              "instanceId": "7317351a5ed929ba598f64dbb9a2ac31",
+              "definitionId": "X06"
+            },
+            {
+              "instanceId": "fb684db851f8ab3820b63115256f1f8a",
+              "definitionId": "EC03"
+            },
+            {
+              "instanceId": "75c22ebf1f1a36d574347b873b6d0c24",
+              "definitionId": "F02"
+            }
+          ],
+          "discard": [],
+          "reserve": [
+            {
+              "instanceId": "5f12e7c409b1637f9efe91e20269c98b",
+              "definitionId": "S_E_FX",
+              "normalCost": 1
+            }
+          ],
+          "receivedPowerIds": [
+            "S_E_FX"
+          ],
+          "usedPowers": [],
+          "fatigueCounter": 0,
+          "mulliganCommitted": true
+        },
+        "GOOD": {
+          "heroId": "H_G_BV",
+          "hp": 20,
+          "maxHp": 20,
+          "energy": {
+            "current": 1,
+            "max": 1
+          },
+          "block": {
+            "charge": 0,
+            "used": 0,
+            "active": true
+          },
+          "hand": [
+            {
+              "instanceId": "16088f8bb598a68e80955f3ac2f5713a",
+              "definitionId": "V03"
+            },
+            {
+              "instanceId": "3980db60c6e203680864d9e9007f238d",
+              "definitionId": "GC02"
+            },
+            {
+              "instanceId": "bd90e41988913e4383c4b4eb411be25c",
+              "definitionId": "B04"
+            },
+            {
+              "instanceId": "60814b08ceff3e84a561dafe78e34aef",
+              "definitionId": "B01"
+            }
+          ],
+          "deck": [
+            {
+              "instanceId": "102e95f5b956947e1a2b9b5fd7f39ee7",
+              "definitionId": "B06"
+            },
+            {
+              "instanceId": "80f017e94befd3c1a143509c42ea6e39",
+              "definitionId": "V01"
+            },
+            {
+              "instanceId": "9eb5877cd1b64247fb5cbc7ebf37388b",
+              "definitionId": "GC03"
+            },
+            {
+              "instanceId": "0c57d834959728dd9520ccc0773f2dae",
+              "definitionId": "GC01"
+            },
+            {
+              "instanceId": "aa66736bc9e3a13d4e7a9d7d71a2de31",
+              "definitionId": "V02"
+            },
+            {
+              "instanceId": "186636f38e37c83246a85a70a73823ee",
+              "definitionId": "GC03"
+            },
+            {
+              "instanceId": "38f6d5d81e39985279f88b4b44fab963",
+              "definitionId": "GC01"
+            },
+            {
+              "instanceId": "8547012dd0cd99ed8794c8a29aeb781a",
+              "definitionId": "V05"
+            },
+            {
+              "instanceId": "b36d1f3b5aa08c56de5751488e605ae0",
+              "definitionId": "B06"
+            },
+            {
+              "instanceId": "712d24f3ac238fafc86577c4f8826a96",
+              "definitionId": "B01"
+            },
+            {
+              "instanceId": "34f3291867fed2dab9756624d955867e",
+              "definitionId": "V03"
+            },
+            {
+              "instanceId": "4466f062ed788318939fae1167fbdb4b",
+              "definitionId": "V06"
+            },
+            {
+              "instanceId": "6b96ac1afa2a9fbf4ae139a443cb67e2",
+              "definitionId": "V05"
+            },
+            {
+              "instanceId": "b497ae07bbf881f1603d316262dc1928",
+              "definitionId": "GC05"
+            },
+            {
+              "instanceId": "8be5a7d2c61eedc1b6367d04f3a225ce",
+              "definitionId": "GC05"
+            },
+            {
+              "instanceId": "a4f99ff0358125f482ed0110887d5fdb",
+              "definitionId": "B07"
+            },
+            {
+              "instanceId": "3ee3e204f04bd153a0c7e4b17797a83e",
+              "definitionId": "B07"
+            },
+            {
+              "instanceId": "697cd45dae585e7225a74522d258236d",
+              "definitionId": "V02"
+            },
+            {
+              "instanceId": "76c0f2db1332a4b2e03e2d9eb81ffb5d",
+              "definitionId": "V06"
+            },
+            {
+              "instanceId": "7be614d1c0fd935b3a7dda56292c3c72",
+              "definitionId": "V01"
+            },
+            {
+              "instanceId": "a041b086beecb1a6c932c2f3c519cfa4",
+              "definitionId": "B03"
+            },
+            {
+              "instanceId": "d2a3309f100382a1c4d5cc5d3c45272c",
+              "definitionId": "B02"
+            },
+            {
+              "instanceId": "444a83f7a4a3600290e24889577c0347",
+              "definitionId": "GC02"
+            },
+            {
+              "instanceId": "6e5b70cd2eaee91be1bd119f6541da0e",
+              "definitionId": "B04"
+            },
+            {
+              "instanceId": "8477adf4e82721bad9dbc3326e6087ba",
+              "definitionId": "B02"
+            },
+            {
+              "instanceId": "88ce27da270f4dab6e99fadf3651ce04",
+              "definitionId": "B03"
+            }
+          ],
+          "discard": [],
+          "reserve": [
+            {
+              "instanceId": "0e010ae2e20fe0ff107a007f3ab7b3e7",
+              "definitionId": "P_V1",
+              "normalCost": 1
+            }
+          ],
+          "receivedPowerIds": [
+            "P_V1"
+          ],
+          "usedPowers": [],
+          "fatigueCounter": 0,
+          "mulliganCommitted": true
+        }
+      },
+      "board": [
+        {
+          "laneId": 1,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "ACTIVE",
+            "definitionId": "healing_spring",
+            "revealTurn": 1
+          }
+        },
+        {
+          "laneId": 2,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "NORMAL"
+          }
+        },
+        {
+          "laneId": 3,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "HIDDEN",
+            "definitionId": "ancient_forest",
+            "revealTurn": 3
+          }
+        },
+        {
+          "laneId": 4,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "NORMAL"
+          }
+        },
+        {
+          "laneId": 5,
+          "good": null,
+          "evil": null,
+          "location": {
+            "state": "HIDDEN",
+            "definitionId": "quiet_meadow",
+            "revealTurn": 5
+          }
+        }
+      ],
+      "random": {
+        "algorithmVersion": "hmac-sha256-xoshiro128ss-v1",
+        "identityKey": "890a829833b69281c5a45e6943d94cf156360f14ddd0b185a0088ab5ce4daeb8",
+        "states": {
+          "location": [
+            3232365399,
+            4207751818,
+            1939755254,
+            3831242230
+          ],
+          "deck:evil": [
+            3160306124,
+            2066286579,
+            2233945046,
+            2718939859
+          ],
+          "deck:good": [
+            3495251180,
+            1576813194,
+            1038151965,
+            4104853625
+          ],
+          "power:evil": [
+            1861030497,
+            2063115618,
+            3362451712,
+            2373940202
+          ],
+          "power:good": [
+            2780196320,
+            1498326586,
+            3138064120,
+            2124119681
+          ],
+          "bot:easy": [
+            2224007171,
+            3331645701,
+            3355696955,
+            3628513220
+          ]
+        }
+      },
+      "instanceSeq": 62,
+      "creationSeq": 0,
+      "eventSeq": 27,
+      "rootSeq": 5,
+      "turnCounters": {},
+      "continuation": null,
+      "blockResponse": null,
+      "outcome": null
+    }
+  },
+  "checkpointHash": "5ede397fb173a44b4cb3fe243f3a847e1848a6a25e6f50043255ad1e3630892a",
+  "journal": [
+    {
+      "stepSeq": 1,
+      "action": {
+        "actor": "GOOD",
+        "action": {
+          "kind": "MULLIGAN",
+          "cardInstanceIds": []
+        }
+      },
+      "preStateHash": "a968d4ae5f6afe5b3e386589f9bb7e7c059c443acb0a2a3bf5d0296451df55ad",
+      "postStateHash": "0adee7091c3e297faa29c55772cb0c26c565a01a899913c46ba98b7afe559f79",
+      "firstEventSeq": 12,
+      "lastEventSeq": 13,
+      "origin": "HUMAN",
+      "nextBotRandomState": null
+    },
+    {
+      "stepSeq": 2,
+      "action": {
+        "actor": "EVIL",
+        "action": {
+          "kind": "MULLIGAN",
+          "cardInstanceIds": []
+        }
+      },
+      "preStateHash": "0adee7091c3e297faa29c55772cb0c26c565a01a899913c46ba98b7afe559f79",
+      "postStateHash": "61b2e73c31827c8b91355fd7eaecf9199b709871485e287faa1dbdca071df3a1",
+      "firstEventSeq": 14,
+      "lastEventSeq": 25,
+      "origin": "BOT",
+      "nextBotRandomState": [
+        2224007171,
+        3331645701,
+        3355696955,
+        3628513220
+      ]
+    },
+    {
+      "stepSeq": 3,
+      "action": {
+        "actor": "EVIL",
+        "action": {
+          "kind": "PASS_PHASE"
+        }
+      },
+      "preStateHash": "61b2e73c31827c8b91355fd7eaecf9199b709871485e287faa1dbdca071df3a1",
+      "postStateHash": "7611398a6802b7b953d178b46d002e8a347c41c57b528277d369ffa42efd743f",
+      "firstEventSeq": 26,
+      "lastEventSeq": 26,
+      "origin": "BOT",
+      "nextBotRandomState": [
+        2224007171,
+        3331645701,
+        3355696955,
+        3628513220
+      ]
+    },
+    {
+      "stepSeq": 4,
+      "action": {
+        "actor": "GOOD",
+        "action": {
+          "kind": "PAUSE"
+        }
+      },
+      "preStateHash": "7611398a6802b7b953d178b46d002e8a347c41c57b528277d369ffa42efd743f",
+      "postStateHash": "5ede397fb173a44b4cb3fe243f3a847e1848a6a25e6f50043255ad1e3630892a",
+      "firstEventSeq": 27,
+      "lastEventSeq": 27,
+      "origin": "HUMAN",
+      "nextBotRandomState": null
+    }
+  ],
+  "events": [
+    {
+      "kind": "MatchStarted",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "mode": "SKIRMISH",
+        "heroes": {
+          "EVIL": "H_E_FX",
+          "GOOD": "H_G_BV"
+        },
+        "versions": {
+          "rules": "rules_v1",
+          "content": "core_v1",
+          "locations": "locations_v1",
+          "bot": "bot_v1"
+        }
+      },
+      "sequence": 1,
+      "eventId": "00000000-0000-4000-8000-000000000001:1",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "EVIL",
+      "payload": {
+        "side": "EVIL",
+        "card": {
+          "instanceId": "871641ce939fbfcdbe08e3cc76e73915",
+          "definitionId": "X03"
+        },
+        "handCount": 1,
+        "deckCount": 29
+      },
+      "sequence": 2,
+      "eventId": "00000000-0000-4000-8000-000000000001:2",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "EVIL",
+      "payload": {
+        "side": "EVIL",
+        "card": {
+          "instanceId": "4e6dab9e1ae6cbcf961d9def8251b1f7",
+          "definitionId": "X08"
+        },
+        "handCount": 2,
+        "deckCount": 28
+      },
+      "sequence": 3,
+      "eventId": "00000000-0000-4000-8000-000000000001:3",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "EVIL",
+      "payload": {
+        "side": "EVIL",
+        "card": {
+          "instanceId": "b11c084522c982d7d6882359d913e395",
+          "definitionId": "X06"
+        },
+        "handCount": 3,
+        "deckCount": 27
+      },
+      "sequence": 4,
+      "eventId": "00000000-0000-4000-8000-000000000001:4",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "EVIL",
+      "payload": {
+        "side": "EVIL",
+        "card": {
+          "instanceId": "23f96925a93e7e17284af87a010d27a1",
+          "definitionId": "X01"
+        },
+        "handCount": 4,
+        "deckCount": 26
+      },
+      "sequence": 5,
+      "eventId": "00000000-0000-4000-8000-000000000001:5",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "HandCountChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "EVIL",
+        "handCount": 4,
+        "deckCount": 26
+      },
+      "sequence": 6,
+      "eventId": "00000000-0000-4000-8000-000000000001:6",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "GOOD",
+      "payload": {
+        "side": "GOOD",
+        "card": {
+          "instanceId": "16088f8bb598a68e80955f3ac2f5713a",
+          "definitionId": "V03"
+        },
+        "handCount": 1,
+        "deckCount": 29
+      },
+      "sequence": 7,
+      "eventId": "00000000-0000-4000-8000-000000000001:7",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "GOOD",
+      "payload": {
+        "side": "GOOD",
+        "card": {
+          "instanceId": "3980db60c6e203680864d9e9007f238d",
+          "definitionId": "GC02"
+        },
+        "handCount": 2,
+        "deckCount": 28
+      },
+      "sequence": 8,
+      "eventId": "00000000-0000-4000-8000-000000000001:8",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "GOOD",
+      "payload": {
+        "side": "GOOD",
+        "card": {
+          "instanceId": "bd90e41988913e4383c4b4eb411be25c",
+          "definitionId": "B04"
+        },
+        "handCount": 3,
+        "deckCount": 27
+      },
+      "sequence": 9,
+      "eventId": "00000000-0000-4000-8000-000000000001:9",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "CardDrawn",
+      "visibility": "OWNER",
+      "ownerSide": "GOOD",
+      "payload": {
+        "side": "GOOD",
+        "card": {
+          "instanceId": "60814b08ceff3e84a561dafe78e34aef",
+          "definitionId": "B01"
+        },
+        "handCount": 4,
+        "deckCount": 26
+      },
+      "sequence": 10,
+      "eventId": "00000000-0000-4000-8000-000000000001:10",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "HandCountChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "GOOD",
+        "handCount": 4,
+        "deckCount": 26
+      },
+      "sequence": 11,
+      "eventId": "00000000-0000-4000-8000-000000000001:11",
+      "rootId": "00000000-0000-4000-8000-000000000001:1"
+    },
+    {
+      "kind": "HandCountChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "GOOD",
+        "handCount": 4,
+        "deckCount": 26
+      },
+      "sequence": 12,
+      "eventId": "00000000-0000-4000-8000-000000000001:12",
+      "rootId": "00000000-0000-4000-8000-000000000001:2"
+    },
+    {
+      "kind": "MulliganCommitted",
+      "visibility": "OWNER",
+      "ownerSide": "GOOD",
+      "payload": {
+        "side": "GOOD",
+        "replacedCount": 0
+      },
+      "sequence": 13,
+      "eventId": "00000000-0000-4000-8000-000000000001:13",
+      "rootId": "00000000-0000-4000-8000-000000000001:2"
+    },
+    {
+      "kind": "HandCountChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "EVIL",
+        "handCount": 4,
+        "deckCount": 26
+      },
+      "sequence": 14,
+      "eventId": "00000000-0000-4000-8000-000000000001:14",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "MulliganCommitted",
+      "visibility": "OWNER",
+      "ownerSide": "EVIL",
+      "payload": {
+        "side": "EVIL",
+        "replacedCount": 0
+      },
+      "sequence": 15,
+      "eventId": "00000000-0000-4000-8000-000000000001:15",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "PowerGranted",
+      "visibility": "OWNER",
+      "ownerSide": "EVIL",
+      "payload": {
+        "side": "EVIL",
+        "power": {
+          "instanceId": "5f12e7c409b1637f9efe91e20269c98b",
+          "definitionId": "S_E_FX",
+          "normalCost": 1
+        },
+        "reason": "INITIAL"
+      },
+      "sequence": 16,
+      "eventId": "00000000-0000-4000-8000-000000000001:16",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "ReserveCountChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "EVIL",
+        "reserveCount": 1
+      },
+      "sequence": 17,
+      "eventId": "00000000-0000-4000-8000-000000000001:17",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "PowerGranted",
+      "visibility": "OWNER",
+      "ownerSide": "GOOD",
+      "payload": {
+        "side": "GOOD",
+        "power": {
+          "instanceId": "0e010ae2e20fe0ff107a007f3ab7b3e7",
+          "definitionId": "P_V1",
+          "normalCost": 1
+        },
+        "reason": "INITIAL"
+      },
+      "sequence": 18,
+      "eventId": "00000000-0000-4000-8000-000000000001:18",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "ReserveCountChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "GOOD",
+        "reserveCount": 1
+      },
+      "sequence": 19,
+      "eventId": "00000000-0000-4000-8000-000000000001:19",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "PhaseChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "from": "MULLIGAN",
+        "to": "TURN_START",
+        "turn": 1
+      },
+      "sequence": 20,
+      "eventId": "00000000-0000-4000-8000-000000000001:20",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "TurnStarted",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "turn": 1
+      },
+      "sequence": 21,
+      "eventId": "00000000-0000-4000-8000-000000000001:21",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "LocationRevealed",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "laneId": 1,
+        "definitionId": "healing_spring"
+      },
+      "sequence": 22,
+      "eventId": "00000000-0000-4000-8000-000000000001:22",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "EnergyRefilled",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "EVIL",
+        "before": 0,
+        "after": 1,
+        "max": 1
+      },
+      "sequence": 23,
+      "eventId": "00000000-0000-4000-8000-000000000001:23",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "EnergyRefilled",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "side": "GOOD",
+        "before": 0,
+        "after": 1,
+        "max": 1
+      },
+      "sequence": 24,
+      "eventId": "00000000-0000-4000-8000-000000000001:24",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "PhaseChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "from": "TURN_START",
+        "to": "EVIL_DEPLOY",
+        "turn": 1
+      },
+      "sequence": 25,
+      "eventId": "00000000-0000-4000-8000-000000000001:25",
+      "rootId": "00000000-0000-4000-8000-000000000001:3"
+    },
+    {
+      "kind": "PhaseChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "from": "EVIL_DEPLOY",
+        "to": "GOOD_PLAY",
+        "turn": 1
+      },
+      "sequence": 26,
+      "eventId": "00000000-0000-4000-8000-000000000001:26",
+      "rootId": "00000000-0000-4000-8000-000000000001:4"
+    },
+    {
+      "kind": "LifecycleChanged",
+      "visibility": "PUBLIC",
+      "ownerSide": null,
+      "payload": {
+        "from": "ACTIVE",
+        "to": "PAUSED",
+        "reason": "PAUSE"
+      },
+      "sequence": 27,
+      "eventId": "00000000-0000-4000-8000-000000000001:27",
+      "rootId": "00000000-0000-4000-8000-000000000001:5"
+    }
+  ],
+  "botIntentsThisTurn": 1,
+  "expectedResumedHash": "4b5508561b15aefdef340737e54e8c322e5c793f46ab5c3ec2e98af0acdaed1d",
+  "rematch": {
+    "deck": {
+      "kind": "PRESET",
+      "presetId": "D_G_BV"
+    },
+    "opponentHeroId": "H_E_FX",
+    "difficulty": "NORMAL",
+    "expectedContentVersion": "core_v1"
+  }
+}

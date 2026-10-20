@@ -1,4 +1,5 @@
 import { it, expect } from "vitest";
+import { readFileSync } from "node:fs";
 import { randomUUID } from "node:crypto";
 import type { CommandResponse, PlayerAction } from "@oathfront/contracts";
 import { harness, createBody } from "./http-helpers.js";
@@ -6,12 +7,7 @@ import {
   decodeCheckpoint,
   encodeCheckpoint,
 } from "../src/matches/checkpoint.js";
-import {
-  createMatch,
-  createRandomStreams,
-  hashState,
-} from "@oathfront/game-engine";
-import { matchConfig, seed } from "../../../tests/fixtures/match-fixture.js";
+import { hashState } from "@oathfront/game-engine";
 const h = harness();
 it.each(["USE_BLOCK_POWER", "KEEP_BLOCK_POWER"] as const)(
   "journals/reloads every scene and command receipt with %s; independent completion survives replay",
@@ -132,13 +128,123 @@ it.each(["USE_BLOCK_POWER", "KEEP_BLOCK_POWER"] as const)(
     expect(skirmish.statusCode).toBe(201);
   },
 );
-it("decodes pre-T14 skirmish checkpoint without inserting fields or changing hashes", () => {
-  const s = createMatch(matchConfig(), createRandomStreams(seed));
-  expect(Object.hasOwn(s, "tutorial")).toBe(false);
-  const serialized = JSON.stringify(encodeCheckpoint(s));
-  const loaded = decodeCheckpoint(JSON.parse(serialized), hashState(s));
-  expect(JSON.stringify(encodeCheckpoint(loaded))).toBe(serialized);
-  expect(hashState(loaded)).toBe(hashState(s));
+it("replays retained pre-T14 initialization/journal and resumes its paused checkpoint through the API", async () => {
+  const fixture = JSON.parse(
+    readFileSync(
+      new URL("./fixtures/pre-t14-skirmish.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  expect(fixture.provenance.sourceCommit).toBe(
+    "f2dbfac73f6698725781f9ab55649964cad348b8",
+  );
+  expect(fixture.checkpointHash).toBe(
+    "5ede397fb173a44b4cb3fe243f3a847e1848a6a25e6f50043255ad1e3630892a",
+  );
+  const state = decodeCheckpoint(fixture.checkpoint, fixture.checkpointHash);
+  expect(Object.hasOwn(state, "tutorial")).toBe(false);
+  expect(encodeCheckpoint(state)).toEqual(fixture.checkpoint);
+  const g = await h.guest(),
+    id = state.matchId,
+    time = new Date();
+  // Import the archived durable records verbatim, never through current createMatch.
+  await h.pool.query(
+    "INSERT INTO matches(id,human_principal_id,human_side,mode,status,revision,rules_version,content_version,location_version,bot_version,rematch,created_at,updated_at,last_activity_at,expires_at,bot_intents_this_turn) VALUES($1,$2,'GOOD','SKIRMISH','PAUSED',4,'rules_v1','core_v1','locations_v1','bot_v1',$3,$4,$4,$4,$5,$6)",
+    [
+      id,
+      g.id,
+      JSON.stringify(fixture.rematch),
+      time,
+      new Date(time.getTime() + 86400000),
+      fixture.botIntentsThisTurn,
+    ],
+  );
+  await h.pool.query(
+    "INSERT INTO match_initializations(match_id,heroes,deck_snapshots,initial_state,private_seed,rng_algorithm_version) VALUES($1,$2,$3,$4,$5,$6)",
+    [
+      id,
+      JSON.stringify({
+        GOOD: state.players.GOOD.heroId,
+        EVIL: state.players.EVIL.heroId,
+      }),
+      JSON.stringify(fixture.config.decks),
+      JSON.stringify(fixture.initialization),
+      Buffer.from(fixture.seedHex, "hex"),
+      fixture.rngAlgorithmVersion,
+    ],
+  );
+  await h.pool.query(
+    "INSERT INTO match_checkpoints(match_id,revision,state,state_hash,last_event_seq,updated_at) VALUES($1,4,$2,$3,$4,$5)",
+    [
+      id,
+      JSON.stringify(fixture.checkpoint),
+      fixture.checkpointHash,
+      state.eventSeq,
+      time,
+    ],
+  );
+  for (const entry of fixture.journal)
+    await h.pool.query(
+      "INSERT INTO match_action_journal(match_id,step_seq,origin,action,next_bot_random_state,pre_state_hash,post_state_hash,first_event_seq,last_event_seq) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)",
+      [
+        id,
+        entry.stepSeq,
+        entry.origin,
+        JSON.stringify(entry.action),
+        entry.nextBotRandomState === null
+          ? null
+          : JSON.stringify(entry.nextBotRandomState),
+        entry.preStateHash,
+        entry.postStateHash,
+        entry.firstEventSeq,
+        entry.lastEventSeq,
+      ],
+    );
+  for (const event of fixture.events)
+    await h.pool.query(
+      "INSERT INTO match_events(match_id,seq,event_id,root_id,kind,visibility,owner_side,payload) VALUES($1,$2,$3,$4,$5,$6,$7,$8)",
+      [
+        id,
+        event.sequence,
+        event.eventId,
+        event.rootId,
+        event.kind,
+        event.visibility,
+        event.ownerSide,
+        JSON.stringify(event.payload),
+      ],
+    );
+  const replay = await h.app.services.repository.replayMatch(g.id, id);
+  expect(hashState(replay.finalState)).toBe(fixture.checkpointHash);
+  const read = await h.app.inject({
+    method: "GET",
+    url: `/api/v1/matches/${id}`,
+    headers: { cookie: g.cookie },
+  });
+  expect(read.statusCode, read.body).toBe(200);
+  expect(read.json().view.lifecycle).toBe("PAUSED");
+  const resumed = await h.app.inject({
+    method: "POST",
+    url: `/api/v1/matches/${id}/commands`,
+    headers: h.headers(g),
+    payload: {
+      commandId: randomUUID(),
+      expectedRevision: 4,
+      action: { kind: "RESUME" },
+    },
+  });
+  expect(resumed.statusCode, resumed.body).toBe(200);
+  expect(resumed.json()).toMatchObject({
+    revision: 5,
+    view: { lifecycle: "ACTIVE", phase: "GOOD_PLAY" },
+  });
+  const after = await h.app.services.repository.replayMatch(g.id, id);
+  expect(hashState(after.finalState)).toBe(fixture.expectedResumedHash);
+  const original = await h.pool.query(
+    "SELECT initial_state FROM match_initializations WHERE match_id=$1",
+    [id],
+  );
+  expect(original.rows[0].initial_state).toEqual(fixture.initialization);
 });
 
 import {
