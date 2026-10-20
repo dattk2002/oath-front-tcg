@@ -6,7 +6,9 @@
   "dependencies": {
     "@oathfront/contracts": "workspace:*",
     "@oathfront/game-engine": "workspace:*",
+    "gsap": "3.15.0",
     "next": "16.4.2",
+    "pixi.js": "8.22.0",
     "react": "19.3.1",
     "react-dom": "19.3.1"
   },

@@ -18,6 +18,7 @@ export default function HeroPanel({
   return (
     <section
       className={`hero-panel panel ${side.toLowerCase()}`}
+      data-hero-side={side}
       aria-label={`${own ? "Hero của bạn" : "Hero đối thủ"} · Phe ${sideLabel[side]}`}
     >
       <button

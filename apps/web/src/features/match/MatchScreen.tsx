@@ -3,6 +3,7 @@ import type {
   CommandResponse,
   PlayerAction,
   PublicCatalog,
+  PlayerView,
   Target,
   UnitView,
 } from "@oathfront/contracts";
@@ -21,6 +22,7 @@ import InspectPanel from "./InspectPanel";
 import { eventLabel } from "./labels";
 import { useLoadedMatch, useMatchStore } from "./use-match";
 import MatchShell from "./MatchShell";
+import BattleScene from "./BattleScene";
 export default function MatchScreen({
   api,
   catalog,
@@ -58,11 +60,25 @@ function MatchRuntime({
   api: ApiClient;
   catalog: PublicCatalog;
 }) {
-  const { store, snapshot, controller, disabled, online } = useMatchStore(
-    initial,
-    api,
-  );
-  const view = snapshot.authoritativeView;
+  const { store, snapshot, controller, disabled, online, presentation } =
+    useMatchStore(initial, api);
+  const authoritativeView = snapshot.authoritativeView;
+  const [presentationView, setPresentationView] =
+    useState<PlayerView>(authoritativeView);
+  const view = {
+    ...authoritativeView,
+    board: presentationView.board,
+    players: {
+      GOOD: {
+        ...authoritativeView.players.GOOD,
+        hp: presentationView.players.GOOD.hp,
+      },
+      EVIL: {
+        ...authoritativeView.players.EVIL,
+        hp: presentationView.players.EVIL.hp,
+      },
+    },
+  };
   const [mulligan, setMulligan] = useState<string[]>([]),
     [inspected, setInspected] = useState<UnitView | null>(null),
     [forecast, setForecast] = useState<PlayerAction | null>(null);
@@ -95,7 +111,12 @@ function MatchRuntime({
       online={online}
       onCancel={cancel}
     >
-      <div className="gameplay">
+      <div className="gameplay" data-battle-root>
+        <BattleScene
+          store={store}
+          presentation={presentation}
+          onView={setPresentationView}
+        />
         <HeroPanel
           hero={view.players[enemy]}
           side={enemy}

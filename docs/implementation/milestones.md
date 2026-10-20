@@ -6,7 +6,7 @@ Cập nhật ngày 2026-10-20. Đây là tiến độ implementation; các báo 
 |---|---|---|---|
 | M1 — Content và engine | 1–5 | Đã kiểm thử và review | Catalog đầy đủ, luật/hiệu ứng/combat, projection, public preview và replay deterministic |
 | M2 — Persistence, API và bot | 6–8 | Đã kiểm thử và review | PostgreSQL thật, guest/CSRF, receipt, log recovery, bot Dễ/Thường và hai phe chơi hết trận qua HTTP |
-| M3 — Trận chơi trên browser | 9–11 | Đang triển khai | Task 9 đã kiểm thử/review; tiếp tục PixiJS/GSAP và recovery, chưa nghiệm thu milestone |
+| M3 — Trận chơi trên browser | 9–11 | Tạm dừng theo yêu cầu | Task 9 đã kiểm thử/review; Task 10 lưu checkpoint WIP, chưa nghiệm thu milestone |
 | M4 — Product loop | 12–14 | Chưa bắt đầu | Hero/deck builder, Google login/claim, history, tutorial và settings |
 | M5 — Art và chất lượng | 15–17 | Chưa bắt đầu | Asset hoàn chỉnh, responsive/accessibility/performance, simulation và playtest |
 | M6 — Release candidate | 18 | Chưa bắt đầu | CI, retention, restore/load test, ba Docker image, runbook và push GitHub |
@@ -26,6 +26,12 @@ Cập nhật ngày 2026-10-20. Đây là tiến độ implementation; các báo 
 - Nền tảng browser đã được kiểm; motion, recovery đầy đủ và luồng sản phẩm chưa được nghiệm thu. Ba nhận xét nhỏ của review Task 9 về preview hero, nhãn TRICK và lỗi browser storage được giao Task 11 trước gate M3.
 - Migration `0002_bot_guard.sql` đã kiểm trên PostgreSQL local; Neon development đang chờ áp dụng migration này. Production chưa được migrate hoặc deploy.
 - Google OAuth callback thật, Safari/thiết bị thật và năm người playtest vẫn là các gate cần bằng chứng bên ngoài.
-- Chưa push GitHub, publish image hoặc deploy production. Push sẽ thực hiện sau các milestone và review tích hợp cuối.
+- Người dùng yêu cầu dừng triển khai và push checkpoint hiện tại trước khi hoàn tất game. Các milestone còn lại chưa được nghiệm thu; chưa publish image hoặc deploy production.
+
+## Checkpoint tạm dừng — 2026-10-20
+
+Task 10 đang có mã WIP cho Pixi WebGL, GSAP presentation queue, HP theo damage batch, reduced motion và cleanup/fast-forward. Theo yêu cầu dừng, không tiếp tục sửa hoặc chạy gate hoàn tất.
+
+Kết quả được ghi nhận gần nhất: 8 test tập trung qua, typecheck qua; lint từng báo một biến không dùng đã chỉnh nhưng chưa kiểm lại. Browser motion có 2 case qua và 1 case timeout khi tải cold scene cho signature. Chưa có production build, production CSP browser gate, full suite hoặc review độc lập cho checkpoint Task 10 này. Không suy từ các kiểm thử Task 9 rằng motion WIP đã được nghiệm thu.
 
 Kế hoạch chi tiết: [18 task theo M1–M6](../superpowers/plans/2026-10-20-oathfront-implementation.md). Quyết định triển khai mới nhất: [OathFront](../OATHFRONT.md).

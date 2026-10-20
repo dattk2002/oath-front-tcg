@@ -1,6 +1,13 @@
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import type { CommandResponse } from "@oathfront/contracts";
 import { validateBrowserWire } from "@oathfront/contracts/browser";
+import type { PresentationController } from "./motion/presentation-controller";
 import type { ApiClient } from "./api-client";
 import { createMatchViewStore } from "./view-store";
 import { createIntentController } from "./intent-controller";
@@ -35,6 +42,7 @@ export function useLoadedMatch(api: ApiClient, matchId: string) {
   };
 }
 export function useMatchStore(initial: CommandResponse, api: ApiClient) {
+  const presentation = useRef<PresentationController | null>(null);
   const [store] = useState(() => createMatchViewStore(initial));
   const snapshot = useSyncExternalStore(
     store.subscribe,
@@ -48,6 +56,10 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     () =>
       createIntentController(store, {
         makeId: () => crypto.randomUUID(),
+        fastForward: () =>
+          presentation.current?.fastForward(
+            store.getSnapshot().authoritativeView,
+          ),
         send: (envelope) => api.command(initial.view.matchId, envelope),
         persistPending: (envelope) => {
           const key = `oathfront.command.${initial.view.matchId}`;
@@ -113,5 +125,5 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     controller,
   ]);
   const disabled = !!snapshot.pendingCommand || !online || !large;
-  return { store, snapshot, controller, disabled, online };
+  return { store, snapshot, controller, disabled, online, presentation };
 }

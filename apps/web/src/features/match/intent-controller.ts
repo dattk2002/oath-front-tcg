@@ -105,6 +105,15 @@ export function createIntentController(
       store.setMessage("Mục tiêu hoặc hành động không còn hợp lệ.");
       return;
     }
+    if (
+      action.kind !== "ADVANCE" &&
+      action.kind !== "PAUSE" &&
+      action.kind !== "RESUME" &&
+      snapshot.presentationCursor < snapshot.latestSeq
+    ) {
+      options.fastForward?.();
+      store.setPresentationCursor(snapshot.latestSeq);
+    }
     await send({
       commandId: options.makeId(),
       expectedRevision: snapshot.revision,

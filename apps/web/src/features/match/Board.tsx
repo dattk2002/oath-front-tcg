@@ -82,7 +82,11 @@ export default function Board({
   function unitButton(unit: UnitView | null, laneId: number, own: boolean) {
     if (!unit)
       return (
-        <div className="empty-slot">
+        <div
+          className="empty-slot"
+          data-slot-side={own ? view.self.side : enemy}
+          data-slot-lane={laneId}
+        >
           Ô trống · {sideLabel[own ? view.self.side : enemy]}
         </div>
       );
@@ -95,6 +99,7 @@ export default function Board({
       <button
         className={`board-unit ${unit.owner.toLowerCase()}`}
         data-own-unit={own}
+        data-unit-id={unit.instanceId}
         data-target={JSON.stringify(target)}
         data-legal-target={!!action}
         onFocus={() => onPreview(action ?? null)}
@@ -102,7 +107,9 @@ export default function Board({
         onClick={() => (action ? onTarget(target) : onInspect(unit))}
         aria-label={`Lộ ${laneId}, ${def.nameVi}, phe ${sideLabel[unit.owner]}, ${unit.current.attack} công, ${unit.current.hp} HP${action ? ", mục tiêu hợp lệ" : ", xem chi tiết"}`}
       >
-        <span className="unit-silhouette silhouette" aria-hidden="true" />
+        <span className="scene-art" aria-hidden="true">
+          <span className="unit-silhouette silhouette" />
+        </span>
         <strong>{def.nameVi}</strong>
         <span className="unit-stats">
           {unit.current.attack} công / {unit.current.hp} HP
@@ -144,7 +151,7 @@ export default function Board({
                 lane.laneId,
                 false,
               )}
-              <div className="terrain">
+              <div className="terrain" data-terrain-lane={lane.laneId}>
                 {lane.location.state === "HIDDEN" ? (
                   <>
                     <strong>? · Địa hình ẩn</strong>
