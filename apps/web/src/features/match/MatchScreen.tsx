@@ -135,6 +135,7 @@ function MatchRuntime({
   return (
     <MatchShell
       snapshot={snapshot}
+      catalog={catalog}
       controller={controller}
       disabled={disabled}
       online={online}
@@ -143,12 +144,6 @@ function MatchRuntime({
       onRecover={recover}
     >
       <div className="gameplay" data-battle-root>
-        <BattleScene
-          store={store}
-          catalog={catalog}
-          presentation={presentation}
-          onView={setPresentationView}
-        />
         <HeroPanel
           hero={view.players[enemy]}
           side={enemy}
@@ -260,8 +255,8 @@ function MatchRuntime({
           </section>
         )}
         <div className="hand-layout">
-          <div className="reserve panel">
-            <h2>Siêu năng lực</h2>
+          <details className="reserve panel">
+            <summary>Siêu năng lực · {view.self.reserve.length}</summary>
             {view.self.reserve.length ? (
               view.self.reserve.map((power) =>
                 view.blockResponse?.visibility === "OWN" &&
@@ -332,7 +327,7 @@ function MatchRuntime({
             ) : (
               <p className="muted">Chưa có power để dùng.</p>
             )}
-          </div>
+          </details>
           <Hand
             view={view}
             catalog={catalog}
@@ -378,6 +373,12 @@ function MatchRuntime({
           onAction={(action) => void controller.submitIntent(action)}
         />
         <BattleLog snapshot={snapshot} compact />
+        <BattleScene
+          store={store}
+          catalog={catalog}
+          presentation={presentation}
+          onView={setPresentationView}
+        />
       </div>
       {view.lifecycle === "PAUSED" && (
         <PauseDialog

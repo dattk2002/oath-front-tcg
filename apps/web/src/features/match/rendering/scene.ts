@@ -359,10 +359,13 @@ export function createBattleScene(
         canvas,
         preference: "webgl",
         backgroundAlpha: 0,
-        antialias: true,
+        antialias: assets.kind === "PLACEHOLDER" || assets.quality !== "low",
         autoStart: false,
         sharedTicker: false,
-        resolution: Math.min(window.devicePixelRatio || 1, 2),
+        resolution: Math.min(
+          window.devicePixelRatio || 1,
+          assets.kind !== "PLACEHOLDER" && assets.quality === "low" ? 1 : 2,
+        ),
         autoDensity: true,
       });
       app = candidate;

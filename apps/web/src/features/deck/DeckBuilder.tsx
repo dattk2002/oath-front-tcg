@@ -190,6 +190,7 @@ export default function DeckBuilder({
       }
     };
     const currentHref = location.pathname + location.search;
+    const currentHistoryState: unknown = history.state;
     const beforeNavigation = (event: NavigateEvent) => {
       if (!dirty || event.navigationType !== "traverse" || !event.cancelable)
         return;
@@ -203,7 +204,9 @@ export default function DeckBuilder({
       const target = location.pathname + location.search;
       if (target === currentHref) return;
       event.stopImmediatePropagation();
-      router.replace(currentHref);
+      // Restore the entry without overwriting the destination that Back just left.
+      // Keep Next's current tree so Stay preserves this mounted draft.
+      history.pushState(currentHistoryState, "", currentHref);
       setLeave(target);
     };
     if ("navigation" in window)

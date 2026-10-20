@@ -6,11 +6,7 @@ export const routes = {
 };
 export function Brand() {
   return (
-    <Link
-      className="brand"
-      href={routes.home}
-      aria-label="OathFront · Trang chủ"
-    >
+    <Link className="brand" href={routes.home}>
       <span className="brand-mark" aria-hidden="true">
         <i />
         <i />
@@ -19,7 +15,8 @@ export function Brand() {
         <i />
       </span>
       <span>
-        OATHFRONT<small>NGŨ LỘ</small>
+        OATHFRONT <small>NGŨ LỘ</small>
+        <span className="sr-only"> · Trang chủ</span>
       </span>
     </Link>
   );

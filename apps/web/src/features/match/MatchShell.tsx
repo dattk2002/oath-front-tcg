@@ -1,3 +1,4 @@
+import type { PublicCatalog } from "@oathfront/contracts";
 import { useState } from "react";
 import SettingsDialog from "../settings/SettingsDialog";
 import type { ReactNode } from "react";
@@ -7,6 +8,7 @@ import { phaseLabel, sideLabel } from "./labels";
 import RecoveryControls from "./RecoveryControls";
 export default function MatchShell({
   snapshot,
+  catalog,
   controller,
   disabled,
   online,
@@ -16,6 +18,7 @@ export default function MatchShell({
   children,
 }: {
   snapshot: MatchSnapshot;
+  catalog: PublicCatalog;
   controller: IntentController;
   disabled: boolean;
   online: boolean;
@@ -94,6 +97,22 @@ export default function MatchShell({
               </li>
             ))}
           </ol>
+        </details>
+        <details>
+          <summary>Tay bài và siêu năng lực · đọc đầy đủ</summary>
+          <ul>
+            {[...view.self.hand, ...view.self.reserve].map((card) => {
+              const def = [...catalog.cards, ...catalog.powers].find(
+                (d) => d.id === card.definitionId,
+              );
+              return (
+                <li key={card.instanceId}>
+                  <strong>{def?.nameVi}</strong>
+                  <p>{def?.exactTextVi}</p>
+                </li>
+              );
+            })}
+          </ul>
         </details>
         <p className="muted">
           Bạn có thể quay về trang chủ. Trận không tự đầu hàng khi đổi kích

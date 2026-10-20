@@ -94,50 +94,61 @@ export function createEventTimeline(
 }
 
 export function bindCardFeedback(root: HTMLElement, reduced: () => boolean) {
-  const context = gsap.context(() => {}, root);
-  const enter = (event: Event) => {
-    const target = event.target;
-    if (!(target instanceof Element)) return;
-    const card = target.closest<HTMLElement>(".hand-card");
-    if (!card) return;
-    gsap.killTweensOf(card);
-    context.add(() =>
-      gsap.to(card, {
-        y: reduced() ? 0 : -6,
-        duration: reduced() ? 0 : 0.12,
-        ease: "power2.out",
-      }),
-    );
-  };
-  const leave = (event: Event) => {
-    const target = event.target;
-    if (!(target instanceof Element)) return;
-    const card = target.closest<HTMLElement>(".hand-card");
-    if (!card) return;
+  // One reversible tween per live card: replacing tweens retained every old tween
+  // in GSAP's parent context until scene teardown.
+  const cards = new Map<
+    HTMLElement,
+    { context: gsap.Context; tween: gsap.core.Tween }
+  >();
+  function animate(event: Event, lifted: boolean) {
+    if (!(event.target instanceof Element)) return;
+    const card = event.target.closest<HTMLElement>(".hand-card");
+    if (!card || !root.contains(card)) return;
     if (
       event instanceof MouseEvent &&
       event.relatedTarget instanceof Node &&
       card.contains(event.relatedTarget)
     )
       return;
-    gsap.killTweensOf(card);
-    context.add(() =>
-      gsap.to(card, {
-        y: 0,
-        duration: reduced() ? 0 : 0.1,
-        ease: "power2.out",
-      }),
-    );
-  };
+    let owner = cards.get(card);
+    if (!owner) {
+      let tween!: gsap.core.Tween;
+      const context = gsap.context(() => {
+        tween = gsap.to(card, {
+          y: -6,
+          duration: 0.12,
+          ease: "power2.out",
+          paused: true,
+        });
+      }, root);
+      owner = { context, tween };
+      cards.set(card, owner);
+    }
+    if (reduced()) owner.tween.pause(0);
+    else if (lifted) owner.tween.play();
+    else owner.tween.reverse();
+  }
+  const enter = (event: Event) => animate(event, true);
+  const leave = (event: Event) => animate(event, false);
+  const observer = new MutationObserver(() => {
+    for (const [card, owner] of cards)
+      if (!root.contains(card)) {
+        owner.context.revert();
+        cards.delete(card);
+      }
+  });
+  observer.observe(root, { childList: true, subtree: true });
   root.addEventListener("pointerover", enter);
   root.addEventListener("focusin", enter);
   root.addEventListener("pointerout", leave);
   root.addEventListener("focusout", leave);
   return () => {
+    observer.disconnect();
     root.removeEventListener("pointerover", enter);
     root.removeEventListener("focusin", enter);
     root.removeEventListener("pointerout", leave);
     root.removeEventListener("focusout", leave);
-    context.revert();
+    cards.forEach((owner) => owner.context.revert());
+    cards.clear();
   };
 }

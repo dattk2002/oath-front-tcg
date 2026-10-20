@@ -76,8 +76,8 @@ export default function Board({
         onFocus={() => onPreview(action ?? null)}
         onPointerEnter={() => onPreview(action ?? null)}
         onClick={() => (action ? onTarget(target) : onInspect(unit))}
-        aria-label={`Lộ ${laneId}, ${def.nameVi}, phe ${sideLabel[unit.owner]}, ${unit.current.attack} công, ${unit.current.hp} HP${action ? ", mục tiêu hợp lệ" : ", xem chi tiết"}`}
       >
+        <span className="sr-only">Lộ {laneId}, </span>
         <span className="scene-art" aria-hidden="true">
           <ArtImage
             artKey={def.artKey}
@@ -88,10 +88,24 @@ export default function Board({
         </span>
         <strong>{def.nameVi}</strong>
         <span className="unit-stats">
-          {unit.current.attack} công / {unit.current.hp} HP
+          <span>
+            <b>{unit.current.attack}</b> công
+          </span>{" "}
+          /{" "}
+          <span>
+            <b>{unit.current.hp}</b> HP
+          </span>
+        </span>
+        <span className="sr-only">
+          Phe {sideLabel[unit.owner]} ·{" "}
+          {action ? "mục tiêu hợp lệ" : "xem chi tiết"} ·{" "}
+          {unitStatuses(unit).join(" · ")}
         </span>
         {unit.isToken && <span>Triệu hồi</span>}
-        <span className="status-text">
+        <span
+          className="status-text"
+          data-has-status={unitStatuses(unit).length > 0}
+        >
           {unitStatuses(unit).slice(0, 3).join(" · ") || "Không có trạng thái"}
           {unitStatuses(unit).length > 3
             ? ` · +${unitStatuses(unit).length - 3} trạng thái`

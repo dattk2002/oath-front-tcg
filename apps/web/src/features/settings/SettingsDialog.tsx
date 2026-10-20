@@ -71,6 +71,10 @@ export function SettingsProvider({
   }, [audio, match]);
   function update(patch: Partial<Settings>) {
     const next = { ...settings, ...patch, version: 1 as const };
+    if (patch.reducedMotion !== undefined)
+      next.motion = patch.reducedMotion ? "reduced" : "system";
+    else if (patch.motion !== undefined)
+      next.reducedMotion = patch.motion === "reduced";
     setSettings(next);
     const a = manager.current;
     if (patch.musicVolume !== undefined) a?.setMusicVolume(next.musicVolume);
@@ -159,6 +163,26 @@ export default function SettingsDialog({
       <p className="muted">
         Luôn tôn trọng cài đặt giảm chuyển động của thiết bị.
       </p>
+      <label>
+        Chất lượng hình ảnh
+        <select
+          aria-label="Chất lượng hình ảnh"
+          value={settings.quality}
+          onChange={(e) => {
+            const quality = e.target.value;
+            if (
+              quality === "auto" ||
+              quality === "low" ||
+              quality === "standard"
+            )
+              update({ quality });
+          }}
+        >
+          <option value="auto">Tự động</option>
+          <option value="low">Thấp</option>
+          <option value="standard">Tiêu chuẩn</option>
+        </select>
+      </label>
       {onTutorial && (
         <div className="settings-tutorial">
           <h3>Hướng dẫn</h3>

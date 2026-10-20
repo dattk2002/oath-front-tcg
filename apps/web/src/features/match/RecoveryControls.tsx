@@ -24,6 +24,15 @@ export default function RecoveryControls({
     <div
       className="command-status"
       data-testid="command-status"
+      data-active={
+        !!(
+          !online ||
+          recovering ||
+          snapshot.pendingCommand ||
+          snapshot.message ||
+          expired
+        )
+      }
       role="status"
       aria-live="polite"
     >

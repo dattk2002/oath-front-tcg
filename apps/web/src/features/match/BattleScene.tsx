@@ -29,6 +29,7 @@ export default function BattleScene({
     [announcement, setAnnouncement] = useState("");
   const [progress, setProgress] = useState({ loaded: 0, total: 10 });
   const reduced = settings.reducedMotion;
+  const quality = settings.quality;
   const reducedSetting = useRef(reduced);
   reducedSetting.current = reduced || settings.reducedMotion;
   useEffect(() => {
@@ -46,7 +47,14 @@ export default function BattleScene({
         if (cancelled || !canvas.current) return;
         const bundle = await assets.loadBattleAssets(
           "core_v1",
-          reducedSetting.current ? "low" : "high",
+          quality === "low" ||
+            (quality === "auto" &&
+              (reducedSetting.current ||
+                matchMedia(
+                  "(max-width: 1100px), (prefers-reduced-motion: reduce)",
+                ).matches))
+            ? "low"
+            : "high",
           (loaded, total) => {
             if (!cancelled) setProgress({ loaded, total });
           },
@@ -199,7 +207,7 @@ export default function BattleScene({
       cancelled = true;
       release();
     };
-  }, [attempt, onView, presentation, store, catalog]);
+  }, [attempt, onView, presentation, store, catalog, quality, reduced]);
   useEffect(() => {
     presentation.current?.fastForward(store.getSnapshot().authoritativeView);
   }, [reduced, presentation, store]);
@@ -216,19 +224,13 @@ export default function BattleScene({
         data-presentation={playing ? "playing" : "idle"}
         aria-hidden="true"
       >
-        <canvas ref={canvas} className="battle-canvas" />
+        <canvas
+          key={`${quality}-${reduced}-${attempt}`}
+          ref={canvas}
+          className="battle-canvas"
+        />
       </div>
       <div className="motion-controls">
-        <label>
-          <input
-            type="checkbox"
-            checked={reduced}
-            onChange={(event) =>
-              update({ reducedMotion: event.target.checked })
-            }
-          />{" "}
-          Giảm chuyển động / VFX
-        </label>
         {playing && (
           <button
             onClick={() =>
@@ -253,6 +255,18 @@ export default function BattleScene({
             </button>
           </span>
         )}
+      </div>
+      <div className="motion-preferences">
+        <label>
+          <input
+            type="checkbox"
+            checked={reduced}
+            onChange={(event) =>
+              update({ reducedMotion: event.target.checked })
+            }
+          />{" "}
+          Giảm chuyển động / VFX
+        </label>
       </div>
       <p className="motion-announcement" aria-live="polite" aria-atomic="true">
         {announcement}

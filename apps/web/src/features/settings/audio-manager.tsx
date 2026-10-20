@@ -5,6 +5,8 @@ export interface Settings {
   sfxVolume: number;
   muted: boolean;
   reducedMotion: boolean;
+  motion: "system" | "reduced";
+  quality: "auto" | "low" | "standard";
 }
 export const defaultSettings: Settings = {
   version: 1,
@@ -12,6 +14,8 @@ export const defaultSettings: Settings = {
   sfxVolume: 0.6,
   muted: false,
   reducedMotion: false,
+  motion: "system",
+  quality: "auto",
 };
 export const settingsKey = "oathfront.settings.v1";
 export function restoreSettings(raw: string | null): Settings {
@@ -37,6 +41,11 @@ export function restoreSettings(raw: string | null): Settings {
         sfxVolume: s.sfxVolume,
         muted: s.muted,
         reducedMotion: s.reducedMotion,
+        motion: s.reducedMotion ? "reduced" : "system",
+        quality:
+          "quality" in s && (s.quality === "low" || s.quality === "standard")
+            ? s.quality
+            : "auto",
       };
   } catch {
     /* Corrupt/old preferences fall back without blocking play. */

@@ -7,7 +7,18 @@ export default defineConfig({
   timeout: 60000,
   use: {
     baseURL: testOrigin,
-    browserName: "chromium",
+    browserName:
+      process.env.OATHFRONT_BROWSER === "firefox" ? "firefox" : "chromium",
+    ...(process.env.OATHFRONT_NO_NAVIGATION === "1"
+      ? {
+          launchOptions: {
+            firefoxUserPrefs: { "dom.navigation.webidl.enabled": false },
+          },
+        }
+      : {}),
+    ...(process.env.OATHFRONT_BROWSER === "chrome"
+      ? { headless: false, channel: "chrome" }
+      : {}),
     viewport: { width: 1440, height: 900 },
     trace: "retain-on-failure",
   },

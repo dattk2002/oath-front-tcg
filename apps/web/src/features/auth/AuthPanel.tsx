@@ -278,7 +278,19 @@ export default function AuthPanel({
     }
   }
   return (
-    <section className="auth-panel" aria-label="Tài khoản">
+    <section
+      className="auth-panel"
+      aria-label="Tài khoản"
+      data-urgent={
+        !!(
+          expired ||
+          message ||
+          storageUnavailable ||
+          providerCleanup !== "idle" ||
+          conflict
+        )
+      }
+    >
       {session?.principal.kind === "ACCOUNT" && !expired ? (
         <>
           <span>{session.principal.displayName}</span>

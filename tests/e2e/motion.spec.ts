@@ -8,6 +8,7 @@ import {
   type UnitView,
 } from "../../packages/contracts/src/index.js";
 const evidence =
+  process.env.OATHFRONT_MOTION_EVIDENCE_DIR ??
   ".superpowers/sdd/2026-10-20-oathfront-implementation/task-10-evidence/final";
 // Validated public DTOs isolate choreography from random decks and bot decisions.
 function checkpoint(revision = 1) {
@@ -218,7 +219,7 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
     .screenshot({ path: `${evidence}/canvas-signature.png` });
   expect(during.equals(before)).toBe(false);
   await page.screenshot({ path: `${evidence}/signature.png`, fullPage: true });
-  await page.getByRole("link", { name: /OathFront/ }).click();
+  await page.getByRole("link", { name: /OathFront/i }).click();
   await enter(page, initial.view.matchId);
   await requestPass(page);
   await expect(page.locator('[data-presentation="playing"]')).toBeVisible();
@@ -507,7 +508,9 @@ test("failed renderer keeps the latest semantic board and retries with one canva
   await expect(
     page.getByRole("region", { name: /Hero đối thủ/ }),
   ).toContainText("9");
-  await page.getByRole("button", { name: "Thử lại hình khối" }).click();
+  await page
+    .getByRole("button", { name: "Thử lại hình ảnh", exact: true })
+    .click();
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
     timeout: 15000,
   });

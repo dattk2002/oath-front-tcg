@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 import type { PublicCatalog, SessionResponse } from "@oathfront/contracts";
 import { createApiClient } from "../features/match/api-client";
 import { ApiError } from "../features/match/api-error";
-import DeckScreen from "../features/deck/DeckScreen";
 import { ResultDetail } from "../features/match/ResultDialog";
 import AuthPanel from "../features/auth/AuthPanel";
 import HistoryScreen from "../features/history/HistoryScreen";
@@ -24,6 +23,9 @@ import SettingsDialog, {
   SettingsProvider,
 } from "../features/settings/SettingsDialog";
 import { TutorialEntry } from "../features/tutorial/tutorial-controller";
+const DeckScreen = dynamic(() => import("../features/deck/DeckScreen"), {
+  loading: () => <p role="status">Đang tải bộ bài…</p>,
+});
 const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
   ssr: false,
   loading: () => (
@@ -193,6 +195,23 @@ function AppContent({
       setBusy(false);
     }
   }
+  const authPanel = (
+    <AuthPanel
+      api={api}
+      session={session}
+      catalog={catalog}
+      expired={expired}
+      ready={!loading}
+      onSession={adoptSession}
+      onLogout={() => {
+        api.bindSession(null);
+        setSession(null);
+        setExpired(false);
+        setOwnerEpoch((v) => v + 1);
+        router.push("/");
+      }}
+    />
+  );
   return (
     <>
       <a className="skip-link" href="#main">
@@ -220,21 +239,7 @@ function AppContent({
           </span>
         </nav>
       </header>
-      <AuthPanel
-        api={api}
-        session={session}
-        catalog={catalog}
-        expired={expired}
-        ready={!loading}
-        onSession={adoptSession}
-        onLogout={() => {
-          api.bindSession(null);
-          setSession(null);
-          setExpired(false);
-          setOwnerEpoch((v) => v + 1);
-          router.push("/");
-        }}
-      />
+      {screen !== "match" && authPanel}
       <SessionRecoveryContext.Provider value={expired}>
         <PrivateStorageContext.Provider value={storage}>
           {settingsOpen && (
@@ -258,7 +263,7 @@ function AppContent({
               {storageWarning}
             </p>
           )}
-          <main id="main" key={ownerEpoch}>
+          <main id="main" data-screen={screen} key={ownerEpoch}>
             {error ? (
               <section className="status-panel panel" role="alert">
                 <h1>Chưa thể kết nối</h1>
@@ -274,7 +279,11 @@ function AppContent({
                 </button>
               </section>
             ) : loading ? (
-              <section className="status-panel panel" aria-busy="true">
+              <section
+                key="app-loading"
+                className="status-panel panel"
+                aria-busy="true"
+              >
                 <h1>OathFront · Ngũ Lộ</h1>
                 <p role="status">Đang tải dữ liệu trò chơi…</p>
               </section>
@@ -359,6 +368,7 @@ function AppContent({
           </main>
         </PrivateStorageContext.Provider>
       </SessionRecoveryContext.Provider>
+      {screen === "match" && authPanel}
       <footer className="site-footer">
         OathFront · Ngũ Lộ
         <span>Luật và chỉ số luôn hiển thị bằng văn bản.</span>

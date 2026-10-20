@@ -35,8 +35,8 @@ export default function HeroPanel({
         onClick={onTarget}
         onPointerEnter={onPreview}
         onFocus={onPreview}
-        aria-label={`Chọn hero ${catalog.heroes.find((item) => item.id === hero.heroId)?.nameVi}, ${hero.hp} HP`}
       >
+        <span className="sr-only">Chọn hero </span>
         {definition && (
           <span className="hero-hud-art">
             <ArtImage

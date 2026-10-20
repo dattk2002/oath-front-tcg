@@ -175,3 +175,23 @@ it("does not create late voices after disposal during decoding and reports resum
   expect(rejected.assetLoader).not.toHaveBeenCalled();
   unavailable.dispose();
 });
+it("migrates v1 preferences without losing audio or reduced motion and validates quality", () => {
+  const old = {
+    version: 1,
+    musicVolume: 0.1,
+    sfxVolume: 0.8,
+    muted: true,
+    reducedMotion: true,
+  };
+  expect(restoreSettings(JSON.stringify(old))).toMatchObject({
+    ...old,
+    motion: "reduced",
+    quality: "auto",
+  });
+  expect(
+    restoreSettings(JSON.stringify({ ...old, quality: "low" })).quality,
+  ).toBe("low");
+  expect(
+    restoreSettings(JSON.stringify({ ...old, quality: "invalid" })).quality,
+  ).toBe("auto");
+});
