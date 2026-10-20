@@ -31,6 +31,7 @@ export default function PauseDialog({
       className="match-dialog panel"
       aria-labelledby="pause-heading"
       onCancel={(event) => {
+        if (event.target !== event.currentTarget) return;
         event.preventDefault();
         if (confirm) setConfirm(false);
         else if (!disabled) void controller.submitIntent({ kind: "RESUME" });

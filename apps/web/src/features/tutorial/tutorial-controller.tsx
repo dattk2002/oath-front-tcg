@@ -24,7 +24,7 @@ const results: Partial<Record<TutorialView["stepId"], string>> = {
   G06: "Quân cũ giữ nguyên. Mầm Khiên mới nhận +0/+1.",
   G07: "Lựa chọn đã được giữ. Tiếp tục để xem Location ở lượt 5.",
   E01: "Bạn còn 2 mana cho pha trick. Năng lượng không hồi lại giữa hai pha Ác.",
-  E02: "GC02 còn 1 HP. Quân ở lane 4 gây 2 sát thương lên hero Thiện.",
+  E02: "Kỵ Sĩ Lá còn 1 HP. Quân ở lane 4 gây 2 sát thương lên hero Thiện.",
 };
 export function getTutorialStep(
   view: PlayerView,

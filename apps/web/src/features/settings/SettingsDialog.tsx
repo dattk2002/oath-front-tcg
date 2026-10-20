@@ -108,6 +108,7 @@ export default function SettingsDialog({
       aria-labelledby="settings-heading"
       onCancel={(e) => {
         e.preventDefault();
+        e.stopPropagation();
         onClose();
       }}
     >

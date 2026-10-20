@@ -167,6 +167,9 @@ for (const branch of ["USED", "KEPT"] as const)
     await page
       .getByRole("button", { name: "Kết thúc trick", exact: true })
       .click();
+    await expect(
+      page.getByText("Kỵ Sĩ Lá còn 1 HP", { exact: false }),
+    ).toBeVisible();
     await next(page, "Hoàn thành");
     await expect(
       page.getByRole("heading", { name: "Đã hoàn thành hướng dẫn" }),
@@ -316,7 +319,23 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
   await expect(
     page.getByRole("slider", { name: "Nhạc", exact: true }),
   ).toHaveValue("0");
+  await page.keyboard.press("Escape");
+  await expect(
+    page.getByRole("dialog", { name: "Cài đặt", exact: true }),
+  ).toBeHidden();
+  await expect(
+    page.getByRole("dialog", { name: "Tạm dừng", exact: true }),
+  ).toBeVisible();
+  expect((await snapshot(page)).view.lifecycle).toBe("PAUSED");
+  expect((await audio()).states.at(-1)).toBe("suspended");
+  const pausedSettings = page
+    .getByRole("dialog", { name: "Tạm dừng", exact: true })
+    .getByRole("button", { name: "Cài đặt", exact: true });
+  await expect(pausedSettings).toBeFocused();
+  await pausedSettings.click();
   await page.getByRole("button", { name: "Đóng cài đặt" }).click();
+  await expect(pausedSettings).toBeFocused();
+  expect((await snapshot(page)).view.lifecycle).toBe("PAUSED");
   await page
     .getByRole("dialog", { name: "Tạm dừng" })
     .getByRole("button", { name: "Tiếp tục", exact: true })
@@ -325,6 +344,15 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
   await expect(
     page.getByRole("button", { name: "Tạm dừng", exact: true }),
   ).toBeFocused();
+  await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
+  await expect
+    .poll(async () => (await audio()).states.at(-1))
+    .toBe("suspended");
+  await page.keyboard.press("Escape");
+  await expect
+    .poll(async () => (await snapshot(page)).view.lifecycle)
+    .toBe("ACTIVE");
+  await expect.poll(async () => (await audio()).states.at(-1)).toBe("running");
   await writeFile(
     `${evidence}/audio-browser.json`,
     JSON.stringify(
