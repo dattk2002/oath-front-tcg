@@ -1,0 +1,27 @@
+{
+  "sourceFiles": 231,
+  "sourceChangesAfterBuild": [],
+  "builtArtifactFiles": 162,
+  "modifiedBuiltArtifacts": [],
+  "runtimeCacheAdded": [
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.html",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.meta",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/__PAGE__.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/_full.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/_tree.segment.rsc"
+  ],
+  "beforeManifestSha256": "9c884a7c107c7bba3747094ec6d9cc592f42713361e0dcf39ee2f09d4530445d",
+  "afterManifestSha256": "2dbd16b08f16570481b6c6500236695bef67b5afbc2a66e6c76d3092c6bab164",
+  "compiledApiSha256": "0360b8bc330ff775363cf20114dffaa5822205123c0122104719875751c690c4",
+  "standaloneServerSha256": "be24816d5a0de0e63f913c9515dc7058a23cc7d5538b37b1c4ec648e074814ea",
+  "task11FixConsoleCollectors": 5,
+  "unexpectedConsoleErrors": 0,
+  "privateMarkerScan": {
+    "MatchState": [],
+    "node:crypto": [],
+    "identityKey": [],
+    "createRandomStreams": [],
+    "private_seed": []
+  }
+}

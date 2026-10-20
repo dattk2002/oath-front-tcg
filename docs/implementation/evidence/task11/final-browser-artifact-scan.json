@@ -1,0 +1,10 @@
+{
+  "scan": "apps/web/.next/static/**/*.js",
+  "privateMarkers": {
+    "MatchState": [],
+    "node:crypto": [],
+    "identityKey": [],
+    "createRandomStreams": [],
+    "private_seed": []
+  }
+}

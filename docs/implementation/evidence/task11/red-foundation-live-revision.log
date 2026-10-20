@@ -1,0 +1,63 @@
+
+Running 29 tests using 1 worker
+
+  ✓   1 tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; KEEP before Volcano (4.5s)
+  ✓   2 tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; USE before Volcano (4.4s)
+  ✓   3 tests/e2e/block-recovery.spec.ts:109:1 › lost block receipt survives reload and retries the identical command without regrant (2.4s)
+  ✓   4 tests/e2e/block-recovery.spec.ts:157:1 › a visible five-second refresh never times out an unchanged response or target selection (6.0s)
+  ✓   5 tests/e2e/block-recovery.spec.ts:187:1 › no legal target keeps an explicit enabled KEEP and Escape never sends it (2.0s)
+  ✓   6 tests/e2e/block-recovery.spec.ts:222:1 › two visible tabs recover a paused checkpoint without duplicating the response (16.3s)
+  ✓   7 tests/e2e/block-recovery.spec.ts:264:1 › offline during a heal tween fetches the changed server checkpoint on reconnect (1.8s)
+  ✓   8 tests/e2e/block-recovery.spec.ts:289:1 › snapshot history recovers 205 scanned rows across an empty private page without cosmetic replay (4.0s)
+  ✓   9 tests/e2e/block-recovery.spec.ts:336:1 › hidden lifecycle stops snapshot polling and foreground resumes server recovery (6.9s)
+  ✓  10 tests/e2e/block-recovery.spec.ts:376:1 › failed snapshot recovery disables actions until explicit retry and clears the failure after success (1.5s)
+  ✓  11 tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch (15.7s)
+  ✓  12 tests/e2e/full-match.spec.ts:16:3 › complete EVIL match result reload history expiry rematch (22.5s)
+  ✓  13 tests/e2e/full-match.spec.ts:129:1 › version drift shows retained source and original/current versions without any replacement create (545ms)
+  ✓  14 tests/e2e/full-match.spec.ts:157:1 › lost rematch response is restored after reload and retries the same exact create (1.5s)
+  ✓  15 tests/e2e/full-match.spec.ts:189:1 › direct in-app rematch discards the old store and ignores a delayed old-match snapshot (6.2s)
+  ✓  16 tests/e2e/input-parity.spec.ts:8:1 › keyboard block targeting and pointer KEEP are explicit; pause surrender confirmation (2.1s)
+  ✓  17 tests/e2e/input-parity.spec.ts:57:3 › pointer plays the same exact public unit intent (1.8s)
+  ✓  18 tests/e2e/input-parity.spec.ts:57:3 › keyboard plays the same exact public unit intent (1.8s)
+  ✓  19 tests/e2e/input-parity.spec.ts:57:3 › drag plays the same exact public unit intent (2.0s)
+  ✓  20 tests/e2e/input-parity.spec.ts:124:1 › playable trick label and unit-to-hero focus forecast follow the resolved legal action (1.7s)
+  ✘  21 tests/e2e/match-foundation.spec.ts:8:3 › guest preset mulligan UNIT and pass as GOOD (6.7s)
+  ✓  22 tests/e2e/match-foundation.spec.ts:8:3 › guest preset mulligan UNIT and pass as EVIL (5.1s)
+  ✓  23 tests/e2e/match-foundation.spec.ts:212:1 › exact versioned proxy preserves JSON and reserves local auth/unknown routes (30ms)
+  ✓  24 tests/e2e/match-foundation.spec.ts:231:1 › lost create response restores displayed choices on reload and retries identical request (1.6s)
+  ✓  25 tests/e2e/motion.spec.ts:175:1 › actual WebGL signature can be interrupted and remounted, then fast-forwarded before keyboard selection (4.4s)
+  ✓  26 tests/e2e/motion.spec.ts:279:3 › five lane combat shares HP beats and preserves event log (normal) (5.5s)
+  ✓  27 tests/e2e/motion.spec.ts:279:3 › five lane combat shares HP beats and preserves event log (reduced) (3.0s)
+  ✓  28 tests/e2e/motion.spec.ts:468:1 › failed renderer keeps the latest semantic board and retries with one canvas (1.6s)
+  ✓  29 tests/e2e/motion.spec.ts:521:1 › used effect families render through the strict-CSP WebGL path (7.3s)
+
+
+  1) tests/e2e/match-foundation.spec.ts:8:3 › guest preset mulligan UNIT and pass as GOOD ──────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "10"
+    Received: "11"
+
+      187 |         (await owner.query("SELECT revision FROM matches WHERE id=$1", [id]))
+      188 |           .rows[0]?.revision,
+    > 189 |       ).toBe(String(snapshot.revision));
+          |         ^
+      190 |     } finally {
+      191 |       await owner.end();
+      192 |     }
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/match-foundation.spec.ts:189:9
+
+    Error Context: test-results/match-foundation-guest-preset-mulligan-UNIT-and-pass-as-GOOD/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/match-foundation-guest-preset-mulligan-UNIT-and-pass-as-GOOD/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/match-foundation-guest-preset-mulligan-UNIT-and-pass-as-GOOD/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/match-foundation.spec.ts:8:3 › guest preset mulligan UNIT and pass as GOOD ───────────
+  28 passed (2.4m)

@@ -1,0 +1,162 @@
+[
+  {
+    "time": 110765.62,
+    "method": "GET",
+    "endpoint": "/match",
+    "kind": null,
+    "expectedRevision": null,
+    "status": 200,
+    "revision": 0,
+    "needsAdvance": false
+  },
+  {
+    "time": 110805.507,
+    "method": "GET",
+    "endpoint": "/match",
+    "kind": null,
+    "expectedRevision": null,
+    "status": 200,
+    "revision": 0,
+    "needsAdvance": false
+  },
+  {
+    "time": 111283.884,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "MULLIGAN",
+    "expectedRevision": 0,
+    "status": 200,
+    "revision": 1,
+    "needsAdvance": true
+  },
+  {
+    "time": 111503.975,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "ADVANCE",
+    "expectedRevision": 1,
+    "status": 200,
+    "revision": 2,
+    "needsAdvance": false
+  },
+  {
+    "time": 111881.375,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "PASS_PHASE",
+    "expectedRevision": 2,
+    "status": 200,
+    "revision": 3,
+    "needsAdvance": true
+  },
+  {
+    "time": 112140.621,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "ADVANCE",
+    "expectedRevision": 3,
+    "status": 200,
+    "revision": 4,
+    "needsAdvance": true
+  },
+  {
+    "time": 112369.324,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "ADVANCE",
+    "expectedRevision": 4,
+    "status": 200,
+    "revision": 5,
+    "needsAdvance": true
+  },
+  {
+    "time": 112623.464,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "ADVANCE",
+    "expectedRevision": 5,
+    "status": 200,
+    "revision": 6,
+    "needsAdvance": true
+  },
+  {
+    "time": 112871.595,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "ADVANCE",
+    "expectedRevision": 6,
+    "status": 200,
+    "revision": 7,
+    "needsAdvance": false
+  },
+  {
+    "time": 113818.394,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "PLAY_UNIT",
+    "expectedRevision": 7,
+    "status": 200,
+    "revision": 8,
+    "needsAdvance": false
+  },
+  {
+    "time": 114924.696,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "PASS_PHASE",
+    "expectedRevision": 8,
+    "status": 200,
+    "revision": 9,
+    "needsAdvance": true
+  },
+  {
+    "time": 115526.346,
+    "method": "GET",
+    "endpoint": "/match",
+    "kind": null,
+    "expectedRevision": null,
+    "status": 200,
+    "revision": 9,
+    "needsAdvance": true
+  },
+  {
+    "time": 115589.328,
+    "method": "GET",
+    "endpoint": "/match",
+    "kind": null,
+    "expectedRevision": null,
+    "status": 200,
+    "revision": 9,
+    "needsAdvance": true
+  },
+  {
+    "time": 115825.721,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "ADVANCE",
+    "expectedRevision": 9,
+    "status": 200,
+    "revision": 10,
+    "needsAdvance": true
+  },
+  {
+    "time": 116070.576,
+    "method": "POST",
+    "endpoint": "/commands",
+    "kind": "ADVANCE",
+    "expectedRevision": 10,
+    "status": 200,
+    "revision": null,
+    "needsAdvance": null
+  },
+  {
+    "time": 116071.988,
+    "method": "GET",
+    "endpoint": "/match",
+    "kind": null,
+    "expectedRevision": null,
+    "status": 200,
+    "revision": 10,
+    "needsAdvance": true
+  }
+]

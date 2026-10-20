@@ -1,0 +1,35 @@
+{
+  "collectors": [
+    {
+      "case": "lost-block-receipt-survives-reload-and-retries-the-identical-command-without-regrant-all-console.json",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "failed-snapshot-recovery-disables-actions-until-explicit-retry-and-clears-the-failure-after-success-all-console.json",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "keyboard-block-targeting-and-pointer-KEEP-are-explicit-pause-surrender-confirmation-all-console.json",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "lost-RESUME-before-commit-retries-the-identical-envelope-inside-the-pause-modal-by-keyboard-and-pointer-all-console.json",
+      "totalErrors": 2,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "paused-failed-snapshot-recovery-disables-actions-until-explicit-retry-and-clears-the-failure-after-success-all-console.json",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    }
+  ],
+  "unexpectedErrors": 0
+}

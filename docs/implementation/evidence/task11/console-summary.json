@@ -1,0 +1,125 @@
+{
+  "collectors": [
+    {
+      "case": "a-visible-five-second-refresh-never-times-out-an-unchanged-response-or-target-selection",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "block-reload-and-reconnect-preserves-one-grant-and-lane-KEEP-before-Volcano",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "block-reload-and-reconnect-preserves-one-grant-and-lane-USE-before-Volcano",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "complete-EVIL-match-result-reload-history-expiry-rematch",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "complete-GOOD-match-result-reload-history-expiry-rematch",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "direct-in-app-rematch-discards-the-old-store-and-ignores-a-delayed-old-match-snapshot",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "drag-plays-the-same-exact-public-unit-intent",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "failed-snapshot-recovery-disables-actions-until-explicit-retry-and-clears-the-failure-after-success",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "hidden-lifecycle-stops-snapshot-polling-and-foreground-resumes-server-recovery",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "keyboard-block-targeting-and-pointer-KEEP-are-explicit-pause-surrender-confirmation",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "keyboard-plays-the-same-exact-public-unit-intent",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "lost-block-receipt-survives-reload-and-retries-the-identical-command-without-regrant",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "lost-rematch-response-is-restored-after-reload-and-retries-the-same-exact-create",
+      "totalErrors": 1,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "no-legal-target-keeps-an-explicit-enabled-KEEP-and-Escape-never-sends-it",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "offline-during-a-heal-tween-fetches-the-changed-server-checkpoint-on-reconnect",
+      "totalErrors": 0,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "playable-trick-label-and-unit-to-hero-focus-forecast-follow-the-resolved-legal-action",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "pointer-plays-the-same-exact-public-unit-intent",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "snapshot-history-recovers-205-scanned-rows-across-an-empty-private-page-without-cosmetic-replay",
+      "totalErrors": 2,
+      "expectedNetworkInjection": true,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "two-visible-tabs-recover-a-paused-checkpoint-without-duplicating-the-response",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    },
+    {
+      "case": "version-drift-shows-retained-source-and-original-current-versions-without-any-replacement-create",
+      "totalErrors": 0,
+      "expectedNetworkInjection": false,
+      "unexpectedErrors": 0
+    }
+  ],
+  "unexpectedErrors": 0
+}

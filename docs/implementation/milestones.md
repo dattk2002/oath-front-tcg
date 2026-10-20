@@ -1,13 +1,13 @@
 # Tiến độ triển khai OathFront
 
-Cập nhật ngày 2026-10-20. Đây là tiến độ implementation; các báo cáo trong giai đoạn thiết kế không thay thế kiểm thử sản phẩm.
+Cập nhật ngày 2026-10-21. Đây là tiến độ implementation; các báo cáo trong giai đoạn thiết kế không thay thế kiểm thử sản phẩm.
 
 | Milestone | Task | Trạng thái | Kết quả |
 |---|---|---|---|
 | M1 — Content và engine | 1–5 | Đã kiểm thử và review | Catalog đầy đủ, luật/hiệu ứng/combat, projection, public preview và replay deterministic |
 | M2 — Persistence, API và bot | 6–8 | Đã kiểm thử và review | PostgreSQL thật, guest/CSRF, receipt, log recovery, bot Dễ/Thường và hai phe chơi hết trận qua HTTP |
-| M3 — Trận chơi trên browser | 9–11 | Đang triển khai | Task 9–10 đã kiểm thử/review; tiếp theo Task 11; chưa nghiệm thu milestone |
-| M4 — Product loop | 12–14 | Chưa bắt đầu | Hero/deck builder, Google login/claim, history, tutorial và settings |
+| M3 — Trận chơi trên browser | 9–11 | Đạt gate kỹ thuật và review | Trận hai phe, Pixi/GSAP, block, recovery, pause, kết quả và rematch; gate thiết bị thật vẫn được theo dõi |
+| M4 — Product loop | 12–14 | Tiếp theo: Task 12 | Hero/deck builder, Google login/claim, history, tutorial và settings |
 | M5 — Art và chất lượng | 15–17 | Chưa bắt đầu | Asset hoàn chỉnh, responsive/accessibility/performance, simulation và playtest |
 | M6 — Release candidate | 18 | Chưa bắt đầu | CI, retention, restore/load test, ba Docker image, runbook và push GitHub |
 
@@ -19,12 +19,13 @@ Cập nhật ngày 2026-10-20. Đây là tiến độ implementation; các báo 
 - Gate M2: **37 file / 462 test qua**; sau đó ổn định fixture rate limit của test PvE và kiểm lại hai test, sửa forecast lane đã giải quyết trong block response qua **33 test tập trung**, typecheck/lint/build và scoped review.
 - [Nền tảng browser — Task 9](browser-foundation.md): baseline toàn workspace tại Task 9 **42 file / 493 test qua**; các sửa cuối được kiểm bằng **17 test web**, **28 test contract**, typecheck/lint/build và **4/4 browser case trên standalone**. Không tuyên bố đã chạy lại toàn suite sau các sửa nhỏ cuối. Có ảnh hai phe ở desktop/tablet/375px và bằng chứng hash source/artifact.
 - [Motion và renderer — Task 10](motion-rendering.md): baseline **44 file / 507 test qua**, sau sửa dim cuối trận có **29 test web**, typecheck/lint/build và **9/9 browser case production** qua. WebGL thật chạy với CSP cấm `unsafe-eval`; 231 source hash và 41 artifact hash khớp. Review độc lập đã duyệt, không có finding chặn; một cải thiện nhỏ về giữ tween hover/focus được giao Task 16.
+- [Recovery, block và kết quả — Task 11](browser-recovery.md): baseline 518 test; sau sửa cuối có 38 test web/static/build. Browser phủ 29 case qua các lần chạy, rồi 5/5 case production tập trung cho bản sửa pause; review đã đóng finding chặn. Ba nhận xét Task 9 đã xử lý. Cảnh báo rematch khi storage lỗi và nối review deck đúng nguồn được giao Task 12.
 - Hai trận HTTP kiểm chứng cuối dùng server Node đã build, có pause rồi SIGKILL/restart, tiếp tục tới `COMPLETED/HERO_DEFEATED` và audit toàn journal từ initialization bất biến. Phe Thiện gặp bot Dễ: thua ở lượt 12; phe Ác gặp bot Thường: thắng ở lượt 11. Không surrender, ép terminal hay `FAULTED`. Đây là bằng chứng tích hợp, chưa phải kết luận balance.
 - Test chơi tự động chạy nhanh nên chỉ reset bucket `COMMAND` của principal fixture giữa các request khi cần. Gameplay, checkpoint, journal và giới hạn production không bị sửa; giới hạn 120 command/phút và 10 create/giờ đã được kiểm độc lập bằng API/PostgreSQL.
 
 ## Phần chưa được xác nhận
 
-- Nền tảng browser và motion đã được kiểm/review; recovery đầy đủ và luồng sản phẩm chưa được nghiệm thu. Ba nhận xét nhỏ của review Task 9 về preview hero, nhãn TRICK và lỗi browser storage được giao Task 11 trước gate M3.
+- M3 đạt gate kỹ thuật trên Chromium/Next standalone/API/PostgreSQL. Product loop M4, art/audio cuối và các gate bên ngoài chưa được nghiệm thu.
 - Migration `0002_bot_guard.sql` đã kiểm trên PostgreSQL local; Neon development đang chờ áp dụng migration này. Production chưa được migrate hoặc deploy.
 - Google OAuth callback thật, Safari/thiết bị thật và năm người playtest vẫn là các gate cần bằng chứng bên ngoài.
 - Checkpoint `683a533` đã được push lên GitHub theo yêu cầu; người dùng sau đó yêu cầu tiếp tục triển khai. Các milestone còn lại chưa được nghiệm thu; chưa publish image hoặc deploy production.

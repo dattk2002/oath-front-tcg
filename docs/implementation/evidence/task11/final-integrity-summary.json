@@ -1,0 +1,39 @@
+{
+  "sourceFiles": 230,
+  "builtArtifactFiles": 162,
+  "afterArtifactFilesIncludingRuntimeCache": 180,
+  "sourceChanges": [
+    "tests/e2e/match-foundation.spec.ts"
+  ],
+  "modifiedBuiltArtifacts": [],
+  "addedRuntimeCacheFiles": [
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.html",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.meta",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.segments/_full.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.segments/_tree.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.segments/heroes/__PAGE__.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/41da0ef926a63354a29f601d8e8d0a5951196c45ebcd28b7d4708fb7f56f3bf1/$/_not-found.html",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/41da0ef926a63354a29f601d8e8d0a5951196c45ebcd28b7d4708fb7f56f3bf1/$/_not-found.meta",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/41da0ef926a63354a29f601d8e8d0a5951196c45ebcd28b7d4708fb7f56f3bf1/$/_not-found.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/41da0ef926a63354a29f601d8e8d0a5951196c45ebcd28b7d4708fb7f56f3bf1/$/_not-found.segments/_full.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/41da0ef926a63354a29f601d8e8d0a5951196c45ebcd28b7d4708fb7f56f3bf1/$/_not-found.segments/_not-found/__PAGE__.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/41da0ef926a63354a29f601d8e8d0a5951196c45ebcd28b7d4708fb7f56f3bf1/$/_not-found.segments/_tree.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.html",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.meta",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/__PAGE__.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/_full.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/_tree.segment.rsc"
+  ],
+  "beforeManifestSha256": "3d9c6085404c6f4dd113cfcd3823269a5cebefb9e04d5af216c5a19555344395",
+  "afterManifestSha256": "f26add9ff02b33a44c4f6023ac2d9181e6ed4436749d92448c1f46cb9f7b2e10",
+  "unchangedArtifactExamples": {
+    "apps/api/dist/app.mjs": "0360b8bc330ff775363cf20114dffaa5822205123c0122104719875751c690c4",
+    "apps/web/.next/standalone/apps/web/server.js": "be24816d5a0de0e63f913c9515dc7058a23cc7d5538b37b1c4ec648e074814ea",
+    "apps/web/.next/BUILD_ID": "fd87a621683e88657537460c3611939fd8672e6d367247ee30bb625f2ec35984"
+  },
+  "task11ConsoleCollectors": 20,
+  "unexpectedConsoleErrors": 0,
+  "privateMarkerHits": 0
+}

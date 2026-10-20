@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 tests/e2e/block-recovery.spec.ts:109:1 › lost block receipt survives reload and retries the identical command without regrant (3.6s)
+  ✓  2 tests/e2e/block-recovery.spec.ts:376:1 › lost RESUME before commit retries the identical envelope inside the pause modal by keyboard and pointer (3.2s)
+  ✓  3 tests/e2e/block-recovery.spec.ts:459:3 › failed snapshot recovery disables actions until explicit retry and clears the failure after success (1.6s)
+  ✓  4 tests/e2e/block-recovery.spec.ts:459:3 › paused failed snapshot recovery disables actions until explicit retry and clears the failure after success (2.0s)
+  ✓  5 tests/e2e/input-parity.spec.ts:8:1 › keyboard block targeting and pointer KEEP are explicit; pause surrender confirmation (2.6s)
+
+  5 passed (16.5s)

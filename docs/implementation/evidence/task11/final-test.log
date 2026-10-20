@@ -1,0 +1,10 @@
+$ pnpm build:api && vitest run
+$ node scripts/build-api.mjs
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+
+ Test Files  46 passed (46)
+      Tests  518 passed (518)
+   Start at  23:49:07
+   Duration  156.39s (tests 92%, import 7%)
