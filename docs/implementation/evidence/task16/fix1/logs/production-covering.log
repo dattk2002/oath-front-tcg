@@ -1,0 +1,62 @@
+[WebServer] (node:2284541) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2284743) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2284759) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2284777) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:2284808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/accessibility.spec.ts:12:1 › keyboard settings focus and full hand labels (1.9s)
+  ✓   2 tests/e2e/accessibility.spec.ts:45:1 › WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow (2.8s)
+  ✓   3 tests/e2e/accessibility.spec.ts:242:1 › browser error collector retains unexpected console and page errors (37ms)
+  ✓   4 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1440x900 (1.1s)
+  ✓   5 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1366x768 (1.3s)
+  ✓   6 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1280x720 (1.3s)
+  ✓   7 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1024x768 (1.3s)
+  ✓   8 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1024x640 (1.2s)
+  ✘   9 tests/e2e/responsive.spec.ts:98:1 › actionable tutorial G01 G02 and block fit low tablet and desktop (8.8s)
+(node:2285587) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 tests/e2e/responsive.spec.ts:189:1 › empty hand, pending command and renderer failure keep essential controls readable (1.7s)
+
+
+  1) tests/e2e/responsive.spec.ts:98:1 › actionable tutorial G01 G02 and block fit low tablet and desktop
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+      185 |   await expect(page.locator('[data-presentation="idle"]')).toBeAttached();
+      186 |   await check("G07");
+    > 187 |   expect(errors).toEqual([]);
+          |                  ^
+      188 | });
+      189 | test("empty hand, pending command and renderer failure keep essential controls readable", async ({
+      190 |   page,
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/responsive.spec.ts:187:18
+
+    Error Context: test-results/responsive-actionable-tuto-b9ee2--fit-low-tablet-and-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-actionable-tuto-b9ee2--fit-low-tablet-and-desktop/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/responsive-actionable-tuto-b9ee2--fit-low-tablet-and-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/responsive.spec.ts:98:1 › actionable tutorial G01 G02 and block fit low tablet and desktop
+  9 passed (25.8s)

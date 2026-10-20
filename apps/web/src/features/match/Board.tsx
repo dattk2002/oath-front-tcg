@@ -104,6 +104,7 @@ export default function Board({
         {unit.isToken && <span>Triệu hồi</span>}
         <span
           className="status-text"
+          aria-hidden="true"
           data-has-status={unitStatuses(unit).length > 0}
         >
           {unitStatuses(unit).slice(0, 3).join(" · ") || "Không có trạng thái"}

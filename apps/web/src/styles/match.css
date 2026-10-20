@@ -953,7 +953,7 @@
     grid-row: 1 / span 2;
   }
   .hand {
-    gap: 4px;
+    gap: 8px;
   }
   .hand-card {
     min-height: 88px;

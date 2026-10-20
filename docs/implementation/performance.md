@@ -72,3 +72,7 @@ Chrome BeginFrame events were16.666ms apart; AnimationFrame::Presentation spacin
 ### Open release item PERF-P95-01
 
 **FAILED / OPEN:** the measured Intel/Wayland workload has p95=21.4/21.7/22.5ms against the unchanged20ms target. Median, p99, resource and texture-cleanup passes remain separate results. The controller accepted Task16 implementation as DONE_WITH_CONCERNS because the task requires measurement/comparison and the bounded investigation fixed the attributable defects. This does not waive the target or authorize deployment. Carry PERF-P95-01 into the Task18 release checklist; future performance/device validation is required before an unqualified performance or production-ready claim. Reviewers must assess the implementation and this remaining limit independently.
+
+### Review-fix artifact boundary
+
+Review fix1 produced build `mPRxwzNVtnRYVPLtxR3DM` after restoring8px hand gaps and removing duplicate accessible status text. It was verified with focused layout/accessibility checks and was **not benchmarked**. The measurements above remain attributed to `ZipcVWCZHw8l3sc-rmia3`; PERF-P95-01 stays FAILED/OPEN. See [fix1 evidence](evidence/task16/fix1/README.md) for the distinct source/build boundary.

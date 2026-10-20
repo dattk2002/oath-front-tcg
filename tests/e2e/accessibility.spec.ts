@@ -1,9 +1,28 @@
 import { test, expect } from "@playwright/test";
-import { checkpoint, prepare, enter } from "./quality-fixtures.js";
+import {
+  checkpoint,
+  prepare,
+  enter,
+  collectBrowserErrors,
+  createQualityGuest,
+} from "./quality-fixtures.js";
+const evidence =
+  process.env.OATHFRONT_QUALITY_EVIDENCE_DIR ??
+  "docs/implementation/evidence/task16";
+test.beforeAll(() => mkdir(evidence, { recursive: true }).then(() => {}));
 test("keyboard settings focus and full hand labels", async ({ page }) => {
   const dto = checkpoint();
-  await prepare(page, dto);
+  Object.assign(dto.view.board[0]!.evil!.statuses, {
+    shield: true,
+    armor: 1,
+    poisoned: true,
+    stunned: true,
+  });
+  const errors = await prepare(page, dto);
   await enter(page, dto.view.matchId);
+  await expect(page.locator(".board-unit").first()).toHaveAccessibleName(
+    "Lộ 1, Lính Tro 2 công / 6 HP Phe Ác · xem chi tiết · Khiên · Giáp 1 · Độc · Choáng",
+  );
   await page.getByRole("button", { name: "Cài đặt", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.getByRole("dialog")).toBeVisible();
@@ -19,15 +38,16 @@ test("keyboard settings focus and full hand labels", async ({ page }) => {
     expect(b!.width).toBeGreaterThanOrEqual(44);
     expect(b!.height).toBeGreaterThanOrEqual(44);
   }
+  expect(errors).toEqual([]);
 });
 
 import AxeBuilder from "@axe-core/playwright";
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 test("WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow", async ({
   page,
 }) => {
   const dto = checkpoint();
-  await prepare(page, dto);
+  const errors = await prepare(page, dto);
   await enter(page, dto.view.matchId);
   await page.evaluate(() => document.fonts.ready);
   for (const state of ["battle", "settings", "zoom"]) {
@@ -43,7 +63,7 @@ test("WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow", async (
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
       .analyze();
     await writeFile(
-      `docs/implementation/evidence/task16/axe-${state}.json`,
+      `${evidence}/axe-${state}.json`,
       JSON.stringify(result, null, 2),
     );
     expect(result.violations).toEqual([]);
@@ -53,6 +73,7 @@ test("WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow", async (
       ),
     ).toBe(true);
   }
+  expect(errors).toEqual([]);
 });
 
 import { create } from "./recovery-fixtures.js";
@@ -95,7 +116,7 @@ test("dirty Back Stay Leave preserves draft without Navigation API", async ({
     "Bộ bài mới",
   );
   await writeFile(
-    "docs/implementation/evidence/task16/firefox.json",
+    `${evidence}/firefox.json`,
     JSON.stringify(
       {
         version: browser.version(),
@@ -112,6 +133,8 @@ test("dirty Back Stay Leave preserves draft without Navigation API", async ({
 test("normal text token contrast exceeds 4.5 even on the lightest game surface", async ({
   page,
 }) => {
+  await createQualityGuest(page);
+  const errors = collectBrowserErrors(page);
   await page.goto("/");
   const tokens = await page.evaluate(() => {
     const s = getComputedStyle(document.documentElement);
@@ -147,7 +170,7 @@ test("normal text token contrast exceeds 4.5 even on the lightest game surface",
       expect(ratio, `${fg} on ${bg}`).toBeGreaterThanOrEqual(4.5);
     }
   await writeFile(
-    "docs/implementation/evidence/task16/contrast.json",
+    `${evidence}/contrast.json`,
     JSON.stringify(
       {
         tokens,
@@ -158,12 +181,13 @@ test("normal text token contrast exceeds 4.5 even on the lightest game surface",
       2,
     ),
   );
+  expect(errors).toEqual([]);
 });
 test("quality and legacy reduced-motion preferences persist without changing battle data", async ({
   page,
 }) => {
   const dto = checkpoint();
-  await prepare(page, dto);
+  const errors = await prepare(page, dto);
   await page.addInitScript(() =>
     localStorage.setItem(
       "oathfront.settings.v1",
@@ -214,4 +238,24 @@ test("quality and legacy reduced-motion preferences persist without changing bat
     muted: true,
     reducedMotion: true,
   });
+  expect(errors).toEqual([]);
+});
+
+test("browser error collector retains unexpected console and page errors", async ({
+  page,
+}) => {
+  const errors = collectBrowserErrors(
+    page,
+    /\/assets\/core-v1\/atlases\/[^/]+\.webp$/,
+  );
+  await page.setContent("<main>Collector regression</main>");
+  await page.evaluate(() => {
+    console.error("unexpected console sentinel");
+    setTimeout(() => {
+      throw Error("unexpected page sentinel");
+    }, 0);
+  });
+  await expect
+    .poll(() => errors)
+    .toEqual(["unexpected console sentinel", "unexpected page sentinel"]);
 });

@@ -1,6 +1,16 @@
 import { test, expect, type Page } from "@playwright/test";
-import { checkpoint, prepare, enter } from "./quality-fixtures.js";
+import {
+  checkpoint,
+  prepare,
+  enter,
+  collectBrowserErrors,
+  createQualityGuest,
+} from "./quality-fixtures.js";
 import { mkdir } from "node:fs/promises";
+const evidence =
+  process.env.OATHFRONT_QUALITY_EVIDENCE_DIR ??
+  "docs/implementation/evidence/task16";
+test.beforeAll(() => mkdir(evidence, { recursive: true }).then(() => {}));
 export async function fits(page: Page, selector: string) {
   const bounds = await page.locator(selector).evaluateAll((nodes) =>
     nodes.map((n) => {
@@ -31,26 +41,44 @@ for (const [width, height] of [
 ])
   test(`ten cards and ten units fit ${width}x${height}`, async ({ page }) => {
     const dto = checkpoint();
-    await prepare(page, dto);
+    const errors = await prepare(page, dto);
     await page.setViewportSize({ width: width!, height: height! });
     await enter(page, dto.view.matchId);
     await expect(
       page.getByRole("button", { name: "Kết thúc hành động", exact: true }),
     ).toBeInViewport({ ratio: 1 });
     await fits(page, ".hero-panel,.lane,.hand-card,.phase-controls");
+    const cards = await page.locator(".hand-card").evaluateAll((nodes) =>
+      nodes.map((n) => {
+        const r = n.getBoundingClientRect();
+        return {
+          left: r.left,
+          right: r.right,
+          width: r.width,
+          height: r.height,
+        };
+      }),
+    );
+    expect(cards).toHaveLength(10);
+    for (const [index, card] of cards.entries()) {
+      expect(card.width).toBeGreaterThanOrEqual(44);
+      expect(card.height).toBeGreaterThanOrEqual(44);
+      if (index > 0)
+        expect(card.left - cards[index - 1]!.right).toBeGreaterThanOrEqual(8);
+    }
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
-    await mkdir("docs/implementation/evidence/task16", { recursive: true });
     await page.screenshot({
-      path: `docs/implementation/evidence/task16/battle-${width}-${height}.png`,
+      path: `${evidence}/battle-${width}-${height}.png`,
     });
+    expect(errors).toEqual([]);
   });
 test("375px fallback preserves readable lane list", async ({ page }) => {
   const dto = checkpoint();
-  await prepare(page, dto);
+  const errors = await prepare(page, dto);
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto(`/matches/${dto.view.matchId}`);
   await expect(
@@ -65,11 +93,14 @@ test("375px fallback preserves readable lane list", async ({ page }) => {
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+  expect(errors).toEqual([]);
 });
 
 test("actionable tutorial G01 G02 and block fit low tablet and desktop", async ({
   page,
 }) => {
+  await createQualityGuest(page);
+  const errors = collectBrowserErrors(page);
   await page.goto("/");
   await page
     .getByRole("button", { name: "Học cách chơi", exact: true })
@@ -88,7 +119,7 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
     ]) {
       await page.setViewportSize({ width: width!, height: height! });
       await page.screenshot({
-        path: `docs/implementation/evidence/task16/tutorial-${label}-${width}.png`,
+        path: `${evidence}/tutorial-${label}-${width}.png`,
       });
       await fits(page, ".hero-panel,.lane,.tutorial-panel");
       if (await page.locator(".block-response").count()) {
@@ -155,6 +186,7 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
   await expect(page.locator(".block-response")).toBeVisible();
   await expect(page.locator('[data-presentation="idle"]')).toBeAttached();
   await check("G07");
+  expect(errors).toEqual([]);
 });
 test("empty hand, pending command and renderer failure keep essential controls readable", async ({
   page,
@@ -162,7 +194,11 @@ test("empty hand, pending command and renderer failure keep essential controls r
   const dto = checkpoint();
   dto.view.self.hand = [];
   dto.view.players.GOOD.handCount = 0;
-  await prepare(page, dto);
+  const errors = await prepare(
+    page,
+    dto,
+    /\/assets\/core-v1\/atlases\/[^/]+\.webp$/,
+  );
   await page.setViewportSize({ width: 1024, height: 640 });
   await page.route("**/assets/core-v1/atlases/**", (r) => r.abort());
   await page.goto(`/matches/${dto.view.matchId}`);
@@ -174,7 +210,7 @@ test("empty hand, pending command and renderer failure keep essential controls r
   ).toBeVisible();
   await fits(page, ".hero-panel,.lane,.phase-controls");
   await page.screenshot({
-    path: "docs/implementation/evidence/task16/empty-renderer-fallback.png",
+    path: `${evidence}/empty-renderer-fallback.png`,
   });
   let release = () => {};
   const gate = new Promise<void>((resolve) => {
@@ -192,10 +228,11 @@ test("empty hand, pending command and renderer failure keep essential controls r
   );
   await fits(page, '[data-testid="command-status"]');
   await page.screenshot({
-    path: "docs/implementation/evidence/task16/pending.png",
+    path: `${evidence}/pending.png`,
   });
   release();
   await expect(page.getByTestId("command-status")).not.toContainText(
     "Đang xác nhận",
   );
+  expect(errors).toEqual([]);
 });

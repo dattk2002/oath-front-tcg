@@ -1,0 +1,2 @@
+$ tsc --noEmit && pnpm --filter @oathfront/web typecheck
+$ tsc --noEmit

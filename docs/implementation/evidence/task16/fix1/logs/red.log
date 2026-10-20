@@ -1,0 +1,92 @@
+[WebServer] (node:2272176) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2272193) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2272209) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2272275) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2272309) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2272326) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:2272491) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2272582) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/accessibility.spec.ts:5:1 › keyboard settings focus and full hand labels (8.4s)
+(node:2272784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2272894) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/responsive.spec.ts:34:3 › ten cards and ten units fit 1024x640 (2.9s)
+
+
+  1) tests/e2e/accessibility.spec.ts:5:1 › keyboard settings focus and full hand labels ────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Bàn năm lộ' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Bàn năm lộ' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Bàn năm lộ' })
+
+
+       at quality-fixtures.ts:140
+
+      138 |   const started = Date.now();
+      139 |   await page.goto(`/matches/${id}`);
+    > 140 |   await expect(page.getByRole("region", { name: "Bàn năm lộ" })).toBeVisible();
+          |                                                                  ^
+      141 |   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
+      142 |     timeout: 15000,
+      143 |   });
+        at enter (/home/bia/Works/Coding/oath-front-tcg/tests/e2e/quality-fixtures.ts:140:66)
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/accessibility.spec.ts:9:3
+
+    Error Context: test-results/accessibility-keyboard-settings-focus-and-full-hand-labels/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/accessibility-keyboard-settings-focus-and-full-hand-labels/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/accessibility-keyboard-settings-focus-and-full-hand-labels/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/responsive.spec.ts:34:3 › ten cards and ten units fit 1024x640 ──────────────────────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 8
+    Received:    4
+
+      46 |       expect(card.width).toBeGreaterThanOrEqual(44);
+      47 |       expect(card.height).toBeGreaterThanOrEqual(44);
+    > 48 |       if (index > 0) expect(card.left - cards[index - 1]!.right).toBeGreaterThanOrEqual(8);
+         |                                                                  ^
+      49 |     }
+      50 |     expect(
+      51 |       await page.evaluate(
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/responsive.spec.ts:48:66
+
+    Error Context: test-results/responsive-ten-cards-and-ten-units-fit-1024x640/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-ten-cards-and-ten-units-fit-1024x640/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/responsive-ten-cards-and-ten-units-fit-1024x640/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/accessibility.spec.ts:5:1 › keyboard settings focus and full hand labels ─────────────
+    tests/e2e/responsive.spec.ts:34:3 › ten cards and ten units fit 1024x640 ───────────────────────

@@ -1,0 +1,44 @@
+[WebServer] (node:2279077) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2279090) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2279138) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2279397) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2279429) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2279446) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:2279585) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2279715) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/accessibility.spec.ts:12:1 › keyboard settings focus and full hand labels (4.8s)
+[WebServer] (node:2279901) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/accessibility.spec.ts:45:1 › WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow (4.4s)
+  ✓  3 tests/e2e/accessibility.spec.ts:242:1 › browser error collector retains unexpected console and page errors (56ms)
+[WebServer] (node:2280030) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1440x900 (2.8s)
+[WebServer] (node:2280150) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1366x768 (2.8s)
+[WebServer] (node:2280257) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1280x720 (2.7s)
+[WebServer] (node:2280320) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1024x768 (2.6s)
+[WebServer] (node:2280393) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  8 tests/e2e/responsive.spec.ts:41:3 › ten cards and ten units fit 1024x640 (2.6s)
+[WebServer] (node:2280498) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  9 tests/e2e/responsive.spec.ts:189:1 › empty hand, pending command and renderer failure keep essential controls readable (3.2s)
+
+  9 passed (35.6s)

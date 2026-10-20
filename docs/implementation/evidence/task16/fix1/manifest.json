@@ -1,0 +1,125 @@
+{
+  "baseCommit": "f9272640f042d0bea2ec7771cc3b12e1d3743a5d",
+  "buildId": "mPRxwzNVtnRYVPLtxR3DM",
+  "apiOrigin": "http://127.0.0.1:3101",
+  "runtimeSha256": {
+    "apps/web/src/features/match/Board.tsx": "125cd46a1f714bee22623c043d69f493076bac4a4d67647f0e2171be99ce93b2",
+    "apps/web/src/styles/match.css": "271c746a8d22f6f057994a534e3d45b8bcb0b98369ed9cb22204215ad810f7e6"
+  },
+  "sourceSha256": {
+    "apps/web/src/features/match/Board.tsx": "125cd46a1f714bee22623c043d69f493076bac4a4d67647f0e2171be99ce93b2",
+    "apps/web/src/styles/match.css": "271c746a8d22f6f057994a534e3d45b8bcb0b98369ed9cb22204215ad810f7e6",
+    "tests/e2e/accessibility.spec.ts": "b1bf19730b707f48eaa4136d8569aec38685c3436b163a2160dd12a9fd397918",
+    "tests/e2e/responsive.spec.ts": "c128f96e4dadd98abbb9e32262f5937e20c3905f9f6929f159c133cf85e37128",
+    "tests/e2e/quality-fixtures.ts": "0f9520e3b75059d5ec57d73356cb4a4f8fc3ef24e9976b612bbaf43e65e2652c"
+  },
+  "artifactSha256": {
+    "apps/web/.next/BUILD_ID": "7c12cc509a9312558a4739757bd19bc59ad25823b31f175d54d984c542d852fe",
+    "apps/web/.next/standalone/apps/web/server.js": "0b1c9b22e13d1e1b76e3592fe0748b98b093af94be9252f7e9c896a33163bdcc",
+    "apps/web/.next/static/chunks/104.5051fac1b94545a0.js": "141cf012254654b40172d6dbb31862033ae2e5865d801da8a991399ff7aa299b",
+    "apps/web/.next/static/chunks/110-2d00d3f00043bb59.js": "569565e189ee434e641a910d6b0162e58295bfe3c32b0d86787f7a5ef0b0a37d",
+    "apps/web/.next/static/chunks/125.da753fa3f696a18c.js": "4551f98b5d0cb765a1628fbea02251ba4c12dc5bc13475df9a26ed1081fac344",
+    "apps/web/.next/static/chunks/178.754b83167c7b5fce.js": "4eb48687ade1e0d808992c680ac5609edad3791d8b87760adc2861c1d31575c4",
+    "apps/web/.next/static/chunks/237-361621b24b4b2237.js": "f6ad4fc20fa382a200fa26e9ae4ee89508429108a91a2e8788b838f4be6e1aa7",
+    "apps/web/.next/static/chunks/254.4c851c3219211848.js": "7873ba72112d9413a7b2028bfcef9fd003cbe8e5b4d347bc33c60d2d9402ebf4",
+    "apps/web/.next/static/chunks/267-867d5fd8d01f1dee.js": "7b1afe4ee8cd2795f8ab35844a3391994eceb3567865e56ff045d31ee8b8e889",
+    "apps/web/.next/static/chunks/306.765c4b3b8f731aa3.js": "073ccfe84efd7fa8fc6c4d71c3ba2f44e6c8da15bbf5d5fe32d1e5cd19f07b15",
+    "apps/web/.next/static/chunks/438.9648ef1145cb27f5.js": "74b951a71b0cdd95c83aa6779d8fdc48ffed05e1460642421cf8ccea40afe2dc",
+    "apps/web/.next/static/chunks/532.92a770015a495b27.js": "cb78559c864bbe9f2aa5c89342f9462128259ba94c40401d80134c1a89c94373",
+    "apps/web/.next/static/chunks/540.3b5ac8f1702522cf.js": "0379b768ddcb498238312c8adc57aaab871d8c7fc8aa44d26fd6fcdd6928e188",
+    "apps/web/.next/static/chunks/556.15be2fe1513a1346.js": "b44204581b2f02a68a5dcbd00003adf3fd20502496ce8b07dcde51ab1782b9c3",
+    "apps/web/.next/static/chunks/601.34a072aeccd2dc5d.js": "b4dc8372f2ba1da13e2a27f135d27a6eb7cf1cd0eb585bf0b6934400f22e9c1c",
+    "apps/web/.next/static/chunks/693.9c822b68a5275631.js": "c8a5d40cdce0cb474444e78dd2fcb648b26d86bccaef2fcbe811ca355de5acff",
+    "apps/web/.next/static/chunks/709.5544ceb84cd7d5be.js": "2d024e4c9898024f714acf63fa633134541c3f6753e13a055adb28d2193d7d6c",
+    "apps/web/.next/static/chunks/753.163afc94239b7ae3.js": "c93a67193a25e175a6ef4d2b996996462dbff48b6b81237d8f63e5c419b65d46",
+    "apps/web/.next/static/chunks/785.43a5d2b6dfb2d765.js": "9d95cc93cadc5f1089ca70ab471d0bb98f7a8f1c2a3f3f90b95df323a6e230c2",
+    "apps/web/.next/static/chunks/805-62089702ca428506.js": "9fa87f5edcae3a61f534bc15304f77121848e451794f82faf54fb543f09036ef",
+    "apps/web/.next/static/chunks/935.088081d76bc0b445.js": "cb69b6b9061beaca201682cde40b856687fba14f25ced77ef59cee12a12c1af3",
+    "apps/web/.next/static/chunks/965.68b6ee444de4c87e.js": "d60e1540cc4e00f10b8664c6be5e2ad42f0b4df9318607d685c91438b525c345",
+    "apps/web/.next/static/chunks/984.28fd4572cb26e51f.js": "e1c6af9fae58cd6e57b895839e1821d2db07994f7049229c3c02beb0889a2b07",
+    "apps/web/.next/static/chunks/app/_global-error/page-128fcfda34b90af4.js": "2e6c9836a84a852532d64ce6c237ee6c04a268530284428b60f40efd178e2256",
+    "apps/web/.next/static/chunks/app/_not-found/page-128fcfda34b90af4.js": "2e6c9836a84a852532d64ce6c237ee6c04a268530284428b60f40efd178e2256",
+    "apps/web/.next/static/chunks/app/api/auth/[...path]/route-128fcfda34b90af4.js": "2e6c9836a84a852532d64ce6c237ee6c04a268530284428b60f40efd178e2256",
+    "apps/web/.next/static/chunks/app/decks/[deckId]/edit/page-c48b9952b7153062.js": "0b9ad1000c8a6d34c6a5e97df7fa44a922c681c1013e3e77e9e3616838322343",
+    "apps/web/.next/static/chunks/app/decks/new/page-daa1da1e586089b0.js": "8c21cb93a06dafc3b4d27659b39c0e603e667dedec72dc1471325ecb770cd42b",
+    "apps/web/.next/static/chunks/app/decks/review/[matchId]/page-3046d22a9e6ba3eb.js": "cd21c4d0d67a7a6668a1efbcf61f17b0a43fa46666ac3fca5717375e8f52fae0",
+    "apps/web/.next/static/chunks/app/heroes/[heroId]/decks/page-9d071ebdcb304bce.js": "5b9c0bfefaa3d158fe89dfd39e1f454a0e9ae01b4a08988631388a45fe8208e1",
+    "apps/web/.next/static/chunks/app/heroes/page-93610b2a974043da.js": "05ee6b716c58912fdd5807481b3c0622ec0bc257496a66e86a3e64f6e44fd417",
+    "apps/web/.next/static/chunks/app/history/[id]/page-baa3261f51a16460.js": "2ea29c8351d617b141dadba8b0b776befcbd9a4b4ab0cd84d935dd501631d3ae",
+    "apps/web/.next/static/chunks/app/history/page-9fb9c1120280ab8e.js": "5d1f8c743f758ce9cd74f81f173d119bc0d49e4a4a6396ca5b4e3baf29141f14",
+    "apps/web/.next/static/chunks/app/layout-fde781ed784d2f06.js": "6064076fcabbb061a7cc972d9d628c12ed7b4eccb46b2e2466fd1b182a8011bd",
+    "apps/web/.next/static/chunks/app/matches/[id]/page-b413b14a949758ab.js": "ad170ec2fcb2a1d7b3d1aee61ff667cedbfab0d5d5fdac38e61dba8b1e20fdfd",
+    "apps/web/.next/static/chunks/app/not-found-cd7c23aaf9f0192a.js": "9182af232612ffef5146f35eb119710916b7af64c1f6492a0a364c5c0f4a4a51",
+    "apps/web/.next/static/chunks/app/page-54b3976dcdb172db.js": "4f888cc5ee804dc0161e8645d1e8968defbca1035c305b99c3385f311b2b1912",
+    "apps/web/.next/static/chunks/cb9d67de-cef7b3a76d4c411b.js": "de22c601be230fee5e9b8e31c1cf1fd886db1332c3472e7fad2435a76d1a8028",
+    "apps/web/.next/static/chunks/e809d3ec.16a18e52216662fd.js": "2febef594df816a0cfe2f34450e8d371d9747352b1b73447b9f6a2cd3c29139d",
+    "apps/web/.next/static/chunks/framework-d3f0ec89a1db2d3e.js": "2d6ed85048e8e384b8715f722bf5a6c682bb7db8f736540787eb82643d64fe37",
+    "apps/web/.next/static/chunks/main-040196e97d9ca7cc.js": "fbaadbd5ff51ea3f6163135637c61c504908c7173af484e5253c1ea62ed5dd7d",
+    "apps/web/.next/static/chunks/main-app-333f47d1ee109633.js": "de138c44d8fa75fb39dcd61a5ad445afb45fc911f42e4f09be163c3686439404",
+    "apps/web/.next/static/chunks/next/dist/client/components/builtin/app-error-128fcfda34b90af4.js": "2e6c9836a84a852532d64ce6c237ee6c04a268530284428b60f40efd178e2256",
+    "apps/web/.next/static/chunks/next/dist/client/components/builtin/forbidden-128fcfda34b90af4.js": "2e6c9836a84a852532d64ce6c237ee6c04a268530284428b60f40efd178e2256",
+    "apps/web/.next/static/chunks/next/dist/client/components/builtin/global-error-ca306e73d5eeeae3.js": "f886905f40ed5bd45825b8aa670356e993dfe953e02e099c2bfc3f52d42043de",
+    "apps/web/.next/static/chunks/next/dist/client/components/builtin/unauthorized-128fcfda34b90af4.js": "2e6c9836a84a852532d64ce6c237ee6c04a268530284428b60f40efd178e2256",
+    "apps/web/.next/static/chunks/polyfills-42372ed130431b0a.js": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+    "apps/web/.next/static/chunks/webpack-384a1bef7c18e6fc.js": "67ed20fbd5126f0a85464308a08a68b019095c7a352f68fde2b9c23c8819a6f8",
+    "apps/web/.next/static/mPRxwzNVtnRYVPLtxR3DM/_buildManifest.js": "95fb6f39b2b0258dbd9207993c6136515e38d42a875629898fd4b6918d21794d",
+    "apps/web/.next/static/mPRxwzNVtnRYVPLtxR3DM/_ssgManifest.js": "678f6ce2cb80b1fe72fc67e7412be6e2ab6ada083111b64f7c40d35e3cba5e00",
+    "apps/web/.next/static/css/86ea8edcd7f6170a.css": "c96a7052ffbc5a51d003335ff9a0edb57954b0d4ea8039f7f28e6117c54167a0"
+  },
+  "prebuildSnapshot": ".superpowers/sdd/2026-10-20-oathfront-implementation/task-16-evidence/fix1/prebuild-source.json",
+  "performanceMeasuredOnPrecedingBuild": "ZipcVWCZHw8l3sc-rmia3",
+  "precedingPerformanceSha256": "932d3f333149bc0f43b4be68c8a6180ffe654654e1348911bc17611ec7114e5c",
+  "performanceStatus": "PERF-P95-01 FAILED/OPEN; fix build not benchmarked",
+  "commands": [
+    {
+      "command": "OATHFRONT_QUALITY_EVIDENCE_DIR=.superpowers/sdd/2026-10-20-oathfront-implementation/task-16-evidence/fix1/dev pnpm exec playwright test tests/e2e/responsive.spec.ts tests/e2e/accessibility.spec.ts --grep 'fit 1024x640|keyboard settings'",
+      "exit": 1,
+      "log": "red.log"
+    },
+    {
+      "command": "OATHFRONT_QUALITY_EVIDENCE_DIR=.superpowers/sdd/2026-10-20-oathfront-implementation/task-16-evidence/fix1/dev pnpm exec playwright test tests/e2e/accessibility.spec.ts --grep 'keyboard settings'",
+      "exit": 1,
+      "log": "status-red.log"
+    },
+    {
+      "command": "OATHFRONT_QUALITY_EVIDENCE_DIR=.superpowers/sdd/2026-10-20-oathfront-implementation/task-16-evidence/fix1/dev pnpm exec playwright test tests/e2e/responsive.spec.ts tests/e2e/accessibility.spec.ts --grep 'ten cards|keyboard settings|empty hand|error collector|WCAG'",
+      "exit": 0,
+      "log": "dev-covering.log"
+    },
+    {
+      "command": "API_ORIGIN=http://127.0.0.1:3101 pnpm --filter @oathfront/web build",
+      "exit": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "OATHFRONT_E2E_PRODUCTION=1 OATHFRONT_QUALITY_EVIDENCE_DIR=docs/implementation/evidence/task16/fix1 pnpm exec playwright test tests/e2e/responsive.spec.ts tests/e2e/accessibility.spec.ts --grep 'ten cards|keyboard settings|empty hand|error collector|WCAG|actionable tutorial'",
+      "exit": 1,
+      "log": "production-covering.log"
+    },
+    {
+      "command": "OATHFRONT_E2E_PRODUCTION=1 OATHFRONT_QUALITY_EVIDENCE_DIR=docs/implementation/evidence/task16/fix1 pnpm exec playwright test tests/e2e/responsive.spec.ts tests/e2e/accessibility.spec.ts --grep 'actionable tutorial|normal text token contrast'",
+      "exit": 0,
+      "log": "production-fixture-covering.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exit": 0,
+      "log": "types.log"
+    },
+    {
+      "command": "pnpm exec eslint apps/web/src/features/match/Board.tsx tests/e2e/accessibility.spec.ts tests/e2e/responsive.spec.ts tests/e2e/quality-fixtures.ts",
+      "exit": 0,
+      "log": "lint.log"
+    },
+    {
+      "command": "pnpm exec tsc --noEmit",
+      "exit": 0,
+      "log": "types-fixture.log"
+    },
+    {
+      "command": "pnpm exec eslint tests/e2e/quality-fixtures.ts tests/e2e/responsive.spec.ts tests/e2e/accessibility.spec.ts",
+      "exit": 0,
+      "log": "lint-fixture.log"
+    }
+  ]
+}

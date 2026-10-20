@@ -1,5 +1,7 @@
 import { expect, type Page } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
+import { randomUUID, randomBytes } from "node:crypto";
+import { testOrigin } from "./test-origin.js";
 import { response } from "../../apps/web/tests/fixtures.js";
 import {
   validateWire,
@@ -47,12 +49,38 @@ export function checkpoint(revision = 1) {
   expect(validateWire("CommandResponse", result)).toBe(true);
   return result;
 }
-export async function prepare(page: Page, initial: CommandResponse) {
+export async function createQualityGuest(page: Page) {
+  const response = await page.request.post("/api/v1/guest", {
+    headers: { Origin: testOrigin },
+    data: {
+      commandId: randomUUID(),
+      recoverySecret: randomBytes(32).toString("base64url"),
+    },
+  });
+  expect(response.status()).toBe(201);
+}
+export function collectBrowserErrors(
+  page: Page,
+  expectedFailedResource?: RegExp,
+) {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => {
-    if (m.type() === "error") errors.push(m.text());
+    if (m.type() !== "error") return;
+    const injectedFailure =
+      expectedFailedResource?.test(m.location().url) &&
+      m.text() === "Failed to load resource: net::ERR_FAILED";
+    if (!injectedFailure) errors.push(m.text());
   });
+  return errors;
+}
+export async function prepare(
+  page: Page,
+  initial: CommandResponse,
+  expectedFailedResource?: RegExp,
+) {
+  expect(validateWire("CommandResponse", initial)).toBe(true);
+  const errors = collectBrowserErrors(page, expectedFailedResource);
   if (process.env.OATHFRONT_E2E_PRODUCTION === "1")
     await page.route("**/*", async (route) => {
       if (route.request().resourceType() !== "document") {

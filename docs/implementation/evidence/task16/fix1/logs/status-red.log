@@ -1,0 +1,59 @@
+[WebServer] (node:2276180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2276206) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2276231) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2276265) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2276278) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2276295) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:2276452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2276619) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/accessibility.spec.ts:5:1 › keyboard settings focus and full hand labels (9.6s)
+
+
+  1) tests/e2e/accessibility.spec.ts:5:1 › keyboard settings focus and full hand labels ────────────
+
+    Error: expect(locator).toHaveAccessibleName(expected) failed
+
+    Locator:  locator('.board-unit').first()
+    Expected: "Lộ 1, Lính Tro 2 công / 6 HP Phe Ác · xem chi tiết · Khiên · Giáp 1 · Độc · Choáng"
+    Received: "Lộ 1, Lính Tro 2 công / 6 HP Phe Ác · xem chi tiết · Khiên · Giáp 1 · Độc · Choáng Khiên · Giáp 1 · Độc · +1 trạng thái"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAccessibleName" locator('.board-unit').first() with timeout 5000ms
+      - waiting for locator('.board-unit').first()
+        14 × locator resolved to <button data-own-unit="false" class="board-unit evil" data-legal-target="false" data-unit-id="00000000000000000000000000000003" data-target="{"kind":"UNIT","instanceId":"00000000000000000000000000000003"}">…</button>
+           - unexpected value "Lộ 1, Lính Tro 2 công / 6 HP Phe Ác · xem chi tiết · Khiên · Giáp 1 · Độc · Choáng Khiên · Giáp 1 · Độc · +1 trạng thái"
+
+
+       8 |   const errors = await prepare(page, dto);
+       9 |   await enter(page, dto.view.matchId);
+    > 10 |   await expect(page.locator(".board-unit").first()).toHaveAccessibleName("Lộ 1, Lính Tro 2 công / 6 HP Phe Ác · xem chi tiết · Khiên · Giáp 1 · Độc · Choáng");
+         |                                                     ^
+      11 |   await page.getByRole("button", { name: "Cài đặt", exact: true }).focus();
+      12 |   await page.keyboard.press("Enter");
+      13 |   await expect(page.getByRole("dialog")).toBeVisible();
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/accessibility.spec.ts:10:53
+
+    Error Context: test-results/accessibility-keyboard-settings-focus-and-full-hand-labels/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/accessibility-keyboard-settings-focus-and-full-hand-labels/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/accessibility-keyboard-settings-focus-and-full-hand-labels/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/accessibility.spec.ts:5:1 › keyboard settings focus and full hand labels ─────────────
