@@ -16,3 +16,4 @@ export type {
 export { applyMulligan } from "./mulligan.js";
 
 export { applyAction, getLegalActions } from "./actions.js";
+export { advanceAutomatic } from "./automatic.js";

@@ -24,6 +24,8 @@ import {
   settleOnDraft,
 } from "./effects/resolve.js";
 import { runHookOnDraft } from "./effects/triggers.js";
+import { applyBlockAction, legalBlockActions } from "./block.js";
+import { advanceAutomatic } from "./automatic.js";
 const error = (code: ActionError["code"]): ActionError => ({
   kind: "error",
   code,
@@ -33,6 +35,9 @@ export function getLegalActions(
   actor: PlayerId,
 ): PlayerAction[] {
   if (state.lifecycle !== "ACTIVE") return [];
+  if (state.blockResponse) return legalBlockActions(state, actor);
+  if (state.phase === "COMBAT")
+    return actor === state.humanSide ? [{ kind: "ADVANCE" }] : [];
   if (state.phase === "MULLIGAN") {
     if (state.players[actor].mulliganCommitted) return [];
     const ids = state.players[actor].hand.map((c) => c.instanceId),
@@ -100,6 +105,12 @@ export function applyAction(
     return error("INVALID_TARGET");
   if (state.lifecycle === "PAUSED") return error("MATCH_PAUSED");
   if (state.lifecycle !== "ACTIVE") return error("MATCH_ENDED");
+  if (state.blockResponse) return applyBlockAction(state, actor, action);
+  if (action.kind === "ADVANCE") {
+    if (actor !== state.humanSide) return error("NOT_YOUR_TURN");
+    if (state.phase !== "COMBAT") return error("WRONG_PHASE");
+    return advanceAutomatic(state, { maxRoots: 8 });
+  }
   if (action.kind === "MULLIGAN")
     return applyMulligan(state, actor, action.cardInstanceIds);
   if (phaseActor(state.phase) !== actor)

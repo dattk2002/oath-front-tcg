@@ -32,6 +32,7 @@ export function applyDamageBatchOnDraft(
   state: MatchState,
   events: GameEvent[],
   inputs: readonly DamageInput[],
+  batchId?: string,
 ): UnitState[] {
   const packets: DamagePacket[] = [],
     changes = new Map<string, HpChange>(),
@@ -103,7 +104,8 @@ export function applyDamageBatchOnDraft(
       visibility: "PUBLIC",
       ownerSide: null,
       payload: {
-        batchId: `${state.matchId}:${state.rootSeq}:${state.eventSeq + 1}`,
+        batchId:
+          batchId ?? `${state.matchId}:${state.rootSeq}:${state.eventSeq + 1}`,
         packets: [packets[0]!, ...packets.slice(1)],
         hpChanges: [...changes.values()],
       },

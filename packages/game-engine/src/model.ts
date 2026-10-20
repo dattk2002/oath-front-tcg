@@ -20,6 +20,10 @@ import type { RandomStreams } from "./rng.js";
 export type PlayerId = Side;
 export type LaneId = 1 | 2 | 3 | 4 | 5;
 export type EngineAction = { actor: PlayerId; action: PlayerAction };
+export interface AdvanceBudget {
+  /** Deterministic complete scheduled roots; clamped to eight per call. */
+  maxRoots: number;
+}
 export interface MatchConfig {
   matchId: string;
   mode: "SKIRMISH" | "TUTORIAL";
@@ -72,7 +76,9 @@ export interface MatchState extends Omit<MatchConfig, "decks"> {
   continuation: {
     laneId: LaneId;
     stage: "BEFORE_PAIR" | "PAIR" | "BLOCK_RESPONSES" | "AFTER_LANE";
-    pendingResponders: PlayerId[];
+    pendingResponders: { side: PlayerId; powerInstanceId: string }[];
+    /** Remaining independent BEFORE_COMBAT_HERE roots, in stable snapshot order. */
+    beforeCombatJobs?: { source: UnitState; abilityId: string }[];
   } | null;
   blockResponse: {
     side: PlayerId;

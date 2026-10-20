@@ -28,9 +28,10 @@ export function transition(
     events,
     waitingForInput:
       nextState.lifecycle === "ACTIVE" &&
-      ["MULLIGAN", "EVIL_DEPLOY", "GOOD_PLAY", "EVIL_TRICKS"].includes(
-        nextState.phase,
-      ),
+      (!!nextState.blockResponse ||
+        ["MULLIGAN", "EVIL_DEPLOY", "GOOD_PLAY", "EVIL_TRICKS"].includes(
+          nextState.phase,
+        )),
     terminalOutcome: nextState.outcome,
   };
 }
