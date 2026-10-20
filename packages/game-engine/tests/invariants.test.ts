@@ -10,6 +10,17 @@ import {
 import { matchConfig } from "../../../tests/fixtures/match-fixture.js";
 import type { MatchState } from "../src/model.js";
 function verify(s: MatchState) {
+  // Control actions are excluded below, so these sequences never intentionally pause.
+  expect(s.lifecycle).not.toBe("FAULTED");
+  expect(["ACTIVE", "COMPLETED"]).toContain(s.lifecycle);
+  if (s.lifecycle === "COMPLETED") {
+    expect(s.phase).toBe("GAME_OVER");
+    expect(s.outcome).not.toBeNull();
+    expect(["WIN", "LOSS", "DRAW"]).toContain(s.outcome?.result);
+    expect(["HERO_DEFEATED", "SIMULTANEOUS_LETHAL", "TURN_LIMIT"]).toContain(
+      s.outcome?.reason,
+    );
+  }
   const ids: string[] = [];
   for (const side of ["GOOD", "EVIL"] as const) {
     const p = s.players[side];

@@ -1,6 +1,7 @@
 import { it, expect } from "vitest";
 import { previewPublicAction } from "../src/preview.js";
 import { projectPlayerView } from "../src/projection.js";
+import { advanceAutomatic } from "../src/automatic.js";
 import { applyAction } from "../src/actions.js";
 import { ready, card, unit } from "./helpers.js";
 it("known damage, heal, draw and card/energy metrics match the engine without guessing drawn identities", () => {
@@ -183,4 +184,36 @@ it("separates legality from forecast capability for lifecycle, setup and noncomb
     previewPublicAction(projectPlayerView(e, "EVIL"), { kind: "PASS_PHASE" })
       .forecast,
   ).toBe("CURRENT_COMBAT");
+});
+
+it("B04 healing history stays private and suppresses a certain win when the unknown heal could save its hero", () => {
+  const unused = ready();
+  unused.phase = "EVIL_TRICKS";
+  unused.activeSide = "EVIL";
+  unused.players.GOOD.hp = 1;
+  const defender = unit(unused, "B04", "GOOD", 1);
+  unit(unused, "EC01", "EVIL", 1).current.attack = 1;
+  unit(unused, "EC01", "EVIL", 2).current.attack = 1;
+  const used = structuredClone(unused);
+  used.turnCounters[defender.instanceId + ":B04:ON_DAMAGED"] = 1;
+  const action = { kind: "PASS_PHASE" as const };
+  const unusedView = projectPlayerView(unused, "EVIL");
+  const usedView = projectPlayerView(used, "EVIL");
+  expect(unusedView).toEqual(usedView);
+  const preview = previewPublicAction(unusedView, action);
+  expect(preview).toEqual(previewPublicAction(usedView, action));
+  expect(preview.legal).toBe(true);
+  expect(preview.unknowns).toContain("TRIGGER_HISTORY");
+  expect(preview.uncertainty).toBe(true);
+  // The known-only branch is lethal, but B04's unobserved heal can avert that result.
+  expect(preview.players.GOOD.hp).toBe(0);
+  expect(preview.immediateWin).toBe(false);
+  expect(preview.immediateLoss).toBe(false);
+  const afterCombat = (state: typeof unused) => {
+    const passed = applyAction(state, { actor: "EVIL", action });
+    if (passed.kind !== "transition") throw new Error(passed.code);
+    return advanceAutomatic(passed.nextState, { maxRoots: 8 }).nextState;
+  };
+  expect(afterCombat(unused).players.GOOD.hp).toBe(1);
+  expect(afterCombat(used).players.GOOD.hp).toBe(0);
 });
