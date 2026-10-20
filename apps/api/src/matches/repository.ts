@@ -31,7 +31,7 @@ export interface MatchRecord {
   lastStepSeq: number;
   activeDurationMs: number;
   lastActivityAt: Date;
-  botIntentsSinceHuman: number;
+  botIntentsThisTurn: number;
   rematch: unknown;
 }
 export interface MatchTransaction {
@@ -104,7 +104,7 @@ async function readRecord(
     lastStepSeq: safeInteger(row.last_step_seq),
     activeDurationMs: safeInteger(row.active_duration_ms),
     lastActivityAt: row.last_activity_at,
-    botIntentsSinceHuman: safeInteger(row.bot_intents_since_human),
+    botIntentsThisTurn: safeInteger(row.bot_intents_this_turn),
     rematch: row.rematch,
   };
 }
@@ -198,11 +198,22 @@ export async function persistTransition(
   transition: TransitionResult,
   journal: readonly JournalEntry[],
   receipt: Receipt,
-  options: { now?: Date } = {},
+  options: { now?: Date; botIntentsThisTurn?: number } = {},
 ) {
   const { record, client } = tx,
     now = options.now ?? new Date();
-  validateJournalBatch(record.state, record.lastStepSeq, transition, journal);
+  const replay = validateJournalBatch(
+    record.state,
+    record.lastStepSeq,
+    transition,
+    journal,
+    record.botIntentsThisTurn,
+  );
+  if (
+    options.botIntentsThisTurn !== undefined &&
+    options.botIntentsThisTurn !== replay.botIntentsThisTurn
+  )
+    throw new PersistenceError("INVALID_BOT_GUARD");
   const state = transition.nextState,
     revision = record.revision + 1;
   if (
@@ -225,7 +236,7 @@ export async function persistTransition(
         )
       : 0);
   await client.query(
-    "UPDATE matches SET status=$2,revision=$3,updated_at=$4,last_activity_at=$4,active_duration_ms=$5,ended_at=$6,details_expires_at=$7,history_expires_at=$8 WHERE id=$1",
+    "UPDATE matches SET status=$2,revision=$3,updated_at=$4,last_activity_at=$4,active_duration_ms=$5,ended_at=$6,details_expires_at=$7,history_expires_at=$8,bot_intents_this_turn=$9 WHERE id=$1",
     [
       record.id,
       state.lifecycle,
@@ -235,6 +246,7 @@ export async function persistTransition(
       terminal ? now : null,
       terminal ? days(now, 30) : null,
       terminal ? days(now, 180) : null,
+      replay.botIntentsThisTurn,
     ],
   );
   await client.query(
@@ -291,6 +303,7 @@ export async function persistTransition(
     },
     now,
   });
+  record.botIntentsThisTurn = replay.botIntentsThisTurn;
   record.state = state;
   record.revision = revision;
   record.lastStepSeq = journal.at(-1)!.stepSeq;

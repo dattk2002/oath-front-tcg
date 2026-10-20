@@ -2,6 +2,8 @@ import { isDeepStrictEqual } from "node:util";
 import { validateWire } from "@oathfront/contracts";
 import {
   applyAction,
+  applyBotGuardFault,
+  validateGameEvent,
   advanceAutomatic,
   describeAutomaticOperation,
   hashState,
@@ -75,10 +77,17 @@ export function recordIntent(
       : { ...common, origin: "HUMAN", nextBotRandomState: null };
   return { transition, entry };
 }
-export function recordAutomatic(state: MatchState, stepSeq: number) {
-  const action = describeAutomaticOperation(state);
+export function recordAutomatic(
+  state: MatchState,
+  stepSeq: number,
+  botIntentsThisTurn = 0,
+) {
+  const action = describeAutomaticOperation(state, botIntentsThisTurn);
   if (!action) throw new PersistenceError("NO_AUTOMATIC_ROOT");
-  const transition = advanceAutomatic(state, { maxRoots: 1 });
+  const transition =
+    action.kind === "BOT_GUARD_FAULT"
+      ? applyBotGuardFault(state, botIntentsThisTurn)
+      : advanceAutomatic(state, { maxRoots: 1 });
   const entry: JournalEntry = {
     stepSeq,
     origin: "AUTO",
@@ -96,6 +105,7 @@ export function validateJournalBatch(
   lastStepSeq: number,
   transition: TransitionResult,
   entries: readonly JournalEntry[],
+  botIntentsThisTurn = 0,
 ) {
   if (
     entries.length < 1 ||
@@ -125,6 +135,7 @@ export function validateJournalBatch(
   const replay = replayJournal(
     before,
     entries.map((entry, i) => ({ ...entry, stepSeq: i + 1 })),
+    botIntentsThisTurn,
   );
   if (
     !replay.ok ||
@@ -143,7 +154,7 @@ export async function appendEvents(
 ) {
   for (const event of events) {
     if (
-      !validateWire("VisibleEvent", event) ||
+      !validateGameEvent(event) ||
       event.eventId !== matchId + ":" + event.sequence
     )
       throw new PersistenceError("INVALID_EVENT");

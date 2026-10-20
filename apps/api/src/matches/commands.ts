@@ -16,21 +16,21 @@ import { HttpError } from "../http.js";
 export interface ScheduledOperation {
   transition: TransitionResult;
   entry: JournalEntry;
-  botIntentsSinceHuman: number;
+  botIntentsThisTurn: number;
 }
 export interface Scheduler {
-  canAdvance(state: MatchState, botIntentsSinceHuman: number): boolean;
+  canAdvance(state: MatchState, botIntentsThisTurn: number): boolean;
   step(
     state: MatchState,
     nextStepSeq: number,
-    botIntentsSinceHuman: number,
+    botIntentsThisTurn: number,
   ): ScheduledOperation | null;
 }
 export const engineScheduler: Scheduler = {
   canAdvance: (state) => describeAutomaticOperation(state) !== null,
   step: (state, seq, guard) =>
     describeAutomaticOperation(state)
-      ? { ...recordAutomatic(state, seq), botIntentsSinceHuman: guard }
+      ? { ...recordAutomatic(state, seq), botIntentsThisTurn: guard }
       : null,
 };
 export function needsAdvance(
@@ -67,7 +67,7 @@ export function commandTransition(
         lastStepSeq + 1,
         null,
       ),
-      botIntentsSinceHuman: guard,
+      botIntentsThisTurn: valid.nextState.turn === state.turn ? guard : 0,
       journal: [] as JournalEntry[],
     };
   }
@@ -92,13 +92,13 @@ export function commandTransition(
     );
     if (!next) break;
     if (
-      !Number.isSafeInteger(next.botIntentsSinceHuman) ||
-      next.botIntentsSinceHuman < 0 ||
-      next.botIntentsSinceHuman > 64
+      !Number.isSafeInteger(next.botIntentsThisTurn) ||
+      next.botIntentsThisTurn < 0 ||
+      next.botIntentsThisTurn > 64
     )
       throw new HttpError(500, "INTERNAL");
     current = next.transition.nextState;
-    guard = next.botIntentsSinceHuman;
+    guard = next.botIntentsThisTurn;
     entries.push(next.entry);
     events.push(...next.transition.events);
   }
@@ -117,7 +117,7 @@ export function commandTransition(
     },
     entry: entries[0]!,
     journal: entries,
-    botIntentsSinceHuman: guard,
+    botIntentsThisTurn: guard,
   };
 }
 export function humanWaiting(state: MatchState) {

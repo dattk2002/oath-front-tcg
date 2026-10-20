@@ -92,7 +92,16 @@ export interface MatchState extends Omit<MatchConfig, "decks"> {
   };
   outcome: Outcome | null;
 }
-export type GameEvent = VisibleEvent;
+export type ServerDiagnostic = {
+  eventId: string;
+  sequence: number;
+  rootId: string;
+  kind: "BotGuardFault";
+  visibility: "SERVER";
+  ownerSide: null;
+  payload: { turn: number; botIntents: 64 };
+};
+export type GameEvent = VisibleEvent | ServerDiagnostic;
 export interface TransitionResult {
   kind: "transition";
   nextState: MatchState;

@@ -68,7 +68,11 @@ export async function auditReplay(tx: PoolClient, record: MatchRecord) {
       r.last_event_seq === null ? null : safeInteger(r.last_event_seq),
   }));
   const replay = replayJournal(state, entries);
-  if (!replay.ok || !isDeepStrictEqual(replay.finalState, record.state))
+  if (
+    !replay.ok ||
+    !isDeepStrictEqual(replay.finalState, record.state) ||
+    (replay.ok && replay.botIntentsThisTurn !== record.botIntentsThisTurn)
+  )
     throw new PersistenceError("REPLAY_MISMATCH");
   const storedEvents = (
     await tx.query(

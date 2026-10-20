@@ -107,7 +107,7 @@ export function projectEvents(
 ): VisibleEvent[] {
   return events
     .filter(
-      (e) =>
+      (e): e is VisibleEvent =>
         (e.visibility === "PUBLIC" ||
           (e.visibility === "OWNER" && e.ownerSide === viewer)) &&
         validateWire("VisibleEvent", e),

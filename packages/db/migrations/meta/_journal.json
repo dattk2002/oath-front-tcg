@@ -8,6 +8,13 @@
       "when": 1792500179766,
       "tag": "0001_core",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792500179767,
+      "tag": "0002_bot_guard",
+      "breakpoints": true
     }
   ]
 }

@@ -145,7 +145,7 @@ export const matches = pgTable(
       .references(() => contentReleases.version),
     locationVersion: text("location_version").notNull(),
     botVersion: text("bot_version").notNull(),
-    botIntentsSinceHuman: integer("bot_intents_since_human")
+    botIntentsThisTurn: integer("bot_intents_this_turn")
       .notNull()
       .default(0),
     scenarioId: text("scenario_id"),
@@ -176,7 +176,7 @@ export const matches = pgTable(
     ),
     check(
       "match_numbers",
-      sql`${t.botIntentsSinceHuman} BETWEEN 0 AND 64 AND ${t.revision} >= 0 AND ${t.revision} <= 9007199254740991 AND ${t.activeDurationMs} >= 0 AND ${t.activeDurationMs} <= 9007199254740991`,
+      sql`${t.botIntentsThisTurn} BETWEEN 0 AND 64 AND ${t.revision} >= 0 AND ${t.revision} <= 9007199254740991 AND ${t.activeDurationMs} >= 0 AND ${t.activeDurationMs} <= 9007199254740991`,
     ),
     check(
       "match_side_mode",

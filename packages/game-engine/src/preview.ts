@@ -286,3 +286,20 @@ function boardValue(board: PlayerView["board"], side: "GOOD" | "EVIL"): number {
     0,
   );
 }
+
+/** Known lane combat from the same public primitives; other lanes cannot contaminate a local heuristic. */
+export function previewPublicLaneCombat(
+  view: PlayerView,
+  laneId: number,
+): PublicPreview {
+  const local = structuredClone(view);
+  for (const lane of local.board)
+    if (lane.laneId !== laneId) {
+      lane.good = null;
+      lane.evil = null;
+    }
+  local.phase = "COMBAT";
+  local.combat = { laneId, stage: "BEFORE_PAIR" };
+  local.legalActions = [{ kind: "ADVANCE" }];
+  return previewPublicAction(local, { kind: "ADVANCE" });
+}

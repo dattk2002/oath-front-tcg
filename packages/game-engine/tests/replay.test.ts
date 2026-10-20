@@ -27,7 +27,7 @@ it("replays ordered human/BOT/AUTO rows with recorded RNG then checks event boun
     });
     if (result.kind !== "transition") throw Error(result.code);
     const rng =
-      actor === "GOOD"
+      actor === "EVIL"
         ? engine.nextUint32(current.random.states["bot:easy"]).state
         : null;
     const after = structuredClone(result.nextState);
@@ -181,6 +181,7 @@ it("replays a complete seeded 20-turn game with pause/resume and each persisted 
     ok: true,
     finalState: current,
     events: allEvents,
+    botIntentsThisTurn: 2,
   });
   const broken = structuredClone(entries);
   broken[0]!.firstEventSeq = 999;
@@ -196,5 +197,30 @@ it("replays a complete seeded 20-turn game with pause/resume and each persisted 
     ok: false,
     stepSeq: bot.stepSeq,
     reason: "BOT_RANDOM_STATE",
+  });
+});
+it("rejects relabeling a human action as BOT so origin forgery cannot inflate the operational guard", () => {
+  const state = ready();
+  state.phase = "GOOD_PLAY";
+  state.activeSide = "GOOD";
+  const action = {
+    actor: "GOOD" as const,
+    action: { kind: "PASS_PHASE" as const },
+  };
+  const result = engine.applyAction(state, action);
+  if (result.kind !== "transition") throw Error(result.code);
+  const entry: engine.JournalEntry = {
+    stepSeq: 1,
+    origin: "BOT",
+    action,
+    nextBotRandomState: state.random.states["bot:easy"],
+    preStateHash: engine.hashState(state),
+    postStateHash: engine.hashState(result.nextState),
+    firstEventSeq: result.events[0]?.sequence ?? null,
+    lastEventSeq: result.events.at(-1)?.sequence ?? null,
+  };
+  expect(engine.replayJournal(state, [entry])).toMatchObject({
+    ok: false,
+    reason: "INVALID_ACTION",
   });
 });

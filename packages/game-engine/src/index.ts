@@ -29,3 +29,6 @@ export type {
 
 export { previewPublicAction } from "./preview.js";
 export type { PublicPreview, PreviewUnknown } from "./preview.js";
+
+export { applyBotGuardFault, hasBotDecision } from "./bot-guard.js";
+export { validateGameEvent } from "./server-events.js";

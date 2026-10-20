@@ -89,3 +89,9 @@ Người dùng muốn xóa account: quy trình có xác nhận, revoke session, 
 Mỗi migration có file SQL do Drizzle quản lý; chạy trên môi trường thử trước, không dùng schema push tùy tiện production. Khi có hạ tầng thật, Neon branch dev/test tách khỏi production; chưa tạo branch ở bước đặc tả.
 
 Expand/contract để app cũ/mới cùng chạy trong rollout. Package registry phải hỗ trợ mọi rulesVersion có active match trước rollout; nếu không, hoãn phát hành hoặc đợi hết retention, không sửa match sang version mới. Budget/backup retention do plan Neon thực tế quyết định; phải test restore trên môi trường thử trước beta.
+
+### T08 operational bot guard
+
+`matches.bot_intents_this_turn` is durable operational metadata, constrained0..64. Forward migration0002 renames the original slot without rewriting0001. HUMAN intents, pause and resume preserve it; a global turn change resets it. Bounded append replay starts from the locked counter, counts BOT rows, and compares the derived count to scheduler metadata before atomically persisting it. Full initialization replay starts0 and also verifies final metadata.
+
+The closed server-only AUTO operation `{kind:"BOT_GUARD_FAULT",turn,botIntents:64}` is allowed only when a further BOT decision is due at count64. It emits the private `BotGuardFault` SERVER diagnostic plus the existing public LifecycleChanged/FAULT event. It never accepts a public PlayerAction or patches a hashed state outside a validated replay operation. Automatic roots and human decisions retain priority at the limit; a legitimate64th intent can yield to human input or the next turn. FAULTED remains an operational terminal result, never a gameplay LOSS. SERVER diagnostic kinds/payloads are excluded from browser projection and event recovery.

@@ -1,6 +1,8 @@
+import { validateWire } from "@oathfront/contracts";
 import type { EngineAction, GameEvent, MatchState } from "./model.js";
 import type { RandomState } from "./rng.js";
 import { applyAction } from "./actions.js";
+import { applyBotGuardFault, hasBotDecision } from "./bot-guard.js";
 import { advanceAutomatic } from "./automatic.js";
 import { hashState, canonicalJson } from "./hash.js";
 export type AutomaticOperation =
@@ -9,7 +11,8 @@ export type AutomaticOperation =
       continuation: NonNullable<MatchState["continuation"]>;
     }
   | { kind: "TURN_END_ROOT"; cursor: MatchState["endTurn"] | null }
-  | { kind: "TURN_START_ROOT" };
+  | { kind: "TURN_START_ROOT" }
+  | { kind: "BOT_GUARD_FAULT"; turn: number; botIntents: 64 };
 type JournalBase = {
   stepSeq: number;
   preStateHash: string;
@@ -30,13 +33,22 @@ export type ReplayMismatch =
   | "INVALID_ACTION"
   | "BOT_RANDOM_STATE"
   | "POST_HASH"
-  | "EVENT_BOUNDS";
+  | "EVENT_BOUNDS"
+  | "BOT_GUARD";
 export type ReplayResult =
-  | { ok: true; finalState: MatchState; events: GameEvent[] }
+  | {
+      ok: true;
+      finalState: MatchState;
+      events: GameEvent[];
+      botIntentsThisTurn: number;
+    }
   | { ok: false; stepSeq: number; reason: ReplayMismatch };
 export function describeAutomaticOperation(
   state: MatchState,
+  botIntentsThisTurn = 0,
 ): AutomaticOperation | null {
+  if (botIntentsThisTurn === 64 && hasBotDecision(state))
+    return { kind: "BOT_GUARD_FAULT", turn: state.turn, botIntents: 64 };
   if (state.lifecycle !== "ACTIVE" || state.blockResponse) return null;
   if (state.phase === "COMBAT" && state.continuation)
     return {
@@ -62,7 +74,18 @@ function validRandom(value: unknown): value is RandomState {
 export function replayJournal(
   initialState: MatchState,
   entries: readonly JournalEntry[],
+  botIntentsThisTurn = 0,
 ): ReplayResult {
+  if (
+    !Number.isSafeInteger(botIntentsThisTurn) ||
+    botIntentsThisTurn < 0 ||
+    botIntentsThisTurn > 64
+  )
+    return {
+      ok: false,
+      stepSeq: entries[0]?.stepSeq ?? 0,
+      reason: "BOT_GUARD",
+    };
   let current = structuredClone(initialState);
   const events: GameEvent[] = [];
   for (let index = 0; index < entries.length; index++) {
@@ -76,7 +99,7 @@ export function replayJournal(
     if (hashState(current) !== entry.preStateHash) return fail("PRE_HASH");
     if (
       entry.origin === "AUTO" &&
-      canonicalJson(describeAutomaticOperation(current)) !==
+      canonicalJson(describeAutomaticOperation(current, botIntentsThisTurn)) !==
         canonicalJson(entry.action)
     )
       return fail("AUTOMATIC_OPERATION");
@@ -85,11 +108,27 @@ export function replayJournal(
       (entry.origin !== "BOT" && entry.nextBotRandomState !== null)
     )
       return fail("BOT_RANDOM_STATE");
-    if (entry.origin !== "AUTO" && entry.action.action.kind === "ADVANCE")
+    if (
+      entry.origin !== "AUTO" &&
+      (!["HUMAN", "BOT"].includes(entry.origin) ||
+        Object.keys(entry.action).sort().join(",") !== "action,actor" ||
+        !validateWire("PlayerAction", entry.action.action) ||
+        entry.action.action.kind === "ADVANCE" ||
+        entry.action.actor !==
+          (entry.origin === "HUMAN"
+            ? current.humanSide
+            : current.humanSide === "GOOD"
+              ? "EVIL"
+              : "GOOD"))
+    )
       return fail("INVALID_ACTION");
+    if (entry.origin === "BOT" && botIntentsThisTurn >= 64)
+      return fail("BOT_GUARD");
     const result =
       entry.origin === "AUTO"
-        ? advanceAutomatic(current, { maxRoots: 1 })
+        ? entry.action.kind === "BOT_GUARD_FAULT"
+          ? applyBotGuardFault(current, botIntentsThisTurn)
+          : advanceAutomatic(current, { maxRoots: 1 })
         : applyAction(current, entry.action);
     if (result.kind !== "transition") return fail("INVALID_ACTION");
     const after = result.nextState;
@@ -103,8 +142,12 @@ export function replayJournal(
       (result.events.at(-1)?.sequence ?? null) !== entry.lastEventSeq
     )
       return fail("EVENT_BOUNDS");
+    botIntentsThisTurn =
+      after.turn !== current.turn
+        ? 0
+        : botIntentsThisTurn + Number(entry.origin === "BOT");
     current = after;
     events.push(...result.events);
   }
-  return { ok: true, finalState: current, events };
+  return { ok: true, finalState: current, events, botIntentsThisTurn };
 }

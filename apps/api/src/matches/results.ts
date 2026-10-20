@@ -1,5 +1,5 @@
 import type { Side } from "@oathfront/contracts";
-import { validateWire } from "@oathfront/contracts";
+import { validateGameEvent } from "@oathfront/game-engine";
 import type { GameEvent, MatchState } from "@oathfront/game-engine";
 import type { PoolClient } from "@oathfront/db";
 import { safeInteger } from "@oathfront/db";
@@ -88,7 +88,7 @@ export async function persistResult(
   ).rows;
   const events: GameEvent[] = rows.map((r) => {
     const e: unknown = { ...r, sequence: safeInteger(r.sequence) };
-    if (!validateWire("VisibleEvent", e))
+    if (!validateGameEvent(e))
       throw new PersistenceError("INVALID_EVENT");
     return e;
   });

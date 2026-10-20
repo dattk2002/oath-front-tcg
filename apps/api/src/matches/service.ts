@@ -16,7 +16,8 @@ import { createRepository, persistTransition } from "./repository.js";
 import { insertInitialization, hashJson } from "./initialization.js";
 import { insertMatchReceipt } from "./receipts.js";
 import { commandResponse, eventReader } from "./events.js";
-import { commandTransition, engineScheduler } from "./commands.js";
+import { commandTransition } from "./commands.js";
+import { botScheduler } from "./advance.js";
 import type { Scheduler } from "./commands.js";
 import { summaryReader } from "./summary.js";
 export function matchService(
@@ -28,7 +29,7 @@ export function matchService(
   } = {},
 ) {
   const now = options.now ?? (() => new Date()),
-    scheduler = options.scheduler ?? engineScheduler,
+    scheduler = options.scheduler ?? botScheduler,
     repository = createRepository(pool, { now });
   const expiry = (p: SessionPrincipal) =>
     p.kind === "GUEST"
@@ -173,7 +174,7 @@ export function matchService(
       record.revision,
       [],
       record.state.eventSeq,
-      record.botIntentsSinceHuman,
+      record.botIntentsThisTurn,
       scheduler,
     );
   }
@@ -201,7 +202,7 @@ export function matchService(
               record.revision,
               [],
               record.state.eventSeq,
-              record.botIntentsSinceHuman,
+              record.botIntentsThisTurn,
               scheduler,
             ),
           });
@@ -209,7 +210,7 @@ export function matchService(
           record.state,
           envelope.action,
           record.lastStepSeq,
-          record.botIntentsSinceHuman,
+          record.botIntentsThisTurn,
           scheduler,
           options.cpuClock,
         );
@@ -218,7 +219,7 @@ export function matchService(
           record.revision + 1,
           result.transition.events,
           record.state.eventSeq,
-          result.botIntentsSinceHuman,
+          result.botIntentsThisTurn,
           scheduler,
         );
         await persistTransition(
@@ -231,11 +232,7 @@ export function matchService(
             response,
             expiresAt: expiry(principal),
           },
-          { now: now() },
-        );
-        await tx.client.query(
-          "UPDATE matches SET bot_intents_since_human=$2 WHERE id=$1",
-          [matchId, result.botIntentsSinceHuman],
+          { now: now(), botIntentsThisTurn: result.botIntentsThisTurn },
         );
         if (
           principal.kind === "ACCOUNT" &&
