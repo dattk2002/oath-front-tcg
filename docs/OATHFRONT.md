@@ -11,7 +11,7 @@ The user approved the full game spec and requested implementation on 2026-10-20.
 
 ## Implementation mapping
 
-`apps/web`: Next.js App Router, TypeScript, CSS Modules/tokens, PixiJS/GSAP client components. Next layout/routes replace Vite/React Router; game rendering stays client-side. `apps/api`: standalone Fastify Node service plus Vercel-compatible entrypoint. `packages/*`: contracts, content, engine, bot, db. Namespace `@oathfront/*`. Next routes `/api/*` to API backend; same-origin cookie/CSRF contract stays in force. DB secrets remain backend-only.
+`apps/web`: Next.js App Router, TypeScript, CSS Modules/tokens, PixiJS/GSAP client components. Next layout/routes replace Vite/React Router; game rendering stays client-side. `apps/api`: standalone Fastify Node service plus Vercel-compatible entrypoint. `packages/*`: contracts, content, engine, bot, db. Namespace `@oathfront/*`. Next proxies `/api/v1/*` to Fastify and reserves `/api/auth/*` for its local managed-auth handler; same-origin cookie/CSRF contract stays in force. DB secrets remain backend-only.
 
 Local Docker: Next standalone UI (3000), API (3001), PostgreSQL (5432 internal). UI is user-facing entrypoint; DB port only loopback if explicitly needed for local tests. Runtime pool max 5 and separate migration connection/role. Images built locally, no registry publication. Production uses hosted Neon and does not run local DB image on Vercel. Deploy topology/configurations documented and build-checked; do not provision hosts as a side effect.
 

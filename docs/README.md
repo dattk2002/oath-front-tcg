@@ -10,6 +10,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 2. [Specification tổng thể](../SPECIFICATION.md): phạm vi game và sáu milestone.
 3. [Hosting miễn phí và cấu hình môi trường](HOSTING.md): Vercel Hobby, Neon Free và Docker local.
 4. [Kế hoạch triển khai OathFront](superpowers/plans/2026-10-20-oathfront-implementation.md): 18 task theo M1–M6.
+5. [Tiến độ implementation và các gate còn lại](implementation/milestones.md): phân biệt phần đã kiểm thử với phần chưa triển khai hoặc còn chờ bằng chứng.
 
 ## Gameplay và nội dung
 
@@ -21,6 +22,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 
 - [Kiến trúc](ARCHITECTURE.md), [database và persistence](DATA.md), [API contract](API-CONTRACT.md).
 - [Danh sách contract](contracts/INDEX.md), [JSON Schema](contracts/api-v1.schema.json), [ví dụ request/response](contracts/examples/README.md), [event index](contracts/event-index.json).
+- [Compatibility của stack](implementation/compatibility.md), [database local/Neon development](implementation/database-test-environment.md), [HTTP API đã triển khai](implementation/http-api.md).
 
 ## UI, motion và mockup
 
