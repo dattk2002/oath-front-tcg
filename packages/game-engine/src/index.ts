@@ -18,7 +18,7 @@ export { applyMulligan } from "./mulligan.js";
 export { applyAction, getLegalActions } from "./actions.js";
 export { advanceAutomatic } from "./automatic.js";
 export { projectPlayerView, projectEvents } from "./projection.js";
-export { hashState } from "./hash.js";
+export { hashState, canonicalJson } from "./hash.js";
 export { replayJournal, describeAutomaticOperation } from "./replay.js";
 export type {
   JournalEntry,

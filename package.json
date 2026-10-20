@@ -10,14 +10,16 @@
   "scripts": {
     "contracts:generate": "node scripts/generate-contracts.mjs",
     "contracts:check": "node scripts/generate-contracts.mjs --check",
-    "test": "vitest run",
+    "test": "pnpm build:api && vitest run",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "build": "pnpm contracts:check && tsc -p tsconfig.build.json"
+    "build": "pnpm contracts:check && tsc -p tsconfig.build.json && pnpm build:api",
+    "build:api": "node scripts/build-api.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
     "eslint": "10.13.0",
     "json-schema-to-typescript": "16.0.0",
     "prettier": "3.9.10",
