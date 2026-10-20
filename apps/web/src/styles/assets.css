@@ -38,6 +38,17 @@
   object-fit: cover;
   object-position: center 20%;
 }
+.hero-tile .hero-portrait .art-fallback {
+  height: 80px;
+  min-height: 0;
+}
+.hero-tile .hero-portrait .art-fallback .silhouette {
+  display: none;
+}
+.hero-tile .hero-portrait .art-fallback button {
+  flex: none;
+  max-width: 100%;
+}
 .hero-tile .hero-portrait .asset-image {
   height: 80px;
   min-height: 0;

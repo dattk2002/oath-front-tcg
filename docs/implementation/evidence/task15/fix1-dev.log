@@ -1,0 +1,48 @@
+[WebServer] (node:2074540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2074572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2074588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2074603) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2074619) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2074652) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:2074826) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/asset-fallback.spec.ts:9:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot (3.1s)
+
+
+  1) tests/e2e/asset-fallback.spec.ts:9:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      92 |     expect(bounds.retry.width).toBeGreaterThanOrEqual(44);
+      93 |     expect(bounds.visibleHeight).toBeGreaterThanOrEqual(44);
+    > 94 |     expect(bounds.hitTestable).toBe(true);
+         |                                ^
+      95 |   }
+      96 |   fail = false;
+      97 |   await tile.getByRole("button", { name: "Thử lại hình An Nhiên" }).click();
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/asset-fallback.spec.ts:94:32
+
+    Error Context: test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/asset-fallback.spec.ts:9:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot

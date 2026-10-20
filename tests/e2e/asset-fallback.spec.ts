@@ -3,7 +3,9 @@ import { test, expect } from "@playwright/test";
 import { testOrigin } from "./test-origin.js";
 import { cardFixture } from "./recovery-fixtures.js";
 import { mkdir, writeFile } from "node:fs/promises";
-const evidence = "docs/implementation/evidence/task15";
+const evidence =
+  process.env.OATHFRONT_ASSET_EVIDENCE_DIR ??
+  "docs/implementation/evidence/task15";
 test("missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot", async ({
   page,
 }) => {
@@ -33,9 +35,66 @@ test("missing artwork keeps its Vietnamese name and supports explicit retry; slo
   await expect(
     tile.getByRole("button", { name: "Thử lại hình An Nhiên" }),
   ).toBeVisible();
+  // Retry a different hero so accidental label/radio activation is observable.
+  await page.locator("input[name=hero]").last().check();
   const selected = await page
     .locator("input[name=hero]:checked")
     .getAttribute("value");
+  const retry = tile.getByRole("button", { name: "Thử lại hình An Nhiên" });
+  const failedBounds = [];
+  await mkdir(evidence, { recursive: true });
+  for (const [name, width, height] of [
+    ["desktop", 1440, 900],
+    ["narrow", 375, 812],
+  ] as const) {
+    await page.setViewportSize({ width, height });
+    await tile.locator(".hero-portrait").scrollIntoViewIfNeeded();
+    await expect(
+      tile.locator(".art-fallback").getByText("An Nhiên", { exact: true }),
+    ).toBeVisible();
+    const bounds = await retry.evaluate((button) => {
+      const portrait = button
+        .closest(".hero-portrait")!
+        .getBoundingClientRect();
+      const rect = button.getBoundingClientRect();
+      const visibleHeight = Math.max(
+        0,
+        Math.min(rect.bottom, portrait.bottom, innerHeight) -
+          Math.max(rect.top, portrait.top, 0),
+      );
+      // Probe each edge midpoint; rounded button corners are intentionally outside its hit shape.
+      const points = [
+        [rect.width / 2, 1],
+        [rect.width / 2, rect.height / 2],
+        [rect.width / 2, rect.height - 1],
+        [1, rect.height / 2],
+        [rect.width - 1, rect.height / 2],
+      ].map(([x, y]) => ({ x: rect.left + x!, y: rect.top + y! }));
+      return {
+        portrait: portrait.toJSON(),
+        retry: rect.toJSON(),
+        visibleHeight,
+        hitTestable: points.every((p) => {
+          const hit = document.elementFromPoint(p.x, p.y);
+          return !!hit && button.contains(hit);
+        }),
+      };
+    });
+    failedBounds.push({ viewport: name, ...bounds });
+    await page.screenshot({ path: `${evidence}/fix1-hero-failed-${name}.png` });
+    await writeFile(
+      `${evidence}/fix1-hero-fallback-bounds.json`,
+      JSON.stringify(failedBounds, null, 2) + "\n",
+    );
+    expect(bounds.retry.top).toBeGreaterThanOrEqual(bounds.portrait.top);
+    expect(bounds.retry.bottom).toBeLessThanOrEqual(bounds.portrait.bottom);
+    expect(bounds.retry.left).toBeGreaterThanOrEqual(bounds.portrait.left);
+    expect(bounds.retry.right).toBeLessThanOrEqual(bounds.portrait.right);
+    expect(bounds.retry.height).toBeGreaterThanOrEqual(44);
+    expect(bounds.retry.width).toBeGreaterThanOrEqual(44);
+    expect(bounds.visibleHeight).toBeGreaterThanOrEqual(44);
+    expect(bounds.hitTestable).toBe(true);
+  }
   fail = false;
   await tile.getByRole("button", { name: "Thử lại hình An Nhiên" }).click();
   await expect(page.locator("input[name=hero]:checked")).toHaveValue(selected!);
@@ -49,6 +108,12 @@ test("missing artwork keeps its Vietnamese name and supports explicit retry; slo
         ),
     )
     .toBe(true);
+  await page.screenshot({ path: `${evidence}/fix1-hero-recovered-narrow.png` });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await tile.locator(".hero-portrait").scrollIntoViewIfNeeded();
+  await page.screenshot({
+    path: `${evidence}/fix1-hero-recovered-desktop.png`,
+  });
   await page.route(
     "**/assets/core-v1/heroes/h_g_bp/hud.webp",
     async (route) => {

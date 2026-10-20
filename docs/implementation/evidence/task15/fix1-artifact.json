@@ -1,0 +1,27 @@
+{
+  "fixBase": "e43501d01633dadc869fb2e4b8f30b0b4bf58e20",
+  "scope": "I1: compact hero art fallback only; original production artifacts/evidence preserved",
+  "buildId": "AN8GAG_akIaPUXKGeo15E",
+  "apiOrigin": "http://127.0.0.1:3101",
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [
+      {
+        "source": "/api/v1/:path*",
+        "destination": "http://127.0.0.1:3101/api/v1/:path*",
+        "regex": "^/api/v1(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+      }
+    ],
+    "fallback": []
+  },
+  "files": {
+    "apps/web/src/styles/assets.css": "0e780065796586d812565d58619fb417bd1df18e2e0329e8d4f2b9834d5ba073",
+    "tests/e2e/asset-fallback.spec.ts": "9c1948085ffb3177597dcd1efd3efc460ccf7095020dcba8371e1e2130a22e7a",
+    "apps/web/src/features/match/ArtImage.tsx": "8c6022aa11a7bccd2fa8ac5ddd369b157e2b875a6fcad0e0dff04046432c1da6",
+    "apps/web/src/features/hero/HeroSelect.tsx": "e56d01bcb5bebf18c11293df1ac3b75b29746cafa152d1643f5df709891bd16c",
+    "apps/web/.next/BUILD_ID": "35c139d9cdeb6d08332ead797542570a31ce7d856711b7ef3b439ca6b077d230",
+    "apps/web/.next/routes-manifest.json": "175296264304115727eb876bdff1230cc65554d1432b2ffc040ec3906e4fb1cb",
+    "assets/source/manifest.json": "f06d107b4c3f06a98295c252b6148a593b13a66b2c3af6c05eda515f1d826103",
+    "apps/web/public/assets/core-v1/manifest.json": "7ae714f97cc28593cc9e111e966ec4d0cfe980d22b2bfef541f407c8341459ee"
+  }
+}

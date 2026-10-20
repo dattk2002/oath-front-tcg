@@ -1,0 +1,27 @@
+[
+  {
+    "viewport": "desktop",
+    "portrait": {
+      "x": 46,
+      "y": 295.84375,
+      "width": 249.328125,
+      "height": 80,
+      "top": 295.84375,
+      "right": 295.328125,
+      "bottom": 375.84375,
+      "left": 46
+    },
+    "retry": {
+      "x": 120.15625,
+      "y": 355.84375,
+      "width": 101,
+      "height": 44,
+      "top": 355.84375,
+      "right": 221.15625,
+      "bottom": 399.84375,
+      "left": 120.15625
+    },
+    "visibleHeight": 20,
+    "hitTestable": false
+  }
+]

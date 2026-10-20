@@ -1,0 +1,48 @@
+[WebServer] (node:2072548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2072561) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2072577) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2072663) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2072675) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2072692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:2072806) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/asset-fallback.spec.ts:7:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot (2.8s)
+
+
+  1) tests/e2e/asset-fallback.spec.ts:7:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 375.84375
+    Received:    399.84375
+
+      84 |     );
+      85 |     expect(bounds.retry.top).toBeGreaterThanOrEqual(bounds.portrait.top);
+    > 86 |     expect(bounds.retry.bottom).toBeLessThanOrEqual(bounds.portrait.bottom);
+         |                                 ^
+      87 |     expect(bounds.retry.left).toBeGreaterThanOrEqual(bounds.portrait.left);
+      88 |     expect(bounds.retry.right).toBeLessThanOrEqual(bounds.portrait.right);
+      89 |     expect(bounds.retry.height).toBeGreaterThanOrEqual(44);
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/asset-fallback.spec.ts:86:33
+
+    Error Context: test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/asset-fallback.spec.ts:7:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot
