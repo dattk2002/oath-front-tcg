@@ -1,0 +1,57 @@
+{
+  "inputCount": 231,
+  "inputMismatches": [],
+  "manifestSha256": "35b248b99cc05fa3496f950e5ace2e8bec3de04df9b0978416532266470dfe82",
+  "artifactMismatches": [],
+  "productionChunkMismatches": [],
+  "checksInOrder": [
+    {
+      "command": "env -u NO_COLOR pnpm test",
+      "result": "44 files / 507 passed, 137.12s",
+      "scope": "pre-final decorative terminal-dim fix baseline"
+    },
+    {
+      "command": "pnpm --filter @oathfront/web exec vitest run",
+      "result": "6 files / 29 passed, 4.79s",
+      "scope": "final source, includes COMPLETED and ABANDONED dim regressions"
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "passed",
+      "scope": "final source"
+    },
+    {
+      "command": "env -u NO_COLOR pnpm lint",
+      "result": "passed",
+      "scope": "final source"
+    },
+    {
+      "command": "env -u NO_COLOR API_ORIGIN=http://127.0.0.1:3101 pnpm build",
+      "result": "passed",
+      "scope": "final source / compiled API and Next standalone"
+    },
+    {
+      "command": "env -u NO_COLOR OATHFRONT_E2E_PRODUCTION=1 pnpm exec playwright test tests/e2e/motion.spec.ts tests/e2e/match-foundation.spec.ts",
+      "result": "9 passed, 35.4s",
+      "scope": "final artifact / 5 controlled motion + 4 real API foundation"
+    },
+    {
+      "command": "sha256sum --check build-inputs.sha256 plus artifact hash verification",
+      "result": "all 231 inputs, all production JS chunks and recorded built artifacts unchanged"
+    }
+  ],
+  "logSha256": {
+    "final-full-test.log": "d69cf8083e2fc19aaee76bea7b5720b740b7f258d91c47286bce8b51b5a47130",
+    "final-web-test.log": "60592b94f937b0b44056e2ea2ea97dc22b9d8afd6bd70eae9334d2edf049d9f6",
+    "final-typecheck.log": "bfe942900722b3a7986eb55a0230242221bca8ae7ff963c4f8530ed50f77a518",
+    "final-lint.log": "050c69da23536758722729aeda55a8d0fb9d557495ef6d33d70873a3b64a71c1",
+    "final-build.log": "3ec749acc370fd5337c19ba8fed517b271c28d83eb80e2f9177acbfcf6b94cd5",
+    "final-production-e2e.log": "ef437ab6a2b32582b8812200e8221e47136b2bbbec13e9d952019b02d63e4378"
+  },
+  "browserArtifactDirectory": ".superpowers/sdd/2026-10-20-oathfront-implementation/task-10-evidence/final",
+  "noRunningServersOn": [
+    3100,
+    3101
+  ],
+  "note": "No runtime input edits after final build; report/evidence and controller markdown docs only. Full workspace suite deliberately not repeated after bounded cosmetic fix, per controller approval."
+}

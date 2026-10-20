@@ -1,0 +1,14 @@
+
+Running 9 tests using 1 worker
+
+  ✓  1 tests/e2e/match-foundation.spec.ts:8:3 › guest preset mulligan UNIT and pass as GOOD (6.3s)
+  ✓  2 tests/e2e/match-foundation.spec.ts:8:3 › guest preset mulligan UNIT and pass as EVIL (4.1s)
+  ✓  3 tests/e2e/match-foundation.spec.ts:212:1 › exact versioned proxy preserves JSON and reserves local auth/unknown routes (45ms)
+  ✓  4 tests/e2e/match-foundation.spec.ts:231:1 › lost create response restores displayed choices on reload and retries identical request (1.6s)
+  ✓  5 tests/e2e/motion.spec.ts:132:1 › actual WebGL signature can be interrupted and remounted, then fast-forwarded before keyboard selection (4.1s)
+  ✓  6 tests/e2e/motion.spec.ts:235:3 › five lane combat shares HP beats and preserves event log (normal) (5.8s)
+  ✓  7 tests/e2e/motion.spec.ts:235:3 › five lane combat shares HP beats and preserves event log (reduced) (2.1s)
+  ✓  8 tests/e2e/motion.spec.ts:424:1 › failed renderer keeps the latest semantic board and retries with one canvas (1.3s)
+  ✓  9 tests/e2e/motion.spec.ts:477:1 › used effect families render through the strict-CSP WebGL path (7.0s)
+
+  9 passed (35.4s)

@@ -1,0 +1,18 @@
+{
+  "families": [
+    "UnitCreated",
+    "UnitMoved",
+    "StatsChanged",
+    "StatusChanged",
+    "LocationRevealed",
+    "CardPlayed",
+    "BlockOccurred",
+    "HeroHealed",
+    "HandCountChanged",
+    "CardDrawn",
+    "UnitDestroyed",
+    "MatchEnded"
+  ],
+  "errors": [],
+  "fixture": "validated public presentation DTO"
+}
