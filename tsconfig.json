@@ -4,5 +4,11 @@
     "noEmit": true,
     "types": ["node", "vitest/globals"]
   },
-  "include": ["packages/**/*.ts", "apps/api/**/*.ts", "vitest.config.ts"]
+  "include": [
+    "packages/**/*.ts",
+    "apps/api/**/*.ts",
+    "vitest.config.ts",
+    "playwright.config.ts",
+    "tests/e2e/**/*.ts"
+  ]
 }

@@ -11,13 +11,15 @@
     "contracts:generate": "node scripts/generate-contracts.mjs",
     "contracts:check": "node scripts/generate-contracts.mjs --check",
     "test": "pnpm build:api && vitest run",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && pnpm --filter @oathfront/web typecheck",
     "lint": "eslint .",
-    "build": "pnpm contracts:check && tsc -p tsconfig.build.json && pnpm build:api",
-    "build:api": "node scripts/build-api.mjs"
+    "build": "pnpm contracts:check && tsc -p tsconfig.build.json && pnpm build:api && pnpm --filter @oathfront/web build",
+    "build:api": "node scripts/build-api.mjs",
+    "test:e2e": "pnpm build:api && playwright test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
     "@types/node": "24.19.2",
     "esbuild": "0.28.2",
     "eslint": "10.13.0",

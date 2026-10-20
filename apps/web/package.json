@@ -4,13 +4,21 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@oathfront/contracts": "workspace:*",
+    "@oathfront/game-engine": "workspace:*",
     "next": "16.4.2",
     "react": "19.3.1",
-    "react-dom": "19.3.1",
-    "@oathfront/contracts": "workspace:*"
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0"
+  },
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack && node ../../scripts/prepare-web-standalone.mjs",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   }
 }
