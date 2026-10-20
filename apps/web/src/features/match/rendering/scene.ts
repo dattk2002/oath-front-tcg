@@ -1,7 +1,12 @@
 import type { Application, Graphics, Sprite } from "pixi.js";
 import type { EntityRef, PlayerView, VisibleEvent } from "@oathfront/contracts";
-import { createPlaceholderTextures, type BattleAssets } from "./assets";
+import {
+  createPlaceholderTextures,
+  createIllustratedTextures,
+  type BattleAssets,
+} from "./assets";
 import { createUnitSprite } from "./sprites";
+import { drawEffect, effectFamily } from "./vfx";
 export interface Cue {
   progress: number;
   alpha: number;
@@ -149,8 +154,8 @@ export function createBattleScene(
       sprite.visible = !!b;
       if (b) {
         sprite.position.set(b.x, b.y + b.h / 2);
-        sprite.width = Math.min(b.w, 48);
-        sprite.height = b.h;
+        sprite.width = Math.min(b.w, b.h);
+        sprite.height = Math.min(b.w, b.h);
         sprite.alpha = 1;
       }
     }
@@ -177,11 +182,17 @@ export function createBattleScene(
     if (current) {
       const { event, cue } = current;
       const strength = cue.alpha;
-      const ring = (b: ReturnType<typeof box>, color = 0xf4cb76) => {
+      const ring = (b: ReturnType<typeof box>) => {
         if (b)
-          fx!
-            .circle(b.x, b.y, 12 + (cue.reduced ? 0 : cue.progress * 22))
-            .stroke({ color, width: 3, alpha: strength });
+          drawEffect(
+            fx!,
+            effectFamily(event, view),
+            b.x,
+            b.y,
+            cue.progress,
+            strength,
+            cue.reduced,
+          );
       };
       const link = (source: EntityRef | null, target: EntityRef) => {
         const from = entity(source),
@@ -208,10 +219,7 @@ export function createBattleScene(
         for (const packet of event.payload.packets)
           link(packet.source, packet.target);
       else if (event.kind === "PowerUsed" || event.kind === "CardPlayed") {
-        ring(
-          entity({ kind: "HERO", side: event.payload.side }),
-          event.payload.side === "EVIL" ? 0xffb078 : 0x76d9c4,
-        );
+        ring(entity({ kind: "HERO", side: event.payload.side }));
         if (
           event.kind === "PowerUsed" &&
           event.payload.definitionId.startsWith("S_") &&
@@ -262,7 +270,7 @@ export function createBattleScene(
       } else if (event.kind === "LocationRevealed")
         ring(box(`[data-terrain-lane="${event.payload.laneId}"]`));
       else if (event.kind === "BlockOccurred" || event.kind === "HeroHealed")
-        ring(entity({ kind: "HERO", side: event.payload.side }), 0x76d9c4);
+        ring(entity({ kind: "HERO", side: event.payload.side }));
       else if (
         event.kind === "CardDrawn" ||
         event.kind === "HandCountChanged"
@@ -309,7 +317,8 @@ export function createBattleScene(
       }
     for (const u of units)
       if (!sprites.has(u.instanceId)) {
-        const texture = pool.textures.get(u.owner)!;
+        const texture =
+          pool.textures.get(u.definitionId) ?? pool.textures.get(u.owner)!;
         const sprite = createUnitSprite(texture);
         if (disposed) {
           sprite.destroy();
@@ -362,6 +371,7 @@ export function createBattleScene(
         return;
       }
       if (assets.kind === "PLACEHOLDER") pool = createPlaceholderTextures(app);
+      else pool = createIllustratedTextures(app, assets);
       if (disposed) {
         release();
         return;

@@ -1,4 +1,5 @@
 import { usePrivateStorage } from "../auth/private-storage";
+import ArtImage from "../match/ArtImage";
 import { useState } from "react";
 import type {
   CommandResponse,
@@ -225,7 +226,13 @@ export default function PresetSetup({
                   checked={heroId === item.id}
                   onChange={() => setHeroId(item.id)}
                 />
-                <span className="silhouette" aria-hidden="true" />
+                <span className="hero-portrait">
+                  <ArtImage
+                    artKey={item.portraitKey}
+                    name={item.nameVi}
+                    eager
+                  />
+                </span>
                 <span className="eyebrow">Phe {sideLabel[item.faction]}</span>
                 <strong>{item.nameVi}</strong>
                 <span>
@@ -329,9 +336,6 @@ export default function PresetSetup({
           </p>
         </section>
       )}
-      <p className="art-note">
-        Hình khối minh họa tạm thời · Tranh hoàn thiện sẽ được bổ sung sau.
-      </p>
       {message && (
         <p role="alert" className="notice">
           {message}

@@ -1,4 +1,5 @@
 import { TutorialEntry } from "../tutorial/tutorial-controller";
+import ArtImage from "./ArtImage";
 import { usePrivateStorage } from "../auth/private-storage";
 import SessionRecovery from "../auth/SessionRecovery";
 import { useEffect, useRef, useState } from "react";
@@ -174,6 +175,19 @@ export default function ResultDialog({
         {copy.heading}
       </h2>
       <p>{copy.body}</p>
+      <div className="result-hero-art">
+        <ArtImage
+          artKey={
+            catalog.heroes.find((hero) => hero.id === summary.humanHeroId)!
+              .portraitKey
+          }
+          name={
+            catalog.heroes.find((hero) => hero.id === summary.humanHeroId)!
+              .nameVi
+          }
+          variant="bust"
+        />
+      </div>
       <SessionRecovery />
       <p>
         {catalog.heroes.find((hero) => hero.id === summary.humanHeroId)?.nameVi}

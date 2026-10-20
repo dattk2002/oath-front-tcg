@@ -6,6 +6,7 @@ import type {
 } from "@oathfront/contracts";
 import { previewPublicAction } from "@oathfront/game-engine/preview";
 import { keywordLabel, unitStatuses } from "./labels";
+import ArtImage from "./ArtImage";
 const unknownLabel = {
   DRAW: "Bài rút chưa biết",
   POWER_GRANT: "Power cấp ngẫu nhiên",
@@ -51,8 +52,8 @@ export default function InspectPanel({
                 ? "Power · 1 năng lượng"
                 : "Quân triệu hồi"}
           </p>
-          <div className="inspect-art" aria-hidden="true">
-            <span className="silhouette" />
+          <div className="inspect-art">
+            <ArtImage artKey={def.artKey} name={def.nameVi} variant="inspect" />
           </div>
           <p>
             {"exactTextVi" in def
@@ -92,7 +93,6 @@ export default function InspectPanel({
               )}
             </>
           )}
-          <p className="art-note">Minh họa tạm</p>
         </>
       ) : (
         <p className="muted">

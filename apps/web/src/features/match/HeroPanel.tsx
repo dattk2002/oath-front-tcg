@@ -1,5 +1,6 @@
 import type { HeroView, PublicCatalog, Side } from "@oathfront/contracts";
 import { sideLabel } from "./labels";
+import ArtImage from "./ArtImage";
 export default function HeroPanel({
   hero,
   side,
@@ -19,6 +20,7 @@ export default function HeroPanel({
   onTarget: () => void;
   onPreview: () => void;
 }) {
+  const definition = catalog.heroes.find((item) => item.id === hero.heroId);
   return (
     <section
       className={`hero-panel panel ${side.toLowerCase()}`}
@@ -35,6 +37,16 @@ export default function HeroPanel({
         onFocus={onPreview}
         aria-label={`Chọn hero ${catalog.heroes.find((item) => item.id === hero.heroId)?.nameVi}, ${hero.hp} HP`}
       >
+        {definition && (
+          <span className="hero-hud-art">
+            <ArtImage
+              artKey={definition.portraitKey}
+              name={definition.nameVi}
+              variant="hud"
+              retry={false}
+            />
+          </span>
+        )}
         <strong>
           {catalog.heroes.find((item) => item.id === hero.heroId)?.nameVi}{" "}
           <span>

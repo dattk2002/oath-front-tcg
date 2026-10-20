@@ -1,0 +1,48 @@
+[WebServer] (node:2044240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2044256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2044272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2044357) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:2044372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/asset-fallback.spec.ts:7:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot (2.3s)
+  ✓  2 tests/e2e/asset-fallback.spec.ts:108:1 › battle atlas failure retries the complete public terrain pool and integrated art survives responsive layouts (5.7s)
+  ✓  3 tests/e2e/tutorial-settings.spec.ts:52:3 › TU12 visible GOOD KEPT, reload, EVIL, skip/replay and settings persistence (16.5s)
+  ✘  4 tests/e2e/tutorial-settings.spec.ts:195:1 › real Web Audio gesture, settings restore and desktop/tablet/mobile review (546ms)
+
+
+  1) tests/e2e/tutorial-settings.spec.ts:195:1 › real Web Audio gesture, settings restore and desktop/tablet/mobile review
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      250 |   await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
+      251 |   await expect.poll(async () => (await audio()).states[0]).toBe("running");
+    > 252 |   expect((await audio()).starts).toBeGreaterThan(0);
+          |                                  ^
+      253 |   const music = page.getByRole("slider", { name: "Nhạc", exact: true });
+      254 |   await music.focus();
+      255 |   await page.keyboard.press("Home");
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/tutorial-settings.spec.ts:252:34
+
+    Error Context: test-results/tutorial-settings-real-Web-39de8-esktop-tablet-mobile-review/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/tutorial-settings-real-Web-39de8-esktop-tablet-mobile-review/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/tutorial-settings-real-Web-39de8-esktop-tablet-mobile-review/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/tutorial-settings.spec.ts:195:1 › real Web Audio gesture, settings restore and desktop/tablet/mobile review
+  3 passed (28.5s)

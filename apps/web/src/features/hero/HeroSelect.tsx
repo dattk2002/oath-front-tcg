@@ -4,6 +4,7 @@ import type { HeroId, PublicCatalog } from "@oathfront/contracts/browser";
 import { gsap } from "gsap";
 import { classLabel } from "../match/labels";
 import HeroInspect, { strategies } from "./HeroInspect";
+import ArtImage from "../match/ArtImage";
 export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
   const router = useRouter();
   const [selected, setSelected] = useState<HeroId>("H_G_BV");
@@ -60,8 +61,13 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
                   }
                 }}
               />
-              <span className="hero-portrait" aria-hidden="true">
-                {h.nameVi.slice(0, 1)}
+              <span className="hero-portrait">
+                <ArtImage
+                  artKey={h.portraitKey}
+                  name={h.nameVi}
+                  variant="hud"
+                  eager
+                />
               </span>
               <strong>{h.nameVi}</strong>
               <span>{h.classes.map((c) => classLabel[c]).join(" · ")}</span>

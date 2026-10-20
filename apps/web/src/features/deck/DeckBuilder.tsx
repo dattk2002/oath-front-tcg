@@ -1,4 +1,5 @@
 import { usePrivateStorage } from "../auth/private-storage";
+import ArtImage from "../match/ArtImage";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -649,6 +650,13 @@ export default function DeckBuilder({
       )}
       {inspect && (
         <Modal title={inspect.nameVi} onClose={() => setInspect(null)}>
+          <div className="deck-inspect-art">
+            <ArtImage
+              artKey={inspect.artKey}
+              name={inspect.nameVi}
+              variant="inspect"
+            />
+          </div>
           <p>{inspect.exactTextVi}</p>
           <div className="keyword-help">
             {inspect.keywords.map((k) => (

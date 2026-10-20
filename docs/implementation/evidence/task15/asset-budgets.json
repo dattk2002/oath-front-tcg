@@ -1,0 +1,14 @@
+{
+  "low": {
+    "preloadBytes": 1531376,
+    "decodedRGBABytes": 10132544,
+    "atlasPages": 1,
+    "inspectImagesPreloaded": false
+  },
+  "high": {
+    "preloadBytes": 4045008,
+    "decodedRGBABytes": 19967040,
+    "atlasPages": 1,
+    "inspectImagesPreloaded": false
+  }
+}

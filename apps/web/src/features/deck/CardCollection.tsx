@@ -7,6 +7,7 @@ import type {
 } from "@oathfront/contracts/browser";
 import { classLabel } from "../match/labels";
 import { filterCards } from "./model";
+import ArtImage from "../match/ArtImage";
 export function QuantityControls({
   card,
   quantity,
@@ -121,11 +122,8 @@ export default function CardCollection({
             >
               {c.nameVi}
             </button>
-            <span
-              className={`card-art ${c.faction.toLowerCase()}`}
-              aria-hidden="true"
-            >
-              {c.type === "UNIT" ? "◆" : "✧"}
+            <span className={`card-art ${c.faction.toLowerCase()}`}>
+              <ArtImage artKey={c.artKey} name={c.nameVi} />
             </span>
             <p>
               {c.type === "UNIT"

@@ -46,28 +46,28 @@ export function restoreSettings(raw: string | null): Settings {
 function validVolume(v: unknown): v is number {
   return typeof v === "number" && Number.isFinite(v) && v >= 0 && v <= 1;
 }
-/** Procedural audition palette; Task15 replaces these temporary tones with authored assets. */
-const families = {
-  draw: 523,
-  deploy: 330,
-  trick: 622,
-  attack: 196,
-  damage: 110,
-  shield: 784,
-  armor: 147,
-  death: 82,
-  move: 392,
-  stats: 440,
-  status: 277,
-  location: 659,
-  power: 698,
-  signature: 880,
-  block: 988,
-  heal: 587,
-  phase: 262,
-  result: 1047,
-} as const;
-export type SoundFamily = keyof typeof families;
+/** Authored multi-layer SFX assets; mapping remains the Task14 event contract. */
+export const soundFamilies = [
+  "draw",
+  "deploy",
+  "trick",
+  "attack",
+  "damage",
+  "shield",
+  "armor",
+  "death",
+  "move",
+  "stats",
+  "status",
+  "location",
+  "power",
+  "signature",
+  "block",
+  "heal",
+  "phase",
+  "result",
+] as const;
+export type SoundFamily = (typeof soundFamilies)[number];
 export function soundFamily(e: VisibleEvent): SoundFamily | null {
   switch (e.kind) {
     case "CardDrawn":
@@ -122,7 +122,11 @@ export interface AudioManager {
   dispose(): void;
 }
 export function createAudioManager(
-  options: { contextFactory?: () => AudioContext; settings?: Settings } = {},
+  options: {
+    contextFactory?: () => AudioContext;
+    settings?: Settings;
+    assetLoader?: (context: AudioContext, path: string) => Promise<AudioBuffer>;
+  } = {},
 ): AudioManager {
   const settings = { ...(options.settings ?? defaultSettings) };
   let context: AudioContext | null = null,
@@ -134,9 +138,11 @@ export function createAudioManager(
     paused = false,
     hidden = false,
     track: "menu" | "battle" = "menu";
-  const voices = new Set<OscillatorNode>(),
-    music = new Set<OscillatorNode>();
-  function stop(set: Set<OscillatorNode>) {
+  let loading: Promise<void> | null = null;
+  const buffers = new Map<string, AudioBuffer>();
+  const voices = new Set<AudioBufferSourceNode>(),
+    music = new Set<AudioBufferSourceNode>();
+  function stop(set: Set<AudioBufferSourceNode>) {
     for (const voice of set) {
       try {
         voice.stop();
@@ -153,27 +159,42 @@ export function createAudioManager(
       musicGain.gain.value = settings.muted ? 0 : settings.musicVolume;
     if (sfxGain) sfxGain.gain.value = settings.muted ? 0 : settings.sfxVolume;
   }
-  function tone(frequency: number, gain: GainNode, duration?: number) {
+  async function loadAssets() {
     if (!context) return;
-    const oscillator = context.createOscillator(),
-      envelope = context.createGain();
-    oscillator.type = duration ? "sine" : "triangle";
-    oscillator.frequency.value = frequency;
-    envelope.gain.value = duration ? 0.09 : 0.018;
-    oscillator.connect(envelope);
-    envelope.connect(gain);
-    voices.add(oscillator);
-    oscillator.onended = () => {
-      oscillator.disconnect();
-      envelope.disconnect();
-      voices.delete(oscillator);
-      music.delete(oscillator);
+    const ctx = context;
+    const loader =
+      options.assetLoader ??
+      (async (device: AudioContext, path: string) => {
+        const response = await fetch(path);
+        if (!response.ok) throw Error(`Audio asset ${response.status}`);
+        return device.decodeAudioData(await response.arrayBuffer());
+      });
+    await Promise.all(
+      [...soundFamilies, "menu", "battle"].map(async (key) => {
+        if (buffers.has(key)) return;
+        const buffer = await loader(
+          ctx,
+          `/assets/core-v1/audio/${key}.${key === "menu" || key === "battle" ? "wav" : "mp3"}`,
+        );
+        if (!disposed) buffers.set(key, buffer);
+      }),
+    );
+  }
+  function voice(key: string, gain: GainNode, loop: boolean) {
+    const buffer = buffers.get(key);
+    if (!context || !buffer) return;
+    const source = context.createBufferSource();
+    source.buffer = buffer;
+    source.loop = loop;
+    source.connect(gain);
+    voices.add(source);
+    if (loop) music.add(source);
+    source.onended = () => {
+      source.disconnect();
+      voices.delete(source);
+      music.delete(source);
     };
-    oscillator.start();
-    if (duration) {
-      envelope.gain.setTargetAtTime(0, context.currentTime + 0.02, 0.06);
-      oscillator.stop(context.currentTime + duration);
-    } else music.add(oscillator);
+    source.start();
   }
   function startMusic() {
     stop(music);
@@ -188,13 +209,10 @@ export function createAudioManager(
       settings.musicVolume === 0
     )
       return;
-    for (const f of track === "menu"
-      ? [130.81, 164.81, 196]
-      : [110, 130.81, 164.81])
-      tone(f, musicGain);
+    voice(track, musicGain, true);
   }
-  async function sync() {
-    if (!context || !unlocked || disposed) return;
+  async function sync(): Promise<boolean> {
+    if (!context || !unlocked || disposed) return false;
     try {
       if (paused || hidden) {
         stop(voices);
@@ -204,8 +222,10 @@ export function createAudioManager(
         await context.resume();
         if (!disposed && !paused && !hidden) startMusic();
       }
+      return true;
     } catch {
       status = "unavailable";
+      return false;
     }
   }
   return {
@@ -228,11 +248,19 @@ export function createAudioManager(
           gains();
         }
         unlocked = true;
-        await sync();
-        if (!disposed && status !== "unavailable") status = "ready";
-        return status === "ready";
+        status = "locked";
+        // resume() runs synchronously in the gesture chain, before network decoding.
+        if (!(await sync())) return false;
+        loading ??= loadAssets().finally(() => {
+          loading = null;
+        });
+        await loading;
+        if (disposed) return false;
+        status = "ready";
+        startMusic();
+        return true;
       } catch {
-        status = "unavailable";
+        if (!disposed) status = "unavailable";
         return false;
       }
     },
@@ -240,7 +268,7 @@ export function createAudioManager(
       if (!validVolume(v)) return;
       settings.musicVolume = v;
       gains();
-      startMusic();
+      if (!music.size) startMusic();
     },
     setSfxVolume(v) {
       if (!validVolume(v)) return;
@@ -284,7 +312,7 @@ export function createAudioManager(
       )
         return;
       try {
-        tone(families[family], sfxGain, 0.24);
+        voice(family, sfxGain, false);
       } catch {
         status = "unavailable";
       }
@@ -294,6 +322,7 @@ export function createAudioManager(
       disposed = true;
       stop(voices);
       music.clear();
+      buffers.clear();
       musicGain?.disconnect();
       sfxGain?.disconnect();
       void context?.close().catch(() => {});

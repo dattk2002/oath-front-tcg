@@ -1,4 +1,5 @@
-import { Graphics, type Application, type Texture, Rectangle } from "pixi.js";
+import { Graphics, type Application, Texture, Rectangle } from "pixi.js";
+import type { AssetBundle } from "./asset-manifest";
 /** Shared crop/foot anchor contract for temporary geometry and Task15 cutouts. */
 export const unitArtBounds = {
   width: 128,
@@ -7,10 +8,44 @@ export const unitArtBounds = {
   cropSafe: { x: 8, y: 8, width: 112, height: 144 },
   atlasGroup: "units",
 } as const;
-export interface BattleAssets {
-  kind: "PLACEHOLDER";
-}
+export type BattleAssets = AssetBundle | { kind: "PLACEHOLDER" };
 export const placeholderAssets: BattleAssets = { kind: "PLACEHOLDER" };
+/** Shared original alpha art frames; pages own their GPU resources for one scene. */
+export function createIllustratedTextures(
+  app: Application,
+  assets: AssetBundle,
+) {
+  const fallback = createPlaceholderTextures(app);
+  const pages: Texture[] = [];
+  const frames: Texture[] = [];
+  for (const atlas of assets.atlases) {
+    const image = assets.images.get(atlas.url);
+    if (!image) continue;
+    const page = Texture.from(image);
+    pages.push(page);
+    for (const [id, frame] of Object.entries(atlas.frames)) {
+      const texture = new Texture({
+        source: page.source,
+        frame: new Rectangle(frame.x, frame.y, frame.width, frame.height),
+      });
+      frames.push(texture);
+      fallback.textures.set(id, texture);
+    }
+  }
+  return {
+    textures: fallback.textures,
+    dispose() {
+      // Remove frame entries before the fallback owner releases its generated textures.
+      for (const atlas of assets.atlases)
+        for (const id of Object.keys(atlas.frames))
+          fallback.textures.delete(id);
+      frames.forEach((frame) => frame.destroy(false));
+      pages.forEach((page) => page.destroy(true));
+      fallback.dispose();
+      assets.dispose();
+    },
+  };
+}
 export function createPlaceholderTextures(app: Application) {
   const textures = new Map<string, Texture>();
   const dispose = () => {

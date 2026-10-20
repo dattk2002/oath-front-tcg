@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
+import ArtImage from "../features/match/ArtImage";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -343,13 +344,16 @@ function AppContent({
                   {[1, 2, 3, 4, 5].map((lane) => (
                     <div key={lane}>
                       <span>{lane}</span>
-                      <i className="silhouette" />
+                      <span className="home-unit-art">
+                        <ArtImage
+                          artKey={`cards/${["gc01", "b02", "v02", "p03", "ec01"][lane - 1]}.webp`}
+                          name=""
+                          retry={false}
+                        />
+                      </span>
                     </div>
                   ))}
                 </div>
-                <p className="art-note">
-                  Minh họa tạm thời · Giao diện nền tảng
-                </p>
               </section>
             )}
           </main>

@@ -1,0 +1,105 @@
+[WebServer] (node:2027441) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2027475) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2027491) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2027555) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2027586) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2027603) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:2027738) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/asset-fallback.spec.ts:7:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot (1.0m)
+(node:2029786) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2029951) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2030097) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/asset-fallback.spec.ts:71:1 › battle atlas failure retries the complete public terrain pool and integrated art survives responsive layouts (11.0s)
+  ✓  3 tests/e2e/tutorial-settings.spec.ts:2:1 › new player can open tutorial and independent sound settings (2.1s)
+[WebServer] (node:2030304) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2030550) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2030680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2030804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/tutorial-settings.spec.ts:51:3 › TU12 visible GOOD USED, reload, EVIL, skip/replay and settings persistence (22.2s)
+[WebServer] (node:2030855) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/e2e/tutorial-settings.spec.ts:51:3 › TU12 visible GOOD KEPT, reload, EVIL, skip/replay and settings persistence (19.6s)
+(node:2031496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2031857) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/e2e/tutorial-settings.spec.ts:193:1 › real Web Audio gesture, settings restore and desktop/tablet/mobile review (6.4s)
+[WebServer] (node:2032023) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 tests/e2e/tutorial-settings.spec.ts:373:1 › settled tutorial layout exposes settings, energy focus and small-screen fallback (4.8s)
+[WebServer] (node:2032117) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  8 tests/e2e/tutorial-settings.spec.ts:441:1 › uncertain tutorial create retains identity and explains a different pending faction before explicit retry (3.2s)
+
+
+  1) tests/e2e/asset-fallback.spec.ts:7:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot
+
+    Test timeout of 60000ms exceeded.
+
+    Error Context: test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/asset-fallback-missing-art-57557--slow-art-reserves-its-slot/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/tutorial-settings.spec.ts:51:3 › TU12 visible GOOD KEPT, reload, EVIL, skip/replay and settings persistence
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator:  locator('[data-lane-id="3"]')
+    Expected: enabled
+    Received: disabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeEnabled" locator('[data-lane-id="3"]') with timeout 5000ms
+      - waiting for locator('[data-lane-id="3"]')
+        14 × locator resolved to <button disabled data-lane-id="3" class="lane-target" data-legal-target="false" data-tutorial-focus="true" aria-label="Chọn lộ 3, chưa thể chọn" data-target="{"kind":"LANE","laneId":3}">Lộ 3</button>
+           - unexpected value "disabled"
+
+
+      42 |   } else await source.click();
+      43 |   const target = page.locator(`[data-lane-id="${lane}"]`);
+    > 44 |   await expect(target).toBeEnabled();
+         |                        ^
+      45 |   if (keyboard) {
+      46 |     await target.focus();
+      47 |     await page.keyboard.press("Enter");
+        at card (/home/bia/Works/Coding/oath-front-tcg/tests/e2e/tutorial-settings.spec.ts:44:24)
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/tutorial-settings.spec.ts:119:5
+
+    Error Context: test-results/tutorial-settings-TU12-vis-6c3c5-ay-and-settings-persistence/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/tutorial-settings-TU12-vis-6c3c5-ay-and-settings-persistence/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/tutorial-settings-TU12-vis-6c3c5-ay-and-settings-persistence/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/asset-fallback.spec.ts:7:1 › missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot
+    tests/e2e/tutorial-settings.spec.ts:51:3 › TU12 visible GOOD KEPT, reload, EVIL, skip/replay and settings persistence
+  6 passed (2.4m)

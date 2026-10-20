@@ -39,12 +39,12 @@ function device() {
       gains.push(g);
       return g;
     },
-    createOscillator: () => {
+    createBufferSource: () => {
       const v = { started: false, stopped: false };
       voices.push(v);
       return {
-        type: "sine",
-        frequency: { value: 440 },
+        buffer: null,
+        loop: false,
         connect: vi.fn(),
         disconnect: vi.fn(),
         start() {
@@ -62,19 +62,34 @@ function device() {
     gains,
     context,
     factory: () => context as unknown as AudioContext,
+    assetLoader: vi.fn(async (context: AudioContext, path: string) => {
+      expect(context).toBeDefined();
+      expect(path).toMatch(/^\/assets\/core-v1\/audio\//);
+      return { duration: 1 } as AudioBuffer;
+    }),
   };
 }
 it("never opens or plays before a gesture; independent volumes, mute and dispose control real graph", async () => {
   const d = device(),
     factory = vi.fn(d.factory);
-  const audio = createAudioManager({ contextFactory: factory });
+  const audio = createAudioManager({
+    contextFactory: factory,
+    assetLoader: d.assetLoader,
+  });
   audio.setMusic("battle");
   audio.play("draw");
   expect(factory).not.toHaveBeenCalled();
   expect(d.voices).toHaveLength(0);
+  expect(d.assetLoader).not.toHaveBeenCalled();
   audio.setMusicVolume(0);
   audio.setSfxVolume(0.6);
   await audio.unlockFromGesture();
+  expect(d.assetLoader).toHaveBeenCalledTimes(20);
+  expect(
+    d.assetLoader.mock.calls.every((call) =>
+      String(call[1]).includes("/assets/core-v1/audio/"),
+    ),
+  ).toBe(true);
   expect(audio.settings.musicVolume).toBe(0);
   expect(audio.settings.sfxVolume).toBe(0.6);
   audio.play("draw");
@@ -91,7 +106,10 @@ it("never opens or plays before a gesture; independent volumes, mute and dispose
 });
 it("hidden/paused playback suspends, resumes after unlock only, and handles device rejection", async () => {
   const d = device(),
-    audio = createAudioManager({ contextFactory: d.factory });
+    audio = createAudioManager({
+      contextFactory: d.factory,
+      assetLoader: d.assetLoader,
+    });
   await audio.unlockFromGesture();
   audio.setHidden(true);
   expect(d.context.state).toBe("suspended");
@@ -125,4 +143,35 @@ it("restores only supported bounded versioned settings and resolves event famili
   ).toEqual(defaultSettings);
   expect(soundFamily({ kind: "BlockOccurred" } as never)).toBe("block");
   expect(soundFamily({ kind: "TutorialAdvanced" } as never)).toBeNull();
+});
+it("does not create late voices after disposal during decoding and reports resume rejection", async () => {
+  const d = device();
+  let release = () => {};
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const audio = createAudioManager({
+    contextFactory: d.factory,
+    assetLoader: async () => {
+      await gate;
+      return {} as AudioBuffer;
+    },
+  });
+  const unlocking = audio.unlockFromGesture();
+  await Promise.resolve();
+  audio.dispose();
+  release();
+  expect(await unlocking).toBe(false);
+  expect(audio.status).toBe("disposed");
+  expect(d.voices).toHaveLength(0);
+  const rejected = device();
+  rejected.context.resume.mockRejectedValueOnce(Error("device suspended"));
+  const unavailable = createAudioManager({
+    contextFactory: rejected.factory,
+    assetLoader: rejected.assetLoader,
+  });
+  expect(await unavailable.unlockFromGesture()).toBe(false);
+  expect(unavailable.status).toBe("unavailable");
+  expect(rejected.assetLoader).not.toHaveBeenCalled();
+  unavailable.dispose();
 });

@@ -3,6 +3,7 @@ import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import { crossedDragThreshold, dropTarget } from "./drag";
 import type { IntentController } from "./intent-controller";
 import { groupArrows } from "./keyboard";
+import ArtImage from "./ArtImage";
 export default function Hand({
   view,
   catalog,
@@ -114,6 +115,9 @@ export default function Hand({
                 <span className="sr-only"> năng lượng</span>
               </span>
               <strong>{def.nameVi}</strong>
+              <span className="hand-art">
+                <ArtImage artKey={def.artKey} name={def.nameVi} retry={false} />
+              </span>
               <span className="card-kind">
                 {def.type === "UNIT" ? "Nhân vật" : "Phép"}
               </span>

@@ -27,6 +27,7 @@ export default function BattleScene({
   const [playing, setPlaying] = useState(false),
     [attempt, setAttempt] = useState(0),
     [announcement, setAnnouncement] = useState("");
+  const [progress, setProgress] = useState({ loaded: 0, total: 10 });
   const reduced = settings.reducedMotion;
   const reducedSetting = useRef(reduced);
   reducedSetting.current = reduced || settings.reducedMotion;
@@ -36,17 +37,25 @@ export default function BattleScene({
     setStatus("loading");
     void Promise.all([
       import("./rendering/scene"),
-      import("./rendering/assets"),
+      import("./rendering/asset-manifest"),
       import("./motion/presentation-controller"),
       import("./motion/reduced-motion"),
       import("./motion/event-timeline"),
     ])
       .then(async ([rendering, assets, motion, preferences, feedback]) => {
         if (cancelled || !canvas.current) return;
-        const scene = rendering.createBattleScene(
-          canvas.current,
-          assets.placeholderAssets,
+        const bundle = await assets.loadBattleAssets(
+          "core_v1",
+          reducedSetting.current ? "low" : "high",
+          (loaded, total) => {
+            if (!cancelled) setProgress({ loaded, total });
+          },
         );
+        if (cancelled || !canvas.current) {
+          bundle.dispose();
+          return;
+        }
+        const scene = rendering.createBattleScene(canvas.current, bundle);
         const unsubscribeView = scene.subscribe(onView);
         scene.applyView(store.getSnapshot().authoritativeView);
         const os = preferences.observeReducedMotion(() =>
@@ -232,13 +241,15 @@ export default function BattleScene({
           </button>
         )}
         {status === "loading" && (
-          <span role="status">Đang chuẩn bị hình khối…</span>
+          <span role="status">
+            Đang tải hình · {progress.loaded} / {progress.total}
+          </span>
         )}
         {status === "fallback" && (
           <span role="status">
             Đang dùng bàn văn bản.{" "}
             <button onClick={() => setAttempt((n) => n + 1)}>
-              Thử lại hình khối
+              Thử lại hình ảnh
             </button>
           </span>
         )}

@@ -8,6 +8,7 @@ import type {
 } from "@oathfront/contracts";
 import { targetFor, targetEqual } from "./intent-controller";
 import { sideLabel, unitStatuses } from "./labels";
+import ArtImage from "./ArtImage";
 export { groupArrows } from "./keyboard";
 export function targetMatches(
   legal: Target,
@@ -78,7 +79,12 @@ export default function Board({
         aria-label={`Lộ ${laneId}, ${def.nameVi}, phe ${sideLabel[unit.owner]}, ${unit.current.attack} công, ${unit.current.hp} HP${action ? ", mục tiêu hợp lệ" : ", xem chi tiết"}`}
       >
         <span className="scene-art" aria-hidden="true">
-          <span className="unit-silhouette silhouette" />
+          <ArtImage
+            artKey={def.artKey}
+            name={def.nameVi}
+            variant="cutout"
+            retry={false}
+          />
         </span>
         <strong>{def.nameVi}</strong>
         <span className="unit-stats">
@@ -130,6 +136,14 @@ export default function Board({
                 ) : location ? (
                   <details>
                     <summary>{location.nameVi}</summary>
+                    <span className="terrain-art">
+                      <ArtImage
+                        artKey={location.artKey}
+                        name={location.nameVi}
+                        variant="strip"
+                        retry={false}
+                      />
+                    </span>
                     <p>{location.exactTextVi}</p>
                   </details>
                 ) : (

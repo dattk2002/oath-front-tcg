@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import type { IntentController } from "./intent-controller";
+import ArtImage from "./ArtImage";
 export default function BlockResponse({
   view,
   catalog,
@@ -56,6 +57,11 @@ export default function BlockResponse({
         Chặn 0 / 8 · Còn {3 - view.players[view.self.side].block.used} lần chặn
       </p>
       <h3>{power?.nameVi}</h3>
+      {power && (
+        <div className="block-power-art">
+          <ArtImage artKey={power.artKey} name={power.nameVi} />
+        </div>
+      )}
       {power?.signatureOwner && <p>Năng lực đặc trưng</p>}
       <p className="free-power">Miễn phí lúc này</p>
       <p>{power?.exactTextVi}</p>

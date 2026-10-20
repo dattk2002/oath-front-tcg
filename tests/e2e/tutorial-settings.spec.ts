@@ -36,6 +36,7 @@ async function next(page: Page, label = "Tiếp tục") {
 async function card(page: Page, name: string, lane: number, keyboard: boolean) {
   const source = page.locator(".hand-card").filter({ hasText: name });
   await expect(source).toBeVisible();
+  await expect(source).toHaveAttribute("data-playable-unit", "true");
   if (keyboard) {
     await source.focus();
     await page.keyboard.press("Enter");
@@ -189,6 +190,7 @@ for (const branch of ["USED", "KEPT"] as const)
 
 import { mkdir, writeFile } from "node:fs/promises";
 const evidence =
+  process.env.OATHFRONT_EVIDENCE_DIR ??
   ".superpowers/sdd/2026-10-20-oathfront-implementation/task-14-evidence";
 test("real Web Audio gesture, settings restore and desktop/tablet/mobile review", async ({
   page,
@@ -210,8 +212,8 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
         gains.push(node);
         return node;
       }
-      override createOscillator() {
-        const node = super.createOscillator();
+      override createBufferSource() {
+        const node = super.createBufferSource();
         const start = node.start.bind(node);
         node.start = (when?: number) => {
           starts++;
@@ -247,7 +249,7 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
   expect((await audio()).starts).toBe(0);
   await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
   await expect.poll(async () => (await audio()).states[0]).toBe("running");
-  expect((await audio()).starts).toBeGreaterThan(0);
+  await expect.poll(async () => (await audio()).starts).toBeGreaterThan(0);
   const music = page.getByRole("slider", { name: "Nhạc", exact: true });
   await music.focus();
   await page.keyboard.press("Home");

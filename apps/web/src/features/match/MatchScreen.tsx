@@ -1,4 +1,5 @@
 import TutorialOverlay from "../tutorial/TutorialOverlay";
+import ArtImage from "./ArtImage";
 import { useSettings } from "../settings/SettingsDialog";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -299,6 +300,21 @@ function MatchRuntime({
                       controller.selectCard(power.instanceId);
                     }}
                   >
+                    <span className="reserve-art">
+                      <ArtImage
+                        artKey={
+                          catalog.powers.find(
+                            (def) => def.id === power.definitionId,
+                          )!.artKey
+                        }
+                        name={
+                          catalog.powers.find(
+                            (def) => def.id === power.definitionId,
+                          )!.nameVi
+                        }
+                        retry={false}
+                      />
+                    </span>
                     {
                       catalog.powers.find(
                         (def) => def.id === power.definitionId,
@@ -362,9 +378,6 @@ function MatchRuntime({
           onAction={(action) => void controller.submitIntent(action)}
         />
         <BattleLog snapshot={snapshot} compact />
-        <p className="art-note">
-          Hình khối minh họa tạm · Chỉ số và hiệu ứng là văn bản thật.
-        </p>
       </div>
       {view.lifecycle === "PAUSED" && (
         <PauseDialog

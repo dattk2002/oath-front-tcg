@@ -1,0 +1,21 @@
+{
+  "terrainRequests": [
+    "/assets/core-v1/locations/ancient_forest-strip.webp",
+    "/assets/core-v1/locations/desert-strip.webp",
+    "/assets/core-v1/locations/frozen_lake-strip.webp",
+    "/assets/core-v1/locations/healing_spring-strip.webp",
+    "/assets/core-v1/locations/quiet_meadow-strip.webp",
+    "/assets/core-v1/locations/ruined_arena-strip.webp",
+    "/assets/core-v1/locations/storm_peak-strip.webp",
+    "/assets/core-v1/locations/volcano-strip.webp"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "unexpected": [],
+  "renderer": {
+    "width": 1392,
+    "height": 955
+  }
+}

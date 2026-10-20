@@ -5,6 +5,7 @@ import type {
   PowerDefinitionView,
 } from "@oathfront/contracts/browser";
 import { classLabel } from "../match/labels";
+import ArtImage from "../match/ArtImage";
 export const strategies: Record<string, string> = {
   H_G_BV: "Giữ quân bằng Khiên, hồi phục rồi giành bàn",
   H_G_BP: "Chặn nhịp đối thủ và giữ vị trí tốt",
@@ -50,6 +51,17 @@ export default function HeroInspect({
         {hero.faction === "GOOD" ? "Phe Thiện" : "Phe Ác"}
       </p>
       <h2>{hero.nameVi}</h2>
+      <div className="hero-bust">
+        <ArtImage artKey={hero.portraitKey} name={hero.nameVi} variant="bust" />
+        <span className="hero-motif" aria-hidden="true">
+          <ArtImage
+            artKey={hero.portraitKey}
+            name={hero.nameVi}
+            variant="motif"
+            retry={false}
+          />
+        </span>
+      </div>
       <p>{hero.titleVi}</p>
       <p>{hero.classes.map((c) => classLabel[c]).join(" · ")}</p>
       <p>{strategies[hero.id]}</p>
@@ -60,6 +72,9 @@ export default function HeroInspect({
           const p = catalog.powers.find((p) => p.id === id)!;
           return (
             <button key={id} onClick={() => setPower(p)}>
+              <span className="power-art">
+                <ArtImage artKey={p.artKey} name={p.nameVi} retry={false} />
+              </span>
               <strong>{p.nameVi}</strong>
               {id === hero.signaturePowerId && <span>Signature</span>}
               <span>Giá 1 · Mục tiêu: {targetNames[p.targetKind]}</span>

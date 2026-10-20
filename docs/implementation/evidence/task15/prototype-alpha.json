@@ -1,0 +1,54 @@
+{
+  "H_G_BV": {
+    "sha256": "32535dff030d04d3bfff29a2711735a2a25395169d8d97ac72562d6310187a33",
+    "size": [
+      1024,
+      1536
+    ],
+    "fullyTransparentPixels": 672352,
+    "nearOpaquePixels": 782851,
+    "alphaRange": [
+      0,
+      254
+    ]
+  },
+  "GC01": {
+    "sha256": "9b19f3f7cc48952812ce2552fa28bdcc209e1acd1aa9f066ca326c07151f1f46",
+    "size": [
+      1182,
+      1330
+    ],
+    "fullyTransparentPixels": 892130,
+    "nearOpaquePixels": 597280,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  "EC01": {
+    "sha256": "de82080c3ee04247f374d49bd0e1bb5417aa00033c898c6db4b574efa17a27ea",
+    "size": [
+      1211,
+      1299
+    ],
+    "fullyTransparentPixels": 992855,
+    "nearOpaquePixels": 480438,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  "ancient_forest": {
+    "sha256": "2eb90223f5405fd673fb5143521222616ef0cdbbe13e54bf873599ad03c392e4",
+    "size": [
+      1983,
+      793
+    ],
+    "fullyTransparentPixels": 0,
+    "nearOpaquePixels": 1572519,
+    "alphaRange": [
+      255,
+      255
+    ]
+  }
+}

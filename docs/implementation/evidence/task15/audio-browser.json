@@ -1,0 +1,18 @@
+{
+  "audio": {
+    "contexts": 2,
+    "states": [
+      "closed",
+      "running"
+    ],
+    "gains": [
+      0,
+      0.6000000238418579,
+      0,
+      0.6000000238418579
+    ],
+    "starts": 2
+  },
+  "errors": [],
+  "settings": "{\"version\":1,\"musicVolume\":0,\"sfxVolume\":0.6,\"muted\":false,\"reducedMotion\":true}"
+}

@@ -157,8 +157,7 @@ export default function SettingsDialog({
         Giảm chuyển động
       </label>
       <p className="muted">
-        Luôn tôn trọng cài đặt giảm chuyển động của thiết bị. Âm thanh tạm để
-        thử trải nghiệm; bộ âm thanh hoàn chỉnh sẽ được bổ sung.
+        Luôn tôn trọng cài đặt giảm chuyển động của thiết bị.
       </p>
       {onTutorial && (
         <div className="settings-tutorial">
