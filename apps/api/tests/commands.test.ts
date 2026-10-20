@@ -157,6 +157,17 @@ it("enforces shared fixed windows for guest, create and command attempts", async
       })
     ).statusCode,
   ).toBe(429);
+  for (const query of ["?x=1", "?anything=else"])
+    expect(
+      (
+        await h.app.inject({
+          method: "POST",
+          url: "/api/v1/matches" + query,
+          headers,
+          payload: create,
+        })
+      ).statusCode,
+    ).toBe(429);
   const id = (await h.app.inject({ url: "/api/v1/matches", headers })).json()
     .items[0].matchId;
   // HMAC domain separates command from create keys; populate by making one command then saturating its own row.
@@ -175,9 +186,18 @@ it("enforces shared fixed windows for guest, create and command attempts", async
       })
     ).statusCode,
   ).toBe(200);
-  await h.owner.query(
-    "UPDATE rate_limit_windows SET count=120 WHERE scope='COMMAND'",
-  );
+  // All120 command attempts remain available after the exhausted create bucket.
+  for (let i = 1; i < 120; i++)
+    expect(
+      (
+        await h.app.inject({
+          method: "POST",
+          url: `/api/v1/matches/${id}/commands?x=1`,
+          headers,
+          payload: cmd,
+        })
+      ).statusCode,
+    ).toBe(200);
   expect(
     (
       await h.app.inject({

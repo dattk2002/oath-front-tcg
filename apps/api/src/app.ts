@@ -90,7 +90,9 @@ export function buildApp(deps: AppDependencies) {
       if (mutation) {
         requireCsrf(req.headers["x-csrf-token"], s.csrfHash);
         await limit(
-          req.url === "/api/v1/matches" ? "MATCH_CREATE" : "COMMAND",
+          req.routeOptions.url === "/api/v1/matches"
+            ? "MATCH_CREATE"
+            : "COMMAND",
           s.principal.id,
         );
       }
