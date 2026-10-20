@@ -3,21 +3,8 @@ import type { MatchState, GameEvent, UnitState } from "../model.js";
 import { findUnit, orderedUnits } from "../targets.js";
 import { emitEvent } from "../events.js";
 import { safeInteger, emitStatus } from "../modifiers.js";
-/** Pure arithmetic adapter; not a gameplay action. mitigatedDamage is the amount prevented. */
-export function damage(input: {
-  raw: number;
-  armor: number;
-  shield: boolean;
-}): { finalDamage: number; shieldConsumed: boolean; mitigatedDamage: number } {
-  const raw = Math.max(0, safeInteger(input.raw)),
-    afterArmor = Math.max(
-      0,
-      raw - Math.min(1, Math.max(0, safeInteger(input.armor))),
-    ),
-    shieldConsumed = afterArmor > 0 && input.shield;
-  const finalDamage = shieldConsumed ? 0 : afterArmor;
-  return { finalDamage, shieldConsumed, mitigatedDamage: raw - finalDamage };
-}
+import { damage } from "../rule-math.js";
+export { damage } from "../rule-math.js";
 export interface DamageInput {
   source: EntityRef | null;
   target: EntityRef;

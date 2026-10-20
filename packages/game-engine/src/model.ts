@@ -85,6 +85,11 @@ export interface MatchState extends Omit<MatchConfig, "decks"> {
     laneId: LaneId;
     powerInstanceId: string;
   } | null;
+  endTurn?: {
+    stage: "HOOKS" | "LOCATIONS" | "EXPIRY";
+    jobs: { source: UnitState; abilityId: string }[];
+    locationIndex: number;
+  };
   outcome: Outcome | null;
 }
 export type GameEvent = VisibleEvent;

@@ -25,18 +25,16 @@ import {
 } from "./effects/resolve.js";
 import { runHookOnDraft } from "./effects/triggers.js";
 import { applyBlockAction, legalBlockActions } from "./block.js";
+import { applyControlAction, legalControlActions } from "./terminal.js";
 import { advanceAutomatic } from "./automatic.js";
 const error = (code: ActionError["code"]): ActionError => ({
   kind: "error",
   code,
 });
-export function getLegalActions(
-  state: MatchState,
-  actor: PlayerId,
-): PlayerAction[] {
+function phaseLegalActions(state: MatchState, actor: PlayerId): PlayerAction[] {
   if (state.lifecycle !== "ACTIVE") return [];
   if (state.blockResponse) return legalBlockActions(state, actor);
-  if (state.phase === "COMBAT")
+  if (["COMBAT", "TURN_END", "TURN_START"].includes(state.phase))
     return actor === state.humanSide ? [{ kind: "ADVANCE" }] : [];
   if (state.phase === "MULLIGAN") {
     if (state.players[actor].mulliganCommitted) return [];
@@ -92,6 +90,15 @@ export function getLegalActions(
     }
   return actions;
 }
+export function getLegalActions(
+  state: MatchState,
+  actor: PlayerId,
+): PlayerAction[] {
+  return [
+    ...phaseLegalActions(state, actor),
+    ...legalControlActions(state, actor),
+  ];
+}
 /** actor is supplied by the trusted API/bot/replay envelope, never by wire PlayerAction. */
 export function applyAction(
   state: MatchState,
@@ -103,12 +110,15 @@ export function applyAction(
     !validateWire("PlayerAction", action)
   )
     return error("INVALID_TARGET");
+  if (["PAUSE", "RESUME", "SURRENDER"].includes(action.kind))
+    return applyControlAction(state, actor, action);
   if (state.lifecycle === "PAUSED") return error("MATCH_PAUSED");
   if (state.lifecycle !== "ACTIVE") return error("MATCH_ENDED");
   if (state.blockResponse) return applyBlockAction(state, actor, action);
   if (action.kind === "ADVANCE") {
     if (actor !== state.humanSide) return error("NOT_YOUR_TURN");
-    if (state.phase !== "COMBAT") return error("WRONG_PHASE");
+    if (!["COMBAT", "TURN_END", "TURN_START"].includes(state.phase))
+      return error("WRONG_PHASE");
     return advanceAutomatic(state, { maxRoots: 8 });
   }
   if (action.kind === "MULLIGAN")

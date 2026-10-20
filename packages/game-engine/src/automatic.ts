@@ -4,6 +4,7 @@ import type {
   MatchState,
   TransitionResult,
 } from "./model.js";
+import { endTurnOnDraft, turnStartOnDraft } from "./end-turn.js";
 import { transition } from "./events.js";
 import { runRoot } from "./effects/resolve.js";
 import {
@@ -28,10 +29,18 @@ export function advanceAutomatic(
     if (
       current.lifecycle !== "ACTIVE" ||
       current.blockResponse ||
-      current.phase !== "COMBAT"
+      !["COMBAT", "TURN_END", "TURN_START"].includes(current.phase)
     )
       break;
     const result = runRoot(current, (draft, root) => {
+      if (draft.phase === "TURN_END") {
+        endTurnOnDraft(draft, root);
+        return;
+      }
+      if (draft.phase === "TURN_START") {
+        turnStartOnDraft(draft, root);
+        return;
+      }
       const continuation = draft.continuation;
       if (!continuation) throw new RangeError("Missing combat continuation");
       const laneId = continuation.laneId;

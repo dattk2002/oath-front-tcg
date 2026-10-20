@@ -11,6 +11,7 @@ import type { DamageInput } from "./effects/damage.js";
 import { runRoot, resolveEffectsOnDraft } from "./effects/resolve.js";
 import { emitEvent } from "./events.js";
 import { legalTargets, targetEqual } from "./targets.js";
+import { chargeBlock } from "./rule-math.js";
 import { grantPowerOnDraft } from "./powers.js";
 
 /** Called exactly once for each snapshotted regular attack hero packet. */
@@ -30,13 +31,7 @@ export function interceptCombatPacketOnDraft(
     meter = player.block;
   if (meter.used >= 3) return packet;
   const before = meter.charge;
-  meter.charge += 2;
-  const blocked = meter.charge >= 8;
-  if (blocked) {
-    meter.charge = 0;
-    ++meter.used;
-    meter.active = meter.used < 3;
-  }
+  const blocked = chargeBlock(meter);
   emitEvent(state, events, {
     kind: "BlockMeterChanged",
     visibility: "PUBLIC",

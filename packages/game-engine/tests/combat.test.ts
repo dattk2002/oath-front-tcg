@@ -1,3 +1,4 @@
+import { coreCatalog } from "@oathfront/game-content";
 import { describe, expect, it } from "vitest";
 import * as engine from "../src/index.js";
 import { unit } from "./helpers.js";
@@ -167,7 +168,7 @@ describe("R08/R09 atomic combat and scheduled roots", () => {
       RangeError,
     );
   });
-  it("finishes lanes in ascending order and ends at TURN_END without running the next lifecycle stage", () => {
+  it("finishes lanes in ascending order and reaches TURN_END in lane order and T05 can advance the next lifecycle stage", () => {
     let state = combatState();
     for (const lane of [1, 2, 3, 4, 5] as const)
       unit(state, "EC01", "EVIL", lane);
@@ -202,7 +203,9 @@ describe("R08/R09 atomic combat and scheduled roots", () => {
     expect(state.phase).toBe("TURN_END");
     expect(state.turn).toBe(5);
     expect(state.continuation).toBeNull();
-    expect(engine.advanceAutomatic(state, { maxRoots: 8 }).events).toEqual([]);
+    expect(
+      engine.advanceAutomatic(state, { maxRoots: 8 }).nextState,
+    ).toMatchObject({ turn: 6, phase: "EVIL_DEPLOY" });
   });
   it("simultaneous combat corpses resolve their hero damage before one draw checkpoint", () => {
     const state = combatState();
@@ -262,6 +265,8 @@ describe("R08/R09 atomic combat and scheduled roots", () => {
     const state = combatState();
     expect(engine.getLegalActions(state, "GOOD")).toEqual([
       { kind: "ADVANCE" },
+      { kind: "PAUSE" },
+      { kind: "SURRENDER" },
     ]);
     expect(engine.getLegalActions(state, "EVIL")).toEqual([]);
     expect(
@@ -302,4 +307,36 @@ describe("R08/R09 atomic combat and scheduled roots", () => {
         .map((e) => e.payload.to),
     ).toEqual(["GAME_OVER"]);
   });
+});
+it("skips a queued source killed by an earlier scheduled root after JSON reload without replaying the first hook", () => {
+  // Synthetic scheduled effect exercises cursor eligibility; live catalog is restored before leaving this test.
+  const def = coreCatalog.cards.find((c) => c.id === "F03")!,
+    ability = def.abilities[0]!,
+    original = ability.effects;
+  try {
+    ability.effects = [
+      {
+        kind: "DAMAGE",
+        targets: "ENEMY_UNIT_HERE",
+        amount: 1,
+        damageKind: "EFFECT",
+      },
+    ];
+    const s = combatState();
+    unit(s, "F03", "EVIL", 1);
+    unit(s, "F03", "GOOD", 1).current.hp = 1;
+    const first = engine.advanceAutomatic(s, { maxRoots: 1 });
+    expect(first.nextState.board[0]!.good).toBeNull();
+    expect(first.nextState.continuation?.beforeCombatJobs).toHaveLength(1);
+    const second = engine.advanceAutomatic(
+      JSON.parse(JSON.stringify(first.nextState)),
+      { maxRoots: 1 },
+    );
+    expect(second.nextState.rootSeq).toBe(first.nextState.rootSeq + 1);
+    expect(second.nextState.continuation?.stage).toBe("PAIR");
+    expect(second.events).toEqual([]);
+    expect(second.nextState.board[0]!.evil?.current.attack).toBe(3);
+  } finally {
+    ability.effects = original;
+  }
 });

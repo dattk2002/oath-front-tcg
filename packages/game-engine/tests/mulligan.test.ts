@@ -142,3 +142,11 @@ it("emits both phase transitions so event consumers observe complete setup advan
     { from: "TURN_START", to: "EVIL_DEPLOY", turn: 1 },
   ]);
 });
+it("zero-card commitment preserves deck order and its RNG stream exactly", () => {
+  const s = fresh(),
+    result = commit(s, "GOOD", []);
+  expect(result.nextState.players.GOOD.deck).toEqual(s.players.GOOD.deck);
+  expect(result.nextState.random.states["deck:good"]).toEqual(
+    s.random.states["deck:good"],
+  );
+});

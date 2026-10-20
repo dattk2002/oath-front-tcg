@@ -1,10 +1,6 @@
-import type {
-  CardId,
-  Effect,
-  EntityRef,
-  HandCard,
-  ModifierView,
-} from "@oathfront/contracts";
+import type { CardId, Effect, EntityRef, HandCard } from "@oathfront/contracts";
+import { finishMatchOnDraft } from "../terminal.js";
+import { executePrimitive } from "../primitive.js";
 import { coreCatalog } from "@oathfront/game-content";
 import type {
   MatchState,
@@ -14,14 +10,7 @@ import type {
   UnitState,
 } from "../model.js";
 import type { EffectContext } from "../targets.js";
-import {
-  findUnit,
-  orderedUnits,
-  resolveTargets,
-  slot,
-  sourceLane,
-  internalLaneId,
-} from "../targets.js";
+import { findUnit, orderedUnits, slot, internalLaneId } from "../targets.js";
 import { transition, emitEvent } from "../events.js";
 import {
   addModifierOnDraft,
@@ -86,29 +75,11 @@ export function checkLethalOnDraft(
     evil = state.players.EVIL.hp <= 0;
   if (!good && !evil) return;
   const winner = good && evil ? null : good ? "EVIL" : "GOOD";
-  state.outcome = {
+  finishMatchOnDraft(state, events, {
     result:
       winner === null ? "DRAW" : winner === state.humanSide ? "WIN" : "LOSS",
     winner,
     reason: winner === null ? "SIMULTANEOUS_LETHAL" : "HERO_DEFEATED",
-  };
-  state.lifecycle = "COMPLETED";
-  state.activeSide = null;
-  state.blockResponse = null;
-  state.continuation = null;
-  const from = state.phase;
-  state.phase = "GAME_OVER";
-  emitEvent(state, events, {
-    kind: "PhaseChanged",
-    visibility: "PUBLIC",
-    ownerSide: null,
-    payload: { from, to: "GAME_OVER", turn: state.turn },
-  });
-  emitEvent(state, events, {
-    kind: "MatchEnded",
-    visibility: "PUBLIC",
-    ownerSide: null,
-    payload: { outcome: { ...state.outcome }, turn: state.turn },
   });
 }
 export function discardOnDraft(
@@ -261,9 +232,8 @@ export function resolveEffectsOnDraft(
   for (const effect of effects) {
     if (++root.primitiveCount > 256) throw new RangeError("Primitive limit");
     let damaged: UnitState[] = [];
-    switch (effect.kind) {
-      case "DAMAGE": {
-        const targets = resolveTargets(state, context, effect.targets);
+    executePrimitive(state, context, effect, {
+      damage(targets, amount) {
         const source: EntityRef =
           context.instanceId &&
           (context.corpse || findUnit(state, context.instanceId))
@@ -275,189 +245,71 @@ export function resolveEffectsOnDraft(
           targets.map((target) => ({
             source,
             target,
-            rawDamage: effect.amount,
-            damageType: effect.damageKind,
+            rawDamage: amount,
+            damageType: "EFFECT",
           })),
         );
-        break;
-      }
-      case "HEAL":
-        for (const ref of resolveTargets(state, context, effect.targets)) {
-          safeInteger(effect.amount);
-          if (effect.amount < 0) throw new RangeError("Invalid heal");
-          if (ref.kind === "HERO") {
-            const hero = state.players[ref.side];
-            if (hero.hp <= 0) continue;
-            const before = hero.hp;
-            hero.hp = Math.min(
-              hero.maxHp,
-              safeInteger(hero.hp + effect.amount),
-            );
-            emitEvent(state, root.events, {
-              kind: "HeroHealed",
-              visibility: "PUBLIC",
-              ownerSide: null,
-              payload: {
-                side: ref.side,
-                amount: hero.hp - before,
-                before,
-                after: hero.hp,
-              },
-            });
-          } else {
-            const unit = findUnit(state, ref.instanceId);
-            if (!unit) continue;
-            const before = { ...unit.current };
-            unit.current.hp = Math.min(
-              unit.current.maxHp,
-              safeInteger(unit.current.hp + effect.amount),
-            );
-            emitStats(state, root.events, unit, before);
-          }
-        }
-        break;
-      case "MODIFY_STATS":
-        safeInteger(effect.attackDelta);
-        safeInteger(effect.healthDelta);
-        if (effect.healthDelta < 0)
-          throw new RangeError("Negative health buff");
-        for (const ref of resolveTargets(state, context, effect.targets)) {
-          const unit =
-            ref.kind === "UNIT" ? findUnit(state, ref.instanceId) : undefined;
-          if (unit)
-            addModifierOnDraft(
-              state,
-              root.events,
-              unit,
-              context,
-              effect.attackDelta,
-              effect.healthDelta,
-              null,
-              effect.duration,
-            );
-        }
-        break;
-      case "GRANT_SHIELD":
-      case "GRANT_ARMOR":
-      case "APPLY_POISON":
-      case "APPLY_STUN":
-      case "GRANT_PIERCE": {
-        const trait: ModifierView["trait"] =
-          effect.kind === "GRANT_SHIELD"
-            ? "SHIELD"
-            : effect.kind === "GRANT_ARMOR"
-              ? "ARMOR"
-              : effect.kind === "APPLY_POISON"
-                ? "POISONED"
-                : effect.kind === "APPLY_STUN"
-                  ? "STUNNED"
-                  : "PIERCE";
-        const status =
-          trait === "SHIELD"
-            ? "shield"
-            : trait === "ARMOR"
-              ? "armor"
-              : trait === "POISONED"
-                ? "poisoned"
-                : trait === "STUNNED"
-                  ? "stunned"
-                  : "pierce";
-        for (const ref of resolveTargets(state, context, effect.targets)) {
-          const unit =
-            ref.kind === "UNIT" ? findUnit(state, ref.instanceId) : undefined;
-          if (!unit) continue;
-          const before = { ...unit.statuses };
-          // Permanent Pierce still needs recording when it replaces a temporary grant.
-          const upgrade =
-            trait === "PIERCE" &&
-            effect.kind === "GRANT_PIERCE" &&
-            effect.duration === "PERMANENT" &&
-            !unit.modifiers.some(
-              (m) => m.trait === "PIERCE" && m.duration === "PERMANENT",
-            );
-          if (!unit.statuses[status] || upgrade)
-            addModifierOnDraft(
-              state,
-              root.events,
-              unit,
-              context,
-              0,
-              0,
-              trait,
-              "duration" in effect ? effect.duration : "PERMANENT",
-            );
-          if (upgrade && before.pierce)
-            emitStats(state, root.events, unit, { ...unit.current });
-          if (status === "armor") unit.statuses.armor = 1;
-          else unit.statuses[status] = true;
-          emitStatus(state, root.events, unit, before);
-        }
-        break;
-      }
-      case "MOVE_UNIT": {
-        const target = context.target,
-          unit =
-            "instanceId" in target
-              ? findUnit(state, target.instanceId)
-              : undefined;
-        if (
-          unit &&
-          "laneId" in target &&
-          target.laneId !== unit.laneId &&
-          !state.board[target.laneId - 1]![slot(unit.owner)]
-        ) {
-          const fromLane = unit.laneId;
-          state.board[fromLane - 1]![slot(unit.owner)] = null;
-          unit.laneId = internalLaneId(target.laneId);
-          state.board[target.laneId - 1]![slot(unit.owner)] = unit;
-          emitEvent(state, root.events, {
-            kind: "UnitMoved",
-            visibility: "PUBLIC",
-            ownerSide: null,
-            payload: {
-              instanceId: unit.instanceId,
-              side: unit.owner,
-              fromLane,
-              toLane: target.laneId,
-            },
-          });
-        }
-        break;
-      }
-      case "SUMMON_TOKEN": {
-        const lane =
-          effect.laneSelector === "SELF"
-            ? sourceLane(state, context)
-            : "laneId" in context.target
-              ? context.target.laneId
-              : null;
-        const definition = coreCatalog.tokens.find(
-          (t) => t.id === effect.tokenId,
+      },
+      stats(unit, before) {
+        emitStats(state, root.events, unit, before);
+      },
+      status(unit, before) {
+        emitStatus(state, root.events, unit, before);
+      },
+      heroHeal(side, before, after) {
+        emitEvent(state, root.events, {
+          kind: "HeroHealed",
+          visibility: "PUBLIC",
+          ownerSide: null,
+          payload: { side, amount: after - before, before, after },
+        });
+      },
+      modify(unit, attack, health, trait, duration) {
+        addModifierOnDraft(
+          state,
+          root.events,
+          unit,
+          context,
+          attack,
+          health,
+          trait,
+          duration,
         );
+      },
+      move(unit, laneId) {
+        const fromLane = unit.laneId;
+        state.board[fromLane - 1]![slot(unit.owner)] = null;
+        unit.laneId = internalLaneId(laneId);
+        state.board[laneId - 1]![slot(unit.owner)] = unit;
+        emitEvent(state, root.events, {
+          kind: "UnitMoved",
+          visibility: "PUBLIC",
+          ownerSide: null,
+          payload: {
+            instanceId: unit.instanceId,
+            side: unit.owner,
+            fromLane,
+            toLane: laneId,
+          },
+        });
+      },
+      summon(tokenId, laneId) {
+        const definition = coreCatalog.tokens.find((t) => t.id === tokenId);
         if (!definition) throw new RangeError("Missing token");
-        if (
-          lane &&
-          !state.board[lane - 1]![slot(context.owner)] &&
-          (!definition.tutorialOnly || state.mode === "TUTORIAL")
-        )
+        if (!definition.tutorialOnly || state.mode === "TUTORIAL")
           createUnitOnDraft(
             state,
             root.events,
             definition,
             context.owner,
-            internalLaneId(lane),
+            internalLaneId(laneId),
             "SUMMON",
           );
-        break;
-      }
-      case "DRAW":
-        drawOnDraft(state, context.owner, effect.count, root);
-        break;
-      default: {
-        const exhaustive: never = effect;
-        throw new TypeError(`Unknown primitive ${String(exhaustive)}`);
-      }
-    }
+      },
+      draw(count) {
+        drawOnDraft(state, context.owner, count, root);
+      },
+    });
     settleOnDraft(state, root, damaged);
   }
 }

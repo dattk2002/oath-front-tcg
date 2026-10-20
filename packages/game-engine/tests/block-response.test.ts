@@ -96,6 +96,8 @@ describe("R11 block grants and serializable response", () => {
     state.board[0]!.good = null;
     expect(engine.getLegalActions(state, "GOOD")).toEqual([
       { kind: "KEEP_BLOCK_POWER" },
+      { kind: "PAUSE" },
+      { kind: "SURRENDER" },
     ]);
   });
   it("positive hero COMBAT charges once per attack, fourth blocks, third block disables meter", () => {
@@ -318,4 +320,30 @@ describe("R11 block grants and serializable response", () => {
     });
     expect(after.players.GOOD.hp).toBe(20);
   });
+});
+it("Keep preserves the exact power for normal-phase use costing one energy after the full turn boundary", () => {
+  let s = engine.advanceAutomatic(pierceVolcano(), { maxRoots: 8 }).nextState;
+  const power = s.blockResponse!.powerInstanceId;
+  s = next(
+    engine.applyAction(s, {
+      actor: "GOOD",
+      action: { kind: "KEEP_BLOCK_POWER" },
+    }),
+  );
+  while (["COMBAT", "TURN_END", "TURN_START"].includes(s.phase))
+    s = engine.advanceAutomatic(s, { maxRoots: 8 }).nextState;
+  s = next(
+    engine.applyAction(s, { actor: "EVIL", action: { kind: "PASS_PHASE" } }),
+  );
+  unit(s, "GC01", "GOOD", 2);
+  const before = s.players.GOOD.energy.current,
+    action = engine
+      .getLegalActions(s, "GOOD")
+      .find((a) => a.kind === "USE_POWER" && a.powerInstanceId === power);
+  expect(action).toBeDefined();
+  s = next(engine.applyAction(s, { actor: "GOOD", action: action! }));
+  expect(s.players.GOOD.energy.current).toBe(before - 1);
+  expect(s.players.GOOD.reserve.some((p) => p.instanceId === power)).toBe(
+    false,
+  );
 });

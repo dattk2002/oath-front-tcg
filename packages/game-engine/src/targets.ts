@@ -4,30 +4,35 @@ import type {
   Target,
   Targeting,
   ModifierView,
+  UnitView,
 } from "@oathfront/contracts";
-import type { LaneId, MatchState, PlayerId, UnitState } from "./model.js";
+import type { LaneId, PlayerId } from "./model.js";
 export interface EffectContext {
   owner: PlayerId;
   definitionId: ModifierView["sourceDefinitionId"];
   instanceId: string | null;
-  laneId: LaneId | null;
+  laneId: number | null;
   target: Target;
   /** Corpse snapshot is retained for death hooks only. */
-  corpse?: UnitState;
+  corpse?: UnitView;
 }
 export const opposite = (side: PlayerId): PlayerId =>
   side === "GOOD" ? "EVIL" : "GOOD";
 export const slot = (side: PlayerId): "good" | "evil" =>
   side === "GOOD" ? "good" : "evil";
-export function orderedUnits(state: MatchState): UnitState[] {
+export interface RuleWorld<U extends UnitView = UnitView> {
+  board: { laneId: number; good: U | null; evil: U | null }[];
+  players: Record<PlayerId, { hp: number; maxHp: number }>;
+}
+export function orderedUnits<U extends UnitView>(state: RuleWorld<U>): U[] {
   return state.board
     .flatMap((l) => [l.evil, l.good])
-    .filter((u): u is UnitState => u !== null)
+    .filter((u): u is U => u !== null)
     .sort(
       (a, b) =>
         a.laneId - b.laneId ||
         (a.owner === "EVIL" ? 0 : 1) - (b.owner === "EVIL" ? 0 : 1) ||
-        a.creationSeq - b.creationSeq ||
+        creationOrder(a) - creationOrder(b) ||
         (a.instanceId < b.instanceId
           ? -1
           : a.instanceId > b.instanceId
@@ -35,15 +40,18 @@ export function orderedUnits(state: MatchState): UnitState[] {
             : 0),
     );
 }
-export function findUnit(state: MatchState, id: string): UnitState | undefined {
+export function findUnit<U extends UnitView>(
+  state: RuleWorld<U>,
+  id: string,
+): U | undefined {
   return orderedUnits(state).find(
     (u) => u.instanceId === id && u.current.hp > 0,
   );
 }
 export function sourceLane(
-  state: MatchState,
+  state: RuleWorld,
   context: EffectContext,
-): LaneId | null {
+): number | null {
   return (
     (context.instanceId
       ? findUnit(state, context.instanceId)?.laneId
@@ -53,14 +61,14 @@ export function sourceLane(
   );
 }
 export function legalTargets(
-  state: MatchState,
+  state: RuleWorld,
   owner: PlayerId,
   targeting: Targeting,
 ): Target[] {
   const alive = orderedUnits(state).filter((u) => u.current.hp > 0),
     ally = alive.filter((u) => u.owner === owner),
     enemy = alive.filter((u) => u.owner !== owner);
-  const unitRefs = (values: UnitState[]): Target[] =>
+  const unitRefs = (values: UnitView[]): Target[] =>
     values.map((u) => ({ kind: "UNIT", instanceId: u.instanceId }));
   switch (targeting.kind) {
     case "NONE":
@@ -103,7 +111,7 @@ export function targetEqual(a: Target, b: Target): boolean {
   );
 }
 export function resolveTargets(
-  state: MatchState,
+  state: RuleWorld,
   context: EffectContext,
   selector: Selector,
 ): EntityRef[] {
@@ -113,7 +121,7 @@ export function resolveTargets(
   const selected = context.target;
   const selectedUnit =
     "instanceId" in selected ? findUnit(state, selected.instanceId) : undefined;
-  const refs = (values: UnitState[]): EntityRef[] =>
+  const refs = (values: UnitView[]): EntityRef[] =>
     values.map((u) => ({ kind: "UNIT", instanceId: u.instanceId }));
   switch (selector) {
     case "SELF": {
@@ -189,4 +197,10 @@ export function internalLaneId(value: number): LaneId {
     default:
       throw new RangeError("Invalid lane");
   }
+}
+
+function creationOrder(unit: UnitView): number {
+  return "creationSeq" in unit && typeof unit.creationSeq === "number"
+    ? unit.creationSeq
+    : 0;
 }

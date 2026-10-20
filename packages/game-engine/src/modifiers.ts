@@ -5,11 +5,8 @@ import type { EffectContext } from "./targets.js";
 import { orderedUnits, sourceLane, slot, opposite } from "./targets.js";
 import { getActiveLocation } from "./locations.js";
 import { emitEvent } from "./events.js";
-export function safeInteger(value: number): number {
-  if (!Number.isSafeInteger(value))
-    throw new RangeError("Engine integer overflow");
-  return value;
-}
+import { safeInteger, applyStatModifier, attackValue } from "./rule-math.js";
+export { safeInteger } from "./rule-math.js";
 export function unitView(unit: UnitState) {
   return structuredClone({
     instanceId: unit.instanceId,
@@ -83,36 +80,17 @@ export function addModifierOnDraft(
     expiryTurn: duration === "TURN_END" ? state.turn : null,
   };
   if (unit.modifiers.length >= 256) throw new RangeError("Modifier limit");
-  unit.modifiers.push(modifier);
-  unit.current.attack = Math.max(
-    0,
-    safeInteger(
-      unit.modifiers.reduce(
-        (sum, m) => safeInteger(sum + m.attackDelta),
-        unit.printed.attack,
-      ),
-    ),
-  );
-  unit.current.maxHp = safeInteger(unit.current.maxHp + healthDelta);
-  unit.current.hp = Math.min(
-    unit.current.maxHp,
-    safeInteger(unit.current.hp + healthDelta),
-  );
+  applyStatModifier(unit, modifier);
   if (attackDelta !== 0 || healthDelta !== 0)
     emitStats(state, events, unit, before);
 }
 export function regularAttackValue(state: MatchState, unit: UnitState): number {
-  const rule = getActiveLocation(state, unit.laneId)?.rule;
-  const bonus =
-    rule?.kind === "ATTACK_BONUS" &&
-    ((rule.condition === "PRINTED_ATTACK_AT_MOST_3" &&
-      unit.printed.attack <= 3) ||
-      (rule.condition === "ENEMY_PRESENT_AT_SNAPSHOT" &&
-        (state.board[unit.laneId - 1]![slot(opposite(unit.owner))]?.current
-          .hp ?? 0) > 0))
-      ? rule.amount
-      : 0;
-  return Math.max(0, safeInteger(unit.current.attack + bonus));
+  return attackValue(
+    unit,
+    getActiveLocation(state, unit.laneId)?.rule,
+    (state.board[unit.laneId - 1]![slot(opposite(unit.owner))]?.current.hp ??
+      0) > 0,
+  );
 }
 export function expireModifiersOnDraft(
   state: MatchState,
