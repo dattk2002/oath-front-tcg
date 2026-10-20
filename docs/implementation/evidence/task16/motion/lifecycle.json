@@ -1,0 +1,109 @@
+{
+  "renderer": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "readinessMs": 1919,
+    "lazyResources": [
+      {
+        "path": "/_next/static/chunks/webpack-123939c7e028c928.js",
+        "durationMs": 56
+      },
+      {
+        "path": "/_next/static/chunks/cb9d67de-cef7b3a76d4c411b.js",
+        "durationMs": 70
+      },
+      {
+        "path": "/_next/static/chunks/110-2d00d3f00043bb59.js",
+        "durationMs": 69
+      },
+      {
+        "path": "/_next/static/chunks/main-app-333f47d1ee109633.js",
+        "durationMs": 62
+      },
+      {
+        "path": "/_next/static/chunks/805-62089702ca428506.js",
+        "durationMs": 65
+      },
+      {
+        "path": "/_next/static/chunks/app/not-found-cd7c23aaf9f0192a.js",
+        "durationMs": 64
+      },
+      {
+        "path": "/_next/static/chunks/267-867d5fd8d01f1dee.js",
+        "durationMs": 71
+      },
+      {
+        "path": "/_next/static/chunks/237-361621b24b4b2237.js",
+        "durationMs": 73
+      },
+      {
+        "path": "/_next/static/chunks/app/matches/%5Bid%5D/page-b413b14a949758ab.js",
+        "durationMs": 66
+      },
+      {
+        "path": "/_next/static/chunks/app/page-54b3976dcdb172db.js",
+        "durationMs": 4
+      },
+      {
+        "path": "/_next/static/chunks/e809d3ec.16a18e52216662fd.js",
+        "durationMs": 20
+      },
+      {
+        "path": "/_next/static/chunks/785.43a5d2b6dfb2d765.js",
+        "durationMs": 21
+      },
+      {
+        "path": "/_next/static/chunks/540.b212fbe9e9a5aeaa.js",
+        "durationMs": 22
+      },
+      {
+        "path": "/_next/static/chunks/556.15be2fe1513a1346.js",
+        "durationMs": 30
+      },
+      {
+        "path": "/_next/static/chunks/935.088081d76bc0b445.js",
+        "durationMs": 28
+      },
+      {
+        "path": "/_next/static/chunks/125.da753fa3f696a18c.js",
+        "durationMs": 28
+      },
+      {
+        "path": "/_next/static/chunks/753.163afc94239b7ae3.js",
+        "durationMs": 28
+      },
+      {
+        "path": "/_next/static/chunks/306.765c4b3b8f731aa3.js",
+        "durationMs": 29
+      },
+      {
+        "path": "/_next/static/chunks/438.9648ef1145cb27f5.js",
+        "durationMs": 42
+      },
+      {
+        "path": "/_next/static/chunks/254.4c851c3219211848.js",
+        "durationMs": 41
+      },
+      {
+        "path": "/_next/static/chunks/965.68b6ee444de4c87e.js",
+        "durationMs": 6
+      },
+      {
+        "path": "/_next/static/chunks/693.9c822b68a5275631.js",
+        "durationMs": 6
+      },
+      {
+        "path": "/_next/static/chunks/601.34a072aeccd2dc5d.js",
+        "durationMs": 5
+      },
+      {
+        "path": "/_next/static/chunks/178.754b83167c7b5fce.js",
+        "durationMs": 5
+      }
+    ]
+  },
+  "pixi": "8.22.0",
+  "commands": 4,
+  "pixelsDiffer": true,
+  "errors": [],
+  "fixture": "validated public presentation DTO; real API flows verified separately"
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "viewport": "desktop",
+    "portrait": {
+      "x": 46,
+      "y": 295.84375,
+      "width": 249.328125,
+      "height": 80,
+      "top": 295.84375,
+      "right": 295.328125,
+      "bottom": 375.84375,
+      "left": 46
+    },
+    "retry": {
+      "x": 120.15625,
+      "y": 325.84375,
+      "width": 101,
+      "height": 44,
+      "top": 325.84375,
+      "right": 221.15625,
+      "bottom": 369.84375,
+      "left": 120.15625
+    },
+    "visibleHeight": 44,
+    "hitTestable": true
+  },
+  {
+    "viewport": "narrow",
+    "portrait": {
+      "x": 32,
+      "y": 386.59375,
+      "width": 131.5,
+      "height": 80,
+      "top": 386.59375,
+      "right": 163.5,
+      "bottom": 466.59375,
+      "left": 32
+    },
+    "retry": {
+      "x": 47.25,
+      "y": 416.59375,
+      "width": 101,
+      "height": 44,
+      "top": 416.59375,
+      "right": 148.25,
+      "bottom": 460.59375,
+      "left": 47.25
+    },
+    "visibleHeight": 44,
+    "hitTestable": true
+  }
+]

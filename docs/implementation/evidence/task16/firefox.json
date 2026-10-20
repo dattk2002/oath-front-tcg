@@ -1,0 +1,6 @@
+{
+  "version": "157.0",
+  "navigationApi": false,
+  "preference": "dom.navigation.webidl.enabled=false",
+  "result": "Back/Stay/reload/Back/Leave; Stay preserves draft, explicit Leave clears draft"
+}

@@ -1,0 +1,664 @@
+{
+  "idle": {
+    "median": 16.699999999999818,
+    "p95": 16.700000000000728,
+    "p99": 16.800000000000182
+  },
+  "browser": "155.0.8059.39",
+  "renderer": {
+    "renderer": "ANGLE (Intel, Mesa Intel(R) UHD Graphics (CML GT2), OpenGL ES 3.2)",
+    "vendor": "Google Inc. (Intel)",
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "dpr": 1,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+  },
+  "runs": [
+    {
+      "created": 13,
+      "deleted": 0,
+      "live": 13,
+      "bytes": 13487176,
+      "peakBytes": 13487176,
+      "longTasks": [],
+      "cls": 0.004290132683229381,
+      "shifts": [
+        {
+          "value": 0.0013812806431648661,
+          "time": 82.29999999701977,
+          "targets": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "value": 0.002908852040064515,
+          "time": 307.70000000298023,
+          "targets": [
+            "",
+            ""
+          ]
+        }
+      ],
+      "measuring": false,
+      "canvasSizes": [],
+      "durationMs": 10000.199999988079,
+      "frameCount": 602,
+      "median": 16.700000000000728,
+      "p95": 19.700000000000728,
+      "p99": 21.899999999999636,
+      "commands": 22
+    }
+  ],
+  "cycles": [
+    {
+      "created": 13,
+      "deleted": 13,
+      "live": 0,
+      "bytes": 0,
+      "peakBytes": 13487176,
+      "cls": 0.004290132683229381,
+      "shifts": [
+        {
+          "value": 0.0013812806431648661,
+          "time": 82.29999999701977,
+          "targets": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "value": 0.002908852040064515,
+          "time": 307.70000000298023,
+          "targets": [
+            "",
+            ""
+          ]
+        }
+      ],
+      "measuring": false,
+      "canvasSizes": [],
+      "heap": 11271880
+    },
+    {
+      "created": 26,
+      "deleted": 26,
+      "live": 0,
+      "bytes": 0,
+      "peakBytes": 13487176,
+      "cls": 0.004290132683229381,
+      "shifts": [
+        {
+          "value": 0.0013812806431648661,
+          "time": 82.29999999701977,
+          "targets": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "value": 0.002908852040064515,
+          "time": 307.70000000298023,
+          "targets": [
+            "",
+            ""
+          ]
+        }
+      ],
+      "measuring": false,
+      "canvasSizes": [],
+      "heap": 11580944
+    }
+  ],
+  "budget": {
+    "shellGzip": 264942,
+    "battleIncrementalGzip": 196235,
+    "assetsEncoded": 8286642,
+    "resourceCount": 77
+  },
+  "resources": [
+    {
+      "path": "/_next/static/css/c5c7024399f070f1.css",
+      "encoded": 8106
+    },
+    {
+      "path": "/_next/static/chunks/webpack-123939c7e028c928.js",
+      "encoded": 2052
+    },
+    {
+      "path": "/_next/static/chunks/main-app-333f47d1ee109633.js",
+      "encoded": 513
+    },
+    {
+      "path": "/_next/static/chunks/cb9d67de-cef7b3a76d4c411b.js",
+      "encoded": 64053
+    },
+    {
+      "path": "/_next/static/chunks/110-2d00d3f00043bb59.js",
+      "encoded": 67133
+    },
+    {
+      "path": "/_next/static/chunks/app/not-found-cd7c23aaf9f0192a.js",
+      "encoded": 183
+    },
+    {
+      "path": "/_next/static/chunks/805-62089702ca428506.js",
+      "encoded": 3253
+    },
+    {
+      "path": "/_next/static/chunks/267-867d5fd8d01f1dee.js",
+      "encoded": 63513
+    },
+    {
+      "path": "/_next/static/chunks/237-361621b24b4b2237.js",
+      "encoded": 64296
+    },
+    {
+      "path": "/_next/static/chunks/app/page-54b3976dcdb172db.js",
+      "encoded": 132
+    },
+    {
+      "path": "/fonts/noto-sans-latin.woff2",
+      "encoded": 35820
+    },
+    {
+      "path": "/fonts/noto-sans-latin-ext.woff2",
+      "encoded": 167960
+    },
+    {
+      "path": "/fonts/noto-sans-vietnamese.woff2",
+      "encoded": 14456
+    },
+    {
+      "path": "/api/v1/session",
+      "encoded": 331
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "encoded": 4844
+    },
+    {
+      "path": "/",
+      "encoded": 163
+    },
+    {
+      "path": "/favicon.ico",
+      "encoded": 0
+    },
+    {
+      "path": "/",
+      "encoded": 1002
+    },
+    {
+      "path": "/assets/core-v1/board/scene-wide.webp",
+      "encoded": 196744
+    },
+    {
+      "path": "/assets/core-v1/cards/gc01.webp",
+      "encoded": 27730
+    },
+    {
+      "path": "/assets/core-v1/cards/b02.webp",
+      "encoded": 31098
+    },
+    {
+      "path": "/assets/core-v1/cards/v02.webp",
+      "encoded": 33136
+    },
+    {
+      "path": "/assets/core-v1/cards/p03.webp",
+      "encoded": 27316
+    },
+    {
+      "path": "/assets/core-v1/cards/ec01.webp",
+      "encoded": 26046
+    },
+    {
+      "path": "/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 216
+    },
+    {
+      "path": "/history",
+      "encoded": 181
+    },
+    {
+      "path": "/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 677
+    },
+    {
+      "path": "/history",
+      "encoded": 1054
+    },
+    {
+      "path": "/_next/static/chunks/app/history/page-9fb9c1120280ab8e.js",
+      "encoded": 132
+    },
+    {
+      "path": "/assets/core-v1/audio/draw.mp3",
+      "encoded": 5373
+    },
+    {
+      "path": "/assets/core-v1/audio/deploy.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/trick.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/attack.mp3",
+      "encoded": 5373
+    },
+    {
+      "path": "/assets/core-v1/audio/damage.mp3",
+      "encoded": 5373
+    },
+    {
+      "path": "/assets/core-v1/audio/shield.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/armor.mp3",
+      "encoded": 5373
+    },
+    {
+      "path": "/assets/core-v1/audio/death.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/move.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/stats.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/status.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/location.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/power.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/signature.mp3",
+      "encoded": 15404
+    },
+    {
+      "path": "/assets/core-v1/audio/block.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/phase.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/heal.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/result.mp3",
+      "encoded": 10702
+    },
+    {
+      "path": "/assets/core-v1/audio/menu.wav",
+      "encoded": 2116844
+    },
+    {
+      "path": "/assets/core-v1/audio/battle.wav",
+      "encoded": 1411244
+    },
+    {
+      "path": "/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 1092
+    },
+    {
+      "path": "/_next/static/chunks/app/matches/%5Bid%5D/page-b413b14a949758ab.js",
+      "encoded": 132
+    },
+    {
+      "path": "/api/v1/session",
+      "encoded": 331
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "encoded": 4844
+    },
+    {
+      "path": "/favicon.ico",
+      "encoded": 0
+    },
+    {
+      "path": "/_next/static/chunks/e809d3ec.16a18e52216662fd.js",
+      "encoded": 19770
+    },
+    {
+      "path": "/_next/static/chunks/785.43a5d2b6dfb2d765.js",
+      "encoded": 7970
+    },
+    {
+      "path": "/_next/static/chunks/540.b212fbe9e9a5aeaa.js",
+      "encoded": 23753
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 5419
+    },
+    {
+      "path": "/assets/core-v1/heroes/h_e_fx/hud.webp",
+      "encoded": 9276
+    },
+    {
+      "path": "/assets/core-v1/cutouts/ec01.webp",
+      "encoded": 74248
+    },
+    {
+      "path": "/assets/core-v1/cutouts/gc01.webp",
+      "encoded": 80022
+    },
+    {
+      "path": "/assets/core-v1/heroes/h_g_bv/hud.webp",
+      "encoded": 10416
+    },
+    {
+      "path": "/_next/static/chunks/556.15be2fe1513a1346.js",
+      "encoded": 75451
+    },
+    {
+      "path": "/_next/static/chunks/935.088081d76bc0b445.js",
+      "encoded": 4239
+    },
+    {
+      "path": "/_next/static/chunks/125.da753fa3f696a18c.js",
+      "encoded": 1638
+    },
+    {
+      "path": "/_next/static/chunks/753.163afc94239b7ae3.js",
+      "encoded": 324
+    },
+    {
+      "path": "/_next/static/chunks/306.765c4b3b8f731aa3.js",
+      "encoded": 1102
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 5419
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/assets/core-v1/locations/ancient_forest-strip.webp",
+      "encoded": 33982
+    },
+    {
+      "path": "/assets/core-v1/atlases/cutouts-high.webp",
+      "encoded": 3596376
+    },
+    {
+      "path": "/assets/core-v1/locations/storm_peak-strip.webp",
+      "encoded": 31322
+    },
+    {
+      "path": "/assets/core-v1/locations/volcano-strip.webp",
+      "encoded": 26452
+    },
+    {
+      "path": "/assets/core-v1/locations/frozen_lake-strip.webp",
+      "encoded": 35554
+    },
+    {
+      "path": "/assets/core-v1/locations/desert-strip.webp",
+      "encoded": 22942
+    },
+    {
+      "path": "/assets/core-v1/locations/healing_spring-strip.webp",
+      "encoded": 35136
+    },
+    {
+      "path": "/assets/core-v1/locations/ruined_arena-strip.webp",
+      "encoded": 31394
+    },
+    {
+      "path": "/assets/core-v1/locations/quiet_meadow-strip.webp",
+      "encoded": 35106
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/_next/static/chunks/438.9648ef1145cb27f5.js",
+      "encoded": 6331
+    },
+    {
+      "path": "/_next/static/chunks/254.4c851c3219211848.js",
+      "encoded": 4077
+    },
+    {
+      "path": "/_next/static/chunks/965.68b6ee444de4c87e.js",
+      "encoded": 16307
+    },
+    {
+      "path": "/_next/static/chunks/693.9c822b68a5275631.js",
+      "encoded": 16542
+    },
+    {
+      "path": "/_next/static/chunks/601.34a072aeccd2dc5d.js",
+      "encoded": 7471
+    },
+    {
+      "path": "/_next/static/chunks/178.754b83167c7b5fce.js",
+      "encoded": 11220
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 5419
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 5419
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9040
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 66
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 5419
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001",
+      "encoded": 5419
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/commands",
+      "encoded": 9047
+    },
+    {
+      "path": "/api/v1/matches/10000000-0000-4000-8000-000000000001/events",
+      "encoded": 68
+    }
+  ],
+  "errors": [],
+  "textureAccounting": "Observed RGBA texImage2D allocations; excludes driver/framebuffer overhead and DOM decoded images.",
+  "network": "loopback, unthrottled; cold profile then warmed assets"
+}

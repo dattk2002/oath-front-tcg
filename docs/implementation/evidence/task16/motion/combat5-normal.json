@@ -1,0 +1,110 @@
+{
+  "renderer": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "readinessMs": 1111,
+    "lazyResources": [
+      {
+        "path": "/_next/static/chunks/webpack-6817af07e46fe345.js",
+        "durationMs": 8
+      },
+      {
+        "path": "/_next/static/chunks/cb9d67de-cef7b3a76d4c411b.js",
+        "durationMs": 27
+      },
+      {
+        "path": "/_next/static/chunks/main-app-333f47d1ee109633.js",
+        "durationMs": 20
+      },
+      {
+        "path": "/_next/static/chunks/110-2d00d3f00043bb59.js",
+        "durationMs": 27
+      },
+      {
+        "path": "/_next/static/chunks/805-62089702ca428506.js",
+        "durationMs": 22
+      },
+      {
+        "path": "/_next/static/chunks/app/not-found-cd7c23aaf9f0192a.js",
+        "durationMs": 21
+      },
+      {
+        "path": "/_next/static/chunks/e809d3ec-16a18e52216662fd.js",
+        "durationMs": 24
+      },
+      {
+        "path": "/_next/static/chunks/275-f606157e8098a1a7.js",
+        "durationMs": 31
+      },
+      {
+        "path": "/_next/static/chunks/237-dcb60f591d3c02de.js",
+        "durationMs": 36
+      },
+      {
+        "path": "/_next/static/chunks/app/matches/%5Bid%5D/page-cfb6fc7db2e51c2b.js",
+        "durationMs": 24
+      },
+      {
+        "path": "/_next/static/chunks/540.d1bd7ed46d383240.js",
+        "durationMs": 7
+      },
+      {
+        "path": "/_next/static/chunks/app/page-41471c4313884b07.js",
+        "durationMs": 4
+      },
+      {
+        "path": "/_next/static/chunks/556.15be2fe1513a1346.js",
+        "durationMs": 115
+      },
+      {
+        "path": "/_next/static/chunks/935.088081d76bc0b445.js",
+        "durationMs": 108
+      },
+      {
+        "path": "/_next/static/chunks/125.da753fa3f696a18c.js",
+        "durationMs": 108
+      },
+      {
+        "path": "/_next/static/chunks/753.163afc94239b7ae3.js",
+        "durationMs": 106
+      },
+      {
+        "path": "/_next/static/chunks/306.765c4b3b8f731aa3.js",
+        "durationMs": 107
+      },
+      {
+        "path": "/_next/static/chunks/438.9648ef1145cb27f5.js",
+        "durationMs": 40
+      },
+      {
+        "path": "/_next/static/chunks/254.4c851c3219211848.js",
+        "durationMs": 40
+      },
+      {
+        "path": "/_next/static/chunks/965.68b6ee444de4c87e.js",
+        "durationMs": 6
+      },
+      {
+        "path": "/_next/static/chunks/693.9c822b68a5275631.js",
+        "durationMs": 6
+      },
+      {
+        "path": "/_next/static/chunks/601.34a072aeccd2dc5d.js",
+        "durationMs": 6
+      },
+      {
+        "path": "/_next/static/chunks/178.754b83167c7b5fce.js",
+        "durationMs": 6
+      }
+    ]
+  },
+  "durationsMsIncludingTransportAndAssertions": [
+    764,
+    666,
+    610,
+    594,
+    643
+  ],
+  "sampledFrames": 178,
+  "commands": 5,
+  "errors": []
+}

@@ -1,0 +1,47 @@
+{
+  "model": "GL65 Leopard 10SCXK",
+  "cpu": [
+    {
+      "field": "Architecture:",
+      "data": "x86_64"
+    },
+    {
+      "field": "CPU(s):",
+      "data": "12"
+    },
+    {
+      "field": "Model name:",
+      "data": "Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz"
+    },
+    {
+      "field": "Thread(s) per core:",
+      "data": "2"
+    },
+    {
+      "field": "Core(s) per socket:",
+      "data": "6"
+    }
+  ],
+  "memTotal": "MemTotal:       16178328 kB",
+  "gpuInventory": [
+    "00:02.0 VGA compatible controller: Intel Corporation CometLake-H GT2 [UHD Graphics] (rev 05)",
+    "01:00.0 3D controller: NVIDIA Corporation TU117M [GeForce GTX 1650 Mobile / Max-Q] (rev a1)"
+  ],
+  "governor": "powersave",
+  "network": "loopback HTTP, unthrottled, no remote API",
+  "note": "Inventory only; actual renderer is measured inside benchmark browser.",
+  "glxinfo": "name of display: :0\ndisplay: :0  screen: 0\ndirect rendering: Yes\nExtended renderer info (GLX_MESA_query_renderer):\n    Vendor: Intel (0x8086)\n    Device: Mesa Intel(R) UHD Graphics (CML GT2) (0x9bc4)\n    Version: 26.0.3\n    Accelerated: yes\n    Video memory: 15799MB\n    Unified memory: yes\n    Preferred profile: core (0x1)\n    Max core profile version: 4.6\n    Max compat profile version: 4.6\n    Max GLES1 profile version: 1.1\n    Max GLES[23] profile version: 3.2\nOpenGL vendor string: Intel\nOpenGL renderer string: Mesa Intel(R) UHD Graphics (CML GT2)\nOpenGL core profile version string: 4.6 (Core Profile) Mesa 26.0.3\nOpenGL core profile shading language version string: 4.60\nOpenGL core profile context flags: (none)\nOpenGL core profile profile mask: core profile\n\nOpenGL version string: 4.6 (Compatibility Profile) Mesa 26.0.3\nOpenGL shading language version string: 4.60\nOpenGL context flags: (none)\nOpenGL profile mask: compatibility profile\n\nOpenGL ES profile version string: OpenGL ES 3.2 Mesa 26.0.3\nOpenGL ES profile shading language version string: OpenGL ES GLSL ES 3.20\n\n",
+  "kernel": "6.19.10-300.fc44.x86_64",
+  "displayEnvironment": {
+    "DISPLAY": ":0",
+    "WAYLAND_DISPLAY": "wayland-0",
+    "XDG_SESSION_TYPE": "wayland",
+    "XDG_CURRENT_DESKTOP": "GNOME"
+  },
+  "displayServers": [
+    "Existing /usr/bin/Xwayland :0 -rootless, GNOME Mutter; no Xvfb process observed"
+  ],
+  "monitors": "xrandr unavailable; physical monitor output/cadence not independently inspected",
+  "benchmarkLaunch": "Playwright channel chrome, headless:false, existing desktop DISPLAY, isolated temporary user-data-dir; no Xvfb or display/framepacing overrides introduced",
+  "focusLimitation": "document.visibilityState and document.hasFocus were not sampled in the primary benchmark; no claim of guaranteed foreground focus or physical compositor presentation cadence."
+}

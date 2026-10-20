@@ -1,0 +1,72 @@
+{
+  "buildId": "ZipcVWCZHw8l3sc-rmia3",
+  "duration": "10s active workload plus trace setup/teardown",
+  "rawTrace": ".superpowers/sdd/2026-10-20-oathfront-implementation/task-16-evidence/postfix-frame-trace.json",
+  "rawTraceSha256": "73815df122acf072e5c6fbe781ffc7c78ffc0efa124a67cec6a5f86fedb8310f",
+  "cpuProfileSha256": "6520816c5db39945a839ecd782e6f41b8953f0b8fdd5472788eb5a849f64a6a4",
+  "focusSamples": [
+    {
+      "time": 12189.59999999404,
+      "visibility": "visible",
+      "focused": true
+    },
+    {
+      "time": 22189.79999999702,
+      "visibility": "visible",
+      "focused": true
+    }
+  ],
+  "events": {
+    "FireAnimationFrame": {
+      "count": 1768,
+      "inclusiveTotalMs": 339.664,
+      "maxMs": 11.926
+    },
+    "FunctionCall": {
+      "count": 2352,
+      "inclusiveTotalMs": 603.781,
+      "maxMs": 9.579
+    },
+    "PrePaint": {
+      "count": 658,
+      "inclusiveTotalMs": 34.89,
+      "maxMs": 0.712
+    },
+    "Layerize": {
+      "count": 602,
+      "inclusiveTotalMs": 17.206,
+      "maxMs": 1.169
+    },
+    "TimerFire": {
+      "count": 25,
+      "inclusiveTotalMs": 137.842,
+      "maxMs": 18.939
+    },
+    "UpdateLayoutTree": {
+      "count": 52,
+      "inclusiveTotalMs": 17.156,
+      "maxMs": 1.815
+    },
+    "Layout": {
+      "count": 71,
+      "inclusiveTotalMs": 27.86,
+      "maxMs": 1.34
+    },
+    "Paint": {
+      "count": 119,
+      "inclusiveTotalMs": 69.897,
+      "maxMs": 2.328
+    }
+  },
+  "timingNotes": "Inclusive nested durations must not be summed. Chrome trace event timestamps are not independent physical panel measurements. Primary three60s rAF p95 remains failed. No new attributable small application defect established by this bounded sample.",
+  "beginFrameMedianP95P99Ms": [
+    16.666,
+    16.666,
+    16.666
+  ],
+  "animationFramePresentationMedianP95P99Ms": [
+    16.857,
+    21.378,
+    32.979
+  ]
+}

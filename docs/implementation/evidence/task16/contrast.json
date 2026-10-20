@@ -1,0 +1,106 @@
+{
+  "tokens": {
+    "bg": "#101923",
+    "surface": "#1b2a38",
+    "raised": "#283e49",
+    "text": "#f4ebdd",
+    "muted": "#b8c8d4",
+    "good": "#76d9c4",
+    "evil": "#ffb078",
+    "primary": "#f4cb76",
+    "error": "#ffb4ab"
+  },
+  "results": [
+    {
+      "fg": "text",
+      "bg": "bg",
+      "ratio": 14.994713777060111
+    },
+    {
+      "fg": "text",
+      "bg": "surface",
+      "ratio": 12.387017918677754
+    },
+    {
+      "fg": "text",
+      "bg": "raised",
+      "ratio": 9.477059246075688
+    },
+    {
+      "fg": "muted",
+      "bg": "bg",
+      "ratio": 10.334865170305166
+    },
+    {
+      "fg": "muted",
+      "bg": "surface",
+      "ratio": 8.53755276393066
+    },
+    {
+      "fg": "muted",
+      "bg": "raised",
+      "ratio": 6.531910576981301
+    },
+    {
+      "fg": "good",
+      "bg": "bg",
+      "ratio": 10.539093813414214
+    },
+    {
+      "fg": "good",
+      "bg": "surface",
+      "ratio": 8.706264477892768
+    },
+    {
+      "fg": "good",
+      "bg": "raised",
+      "ratio": 6.660988529336159
+    },
+    {
+      "fg": "evil",
+      "bg": "bg",
+      "ratio": 9.898601835951427
+    },
+    {
+      "fg": "evil",
+      "bg": "surface",
+      "ratio": 8.177158973142252
+    },
+    {
+      "fg": "evil",
+      "bg": "raised",
+      "ratio": 6.256180507836124
+    },
+    {
+      "fg": "primary",
+      "bg": "bg",
+      "ratio": 11.516049563217322
+    },
+    {
+      "fg": "primary",
+      "bg": "surface",
+      "ratio": 9.513320121534338
+    },
+    {
+      "fg": "primary",
+      "bg": "raised",
+      "ratio": 7.278450633604056
+    },
+    {
+      "fg": "error",
+      "bg": "bg",
+      "ratio": 10.434485091209007
+    },
+    {
+      "fg": "error",
+      "bg": "surface",
+      "ratio": 8.619848015686715
+    },
+    {
+      "fg": "error",
+      "bg": "raised",
+      "ratio": 6.594873025383579
+    }
+  ],
+  "note": "Opaque HUD surfaces. Scanner gradient-incomplete cases require visual review; this is not a screenshot pixel contrast scanner."
+}
