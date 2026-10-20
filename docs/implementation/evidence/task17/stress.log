@@ -1,0 +1,364 @@
+{
+  "output": "/home/bia/Works/Coding/oath-front-tcg/docs/implementation/balance/core-v1/stress-55e946eaad26f31290756750cc8e4af78865512754c8b8981a445952fba2e72f.json",
+  "inputHash": "55e946eaad26f31290756750cc8e4af78865512754c8b8981a445952fba2e72f",
+  "versions": {
+    "rules": "rules_v1",
+    "content": "core_v1",
+    "locations": "locations_v1",
+    "bot": "bot_v1",
+    "rng": "hmac-sha256-xoshiro128ss-v1",
+    "node": "v24.20.0",
+    "contentHash": "37ec966ce1e734e8e5f85310e384ea0d1c4a126eea4618471ea874d60546cdcc",
+    "engineHash": "f8dc1c6ba9ed3fcd300f4b5306fc3950340dec131cc24e9874969e680eae1ae1",
+    "botHash": "7629956b10d3b855818b4863676e65eb50df6b898e5284a47ee78fadd5d6d7ab",
+    "contractsHash": "e6a1f7cf84564e629ec010e976924e4b1db9aee94e06ebb625f06b57645f2e6f",
+    "runnerHash": "42a0a2dfa96ed8a7d8a974ebccc2fd7a3ffa36f2e790127870773a43381df56b",
+    "lockfileHash": "8f5591c5d678b3728376f82d856cb101112ba2f5bf72879f4f59781d5820dd04"
+  },
+  "matches": 400,
+  "matchupCount": 4,
+  "faultCount": 0,
+  "metrics": {
+    "sampleSize": 400,
+    "completed": 400,
+    "outcomes": {
+      "GOOD": 282,
+      "EVIL": 113,
+      "DRAW": 5,
+      "FAULT": 0
+    },
+    "faction": {
+      "GOOD": {
+        "wins": 282,
+        "losses": 113,
+        "draws": 5,
+        "sampleSize": 400,
+        "winRate": 0.705,
+        "wilson95": [
+          0.6585280681391185,
+          0.7475717492150123
+        ]
+      },
+      "EVIL": {
+        "wins": 113,
+        "losses": 282,
+        "draws": 5,
+        "sampleSize": 400,
+        "winRate": 0.2825,
+        "wilson95": [
+          0.24060954581038724,
+          0.3285284528504738
+        ]
+      }
+    },
+    "hero": {
+      "H_G_VP": {
+        "wins": 282,
+        "losses": 113,
+        "draws": 5,
+        "sampleSize": 400,
+        "winRate": 0.705,
+        "wilson95": [
+          0.6585280681391185,
+          0.7475717492150123
+        ]
+      },
+      "H_E_FS": {
+        "wins": 113,
+        "losses": 282,
+        "draws": 5,
+        "sampleSize": 400,
+        "winRate": 0.2825,
+        "wilson95": [
+          0.24060954581038724,
+          0.3285284528504738
+        ]
+      }
+    },
+    "matchup": {
+      "H_G_VP/H_E_FS/full-board": {
+        "wins": 85,
+        "losses": 15,
+        "draws": 0,
+        "sampleSize": 100,
+        "winRate": 0.85,
+        "wilson95": [
+          0.7671626666784216,
+          0.906940968088377
+        ]
+      },
+      "H_G_VP/H_E_FS/late-draw": {
+        "wins": 37,
+        "losses": 58,
+        "draws": 5,
+        "sampleSize": 100,
+        "winRate": 0.37,
+        "wilson95": [
+          0.28182212569509163,
+          0.46779652424866885
+        ]
+      },
+      "H_G_VP/H_E_FS/block-response-move": {
+        "wins": 81,
+        "losses": 19,
+        "draws": 0,
+        "sampleSize": 100,
+        "winRate": 0.81,
+        "wilson95": [
+          0.7222097592919214,
+          0.8748534600729574
+        ]
+      },
+      "H_G_VP/H_E_FS/mass-poison-armor": {
+        "wins": 79,
+        "losses": 21,
+        "draws": 0,
+        "sampleSize": 100,
+        "winRate": 0.79,
+        "wilson95": [
+          0.7001985069803768,
+          0.8583445046835422
+        ]
+      }
+    },
+    "meanTurns": 13.2975,
+    "turnLimitRate": 0,
+    "beforeTurn5Rate": 0,
+    "turns": {
+      "8": 10,
+      "9": 42,
+      "10": 67,
+      "11": 62,
+      "12": 42,
+      "13": 22,
+      "14": 17,
+      "15": 14,
+      "16": 8,
+      "17": 15,
+      "18": 47,
+      "19": 38,
+      "20": 16
+    },
+    "cardUsage": {
+      "P08": 273,
+      "V06": 339,
+      "EC05": 366,
+      "S02": 320,
+      "V03": 249,
+      "GC02": 151,
+      "P01": 341,
+      "F06": 296,
+      "EC02": 183,
+      "P03": 287,
+      "GC03": 151,
+      "F07": 232,
+      "GC05": 279,
+      "F04": 260,
+      "S01": 333,
+      "P05": 286,
+      "V04": 278,
+      "S03": 241,
+      "V07": 246,
+      "EC01": 110,
+      "S08": 153,
+      "F03": 221,
+      "V02": 204,
+      "EC03": 97,
+      "F01": 188,
+      "GC01": 167,
+      "F02": 162,
+      "V01": 187
+    },
+    "cardDraws": {
+      "F01": 270,
+      "S01": 366,
+      "EC02": 251,
+      "EC05": 403,
+      "GC03": 309,
+      "GC02": 305,
+      "V03": 360,
+      "P06": 360,
+      "S02": 348,
+      "P08": 410,
+      "V06": 460,
+      "F06": 336,
+      "P01": 381,
+      "P03": 384,
+      "F07": 358,
+      "S08": 342,
+      "GC05": 333,
+      "S06": 308,
+      "V01": 277,
+      "F04": 386,
+      "P05": 372,
+      "V04": 378,
+      "F03": 325,
+      "GC01": 247,
+      "V02": 310,
+      "S03": 323,
+      "V07": 369,
+      "EC01": 216,
+      "EC03": 235,
+      "F02": 240
+    },
+    "legalCardOpportunities": {
+      "P08": 537,
+      "V06": 838,
+      "EC05": 627,
+      "S02": 493,
+      "GC02": 228,
+      "V03": 285,
+      "P01": 847,
+      "F06": 299,
+      "EC02": 232,
+      "P03": 390,
+      "GC03": 310,
+      "F07": 345,
+      "GC05": 750,
+      "F04": 260,
+      "S01": 677,
+      "P05": 286,
+      "S06": 824,
+      "V04": 341,
+      "S08": 357,
+      "S03": 254,
+      "V07": 591,
+      "EC01": 174,
+      "P06": 2333,
+      "F03": 272,
+      "V02": 440,
+      "EC03": 212,
+      "F01": 384,
+      "GC01": 493,
+      "F02": 273,
+      "V01": 404
+    },
+    "powerUsage": {
+      "S_E_FS": 247,
+      "P_F2": 223,
+      "P_P1": 222,
+      "P_S2": 219,
+      "P_P2": 137,
+      "S_G_VP": 142,
+      "P_V1": 167,
+      "P_S1": 17
+    },
+    "phaseActions": {
+      "MULLIGAN": 800,
+      "EVIL_DEPLOY": 4678,
+      "GOOD_PLAY": 6345,
+      "EVIL_TRICKS": 3987,
+      "COMBAT": 1041
+    },
+    "actionKinds": {
+      "MULLIGAN": 800,
+      "PASS_PHASE": 7682,
+      "PLAY_TRICK": 2184,
+      "USE_POWER": 728,
+      "PLAY_UNIT": 4416,
+      "USE_BLOCK_POWER": 646,
+      "KEEP_BLOCK_POWER": 395
+    },
+    "location": {
+      "quiet_meadow": {
+        "revealed": 48,
+        "goodWins": 33,
+        "evilWins": 14,
+        "draws": 1,
+        "lanes": {
+          "1": 48
+        },
+        "preRevealUnits": 0
+      },
+      "storm_peak": {
+        "revealed": 68,
+        "goodWins": 50,
+        "evilWins": 17,
+        "draws": 1,
+        "lanes": {
+          "1": 68
+        },
+        "preRevealUnits": 0
+      },
+      "healing_spring": {
+        "revealed": 56,
+        "goodWins": 40,
+        "evilWins": 15,
+        "draws": 1,
+        "lanes": {
+          "1": 56
+        },
+        "preRevealUnits": 0
+      },
+      "frozen_lake": {
+        "revealed": 40,
+        "goodWins": 27,
+        "evilWins": 12,
+        "draws": 1,
+        "lanes": {
+          "1": 40
+        },
+        "preRevealUnits": 0
+      },
+      "volcano": {
+        "revealed": 72,
+        "goodWins": 51,
+        "evilWins": 21,
+        "draws": 0,
+        "lanes": {
+          "1": 72
+        },
+        "preRevealUnits": 0
+      },
+      "ruined_arena": {
+        "revealed": 36,
+        "goodWins": 28,
+        "evilWins": 8,
+        "draws": 0,
+        "lanes": {
+          "1": 36
+        },
+        "preRevealUnits": 0
+      },
+      "ancient_forest": {
+        "revealed": 40,
+        "goodWins": 26,
+        "evilWins": 14,
+        "draws": 0,
+        "lanes": {
+          "1": 40
+        },
+        "preRevealUnits": 0
+      },
+      "desert": {
+        "revealed": 40,
+        "goodWins": 27,
+        "evilWins": 12,
+        "draws": 1,
+        "lanes": {
+          "1": 40
+        },
+        "preRevealUnits": 0
+      }
+    },
+    "blockUsage": {
+      "matches": 389,
+      "GOOD": 307,
+      "EVIL": 535,
+      "allThreeBeforeTurn6": 0
+    },
+    "unusedPowers": {
+      "GOOD": 112,
+      "EVIL": 304
+    },
+    "fatigueDamage": 1765,
+    "poisonPackets": 1981,
+    "responseMoves": 229,
+    "illegalAccepted": 0,
+    "illegalProbes": 1200,
+    "rejectedBotActions": 0,
+    "privateLeaks": 0,
+    "projectionChecks": 16851
+  },
+  "regressionSeedsCovered": 20
+}

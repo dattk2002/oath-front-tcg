@@ -1,0 +1,3 @@
+$ pnpm exec eslint tools/simulation/tests/diagnose.ts tools/simulation/tests/diagnostic-guards.ts tools/simulation/tests/diagnostic-guards.test.ts
+
+EXIT_CODE=0

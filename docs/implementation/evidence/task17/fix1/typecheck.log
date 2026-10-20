@@ -1,0 +1,3 @@
+$ pnpm exec tsc -p tools/simulation/tsconfig.json
+
+EXIT_CODE=0

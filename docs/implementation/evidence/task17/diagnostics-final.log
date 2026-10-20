@@ -1,0 +1,285 @@
+{
+  "matchingFinalHashes": 9,
+  "phaseSummary": {
+    "MULLIGAN": {
+      "phases": 18,
+      "entryEnergy": 0,
+      "spent": 0,
+      "exitEnergy": 0,
+      "zeroEnergyEntries": 18,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    },
+    "EVIL_DEPLOY": {
+      "phases": 96,
+      "entryEnergy": 557,
+      "spent": 176,
+      "exitEnergy": 381,
+      "zeroEnergyEntries": 0,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    },
+    "GOOD_PLAY": {
+      "phases": 96,
+      "entryEnergy": 557,
+      "spent": 343,
+      "exitEnergy": 214,
+      "zeroEnergyEntries": 0,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    },
+    "EVIL_TRICKS": {
+      "phases": 96,
+      "entryEnergy": 381,
+      "spent": 73,
+      "exitEnergy": 308,
+      "zeroEnergyEntries": 29,
+      "withBlockedPositiveTrick": 19,
+      "withBlockedPositivePower": 16
+    },
+    "COMBAT": {
+      "phases": 26,
+      "entryEnergy": 106,
+      "spent": 0,
+      "exitEnergy": 0,
+      "zeroEnergyEntries": 7,
+      "withBlockedPositiveTrick": 0,
+      "withBlockedPositivePower": 0
+    }
+  },
+  "utilityProbes": [
+    {
+      "id": "B06",
+      "side": "GOOD",
+      "score": -0.5500000000000004,
+      "heuristic": 0,
+      "preview": {
+        "deltaBoardValue": 0.9999999999999996,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 20
+        },
+        "units": []
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 20
+        },
+        "units": [
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 1,
+            "poisoned": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "X06",
+      "side": "EVIL",
+      "score": -0.04999999999999993,
+      "heuristic": 0,
+      "preview": {
+        "deltaBoardValue": 1.5,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 19
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "GOOD",
+            "hp": 1,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 19
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "P06",
+      "side": "GOOD",
+      "score": -0.04999999999999982,
+      "heuristic": 1.5,
+      "preview": {
+        "deltaBoardValue": 0,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "COMPLETED",
+        "outcome": {
+          "result": "LOSS",
+          "winner": "EVIL",
+          "reason": "HERO_DEFEATED"
+        },
+        "hp": {
+          "GOOD": 0,
+          "EVIL": 19
+        },
+        "units": [
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 2,
+          "EVIL": 20
+        },
+        "units": []
+      }
+    },
+    {
+      "id": "S06",
+      "side": "EVIL",
+      "score": -0.04999999999999982,
+      "heuristic": 1.5,
+      "preview": {
+        "deltaBoardValue": 0,
+        "netCardsGained": -1,
+        "energySpent": 1,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "COMPLETED",
+        "outcome": {
+          "result": "WIN",
+          "winner": "GOOD",
+          "reason": "HERO_DEFEATED"
+        },
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 0
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 1
+        },
+        "units": []
+      }
+    },
+    {
+      "id": "S07",
+      "side": "EVIL",
+      "score": -1.9,
+      "heuristic": 0,
+      "preview": {
+        "deltaBoardValue": 0,
+        "netCardsGained": -1,
+        "energySpent": 2,
+        "ownHeroDamage": 0,
+        "enemyHeroDamage": 0
+      },
+      "knownCombatWithout": {
+        "lifecycle": "COMPLETED",
+        "outcome": {
+          "result": "WIN",
+          "winner": "GOOD",
+          "reason": "HERO_DEFEATED"
+        },
+        "hp": {
+          "GOOD": 18,
+          "EVIL": 0
+        },
+        "units": [
+          {
+            "owner": "EVIL",
+            "hp": 1,
+            "lane": 1,
+            "poisoned": false
+          },
+          {
+            "owner": "GOOD",
+            "hp": 2,
+            "lane": 2,
+            "poisoned": false
+          }
+        ]
+      },
+      "knownCombatWith": {
+        "lifecycle": "ACTIVE",
+        "outcome": null,
+        "hp": {
+          "GOOD": 20,
+          "EVIL": 1
+        },
+        "units": []
+      }
+    }
+  ]
+}

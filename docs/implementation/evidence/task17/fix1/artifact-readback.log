@@ -1,0 +1,5 @@
+Nine v2 replay traces and all five utility differentials equal v1.
+All four diagnostic dependency file hashes and both aggregate hashes verified.
+Original v1, baseline900 and stress400 artifact SHA-256 unchanged.
+V2 artifact SHA-256: 0cd3adbafad3e70378882a8b6263b1cef21279dffa6874f6e8d2e123a7dd9a37
+EXIT_CODE=0

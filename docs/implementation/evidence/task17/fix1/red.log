@@ -1,0 +1,101 @@
+$ pnpm exec vitest run tools/simulation/tests/diagnostic-guards.test.ts
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+ ❯ tools/simulation/tests/diagnostic-guards.test.ts (5 tests | 5 failed) 9ms
+   × rejects a combat probe that exhausts its root budget before the turn boundary 6ms
+   × rejects a faulted combat state rather than returning it as a valid differential 1ms
+   × accepts the real engine turn boundary and expected hero-defeat terminal outcome 0ms
+   × rejects a lifecycle exit that is neither the intended boundary nor expected terminal 0ms
+   × dependency identity changes when an imported helper or transitive fixture changes 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/simulation/tests/diagnostic-guards.test.ts > rejects a combat probe that exhausts its root budget before the turn boundary
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tools/simulation/tests/diagnostic-guards.test.ts:16:40
+     14| }
+     15| it("rejects a combat probe that exhausts its root budget before the tu…
+     16|  expect(guards.advanceProbeToBoundary).toBeTypeOf("function");
+       |                                        ^
+     17|  expect(()=>guards.advanceProbeToBoundary(combat(),1)).toThrow(/exhaus…
+     18| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tools/simulation/tests/diagnostic-guards.test.ts > rejects a faulted combat state rather than returning it as a valid differential
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tools/simulation/tests/diagnostic-guards.test.ts:20:40
+     18| });
+     19| it("rejects a faulted combat state rather than returning it as a valid…
+     20|  expect(guards.advanceProbeToBoundary).toBeTypeOf("function");
+       |                                        ^
+     21|  const state=combat();state.lifecycle="FAULTED";
+     22|  expect(()=>guards.advanceProbeToBoundary(state)).toThrow(/faulted/i);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tools/simulation/tests/diagnostic-guards.test.ts > accepts the real engine turn boundary and expected hero-defeat terminal outcome
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tools/simulation/tests/diagnostic-guards.test.ts:25:40
+     23| });
+     24| it("accepts the real engine turn boundary and expected hero-defeat ter…
+     25|  expect(guards.advanceProbeToBoundary).toBeTypeOf("function");
+       |                                        ^
+     26|  const boundary=guards.advanceProbeToBoundary(combat());
+     27|  expect(boundary.lifecycle).toBe("ACTIVE");expect(boundary.phase).toBe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tools/simulation/tests/diagnostic-guards.test.ts > rejects a lifecycle exit that is neither the intended boundary nor expected terminal
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tools/simulation/tests/diagnostic-guards.test.ts:33:40
+     31| });
+     32| it("rejects a lifecycle exit that is neither the intended boundary nor…
+     33|  expect(guards.advanceProbeToBoundary).toBeTypeOf("function");
+       |                                        ^
+     34|  const state=combat();state.lifecycle="PAUSED";
+     35|  expect(()=>guards.advanceProbeToBoundary(state)).toThrow(/boundary/i);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tools/simulation/tests/diagnostic-guards.test.ts > dependency identity changes when an imported helper or transitive fixture changes
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ tools/simulation/tests/diagnostic-guards.test.ts:38:37
+     36| });
+     37| it("dependency identity changes when an imported helper or transitive …
+     38|  expect(guards.hashDiagnosticFiles).toBeTypeOf("function");
+       |                                     ^
+     39|  const directory=mkdtempSync(join(tmpdir(),"oathfront-diagnostic-ident…
+     40|  try {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  06:26:36
+   Duration  229ms (import 45%, transform 44%, tests 7%, worker 3%)
+
+
+EXIT_CODE=1

@@ -1,0 +1,10 @@
+{
+  "head": "eee75892006bc82bbffc4d0e08283f1321b15a2c",
+  "artifactHashesVerified": 3,
+  "baselineMatches": 900,
+  "stressMatches": 400,
+  "allThreeVersionIdentitiesMatchCurrentSource": true,
+  "diagnosticSourceHashMatches": true,
+  "matchingDiagnosticFinalHashes": 9,
+  "testsOrMatricesRerun": false
+}

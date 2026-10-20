@@ -1,0 +1,542 @@
+{
+  "output": "/home/bia/Works/Coding/oath-front-tcg/docs/implementation/balance/core-v1/core-v1-2e49b453a7ff87701841bbc212018a9607ed1d9af7ade56ddb078e6709d9515a.json",
+  "inputHash": "2e49b453a7ff87701841bbc212018a9607ed1d9af7ade56ddb078e6709d9515a",
+  "versions": {
+    "rules": "rules_v1",
+    "content": "core_v1",
+    "locations": "locations_v1",
+    "bot": "bot_v1",
+    "rng": "hmac-sha256-xoshiro128ss-v1",
+    "node": "v24.20.0",
+    "contentHash": "37ec966ce1e734e8e5f85310e384ea0d1c4a126eea4618471ea874d60546cdcc",
+    "engineHash": "f8dc1c6ba9ed3fcd300f4b5306fc3950340dec131cc24e9874969e680eae1ae1",
+    "botHash": "7629956b10d3b855818b4863676e65eb50df6b898e5284a47ee78fadd5d6d7ab",
+    "contractsHash": "e6a1f7cf84564e629ec010e976924e4b1db9aee94e06ebb625f06b57645f2e6f",
+    "runnerHash": "42a0a2dfa96ed8a7d8a974ebccc2fd7a3ffa36f2e790127870773a43381df56b",
+    "lockfileHash": "8f5591c5d678b3728376f82d856cb101112ba2f5bf72879f4f59781d5820dd04"
+  },
+  "matches": 900,
+  "matchupCount": 9,
+  "faultCount": 0,
+  "metrics": {
+    "sampleSize": 900,
+    "completed": 900,
+    "outcomes": {
+      "GOOD": 720,
+      "EVIL": 158,
+      "DRAW": 22,
+      "FAULT": 0
+    },
+    "faction": {
+      "GOOD": {
+        "wins": 720,
+        "losses": 158,
+        "draws": 22,
+        "sampleSize": 900,
+        "winRate": 0.8,
+        "wilson95": [
+          0.7726160177564528,
+          0.8248338008843356
+        ]
+      },
+      "EVIL": {
+        "wins": 158,
+        "losses": 720,
+        "draws": 22,
+        "sampleSize": 900,
+        "winRate": 0.17555555555555555,
+        "wilson95": [
+          0.15209359820421164,
+          0.20177548682130608
+        ]
+      }
+    },
+    "hero": {
+      "H_G_BV": {
+        "wins": 221,
+        "losses": 67,
+        "draws": 12,
+        "sampleSize": 300,
+        "winRate": 0.7366666666666667,
+        "wilson95": [
+          0.6840594845533765,
+          0.7832892919143619
+        ]
+      },
+      "H_G_BP": {
+        "wins": 271,
+        "losses": 28,
+        "draws": 1,
+        "sampleSize": 300,
+        "winRate": 0.9033333333333333,
+        "wilson95": [
+          0.8646174890590971,
+          0.9318501440760628
+        ]
+      },
+      "H_G_VP": {
+        "wins": 228,
+        "losses": 63,
+        "draws": 9,
+        "sampleSize": 300,
+        "winRate": 0.76,
+        "wilson95": [
+          0.7085778152541881,
+          0.8048476011469895
+        ]
+      },
+      "H_E_FX": {
+        "wins": 51,
+        "losses": 245,
+        "draws": 4,
+        "sampleSize": 300,
+        "winRate": 0.17,
+        "wilson95": [
+          0.13172947235659208,
+          0.21661519144191346
+        ]
+      },
+      "H_E_FS": {
+        "wins": 45,
+        "losses": 254,
+        "draws": 1,
+        "sampleSize": 300,
+        "winRate": 0.15,
+        "wilson95": [
+          0.1140318876347062,
+          0.19481851336370873
+        ]
+      },
+      "H_E_XS": {
+        "wins": 62,
+        "losses": 221,
+        "draws": 17,
+        "sampleSize": 300,
+        "winRate": 0.20666666666666667,
+        "wilson95": [
+          0.16469482669421182,
+          0.25605598557112647
+        ]
+      }
+    },
+    "matchup": {
+      "H_G_BV/H_E_FX/baseline": {
+        "wins": 77,
+        "losses": 21,
+        "draws": 2,
+        "sampleSize": 100,
+        "winRate": 0.77,
+        "wilson95": [
+          0.6784543514317231,
+          0.841568452531236
+        ]
+      },
+      "H_G_BV/H_E_FS/baseline": {
+        "wins": 82,
+        "losses": 18,
+        "draws": 0,
+        "sampleSize": 100,
+        "winRate": 0.82,
+        "wilson95": [
+          0.7333246397578691,
+          0.8829986834574896
+        ]
+      },
+      "H_G_BV/H_E_XS/baseline": {
+        "wins": 62,
+        "losses": 28,
+        "draws": 10,
+        "sampleSize": 100,
+        "winRate": 0.62,
+        "wilson95": [
+          0.5220957382071033,
+          0.7090255079986562
+        ]
+      },
+      "H_G_BP/H_E_FX/baseline": {
+        "wins": 87,
+        "losses": 13,
+        "draws": 0,
+        "sampleSize": 100,
+        "winRate": 0.87,
+        "wilson95": [
+          0.7901947810519012,
+          0.9224290614158575
+        ]
+      },
+      "H_G_BP/H_E_FS/baseline": {
+        "wins": 89,
+        "losses": 11,
+        "draws": 0,
+        "sampleSize": 100,
+        "winRate": 0.89,
+        "wilson95": [
+          0.8136853697209698,
+          0.9374586804477487
+        ]
+      },
+      "H_G_BP/H_E_XS/baseline": {
+        "wins": 95,
+        "losses": 4,
+        "draws": 1,
+        "sampleSize": 100,
+        "winRate": 0.95,
+        "wilson95": [
+          0.8882480347279118,
+          0.9784566385436864
+        ]
+      },
+      "H_G_VP/H_E_FX/baseline": {
+        "wins": 81,
+        "losses": 17,
+        "draws": 2,
+        "sampleSize": 100,
+        "winRate": 0.81,
+        "wilson95": [
+          0.7222097592919214,
+          0.8748534600729574
+        ]
+      },
+      "H_G_VP/H_E_FS/baseline": {
+        "wins": 83,
+        "losses": 16,
+        "draws": 1,
+        "sampleSize": 100,
+        "winRate": 0.83,
+        "wilson95": [
+          0.7445181876635703,
+          0.8910652394022684
+        ]
+      },
+      "H_G_VP/H_E_XS/baseline": {
+        "wins": 64,
+        "losses": 30,
+        "draws": 6,
+        "sampleSize": 100,
+        "winRate": 0.64,
+        "wilson95": [
+          0.542352199811621,
+          0.7272892540950986
+        ]
+      }
+    },
+    "meanTurns": 10.943333333333333,
+    "turnLimitRate": 0.024444444444444446,
+    "beforeTurn5Rate": 0,
+    "turns": {
+      "6": 3,
+      "7": 32,
+      "8": 111,
+      "9": 194,
+      "10": 183,
+      "11": 106,
+      "12": 73,
+      "13": 61,
+      "14": 23,
+      "15": 22,
+      "16": 23,
+      "17": 18,
+      "18": 14,
+      "19": 10,
+      "20": 27
+    },
+    "cardUsage": {
+      "F01": 667,
+      "EC02": 1011,
+      "GC02": 1072,
+      "X02": 680,
+      "GC03": 961,
+      "EC01": 996,
+      "B02": 721,
+      "B03": 574,
+      "V01": 677,
+      "F06": 554,
+      "F02": 596,
+      "V02": 699,
+      "EC05": 1033,
+      "V06": 708,
+      "F08": 276,
+      "GC01": 925,
+      "GC05": 910,
+      "X08": 576,
+      "X03": 590,
+      "X01": 728,
+      "B01": 636,
+      "F03": 491,
+      "B04": 667,
+      "V03": 612,
+      "EC03": 815,
+      "V05": 322,
+      "F04": 559,
+      "B07": 286,
+      "S02": 684,
+      "S01": 326,
+      "S08": 187,
+      "F07": 240,
+      "S03": 604,
+      "S04": 323,
+      "X05": 341,
+      "P01": 673,
+      "B05": 379,
+      "P02": 310,
+      "P08": 652,
+      "P03": 641,
+      "P05": 365,
+      "V04": 336,
+      "V07": 289
+    },
+    "cardDraws": {
+      "F01": 682,
+      "X01": 765,
+      "EC02": 1015,
+      "EC05": 1138,
+      "GC03": 1214,
+      "GC02": 1143,
+      "B03": 753,
+      "V05": 385,
+      "X02": 721,
+      "V06": 892,
+      "B06": 839,
+      "F06": 619,
+      "B02": 748,
+      "EC01": 1006,
+      "V01": 729,
+      "GC01": 1007,
+      "F02": 621,
+      "V02": 754,
+      "F08": 353,
+      "X08": 753,
+      "GC05": 1056,
+      "X03": 732,
+      "X06": 707,
+      "B01": 679,
+      "F03": 650,
+      "B04": 836,
+      "V03": 762,
+      "EC03": 1006,
+      "F04": 747,
+      "B07": 382,
+      "S01": 350,
+      "S02": 715,
+      "F07": 337,
+      "S08": 334,
+      "S06": 663,
+      "S03": 758,
+      "S07": 417,
+      "S04": 387,
+      "X05": 435,
+      "P06": 748,
+      "P08": 849,
+      "B05": 468,
+      "P01": 748,
+      "P02": 355,
+      "P03": 790,
+      "P05": 430,
+      "V04": 413,
+      "V07": 383
+    },
+    "legalCardOpportunities": {
+      "F01": 1220,
+      "EC02": 1374,
+      "X02": 1328,
+      "GC02": 2209,
+      "V06": 2542,
+      "B06": 6772,
+      "GC03": 1466,
+      "B02": 1140,
+      "EC01": 1544,
+      "B03": 1035,
+      "V01": 1518,
+      "EC05": 1765,
+      "F06": 588,
+      "F02": 938,
+      "GC01": 2367,
+      "V02": 1725,
+      "F08": 388,
+      "GC05": 4099,
+      "X08": 756,
+      "X03": 783,
+      "X06": 3394,
+      "X01": 1402,
+      "B01": 1402,
+      "F03": 547,
+      "B04": 758,
+      "V03": 751,
+      "EC03": 1096,
+      "V05": 322,
+      "F04": 561,
+      "B07": 1033,
+      "S02": 1111,
+      "S01": 594,
+      "S06": 2353,
+      "S08": 436,
+      "F07": 427,
+      "S03": 651,
+      "S07": 1458,
+      "S04": 334,
+      "X05": 341,
+      "P08": 1400,
+      "P01": 1448,
+      "B05": 379,
+      "P02": 688,
+      "P03": 854,
+      "P06": 6137,
+      "V04": 403,
+      "P05": 365,
+      "V07": 940
+    },
+    "powerUsage": {
+      "S_E_FX": 228,
+      "S_G_BV": 118,
+      "P_V1": 338,
+      "P_F1": 249,
+      "P_X1": 479,
+      "P_F2": 416,
+      "P_V2": 140,
+      "P_B1": 315,
+      "S_E_FS": 196,
+      "P_S2": 184,
+      "P_S1": 63,
+      "S_E_XS": 220,
+      "P_X2": 248,
+      "S_G_BP": 92,
+      "P_B2": 112,
+      "P_P2": 259,
+      "S_G_VP": 132,
+      "P_P1": 153
+    },
+    "phaseActions": {
+      "MULLIGAN": 1800,
+      "EVIL_DEPLOY": 19260,
+      "GOOD_PLAY": 24221,
+      "EVIL_TRICKS": 13615,
+      "COMBAT": 2680
+    },
+    "actionKinds": {
+      "MULLIGAN": 1800,
+      "PLAY_UNIT": 19981,
+      "PASS_PHASE": 29533,
+      "USE_POWER": 1871,
+      "USE_BLOCK_POWER": 2071,
+      "PLAY_TRICK": 5711,
+      "KEEP_BLOCK_POWER": 609
+    },
+    "location": {
+      "quiet_meadow": {
+        "revealed": 405,
+        "goodWins": 330,
+        "evilWins": 62,
+        "draws": 13,
+        "lanes": {
+          "1": 108,
+          "3": 126,
+          "5": 171
+        },
+        "preRevealUnits": 41
+      },
+      "volcano": {
+        "revealed": 351,
+        "goodWins": 275,
+        "evilWins": 61,
+        "draws": 15,
+        "lanes": {
+          "1": 162,
+          "3": 108,
+          "5": 81
+        },
+        "preRevealUnits": 28
+      },
+      "storm_peak": {
+        "revealed": 396,
+        "goodWins": 324,
+        "evilWins": 63,
+        "draws": 9,
+        "lanes": {
+          "1": 153,
+          "3": 117,
+          "5": 126
+        },
+        "preRevealUnits": 46
+      },
+      "desert": {
+        "revealed": 279,
+        "goodWins": 227,
+        "evilWins": 45,
+        "draws": 7,
+        "lanes": {
+          "1": 90,
+          "3": 81,
+          "5": 108
+        },
+        "preRevealUnits": 10
+      },
+      "ruined_arena": {
+        "revealed": 378,
+        "goodWins": 314,
+        "evilWins": 56,
+        "draws": 8,
+        "lanes": {
+          "1": 81,
+          "3": 126,
+          "5": 171
+        },
+        "preRevealUnits": 29
+      },
+      "frozen_lake": {
+        "revealed": 315,
+        "goodWins": 245,
+        "evilWins": 64,
+        "draws": 6,
+        "lanes": {
+          "1": 90,
+          "3": 171,
+          "5": 54
+        },
+        "preRevealUnits": 5
+      },
+      "healing_spring": {
+        "revealed": 315,
+        "goodWins": 258,
+        "evilWins": 53,
+        "draws": 4,
+        "lanes": {
+          "1": 126,
+          "3": 81,
+          "5": 108
+        },
+        "preRevealUnits": 43
+      },
+      "ancient_forest": {
+        "revealed": 261,
+        "goodWins": 187,
+        "evilWins": 70,
+        "draws": 4,
+        "lanes": {
+          "1": 90,
+          "3": 90,
+          "5": 81
+        },
+        "preRevealUnits": 15
+      }
+    },
+    "blockUsage": {
+      "matches": 900,
+      "GOOD": 774,
+      "EVIL": 1906,
+      "allThreeBeforeTurn6": 0
+    },
+    "unusedPowers": {
+      "GOOD": 15,
+      "EVIL": 523
+    },
+    "fatigueDamage": 0,
+    "poisonPackets": 2425,
+    "responseMoves": 200,
+    "illegalAccepted": 0,
+    "illegalProbes": 2700,
+    "rejectedBotActions": 0,
+    "privateLeaks": 0,
+    "projectionChecks": 61576
+  },
+  "regressionSeedsCovered": 20
+}

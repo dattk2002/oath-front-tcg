@@ -1,0 +1,16 @@
+{
+  "baseline.log": "9555f0e3ccf0570d3a36813e24c91ec89aa4b90d43c9f8a2ec1b8e27b08d1a37",
+  "controller-verification.json": "489c3bbd339bba32758f2f51d54762f7eca278877742301bbe5fd3ec7b55743f",
+  "diagnostics-final.log": "dd92c233e87f398c0249f2273c1cda6751a42ea6e4ab3ef73b06cd4b4a2aeb93",
+  "fix1/artifact-readback.log": "21f1f59c396626c1d9d5db357eb9ee48017683003d2ad2f4fd08e241bee676b0",
+  "fix1/diagnostic.log": "c4553f3989b010656443c1fa5f4aad286e2a4313bfe5843c4d41eaa66f20f3c4",
+  "fix1/green.log": "b734e8ed914b001f7739c817ca1d7798221a416d3f2463e36f41cc6a40721786",
+  "fix1/lint.log": "b4f4010fdb3d5dd3ed2636c640bb951e400c5738bfeecd54c6bdea52472414e9",
+  "fix1/red.log": "e7b37d5821f5148dd4a592727f840de9d6a6280b4e33ffb7c776f4f65e8586d1",
+  "fix1/typecheck.log": "ebca6e0fdd038e5a9f1b3d84179ab7272ade94edc8ae50ea5ca3309aa2a5017c",
+  "fix1-controller-verification.json": "6cb59eb5cb113aee8fa552054ab57ad38812c6eabce81b629535ac0519e35343",
+  "implementation-report.md": "9d0f2c3db658df27a5645403a29db5ae46d679fab5a8ff33e32931628625694b",
+  "rereview.md": "f07229c3650acf07f17ea6962289a776af3824810203e31cab3f86713c338790",
+  "stress.log": "491a4000bd0eb9869013b208c1a2df4513b99ebf60e6eaf7cd2296e245291a45",
+  "task-review.md": "c943aeaa81325bc2f1fd15aaa78f0c15a2833cd242397041888f60f382d67ff7"
+}
