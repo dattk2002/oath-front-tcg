@@ -4,14 +4,15 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@oathfront/bot": "workspace:*",
     "@oathfront/contracts": "workspace:*",
     "@oathfront/db": "workspace:*",
     "@oathfront/game-content": "workspace:*",
     "@oathfront/game-engine": "workspace:*",
     "ajv": "8.20.0",
     "fastify": "5.12.7",
-    "pg": "8.23.1",
-    "@oathfront/bot": "workspace:*"
+    "jose": "6.2.12",
+    "pg": "8.23.1"
   },
   "devDependencies": {
     "@types/pg": "8.23.1"
