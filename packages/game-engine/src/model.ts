@@ -1,5 +1,6 @@
 import type {
   DeckInput,
+  TutorialView,
   ErrorResponse,
   HandCard,
   HeroView,
@@ -89,6 +90,13 @@ export interface MatchState extends Omit<MatchConfig, "decks"> {
     stage: "HOOKS" | "LOCATIONS" | "EXPIRY";
     jobs: { source: UnitState; abilityId: string }[];
     locationIndex: number;
+  };
+  tutorial?: TutorialView & {
+    manifestVersion: "tutorial_v1";
+    sceneLoadOrdinal: number;
+    scriptCursor: number;
+    branch: "USED" | "KEPT" | null;
+    pendingScene: TutorialView["chapterId"] | null;
   };
   outcome: Outcome | null;
 }

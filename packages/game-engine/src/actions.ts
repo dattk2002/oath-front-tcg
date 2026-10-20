@@ -1,3 +1,11 @@
+import { canonicalJson } from "./hash.js";
+import {
+  tutorialAllowed,
+  tutorialControls,
+  applyTutorialControl,
+  refreshTutorial,
+  announceTutorial,
+} from "./tutorial.js";
 import type { PlayerAction, Target } from "@oathfront/contracts";
 import { validateWire } from "@oathfront/contracts";
 import { coreCatalog } from "@oathfront/game-content";
@@ -95,12 +103,17 @@ export function getLegalActions(
   actor: PlayerId,
 ): PlayerAction[] {
   return [
-    ...phaseLegalActions(state, actor),
+    ...(state.tutorial?.pendingScene &&
+    actor === state.humanSide &&
+    state.lifecycle === "ACTIVE"
+      ? [{ kind: "ADVANCE" as const }]
+      : phaseLegalActions(state, actor)),
+    ...tutorialControls(state, actor),
     ...legalControlActions(state, actor),
-  ];
+  ].filter((a) => tutorialAllowed(state, actor, a));
 }
 /** actor is supplied by the trusted API/bot/replay envelope, never by wire PlayerAction. */
-export function applyAction(
+function applyCoreAction(
   state: MatchState,
   envelope: EngineAction,
 ): TransitionResult | ActionError {
@@ -296,4 +309,36 @@ export function applyAction(
     });
   }
   return error("WRONG_PHASE");
+}
+
+export function applyAction(
+  state: MatchState,
+  envelope: EngineAction,
+): TransitionResult | ActionError {
+  const { actor, action } = envelope;
+  if (!validateWire("PlayerAction", action)) return error("INVALID_TARGET");
+  if (state.tutorial || action.kind.startsWith("TUTORIAL_")) {
+    if (!tutorialAllowed(state, actor, action))
+      return error("TUTORIAL_STEP_MISMATCH");
+    if (!["ACTIVE", "PAUSED"].includes(state.lifecycle))
+      return error("MATCH_ENDED");
+    if (action.kind.startsWith("TUTORIAL_")) {
+      if (state.lifecycle === "PAUSED" && action.kind !== "TUTORIAL_SKIP")
+        return error("MATCH_PAUSED");
+      return applyTutorialControl(state, action);
+    }
+    if (action.kind === "ADVANCE" && state.tutorial?.pendingScene)
+      return advanceAutomatic(state, { maxRoots: 1 });
+  }
+  const result = applyCoreAction(state, envelope);
+  if (result.kind === "transition" && result.nextState.tutorial) {
+    refreshTutorial(result.nextState, action);
+    if (result.nextState.tutorial.stepState === "AWAITING_CONTINUE")
+      result.waitingForInput = true;
+    if (
+      canonicalJson(state.tutorial) !== canonicalJson(result.nextState.tutorial)
+    )
+      announceTutorial(result.nextState, result.events);
+  }
+  return result;
 }

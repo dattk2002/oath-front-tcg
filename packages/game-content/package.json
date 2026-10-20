@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./tutorial": "./src/tutorial/tutorial-v1.ts"
   },
   "dependencies": {
     "@oathfront/contracts": "workspace:*"

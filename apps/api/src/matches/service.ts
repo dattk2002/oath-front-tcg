@@ -1,3 +1,4 @@
+import { createTutorialConfig, tutorialManifestHash } from "./tutorial.js";
 import { randomBytes, randomUUID } from "node:crypto";
 import { coreCatalog, validateDeck } from "@oathfront/game-content";
 import { validateWire } from "@oathfront/contracts";
@@ -58,7 +59,7 @@ export function matchService(
         previous = await receipt(tx, principal, request.commandId, hash);
       if (previous) return previous;
       if (
-        request.mode !== "SKIRMISH" ||
+        request.mode === "SKIRMISH" &&
         request.expectedContentVersion !== coreCatalog.version
       )
         throw new HttpError(409, "VERSION_UNSUPPORTED");
@@ -70,6 +71,45 @@ export function matchService(
       ).rows[0];
       if (active)
         throw new HttpError(409, "ACTIVE_MATCH_EXISTS", { matchId: active.id });
+      if (request.mode === "TUTORIAL") {
+        const config = createTutorialConfig(
+          request.scenarioId === "tutorial_v1" ? "GOOD" : "EVIL",
+        );
+        const result = await insertInitialization(
+          tx,
+          principal.id,
+          config,
+          randomBytes(32),
+          {
+            expiresAt: expiry(principal),
+            rematch: null,
+            scenarioId: request.scenarioId,
+            tutorialManifestSha256: tutorialManifestHash(),
+          },
+          now(),
+        );
+        const response = commandResponse(
+          result.nextState,
+          0,
+          result.events,
+          0,
+          0,
+          scheduler,
+        );
+        await insertMatchReceipt(tx, {
+          principalId: principal.id,
+          state: result.nextState,
+          revision: 0,
+          receipt: {
+            commandId: request.commandId,
+            requestHash: hash,
+            response,
+            expiresAt: expiry(principal),
+          },
+          now: now(),
+        });
+        return response;
+      }
       let deck: DeckInput;
       if (request.deck.kind === "PRESET") {
         const p = coreCatalog.presets.find(
@@ -237,6 +277,18 @@ export function matchService(
           },
           { now: now(), botIntentsThisTurn: result.botIntentsThisTurn },
         );
+        if (
+          result.transition.nextState.outcome?.reason === "TUTORIAL_COMPLETED"
+        ) {
+          const column =
+            result.transition.nextState.humanSide === "GOOD"
+              ? "tutorial_completed_at"
+              : "evil_tutorial_completed_at";
+          await tx.client.query(
+            `UPDATE principals SET ${column}=COALESCE(${column},$2) WHERE id=$1`,
+            [principal.id, now()],
+          );
+        }
         if (
           principal.kind === "ACCOUNT" &&
           ["ACTIVE", "PAUSED"].includes(result.transition.nextState.lifecycle)

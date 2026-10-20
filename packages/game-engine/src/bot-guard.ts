@@ -5,7 +5,14 @@ import { emitEvent, transition } from "./events.js";
 export function hasBotDecision(state: MatchState): boolean {
   if (state.lifecycle !== "ACTIVE") return false;
   const humanWaiting = getLegalActions(state, state.humanSide).some(
-    (a) => !["ADVANCE", "PAUSE", "SURRENDER"].includes(a.kind),
+    (a) =>
+      ![
+        "ADVANCE",
+        "PAUSE",
+        "SURRENDER",
+        "TUTORIAL_RESTART",
+        "TUTORIAL_SKIP",
+      ].includes(a.kind),
   );
   if (humanWaiting) return false;
   const bot = state.humanSide === "GOOD" ? "EVIL" : "GOOD";

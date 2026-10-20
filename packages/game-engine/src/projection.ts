@@ -1,3 +1,4 @@
+import { tutorialView } from "./tutorial.js";
 import type {
   HeroView,
   LaneView,
@@ -94,7 +95,7 @@ export function projectPlayerView(
       ? { laneId: state.continuation.laneId, stage: state.continuation.stage }
       : null,
     outcome: state.outcome ? { ...state.outcome } : null,
-    tutorial: null,
+    tutorial: tutorialView(state),
   };
   if (!validateWire("PlayerView", view))
     throw new RangeError("Invalid public view");

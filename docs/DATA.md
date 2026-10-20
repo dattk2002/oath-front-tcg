@@ -23,7 +23,7 @@ App schema do Drizzle migrations quản lý; `neon_auth` do Neon Auth quản lý
 
 Không cần collection/rating/matchmaking table khi tất cả nội dung mở và chỉ PvE. Principal có `tutorial_completed_at` và `evil_tutorial_completed_at` nullable timestamptz; hoàn thành hai bài độc lập, không thêm progression economy.
 
-Matches thêm `scenario_id text nullable` và `tutorial_manifest_sha256 text nullable`: bắt buộc với TUTORIAL, null với SKIRMISH. Manifest tutorial được pin trong content release; active tutorial tiếp tục đúng version. Checkpoint `state.tutorial` lưu chapter/step/state/completedStepIds/sceneLoadOrdinal/scriptCursor/branch theo TUTORIAL.md. Journal AUTO hỗ trợ TUTORIAL_LOAD_SCENE; ID/event counters không reset khi đổi scene.
+Matches thêm `scenario_id text nullable` và `tutorial_manifest_sha256 text nullable`: bắt buộc với TUTORIAL, null với SKIRMISH. Manifest tutorial được pin bằng `scenario_id`/`tutorial_manifest_sha256` trên match tới registry riêng phía server có version bất biến; private checkpoint giữ `manifestVersion`. Tạo/read/replay kiểm tra version và checksum; thiếu hoặc lệch phải từ chối, không dùng bản mới nhất ngầm. Giữ registry cũ khi thêm version mới. Không sửa manifest/checksum của content release `core_v1` đã bất biến. Checkpoint `state.tutorial` lưu chapter/step/state/completedStepIds/sceneLoadOrdinal/scriptCursor/branch theo TUTORIAL.md. Journal AUTO hỗ trợ TUTORIAL_LOAD_SCENE; ID/event counters không reset khi đổi scene.
 
 Match results lưu `blocks_used int0..3`; damage_dealt và active_duration_ms có semantics chính xác trong API-CONTRACT. Operational timing dùng metadata server ngoài deterministic state hash. Ghi receipt trùng và GET/poll không cộng thời gian.
 

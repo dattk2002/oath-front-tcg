@@ -1,3 +1,4 @@
+import { tutorialPower } from "./tutorial.js";
 import type { ReservePower } from "@oathfront/contracts";
 import { coreCatalog } from "@oathfront/game-content";
 import type { GameEvent, MatchState, PlayerId } from "./model.js";
@@ -22,7 +23,7 @@ export function grantPowerOnDraft(
   state.random.states[scope] = draw.state;
   const power: ReservePower = {
     instanceId: allocateInstanceId(state),
-    definitionId: available[draw.value]!,
+    definitionId: tutorialPower(state, side) ?? available[draw.value]!,
     normalCost: 1,
   };
   player.receivedPowerIds.push(power.definitionId);

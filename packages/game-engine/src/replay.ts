@@ -1,3 +1,4 @@
+import { tutorialCanAdvance } from "./tutorial.js";
 import { validateWire } from "@oathfront/contracts";
 import type { EngineAction, GameEvent, MatchState } from "./model.js";
 import type { RandomState } from "./rng.js";
@@ -7,6 +8,13 @@ import { applyBotGuardFault, hasBotDecision } from "./bot-guard.js";
 import { advanceAutomatic } from "./automatic.js";
 import { hashState, canonicalJson } from "./hash.js";
 export type AutomaticOperation =
+  | {
+      kind: "TUTORIAL_LOAD_SCENE";
+      scenarioId: "tutorial_v1" | "tutorial_evil_v1";
+      sceneId: "A" | "B" | "C" | "D" | "E";
+      ordinal: number;
+      manifestVersion: "tutorial_v1";
+    }
   | { kind: "ADMIN_ABANDON"; reason: "ACCOUNT_MERGE" | "EXPIRED" }
   | {
       kind: "COMBAT_ROOT";
@@ -49,6 +57,15 @@ export function describeAutomaticOperation(
   state: MatchState,
   botIntentsThisTurn = 0,
 ): AutomaticOperation | null {
+  if (state.lifecycle === "ACTIVE" && state.tutorial?.pendingScene)
+    return {
+      kind: "TUTORIAL_LOAD_SCENE",
+      scenarioId: state.tutorial.scenarioId,
+      sceneId: state.tutorial.pendingScene,
+      ordinal: state.tutorial.sceneLoadOrdinal + 1,
+      manifestVersion: "tutorial_v1",
+    };
+  if (!tutorialCanAdvance(state)) return null;
   if (botIntentsThisTurn === 64 && hasBotDecision(state))
     return { kind: "BOT_GUARD_FAULT", turn: state.turn, botIntents: 64 };
   if (state.lifecycle !== "ACTIVE" || state.blockResponse) return null;

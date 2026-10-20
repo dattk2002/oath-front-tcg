@@ -240,3 +240,16 @@ it("count64 guard fault is identical across one/eight batches including a serial
   });
   expect(full.transition.nextState.lifecycle).toBe("FAULTED");
 });
+it("engineScheduler resets nonzero guard on actual TURN_START and agrees with replay", () => {
+  const state = ready();
+  state.phase = "TURN_START";
+  state.activeSide = null;
+  const result = engineScheduler.step(state, 1, 7)!;
+  expect(result.transition.nextState.turn).toBe(6);
+  expect(result.botIntentsThisTurn).toBe(0);
+  expect(replayJournal(state, [result.entry], 7)).toMatchObject({
+    ok: true,
+    botIntentsThisTurn: 0,
+    finalState: result.transition.nextState,
+  });
+});

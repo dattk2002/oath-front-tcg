@@ -28,10 +28,15 @@ export interface Scheduler {
 }
 export const engineScheduler: Scheduler = {
   canAdvance: (state) => describeAutomaticOperation(state) !== null,
-  step: (state, seq, guard) =>
-    describeAutomaticOperation(state)
-      ? { ...recordAutomatic(state, seq), botIntentsThisTurn: guard }
-      : null,
+  step: (state, seq, guard) => {
+    if (!describeAutomaticOperation(state)) return null;
+    const result = recordAutomatic(state, seq);
+    return {
+      ...result,
+      botIntentsThisTurn:
+        result.transition.nextState.turn === state.turn ? guard : 0,
+    };
+  },
 };
 export function needsAdvance(
   state: MatchState,
@@ -122,6 +127,13 @@ export function commandTransition(
 }
 export function humanWaiting(state: MatchState) {
   return getLegalActions(state, state.humanSide).some(
-    (a) => !["ADVANCE", "PAUSE", "SURRENDER"].includes(a.kind),
+    (a) =>
+      ![
+        "ADVANCE",
+        "PAUSE",
+        "SURRENDER",
+        "TUTORIAL_RESTART",
+        "TUTORIAL_SKIP",
+      ].includes(a.kind),
   );
 }

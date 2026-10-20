@@ -93,24 +93,10 @@ it("rejects version mismatch before creating durable match", async () => {
     (await h.pool.query("SELECT count(*)::int n FROM matches")).rows[0].n,
   ).toBe(0);
 });
-it("fails closed for corrupted durable receipt and defers tutorial scenario setup to its registry", async () => {
+it("fails closed for corrupted durable receipt", async () => {
   const g = await h.guest(),
     body = createBody(),
     headers = h.headers(g);
-  expect(
-    (
-      await h.app.inject({
-        method: "POST",
-        url: "/api/v1/matches",
-        headers,
-        payload: {
-          commandId: randomUUID(),
-          mode: "TUTORIAL",
-          scenarioId: "tutorial_v1",
-        },
-      })
-    ).statusCode,
-  ).toBe(409);
   const first = await h.app.inject({
     method: "POST",
     url: "/api/v1/matches",

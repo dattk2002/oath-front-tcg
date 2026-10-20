@@ -28,7 +28,8 @@ export function transition(
     events,
     waitingForInput:
       nextState.lifecycle === "ACTIVE" &&
-      (!!nextState.blockResponse ||
+      (nextState.tutorial?.stepState === "AWAITING_CONTINUE" ||
+        !!nextState.blockResponse ||
         ["MULLIGAN", "EVIL_DEPLOY", "GOOD_PLAY", "EVIL_TRICKS"].includes(
           nextState.phase,
         )),

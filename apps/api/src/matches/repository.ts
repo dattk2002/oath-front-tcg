@@ -1,3 +1,4 @@
+import { verifyTutorialBinding } from "./tutorial.js";
 import { isDeepStrictEqual } from "node:util";
 import { hashState } from "@oathfront/game-engine";
 import type {
@@ -76,6 +77,18 @@ export async function readRecord(
     throw new PersistenceError("MATCH_DETAILS_EXPIRED");
   const state = decodeCheckpoint(row.state, row.state_hash),
     revision = safeInteger(row.revision);
+  if (state.mode === "TUTORIAL") {
+    try {
+      verifyTutorialBinding(
+        row.scenario_id,
+        row.tutorial_manifest_sha256,
+        state.tutorial?.manifestVersion,
+        state.humanSide,
+      );
+    } catch {
+      throw new PersistenceError("VERSION_UNSUPPORTED");
+    }
+  }
   if (
     state.matchId !== row.id ||
     state.humanSide !== row.human_side ||

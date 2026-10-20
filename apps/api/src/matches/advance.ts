@@ -3,6 +3,7 @@ import {
   describeAutomaticOperation,
   hasBotDecision,
   projectPlayerView,
+  tutorialBotAction,
 } from "@oathfront/game-engine";
 import { recordAutomatic, recordIntent } from "./journal.js";
 import type { Scheduler } from "./commands.js";
@@ -23,11 +24,19 @@ export const botScheduler: Scheduler = {
     if (!hasBotDecision(state)) return null;
     const actor = state.humanSide === "GOOD" ? "EVIL" : "GOOD",
       view = projectPlayerView(state, actor);
-    const decision = chooseBotAction(view, view.legalActions, {
-      difficulty: state.difficulty,
-      randomState: state.random.states["bot:easy"],
-      observationMemory: [],
-    });
+    const scripted = tutorialBotAction(state);
+    const decision = state.tutorial
+      ? {
+          action: scripted!,
+          nextBotRandomState: state.random.states["bot:easy"],
+        }
+      : chooseBotAction(view, view.legalActions, {
+          difficulty: state.difficulty,
+          randomState: state.random.states["bot:easy"],
+          observationMemory: [],
+        });
+    if (state.tutorial && !scripted)
+      throw new RangeError("Missing tutorial bot action");
     const result = recordIntent(
       state,
       { actor, action: decision.action },

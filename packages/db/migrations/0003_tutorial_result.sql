@@ -1,0 +1,2 @@
+ALTER TABLE "match_results" DROP CONSTRAINT "result_enums";--> statement-breakpoint
+ALTER TABLE "match_results" ADD CONSTRAINT "result_enums" CHECK ("match_results"."difficulty" IN ('EASY','NORMAL') AND ("match_results"."outcome" IN ('WIN','LOSS','DRAW','ABANDONED','FAULTED') OR ("match_results"."outcome"='NONE' AND "match_results"."reason"='TUTORIAL_COMPLETED')));

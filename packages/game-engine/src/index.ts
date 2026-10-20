@@ -34,3 +34,5 @@ export { applyBotGuardFault, hasBotDecision } from "./bot-guard.js";
 export { validateGameEvent } from "./server-events.js";
 
 export { abandonMatch } from "./terminal.js";
+
+export { tutorialBotAction } from "./tutorial.js";

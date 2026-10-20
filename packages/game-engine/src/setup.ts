@@ -1,3 +1,4 @@
+import { initializeTutorial } from "./tutorial.js";
 import type { DeckInput, HandCard, Side } from "@oathfront/contracts";
 import { validateWire } from "@oathfront/contracts";
 import { coreCatalog, validateDeck } from "@oathfront/game-content";
@@ -169,6 +170,10 @@ export function createMatchWithEvents(
   const locations = assignLocations(state.random.states.location);
   state.random.states.location = locations.state;
   state.board = locations.value;
+  if (state.mode === "TUTORIAL") {
+    initializeTutorial(state);
+    return transition(state, events);
+  }
   for (const side of ["EVIL", "GOOD"] as const) {
     const player = state.players[side];
     for (let i = 0; i < 4; i++) {

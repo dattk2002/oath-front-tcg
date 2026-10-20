@@ -382,7 +382,7 @@ export const matchResults = pgTable(
     ),
     check(
       "result_enums",
-      sql`${t.difficulty} IN ('EASY','NORMAL') AND ${t.outcome} IN ('WIN','LOSS','DRAW','ABANDONED','FAULTED')`,
+      sql`${t.difficulty} IN ('EASY','NORMAL') AND (${t.outcome} IN ('WIN','LOSS','DRAW','ABANDONED','FAULTED') OR (${t.outcome}='NONE' AND ${t.reason}='TUTORIAL_COMPLETED'))`,
     ),
   ],
 );

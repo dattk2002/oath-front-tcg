@@ -1,3 +1,10 @@
+import { canonicalJson } from "./hash.js";
+import {
+  loadTutorialScene,
+  tutorialCanAdvance,
+  refreshTutorial,
+  announceTutorial,
+} from "./tutorial.js";
 import type {
   AdvanceBudget,
   GameEvent,
@@ -26,6 +33,13 @@ export function advanceAutomatic(
   let current = structuredClone(state);
   const events: GameEvent[] = [];
   for (let count = 0; count < Math.min(8, budget.maxRoots); count++) {
+    if (current.lifecycle === "ACTIVE" && current.tutorial?.pendingScene) {
+      const loaded = loadTutorialScene(current);
+      current = loaded.nextState;
+      events.push(...loaded.events);
+      continue;
+    }
+    if (!tutorialCanAdvance(current)) break;
     if (
       current.lifecycle !== "ACTIVE" ||
       current.blockResponse ||
@@ -69,6 +83,13 @@ export function advanceAutomatic(
           break;
       }
     });
+    refreshTutorial(result.nextState);
+    if (
+      current.tutorial &&
+      canonicalJson(current.tutorial) !==
+        canonicalJson(result.nextState.tutorial)
+    )
+      announceTutorial(result.nextState, result.events);
     current = result.nextState;
     events.push(...result.events);
   }

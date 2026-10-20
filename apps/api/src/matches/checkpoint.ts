@@ -133,9 +133,17 @@ const stateSchema = object(
       jobs: array(job),
       locationIndex: { type: "integer", minimum: 0, maximum: 5 },
     }),
+    tutorial: object({
+      ...publicSchema.definitions.TutorialView.properties,
+      manifestVersion: { const: "tutorial_v1" },
+      sceneLoadOrdinal: integer,
+      scriptCursor: integer,
+      branch: { enum: ["USED", "KEPT", null] },
+      pendingScene: nullable(ref("ChapterId")),
+    }),
     outcome: nullable(ref("Outcome")),
   },
-  ["endTurn"],
+  ["endTurn", "tutorial"],
 );
 const ajv = new Ajv({
   strict: true,

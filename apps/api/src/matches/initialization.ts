@@ -1,3 +1,4 @@
+import { verifyTutorialBinding } from "./tutorial.js";
 import { createHash } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import {
@@ -59,6 +60,13 @@ export async function insertInitialization(
       : metadata.rematch !== null
   )
     throw new PersistenceError("INVALID_REMATCH");
+  if (config.mode === "TUTORIAL")
+    verifyTutorialBinding(
+      metadata.scenarioId,
+      metadata.tutorialManifestSha256,
+      "tutorial_v1",
+      config.humanSide,
+    );
   const transition = createMatchWithEvents(config, createRandomStreams(seed)),
     state = transition.nextState;
   const envelope = encodeCheckpoint(state);
