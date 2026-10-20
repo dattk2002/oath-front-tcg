@@ -269,3 +269,14 @@ it.each([
     expect(validateCatalog(catalog).length).toBeGreaterThan(0);
   },
 );
+
+it("malformed hero classes return authoring issues rather than throwing through preset validation", () => {
+  const malformed = structuredClone(coreCatalog);
+  Object.assign(malformed.heroes[0]!, { classes: null });
+  expect(() => validateCatalog(malformed)).not.toThrow();
+  expect(validateCatalog(malformed)).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({ code: "INVALID_HERO_SHAPE" }),
+    ]),
+  );
+});

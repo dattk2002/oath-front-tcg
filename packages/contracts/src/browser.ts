@@ -21,3 +21,5 @@ export function serializeBrowserWire<K extends keyof WireDefinitions>(
     throw new TypeError(`Invalid ${definition}`);
   return JSON.stringify(value);
 }
+
+export { validateDeck } from "./deck.js";

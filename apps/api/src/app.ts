@@ -14,6 +14,8 @@ import {
 import { requireOrigin, requireCsrf } from "./auth/csrf.js";
 import { matchService } from "./matches/service.js";
 import { registerMatchRoutes } from "./matches/routes.js";
+import { deckService } from "./decks/service.js";
+import { registerDeckRoutes } from "./decks/routes.js";
 import { publicCatalog } from "./content/registry.js";
 import type { Scheduler } from "./matches/commands.js";
 import { mutationLifetime } from "./deadline.js";
@@ -130,14 +132,19 @@ export function buildApp(deps: AppDependencies) {
       .header("Cache-Control", "public, max-age=31536000, immutable")
       .send(publicCatalog());
   });
-  app.get("/api/v1/decks", async (req) => {
-    await session(req);
-    return output("DeckList", {
-      items: [],
-      presets: publicCatalog().presets,
-      nextCursor: null,
-    });
-  });
+  registerDeckRoutes(
+    app,
+    deckService(deps.pool, now),
+    async (req, mutation) => {
+      const s = await session(req);
+      if (mutation) {
+        requireCsrf(req.headers["x-csrf-token"], s.csrfHash);
+        await limit("COMMAND", s.principal.id);
+      }
+      return s.principal;
+    },
+    deadline,
+  );
   app.get("/health/live", async () => ({ status: "ok" }));
   app.get("/health/ready", async (_req, reply) => {
     try {

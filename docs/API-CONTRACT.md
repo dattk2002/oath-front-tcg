@@ -200,6 +200,7 @@ Event replay VFX không được gọi `applyAction`; log dùng sequence, state 
 | POST /auth/logout | Body `{}`, CSRF | 204, xóa cookie |
 | GET /catalog/:version | Version trong path | 200 PublicCatalog |
 | GET /decks | cursor?, limit1–20 mặc định20 | 200 DeckList |
+| GET /decks/:id | revision? ≥1 (exact immutable version; omitted=current), same owner404 | 200 DeckDTO |
 | POST /decks | SaveDeckRequest | 201 DeckDTO |
 | PUT /decks/:id | UpdateDeckRequest | 200 DeckDTO |
 | POST /matches | CreateMatchRequest | 201 CommandResponse |

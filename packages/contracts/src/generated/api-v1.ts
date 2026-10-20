@@ -1827,6 +1827,13 @@ export interface DeckParams {
 export interface CatalogParams {
   version: Version;
 }
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "DeckVersionQuery".
+ */
+export interface DeckVersionQuery {
+  revision?: number;
+}
 
 export interface WireDefinitions {
   Uuid: Uuid;
@@ -1908,4 +1915,5 @@ export interface WireDefinitions {
   DeckParams: DeckParams;
   CatalogParams: CatalogParams;
   RematchConfig: RematchConfig;
+  DeckVersionQuery: DeckVersionQuery;
 }

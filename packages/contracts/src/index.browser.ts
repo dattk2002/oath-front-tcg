@@ -5,3 +5,5 @@ export {
   browserWireValidator as wireValidator,
   serializeBrowserWire as serializeWire,
 } from "./browser.js";
+
+export { validateDeck } from "./deck.js";

@@ -39,17 +39,52 @@ export async function insertMatchReceipt(
     )
   )
     throw new PersistenceError("INVALID_RECEIPT");
+  await insertResourceReceipt(client, {
+    principalId,
+    resourceId: state.matchId,
+    revision,
+    commandId: receipt.commandId,
+    requestHash: receipt.requestHash,
+    response: receipt.response,
+    now,
+    expiresAt: receipt.expiresAt,
+  });
+}
+/** Durable resource receipt; caller validates response and holds the principal lock. */
+export async function insertResourceReceipt(
+  client: PoolClient,
+  input: {
+    principalId: string;
+    resourceId: string;
+    revision: number;
+    commandId: string;
+    requestHash: string;
+    response: unknown;
+    now: Date;
+    expiresAt: Date;
+  },
+) {
+  const {
+    principalId,
+    resourceId,
+    revision,
+    commandId,
+    requestHash,
+    response,
+    now,
+    expiresAt,
+  } = input;
   await client.query(
     "INSERT INTO command_receipts(principal_id,command_id,request_hash,resource_id,response,resulting_revision,created_at,expires_at) VALUES($1,$2,$3,$4,$5,$6,$7,$8)",
     [
       principalId,
-      receipt.commandId,
-      receipt.requestHash,
-      state.matchId,
-      JSON.stringify(receipt.response),
+      commandId,
+      requestHash,
+      resourceId,
+      JSON.stringify(response),
       revision,
       now,
-      receipt.expiresAt,
+      expiresAt,
     ],
   );
 }
