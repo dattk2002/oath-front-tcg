@@ -22,24 +22,34 @@ export default function PresetSetup({
   api,
   onCreated,
   onResume,
+  initialRequest,
+  selectedSource,
+  selectedHeroId,
+  onBack,
 }: {
+  initialRequest?: CreateMatchRequest;
+  selectedSource?: Extract<CreateMatchRequest, { mode: "SKIRMISH" }>["deck"];
+  selectedHeroId?: HeroId;
+  onBack?: () => void;
   catalog: PublicCatalog;
   api: ApiClient;
   onCreated: (response: CommandResponse) => void;
   onResume: (id: string) => void;
 }) {
   const [restored] = useState(() =>
-    typeof sessionStorage === "undefined"
+    selectedSource || typeof sessionStorage === "undefined"
       ? null
       : restorePresetCreate(catalog.presets, sessionStorage, catalog.version),
   );
-  const original = restored?.request;
+  const original = initialRequest ?? restored?.request;
   const [pending, setPending] = useState<CreateMatchRequest | null>(
     original ?? null,
   );
-  const [heroId, setHeroId] = useState<HeroId>(restored?.heroId ?? "H_G_BV");
+  const [heroId, setHeroId] = useState<HeroId>(
+    selectedHeroId ?? restored?.heroId ?? "H_G_BV",
+  );
   const [stage, setStage] = useState<"HERO" | "DECK" | "OPPONENT">(
-    original ? "OPPONENT" : "HERO",
+    original || selectedSource ? "OPPONENT" : "HERO",
   );
   const [opponentId, setOpponentId] = useState<HeroId | null>(
     original?.mode === "SKIRMISH" ? original.opponentHeroId : null,
@@ -69,16 +79,24 @@ export default function PresetSetup({
     body ??= {
       commandId: crypto.randomUUID(),
       mode: "SKIRMISH",
-      deck: { kind: "PRESET", presetId: preset.presetId },
+      deck: selectedSource ?? { kind: "PRESET", presetId: preset.presetId },
       opponentHeroId: opponent.id,
       difficulty,
       expectedContentVersion: catalog.version,
     };
     setPending(body);
-    sessionStorage.setItem("oathfront.create", JSON.stringify(body));
+    try {
+      sessionStorage.setItem("oathfront.create", JSON.stringify(body));
+    } catch {
+      setMessage("Không lưu được yêu cầu; giữ trang này để thử lại.");
+    }
     try {
       const response = await api.createMatch(body);
-      sessionStorage.removeItem("oathfront.create");
+      try {
+        sessionStorage.removeItem("oathfront.create");
+      } catch {
+        /* Confirmed or rejected receipt; memory still tracks the request. */
+      }
       onCreated(response);
     } catch (error) {
       if (
@@ -86,11 +104,19 @@ export default function PresetSetup({
         error.body.error.code === "ACTIVE_MATCH_EXISTS"
       ) {
         setConflict(error.body.error.details.matchId);
-        sessionStorage.removeItem("oathfront.create");
+        try {
+          sessionStorage.removeItem("oathfront.create");
+        } catch {
+          /* Confirmed or rejected receipt; memory still tracks the request. */
+        }
         setPending(null);
         setMessage("Bạn có một trận đang diễn ra. Tiếp tục trận đó trước.");
       } else if (error instanceof ApiError && error.status < 500) {
-        sessionStorage.removeItem("oathfront.create");
+        try {
+          sessionStorage.removeItem("oathfront.create");
+        } catch {
+          /* Confirmed or rejected receipt; memory still tracks the request. */
+        }
         setPending(null);
         setStage("HERO");
         setMessage(
@@ -112,6 +138,7 @@ export default function PresetSetup({
     pending?.mode === "SKIRMISH" ? pending.expectedContentVersion : null;
   if (
     pending &&
+    !selectedSource &&
     (pendingVersion !== catalog.version ||
       !catalog.presets.some(
         (item) =>
@@ -293,7 +320,11 @@ export default function PresetSetup({
         {stage !== "HERO" && (
           <button
             disabled={busy || !!pending}
-            onClick={() => setStage(stage === "DECK" ? "HERO" : "DECK")}
+            onClick={() =>
+              selectedSource
+                ? onBack?.()
+                : setStage(stage === "DECK" ? "HERO" : "DECK")
+            }
           >
             Quay lại
           </button>

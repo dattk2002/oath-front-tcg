@@ -52,7 +52,7 @@ for (const faction of ["GOOD", "EVIL"] as const) {
       })
       .check();
     await page.getByRole("button", { name: "Chọn bộ bài" }).click();
-    await expect(page.getByText("30 / 30 lá", { exact: true })).toBeVisible();
+    await expect(page.getByText("30/30 lá", { exact: true })).toBeVisible();
     await page.getByRole("button", { name: "Dùng bộ bài này" }).click();
     await page.getByRole("button", { name: "Bắt đầu trận" }).click();
     await expect(

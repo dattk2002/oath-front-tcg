@@ -4,6 +4,7 @@ import "../styles/fonts.css";
 import "../styles/tokens.css";
 import "../styles/shell.css";
 import "../styles/match.css";
+import "../styles/deck.css";
 export const metadata: Metadata = {
   title: "OathFront · Ngũ Lộ",
   description:

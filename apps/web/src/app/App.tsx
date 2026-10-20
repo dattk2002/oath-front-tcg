@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import type { PublicCatalog, SessionResponse } from "@oathfront/contracts";
 import { createApiClient } from "../features/match/api-client";
 import { ApiError } from "../features/match/api-error";
-import PresetSetup from "../features/setup/PresetSetup";
+import DeckScreen from "../features/deck/DeckScreen";
 import { ResultDetail } from "../features/match/ResultDialog";
 import { startGuestSession } from "./session";
 import { Brand, routes } from "./router";
@@ -21,8 +21,17 @@ const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
 export default function App({
   screen = "home",
   matchId,
+  heroId,
+  deckId,
+  presetId,
+  reviewMatchId,
 }: {
-  screen?: "home" | "setup" | "match" | "result";
+  screen?:
+    "home" | "setup" | "match" | "result" | "decks" | "builder" | "review";
+  heroId?: string;
+  deckId?: string;
+  presetId?: string;
+  reviewMatchId?: string;
   matchId?: string;
 }) {
   const router = useRouter();
@@ -46,7 +55,7 @@ export default function App({
         if (
           auth.status === "fulfilled" &&
           currentCatalog &&
-          screen === "setup"
+          (screen === "setup" || screen === "decks")
         ) {
           try {
             const decks = await client.decks();
@@ -137,7 +146,12 @@ export default function App({
             <p role="status">Đang tải dữ liệu trò chơi…</p>
           </section>
         ) : screen === "match" && matchId && catalog && session ? (
-          <MatchScreen key={matchId} api={api} catalog={catalog} matchId={matchId} />
+          <MatchScreen
+            key={matchId}
+            api={api}
+            catalog={catalog}
+            matchId={matchId}
+          />
         ) : screen === "result" && matchId && catalog && session ? (
           <ResultDetail
             key={matchId}
@@ -145,14 +159,17 @@ export default function App({
             catalog={catalog}
             matchId={matchId}
           />
-        ) : screen === "setup" && catalog && session ? (
-          <PresetSetup
+        ) : ["setup", "decks", "builder", "review"].includes(screen) &&
+          catalog &&
+          session ? (
+          <DeckScreen
+            screen={screen as "setup" | "decks" | "builder" | "review"}
             catalog={catalog}
             api={api}
-            onCreated={(response) =>
-              router.push(routes.match(response.view.matchId))
-            }
-            onResume={(id) => router.push(routes.match(id))}
+            {...(heroId ? { heroId } : {})}
+            {...(deckId ? { deckId } : {})}
+            {...(presetId ? { presetId } : {})}
+            {...(reviewMatchId ? { reviewMatchId } : {})}
           />
         ) : (
           <section className="home panel">

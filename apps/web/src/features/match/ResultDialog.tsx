@@ -113,9 +113,11 @@ export default function ResultDialog({
       ...summary.rematch,
     };
     pending.current = request;
+    let durable = true;
     try {
       sessionStorage.setItem(key, JSON.stringify(request));
     } catch {
+      durable = false;
       setMessage(
         "Không lưu được yêu cầu. Giữ trang này để thử lại cùng yêu cầu.",
       );
@@ -150,7 +152,7 @@ export default function ResultDialog({
         }
       } else
         setMessage(
-          "Chưa xác định kết quả tạo trận. Thử lại Chơi lại sẽ gửi cùng yêu cầu.",
+          `Chưa xác định kết quả tạo trận. Thử lại Chơi lại sẽ gửi cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
         );
     } finally {
       sending.current = false;
@@ -211,6 +213,9 @@ export default function ResultDialog({
             Nội dung gốc: {summary.rematch?.expectedContentVersion} · Hiện hành:{" "}
             {catalog.version}
           </p>
+          <Link href={`/decks/review/${summary.matchId}`}>
+            Mở bộ bài gốc để xem lại
+          </Link>
           <Link href="/heroes">Chọn bộ bài khác</Link>
         </section>
       ) : (

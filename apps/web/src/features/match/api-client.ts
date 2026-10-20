@@ -4,6 +4,8 @@ import type {
   CreateMatchRequest,
   GuestRequest,
   WireDefinitions,
+  SaveDeckRequest,
+  UpdateDeckRequest,
 } from "@oathfront/contracts";
 import { ApiError } from "./api-error";
 export function createApiClient(
@@ -14,9 +16,10 @@ export function createApiClient(
     path: string,
     definition: K,
     body?: unknown,
+    method?: "PUT",
   ): Promise<WireDefinitions[K]> {
     const result = await fetcher(`/api/v1${path}`, {
-      method: body === undefined ? "GET" : "POST",
+      method: method ?? (body === undefined ? "GET" : "POST"),
       credentials: "same-origin",
       cache: "no-store",
       headers: {
@@ -39,7 +42,19 @@ export function createApiClient(
     session: () => request("/session", "SessionResponse"),
     guest: (body: GuestRequest) => request("/guest", "SessionResponse", body),
     catalog: () => request("/catalog/core_v1", "PublicCatalog"),
-    decks: () => request("/decks", "DeckList"),
+    decks: (cursor?: string) =>
+      request(
+        `/decks${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,
+        "DeckList",
+      ),
+    deck: (id: string, revision?: number) =>
+      request(
+        `/decks/${encodeURIComponent(id)}${revision ? `?revision=${revision}` : ""}`,
+        "DeckDTO",
+      ),
+    saveDeck: (body: SaveDeckRequest) => request("/decks", "DeckDTO", body),
+    updateDeck: (id: string, body: UpdateDeckRequest) =>
+      request(`/decks/${encodeURIComponent(id)}`, "DeckDTO", body, "PUT"),
     createMatch: (body: CreateMatchRequest) =>
       request("/matches", "CommandResponse", body),
     match: (id: string) =>
