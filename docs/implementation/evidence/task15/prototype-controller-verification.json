@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-20T20:22:49.060343+00:00",
+  "assets": {
+    "H_G_BV": {
+      "sha256Matches": true,
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "fullyTransparentPixels": 672352
+    },
+    "GC01": {
+      "sha256Matches": true,
+      "mode": "RGBA",
+      "size": [
+        1182,
+        1330
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 892130
+    },
+    "EC01": {
+      "sha256Matches": true,
+      "mode": "RGBA",
+      "size": [
+        1211,
+        1299
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "fullyTransparentPixels": 992855
+    },
+    "ancient_forest": {
+      "sha256Matches": true,
+      "mode": "RGB",
+      "size": [
+        1983,
+        793
+      ],
+      "alphaRange": null,
+      "fullyTransparentPixels": 0
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "manifest": "docs/implementation/evidence/task15/final-artifact.json",
+  "verifiedFiles": 60,
+  "mismatches": [],
+  "buildId": "W-wGYeoKFmOQgD8A7IwmW",
+  "actualBuildId": "W-wGYeoKFmOQgD8A7IwmW",
+  "scope": "Independent match of retained final source/manifest and BUILD_ID/routes hashes; no test/build rerun."
+}
