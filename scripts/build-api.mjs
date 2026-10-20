@@ -1,7 +1,5 @@
 import { build } from "esbuild";
-await build({
-  entryPoints: ["apps/api/src/persistence.ts"],
-  outfile: "apps/api/dist/persistence.mjs",
+const common = {
   platform: "node",
   target: "node24",
   format: "esm",
@@ -10,4 +8,19 @@ await build({
   banner: {
     js: "import {createRequire as oathfrontCreateRequire} from 'node:module'; const require=oathfrontCreateRequire(import.meta.url);",
   },
+};
+await build({
+  ...common,
+  entryPoints: ["apps/api/src/persistence.ts"],
+  outfile: "apps/api/dist/persistence.mjs",
+});
+await build({
+  ...common,
+  entryPoints: ["apps/api/src/server.ts"],
+  outfile: "apps/api/dist/server.mjs",
+});
+await build({
+  ...common,
+  entryPoints: ["apps/api/src/app.ts"],
+  outfile: "apps/api/dist/app.mjs",
 });

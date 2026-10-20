@@ -56,6 +56,7 @@ async function readRecord(
   principalId: string,
   matchId: string,
   lock: boolean,
+  now: Date,
 ): Promise<MatchRecord> {
   const r = await tx.query(
     `SELECT m.*,c.state,c.state_hash,c.last_event_seq,c.revision AS checkpoint_revision,(SELECT coalesce(max(step_seq),0) FROM match_action_journal j WHERE j.match_id=m.id) AS last_step_seq FROM matches m JOIN match_checkpoints c ON c.match_id=m.id WHERE m.id=$1 AND m.human_principal_id=$2 ${lock ? "FOR UPDATE OF m,c" : ""}`,
@@ -71,6 +72,8 @@ async function readRecord(
       exists.rowCount ? "MATCH_DETAILS_EXPIRED" : "NOT_FOUND",
     );
   }
+  if (row.details_expires_at && row.details_expires_at <= now)
+    throw new PersistenceError("MATCH_DETAILS_EXPIRED");
   const state = decodeCheckpoint(row.state, row.state_hash),
     revision = safeInteger(row.revision);
   if (
@@ -148,13 +151,19 @@ export function createRepository(
     ): Promise<T> {
       return transaction(pool, async (client) => {
         await lockPrincipals(client, [principalId]);
-        const record = await readRecord(client, principalId, matchId, true);
+        const record = await readRecord(
+          client,
+          principalId,
+          matchId,
+          true,
+          now(),
+        );
         return fn({ client, record }, record);
       });
     },
     async loadMatch(principalId: string, matchId: string) {
       return transaction(pool, (tx) =>
-        readRecord(tx, principalId, matchId, false),
+        readRecord(tx, principalId, matchId, false, now()),
       );
     },
     async findReceipt(principalId: string, commandId: string, tx?: PoolClient) {
@@ -177,7 +186,7 @@ export function createRepository(
     async replayMatch(principalId: string, matchId: string) {
       return transaction(pool, async (tx) => {
         await lockPrincipals(tx, [principalId]);
-        const record = await readRecord(tx, principalId, matchId, true);
+        const record = await readRecord(tx, principalId, matchId, true, now());
         return auditReplay(tx, record);
       });
     },
