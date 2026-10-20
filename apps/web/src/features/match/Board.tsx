@@ -1,4 +1,4 @@
-import type { KeyboardEvent } from "react";
+import { groupArrows } from "./keyboard";
 import type {
   PlayerAction,
   PlayerView,
@@ -8,37 +8,7 @@ import type {
 } from "@oathfront/contracts";
 import { targetFor, targetEqual } from "./intent-controller";
 import { sideLabel, unitStatuses } from "./labels";
-export function groupArrows(event: KeyboardEvent<HTMLElement>) {
-  if (event.ctrlKey || event.altKey || event.metaKey) return;
-  if (
-    ![
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowUp",
-      "ArrowDown",
-      "Home",
-      "End",
-    ].includes(event.key)
-  )
-    return;
-  const group = event.currentTarget;
-  const buttons = Array.from(
-    group.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"),
-  );
-  const index = buttons.indexOf(event.target as HTMLButtonElement);
-  if (index < 0) return;
-  const next =
-    event.key === "Home"
-      ? 0
-      : event.key === "End"
-        ? buttons.length - 1
-        : (index +
-            (["ArrowLeft", "ArrowUp"].includes(event.key) ? -1 : 1) +
-            buttons.length) %
-          buttons.length;
-  event.preventDefault();
-  buttons[next]?.focus();
-}
+export { groupArrows } from "./keyboard";
 export function targetMatches(
   legal: Target,
   target: Target,

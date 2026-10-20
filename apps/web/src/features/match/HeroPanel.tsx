@@ -7,6 +7,7 @@ export default function HeroPanel({
   catalog,
   targetable,
   onTarget,
+  onPreview,
 }: {
   hero: HeroView;
   side: Side;
@@ -14,6 +15,7 @@ export default function HeroPanel({
   catalog: PublicCatalog;
   targetable: boolean;
   onTarget: () => void;
+  onPreview: () => void;
 }) {
   return (
     <section
@@ -27,6 +29,8 @@ export default function HeroPanel({
         data-legal-target={targetable}
         disabled={!targetable}
         onClick={onTarget}
+        onPointerEnter={onPreview}
+        onFocus={onPreview}
         aria-label={`Chọn hero ${catalog.heroes.find((item) => item.id === hero.heroId)?.nameVi}, ${hero.hp} HP`}
       >
         <strong>

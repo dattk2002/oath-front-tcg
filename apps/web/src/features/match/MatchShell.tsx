@@ -8,6 +8,8 @@ export default function MatchShell({
   disabled,
   online,
   onCancel,
+  recovering,
+  onRecover,
   children,
 }: {
   snapshot: MatchSnapshot;
@@ -15,6 +17,8 @@ export default function MatchShell({
   disabled: boolean;
   online: boolean;
   onCancel: () => void;
+  recovering: boolean;
+  onRecover: () => void;
   children: ReactNode;
 }) {
   const view = snapshot.authoritativeView;
@@ -24,6 +28,8 @@ export default function MatchShell({
       className="match-screen"
       aria-label="Trận đấu"
       onKeyDown={(event) => {
+        if (event.target instanceof Element && event.target.closest("dialog"))
+          return;
         if (event.key === "Escape") {
           event.preventDefault();
           onCancel();
@@ -39,23 +45,22 @@ export default function MatchShell({
             {view.activeSide ? ` · Phe ${sideLabel[view.activeSide]}` : ""}
           </span>
         </p>
-        <button
-          disabled={
-            disabled ||
-            !view.legalActions.some(
-              (action) =>
-                action.kind ===
-                (view.lifecycle === "PAUSED" ? "RESUME" : "PAUSE"),
-            )
-          }
-          onClick={() =>
-            void controller.submitIntent({
-              kind: view.lifecycle === "PAUSED" ? "RESUME" : "PAUSE",
-            })
-          }
-        >
-          {view.lifecycle === "PAUSED" ? "Tiếp tục" : "Tạm dừng"}
-        </button>
+        {
+          <button
+            disabled={
+              disabled ||
+              view.lifecycle !== "ACTIVE" ||
+              !view.legalActions.some((action) => action.kind === "PAUSE")
+            }
+            onClick={() =>
+              void controller.submitIntent({
+                kind: "PAUSE",
+              })
+            }
+          >
+            Tạm dừng
+          </button>
+        }
       </div>
       <section className="small-fallback panel">
         <h1>Xoay ngang hoặc dùng màn hình lớn để vào trận</h1>
@@ -98,12 +103,19 @@ export default function MatchShell({
       >
         {!online
           ? "Mất kết nối. Bàn chơi được giữ; kết nối lại để tiếp tục."
-          : snapshot.pendingCommand?.status === "SENDING"
-            ? "Đang xác nhận…"
-            : (snapshot.message ??
-              (snapshot.pendingCommand?.status === "UNCERTAIN"
-                ? "Có yêu cầu chưa được xác nhận. Hãy thử lại cùng yêu cầu."
-                : ""))}
+          : recovering
+            ? "Đang kết nối lại…"
+            : snapshot.pendingCommand?.status === "SENDING"
+              ? "Đang xác nhận…"
+              : (snapshot.message ??
+                (snapshot.pendingCommand?.status === "UNCERTAIN"
+                  ? "Có yêu cầu chưa được xác nhận. Hãy thử lại cùng yêu cầu."
+                  : ""))}
+        {online && snapshot.message?.includes("Kết nối lại") && (
+          <button disabled={recovering} onClick={onRecover}>
+            Kết nối lại
+          </button>
+        )}
         {snapshot.pendingCommand?.status === "UNCERTAIN" && (
           <button
             disabled={!online}
@@ -113,24 +125,6 @@ export default function MatchShell({
           </button>
         )}
       </div>
-      {["COMPLETED", "ABANDONED", "FAULTED"].includes(view.lifecycle) && (
-        <section className="notice" role="status">
-          <h2>
-            {view.lifecycle === "FAULTED"
-              ? "Trận bị gián đoạn"
-              : view.outcome?.result === "WIN"
-                ? "Chiến thắng"
-                : view.outcome?.result === "LOSS"
-                  ? "Thất bại"
-                  : "Trận đã kết thúc"}
-          </h2>
-          <p>
-            {view.lifecycle === "FAULTED"
-              ? "Không tính thắng hoặc thua."
-              : "Kết quả đã được máy chủ ghi nhận."}
-          </p>
-        </section>
-      )}
     </section>
   );
 }

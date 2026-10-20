@@ -19,7 +19,10 @@ import Board from "./Board";
 import Hand from "./Hand";
 import PhaseControl from "./PhaseControl";
 import InspectPanel from "./InspectPanel";
-import { eventLabel } from "./labels";
+import BlockResponse from "./BlockResponse";
+import BattleLog from "./BattleLog";
+import PauseDialog from "./PauseDialog";
+import { ResultDetail } from "./ResultDialog";
 import { useLoadedMatch, useMatchStore } from "./use-match";
 import MatchShell from "./MatchShell";
 import BattleScene from "./BattleScene";
@@ -32,7 +35,16 @@ export default function MatchScreen({
   catalog: PublicCatalog;
   matchId: string;
 }) {
-  const { initial, failed, retry } = useLoadedMatch(api, matchId);
+  const { initial, failed, expired, retry } = useLoadedMatch(api, matchId);
+  if (expired)
+    return (
+      <ResultDetail
+        key={matchId}
+        matchId={matchId}
+        api={api}
+        catalog={catalog}
+      />
+    );
   if (failed)
     return (
       <section className="status-panel panel">
@@ -60,8 +72,16 @@ function MatchRuntime({
   api: ApiClient;
   catalog: PublicCatalog;
 }) {
-  const { store, snapshot, controller, disabled, online, presentation } =
-    useMatchStore(initial, api);
+  const {
+    store,
+    snapshot,
+    controller,
+    disabled,
+    online,
+    presentation,
+    recovering,
+    recover,
+  } = useMatchStore(initial, api);
   const authoritativeView = snapshot.authoritativeView;
   const [presentationView, setPresentationView] =
     useState<PlayerView>(authoritativeView);
@@ -110,6 +130,8 @@ function MatchRuntime({
       disabled={disabled}
       online={online}
       onCancel={cancel}
+      recovering={recovering}
+      onRecover={recover}
     >
       <div className="gameplay" data-battle-root>
         <BattleScene
@@ -130,31 +152,18 @@ function MatchRuntime({
             )
           }
           onTarget={() => target({ kind: "HERO", side: enemy })}
+          onPreview={() =>
+            setForecast(
+              actions.find((action) =>
+                targetEqual(targetFor(action), { kind: "HERO", side: enemy }),
+              ) ?? null,
+            )
+          }
         />
-        {view.lifecycle === "PAUSED" && (
-          <p className="notice" role="status">
-            Trận đang tạm dừng. Chọn Tiếp tục khi bạn sẵn sàng.
-          </p>
-        )}
-        {view.blockResponse?.visibility === "OWN" && (
-          <p className="notice" role="status">
-            Đã chặn đòn · Power mới miễn phí lúc này. Chọn power để dùng hoặc Để
-            dành.
-          </p>
-        )}
-        <div className="battle-layout">
-          <div className="battle-log panel">
-            <h2>Nhật ký</h2>
-            <p className="muted">Diễn biến công khai từ phiên này.</p>
-            <ol>
-              {snapshot.events.slice(-30).map((event) => (
-                <li key={event.eventId}>
-                  {event.sequence} ·{" "}
-                  {eventLabel[event.kind] ?? "Cập nhật bàn chơi"}
-                </li>
-              ))}
-            </ol>
-          </div>
+        <div
+          className={`battle-layout ${view.blockResponse?.visibility === "OWN" ? "responding" : ""}`}
+        >
+          <BattleLog snapshot={snapshot} />
           <div className="battle-center">
             <Board
               view={view}
@@ -184,29 +193,50 @@ function MatchRuntime({
                 )
               }
               onTarget={() => target({ kind: "HERO", side: view.self.side })}
+              onPreview={() =>
+                setForecast(
+                  actions.find((action) =>
+                    targetEqual(targetFor(action), {
+                      kind: "HERO",
+                      side: view.self.side,
+                    }),
+                  ) ?? null,
+                )
+              }
             />
           </div>
-          <InspectPanel
-            view={view}
-            catalog={catalog}
-            selectedId={snapshot.selection?.instanceId ?? null}
-            unit={
-              snapshot.selection
-                ? null
-                : inspected
-                  ? (view.board
-                      .flatMap((lane) => [lane.good, lane.evil])
-                      .find(
-                        (unit) => unit?.instanceId === inspected.instanceId,
-                      ) ?? null)
-                  : null
-            }
-            action={preview}
-            onCancel={cancel}
-            onConfirm={(action) => {
-              if (!disabled) void controller.submitIntent(action);
-            }}
-          />
+          {view.blockResponse?.visibility === "OWN" ? (
+            <BlockResponse
+              view={authoritativeView}
+              catalog={catalog}
+              controller={controller}
+              selectedId={snapshot.selection?.instanceId ?? null}
+              disabled={disabled}
+              online={online}
+            />
+          ) : (
+            <InspectPanel
+              view={view}
+              catalog={catalog}
+              selectedId={snapshot.selection?.instanceId ?? null}
+              unit={
+                snapshot.selection
+                  ? null
+                  : inspected
+                    ? (view.board
+                        .flatMap((lane) => [lane.good, lane.evil])
+                        .find(
+                          (unit) => unit?.instanceId === inspected.instanceId,
+                        ) ?? null)
+                    : null
+              }
+              action={preview}
+              onCancel={cancel}
+              onConfirm={(action) => {
+                if (!disabled) void controller.submitIntent(action);
+              }}
+            />
+          )}
         </div>
         {isMulligan && (
           <section className="mulligan-heading">
@@ -221,29 +251,57 @@ function MatchRuntime({
           <div className="reserve panel">
             <h2>Siêu năng lực</h2>
             {view.self.reserve.length ? (
-              view.self.reserve.map((power) => (
-                <button
-                  key={power.instanceId}
-                  aria-pressed={
-                    snapshot.selection?.instanceId === power.instanceId
-                  }
-                  onClick={() => {
-                    setInspected(null);
-                    controller.selectCard(power.instanceId);
-                  }}
-                >
-                  {
-                    catalog.powers.find((def) => def.id === power.definitionId)
-                      ?.nameVi
-                  }
-                  <span>
-                    {view.blockResponse?.visibility === "OWN" &&
-                    view.blockResponse.powerInstanceId === power.instanceId
-                      ? "Miễn phí lúc này"
-                      : "1 năng lượng"}
-                  </span>
-                </button>
-              ))
+              view.self.reserve.map((power) =>
+                view.blockResponse?.visibility === "OWN" &&
+                power.instanceId !== view.blockResponse.powerInstanceId ? (
+                  <details key={power.instanceId}>
+                    <summary>
+                      {
+                        catalog.powers.find(
+                          (def) => def.id === power.definitionId,
+                        )?.nameVi
+                      }
+                    </summary>
+                    <p>
+                      {
+                        catalog.powers.find(
+                          (def) => def.id === power.definitionId,
+                        )?.exactTextVi
+                      }
+                    </p>
+                    <p>
+                      Chỉ xem trong lúc chờ phản hồi · 1 năng lượng khi đúng
+                      pha.
+                    </p>
+                  </details>
+                ) : (
+                  <button
+                    disabled={
+                      disabled || view.blockResponse?.visibility === "OWN"
+                    }
+                    key={power.instanceId}
+                    aria-pressed={
+                      snapshot.selection?.instanceId === power.instanceId
+                    }
+                    onClick={() => {
+                      setInspected(null);
+                      controller.selectCard(power.instanceId);
+                    }}
+                  >
+                    {
+                      catalog.powers.find(
+                        (def) => def.id === power.definitionId,
+                      )?.nameVi
+                    }
+                    <span>
+                      {view.blockResponse?.visibility === "OWN" &&
+                      view.blockResponse.powerInstanceId === power.instanceId
+                        ? "Power đang chờ lựa chọn"
+                        : "1 năng lượng"}
+                    </span>
+                  </button>
+                ),
+              )
             ) : (
               <p className="muted">Chưa có power để dùng.</p>
             )}
@@ -279,7 +337,7 @@ function MatchRuntime({
                 Xác nhận đổi bài
               </button>
             </div>
-          ) : (
+          ) : view.blockResponse?.visibility === "OWN" ? null : (
             <PhaseControl
               snapshot={snapshot}
               controller={controller}
@@ -287,25 +345,17 @@ function MatchRuntime({
             />
           )}
         </div>
-        <details className="tablet-inspect">
-          <summary>Nhật ký và cách thao tác</summary>
-          <p>
-            Chọn bài, rồi chọn mục tiêu. Dùng Tab và phím mũi tên để di chuyển,
-            Enter để chọn, Esc để hủy. Kéo bài cũng dùng cùng hành động.
-          </p>
-          <ol>
-            {snapshot.events.map((event) => (
-              <li key={event.eventId}>
-                {event.sequence} ·{" "}
-                {eventLabel[event.kind] ?? "Cập nhật bàn chơi"}
-              </li>
-            ))}
-          </ol>
-        </details>
+        <BattleLog snapshot={snapshot} compact />
         <p className="art-note">
           Hình khối minh họa tạm · Chỉ số và hiệu ứng là văn bản thật.
         </p>
       </div>
+      {view.lifecycle === "PAUSED" && (
+        <PauseDialog controller={controller} disabled={disabled} />
+      )}
+      {["COMPLETED", "ABANDONED", "FAULTED"].includes(view.lifecycle) && (
+        <ResultDetail matchId={view.matchId} api={api} catalog={catalog} />
+      )}
     </MatchShell>
   );
 }

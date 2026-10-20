@@ -15,6 +15,7 @@ function checkpoint(revision = 1) {
   result.view.self.hand[0]!.instanceId = "a".repeat(32);
   result.view.legalActions = [{ kind: "PASS_PHASE" }];
   result.latestSeq = 1;
+  result.eventsThroughSeq = 1;
   for (const lane of result.view.board)
     for (const side of ["GOOD", "EVIL"] as const) {
       const unit: UnitView = {
@@ -85,6 +86,48 @@ async function prepare(page: Page, initial: CommandResponse) {
   await page.route(`**/api/v1/matches/${initial.view.matchId}`, (route) =>
     route.fulfill({ json: initial }),
   );
+  // Synthetic presentation cases supply canonical recovery DTOs as well. Real historical
+  // log and retained-summary behavior is exercised against PostgreSQL in Task11 suites.
+  await page.route(
+    `**/api/v1/matches/${initial.view.matchId}/events?**`,
+    async (route) => {
+      const through = Number(
+        new URL(route.request().url()).searchParams.get("throughSeq"),
+      );
+      const page = {
+        events: [],
+        nextCursor: through,
+        scannedThroughSeq: through,
+        hasMore: false,
+      };
+      expect(validateWire("EventPage", page)).toBe(true);
+      await route.fulfill({ json: page });
+    },
+  );
+  await page.route(
+    `**/api/v1/matches/${initial.view.matchId}/summary`,
+    async (route) => {
+      const summary = {
+        matchId: initial.view.matchId,
+        mode: initial.view.mode,
+        lifecycle: "COMPLETED",
+        humanHeroId: initial.view.players.GOOD.heroId,
+        opponentHeroId: initial.view.players.EVIL.heroId,
+        difficulty: "EASY",
+        outcome: { result: "WIN", winner: "GOOD", reason: "HERO_DEFEATED" },
+        turns: initial.view.turn,
+        activeDurationMs: 1000,
+        damageDealt: 20,
+        blocksUsed: 0,
+        createdAt: "2026-10-20T00:00:00.000Z",
+        endedAt: "2026-10-20T00:01:00.000Z",
+        resumable: false,
+        rematch: null,
+      };
+      expect(validateWire("MatchSummary", summary)).toBe(true);
+      await route.fulfill({ json: summary });
+    },
+  );
   await mkdir(evidence, { recursive: true });
   return errors;
 }
@@ -142,6 +185,7 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
       commands++;
       const next = checkpoint(++sequence);
       next.latestSeq = sequence;
+      next.eventsThroughSeq = sequence;
       const power: VisibleEvent = {
         eventId: `${initial.view.matchId}:${sequence}`,
         rootId: `${initial.view.matchId}:1`,

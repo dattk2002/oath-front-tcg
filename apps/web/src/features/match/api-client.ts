@@ -44,6 +44,8 @@ export function createApiClient(
       request("/matches", "CommandResponse", body),
     match: (id: string) =>
       request(`/matches/${encodeURIComponent(id)}`, "CommandResponse"),
+    summary: (id: string) =>
+      request(`/matches/${encodeURIComponent(id)}/summary`, "MatchSummary"),
     command: (id: string, envelope: CommandEnvelope) =>
       request(
         `/matches/${encodeURIComponent(id)}/commands`,

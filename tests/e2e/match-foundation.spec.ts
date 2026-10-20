@@ -183,10 +183,14 @@ for (const faction of ["GOOD", "EVIL"] as const) {
       expect(rows.map((row) => row.kind)).toEqual(
         expect.arrayContaining(["MULLIGAN", "PLAY_UNIT", "PASS_PHASE"]),
       );
-      expect(
-        (await owner.query("SELECT revision FROM matches WHERE id=$1", [id]))
-          .rows[0]?.revision,
-      ).toBe(String(snapshot.revision));
+      // The live ADVANCE pump may commit after the GET and before this SQL read.
+      const stored = await owner.query(
+        "SELECT revision FROM matches WHERE id=$1",
+        [id],
+      );
+      expect(Number(stored.rows[0]?.revision)).toBeGreaterThanOrEqual(
+        snapshot.revision,
+      );
     } finally {
       await owner.end();
     }

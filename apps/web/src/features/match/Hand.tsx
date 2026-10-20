@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
-import { validateBrowserWire } from "@oathfront/contracts/browser";
+import { crossedDragThreshold, dropTarget } from "./drag";
 import type { IntentController } from "./intent-controller";
-import { groupArrows } from "./Board";
+import { groupArrows } from "./keyboard";
 export default function Hand({
   view,
   catalog,
@@ -43,7 +43,7 @@ export default function Hand({
           )!;
           const playable = view.legalActions.some(
             (action) =>
-              action.kind === "PLAY_UNIT" &&
+              "cardInstanceId" in action &&
               action.cardInstanceId === card.instanceId,
           );
           const selected = mulligan
@@ -54,7 +54,10 @@ export default function Hand({
               key={card.instanceId}
               className={`hand-card ${def.faction.toLowerCase()}`}
               data-card-id={card.instanceId}
-              data-playable-unit={playable && !disabled && !mulligan}
+              data-playable={playable && !disabled && !mulligan}
+              data-playable-unit={
+                def.type === "UNIT" && playable && !disabled && !mulligan
+              }
               aria-pressed={selected}
               aria-label={`${def.nameVi}, ${def.cost} năng lượng, ${def.type === "UNIT" ? "Nhân vật" : "Phép"}${mulligan ? (selected ? ", sẽ đổi" : ", giữ lại") : playable ? ", có thể chơi" : ", xem chi tiết"}`}
               onClick={() => {
@@ -80,10 +83,7 @@ export default function Hand({
                 if (!current || current.id !== card.instanceId) return;
                 if (
                   !current.active &&
-                  Math.hypot(
-                    event.clientX - current.x,
-                    event.clientY - current.y,
-                  ) >= 6
+                  crossedDragThreshold(current, event.clientX, event.clientY)
                 ) {
                   current.active = true;
                   controller.selectCard(current.id);
@@ -94,17 +94,10 @@ export default function Hand({
                 drag.current = null;
                 if (!current?.active) return;
                 suppressClick.current = true;
-                const element = document
-                  .elementFromPoint(event.clientX, event.clientY)
-                  ?.closest<HTMLElement>(
-                    '[data-target][data-legal-target="true"]',
-                  );
-                if (element?.dataset.target) {
-                  const target: unknown = JSON.parse(element.dataset.target);
-                  if (validateBrowserWire("Target", target)) {
-                    void controller.selectTarget(target);
-                    return;
-                  }
+                const target = dropTarget(event.clientX, event.clientY);
+                if (target && !disabled) {
+                  void controller.selectTarget(target);
+                  return;
                 }
                 controller.cancelSelection();
               }}

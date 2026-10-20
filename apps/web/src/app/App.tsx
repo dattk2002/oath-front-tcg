@@ -7,6 +7,7 @@ import type { PublicCatalog, SessionResponse } from "@oathfront/contracts";
 import { createApiClient } from "../features/match/api-client";
 import { ApiError } from "../features/match/api-error";
 import PresetSetup from "../features/setup/PresetSetup";
+import { ResultDetail } from "../features/match/ResultDialog";
 import { startGuestSession } from "./session";
 import { Brand, routes } from "./router";
 const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
@@ -21,7 +22,7 @@ export default function App({
   screen = "home",
   matchId,
 }: {
-  screen?: "home" | "setup" | "match";
+  screen?: "home" | "setup" | "match" | "result";
   matchId?: string;
 }) {
   const router = useRouter();
@@ -136,7 +137,14 @@ export default function App({
             <p role="status">Đang tải dữ liệu trò chơi…</p>
           </section>
         ) : screen === "match" && matchId && catalog && session ? (
-          <MatchScreen api={api} catalog={catalog} matchId={matchId} />
+          <MatchScreen key={matchId} api={api} catalog={catalog} matchId={matchId} />
+        ) : screen === "result" && matchId && catalog && session ? (
+          <ResultDetail
+            key={matchId}
+            api={api}
+            catalog={catalog}
+            matchId={matchId}
+          />
         ) : screen === "setup" && catalog && session ? (
           <PresetSetup
             catalog={catalog}
