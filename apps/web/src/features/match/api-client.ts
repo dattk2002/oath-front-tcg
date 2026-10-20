@@ -6,11 +6,19 @@ import type {
   WireDefinitions,
   SaveDeckRequest,
   UpdateDeckRequest,
+  SessionResponse,
+  AuthExchangeRequest,
+  ClaimGuestRequest,
 } from "@oathfront/contracts";
 import { ApiError } from "./api-error";
 export function createApiClient(
-  options: { csrfToken?: string; fetcher?: typeof fetch } = {},
+  options: {
+    csrfToken?: string;
+    fetcher?: typeof fetch;
+    onUnauthorized?: () => void;
+  } = {},
 ) {
+  let csrfToken = options.csrfToken;
   const fetcher = options.fetcher ?? fetch;
   async function request<K extends keyof WireDefinitions>(
     path: string,
@@ -24,14 +32,21 @@ export function createApiClient(
       cache: "no-store",
       headers: {
         ...(body === undefined ? {} : { "Content-Type": "application/json" }),
-        ...(options.csrfToken ? { "X-CSRF-Token": options.csrfToken } : {}),
+        ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}),
       },
       ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
-    const data: unknown = await result.json();
+    const data: unknown = result.status === 204 ? {} : await result.json();
     if (!result.ok) {
-      if (validateBrowserWire("ErrorResponse", data))
+      if (validateBrowserWire("ErrorResponse", data)) {
+        if (
+          data.error.code === "SESSION_EXPIRED" &&
+          !path.startsWith("/auth/") &&
+          path !== "/session"
+        )
+          options.onUnauthorized?.();
         throw new ApiError(result.status, data);
+      }
       throw new Error("INVALID_SERVER_RESPONSE");
     }
     if (!validateBrowserWire(definition, data))
@@ -39,6 +54,19 @@ export function createApiClient(
     return data;
   }
   return {
+    bindSession: (session: Pick<SessionResponse, "csrfToken"> | null) => {
+      csrfToken = session?.csrfToken;
+    },
+    exchange: (body: AuthExchangeRequest) =>
+      request("/auth/exchange", "SessionResponse", body),
+    claim: (body: ClaimGuestRequest) =>
+      request("/auth/claim-guest", "SessionResponse", body),
+    logout: () => request("/auth/logout", "EmptyBody", {}),
+    history: (cursor?: string) =>
+      request(
+        `/matches?limit=20${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`,
+        "MatchList",
+      ),
     session: () => request("/session", "SessionResponse"),
     guest: (body: GuestRequest) => request("/guest", "SessionResponse", body),
     catalog: () => request("/catalog/core_v1", "PublicCatalog"),

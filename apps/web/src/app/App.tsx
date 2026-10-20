@@ -8,6 +8,15 @@ import { createApiClient } from "../features/match/api-client";
 import { ApiError } from "../features/match/api-error";
 import DeckScreen from "../features/deck/DeckScreen";
 import { ResultDetail } from "../features/match/ResultDialog";
+import AuthPanel from "../features/auth/AuthPanel";
+import HistoryScreen from "../features/history/HistoryScreen";
+import {
+  SessionRecoveryContext,
+  PrivateStorageContext,
+  privateStorage,
+  moveClaimDrafts,
+} from "../features/auth/private-storage";
+import { readRememberedSession, rememberSession } from "./session";
 import { startGuestSession } from "./session";
 import { Brand, routes } from "./router";
 const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
@@ -27,7 +36,14 @@ export default function App({
   reviewMatchId,
 }: {
   screen?:
-    "home" | "setup" | "match" | "result" | "decks" | "builder" | "review";
+    | "history"
+    | "home"
+    | "setup"
+    | "match"
+    | "result"
+    | "decks"
+    | "builder"
+    | "review";
   heroId?: string;
   deckId?: string;
   presetId?: string;
@@ -41,10 +57,40 @@ export default function App({
     [busy, setBusy] = useState(false),
     [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
-  const api = useMemo(
-    () => createApiClient(session ? { csrfToken: session.csrfToken } : {}),
-    [session],
+  const [storageWarning, setStorageWarning] = useState("");
+  const [storageOwner, setStorageOwner] = useState<string | null>(null);
+  const [expired, setExpired] = useState(false),
+    [ownerEpoch, setOwnerEpoch] = useState(0);
+  const [api] = useState(() =>
+    createApiClient({ onUnauthorized: () => setExpired(true) }),
   );
+  const storage = useMemo(
+    () =>
+      typeof window !== "undefined" && session
+        ? privateStorage(sessionStorage, storageOwner ?? session.principal.id)
+        : null,
+    [session?.principal.id, storageOwner],
+  );
+  function adoptSession(next: SessionResponse, sourceId?: string) {
+    let nextStorageOwner = next.principal.id;
+    if (sourceId && sourceId !== next.principal.id) {
+      try {
+        moveClaimDrafts(sessionStorage, sourceId, next.principal.id);
+      } catch {
+        nextStorageOwner = sourceId;
+        setStorageWarning(
+          "Đã lưu tài khoản; bản nháp chỉ được giữ trên trang này vì bộ nhớ thiết bị bị lỗi. Không tải lại trang.",
+        );
+      }
+    }
+    if (session && session.principal.id !== next.principal.id && !sourceId)
+      setOwnerEpoch((v) => v + 1);
+    setStorageOwner(nextStorageOwner);
+    api.bindSession(next);
+    rememberSession(sessionStorage, next);
+    setSession(next);
+    setExpired(false);
+  }
   useEffect(() => {
     let active = true;
     const client = createApiClient();
@@ -69,12 +115,20 @@ export default function App({
           }
         }
         if (!active) return;
-        if (auth.status === "fulfilled") setSession(auth.value);
+        if (auth.status === "fulfilled") adoptSession(auth.value);
         else if (
           !(auth.reason instanceof ApiError) ||
           auth.reason.body.error.code !== "SESSION_EXPIRED"
         )
           setError("Không kết nối được phiên chơi. Hãy thử lại.");
+        else {
+          const remembered = readRememberedSession(sessionStorage);
+          if (remembered) {
+            setSession(remembered);
+            api.bindSession(remembered);
+            setExpired(true);
+          }
+        }
         if (currentCatalog) setCatalog(currentCatalog);
         else setError("Không tải được dữ liệu bài. Hãy thử lại.");
         setLoading(false);
@@ -90,7 +144,7 @@ export default function App({
     setError(null);
     try {
       const current = session ?? (await startGuestSession(api, sessionStorage));
-      setSession(current);
+      adoptSession(current);
       router.push(
         current.activeMatchId
           ? routes.match(current.activeMatchId)
@@ -120,93 +174,126 @@ export default function App({
               Tiếp tục trận
             </Link>
           )}
+          {session && <Link href="/history">Lịch sử</Link>}
           <span className="session-label">
-            {session ? "Phiên khách" : "Chơi không cần tài khoản"}
+            {session?.principal.kind === "ACCOUNT"
+              ? "Tài khoản"
+              : session
+                ? "Phiên khách"
+                : "Chơi không cần tài khoản"}
           </span>
         </nav>
       </header>
-      <main id="main">
-        {error ? (
-          <section className="status-panel panel" role="alert">
-            <h1>Chưa thể kết nối</h1>
-            <p>{error}</p>
-            <button
-              onClick={() => {
-                setError(null);
-                setLoading(true);
-                setAttempt((value) => value + 1);
-              }}
-            >
-              Thử lại
-            </button>
-          </section>
-        ) : loading ? (
-          <section className="status-panel panel" aria-busy="true">
-            <h1>OathFront · Ngũ Lộ</h1>
-            <p role="status">Đang tải dữ liệu trò chơi…</p>
-          </section>
-        ) : screen === "match" && matchId && catalog && session ? (
-          <MatchScreen
-            key={matchId}
-            api={api}
-            catalog={catalog}
-            matchId={matchId}
-          />
-        ) : screen === "result" && matchId && catalog && session ? (
-          <ResultDetail
-            key={matchId}
-            api={api}
-            catalog={catalog}
-            matchId={matchId}
-          />
-        ) : ["setup", "decks", "builder", "review"].includes(screen) &&
-          catalog &&
-          session ? (
-          <DeckScreen
-            screen={screen as "setup" | "decks" | "builder" | "review"}
-            catalog={catalog}
-            api={api}
-            {...(heroId ? { heroId } : {})}
-            {...(deckId ? { deckId } : {})}
-            {...(presetId ? { presetId } : {})}
-            {...(reviewMatchId ? { reviewMatchId } : {})}
-          />
-        ) : (
-          <section className="home panel">
-            <div className="home-copy">
-              <p className="eyebrow">Trận chiến của năm con đường</p>
-              <h1>Mỗi lộ là một lời thề.</h1>
-              <p>
-                Dẫn dắt phe Thiện hoặc phe Ác. Dựng đội hình, giữ năng lượng và
-                chọn thời điểm thay đổi cục diện.
-              </p>
-              <button
-                className="primary"
-                disabled={busy || !catalog}
-                onClick={() => void start()}
-              >
-                {busy
-                  ? "Đang kết nối…"
-                  : session?.activeMatchId
-                    ? "Tiếp tục trận"
-                    : "Chơi với bot"}
-              </button>
-              <p className="muted">
-                Sáu hero · Sáu bộ bài mẫu · Bot Dễ và Thường
-              </p>
-            </div>
-            <div className="home-board" aria-hidden="true">
-              {[1, 2, 3, 4, 5].map((lane) => (
-                <div key={lane}>
-                  <span>{lane}</span>
-                  <i className="silhouette" />
+      <AuthPanel
+        api={api}
+        session={session}
+        catalog={catalog}
+        expired={expired}
+        ready={!loading}
+        onSession={adoptSession}
+        onLogout={() => {
+          api.bindSession(null);
+          setSession(null);
+          setExpired(false);
+          setOwnerEpoch((v) => v + 1);
+          router.push("/");
+        }}
+      />
+      <SessionRecoveryContext.Provider value={expired}>
+        <PrivateStorageContext.Provider value={storage}>
+          {storageWarning && (
+            <p className="notice" role="alert">
+              {storageWarning}
+            </p>
+          )}
+          <main id="main" key={ownerEpoch}>
+            {error ? (
+              <section className="status-panel panel" role="alert">
+                <h1>Chưa thể kết nối</h1>
+                <p>{error}</p>
+                <button
+                  onClick={() => {
+                    setError(null);
+                    setLoading(true);
+                    setAttempt((value) => value + 1);
+                  }}
+                >
+                  Thử lại
+                </button>
+              </section>
+            ) : loading ? (
+              <section className="status-panel panel" aria-busy="true">
+                <h1>OathFront · Ngũ Lộ</h1>
+                <p role="status">Đang tải dữ liệu trò chơi…</p>
+              </section>
+            ) : screen === "history" && catalog && session ? (
+              <HistoryScreen api={api} catalog={catalog} />
+            ) : screen === "match" && matchId && catalog && session ? (
+              <MatchScreen
+                key={matchId}
+                api={api}
+                catalog={catalog}
+                matchId={matchId}
+              />
+            ) : screen === "result" && matchId && catalog && session ? (
+              <ResultDetail
+                key={matchId}
+                api={api}
+                catalog={catalog}
+                matchId={matchId}
+              />
+            ) : ["setup", "decks", "builder", "review"].includes(screen) &&
+              catalog &&
+              session ? (
+              <DeckScreen
+                screen={screen as "setup" | "decks" | "builder" | "review"}
+                catalog={catalog}
+                api={api}
+                {...(heroId ? { heroId } : {})}
+                {...(deckId ? { deckId } : {})}
+                {...(presetId ? { presetId } : {})}
+                {...(reviewMatchId ? { reviewMatchId } : {})}
+              />
+            ) : (
+              <section className="home panel">
+                <div className="home-copy">
+                  <p className="eyebrow">Trận chiến của năm con đường</p>
+                  <h1>Mỗi lộ là một lời thề.</h1>
+                  <p>
+                    Dẫn dắt phe Thiện hoặc phe Ác. Dựng đội hình, giữ năng lượng
+                    và chọn thời điểm thay đổi cục diện.
+                  </p>
+                  <button
+                    className="primary"
+                    disabled={busy || !catalog}
+                    onClick={() => void start()}
+                  >
+                    {busy
+                      ? "Đang kết nối…"
+                      : session?.activeMatchId
+                        ? "Tiếp tục trận"
+                        : "Chơi với bot"}
+                  </button>
+                  <p className="muted">
+                    Sáu hero · Sáu bộ bài mẫu · Bot Dễ và Thường
+                  </p>
                 </div>
-              ))}
-            </div>
-            <p className="art-note">Minh họa tạm thời · Giao diện nền tảng</p>
-          </section>
-        )}
-      </main>
+                <div className="home-board" aria-hidden="true">
+                  {[1, 2, 3, 4, 5].map((lane) => (
+                    <div key={lane}>
+                      <span>{lane}</span>
+                      <i className="silhouette" />
+                    </div>
+                  ))}
+                </div>
+                <p className="art-note">
+                  Minh họa tạm thời · Giao diện nền tảng
+                </p>
+              </section>
+            )}
+          </main>
+        </PrivateStorageContext.Provider>
+      </SessionRecoveryContext.Provider>
       <footer className="site-footer">
         OathFront · Ngũ Lộ
         <span>Luật và chỉ số luôn hiển thị bằng văn bản.</span>

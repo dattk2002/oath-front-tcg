@@ -1,3 +1,4 @@
+import { usePrivateStorage } from "../auth/private-storage";
 import { useState } from "react";
 import type {
   CommandResponse,
@@ -38,10 +39,11 @@ export default function PresetSetup({
   onCreated: (response: CommandResponse) => void;
   onResume: (id: string) => void;
 }) {
+  const storage = usePrivateStorage();
   const [restored] = useState(() =>
-    selectedSource || typeof sessionStorage === "undefined"
+    selectedSource || typeof storage === "undefined"
       ? null
-      : restorePresetCreate(catalog.presets, sessionStorage, catalog.version),
+      : restorePresetCreate(catalog.presets, storage, catalog.version),
   );
   const original = initialRequest ?? restored?.request;
   const [pending, setPending] = useState<CreateMatchRequest | null>(
@@ -88,15 +90,16 @@ export default function PresetSetup({
       expectedContentVersion: catalog.version,
     };
     setPending(body);
+    let durable = true;
     try {
-      sessionStorage.setItem("oathfront.create", JSON.stringify(body));
+      storage.setItem("oathfront.create", JSON.stringify(body));
     } catch {
-      setMessage("Không lưu được yêu cầu; giữ trang này để thử lại.");
+      durable = false;
     }
     try {
       const response = await api.createMatch(body);
       try {
-        sessionStorage.removeItem("oathfront.create");
+        storage.removeItem("oathfront.create");
       } catch {
         /* Confirmed or rejected receipt; memory still tracks the request. */
       }
@@ -108,7 +111,7 @@ export default function PresetSetup({
       ) {
         setConflict(error.body.error.details.matchId);
         try {
-          sessionStorage.removeItem("oathfront.create");
+          storage.removeItem("oathfront.create");
         } catch {
           /* Confirmed or rejected receipt; memory still tracks the request. */
         }
@@ -116,11 +119,12 @@ export default function PresetSetup({
         setMessage("Bạn có một trận đang diễn ra. Tiếp tục trận đó trước.");
       } else if (
         error instanceof ApiError &&
+        error.status !== 401 &&
         error.status < 500 &&
         !error.body.error.retryable
       ) {
         try {
-          sessionStorage.removeItem("oathfront.create");
+          storage.removeItem("oathfront.create");
         } catch {
           /* Confirmed or rejected receipt; memory still tracks the request. */
         }
@@ -131,7 +135,7 @@ export default function PresetSetup({
         );
       } else
         setMessage(
-          "Chưa xác định kết quả tạo trận. Thử lại sẽ dùng cùng yêu cầu.",
+          `Chưa xác định kết quả tạo trận. Khôi phục phiên nếu đã hết hạn, rồi thử lại cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
         );
     } finally {
       setBusy(false);

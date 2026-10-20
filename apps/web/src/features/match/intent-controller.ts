@@ -90,6 +90,14 @@ export function createIntentController(
         pending(null);
         store.setSelection(null);
         store.setMessage("Bàn chơi đã thay đổi. Hãy chọn lại hành động.");
+      } else if (
+        error instanceof ApiError &&
+        error.body.error.code === "SESSION_EXPIRED"
+      ) {
+        pending(envelope, "UNCERTAIN");
+        store.setMessage(
+          "Phiên đã hết hạn. Khôi phục phiên ở đầu trang, rồi thử lại cùng yêu cầu.",
+        );
       } else if (!(error instanceof ApiError) || error.status >= 500) {
         pending(envelope, "UNCERTAIN");
         store.setMessage(

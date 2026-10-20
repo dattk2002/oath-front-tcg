@@ -1,3 +1,5 @@
+import { usePrivateStorage } from "../auth/private-storage";
+import SessionRecovery from "../auth/SessionRecovery";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -63,6 +65,7 @@ export default function ResultDialog({
   catalog: PublicCatalog;
   api: ApiClient;
 }) {
+  const storage = usePrivateStorage();
   const router = useRouter(),
     dialog = useRef<HTMLDialogElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
@@ -78,7 +81,7 @@ export default function ResultDialog({
     alive.current = true;
     const close = openDialog(dialog.current!, heading.current);
     try {
-      const data: unknown = JSON.parse(sessionStorage.getItem(key) ?? "null");
+      const data: unknown = JSON.parse(storage.getItem(key) ?? "null");
       if (
         validateBrowserWire("CreateMatchRequest", data) &&
         data.mode === "SKIRMISH" &&
@@ -115,7 +118,7 @@ export default function ResultDialog({
     pending.current = request;
     let durable = true;
     try {
-      sessionStorage.setItem(key, JSON.stringify(request));
+      storage.setItem(key, JSON.stringify(request));
     } catch {
       durable = false;
       setMessage(
@@ -125,7 +128,7 @@ export default function ResultDialog({
     try {
       const response = await api.createMatch(request);
       try {
-        sessionStorage.removeItem(key);
+        storage.removeItem(key);
       } catch {
         /* Receipt is already confirmed. */
       }
@@ -146,7 +149,7 @@ export default function ResultDialog({
         setReview(true);
         pending.current = null;
         try {
-          sessionStorage.removeItem(key);
+          storage.removeItem(key);
         } catch {
           /* Ignore unavailable storage. */
         }
@@ -170,6 +173,7 @@ export default function ResultDialog({
         {copy.heading}
       </h2>
       <p>{copy.body}</p>
+      <SessionRecovery />
       <p>
         {catalog.heroes.find((hero) => hero.id === summary.humanHeroId)?.nameVi}
       </p>

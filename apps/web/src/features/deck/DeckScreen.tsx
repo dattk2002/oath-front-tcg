@@ -1,3 +1,4 @@
+import { usePrivateStorage } from "../auth/private-storage";
 import { useEffect, useState } from "react";
 import type {
   CreateMatchRequest,
@@ -33,11 +34,12 @@ export default function DeckScreen({
   catalog: PublicCatalog;
   api: ApiClient;
 }) {
+  const storage = usePrivateStorage();
   const router = useRouter();
   const [restored, setRestored] = useState(() =>
-    typeof sessionStorage === "undefined"
+    typeof storage === "undefined"
       ? null
-      : restorePresetCreate(catalog.presets, sessionStorage, catalog.version),
+      : restorePresetCreate(catalog.presets, storage, catalog.version),
   );
   const [restoredHero, setRestoredHero] = useState<HeroId | null>(
     restored?.heroId ?? null,

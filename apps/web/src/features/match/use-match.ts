@@ -1,3 +1,4 @@
+import { usePrivateStorage } from "../auth/private-storage";
 import {
   useEffect,
   useMemo,
@@ -52,6 +53,7 @@ export function useLoadedMatch(api: ApiClient, matchId: string) {
   };
 }
 export function useMatchStore(initial: CommandResponse, api: ApiClient) {
+  const storage = usePrivateStorage();
   const presentation = useRef<PresentationController | null>(null);
   const [store] = useState(() => createMatchViewStore(initial));
   const snapshot = useSyncExternalStore(
@@ -76,11 +78,11 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
         send: (envelope) => api.command(initial.view.matchId, envelope),
         persistPending: (envelope) => {
           const key = `oathfront.command.${initial.view.matchId}`;
-          if (envelope) sessionStorage.setItem(key, JSON.stringify(envelope));
-          else sessionStorage.removeItem(key);
+          if (envelope) storage.setItem(key, JSON.stringify(envelope));
+          else storage.removeItem(key);
         },
       }),
-    [store, api, initial.view.matchId],
+    [store, api, initial.view.matchId, storage],
   );
   useEffect(() => {
     const media = window.matchMedia(
@@ -95,9 +97,7 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     window.addEventListener("offline", connectivity);
     const key = `oathfront.command.${initial.view.matchId}`;
     try {
-      const pending: unknown = JSON.parse(
-        sessionStorage.getItem(key) ?? "null",
-      );
+      const pending: unknown = JSON.parse(storage.getItem(key) ?? "null");
       if (validateBrowserWire("CommandEnvelope", pending))
         store.setPending({ envelope: pending, status: "UNCERTAIN" });
     } catch {
@@ -108,7 +108,7 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
       window.removeEventListener("online", connectivity);
       window.removeEventListener("offline", connectivity);
     };
-  }, [initial.view.matchId, store]);
+  }, [initial.view.matchId, store, storage]);
   useEffect(() => {
     let active = true,
       inFlight = false;

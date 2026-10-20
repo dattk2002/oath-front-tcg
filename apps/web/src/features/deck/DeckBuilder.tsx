@@ -1,3 +1,4 @@
+import { usePrivateStorage } from "../auth/private-storage";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -74,6 +75,7 @@ export default function DeckBuilder({
   review?: { matchId: string; config: RematchConfig };
   onContinue: (deck: DeckDTO) => void;
 }) {
+  const storage = usePrivateStorage();
   const router = useRouter(),
     root = useRef<HTMLElement>(null),
     lock = useRef(false),
@@ -112,7 +114,7 @@ export default function DeckBuilder({
   useEffect(() => {
     try {
       const restored = readDraft(
-        sessionStorage,
+        storage,
         initial,
         saved ?? null,
         review?.matchId,
@@ -141,7 +143,7 @@ export default function DeckBuilder({
     if (!ready) return;
     try {
       storedLocation.current = writeDraft(
-        sessionStorage,
+        storage,
         { deck, base: base ?? null, pending: pending.current },
         storedLocation.current,
         review?.matchId,
@@ -247,8 +249,8 @@ export default function DeckBuilder({
       const location =
         storedLocation.current ??
         draftLocation(deck.heroId, base ?? null, review?.matchId);
-      sessionStorage.removeItem(location.key);
-      sessionStorage.removeItem(location.pointer);
+      storage.removeItem(location.key);
+      storage.removeItem(location.pointer);
     } catch {
       /* Confirmed save. */
     }
@@ -263,7 +265,7 @@ export default function DeckBuilder({
     setStale(null);
     try {
       storedLocation.current = writeDraft(
-        sessionStorage,
+        storage,
         { deck: clean, base: result, pending: null },
         storedLocation.current,
         review?.matchId,
@@ -299,15 +301,16 @@ export default function DeckBuilder({
           : { commandId: crypto.randomUUID(), deck },
     };
     pending.current = p;
+    let durable = true;
     try {
       storedLocation.current = writeDraft(
-        sessionStorage,
+        storage,
         { deck, base: base ?? null, pending: p },
         storedLocation.current,
         review?.matchId,
       );
     } catch {
-      setMessage("Không lưu được yêu cầu cục bộ. Giữ trang này để thử lại.");
+      durable = false;
     }
     try {
       const result =
@@ -327,6 +330,7 @@ export default function DeckBuilder({
         pending.current = null;
       } else if (
         error instanceof ApiError &&
+        error.status !== 401 &&
         error.status < 500 &&
         !error.body.error.retryable
       ) {
@@ -336,11 +340,11 @@ export default function DeckBuilder({
         );
       } else
         setMessage(
-          "Chưa xác định kết quả lưu. Thử lại sẽ gửi cùng yêu cầu; bản nháp vẫn được giữ.",
+          `Chưa xác định kết quả lưu. Khôi phục phiên nếu đã hết hạn, rồi thử lại cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
         );
       try {
         storedLocation.current = writeDraft(
-          sessionStorage,
+          storage,
           { deck, base: base ?? null, pending: pending.current },
           storedLocation.current,
           review?.matchId,
@@ -383,7 +387,7 @@ export default function DeckBuilder({
     createPending.current = body;
     let durable = true;
     try {
-      sessionStorage.setItem(
+      storage.setItem(
         `oathfront.review-create.${review.matchId}`,
         JSON.stringify(body),
       );
@@ -394,7 +398,7 @@ export default function DeckBuilder({
       const result = await api.createMatch(body);
       clearLocal();
       try {
-        sessionStorage.removeItem(`oathfront.review-create.${review.matchId}`);
+        storage.removeItem(`oathfront.review-create.${review.matchId}`);
       } catch {
         /* Confirmed. */
       }
@@ -405,7 +409,11 @@ export default function DeckBuilder({
         error.body.error.code === "ACTIVE_MATCH_EXISTS"
       )
         setConflict(error.body.error.details.matchId);
-      else if (error instanceof ApiError && error.status < 500) {
+      else if (
+        error instanceof ApiError &&
+        error.status !== 401 &&
+        error.status < 500
+      ) {
         createPending.current = null;
         setMessage(
           "Yêu cầu không được chấp nhận. Hãy kiểm tra lại nguồn bộ bài.",
@@ -423,8 +431,7 @@ export default function DeckBuilder({
     if (!review) return;
     try {
       const body: unknown = JSON.parse(
-        sessionStorage.getItem(`oathfront.review-create.${review.matchId}`) ??
-          "null",
+        storage.getItem(`oathfront.review-create.${review.matchId}`) ?? "null",
       );
       if (
         validateBrowserWire("CreateMatchRequest", body) &&

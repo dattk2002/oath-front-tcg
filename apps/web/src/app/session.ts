@@ -16,6 +16,8 @@ export async function startGuestSession(
     )
       throw error;
   }
+  if (readRememberedSession(storage)?.principal.kind === "ACCOUNT")
+    throw new Error("ACCOUNT_LOGIN_REQUIRED");
   let body: GuestRequest | undefined;
   try {
     const saved: unknown = JSON.parse(storage.getItem(guestKey) ?? "null");
@@ -41,4 +43,27 @@ export async function startGuestSession(
   const session = await api.guest(body);
   storage.removeItem(guestKey);
   return session;
+}
+
+const sessionKey = "oathfront.session";
+export function readRememberedSession(
+  storage: Storage,
+): SessionResponse | null {
+  try {
+    const value: unknown = JSON.parse(storage.getItem(sessionKey) ?? "null");
+    return validateBrowserWire("SessionResponse", value) ? value : null;
+  } catch {
+    return null;
+  }
+}
+export function rememberSession(
+  storage: Storage,
+  session: SessionResponse | null,
+) {
+  try {
+    if (session) storage.setItem(sessionKey, JSON.stringify(session));
+    else storage.removeItem(sessionKey);
+  } catch {
+    /* Session binding remains in memory. */
+  }
 }

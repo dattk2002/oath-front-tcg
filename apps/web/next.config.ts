@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
   output: "standalone",
+  // Separate lock/cache for a user-driven dev server alongside test dev servers.
+  distDir:
+    process.env.OATHFRONT_INTERACTIVE === "1" ? ".next-interactive" : ".next",
+  // OAuth callbacks can contain one-time verifiers; never log raw request URLs.
+  logging: false,
   experimental: { extensionAlias: { ".js": [".ts", ".tsx", ".js"] } },
   transpilePackages: [
     "@oathfront/contracts",
