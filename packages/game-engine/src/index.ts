@@ -14,3 +14,5 @@ export type {
   RandomResult,
 } from "./rng.js";
 export { applyMulligan } from "./mulligan.js";
+
+export { applyAction, getLegalActions } from "./actions.js";
