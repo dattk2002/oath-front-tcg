@@ -1,0 +1,78 @@
+[WebServer] (node:2216642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2216658) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2216674) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2216709) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:2216721) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/performance.spec.ts:48:1 › measured full hand mass effect workload and twenty scene lifecycles (3.5m)
+
+
+  1) tests/e2e/performance.spec.ts:48:1 › measured full hand mass effect workload and twenty scene lifecycles
+
+    Error: p95 frame ms
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 20
+    Received:    21.4
+
+      303 |       expect
+      304 |         .soft(Number(run.p95.toFixed(1)), "p95 frame ms")
+    > 305 |         .toBeLessThanOrEqual(20);
+          |          ^
+      306 |       expect
+      307 |         .soft(Number(run.p99.toFixed(1)), "p99 frame ms")
+      308 |         .toBeLessThanOrEqual(33.3);
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/performance.spec.ts:305:10
+
+    Error: p95 frame ms
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 20
+    Received:    21.7
+
+      303 |       expect
+      304 |         .soft(Number(run.p95.toFixed(1)), "p95 frame ms")
+    > 305 |         .toBeLessThanOrEqual(20);
+          |          ^
+      306 |       expect
+      307 |         .soft(Number(run.p99.toFixed(1)), "p99 frame ms")
+      308 |         .toBeLessThanOrEqual(33.3);
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/performance.spec.ts:305:10
+
+    Error: p95 frame ms
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 20
+    Received:    22.5
+
+      303 |       expect
+      304 |         .soft(Number(run.p95.toFixed(1)), "p95 frame ms")
+    > 305 |         .toBeLessThanOrEqual(20);
+          |          ^
+      306 |       expect
+      307 |         .soft(Number(run.p99.toFixed(1)), "p99 frame ms")
+      308 |         .toBeLessThanOrEqual(33.3);
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/performance.spec.ts:305:10
+
+    Error Context: test-results/performance-measured-full--d0435-and-twenty-scene-lifecycles/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/performance-measured-full--d0435-and-twenty-scene-lifecycles/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/performance-measured-full--d0435-and-twenty-scene-lifecycles/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/performance.spec.ts:48:1 › measured full hand mass effect workload and twenty scene lifecycles

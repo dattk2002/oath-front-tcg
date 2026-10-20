@@ -1,0 +1,46 @@
+[WebServer] (node:2107746) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2108000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2108017) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2108192) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2108255) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2108272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:2108499) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/performance.spec.ts:11:1 › repeated hover owns bounded GSAP resources and restores styles (728ms)
+
+
+  1) tests/e2e/performance.spec.ts:11:1 › repeated hover owns bounded GSAP resources and restores styles
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 2
+    Received:    200
+
+       9 |  await page.goto('/__quality');await page.addScriptTag({content:result.outputFiles[0]!.text});
+      10 | }
+    > 11 | test('repeated hover owns bounded GSAP resources and restores styles',async({page})=>{await harness(page);const result=await page.evaluate(()=>window.qualityHarness.hover());expect(result.retained).toBeLessThanOrEqual(2);expect(result.restored).toBe(true);});
+         |                                                                                                                                                                                                       ^
+      12 |
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/performance.spec.ts:11:199
+
+    Error Context: test-results/performance-repeated-hover-1ad4b-sources-and-restores-styles/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/performance-repeated-hover-1ad4b-sources-and-restores-styles/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/performance-repeated-hover-1ad4b-sources-and-restores-styles/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/performance.spec.ts:11:1 › repeated hover owns bounded GSAP resources and restores styles

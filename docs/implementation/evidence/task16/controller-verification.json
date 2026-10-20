@@ -1,0 +1,20 @@
+{
+  "source": 27,
+  "artifact": 72,
+  "evidence": 54,
+  "axeViolations": {
+    "axe-battle.json": 0,
+    "axe-settings.json": 0,
+    "axe-zoom.json": 0
+  },
+  "buildId": "ZipcVWCZHw8l3sc-rmia3",
+  "buildIdMatches": true,
+  "errors": [],
+  "visualSpotCheck": {
+    "files": [
+      "battle-1024-640.png",
+      "tutorial-G07-1024.png"
+    ],
+    "observation": "At1024x640 the retained screenshots show bothheroHP, five lanes, critical actions and ten-card hand/G07 block controls within viewport. This is a retained screenshot review, not a new browser or physical-device test."
+  }
+}
