@@ -1,0 +1,866 @@
+[
+  {
+    "id": "H_G_BV",
+    "kind": "hero",
+    "artKey": "heroes/h_g_bv/portrait.webp",
+    "fallbackLabel": "An Nhiên",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Asset type: OathFront fantasy card game hero master H_G_BV An Nhiên, Người Giữ Mầm. Original hand-painted polished 2D adventure fantasy, charming expressive adult guardian, rounded strong silhouette, ivory wood-and-glass armor, jade turquoise cloth, new green leaves and bright brass, seed-lantern staff and small round shield. Full figure with readable face and feet, three-quarter view facing slightly right, centered with safe margins. Soft warm painterly rim light, textured brushwork, rich restrained colors. Floating garden kingdom visual world; no real cultural/religious symbols. Truly transparent background, no scenery, no ground rectangle. Entire figure unobscured. No text, letters, numbers, logos, card frame, rules, UI or watermark. This master will be cropped to a portrait and bust plus used as an alpha cutout."
+  },
+  {
+    "id": "H_G_BP",
+    "kind": "hero",
+    "artKey": "heroes/h_g_bp/portrait.webp",
+    "fallbackLabel": "Lam Vệ",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset H_G_BP, Lam Vệ. Subject: Lam Vệ, calm strong male crystal guardian, broad rounded ivory wooden armor and turquoise glass shield, short silver hair. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "H_G_VP",
+    "kind": "hero",
+    "artKey": "heroes/h_g_vp/portrait.webp",
+    "fallbackLabel": "Mộc Dao",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset H_G_VP, Mộc Dao. Subject: Mộc Dao, nimble adult woman light-weaver, flowing jade cloth, leaf hair ornaments and floating glass weaving ribbons. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "H_E_FX",
+    "kind": "hero",
+    "artKey": "heroes/h_e_fx/portrait.webp",
+    "fallbackLabel": "Hắc Luyện",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset H_E_FX, Hắc Luyện. Subject: Hắc Luyện, imposing adult ash-lord with angular furnace armor, old brass bell hammer, charcoal-purple cloak and glowing ember mask. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "H_E_FS",
+    "kind": "hero",
+    "artKey": "heroes/h_e_fs/portrait.webp",
+    "fallbackLabel": "Dạ Vũ",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset H_E_FS, Dạ Vũ. Subject: Dạ Vũ, agile adult night-duelist woman, angular dark cloak, twin curved blades reflecting ember light, copper mask over eyes. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "H_E_XS",
+    "kind": "hero",
+    "artKey": "heroes/h_e_xs/portrait.webp",
+    "fallbackLabel": "Mặc Ảnh",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset H_E_XS, Mặc Ảnh. Subject: Mặc Ảnh, mysterious adult ink-seal keeper, angular layered purple robes, copper ink vessel and long brush staff, expressive half mask. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "GC01",
+    "kind": "card",
+    "artKey": "cards/gc01.webp",
+    "fallbackLabel": "Người Gác Đèn",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. OathFront original hand-painted 2D fantasy unit master GC01 Người Gác Đèn (Lantern Watcher). Charming humble guardian carrying a round luminous seed lantern on a brass crook, ivory padded cloth, jade scarf, rounded wooden pauldrons, green leaf details, practical boots. Full body, feet intact, centered three-quarter stance, strong readable silhouette at 64px, 12 percent safe margins. Ivory/jade/new-leaf/bright-brass GOOD palette, warm painterly rim lighting, textured brush strokes, polished adventure fantasy, no gore. Truly transparent background, no scene or ground rectangle. No writing, numbers, logos, UI, card frame or watermark. Asset must support card illustration and separate board alpha cutout."
+  },
+  {
+    "id": "GC02",
+    "kind": "card",
+    "artKey": "cards/gc02.webp",
+    "fallbackLabel": "Kỵ Sĩ Lá",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset GC02, Kỵ Sĩ Lá. Subject: leaf knight with rounded ivory wooden shield and leaf-shaped lance, green cloth and brass shoulder plates. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "GC03",
+    "kind": "card",
+    "artKey": "cards/gc03.webp",
+    "fallbackLabel": "Sứ Giả Sớm",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset GC03, Sứ Giả Sớm. Subject: cheerful early messenger with rolled map, bright seed-lantern satchel and jade travelling cloak. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "GC04",
+    "kind": "card",
+    "artKey": "cards/gc04.webp",
+    "fallbackLabel": "Chuông Vườn",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset GC04, Chuông Vườn. Subject: garden bell keeper, stout animated round brass garden bell with gentle face and sturdy wooden legs. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "GC05",
+    "kind": "card",
+    "artKey": "cards/gc05.webp",
+    "fallbackLabel": "Tia Đèn",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset GC05, Tia Đèn. Subject: a concentrated golden lantern ray crossing jade mist, radiant seed at its source. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "GC06",
+    "kind": "card",
+    "artKey": "cards/gc06.webp",
+    "fallbackLabel": "Chuẩn Bị Hành Trang",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset GC06, Chuẩn Bị Hành Trang. Subject: a neatly open adventurer satchel with rope, seed lantern, folded ivory cloth and small brass compass. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B01",
+    "kind": "card",
+    "artKey": "cards/b01.webp",
+    "fallbackLabel": "Mầm Khiên",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B01, Mầm Khiên. Subject: tiny brave seedling guardian carrying a large rounded leaf shield, wooden body and ivory sprouts. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B02",
+    "kind": "card",
+    "artKey": "cards/b02.webp",
+    "fallbackLabel": "Gác Cổng Gỗ",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B02, Gác Cổng Gỗ. Subject: stout wooden gate guard with massive rounded plank shield and brass hinge armor. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B03",
+    "kind": "card",
+    "artKey": "cards/b03.webp",
+    "fallbackLabel": "Thợ Khiên Đồng",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B03, Thợ Khiên Đồng. Subject: friendly brass shield smith with round copper shield, wooden mallet and ivory apron. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B04",
+    "kind": "card",
+    "artKey": "cards/b04.webp",
+    "fallbackLabel": "Hộ Vệ Chuông",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B04, Hộ Vệ Chuông. Subject: bell bodyguard with round pauldrons, jade robe and a bell-headed staff. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B05",
+    "kind": "card",
+    "artKey": "cards/b05.webp",
+    "fallbackLabel": "Người Giữ Thành",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B05, Người Giữ Thành. Subject: veteran citadel keeper, broad rounded ivory wooden tower shield with glass inset, brass plate armor. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B06",
+    "kind": "card",
+    "artKey": "cards/b06.webp",
+    "fallbackLabel": "Dựng Lá Chắn",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B06, Dựng Lá Chắn. Subject: a magical curved wall of overlapping translucent jade leaves and ivory wooden ribs. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B07",
+    "kind": "card",
+    "artKey": "cards/b07.webp",
+    "fallbackLabel": "Gia Cố",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B07, Gia Cố. Subject: brass rivets magically sealing a round wooden shield with jade light. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "B08",
+    "kind": "card",
+    "artKey": "cards/b08.webp",
+    "fallbackLabel": "Đẩy Lui",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset B08, Đẩy Lui. Subject: a powerful rounded glass shield pushing a wave of dust backwards. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V01",
+    "kind": "card",
+    "artKey": "cards/v01.webp",
+    "fallbackLabel": "Người Trồng Mầm",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V01, Người Trồng Mầm. Subject: young adult seed planter in jade gardening cloak, ivory seed bowl and wooden spade. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V02",
+    "kind": "card",
+    "artKey": "cards/v02.webp",
+    "fallbackLabel": "Hươu Rêu",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V02, Hươu Rêu. Subject: gentle moss deer, rounded antlers growing tender leaves, turquoise moss pelt, tiny brass seed lanterns. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V03",
+    "kind": "card",
+    "artKey": "cards/v03.webp",
+    "fallbackLabel": "Người Hái Sương",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V03, Người Hái Sương. Subject: dew harvester with translucent glass jars and leaf umbrella, jade cloth, pearl droplets. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V04",
+    "kind": "card",
+    "artKey": "cards/v04.webp",
+    "fallbackLabel": "Cây Mang Đèn",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V04, Cây Mang Đèn. Subject: walking lantern tree, expressive old wooden face, curved branch arms and glowing round seed lanterns. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V05",
+    "kind": "card",
+    "artKey": "cards/v05.webp",
+    "fallbackLabel": "Linh Thú Cổ Thụ",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V05, Linh Thú Cổ Thụ. Subject: great ancient-tree spirit beast, sturdy quadruped, bark armor, luminous jade leaf mane, ivory tusks. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V06",
+    "kind": "card",
+    "artKey": "cards/v06.webp",
+    "fallbackLabel": "Vươn Chồi",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V06, Vươn Chồi. Subject: a curling fresh seedling bursting through warm earth, jade leaves and soft golden light. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V07",
+    "kind": "card",
+    "artKey": "cards/v07.webp",
+    "fallbackLabel": "Mạch Suối",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V07, Mạch Suối. Subject: a luminous spring vein weaving through rounded roots and glowing jade stones. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "V08",
+    "kind": "card",
+    "artKey": "cards/v08.webp",
+    "fallbackLabel": "Ươm Đèn",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset V08, Ươm Đèn. Subject: a seed nursery of three softly glowing tiny lantern buds in a cupped ivory planter. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P01",
+    "kind": "card",
+    "artKey": "cards/p01.webp",
+    "fallbackLabel": "Chim Gương",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P01, Chim Gương. Subject: small mirror bird, rounded ivory body, turquoise glass wings and brass filigree feathers. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P02",
+    "kind": "card",
+    "artKey": "cards/p02.webp",
+    "fallbackLabel": "Người Soi Đường",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P02, Người Soi Đường. Subject: path finder with a large round glass prism lantern, ivory travelling coat and jade sash. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P03",
+    "kind": "card",
+    "artKey": "cards/p03.webp",
+    "fallbackLabel": "Kỵ Sĩ Pha Lê",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P03, Kỵ Sĩ Pha Lê. Subject: crystal knight in rounded ivory glass plate armor with turquoise crystalline lance and round shield. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P04",
+    "kind": "card",
+    "artKey": "cards/p04.webp",
+    "fallbackLabel": "Người Giữ Nhịp",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P04, Người Giữ Nhịp. Subject: rhythm keeper, poised adult musician with round brass chime instrument, jade layered robes. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P05",
+    "kind": "card",
+    "artKey": "cards/p05.webp",
+    "fallbackLabel": "Long Kính",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P05, Long Kính. Subject: elegant small glass dragon, curling rounded silhouette, turquoise translucent scales and ivory horns. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P06",
+    "kind": "card",
+    "artKey": "cards/p06.webp",
+    "fallbackLabel": "Đổi Lối",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P06, Đổi Lối. Subject: two branching luminous paths bending through a floating round mirror portal. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P07",
+    "kind": "card",
+    "artKey": "cards/p07.webp",
+    "fallbackLabel": "Khóa Gương",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P07, Khóa Gương. Subject: a floating round glass mirror sealed by a luminous brass geometric clasp, turquoise frost sparks. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P08",
+    "kind": "card",
+    "artKey": "cards/p08.webp",
+    "fallbackLabel": "Mảnh Sáng",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P08, Mảnh Sáng. Subject: a fan of glowing turquoise glass shards reflecting golden dawn light. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "EC01",
+    "kind": "card",
+    "artKey": "cards/ec01.webp",
+    "fallbackLabel": "Lính Tro",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. OathFront original hand-painted 2D fantasy unit master EC01 (ember court scout). Small wiry masked ash-court sentry, angular hood and cloak, old brass lantern furnace glowing ember orange held low, hooked short spear, charcoal-purple armor and burnt orange cloth, worn copper trim. Full body, feet intact, centered three-quarter stance, strong readable angular silhouette at 64px, 12 percent safe margins. Expressive playful adventure fantasy opponent, not horror, no gore. Painterly textured brushwork and soft warm rim light matching collectible fantasy game illustrations. Truly transparent background, no scene or ground rectangle. No writing, numbers, logos, UI, card frame or watermark. Asset must support card illustration and board alpha cutout."
+  },
+  {
+    "id": "EC02",
+    "kind": "card",
+    "artKey": "cards/ec02.webp",
+    "fallbackLabel": "Gác Lò",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset EC02, Gác Lò. Subject: stocky furnace sentry with angular old copper tower shield, charcoal armor and orange furnace visor. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "EC03",
+    "kind": "card",
+    "artKey": "cards/ec03.webp",
+    "fallbackLabel": "Người Chuyển Than",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset EC03, Người Chuyển Than. Subject: coal carrier with angular soot cloak, heavy basket of glowing embers, old brass tongs. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "EC04",
+    "kind": "card",
+    "artKey": "cards/ec04.webp",
+    "fallbackLabel": "Kẻ Gõ Chuông Tàn",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset EC04, Kẻ Gõ Chuông Tàn. Subject: ash bell ringer, angular hooded masked figure carrying a battered copper bell on a hooked staff. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "EC05",
+    "kind": "card",
+    "artKey": "cards/ec05.webp",
+    "fallbackLabel": "Mũi Than",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset EC05, Mũi Than. Subject: a pointed burning coal dart trailing orange sparks through charcoal-purple smoke. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "EC06",
+    "kind": "card",
+    "artKey": "cards/ec06.webp",
+    "fallbackLabel": "Thu Thập Tin Đêm",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset EC06, Thu Thập Tin Đêm. Subject: a secret night-message bundle of folded blank papers, dark raven feather and old brass spyglass. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F01",
+    "kind": "card",
+    "artKey": "cards/f01.webp",
+    "fallbackLabel": "Bọ Than",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F01, Bọ Than. Subject: armored coal beetle, angular charcoal shell with orange ember cracks and brass mandibles. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F02",
+    "kind": "card",
+    "artKey": "cards/f02.webp",
+    "fallbackLabel": "Thợ Rèn Nóng",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F02, Thợ Rèn Nóng. Subject: hot forge smith, muscular masked adult, angular soot apron, glowing tongs and copper forging hammer. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F03",
+    "kind": "card",
+    "artKey": "cards/f03.webp",
+    "fallbackLabel": "Kỵ Sĩ Tro",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F03, Kỵ Sĩ Tro. Subject: ash knight, angular charcoal armor, ember-orange lance, torn purple cloak, old brass visor. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F04",
+    "kind": "card",
+    "artKey": "cards/f04.webp",
+    "fallbackLabel": "Thú Lò",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F04, Thú Lò. Subject: furnace beast, squat quadruped made of angular old iron plates, orange furnace belly, copper teeth. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F05",
+    "kind": "card",
+    "artKey": "cards/f05.webp",
+    "fallbackLabel": "Khổng Lồ Dung Tro",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F05, Khổng Lồ Dung Tro. Subject: giant molten-ash golem, massive angular coal limbs, copper furnace chest, orange ember fissures. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F06",
+    "kind": "card",
+    "artKey": "cards/f06.webp",
+    "fallbackLabel": "Ném Than",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F06, Ném Than. Subject: an arc of three thrown burning coals scattering fiery sparks in smoky air. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F07",
+    "kind": "card",
+    "artKey": "cards/f07.webp",
+    "fallbackLabel": "Mài Nóng",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F07, Mài Nóng. Subject: an angular blade being honed against a glowing old forge stone, ember sparks. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "F08",
+    "kind": "card",
+    "artKey": "cards/f08.webp",
+    "fallbackLabel": "Sóng Tàn",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset F08, Sóng Tàn. Subject: a low rolling wave of ember sparks and swirling charcoal ash. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X01",
+    "kind": "card",
+    "artKey": "cards/x01.webp",
+    "fallbackLabel": "Bọ Mực",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X01, Bọ Mực. Subject: ink beetle with angular obsidian-purple carapace, copper antennae and violet ink droplets. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X02",
+    "kind": "card",
+    "artKey": "cards/x02.webp",
+    "fallbackLabel": "Người Viết Ấn",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X02, Người Viết Ấn. Subject: ink seal writer in angular purple robes, copper mask, enormous brush and hanging blank seal strips. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X03",
+    "kind": "card",
+    "artKey": "cards/x03.webp",
+    "fallbackLabel": "Kẻ Đeo Bình",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X03, Kẻ Đeo Bình. Subject: masked bottle bearer carrying two angular smoky purple glass vessels on a copper yoke. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X04",
+    "kind": "card",
+    "artKey": "cards/x04.webp",
+    "fallbackLabel": "Người Gặt Tro",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X04, Người Gặt Tro. Subject: ash reaper with long hooked harvest blade, angular purple cloak, old brass mask, no gore. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X05",
+    "kind": "card",
+    "artKey": "cards/x05.webp",
+    "fallbackLabel": "Quan Giữ Mực",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X05, Quan Giữ Mực. Subject: court ink official with imposing angular purple mantle, copper ink basin and long brush staff. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X06",
+    "kind": "card",
+    "artKey": "cards/x06.webp",
+    "fallbackLabel": "Vết Mực",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X06, Vết Mực. Subject: an expressive curling splash of violet-black magic ink over a copper seal disc without writing. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X07",
+    "kind": "card",
+    "artKey": "cards/x07.webp",
+    "fallbackLabel": "Lời Nguyền Nhẹ",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X07, Lời Nguyền Nhẹ. Subject: three angular copper knots suspended in purple smoky curse wisps, no letters or symbols resembling text. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "X08",
+    "kind": "card",
+    "artKey": "cards/x08.webp",
+    "fallbackLabel": "Hút Hơi Ấm",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset X08, Hút Hơi Ấm. Subject: warm amber motes drawn from a fading coal into an angular purple glass vessel. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S01",
+    "kind": "card",
+    "artKey": "cards/s01.webp",
+    "fallbackLabel": "Quạ Đêm",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S01, Quạ Đêm. Subject: night crow, angular charcoal-purple feathers, copper beak ornament and ember eyes, wings lifted. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S02",
+    "kind": "card",
+    "artKey": "cards/s02.webp",
+    "fallbackLabel": "Người Mang Áo Mờ",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S02, Người Mang Áo Mờ. Subject: mist-cloak bearer, angular layered purple cloak, copper half mask, silhouette dissolving into soft smoke. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S03",
+    "kind": "card",
+    "artKey": "cards/s03.webp",
+    "fallbackLabel": "Kẻ Rẽ Bóng",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S03, Kẻ Rẽ Bóng. Subject: shadow divider, agile masked duelist with angular charcoal-purple cloak and two thin copper blades. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S04",
+    "kind": "card",
+    "artKey": "cards/s04.webp",
+    "fallbackLabel": "Canh Gác Không Tên",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S04, Canh Gác Không Tên. Subject: nameless watch guard, tall angular masked silhouette, old copper halberd and charcoal-purple armor. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S05",
+    "kind": "card",
+    "artKey": "cards/s05.webp",
+    "fallbackLabel": "Dạ Điểu",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S05, Dạ Điểu. Subject: great night bird, angular owl-like purple-black wings, copper facial mask and restrained ember plumage. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S06",
+    "kind": "card",
+    "artKey": "cards/s06.webp",
+    "fallbackLabel": "Đường Hầm Khói",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S06, Đường Hầm Khói. Subject: an arcing tunnel of charcoal-purple smoke with a distant warm amber exit. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S07",
+    "kind": "card",
+    "artKey": "cards/s07.webp",
+    "fallbackLabel": "Lạc Bước",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S07, Lạc Bước. Subject: two sets of smoky footprints diverging around an angular copper lantern, mysterious purple mist. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S08",
+    "kind": "card",
+    "artKey": "cards/s08.webp",
+    "fallbackLabel": "Màn Che",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S08, Màn Che. Subject: a flowing angular veil of purple cloth shielding a copper lantern from sparks. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Distinct dynamic magical still-life scene, clear focal composition, no UI or card frame. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_B1",
+    "kind": "power",
+    "artKey": "powers/p_b1.webp",
+    "fallbackLabel": "Tấm Chắn Ban Mai",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_B1, Tấm Chắn Ban Mai. Subject: dawn shield, rounded ivory wooden shield with a brilliant golden sun reflected in turquoise glass. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_B2",
+    "kind": "power",
+    "artKey": "powers/p_b2.webp",
+    "fallbackLabel": "Vá Giáp",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_B2, Vá Giáp. Subject: mending armor, glowing brass rivets binding cracked ivory wood into a rounded breastplate. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_V1",
+    "kind": "power",
+    "artKey": "powers/p_v1.webp",
+    "fallbackLabel": "Mầm Kiên Cường",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_V1, Mầm Kiên Cường. Subject: a resilient jade seedling growing through a round ivory stone and golden seed light. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_V2",
+    "kind": "power",
+    "artKey": "powers/p_v2.webp",
+    "fallbackLabel": "Nhịp Thở Rừng",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_V2, Nhịp Thở Rừng. Subject: forest breath, soft jade leaf spiral encircling a glowing seed-lantern heart. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_P1",
+    "kind": "power",
+    "artKey": "powers/p_p1.webp",
+    "fallbackLabel": "Bước Qua Gương",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_P1, Bước Qua Gương. Subject: a luminous ivory boot stepping through a round turquoise glass mirror portal. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_P2",
+    "kind": "power",
+    "artKey": "powers/p_p2.webp",
+    "fallbackLabel": "Chớp Lặng",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_P2, Chớp Lặng. Subject: a silent turquoise lightning flash held within a round floating crystal lens. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_F1",
+    "kind": "power",
+    "artKey": "powers/p_f1.webp",
+    "fallbackLabel": "Tàn Lửa",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_F1, Tàn Lửa. Subject: a single vivid ember bursting from an angular charcoal coal with old copper sparks. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_F2",
+    "kind": "power",
+    "artKey": "powers/p_f2.webp",
+    "fallbackLabel": "Hun Lưỡi",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_F2, Hun Lưỡi. Subject: an angular blade glowing orange as it emerges from an old brass furnace. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_X1",
+    "kind": "power",
+    "artKey": "powers/p_x1.webp",
+    "fallbackLabel": "Chấm Mực Độc",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_X1, Chấm Mực Độc. Subject: a purple poisonous ink drop suspended over an angular copper brush tip. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_X2",
+    "kind": "power",
+    "artKey": "powers/p_x2.webp",
+    "fallbackLabel": "Thu Hồi Sinh Khí",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_X2, Thu Hồi Sinh Khí. Subject: warm amber life motes spiraling into an old copper vessel wrapped in purple ink ribbons. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_S1",
+    "kind": "power",
+    "artKey": "powers/p_s1.webp",
+    "fallbackLabel": "Lối Đi Sai",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_S1, Lối Đi Sai. Subject: a misleading path splitting into angular charcoal-purple smoky doorways. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "P_S2",
+    "kind": "power",
+    "artKey": "powers/p_s2.webp",
+    "fallbackLabel": "Áo Đêm",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset P_S2, Áo Đêm. Subject: a dramatic angular night cloak encircling an old brass lantern with ember light. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S_G_BV",
+    "kind": "power",
+    "artKey": "powers/s_g_bv.webp",
+    "fallbackLabel": "Lời Thề Nảy Mầm",
+    "transparent": false,
+    "signature": true,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S_G_BV, Lời Thề Nảy Mầm. Subject: signature oath of sprouting, round glass shield crowned by a radiant jade leaf tree and seed lantern heart. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S_G_BP",
+    "kind": "power",
+    "artKey": "powers/s_g_bp.webp",
+    "fallbackLabel": "Phán Quyết Pha Lê",
+    "transparent": false,
+    "signature": true,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S_G_BP, Phán Quyết Pha Lê. Subject: signature crystal judgment, majestic round ivory glass crest radiating turquoise crystal rays. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S_G_VP",
+    "kind": "power",
+    "artKey": "powers/s_g_vp.webp",
+    "fallbackLabel": "Đường Mòn Ánh Sáng",
+    "transparent": false,
+    "signature": true,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S_G_VP, Đường Mòn Ánh Sáng. Subject: signature light trail, jade ribbons and golden light weaving a luminous bridge through round glass hoops. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S_E_FX",
+    "kind": "power",
+    "artKey": "powers/s_e_fx.webp",
+    "fallbackLabel": "Tiếng Chuông Lò Cổ",
+    "transparent": false,
+    "signature": true,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S_E_FX, Tiếng Chuông Lò Cổ. Subject: signature ancient furnace bell, massive angular old copper bell glowing orange from within amid ash sparks. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S_E_FS",
+    "kind": "power",
+    "artKey": "powers/s_e_fs.webp",
+    "fallbackLabel": "Vệt Đao Chạng Vạng",
+    "transparent": false,
+    "signature": true,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S_E_FS, Vệt Đao Chạng Vạng. Subject: signature twilight blade, two angular copper blades drawing a blazing orange arc through purple smoke. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "S_E_XS",
+    "kind": "power",
+    "artKey": "powers/s_e_xs.webp",
+    "fallbackLabel": "Màn Sương Niêm Ấn",
+    "transparent": false,
+    "signature": true,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset S_E_XS, Màn Sương Niêm Ấn. Subject: signature sealed mist, angular copper seal vessel surrounded by purple ink and amber motes, no written glyphs. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Centered distinct symbolic magical still-life composition, large clear focal motif, smoky understated painterly backdrop with safe margins. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "TK_G_SEED",
+    "kind": "token",
+    "artKey": "cards/tk_g_seed.webp",
+    "fallbackLabel": "Mầm Đèn",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset TK_G_SEED, Mầm Đèn. Subject: tiny friendly seed lantern creature, round luminous seed body with two jade leaf arms and root feet. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "TK_G_LANTERN",
+    "kind": "token",
+    "artKey": "cards/tk_g_lantern.webp",
+    "fallbackLabel": "Đèn Gác",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset TK_G_LANTERN, Đèn Gác. Subject: small round brass-and-ivory guard lantern automaton with stubby wooden feet, jade glass shield and gentle glow. GOOD rounded silhouettes, ivory wood/glass, jade turquoise cloth, new leaves and bright brass. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "TK_E_CINDER",
+    "kind": "token",
+    "artKey": "cards/tk_e_cinder.webp",
+    "fallbackLabel": "Tàn Quỷ",
+    "transparent": true,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset TK_E_CINDER, Tàn Quỷ. Subject: small mischievous cinder imp, angular charcoal body with ember-orange cracks, old copper mask and short claw feet. EVIL angular readable silhouettes, charcoal-purple, ember orange, old copper/brass, fictional masks and furnace motifs. Full body/creature with intact feet, centered three-quarter stance, distinctive readable silhouette at 64px, at least 10 percent clear safe margins. Truly transparent background, no scenery or floor rectangle. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "ancient_forest",
+    "kind": "terrain",
+    "artKey": "locations/ancient_forest.webp",
+    "fallbackLabel": "Rừng Cổ Đăng",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Asset type: OathFront terrain master ancient_forest, Rừng Cổ Đăng. Original hand-painted polished 2D adventure fantasy landscape, ancient enormous curling trees growing on floating garden islands, tiny seed lanterns nestled in the roots, turquoise moss and jade foliage, ivory distant clouds, restrained bright-brass warm lantern glow. Wide horizontal layered scene, low horizon, legible central landmark, quiet dark values near edges, usable as a narrow terrain strip and cropped square icon. Textured brushwork, softly luminous atmospheric lighting, rounded organic shapes. No characters, no writing, letters, numbers, logos, rules, UI, card border or watermark. Opaque landscape background."
+  },
+  {
+    "id": "volcano",
+    "kind": "terrain",
+    "artKey": "locations/volcano.webp",
+    "fallbackLabel": "Miệng Lò Tro",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset volcano, Miệng Lò Tro. Subject: an ancient angular charcoal furnace crater on a floating ash island, restrained orange lava glow and old copper chimneys. Atmospheric restrained jade turquoise, ivory stone, old brass and charcoal blue. Wide layered landscape composition, central landmark and quiet dark edges, readable as narrow horizontal terrain strip and square icon. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "storm_peak",
+    "kind": "terrain",
+    "artKey": "locations/storm_peak.webp",
+    "fallbackLabel": "Đỉnh Ngân Lôi",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset storm_peak, Đỉnh Ngân Lôi. Subject: a lofty silver thunder peak on a floating island, turquoise lightning between ivory stone spires and dark blue clouds. Atmospheric restrained jade turquoise, ivory stone, old brass and charcoal blue. Wide layered landscape composition, central landmark and quiet dark edges, readable as narrow horizontal terrain strip and square icon. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "frozen_lake",
+    "kind": "terrain",
+    "artKey": "locations/frozen_lake.webp",
+    "fallbackLabel": "Hồ Kính Lạnh",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset frozen_lake, Hồ Kính Lạnh. Subject: a quiet turquoise frozen glass lake on a floating garden island, ivory frosted trees and crystalline reflections. Atmospheric restrained jade turquoise, ivory stone, old brass and charcoal blue. Wide layered landscape composition, central landmark and quiet dark edges, readable as narrow horizontal terrain strip and square icon. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "desert",
+    "kind": "terrain",
+    "artKey": "locations/desert.webp",
+    "fallbackLabel": "Cồn Cát Chuông",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset desert, Cồn Cát Chuông. Subject: golden floating dunes dotted with old brass wind bells and worn ivory stone arches under a muted blue sky. Atmospheric restrained jade turquoise, ivory stone, old brass and charcoal blue. Wide layered landscape composition, central landmark and quiet dark edges, readable as narrow horizontal terrain strip and square icon. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "healing_spring",
+    "kind": "terrain",
+    "artKey": "locations/healing_spring.webp",
+    "fallbackLabel": "Suối Chồi Non",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset healing_spring, Suối Chồi Non. Subject: a luminous jade spring weaving among soft rounded roots on a floating garden island, tiny fresh glowing leaf buds. Atmospheric restrained jade turquoise, ivory stone, old brass and charcoal blue. Wide layered landscape composition, central landmark and quiet dark edges, readable as narrow horizontal terrain strip and square icon. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "ruined_arena",
+    "kind": "terrain",
+    "artKey": "locations/ruined_arena.webp",
+    "fallbackLabel": "Đấu Trường Vỡ",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset ruined_arena, Đấu Trường Vỡ. Subject: a broken circular ivory stone arena on a floating island, fallen old brass bell towers and quiet jade moss. Atmospheric restrained jade turquoise, ivory stone, old brass and charcoal blue. Wide layered landscape composition, central landmark and quiet dark edges, readable as narrow horizontal terrain strip and square icon. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "quiet_meadow",
+    "kind": "terrain",
+    "artKey": "locations/quiet_meadow.webp",
+    "fallbackLabel": "Đồng Cỏ Yên",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. Asset quiet_meadow, Đồng Cỏ Yên. Subject: a peaceful floating green meadow with rounded ivory stones, tender grasses, small seed lanterns and distant garden islands. Atmospheric restrained jade turquoise, ivory stone, old brass and charcoal blue. Wide layered landscape composition, central landmark and quiet dark edges, readable as narrow horizontal terrain strip and square icon. No text, writing, letters, numerals, rules, logos, UI, card frame or watermark."
+  },
+  {
+    "id": "board",
+    "kind": "board",
+    "artKey": "board/scene.webp",
+    "fallbackLabel": "Ngũ Lộ",
+    "transparent": false,
+    "signature": false,
+    "prompt": "Use case: stylized-concept. Original OathFront hand-painted polished 2D adventure fantasy illustration. Textured painterly brushwork, softly luminous warm rim lighting, coherent wood/glass/brass materials, expressive charming characters, no gore. a quiet atmospheric wide panorama between the floating jade garden kingdom and distant charcoal-purple ash city, subtle ivory clouds, deep blue foreground with low contrast, no central focal object; used beneath a five-lane game board. Wide landscape, softly luminous restrained colors. No writing, logos, UI, rules, frame, characters or watermark."
+  }
+]
