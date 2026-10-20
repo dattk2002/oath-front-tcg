@@ -1,0 +1,85 @@
+{
+  "faction": "EVIL",
+  "revision": 5,
+  "phase": "EVIL_TRICKS",
+  "expectedUnauthenticatedSessionResponses": 2,
+  "unexpectedConsoleErrors": [],
+  "network": [
+    {
+      "path": "/api/v1/session",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/guest",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/decks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/ca93d1e8-eafe-4731-acb1-1dc9ae303b03",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/ca93d1e8-eafe-4731-acb1-1dc9ae303b03/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/ca93d1e8-eafe-4731-acb1-1dc9ae303b03/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/ca93d1e8-eafe-4731-acb1-1dc9ae303b03/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/ca93d1e8-eafe-4731-acb1-1dc9ae303b03/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/ca93d1e8-eafe-4731-acb1-1dc9ae303b03",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/ca93d1e8-eafe-4731-acb1-1dc9ae303b03/commands",
+      "status": 200
+    }
+  ]
+}

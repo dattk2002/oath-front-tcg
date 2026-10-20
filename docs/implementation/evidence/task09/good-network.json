@@ -1,0 +1,101 @@
+{
+  "faction": "GOOD",
+  "revision": 9,
+  "phase": "EVIL_TRICKS",
+  "expectedUnauthenticatedSessionResponses": 2,
+  "unexpectedConsoleErrors": [],
+  "network": [
+    {
+      "path": "/api/v1/session",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/guest",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/decks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/2a10a8cc-4562-49c0-89f9-e6408af3f9a8",
+      "status": 200
+    }
+  ]
+}

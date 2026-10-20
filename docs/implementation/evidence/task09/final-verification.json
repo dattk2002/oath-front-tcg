@@ -1,0 +1,46 @@
+{
+  "productionBuild": "PASS: API_ORIGIN=http://127.0.0.1:3101 pnpm build, settled source after22:04:22 focused gate",
+  "productionE2E": {
+    "command": "env -u NO_COLOR OATHFRONT_E2E_PRODUCTION=1 pnpm exec playwright test tests/e2e/match-foundation.spec.ts",
+    "passed": 4,
+    "seconds": 15.3,
+    "goodSeconds": 6.5,
+    "evilSeconds": 3.8,
+    "proxySeconds": 0.046,
+    "pendingCreateIncludingDeckFailureSeconds": 1.7,
+    "unsafeEvalForbiddenInBothFactionDocuments": true
+  },
+  "visualReview": [
+    "good-desktop.png",
+    "good-tablet.png",
+    "good-mobile.png",
+    "evil-desktop.png",
+    "evil-tablet.png",
+    "evil-mobile.png"
+  ],
+  "source": {
+    "checked": 143,
+    "mismatches": [],
+    "manifestSha256": "06a6d457fdc45bfebf1fa5d302a5642fe15f38b61c5e8556e2f88651a26d7397",
+    "supplementary": {
+      "tests/e2e/match-foundation.spec.ts": "cbaebeafc7dee7fda07d7146d2177f55671a3efa9529b587d7c055aa3cc5057c",
+      "playwright.config.ts": "ddd7ce25d30854b9a776b712da36f65e5829287eec5b54ce989d8b1dccb889fb",
+      "apps/api/tests/browser-server.mjs": "db83532eb185dbbb812868d9e3543c67e6dd557a0c69931e24f28faa47178f3d",
+      "apps/api/dist/app.mjs": "0360b8bc330ff775363cf20114dffaa5822205123c0122104719875751c690c4",
+      "apps/web/.next/standalone/apps/web/server.js": "be24816d5a0de0e63f913c9515dc7058a23cc7d5538b37b1c4ec648e074814ea"
+    }
+  },
+  "artifactSha256": {
+    "build-inputs.sha256": "06a6d457fdc45bfebf1fa5d302a5642fe15f38b61c5e8556e2f88651a26d7397",
+    "bundle-and-source.json": "884bc05be0b83b87d92955b6255aa0d14481c1357eda513762e76cc99495a02f",
+    "evil-desktop.png": "e44f6c8aeac56c77595422335011ae481f415af76744d8c50fca1f3f6f9c8743",
+    "evil-mobile.png": "eed8e091d612242f523423b7563f857ec4751b2837680bef0dab4f4cd84291bd",
+    "evil-network.json": "c072a0016e8d3d4f0a70641860517b6c919e0db53e8cfdcd9ee45d04a7f4460b",
+    "evil-tablet.png": "e62a9a59dc6b9e7d2c2e0f55e44e00ccbebab040466d6b9d8603c19480ac58a9",
+    "good-desktop.png": "cb1f42fb00fc7ebb52d12820c2b22f3b382f6bce6d9eb34fb346890e2b7e664b",
+    "good-mobile.png": "2fc8e639618fe014feb9bde2bc6799066b25e8b46b1a7902ed167a682574f450",
+    "good-network.json": "94e7ad4cf2588fd41f604aff74cfe1249afdec289ee0d2e650b49c6299d082a8",
+    "good-tablet.png": "bf45f6eb371399bc913cbd19f1def9e5d8c8e243bda0f0cb82ebf111e366429f"
+  },
+  "whitespace": "No code whitespace errors; verbatim upstream font OFL.txt line21 has one trailing space."
+}

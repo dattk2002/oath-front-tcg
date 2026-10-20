@@ -1,0 +1,206 @@
+{
+  "appWithFrameworkExternal": {
+    "bytes": 753321,
+    "gzipBytes": 84865,
+    "inputs": [
+      "packages/contracts/src/generated/browser-wire.js",
+      "packages/contracts/src/browser.ts",
+      "apps/web/src/features/match/api-error.ts",
+      "apps/web/src/features/match/api-client.ts",
+      "apps/web/src/features/setup/pending-create.ts",
+      "apps/web/src/features/match/labels.ts",
+      "apps/web/src/features/setup/PresetSetup.tsx",
+      "apps/web/src/app/session.ts",
+      "apps/web/src/app/router.tsx",
+      "apps/web/src/features/match/intent-controller.ts",
+      "apps/web/src/features/match/HeroPanel.tsx",
+      "apps/web/src/features/match/Board.tsx",
+      "apps/web/src/features/match/Hand.tsx",
+      "apps/web/src/features/match/PhaseControl.tsx",
+      "packages/game-content/src/core/cards.ts",
+      "packages/game-content/src/core/heroes.ts",
+      "packages/game-content/src/core/powers.ts",
+      "packages/game-content/src/core/locations.ts",
+      "packages/game-content/src/core/tokens.ts",
+      "packages/game-content/src/core/decks.ts",
+      "packages/game-content/src/catalog.ts",
+      "packages/contracts/src/catalog.ts",
+      "packages/contracts/src/index.browser.ts",
+      "packages/game-content/src/validate.ts",
+      "packages/game-content/src/index.ts",
+      "packages/game-engine/src/targets.ts",
+      "packages/game-engine/src/rule-math.ts",
+      "packages/game-engine/src/primitive.ts",
+      "packages/game-engine/src/preview-resolution.ts",
+      "packages/game-engine/src/preview.ts",
+      "apps/web/src/features/match/InspectPanel.tsx",
+      "apps/web/src/features/match/view-store.ts",
+      "apps/web/src/features/match/use-match.ts",
+      "apps/web/src/features/match/MatchShell.tsx",
+      "apps/web/src/features/match/MatchScreen.tsx",
+      "apps/web/src/app/App.tsx"
+    ],
+    "forbidden": [],
+    "unsafeCodeGeneration": false
+  },
+  "validator": {
+    "bytes": 650076,
+    "gzipBytes": 59915
+  },
+  "productionChunks": [
+    {
+      "path": "apps/web/.next/static/chunks/110-2d00d3f00043bb59.js",
+      "bytes": 242570,
+      "gzipBytes": 67133,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/237-b9bafe09ca395f30.js",
+      "bytes": 660421,
+      "gzipBytes": 50961,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/805-62089702ca428506.js",
+      "bytes": 7647,
+      "gzipBytes": 3253,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/960.f313630250b036ef.js",
+      "bytes": 76080,
+      "gzipBytes": 18122,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/app/_global-error/page-f5db7bad9ace4f35.js",
+      "bytes": 147,
+      "gzipBytes": 136,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/app/_not-found/page-f5db7bad9ace4f35.js",
+      "bytes": 147,
+      "gzipBytes": 136,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/app/heroes/page-381f81ab3a350f88.js",
+      "bytes": 128,
+      "gzipBytes": 124,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/app/layout-7b5d99e9bc6b0461.js",
+      "bytes": 363,
+      "gzipBytes": 200,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/app/matches/[id]/page-1aa4f2a1637aed39.js",
+      "bytes": 128,
+      "gzipBytes": 124,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/app/not-found-cd7c23aaf9f0192a.js",
+      "bytes": 183,
+      "gzipBytes": 162,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/app/page-761fb9ff7f991087.js",
+      "bytes": 128,
+      "gzipBytes": 124,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/cb9d67de-cef7b3a76d4c411b.js",
+      "bytes": 203719,
+      "gzipBytes": 64053,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/framework-d3f0ec89a1db2d3e.js",
+      "bytes": 218915,
+      "gzipBytes": 68576,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/main-040196e97d9ca7cc.js",
+      "bytes": 146275,
+      "gzipBytes": 43482,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/main-app-333f47d1ee109633.js",
+      "bytes": 513,
+      "gzipBytes": 224,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/next/dist/client/components/builtin/app-error-f5db7bad9ace4f35.js",
+      "bytes": 147,
+      "gzipBytes": 136,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/next/dist/client/components/builtin/forbidden-f5db7bad9ace4f35.js",
+      "bytes": 147,
+      "gzipBytes": 136,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/next/dist/client/components/builtin/global-error-ca306e73d5eeeae3.js",
+      "bytes": 179,
+      "gzipBytes": 160,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/next/dist/client/components/builtin/unauthorized-f5db7bad9ace4f35.js",
+      "bytes": 147,
+      "gzipBytes": 136,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/polyfills-42372ed130431b0a.js",
+      "bytes": 112594,
+      "gzipBytes": 39627,
+      "privateMarker": false
+    },
+    {
+      "path": "apps/web/.next/static/chunks/webpack-b595b411030ec3b3.js",
+      "bytes": 3365,
+      "gzipBytes": 1708,
+      "privateMarker": false
+    }
+  ],
+  "homeHtmlScripts": {
+    "paths": [
+      "apps/web/.next/static/chunks/cb9d67de-cef7b3a76d4c411b.js",
+      "apps/web/.next/static/chunks/110-2d00d3f00043bb59.js",
+      "apps/web/.next/static/chunks/main-app-333f47d1ee109633.js",
+      "apps/web/.next/static/chunks/805-62089702ca428506.js",
+      "apps/web/.next/static/chunks/app/not-found-cd7c23aaf9f0192a.js",
+      "apps/web/.next/static/chunks/237-b9bafe09ca395f30.js",
+      "apps/web/.next/static/chunks/app/page-761fb9ff7f991087.js",
+      "apps/web/.next/static/chunks/polyfills-42372ed130431b0a.js",
+      "apps/web/.next/static/chunks/webpack-b595b411030ec3b3.js"
+    ],
+    "totalRawBytes": 1231140,
+    "sumIndividualGzipBytes": 227245,
+    "note": "includes nomodule polyfill; gzip sum is file-compression estimate, not browser transfer measurement"
+  },
+  "settledSource": {
+    "checked": 143,
+    "mismatches": [],
+    "manifestSha256": "06a6d457fdc45bfebf1fa5d302a5642fe15f38b61c5e8556e2f88651a26d7397",
+    "supplementary": {
+      "tests/e2e/match-foundation.spec.ts": "cbaebeafc7dee7fda07d7146d2177f55671a3efa9529b587d7c055aa3cc5057c",
+      "playwright.config.ts": "ddd7ce25d30854b9a776b712da36f65e5829287eec5b54ce989d8b1dccb889fb",
+      "apps/api/tests/browser-server.mjs": "db83532eb185dbbb812868d9e3543c67e6dd557a0c69931e24f28faa47178f3d",
+      "apps/api/dist/app.mjs": "0360b8bc330ff775363cf20114dffaa5822205123c0122104719875751c690c4",
+      "apps/web/.next/standalone/apps/web/server.js": "be24816d5a0de0e63f913c9515dc7058a23cc7d5538b37b1c4ec648e074814ea"
+    }
+  }
+}
