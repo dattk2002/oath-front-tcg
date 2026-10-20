@@ -19,8 +19,8 @@ test.afterEach(async ({ page }, info) => {
   const unexpected = all.filter(
     (m) =>
       !(
-        /offline|rejected|stale/.test(info.title) &&
-        /net::ERR_FAILED|status of 409/.test(m)
+        /offline|rejected|rejection|stale|429 create/.test(info.title) &&
+        /net::ERR_FAILED|status of 409|status of 429/.test(m)
       ),
   );
   await writeFile(
@@ -519,4 +519,273 @@ test("offline committed saved create reload restores exact source opponent and i
   await expect(page).toHaveURL(/\/matches\//);
   expect(bodies).toHaveLength(2);
   expect(bodies[1]).toEqual(bodies[0]);
+});
+
+async function savedFixture(page: Page) {
+  const auth = await guest(page);
+  const catalog = await (
+    await page.request.get("/api/v1/catalog/core_v1")
+  ).json();
+  const p = catalog.presets[0];
+  const deck = {
+    name: "Bộ lưu ban đầu",
+    heroId: p.heroId,
+    contentVersion: p.contentVersion,
+    entries: p.entries,
+  };
+  const headers = {
+    Origin: "http://localhost:3100",
+    "X-CSRF-Token": auth.csrfToken,
+  };
+  const response = await page.request.post("/api/v1/decks", {
+    headers,
+    data: { commandId: randomUUID(), deck },
+  });
+  expect(response.status()).toBe(201);
+  return { headers, deck, saved: await response.json() };
+}
+test("draft revision migration: stale load latest edit reload retains new draft", async ({
+  page,
+}) => {
+  const { headers, deck, saved } = await savedFixture(page);
+  await page.goto(`/decks/${saved.id}/edit`);
+  await page.getByLabel("Tên bộ bài", { exact: true }).fill("Sửa cũ");
+  expect(
+    (
+      await page.request.put(`/api/v1/decks/${saved.id}`, {
+        headers,
+        data: {
+          commandId: randomUUID(),
+          expectedDeckRevision: 1,
+          deck: { ...deck, name: "Phiên bản hai" },
+        },
+      })
+    ).status(),
+  ).toBe(200);
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Tải bản mới", exact: true })
+    .click();
+  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+    "Phiên bản hai",
+  );
+  await page
+    .getByLabel("Tên bộ bài", { exact: true })
+    .fill("Sửa sau khi tải bản hai");
+  await page.reload();
+  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+    "Sửa sau khi tải bản hai",
+  );
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "Đã lưu" }),
+  ).toBeVisible();
+  expect(
+    (await (await page.request.get(`/api/v1/decks/${saved.id}`)).json())
+      .revision,
+  ).toBe(3);
+});
+test("draft revision migration: same route save edit reload retains unsaved edits", async ({
+  page,
+}) => {
+  const { saved } = await savedFixture(page);
+  await page.goto(`/decks/${saved.id}/edit`);
+  await page
+    .getByLabel("Tên bộ bài", { exact: true })
+    .fill("Đã lưu phiên bản hai");
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "Đã lưu" }),
+  ).toBeVisible();
+  await page
+    .getByLabel("Tên bộ bài", { exact: true })
+    .fill("Chưa lưu sau phiên bản hai");
+  await page.reload();
+  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+    "Chưa lưu sau phiên bản hai",
+  );
+});
+test("offline committed save reload preserves original receipt and requires stale choice for later revision", async ({
+  page,
+}) => {
+  const { headers, deck, saved } = await savedFixture(page);
+  await page.goto(`/decks/${saved.id}/edit`);
+  await page
+    .getByLabel("Tên bộ bài", { exact: true })
+    .fill("Yêu cầu lưu nguyên bản");
+  const bodies: unknown[] = [];
+  let drop = true;
+  await page.route(`**/api/v1/decks/${saved.id}`, async (route) => {
+    if (route.request().method() !== "PUT") return route.continue();
+    bodies.push(route.request().postDataJSON());
+    if (drop) {
+      drop = false;
+      expect((await route.fetch()).status()).toBe(200);
+      await route.abort("failed");
+    } else await route.continue();
+  });
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "Chưa xác định kết quả lưu" }),
+  ).toBeVisible();
+  expect(
+    (
+      await page.request.put(`/api/v1/decks/${saved.id}`, {
+        headers,
+        data: {
+          commandId: randomUUID(),
+          expectedDeckRevision: 2,
+          deck: { ...deck, name: "Phiên bản ba từ tab khác" },
+        },
+      })
+    ).status(),
+  ).toBe(200);
+  await page.reload();
+  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+    "Yêu cầu lưu nguyên bản",
+  );
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "Đã lưu" }),
+  ).toBeVisible();
+  expect(bodies).toHaveLength(2);
+  expect(bodies[1]).toEqual(bodies[0]);
+  expect(
+    (await (await page.request.get(`/api/v1/decks/${saved.id}`)).json())
+      .revision,
+  ).toBe(3);
+  await page
+    .getByLabel("Tên bộ bài", { exact: true })
+    .fill("Thay đổi dựa trên bản hai");
+  await page.reload();
+  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+    "Thay đổi dựa trên bản hai",
+  );
+  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await expect(page.getByRole("dialog")).toContainText(
+    "Bộ bài đã thay đổi ở tab khác",
+  );
+  expect(
+    (await (await page.request.get(`/api/v1/decks/${saved.id}`)).json()).name,
+  ).toBe("Phiên bản ba từ tab khác");
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Tải bản mới", exact: true })
+    .click();
+  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+    "Phiên bản ba từ tab khác",
+  );
+});
+test("definitive create rejection then another hero posts the visibly selected preset", async ({
+  page,
+}) => {
+  const { saved } = await savedFixture(page);
+  await page.goto("/heroes/H_G_BV/decks");
+  await page
+    .getByRole("article")
+    .filter({
+      has: page.getByRole("button", { name: saved.name, exact: true }),
+    })
+    .getByRole("button", { name: "Dùng bộ bài này", exact: true })
+    .click();
+  let reject = true;
+  const requests: unknown[] = [];
+  await page.route("**/api/v1/matches", async (route) => {
+    if (route.request().method() !== "POST") return route.continue();
+    requests.push(route.request().postDataJSON());
+    if (reject) {
+      reject = false;
+      await route.fulfill({
+        status: 409,
+        json: {
+          error: {
+            code: "VERSION_UNSUPPORTED",
+            messageKey: "error.VERSION_UNSUPPORTED",
+            requestId: randomUUID(),
+            retryable: false,
+            details: {},
+          },
+        },
+      });
+    } else await route.continue();
+  });
+  await page.getByRole("button", { name: "Bắt đầu trận", exact: true }).click();
+  await expect(page.getByText(/Yêu cầu chưa được chấp nhận/)).toBeVisible();
+  for (const [label, width, height] of [
+    ["mobile", 375, 812],
+    ["tablet", 1024, 768],
+    ["desktop", 1440, 900],
+  ] as const) {
+    await page.setViewportSize({ width, height });
+    await screenshot(page, `fix-round1/create-rejection-${label}`);
+  }
+  const change = page.getByRole("button", {
+    name: "Chọn bộ bài khác",
+    exact: true,
+  });
+  await change.click();
+  await expect(
+    page.getByRole("heading", { name: "Chọn người dẫn lối", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("radio", { name: /Lam Vệ/ }).check();
+  await page.getByRole("button", { name: "Chọn bộ bài", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Dùng bộ bài này", exact: true })
+    .click();
+  await expect(
+    page.getByText("Lam Vệ · Phe Thiện", { exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Bắt đầu trận", exact: true }).click();
+  await expect(page).toHaveURL(/\/matches\//);
+  expect(requests).toHaveLength(2);
+  expect(requests[0]).toMatchObject({
+    deck: { kind: "SAVED", deckId: saved.id, deckRevision: 1 },
+  });
+  expect(requests[1]).toMatchObject({
+    deck: { kind: "PRESET", presetId: "D_G_BP" },
+  });
+});
+test("429 create preserves selected source command id and body for explicit retry", async ({
+  page,
+}) => {
+  await guest(page);
+  await page.goto("/heroes/H_G_BP/decks");
+  await page
+    .getByRole("button", { name: "Dùng bộ bài này", exact: true })
+    .click();
+  const requests: unknown[] = [];
+  let limit = true;
+  await page.route("**/api/v1/matches", async (route) => {
+    if (route.request().method() !== "POST") return route.continue();
+    requests.push(route.request().postDataJSON());
+    if (limit) {
+      limit = false;
+      await route.fulfill({
+        status: 429,
+        json: {
+          error: {
+            code: "RATE_LIMITED",
+            messageKey: "error.RATE_LIMITED",
+            requestId: randomUUID(),
+            retryable: true,
+            details: { retryAfterSeconds: 1 },
+          },
+        },
+      });
+    } else await route.continue();
+  });
+  await page.getByRole("button", { name: "Bắt đầu trận", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Thử lại tạo trận", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Lam Vệ · Phe Thiện", { exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Thử lại tạo trận", exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/matches\//);
+  expect(requests).toHaveLength(2);
+  expect(requests[1]).toEqual(requests[0]);
 });

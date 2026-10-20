@@ -26,11 +26,13 @@ export default function PresetSetup({
   selectedSource,
   selectedHeroId,
   onBack,
+  onRejected,
 }: {
   initialRequest?: CreateMatchRequest;
   selectedSource?: Extract<CreateMatchRequest, { mode: "SKIRMISH" }>["deck"];
   selectedHeroId?: HeroId;
   onBack?: () => void;
+  onRejected: () => void;
   catalog: PublicCatalog;
   api: ApiClient;
   onCreated: (response: CommandResponse) => void;
@@ -63,6 +65,7 @@ export default function PresetSetup({
         ? "Có yêu cầu tạo trận chưa được xác nhận. Thử lại để kiểm tra cùng lựa chọn."
         : null,
     );
+  const [rejected, setRejected] = useState(false);
   const [conflict, setConflict] = useState<string | null>(null);
   const hero = catalog.heroes.find((item) => item.id === heroId)!;
   const preset = catalog.presets.find((item) => item.heroId === heroId)!;
@@ -111,14 +114,18 @@ export default function PresetSetup({
         }
         setPending(null);
         setMessage("Bạn có một trận đang diễn ra. Tiếp tục trận đó trước.");
-      } else if (error instanceof ApiError && error.status < 500) {
+      } else if (
+        error instanceof ApiError &&
+        error.status < 500 &&
+        !error.body.error.retryable
+      ) {
         try {
           sessionStorage.removeItem("oathfront.create");
         } catch {
           /* Confirmed or rejected receipt; memory still tracks the request. */
         }
         setPending(null);
-        setStage("HERO");
+        setRejected(true);
         setMessage(
           "Yêu cầu chưa được chấp nhận. Hãy xem lại hero và bộ bài trước khi tạo trận mới.",
         );
@@ -130,6 +137,16 @@ export default function PresetSetup({
       setBusy(false);
     }
   }
+  if (rejected)
+    return (
+      <section className="status-panel panel" role="alert">
+        <h1>Xem lại bộ bài</h1>
+        <p>{message}</p>
+        <button className="primary" onClick={onRejected}>
+          Chọn bộ bài khác
+        </button>
+      </section>
+    );
   const pendingPresetId =
     pending?.mode === "SKIRMISH" && pending.deck.kind === "PRESET"
       ? pending.deck.presetId

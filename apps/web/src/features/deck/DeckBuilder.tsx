@@ -12,8 +12,6 @@ import type {
   DeckInput,
   PublicCatalog,
   RematchConfig,
-  SaveDeckRequest,
-  UpdateDeckRequest,
 } from "@oathfront/contracts/browser";
 import type { ApiClient } from "../match/api-client";
 import { ApiError } from "../match/api-error";
@@ -22,20 +20,8 @@ import CardCollection, { QuantityControls } from "./CardCollection";
 import ManaCurve from "./ManaCurve";
 import { classLabel, keywordLabel } from "../match/labels";
 import { changeQuantity, normalize } from "./model";
-type PendingSave = {
-  id: string | null;
-  body: SaveDeckRequest | UpdateDeckRequest;
-};
-function localDeck(value: unknown): value is DeckInput {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    "name" in value &&
-    typeof value.name === "string" &&
-    value.name.length <= 80 &&
-    validateBrowserWire("DeckInput", { ...value, name: "Bản nháp" })
-  );
-}
+import { draftLocation, readDraft, writeDraft } from "./draft-storage";
+import type { DraftLocation, PendingSave } from "./draft-storage";
 const keywordCopy: Record<string, string> = {
   SHIELD: "Chặn một gói sát thương dương rồi mất Khiên.",
   ARMOR: "Giảm 1 sát thương mỗi gói; không cộng dồn.",
@@ -92,6 +78,7 @@ export default function DeckBuilder({
     root = useRef<HTMLElement>(null),
     lock = useRef(false),
     pending = useRef<PendingSave | null>(null),
+    storedLocation = useRef<DraftLocation | null>(null),
     createPending = useRef<Extract<
       import("@oathfront/contracts/browser").CreateMatchRequest,
       { mode: "SKIRMISH" }
@@ -110,7 +97,11 @@ export default function DeckBuilder({
     [leave, setLeave] = useState<string | null>(null),
     [nameError, setNameError] = useState(false),
     [conflict, setConflict] = useState<string | null>(null);
-  const key = `oathfront.draft.${review ? `review.${review.matchId}` : saved ? `${saved.id}.${saved.revision}` : `new.${initial.heroId}`}`;
+  const initialKey = draftLocation(
+    initial.heroId,
+    saved ?? null,
+    review?.matchId,
+  ).key;
   const dirty =
     JSON.stringify(deck) !== baseline || (!base && deck.entries.length > 0);
   const validation = validateDeck(deck, catalog);
@@ -120,30 +111,24 @@ export default function DeckBuilder({
     deck.name.normalize("NFC").trim().length <= 40;
   useEffect(() => {
     try {
-      const raw: unknown = JSON.parse(sessionStorage.getItem(key) ?? "null");
-      if (
-        raw &&
-        typeof raw === "object" &&
-        "deck" in raw &&
-        localDeck(raw.deck) &&
-        raw.deck.heroId === initial.heroId
-      ) {
-        setDeck(raw.deck);
+      const restored = readDraft(
+        sessionStorage,
+        initial,
+        saved ?? null,
+        review?.matchId,
+      );
+      if (restored) {
+        storedLocation.current = restored.location;
+        setDeck(restored.draft.deck);
+        setBase(restored.draft.base ?? undefined);
+        if (restored.draft.base) {
+          const { name, heroId, entries, contentVersion } = restored.draft.base;
+          setBaseline(
+            JSON.stringify({ name, heroId, entries, contentVersion }),
+          );
+        }
+        pending.current = restored.draft.pending;
         setMessage("Đã khôi phục bản nháp cục bộ; chưa lưu trên máy chủ.");
-        if (
-          "pending" in raw &&
-          raw.pending &&
-          typeof raw.pending === "object" &&
-          "id" in raw.pending &&
-          "body" in raw.pending &&
-          (raw.pending.id === null || raw.pending.id === saved?.id) &&
-          (validateBrowserWire("SaveDeckRequest", raw.pending.body) ||
-            validateBrowserWire("UpdateDeckRequest", raw.pending.body))
-        )
-          pending.current = {
-            id: raw.pending.id as string | null,
-            body: raw.pending.body,
-          };
       }
     } catch {
       setMessage(
@@ -151,20 +136,22 @@ export default function DeckBuilder({
       );
     }
     setReady(true);
-  }, [key, initial.heroId, saved?.id]);
+  }, [initialKey, initial, saved, review?.matchId]);
   useEffect(() => {
     if (!ready) return;
     try {
-      sessionStorage.setItem(
-        key,
-        JSON.stringify({ deck, pending: pending.current }),
+      storedLocation.current = writeDraft(
+        sessionStorage,
+        { deck, base: base ?? null, pending: pending.current },
+        storedLocation.current,
+        review?.matchId,
       );
     } catch {
       setMessage(
         "Không lưu được bản nháp cục bộ. Giữ trang này để tránh mất thay đổi.",
       );
     }
-  }, [deck, key, ready]);
+  }, [deck, base, ready, review?.matchId]);
   useEffect(() => {
     const unload = (e: BeforeUnloadEvent) => {
       if (dirty) {
@@ -257,9 +244,32 @@ export default function DeckBuilder({
   }, [deck.entries]);
   function clearLocal() {
     try {
-      sessionStorage.removeItem(key);
+      const location =
+        storedLocation.current ??
+        draftLocation(deck.heroId, base ?? null, review?.matchId);
+      sessionStorage.removeItem(location.key);
+      sessionStorage.removeItem(location.pointer);
     } catch {
       /* Confirmed save. */
+    }
+  }
+  function adoptSaved(result: DeckDTO) {
+    pending.current = null;
+    const { name, heroId, entries, contentVersion } = result;
+    const clean = { name, heroId, entries, contentVersion };
+    setBase(result);
+    setDeck(clean);
+    setBaseline(JSON.stringify(clean));
+    setStale(null);
+    try {
+      storedLocation.current = writeDraft(
+        sessionStorage,
+        { deck: clean, base: result, pending: null },
+        storedLocation.current,
+        review?.matchId,
+      );
+    } catch {
+      /* State remains available on this page. */
     }
   }
   async function save(
@@ -290,7 +300,12 @@ export default function DeckBuilder({
     };
     pending.current = p;
     try {
-      sessionStorage.setItem(key, JSON.stringify({ deck, pending: p }));
+      storedLocation.current = writeDraft(
+        sessionStorage,
+        { deck, base: base ?? null, pending: p },
+        storedLocation.current,
+        review?.matchId,
+      );
     } catch {
       setMessage("Không lưu được yêu cầu cục bộ. Giữ trang này để thử lại.");
     }
@@ -299,14 +314,7 @@ export default function DeckBuilder({
         p.id && "expectedDeckRevision" in p.body
           ? await api.updateDeck(p.id, p.body)
           : await api.saveDeck(p.body);
-      pending.current = null;
-      setBase(result);
-      const { name, heroId, entries, contentVersion } = result;
-      const clean = { name, heroId, entries, contentVersion };
-      setDeck(clean);
-      setBaseline(JSON.stringify(clean));
-      setStale(null);
-      clearLocal();
+      adoptSaved(result);
       setMessage("Đã lưu");
       if (navigate && !review) router.replace(`/decks/${result.id}/edit`);
       return result;
@@ -317,7 +325,11 @@ export default function DeckBuilder({
       ) {
         setStale(error.body.error.details.deck);
         pending.current = null;
-      } else if (error instanceof ApiError && error.status < 500) {
+      } else if (
+        error instanceof ApiError &&
+        error.status < 500 &&
+        !error.body.error.retryable
+      ) {
         pending.current = null;
         setMessage(
           "Chưa lưu được bộ bài. Kiểm tra tên, số bản và class; bản nháp vẫn được giữ.",
@@ -326,6 +338,16 @@ export default function DeckBuilder({
         setMessage(
           "Chưa xác định kết quả lưu. Thử lại sẽ gửi cùng yêu cầu; bản nháp vẫn được giữ.",
         );
+      try {
+        storedLocation.current = writeDraft(
+          sessionStorage,
+          { deck, base: base ?? null, pending: pending.current },
+          storedLocation.current,
+          review?.matchId,
+        );
+      } catch {
+        /* The in-memory request remains available for retry. */
+      }
       return null;
     } finally {
       lock.current = false;
@@ -637,12 +659,7 @@ export default function DeckBuilder({
           </p>
           <button
             onClick={() => {
-              const { name, heroId, entries, contentVersion } = stale;
-              const fresh = { name, heroId, entries, contentVersion };
-              setBase(stale);
-              setDeck(fresh);
-              setBaseline(JSON.stringify(fresh));
-              setStale(null);
+              adoptSaved(stale);
               setMessage("Đã tải bản mới");
             }}
           >

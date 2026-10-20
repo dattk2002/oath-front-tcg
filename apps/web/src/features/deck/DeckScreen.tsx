@@ -34,7 +34,7 @@ export default function DeckScreen({
   api: ApiClient;
 }) {
   const router = useRouter();
-  const [restored] = useState(() =>
+  const [restored, setRestored] = useState(() =>
     typeof sessionStorage === "undefined"
       ? null
       : restorePresetCreate(catalog.presets, sessionStorage, catalog.version),
@@ -163,6 +163,11 @@ export default function DeckScreen({
       active = false;
     };
   }, [screen, reviewMatchId, deckId, heroId, presetId, catalog, api, attempt]);
+  function chooseAgain() {
+    setRestored(null);
+    setSelected(null);
+    router.push("/heroes");
+  }
   if (resolvingRestored)
     return <p role="status">Đang khôi phục đúng nguồn bộ bài…</p>;
   if (restored)
@@ -177,6 +182,7 @@ export default function DeckScreen({
         restoredHero
           ? { selectedSource: restored.request.deck }
           : {})}
+        onRejected={chooseAgain}
         onCreated={(r) => router.push(`/matches/${r.view.matchId}`)}
         onResume={(id) => router.push(`/matches/${id}`)}
       />
@@ -189,6 +195,7 @@ export default function DeckScreen({
         selectedSource={selected.source}
         selectedHeroId={selected.heroId}
         onBack={() => setSelected(null)}
+        onRejected={chooseAgain}
         onCreated={(r) => router.push(`/matches/${r.view.matchId}`)}
         onResume={(id) => router.push(`/matches/${id}`)}
       />
