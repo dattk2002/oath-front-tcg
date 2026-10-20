@@ -1,3 +1,4 @@
+import { databaseTarget } from "./database-target.mjs";
 import { randomBytes } from "node:crypto";
 import { readFileSync, writeFileSync, chmodSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -13,26 +14,8 @@ if (!["local", "migrate", "runtime"].includes(command) || !envFile)
   );
 process.loadEnvFile(envFile);
 const local = command === "local";
-const direct = local
-  ? process.env.TEST_DATABASE_URL_UNPOOLED
-  : process.env.DATABASE_URL_UNPOOLED;
-if (!direct) throw Error("Direct migration URL is required");
-const parsed = new URL(direct);
-if (local) {
-  if (
-    process.env.OATHFRONT_TEST_DATABASE !== "1" ||
-    !["127.0.0.1", "localhost"].includes(parsed.hostname) ||
-    !parsed.pathname.endsWith("_test")
-  )
-    throw Error("Refusing non-local test setup");
-} else if (
-  process.env.NEON_PROJECT_ID !== "round-darkness-78734677" ||
-  process.env.NEON_BRANCH_ID !== "br-odd-pine-a1pw77e9" ||
-  parsed.pathname !== "/oathfront"
-)
-  throw Error(
-    "Refusing any target except the authorized Neon development database",
-  );
+const parsed = databaseTarget(command, process.env);
+const direct = parsed.href;
 const owner = createPool({ connectionString: direct, purpose: "migration" });
 try {
   if (command === "migrate" || local)
