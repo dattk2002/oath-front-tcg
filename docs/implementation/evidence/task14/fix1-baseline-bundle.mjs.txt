@@ -1,0 +1,13 @@
+import { build } from 'esbuild';
+import { resolve } from 'node:path';
+import { writeFileSync } from 'node:fs';
+const baseline=resolve('.superpowers/sdd/2026-10-20-oathfront-implementation/task-14-baseline');
+const result=await build({entryPoints:[baseline+'/generate.ts'],outfile:baseline+'/generate.cjs',bundle:true,platform:'node',format:'cjs',metafile:true,
+ alias:Object.fromEntries(['game-engine','game-content','contracts'].map(n=>['@oathfront/'+n,baseline+'/packages/'+n+'/src/index.ts'])),
+ nodePaths:[resolve('node_modules'),resolve('packages/contracts/node_modules')],
+});
+for (const path of Object.keys(result.metafile.inputs)) {
+ if (!path.includes('node_modules/') && !resolve(path).startsWith(baseline+'/')) throw Error('Non-baseline workspace input: '+path);
+}
+writeFileSync(baseline+'/metafile.json',JSON.stringify(result.metafile,null,2));
+console.log('Verified all workspace bundle inputs are archived baseline sources');

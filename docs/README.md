@@ -42,6 +42,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 - [Recovery, block và kết quả — Task 11](implementation/browser-recovery.md): retry trong pause, log phân trang, kết quả/rematch, review và điểm nối sang deck builder.
 - [Chọn hero và deck builder — Task 12](implementation/hero-deck-builder.md): draft/revision, lưu trên server, chọn nguồn deck chính xác và recovery qua reload.
 - [Tài khoản và lịch sử — Task 13](implementation/auth-sessions.md): claim khách, gia hạn phiên, kiểm chứng Google thực tế và trạng thái review.
+- [Tutorial, cài đặt và âm thanh — Task 14](implementation/tutorial-settings-audio.md): scene được lưu/replay, hai nhánh power, settings/audio và kiểm tra product loop M4.
 - [Nguồn tham khảo PvZ Heroes và công nghệ](REFERENCES.md).
 - [Specification v0.1 gốc](reference/SPECIFICATION.v0.1.md), [kế hoạch trước khi chuyển sang Next.js](superpowers/plans/2026-10-20-ngulo-implementation.md).
 

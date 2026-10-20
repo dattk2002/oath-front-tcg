@@ -1,6 +1,6 @@
 # Tài khoản, giữ tiến trình và lịch sử — Task 13
 
-Implementation từ base `dcca7bb` gồm `f1208f9` (dependency), `3711bf3` (backend/replay) và `44b9171` (giao diện, proxy, lịch sử và môi trường local). [Review độc lập](evidence/task13/review.md) yêu cầu sửa gia hạn phiên khi storage lỗi; hai nhận xét nhỏ về refresh lịch sử và retry đăng xuất Google được xử lý cùng lượt tại `2caa8e1`. [Review lại](evidence/task13/rereview.md) đóng cả ba finding, không phát hiện lỗi mới trong phạm vi bản sửa. Task 13 đạt gate kỹ thuật; M4 còn tutorial/settings ở Task 14.
+Implementation từ base `dcca7bb` gồm `f1208f9` (dependency), `3711bf3` (backend/replay) và `44b9171` (giao diện, proxy, lịch sử và môi trường local). [Review độc lập](evidence/task13/review.md) yêu cầu sửa gia hạn phiên khi storage lỗi; hai nhận xét nhỏ về refresh lịch sử và retry đăng xuất Google được xử lý cùng lượt tại `2caa8e1`. [Review lại](evidence/task13/rereview.md) đóng cả ba finding, không phát hiện lỗi mới trong phạm vi bản sửa. Task 13 đạt gate kỹ thuật; kết quả product loop M4 được ghi tiếp tại [Task 14](tutorial-settings-audio.md).
 
 ## Hành vi
 

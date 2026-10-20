@@ -1,0 +1,36 @@
+$ pnpm build:api && vitest run
+$ node scripts/build-api.mjs
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+ ❯ apps/api/tests/commands.test.ts (6 tests | 1 failed) 2743ms
+   × fails closed for corrupted durable receipt and defers tutorial scenario setup to its registry 69ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/api/tests/commands.test.ts > fails closed for corrupted durable receipt and defers tutorial scenario setup to its registry
+AssertionError: expected 201 to be 409 // Object.is equality
+
+- Expected
++ Received
+
+- 409
++ 201
+
+ ❯ apps/api/tests/commands.test.ts:113:5
+    111|       })
+    112|     ).statusCode,
+    113|   ).toBe(409);
+       |     ^
+    114|   const first = await h.app.inject({
+    115|     method: "POST",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 56 passed (57)
+      Tests  1 failed | 565 passed (566)
+   Start at  02:44:45
+   Duration  179.44s (tests 90%, import 9%, transform 1%)
+
+[ELIFECYCLE] Test failed. See above for more details.

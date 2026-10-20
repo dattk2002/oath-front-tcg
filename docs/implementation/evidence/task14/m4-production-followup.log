@@ -1,0 +1,19 @@
+[WebServer] (node:1891299) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1891477) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1891493) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1891561) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:1891594) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/deck-builder.spec.ts:192:1 › offline draft survives retry reload, blocks Play under30 and completes saved source (2.2s)
+  ✓  2 tests/e2e/deck-builder.spec.ts:590:1 › draft revision migration: same route save edit reload retains unsaved edits (655ms)
+  ✓  3 tests/e2e/deck-builder.spec.ts:613:1 › offline committed save reload preserves original receipt and requires stale choice for later revision (1.4s)
+  ✓  4 tests/e2e/tutorial-settings.spec.ts:190:1 › real Web Audio gesture, settings restore and desktop/tablet/mobile review (2.6s)
+
+  4 passed (10.2s)

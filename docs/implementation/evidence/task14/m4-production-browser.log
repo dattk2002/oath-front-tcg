@@ -1,0 +1,66 @@
+[WebServer] (node:1876977) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1876989) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1877005) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1877141) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:1877172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/auth-claim.spec.ts:99:1 › signed fixture identity claims guest through Next/API/DB, preserves draft, renews a rejected save and isolates logout (2.4s)
+  ✓   2 tests/e2e/auth-claim.spec.ts:285:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal (2.2s)
+  ✘   3 tests/e2e/deck-builder.spec.ts:192:1 › offline draft survives retry reload, blocks Play under30 and completes saved source (6.1s)
+(node:1877618) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch (22.6s)
+  ✓   5 tests/e2e/full-match.spec.ts:16:3 › complete EVIL match result reload history expiry rematch (27.7s)
+  ✓   6 tests/e2e/match-foundation.spec.ts:9:3 › guest preset mulligan UNIT and pass as GOOD (7.5s)
+  ✓   7 tests/e2e/match-foundation.spec.ts:9:3 › guest preset mulligan UNIT and pass as EVIL (7.7s)
+  ✓   8 tests/e2e/tutorial-settings.spec.ts:2:1 › new player can open tutorial and independent sound settings (373ms)
+  ✓   9 tests/e2e/tutorial-settings.spec.ts:51:3 › TU12 visible GOOD USED, reload, EVIL, skip/replay and settings persistence (18.5s)
+  ✓  10 tests/e2e/tutorial-settings.spec.ts:51:3 › TU12 visible GOOD KEPT, reload, EVIL, skip/replay and settings persistence (16.9s)
+  ✓  11 tests/e2e/tutorial-settings.spec.ts:190:1 › real Web Audio gesture, settings restore and desktop/tablet/mobile review (2.5s)
+  ✓  12 tests/e2e/tutorial-settings.spec.ts:342:1 › settled tutorial layout exposes settings, energy focus and small-screen fallback (2.6s)
+  ✓  13 tests/e2e/tutorial-settings.spec.ts:410:1 › uncertain tutorial create retains identity and explains a different pending faction before explicit retry (1.4s)
+
+
+  1) tests/e2e/deck-builder.spec.ts:192:1 › offline draft survives retry reload, blocks Play under30 and completes saved source
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('status').filter({ hasText: 'Đã lưu' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('status').filter({ hasText: 'Đã lưu' }) with timeout 5000ms
+      - waiting for getByRole('status').filter({ hasText: 'Đã lưu' })
+
+
+      218 |   await expect(
+      219 |     page.getByRole("status").filter({ hasText: "Đã lưu" }),
+    > 220 |   ).toBeVisible();
+          |     ^
+      221 |   await c.getByRole("button", { name: "Thêm Người Gác Đèn" }).click();
+      222 |   await page.getByRole("button", { name: "Lưu và tiếp tục" }).click();
+      223 |   await expect(
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/deck-builder.spec.ts:220:5
+
+    Error Context: test-results/deck-builder-offline-draft-91d0d--and-completes-saved-source/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/deck-builder-offline-draft-91d0d--and-completes-saved-source/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/deck-builder-offline-draft-91d0d--and-completes-saved-source/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/deck-builder.spec.ts:192:1 › offline draft survives retry reload, blocks Play under30 and completes saved source
+  12 passed (2.1m)

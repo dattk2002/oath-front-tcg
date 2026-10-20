@@ -1,0 +1,30 @@
+import { writeFileSync } from 'node:fs';
+import { createMatchWithEvents, createRandomStreams, hashState, algorithmVersion, getLegalActions, replayJournal } from './packages/game-engine/src/index.js';
+import { encodeCheckpoint } from './apps/api/src/matches/checkpoint.js';
+import { recordIntent } from './apps/api/src/matches/journal.js';
+import { matchConfig, seed } from './tests/fixtures/match-fixture.js';
+const config = matchConfig();
+const initial = createMatchWithEvents(config, createRandomStreams(seed));
+let state = initial.nextState;
+const events = [...initial.events];
+const journal = [];
+function retain(result) { journal.push(result.entry); events.push(...result.transition.events); state = result.transition.nextState; }
+retain(recordIntent(state, {actor:'GOOD', action:{kind:'MULLIGAN', cardInstanceIds:[]}}, 'HUMAN', 1, null));
+retain(recordIntent(state, {actor:'EVIL', action:{kind:'MULLIGAN', cardInstanceIds:[]}}, 'BOT', 2, state.random.states['bot:easy']));
+const pass = getLegalActions(state, 'EVIL').find(a => a.kind === 'PASS_PHASE');
+if (!pass) throw Error('Expected EVIL deployment gate');
+retain(recordIntent(state, {actor:'EVIL', action:pass}, 'BOT', 3, state.random.states['bot:easy']));
+retain(recordIntent(state, {actor:'GOOD', action:{kind:'PAUSE'}}, 'HUMAN', 4, null));
+const replay = replayJournal(initial.nextState, journal);
+if (!replay.ok || hashState(replay.finalState)!==hashState(state)) throw Error('Baseline replay failed');
+const fixture = {
+ provenance:{sourceCommit:'f2dbfac73f6698725781f9ab55649964cad348b8',method:'git archive; esbuild bundle with @oathfront aliases pinned to archived source; only third-party npm dependencies reused',actionPath:'GOOD MULLIGAN [] -> BOT EVIL MULLIGAN [] -> BOT EVIL PASS_PHASE -> HUMAN PAUSE'},
+ config, seedHex:Buffer.from(seed).toString('hex'), rngAlgorithmVersion:algorithmVersion,
+ initialization:encodeCheckpoint(initial.nextState), initialHash:hashState(initial.nextState),
+ checkpoint:encodeCheckpoint(state), checkpointHash:hashState(state), journal, events,
+ botIntentsThisTurn:replay.botIntentsThisTurn,
+ expectedResumedHash:hashState(recordIntent(state,{actor:'GOOD',action:{kind:'RESUME'}},'HUMAN',5,null).transition.nextState),
+ rematch:{deck:{kind:'PRESET',presetId:'D_G_BV'},opponentHeroId:'H_E_FX',difficulty:config.difficulty,expectedContentVersion:'core_v1'}
+};
+writeFileSync('apps/api/tests/fixtures/pre-t14-skirmish.json', JSON.stringify(fixture,null,2)+'\n');
+console.log(JSON.stringify({hash:fixture.checkpointHash,initialHash:fixture.initialHash,phase:state.phase,lifecycle:state.lifecycle,journal:journal.length,events:events.length}));
