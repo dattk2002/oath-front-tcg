@@ -1,0 +1,18 @@
+{
+  "observedAtUtc": "2026-10-20T19:01:36.410896+00:00",
+  "environment": "localhost3000; API3001; dedicated oathfront_interactive; authorized Neon development Auth",
+  "userConfirmation": "Đã hiện đúng tài khoản",
+  "databaseCheck": {
+    "mode": "read-only aggregate; no personal identifiers or tokens read/output",
+    "accountCount": 1,
+    "completedClaimCount": 1,
+    "liveAccountSessions": 1,
+    "liveAccountSessionsWithin15Minutes": true
+  },
+  "verifiedScope": "Real Google sign-in followed by callback recovery and persisted app guest claim, with account/logout UI confirmed by user.",
+  "notSeparatelyUserVerified": [
+    "real-provider logout and relogin",
+    "real-provider existing-account merge with two active matches",
+    "real-provider retained draft/match after login"
+  ]
+}

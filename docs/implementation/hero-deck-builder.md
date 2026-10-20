@@ -35,7 +35,7 @@ Năm regression tái hiện được lỗi trước sửa. Sau sửa, [13/13 cas
 
 Ảnh recovery tạo trận: [desktop](evidence/task12/fix-round1-create-rejection-desktop.png), [tablet](evidence/task12/fix-round1-create-rejection-tablet.png), [mobile](evidence/task12/fix-round1-create-rejection-mobile.png).
 
-Hai nhận xét nhỏ còn theo dõi: Task 13 giữ cảnh báo không reload khi storage và request save/setup cùng lỗi; Task 18 dọn cảnh báo môi trường màu của runner. Không chạy lại acceptance chỉ để xóa cảnh báo màu.
+Nhận xét về giữ cảnh báo không reload khi storage và request save/setup cùng lỗi đã được xử lý ở [Task 13](auth-sessions.md). Task 18 còn dọn cảnh báo môi trường màu của runner; không chạy lại acceptance chỉ để xóa cảnh báo màu.
 
 ## Hình ảnh và giới hạn
 

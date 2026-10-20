@@ -1,0 +1,31 @@
+{
+  "base": "44b917113e36649a8b7d9a6a749061f69d886353",
+  "red": {
+    "artifact": "settled-artifact-manifest.json",
+    "command": "OATHFRONT_E2E_PRODUCTION=1 pnpm exec playwright test tests/e2e/auth-claim.spec.ts -g 'review:'",
+    "passed": 0,
+    "failed": 3,
+    "failures": [
+      "Storage throw prevents exchange (0 requests)",
+      "Existing account history absent after claim",
+      "Provider-only retry button absent"
+    ]
+  },
+  "green": {
+    "artifact": "review-fix-artifact-manifest.json",
+    "sameBrowserCommand": true,
+    "passed": 3,
+    "failed": 0,
+    "durationSeconds": 8.6,
+    "providerCleanupUnitTests": 2
+  },
+  "static": [
+    "web TypeScript",
+    "root TypeScript",
+    "scoped ESLint",
+    "git diff --check"
+  ],
+  "productionBuildCountThisRound": 1,
+  "apiBuildCountThisRound": 0,
+  "interactiveAppActions": 0
+}

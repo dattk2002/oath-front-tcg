@@ -1,0 +1,20 @@
+{
+  "dependency-metadata.json": "65a98e5c72a0be0a7c7f6bf869b52e898217125d3fb1f8f158a076f05d9995d0",
+  "history-mobile.png": "b9929eaf79bb512dbf9f90c4e5428d473c8f2fdc8109f46746d648c69d04ccc7",
+  "implementation-report.md": "42288fd1df9b62275447f7bc09b336df9891d4308f449d61ab5a1aa6db585171",
+  "merge-desktop.png": "875767640aedebedca309303bbd79b1d0b40aa032da91fc6855c757a507cc66e",
+  "merge-mobile.png": "456d2f7b832c0dadd4c8bbe39d1e0cc61f7d9ae0a210e0d91e3c7ffdd240e9b1",
+  "merge-tablet.png": "3003916194aab4653072ed0122efbcb44d4ef5b9dbc77e733bf4dd1dccec7d12",
+  "real-google-acceptance.json": "b1e4b842b2c57c2b8c9e595535d4f403a409a6a29f114cc7a8b9ac9cf54e833b",
+  "rereview.md": "c2fb85924ec1ced775904f31fea8244eb8f4b255703cc633aa47b6b7cc5bf275",
+  "review-fix-artifact-manifest.json": "69229ecd89bb008de097ea382a1a0813130057aa298138549cce4c84af7bf30d",
+  "review-fix-source-manifest.json": "4d9f5b0d6b2300f6e8b1bc459d8fa72b8615af6f66baeadc5003aaeebf181480",
+  "review-fix-verification.json": "e0a8f1b1f59ae1339bd2244cd5d09beda5f206b94cd5a801d9418806c1f4d918",
+  "review-provider-retry-mobile.png": "0c82fbaa27de22a383a76dc3ae9b7a37b502bd2324db5a94444273f6e9738aeb",
+  "review-storage-renewal-desktop.png": "9bb36aa23297f0e02f14d4c5233c7073adc42d7001b8dcc69527b87ce76e560a",
+  "review-storage-renewal-mobile.png": "d2f48e675d963c8b40ebf2e73c17174ba5faed41829f5ce03a290cf6a5491252",
+  "review-storage-renewal-tablet.png": "2ab71f0e626e988537dc2e3b7210eec69cb55a07d8ef9387e1b10f716647be23",
+  "review.md": "dcc4865ef7d340b7e0d8ec4f4720f18097e1e11a3a03fa6664f9c8cbff519b04",
+  "settled-artifact-manifest.json": "4e6b234f830d3bc535be108615bab0b0af2568ed63a7c9a18c628fa3e476dcec",
+  "settled-source-manifest.json": "2d0bf2986c5bfc99e4913981b47556a19d205794375fa548791484e137c64ad6"
+}

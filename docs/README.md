@@ -23,6 +23,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 - [Kiến trúc](ARCHITECTURE.md), [database và persistence](DATA.md), [API contract](API-CONTRACT.md).
 - [Danh sách contract](contracts/INDEX.md), [JSON Schema](contracts/api-v1.schema.json), [ví dụ request/response](contracts/examples/README.md), [event index](contracts/event-index.json).
 - [Compatibility của stack](implementation/compatibility.md), [database local/Neon development](implementation/database-test-environment.md), [HTTP API đã triển khai](implementation/http-api.md).
+- [Google login và chạy local](AUTH.md): cấu hình Neon Auth development, database chơi thử riêng và lệnh mở game.
 
 ## UI, motion và mockup
 
@@ -40,6 +41,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 - [Motion và renderer — Task 10](implementation/motion-rendering.md): Pixi/GSAP, shared HP beat, cleanup/reduced motion và WebGL dưới CSP; trạng thái review được ghi trong báo cáo.
 - [Recovery, block và kết quả — Task 11](implementation/browser-recovery.md): retry trong pause, log phân trang, kết quả/rematch, review và điểm nối sang deck builder.
 - [Chọn hero và deck builder — Task 12](implementation/hero-deck-builder.md): draft/revision, lưu trên server, chọn nguồn deck chính xác và recovery qua reload.
+- [Tài khoản và lịch sử — Task 13](implementation/auth-sessions.md): claim khách, gia hạn phiên, kiểm chứng Google thực tế và trạng thái review.
 - [Nguồn tham khảo PvZ Heroes và công nghệ](REFERENCES.md).
 - [Specification v0.1 gốc](reference/SPECIFICATION.v0.1.md), [kế hoạch trước khi chuyển sang Next.js](superpowers/plans/2026-10-20-ngulo-implementation.md).
 
