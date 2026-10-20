@@ -1,0 +1,78 @@
+{
+  "sourceAndCompiledArtifactsUnchanged": true,
+  "sourceSha256": "43d892b436f8c8932968bb41d096347447efb5a05adbdbc1194dfc627b0aac71",
+  "artifactSha256": "c7fe8b4b484da46cfda68e11674418233dbd2561d55f9a1cf331a3feac3811be",
+  "console": [
+    {
+      "file": "collection-filters-curve-copies-and-independent-quantity-controls-across-responsive-layouts-console.json",
+      "all": [],
+      "unexpected": []
+    },
+    {
+      "file": "dirty-browser-Back-offers-stay-and-leave-empty-new-deck-remains-editable-on-mobile-reduced-motion-console.json",
+      "all": [],
+      "unexpected": []
+    },
+    {
+      "file": "dirty-navigation-and-focusable-name-errors-preserve-draft-console.json",
+      "all": [],
+      "unexpected": []
+    },
+    {
+      "file": "history-drift-reviews-exact-PRESET-source-before-explicit-confirmed-create-console.json",
+      "all": [],
+      "unexpected": []
+    },
+    {
+      "file": "history-drift-reviews-exact-SAVED-source-before-explicit-confirmed-create-console.json",
+      "all": [],
+      "unexpected": []
+    },
+    {
+      "file": "offline-committed-saved-create-reload-restores-exact-source-opponent-and-idempotent-retry-console.json",
+      "all": [
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "unexpected": []
+    },
+    {
+      "file": "offline-draft-survives-retry-reload-blocks-Play-under30-and-completes-saved-source-console.json",
+      "all": [
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "unexpected": []
+    },
+    {
+      "file": "six-heroes-expose-exact-four-powers-and-signature-without-early-match-creation-console.json",
+      "all": [],
+      "unexpected": []
+    },
+    {
+      "file": "stale-revision-offers-load-latest-and-save-copy-without-overwriting-console.json",
+      "all": [
+        "Failed to load resource: the server responded with a status of 409 (Conflict)",
+        "Failed to load resource: the server responded with a status of 409 (Conflict)"
+      ],
+      "unexpected": []
+    },
+    {
+      "file": "throwing-storage-and-rejected-create-retain-no-reload-warning-and-exact-retry-console.json",
+      "all": [
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "unexpected": []
+    }
+  ],
+  "screenshots": {
+    "builder-desktop.png": "2828c7b79c244eecab80c990cc9fa3fd887b407dc846301b933c5a06062afc1d",
+    "builder-mobile-drawer.png": "ae149b075406b290919a552ebfc686ae175ed7384e897e98b9b41f6f5dbbd592",
+    "builder-mobile.png": "530bfe171d8220d7d5f9a9555e16f5acf757874adc8e618869a11a5cf39fcc7b",
+    "builder-tablet.png": "1ef4eb277ab1ba584568833dfd932d6b99f5239106b535a2ec8e57ee79477d20",
+    "empty-mobile-reduced.png": "2c8cc718d67bdefe518d41a366b82ab4bff90b4a23584edf5c43e81c13214fa5",
+    "heroes-desktop.png": "d121aa0214d2fefa572d8847a01f10d7c119c7fc4525a17609a0374c402ff40c",
+    "heroes-mobile.png": "d9f36f71157a5c52b91cf9b9924fed30bc5f8582a4d1d844e4c5b335a5ccfc53",
+    "heroes-tablet.png": "822f4ed7737943b76c7f3f8efc5b64982872efe457fa2bcb362dc057ef710ae3",
+    "review-preset.png": "4ab506f8703fa61935c976cd7f96f4689248494dbe661d4022ad0370b4ae75e4",
+    "review-saved.png": "08415dddba81cc10c5478f34fb00c7dbcf4714fa42bd99eb4ebae0bc987f56f8"
+  }
+}

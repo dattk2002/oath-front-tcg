@@ -1,0 +1,11 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+
+ Test Files  11 passed (11)
+      Tests  79 passed (79)
+   Start at  00:44:29
+   Duration  6.92s (tests 85%, import 12%, transform 2%, worker 1%)
+
+    Isolate  11 workers spawned · ~108ms startup each (spawn + environment, per file)
+             at least ~1.08s faster with isolate: false — reuses workers across files instead of one per file

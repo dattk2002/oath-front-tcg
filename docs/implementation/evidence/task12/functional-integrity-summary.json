@@ -1,0 +1,20 @@
+{
+  "sourceUnchanged": true,
+  "compiledArtifactsUnchanged": true,
+  "expectedAddedRuntimeCacheFiles": [
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.html",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.meta",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.segments/_full.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.segments/_tree.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/2bb3dc6e47379856cfbc30620d7cc78b81962e2fb2f67328dcca50f3aff3a6bf/$/heroes.segments/heroes/__PAGE__.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.html",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.meta",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/__PAGE__.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/_full.segment.rsc",
+    "apps/web/.next/standalone/apps/web/.next/server/route-cache/APP_PAGE/c6377dd9ce6a1c2cd100eb4344e843eb4639b9ed26f84643f77680e9eb454c4b/$/index.segments/_tree.segment.rsc"
+  ],
+  "functionalSourceSha256": "5556c75f9f81167f851eb131ad16ec51d42ffdb55bccdc1b92d2bb6a145964a3",
+  "compiledArtifactSha256": "a56aa126898369691e379d7dbe76809173338307dffedda70bbdf1d59191da32"
+}

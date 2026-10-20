@@ -1,0 +1,26 @@
+[WebServer] (node:1572345) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1572358) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1572374) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1572434) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:1572446) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/deck-builder.spec.ts:60:1 › six heroes expose exact four powers and signature without early match creation (1.5s)
+  ✓   2 tests/e2e/deck-builder.spec.ts:103:1 › collection filters curve copies and independent quantity controls across responsive layouts (1.7s)
+  ✓   3 tests/e2e/deck-builder.spec.ts:166:1 › offline draft survives retry reload, blocks Play under30 and completes saved source (2.1s)
+  ✓   4 tests/e2e/deck-builder.spec.ts:209:1 › dirty navigation and focusable name errors preserve draft (914ms)
+  ✓   5 tests/e2e/deck-builder.spec.ts:243:1 › stale revision offers load latest and save copy without overwriting (1.2s)
+  ✓   6 tests/e2e/deck-builder.spec.ts:309:3 › history drift reviews exact PRESET source before explicit confirmed create (1.3s)
+  ✓   7 tests/e2e/deck-builder.spec.ts:309:3 › history drift reviews exact SAVED source before explicit confirmed create (1.1s)
+  ✓   8 tests/e2e/deck-builder.spec.ts:405:1 › throwing storage and rejected create retain no-reload warning and exact retry (477ms)
+  ✓   9 tests/e2e/deck-builder.spec.ts:427:1 › dirty browser Back offers stay and leave; empty new deck remains editable on mobile reduced motion (988ms)
+  ✓  10 tests/e2e/deck-builder.spec.ts:452:1 › offline committed saved create reload restores exact source opponent and idempotent retry (906ms)
+  ✓  11 tests/e2e/match-foundation.spec.ts:235:1 › lost create response restores displayed choices on reload and retries identical request (1.8s)
+
+  11 passed (17.5s)

@@ -39,6 +39,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 - [Nền tảng browser — Task 9](implementation/browser-foundation.md): luồng hai phe trên Next standalone/API/PostgreSQL, recovery, ảnh desktop/tablet/fallback và giới hạn kiểm chứng.
 - [Motion và renderer — Task 10](implementation/motion-rendering.md): Pixi/GSAP, shared HP beat, cleanup/reduced motion và WebGL dưới CSP; trạng thái review được ghi trong báo cáo.
 - [Recovery, block và kết quả — Task 11](implementation/browser-recovery.md): retry trong pause, log phân trang, kết quả/rematch, review và điểm nối sang deck builder.
+- [Chọn hero và deck builder — Task 12](implementation/hero-deck-builder.md): draft/revision, lưu trên server, chọn nguồn deck chính xác và recovery qua reload.
 - [Nguồn tham khảo PvZ Heroes và công nghệ](REFERENCES.md).
 - [Specification v0.1 gốc](reference/SPECIFICATION.v0.1.md), [kế hoạch trước khi chuyển sang Next.js](superpowers/plans/2026-10-20-ngulo-implementation.md).
 

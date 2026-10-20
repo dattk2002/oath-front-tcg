@@ -1,0 +1,18 @@
+[WebServer] (node:1586517) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1586530) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1586546) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1586605) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:1586617) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/deck-builder.spec.ts:60:1 › six heroes expose exact four powers and signature without early match creation (1.7s)
+  ✓  2 tests/e2e/deck-builder.spec.ts:108:1 › collection filters curve copies and independent quantity controls across responsive layouts (2.1s)
+  ✓  3 tests/e2e/deck-builder.spec.ts:452:1 › dirty browser Back offers stay and leave; empty new deck remains editable on mobile reduced motion (936ms)
+
+  3 passed (8.4s)

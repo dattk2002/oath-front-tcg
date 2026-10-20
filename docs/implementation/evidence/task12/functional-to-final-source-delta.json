@@ -1,0 +1,11 @@
+{
+  "functionalSourceSha256": "5556c75f9f81167f851eb131ad16ec51d42ffdb55bccdc1b92d2bb6a145964a3",
+  "finalSourceSha256": "43d892b436f8c8932968bb41d096347447efb5a05adbdbc1194dfc627b0aac71",
+  "changed": [
+    "apps/web/src/features/deck/DeckBuilder.tsx",
+    "apps/web/src/styles/deck.css",
+    "tests/e2e/deck-builder.spec.ts"
+  ],
+  "added": [],
+  "removed": []
+}

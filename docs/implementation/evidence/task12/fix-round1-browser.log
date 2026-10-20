@@ -1,0 +1,28 @@
+[WebServer] (node:1620138) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1620169) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1620185) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1620200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:1620231) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/deck-builder.spec.ts:191:1 › offline draft survives retry reload, blocks Play under30 and completes saved source (2.2s)
+  ✓   2 tests/e2e/deck-builder.spec.ts:234:1 › dirty navigation and focusable name errors preserve draft (818ms)
+  ✓   3 tests/e2e/deck-builder.spec.ts:268:1 › stale revision offers load latest and save copy without overwriting (1.1s)
+  ✓   4 tests/e2e/deck-builder.spec.ts:334:3 › history drift reviews exact PRESET source before explicit confirmed create (1.1s)
+  ✓   5 tests/e2e/deck-builder.spec.ts:334:3 › history drift reviews exact SAVED source before explicit confirmed create (834ms)
+  ✓   6 tests/e2e/deck-builder.spec.ts:452:1 › dirty browser Back offers stay and leave; empty new deck remains editable on mobile reduced motion (826ms)
+  ✓   7 tests/e2e/deck-builder.spec.ts:477:1 › offline committed saved create reload restores exact source opponent and idempotent retry (720ms)
+  ✓   8 tests/e2e/deck-builder.spec.ts:547:1 › draft revision migration: stale load latest edit reload retains new draft (712ms)
+  ✓   9 tests/e2e/deck-builder.spec.ts:589:1 › draft revision migration: same route save edit reload retains unsaved edits (566ms)
+  ✓  10 tests/e2e/deck-builder.spec.ts:609:1 › offline committed save reload preserves original receipt and requires stale choice for later revision (1.1s)
+  ✓  11 tests/e2e/deck-builder.spec.ts:680:1 › definitive create rejection then another hero posts the visibly selected preset (993ms)
+  ✓  12 tests/e2e/deck-builder.spec.ts:749:1 › 429 create preserves selected source command id and body for explicit retry (481ms)
+  ✓  13 tests/e2e/match-foundation.spec.ts:235:1 › lost create response restores displayed choices on reload and retries identical request (1.7s)
+
+  13 passed (16.7s)

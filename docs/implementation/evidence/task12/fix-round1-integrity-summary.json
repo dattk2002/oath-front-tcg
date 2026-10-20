@@ -1,0 +1,146 @@
+{
+  "sourceDeltaFromFixBase": {
+    "changed": [
+      "apps/web/src/features/deck/DeckBuilder.tsx",
+      "apps/web/src/features/deck/DeckScreen.tsx",
+      "apps/web/src/features/setup/PresetSetup.tsx",
+      "tests/e2e/deck-builder.spec.ts"
+    ],
+    "added": [
+      "apps/web/src/features/deck/draft-storage.ts"
+    ],
+    "removed": []
+  },
+  "artifactDeltaFromFixBase": {
+    "changed": [
+      "apps/web/.next/standalone/apps/web/.next/BUILD_ID",
+      "apps/web/.next/standalone/apps/web/.next/build-manifest.json",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_global-error/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_global-error.html",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_global-error.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_global-error.segments/_full.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_global-error.segments/_global-error/__PAGE__.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_global-error.segments/_tree.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_not-found/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_not-found.html",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_not-found.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_not-found.segments/_full.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_not-found.segments/_not-found/__PAGE__.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/_not-found.segments/_tree.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/decks/[deckId]/edit/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/decks/new/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/decks/review/[matchId]/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/heroes/[heroId]/decks/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/heroes/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/heroes.html",
+      "apps/web/.next/standalone/apps/web/.next/server/app/heroes.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/heroes.segments/_full.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/heroes.segments/_tree.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/heroes.segments/heroes/__PAGE__.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/history/[id]/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/index.html",
+      "apps/web/.next/standalone/apps/web/.next/server/app/index.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/index.segments/__PAGE__.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/index.segments/_full.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/index.segments/_tree.segment.rsc",
+      "apps/web/.next/standalone/apps/web/.next/server/app/matches/[id]/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/app/page_client-reference-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/chunks/921.js",
+      "apps/web/.next/standalone/apps/web/.next/server/middleware-build-manifest.js",
+      "apps/web/.next/standalone/apps/web/.next/server/pages/404.html",
+      "apps/web/.next/standalone/apps/web/.next/server/pages/500.html"
+    ],
+    "added": [
+      "apps/web/.next/standalone/apps/web/.next/static/G-Kbo0BaZfn4nMGYHw4ne/_buildManifest.js",
+      "apps/web/.next/standalone/apps/web/.next/static/G-Kbo0BaZfn4nMGYHw4ne/_ssgManifest.js",
+      "apps/web/.next/standalone/apps/web/.next/static/chunks/237-8805da5fcc69f5ad.js",
+      "apps/web/.next/static/G-Kbo0BaZfn4nMGYHw4ne/_buildManifest.js",
+      "apps/web/.next/static/G-Kbo0BaZfn4nMGYHw4ne/_ssgManifest.js",
+      "apps/web/.next/static/chunks/237-8805da5fcc69f5ad.js"
+    ],
+    "removed": [
+      "apps/web/.next/standalone/apps/web/.next/static/chunks/237-8f7f938147c78f40.js",
+      "apps/web/.next/standalone/apps/web/.next/static/myK_Hzn8O4HE4-ujCsWbY/_buildManifest.js",
+      "apps/web/.next/standalone/apps/web/.next/static/myK_Hzn8O4HE4-ujCsWbY/_ssgManifest.js",
+      "apps/web/.next/static/chunks/237-8f7f938147c78f40.js",
+      "apps/web/.next/static/myK_Hzn8O4HE4-ujCsWbY/_buildManifest.js",
+      "apps/web/.next/static/myK_Hzn8O4HE4-ujCsWbY/_ssgManifest.js"
+    ]
+  },
+  "sourceUnchangedAcrossBrowser": true,
+  "artifactsUnchangedAcrossBrowser": true,
+  "sourceSHA256": "30b77d691776f701381ab4fcb4502ae7cd3e02a86f9e78fe7d8bcf8dd5d432ee",
+  "artifactSHA256": "0c79740a277a2709ca44869112800d423b13225dfc1696b5ebb2cb0553d19ee3",
+  "consoleRecords": {
+    "offline-draft-survives-retry-reload-blocks-Play-under30-and-completes-saved-source-console.json": {
+      "all": [
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "unexpected": []
+    },
+    "dirty-navigation-and-focusable-name-errors-preserve-draft-console.json": {
+      "all": [],
+      "unexpected": []
+    },
+    "stale-revision-offers-load-latest-and-save-copy-without-overwriting-console.json": {
+      "all": [
+        "Failed to load resource: the server responded with a status of 409 (Conflict)",
+        "Failed to load resource: the server responded with a status of 409 (Conflict)"
+      ],
+      "unexpected": []
+    },
+    "history-drift-reviews-exact-PRESET-source-before-explicit-confirmed-create-console.json": {
+      "all": [],
+      "unexpected": []
+    },
+    "history-drift-reviews-exact-SAVED-source-before-explicit-confirmed-create-console.json": {
+      "all": [],
+      "unexpected": []
+    },
+    "dirty-browser-Back-offers-stay-and-leave-empty-new-deck-remains-editable-on-mobile-reduced-motion-console.json": {
+      "all": [],
+      "unexpected": []
+    },
+    "offline-committed-saved-create-reload-restores-exact-source-opponent-and-idempotent-retry-console.json": {
+      "all": [
+        "Failed to load resource: net::ERR_FAILED"
+      ],
+      "unexpected": []
+    },
+    "draft-revision-migration-stale-load-latest-edit-reload-retains-new-draft-console.json": {
+      "all": [
+        "Failed to load resource: the server responded with a status of 409 (Conflict)"
+      ],
+      "unexpected": []
+    },
+    "draft-revision-migration-same-route-save-edit-reload-retains-unsaved-edits-console.json": {
+      "all": [],
+      "unexpected": []
+    },
+    "offline-committed-save-reload-preserves-original-receipt-and-requires-stale-choice-for-later-revision-console.json": {
+      "all": [
+        "Failed to load resource: net::ERR_FAILED",
+        "Failed to load resource: the server responded with a status of 409 (Conflict)"
+      ],
+      "unexpected": []
+    },
+    "definitive-create-rejection-then-another-hero-posts-the-visibly-selected-preset-console.json": {
+      "all": [
+        "Failed to load resource: the server responded with a status of 409 (Conflict)"
+      ],
+      "unexpected": []
+    },
+    "429-create-preserves-selected-source-command-id-and-body-for-explicit-retry-console.json": {
+      "all": [
+        "Failed to load resource: the server responded with a status of 429 (Too Many Requests)"
+      ],
+      "unexpected": []
+    }
+  },
+  "unexpectedConsoleCount": 0,
+  "screenshots": {
+    ".superpowers/sdd/2026-10-20-oathfront-implementation/task-12-evidence/fix-round1/create-rejection-mobile.png": "594b22d68a7db9b4c68c2d440b2da6e9d3ef3527049d50842eee0662ac4a8ff4",
+    ".superpowers/sdd/2026-10-20-oathfront-implementation/task-12-evidence/fix-round1/create-rejection-tablet.png": "c5d8e9af428e7270d65e5645bb8f796d753c9506f2a720d4b11b5dfd95934761",
+    ".superpowers/sdd/2026-10-20-oathfront-implementation/task-12-evidence/fix-round1/create-rejection-desktop.png": "b650b3bde4cfdae4f5039a792d43924bff71ccad6dea4ffcd7afb0c99269b532"
+  }
+}

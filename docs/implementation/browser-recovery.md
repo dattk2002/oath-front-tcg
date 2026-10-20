@@ -51,6 +51,6 @@ Bản log đưa vào Git chỉ chuẩn hóa whitespace cuối dòng và dòng tr
 
 ## Điểm nối M4 và các gate sau
 
-Khi phiên bản nội dung đổi, [panel review](evidence/task11/version-review.png) giữ đúng preset hoặc deck ID/revision gốc, hiển thị phiên bản cũ/mới và chặn create cũ. “Chọn bộ bài khác” là lựa chọn thay thế. **Task 12 phải nối tiếp vào builder thật theo nguồn deck chính xác**, với xác nhận rõ trước khi tạo trận mới; chưa gọi bước này hoàn tất.
+Khi phiên bản nội dung đổi, [panel review](evidence/task11/version-review.png) giữ đúng preset hoặc deck ID/revision gốc, hiển thị phiên bản cũ/mới và chặn create cũ. “Chọn bộ bài khác” là lựa chọn thay thế. **Task 12 phải nối tiếp vào builder thật theo nguồn deck chính xác**, với xác nhận rõ trước khi tạo trận mới. Điểm nối này và cảnh báo rematch storage đã được kiểm chứng, review ở [Task 12](hero-deck-builder.md).
 
 Task 13 làm history list phân trang và auth/claim. Art/audio cuối thuộc Task 15; thiết bị thật, Safari, assistive technology và đo hiệu năng thuộc các gate sau. Các test Chromium và visibility giả lập không thay thế các kiểm chứng đó.
