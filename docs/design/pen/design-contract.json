@@ -14,7 +14,7 @@
   },
   "campaignExtension": {
     "status": "verified_source_approved_for_implementation",
-    "authorization": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
+    "authorization": "User approved recommendations 1A\u20137A and M1\u2013M7 sequentially; requested close Pen fidelity.",
     "inventoryPath": "docs/design/pen/campaign-design-inventory.json",
     "handoffPath": "docs/design/pen/CAMPAIGN-HANDOFF.md",
     "visualDirection": "Comic-editorial: warm paper, slate violet, lilac and acid yellow. Original hero artwork remains full-body with contain framing.",
@@ -29,8 +29,8 @@
     "surfaces": [
       {
         "logicalId": "campaign_news",
-        "repoPath": null,
-        "repoComponent": null,
+        "repoPath": "apps/web/src/features/campaign/EditorialPage.tsx",
+        "repoComponent": "EditorialPage",
         "desktop": "BsnWN",
         "mobile": "mqwt0",
         "detailDesktop": "x67YO7",
@@ -38,8 +38,8 @@
       },
       {
         "logicalId": "campaign_game_features",
-        "repoPath": null,
-        "repoComponent": null,
+        "repoPath": "apps/web/src/features/campaign/GameFeatures.tsx",
+        "repoComponent": "GameFeatures",
         "desktop": "Wcfik",
         "mobile": "ap90K"
       },
@@ -81,8 +81,8 @@
       },
       {
         "logicalId": "campaign_events",
-        "repoPath": null,
-        "repoComponent": null,
+        "repoPath": "apps/web/src/features/campaign/EditorialPage.tsx",
+        "repoComponent": "EditorialPage",
         "desktop": "QXjQb",
         "mobile": "pNR5Q",
         "detailDesktop": "di6Pk",
@@ -1834,7 +1834,7 @@
     ]
   },
   "implementationScope": {
-    "approval": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
+    "approval": "User approved recommendations 1A\u20137A and M1\u2013M7 sequentially; requested close Pen fidelity.",
     "specPath": "docs/superpowers/specs/2026-10-21-pen-design-implementation.md",
     "planPath": "docs/superpowers/plans/2026-10-21-pen-design-implementation.md",
     "completePenGameplayCoverage": false,
@@ -1843,7 +1843,7 @@
       "Campaign tablet/reflow and omitted interaction/error states",
       "Static mock editorial detail content for listed entries"
     ],
-    "implementationStatus": "M1_M2_M3_complete_M4_pending",
+    "implementationStatus": "M1_M2_M3_M4_complete_M5_pending",
     "deviations": [
       {
         "id": "public-route-isolation",

@@ -3,6 +3,76 @@ import { mkdir } from "node:fs/promises";
 const evidence =
   ".superpowers/sdd/2026-10-21-pen-design-implementation/browser";
 
+test("Editorial filters, detail links and empty categories are usable", async ({
+  page,
+}) => {
+  await page.goto("/news");
+  await expect(page.locator(".editorial-card")).toHaveCount(6);
+  await page.getByRole("link", { name: "Game updates", exact: true }).click();
+  await expect(page.locator(".editorial-card")).toHaveCount(1);
+  await page
+    .getByRole("link", { name: "READABILITY COMES FIRST", exact: true })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "READABILITY COMES FIRST", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("link", { name: "← All news" }).click();
+  await expect(page.locator(".editorial-card")).toHaveCount(1);
+  await page.getByRole("link", { name: "Announcements", exact: true }).click();
+  await expect(page.getByRole("status")).toContainText("No articles");
+  await page.goto("/events?category=playtests");
+  const article = page.getByRole("link", {
+    name: "FIRST OATH PLAY SESSION",
+    exact: true,
+  });
+  await article.focus();
+  await page.keyboard.press("Enter");
+  await expect(
+    page.getByText("Mock event only. Registration is not available.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  expect((await page.goto("/news/does-not-exist"))?.status()).toBe(404);
+  expect((await page.goto("/explore/heroes/not-a-hero"))?.status()).toBe(404);
+});
+
+test("Editorial and features match Pen across desktop, compact and mobile", async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  await mkdir(evidence, { recursive: true });
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const [width, height] of [
+    [1440, 900],
+    [1024, 640],
+    [375, 812],
+  ]) {
+    await page.setViewportSize({ width: width!, height: height! });
+    for (const path of [
+      "news",
+      "events",
+      "game-features",
+      "news/building-the-fivefold",
+    ]) {
+      await page.goto(`/${path}`);
+      await expect(page.locator("main h1")).toBeVisible();
+      await page.evaluate(() => document.fonts.ready);
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+      await page.screenshot({
+        path: `${evidence}/${path.replaceAll("/", "-")}-${width}.png`,
+        fullPage: true,
+      });
+    }
+  }
+  expect(errors).toEqual([]);
+});
+
 test("Pen Home and profiles preserve guest entry and selected hero deck intent", async ({
   page,
 }) => {

@@ -1,0 +1,206 @@
+[
+  {
+    "section": "news",
+    "slug": "building-the-fivefold",
+    "title": "BUILDING THE FIVEFOLD",
+    "thumbnailTitle": "BUILDING\nTHE FIVEFOLD",
+    "category": "DEV DIARY",
+    "filter": "dev-diaries",
+    "summary": "From quiet groves to ruined arenas: a world shaped around five lanes.",
+    "mock": true,
+    "detailIntro": "A world built around the decisions you make.",
+    "sectionHeading": "A PLACE FOR EVERY CHOICE",
+    "paragraphs": [
+      "The Fivefold brings two distinct factions onto one shared battlefield. Dawnward and the Ashen Court meet across five ordered lanes, where your choices of hero, deck and timing shape each match.",
+      "This mock editorial introduces the world through its visual contrasts: living greens and pale stone, warm embers and deep shadow. The final article will be supplied by the OathFront team."
+    ],
+    "sourceNode": "q31WGQ"
+  },
+  {
+    "section": "news",
+    "slug": "meet-the-living-bastion",
+    "title": "MEET THE LIVING BASTION",
+    "thumbnailTitle": "THE LIVING\nBASTION",
+    "category": "HERO SPOTLIGHT",
+    "filter": "latest",
+    "summary": "A closer look at Briar and the identity of Dawnward.",
+    "mock": true,
+    "detailIntro": "A closer look at Briar and the identity of Dawnward.",
+    "sectionHeading": "FROM THE FIVEFOLD",
+    "paragraphs": [
+      "A closer look at Briar and the identity of Dawnward.",
+      "This is a draft editorial preview for OathFront, not a published announcement. Explore the heroes and the Fivefold through the current game; final editorial content will be supplied separately."
+    ],
+    "sourceNode": "WGDqX"
+  },
+  {
+    "section": "news",
+    "slug": "every-card-tells-a-story",
+    "title": "EVERY CARD TELLS A STORY",
+    "thumbnailTitle": "EVERY CARD\nTELLS A STORY",
+    "category": "DESIGN NOTES",
+    "filter": "dev-diaries",
+    "summary": "Exploring the illustration language of OathFront.",
+    "mock": true,
+    "detailIntro": "Exploring the illustration language of OathFront.",
+    "sectionHeading": "FROM THE FIVEFOLD",
+    "paragraphs": [
+      "Exploring the illustration language of OathFront.",
+      "This is a draft editorial preview for OathFront, not a published announcement. Explore the heroes and the Fivefold through the current game; final editorial content will be supplied separately."
+    ],
+    "sourceNode": "LfCg5"
+  },
+  {
+    "section": "news",
+    "slug": "readability-comes-first",
+    "title": "READABILITY COMES FIRST",
+    "thumbnailTitle": "READABILITY\nCOMES FIRST",
+    "category": "GAME UPDATE",
+    "filter": "game-updates",
+    "summary": "A preview of clearer rules, card details and battle feedback.",
+    "mock": true,
+    "detailIntro": "A preview of clearer rules, card details and battle feedback.",
+    "sectionHeading": "FROM THE FIVEFOLD",
+    "paragraphs": [
+      "A preview of clearer rules, card details and battle feedback.",
+      "This is a draft editorial preview for OathFront, not a published announcement. Explore the heroes and the Fivefold through the current game; final editorial content will be supplied separately."
+    ],
+    "sourceNode": "I5m61N"
+  },
+  {
+    "section": "news",
+    "slug": "inside-the-ashen-court",
+    "title": "INSIDE THE ASHEN COURT",
+    "thumbnailTitle": "INSIDE THE\nASHEN COURT",
+    "category": "HERO SPOTLIGHT",
+    "filter": "latest",
+    "summary": "Introducing Cinder, Vesper and Morrow.",
+    "mock": true,
+    "detailIntro": "Introducing Cinder, Vesper and Morrow.",
+    "sectionHeading": "FROM THE FIVEFOLD",
+    "paragraphs": [
+      "Introducing Cinder, Vesper and Morrow.",
+      "This is a draft editorial preview for OathFront, not a published announcement. Explore the heroes and the Fivefold through the current game; final editorial content will be supplied separately."
+    ],
+    "sourceNode": "NrQl9"
+  },
+  {
+    "section": "news",
+    "slug": "two-sides-one-battlefield",
+    "title": "TWO SIDES. ONE BATTLEFIELD.",
+    "thumbnailTitle": "TWO SIDES.\nONE BATTLEFIELD.",
+    "category": "DEV DIARY",
+    "filter": "dev-diaries",
+    "summary": "How contrasting factions share the same Fivefold.",
+    "mock": true,
+    "detailIntro": "How contrasting factions share the same Fivefold.",
+    "sectionHeading": "FROM THE FIVEFOLD",
+    "paragraphs": [
+      "How contrasting factions share the same Fivefold.",
+      "This is a draft editorial preview for OathFront, not a published announcement. Explore the heroes and the Fivefold through the current game; final editorial content will be supplied separately."
+    ],
+    "sourceNode": "pBJUz"
+  },
+  {
+    "section": "events",
+    "slug": "the-fivefold-sketchbook",
+    "title": "THE FIVEFOLD SKETCHBOOK",
+    "thumbnailTitle": "THE FIVEFOLD\nSKETCHBOOK",
+    "category": "COMMUNITY",
+    "filter": "community",
+    "summary": "A concept showcase for fan interpretations of the world.",
+    "mock": true,
+    "detailIntro": "A proposed creative showcase for the OathFront community.",
+    "sectionHeading": "A WORLD WORTH REIMAGINING",
+    "paragraphs": [
+      "Explore the landscapes and characters of the Fivefold through sketches and visual stories. This sample page shows how an editorial event announcement could be presented.",
+      "No event dates, submissions, eligibility terms, prizes or registration are confirmed. Those details must be supplied and reviewed before publication."
+    ],
+    "sourceNode": "bgZnR"
+  },
+  {
+    "section": "events",
+    "slug": "first-oath-play-session",
+    "title": "FIRST OATH PLAY SESSION",
+    "thumbnailTitle": "FIRST OATH\nPLAY SESSION",
+    "category": "PLAYTEST",
+    "filter": "playtests",
+    "summary": "A sample event concept for exploring the game together.",
+    "mock": true,
+    "detailIntro": "A sample event concept for exploring the game together.",
+    "sectionHeading": "A COMMUNITY CONCEPT",
+    "paragraphs": [
+      "A sample event concept for exploring the game together.",
+      "This page presents a community event concept only. No date, submissions, eligibility, prizes or registration are confirmed."
+    ],
+    "sourceNode": "ardxo"
+  },
+  {
+    "section": "events",
+    "slug": "design-your-deck",
+    "title": "DESIGN YOUR DECK",
+    "thumbnailTitle": "DESIGN\nYOUR DECK",
+    "category": "COMMUNITY",
+    "filter": "community",
+    "summary": "A proposed spotlight on player-created deck ideas.",
+    "mock": true,
+    "detailIntro": "A proposed spotlight on player-created deck ideas.",
+    "sectionHeading": "A COMMUNITY CONCEPT",
+    "paragraphs": [
+      "A proposed spotlight on player-created deck ideas.",
+      "This page presents a community event concept only. No date, submissions, eligibility, prizes or registration are confirmed."
+    ],
+    "sourceNode": "fybHC"
+  },
+  {
+    "section": "events",
+    "slug": "meet-the-makers",
+    "title": "MEET THE MAKERS",
+    "thumbnailTitle": "MEET\nTHE MAKERS",
+    "category": "STUDIO",
+    "filter": "all",
+    "summary": "A concept conversation about the art of the Fivefold.",
+    "mock": true,
+    "detailIntro": "A concept conversation about the art of the Fivefold.",
+    "sectionHeading": "A COMMUNITY CONCEPT",
+    "paragraphs": [
+      "A concept conversation about the art of the Fivefold.",
+      "This page presents a community event concept only. No date, submissions, eligibility, prizes or registration are confirmed."
+    ],
+    "sourceNode": "kJpsA"
+  },
+  {
+    "section": "events",
+    "slug": "faction-focus",
+    "title": "FACTION FOCUS",
+    "thumbnailTitle": "FACTION\nFOCUS",
+    "category": "COMMUNITY",
+    "filter": "community",
+    "summary": "A sample celebration of Dawnward and the Ashen Court.",
+    "mock": true,
+    "detailIntro": "A sample celebration of Dawnward and the Ashen Court.",
+    "sectionHeading": "A COMMUNITY CONCEPT",
+    "paragraphs": [
+      "A sample celebration of Dawnward and the Ashen Court.",
+      "This page presents a community event concept only. No date, submissions, eligibility, prizes or registration are confirmed."
+    ],
+    "sourceNode": "m4HXIP"
+  },
+  {
+    "section": "events",
+    "slug": "your-oath-your-story",
+    "title": "YOUR OATH, YOUR STORY",
+    "thumbnailTitle": "YOUR OATH,\nYOUR STORY",
+    "category": "COMMUNITY",
+    "filter": "community",
+    "summary": "A concept space for stories inspired by the original heroes.",
+    "mock": true,
+    "detailIntro": "A concept space for stories inspired by the original heroes.",
+    "sectionHeading": "A COMMUNITY CONCEPT",
+    "paragraphs": [
+      "A concept space for stories inspired by the original heroes.",
+      "This page presents a community event concept only. No date, submissions, eligibility, prizes or registration are confirmed."
+    ],
+    "sourceNode": "hYPjL"
+  }
+]

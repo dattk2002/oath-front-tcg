@@ -77,5 +77,7 @@ export function gameEntryDestination(
 }
 
 export type CampaignView =
+  | { kind: "features" }
+  | { kind: "news" | "events"; slug?: string; filter?: string }
   | { kind: "heroes"; faction?: HeroFilter }
   | { kind: "hero"; heroId: HeroId; faction?: HeroFilter };

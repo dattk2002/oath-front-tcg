@@ -3,6 +3,8 @@ import Link from "next/link";
 import { contentName, heroTitle } from "../../content/english-content";
 import { CampaignArtwork } from "./CampaignArtwork";
 import { HeroProfile } from "./HeroProfile";
+import { EditorialPage } from "./EditorialPage";
+import { GameFeatures } from "./GameFeatures";
 import {
   classNames,
   factionName,
@@ -18,12 +20,24 @@ export function CampaignPage({
   onChooseHero,
   busy,
   resume,
+  onPlay,
 }: {
   view: CampaignView;
   onChooseHero: (id: string) => void;
   busy: boolean;
   resume: boolean;
+  onPlay: () => void;
 }) {
+  if (view.kind === "features")
+    return <GameFeatures onPlay={onPlay} busy={busy} />;
+  if (view.kind === "news" || view.kind === "events")
+    return (
+      <EditorialPage
+        section={view.kind}
+        {...(view.slug ? { slug: view.slug } : {})}
+        {...(view.filter ? { filter: view.filter } : {})}
+      />
+    );
   if (view.kind === "hero") {
     const hero = publicHero(view.heroId);
     return hero ? (
@@ -36,7 +50,7 @@ export function CampaignPage({
       />
     ) : null;
   }
-  const faction = view.faction ?? "ALL";
+  const faction = "faction" in view ? (view.faction ?? "ALL") : "ALL";
   const visible = publicHeroes.filter(
     (hero) => faction === "ALL" || hero.faction === faction,
   );

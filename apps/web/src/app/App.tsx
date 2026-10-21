@@ -245,7 +245,13 @@ function AppContent({
       </a>
       {publicPage ? (
         <CampaignHeader
-          active={screen === "home" ? "home" : "heroes"}
+          active={
+            screen === "home"
+              ? "home"
+              : campaign?.kind === "hero"
+                ? "heroes"
+                : (campaign?.kind ?? "home")
+          }
           onPlay={() => void start()}
           busy={busy || loading}
           accountLabel={
@@ -348,6 +354,7 @@ function AppContent({
               campaign ? (
                 <CampaignPage
                   view={campaign}
+                  onPlay={() => void start()}
                   onChooseHero={(id) => void start(id)}
                   busy={busy || loading}
                   resume={!!session?.activeMatchId}
