@@ -27,3 +27,7 @@ The [final fix report](reports/final-fix-report.md) records the compact stat reg
 ## Gate and cost
 
 The first production suite reported **82 passed, 4 failed, 2 skipped**. Three failures were stale assertions/routes after the English/art replacement; one found a compact tutorial focus clearance issue. The four affected cases passed on the covering production artifact after the scoped fixes. A targeted 200%/axe capture then passed. Exact details and build identity are in [Task 5's report](reports/task-5-report.md). No full engine, balance, load or physical benchmark was repeated for this presentation change. The [release checklist](../../release-checklist.md) still holds physical frame p95, balance, human playtests, physical device/touch/AT/Safari/Edge/audio checks and production acceptance.
+
+## Automatic CI follow-up
+
+The original remote run and the narrowly scoped test-fixture correction are retained in [CI verification](ci-followup/verification.md) and its [independent review](ci-followup/review.md). See the [delivery record](delivery.md#observed-ci-follow-up) for exact original counts and the distinction between local covering checks and the next automatic run. The production guest limit remains enforced.

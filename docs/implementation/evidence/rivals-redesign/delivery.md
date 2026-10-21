@@ -13,7 +13,7 @@ The six-task redesign is implemented and reviewed through `4d13ca374754a99ddd9db
 
 [Task 5](reports/task-5-report.md) records 121 frontend/content/asset tests, typecheck/lint/build, the original production result **82 passed / 4 failed / 2 skipped**, four covering passes and the targeted reflow/axe pass. [The final fix report](reports/final-fix-report.md) preserves both layout failures, five development passes and **six production passes** on build `z9liUCQ66nCjg45VaZ4mR`; its CSS hash identifies the amended artifact. These are distinct runs, not an invented all-green initial run.
 
-The [whole-change review](reports/final-review.md) found compact hand stat overflow and two small documentation/test mismatches. The [scoped rereview](reports/final-rereview.md) confirms all three addressed with no new Critical/Important breakage. Duplicate 512px inspect/cutout exports remain an explicitly deferred, nonblocking optimization. The controller also inspected the final 1024×640 and 1440×900 production captures: stats/trick cues and End phase are visible. [All nine controller rulings and their costs](rulings.md) are retained, including the superseded original art-scope decision.
+The [whole-change review](reports/final-review.md) found compact hand stat overflow and two small documentation/test mismatches. The [scoped rereview](reports/final-rereview.md) confirms all three addressed with no new Critical/Important breakage. Duplicate 512px inspect/cutout exports remain an explicitly deferred, nonblocking optimization. The controller also inspected the final 1024×640 and 1440×900 production captures: stats/trick cues and End phase are visible. [All ten controller rulings and their costs](rulings.md) are retained, including the superseded original art-scope decision.
 
 ## Repository, local run and remaining acceptance
 
@@ -30,3 +30,9 @@ node scripts/local-auth.mjs
 Open `http://localhost:3000`. The already-prepared interactive database and ignored auth configuration remain in place; no database recreation is needed. User services on 3000/3001 and the unrelated service on 3101 were preserved. The user-generated `.next-interactive` imports in `apps/web/next-env.d.ts` remain intentionally unstaged and outside delivered commits. The SDD workspace is preserved.
 
 The [release checklist](../../release-checklist.md) still records physical frame p95, balance/human playtests, physical devices/assistive technology/browser/audio checks and production acceptance. Those holds are not cleared by local tests, review or a future CI success. The actual editable Pen file and its dependencies are the remaining input for final design mapping.
+
+## Observed CI follow-up
+
+The first automatic [Verify run 39589791430](https://github.com/dattk2002/oath-front-tcg/actions/runs/39589791430) on `164c4f5` passed 80 files / 655 tests, contracts/typecheck/lint and production build, then recorded **76 browser passes / 10 failures / 2 skips**. All ten failures hit the shared guest-bootstrap IP quota during fixture setup. The subsequent load step did not run.
+
+[Test-only fix `f96923e`](ci-followup/verification.md) deterministically reproduced the quota collision, retained a real raw-request 429 assertion and isolated only the guarded fixture guest quota. Its focused regression, ten covering production cases and two existing API quota tests passed. [Independent review](ci-followup/review.md) approved the change with no findings. Production rate limits, runtime code, build and Pen-pinned inputs remain unchanged. The next automatic CI must be judged against the next exact pushed SHA; local covering passes are not a substitute for that result.
