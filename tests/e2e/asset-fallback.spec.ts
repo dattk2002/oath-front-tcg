@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { randomUUID, randomBytes } from "node:crypto";
 import { test, expect } from "@playwright/test";
 import { testOrigin } from "./test-origin.js";
@@ -5,7 +6,7 @@ import { cardFixture } from "./recovery-fixtures.js";
 import { mkdir, writeFile } from "node:fs/promises";
 const evidence =
   process.env.OATHFRONT_ASSET_EVIDENCE_DIR ??
-  "docs/implementation/evidence/task15";
+  evidencePath("task15", "docs/implementation/evidence/task15");
 test("missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot", async ({
   page,
 }) => {

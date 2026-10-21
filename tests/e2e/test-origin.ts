@@ -3,7 +3,7 @@ if (
   !Number.isInteger(testPort) ||
   testPort < 1024 ||
   testPort > 65535 ||
-  [3000, 3001, 3101].includes(testPort)
+  [3000, 3001, 3100, 3101].includes(testPort)
 )
   throw new Error("Invalid isolated browser fixture port");
 export const testOrigin = `http://localhost:${testPort}`;

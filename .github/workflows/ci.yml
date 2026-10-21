@@ -7,6 +7,14 @@ permissions:
 jobs:
   workspace:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OATHFRONT_TEST_DATABASE: "1"
+      OATHFRONT_TEST_DB_CONTAINER: oathfront-ci-db-1
+      OATHFRONT_E2E_PORT: "3200"
+      API_ORIGIN: http://127.0.0.1:3101
+      NEXT_TELEMETRY_DISABLED: "1"
+      OATHFRONT_EVIDENCE_ROOT: artifacts/ci-browser
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: pnpm/action-setup@d9184bf108216479bc5a137cc391f4d7b14c870b # v6.1.0
@@ -15,8 +23,30 @@ jobs:
           node-version-file: .node-version
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm contracts:check
-      - run: pnpm test
-      - run: pnpm typecheck
-      - run: pnpm lint
-      - run: pnpm build
+      - run: python3 -m pip install --requirement tools/assets/requirements.txt
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Isolated PostgreSQL (no hosted credentials)
+        run: |
+          node scripts/create-test-env.mjs
+          docker compose --env-file .env.test.local -p oathfront-ci -f compose.db.yaml up -d --build --wait
+      - run: pnpm --filter @oathfront/web exec next typegen
+      - run: pnpm contracts:check && pnpm typecheck && pnpm lint
+      - name: Unit, PostgreSQL, migration and restore integration (serial DB fixtures)
+        run: pnpm test
+      - name: Build production with API target baked before Next compilation
+        run: pnpm build
+      - name: Browser integration (production standalone through trusted ingress)
+        run: OATHFRONT_E2E_PRODUCTION=1 pnpm test:e2e
+      - name: Bounded20-match local HTTP load (no heavy balance/performance reruns)
+        run: pnpm exec tsx tools/load/pve.ts --concurrency 20
+      - name: Remove only runner-owned ephemeral stack
+        if: always()
+        run: docker compose --env-file .env.test.local -p oathfront-ci -f compose.db.yaml down --volumes
+      - name: Retain isolated browser evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: browser-evidence
+          path: artifacts/ci-browser
+          retention-days: 7
+          if-no-files-found: ignore

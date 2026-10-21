@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { testOrigin } from "./test-origin.js";
 import { expect, type Page } from "@playwright/test";
 import { randomUUID, randomBytes } from "node:crypto";
@@ -157,7 +158,7 @@ export async function captureEvidence(
   name: string,
   consoleErrors?: readonly string[],
 ) {
-  const dir = `.superpowers/sdd/2026-10-20-oathfront-implementation/task-11-evidence/${process.env.OATHFRONT_E2E_PRODUCTION === "1" ? "final" : "dev"}`;
+  const dir = `${evidencePath("task11", ".superpowers/sdd/2026-10-20-oathfront-implementation/task-11-evidence")}/${process.env.OATHFRONT_E2E_PRODUCTION === "1" ? "final" : "dev"}`;
   await mkdir(dir, { recursive: true });
   await page.screenshot({ path: `${dir}/${name}.png`, fullPage: true });
   await writeFile(
@@ -239,7 +240,7 @@ export async function finishEvidence(page: Page, name: string) {
     name.replace(/[^a-z0-9]+/gi, "-").slice(0, 115),
     unexpected,
   );
-  const dir = `.superpowers/sdd/2026-10-20-oathfront-implementation/task-11-evidence/${process.env.OATHFRONT_E2E_PRODUCTION === "1" ? "final" : "dev"}`;
+  const dir = `${evidencePath("task11", ".superpowers/sdd/2026-10-20-oathfront-implementation/task-11-evidence")}/${process.env.OATHFRONT_E2E_PRODUCTION === "1" ? "final" : "dev"}`;
   await writeFile(
     `${dir}/${name.replace(/[^a-z0-9]+/gi, "-").slice(0, 115)}-all-console.json`,
     JSON.stringify(

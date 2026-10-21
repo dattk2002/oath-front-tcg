@@ -1,5 +1,7 @@
 import { testOrigin, testPort } from "./tests/e2e/test-origin.js";
 import { defineConfig } from "@playwright/test";
+// Playwright supplies FORCE_COLOR; inherited NO_COLOR otherwise warns in every worker.
+delete process.env.NO_COLOR;
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: false,
@@ -26,14 +28,18 @@ export default defineConfig({
     {
       command: "pnpm --filter @oathfront/api exec tsx tests/browser-server.mjs",
       url: "http://127.0.0.1:3101/health/ready",
-      env: { OATHFRONT_E2E_ORIGIN: testOrigin },
+      env: {
+        OATHFRONT_E2E_ORIGIN: testOrigin,
+        OATHFRONT_E2E_INGRESS: process.env.OATHFRONT_E2E_PRODUCTION ?? "0",
+        UI_PROXY_SECRET: "local-test-proxy-".repeat(4),
+      },
       reuseExistingServer: false,
       timeout: 30000,
     },
     {
       command:
         process.env.OATHFRONT_E2E_PRODUCTION === "1"
-          ? "node apps/web/.next/standalone/apps/web/server.js"
+          ? "node scripts/ui-server.mjs"
           : `pnpm --filter @oathfront/web exec next dev --webpack --hostname localhost --port ${testPort}`,
       url: testOrigin,
       env: {
@@ -42,6 +48,8 @@ export default defineConfig({
         API_ORIGIN: "http://127.0.0.1:3101",
         PORT: String(testPort),
         HOSTNAME: "localhost",
+        UI_PROXY_SECRET: "local-test-proxy-".repeat(4),
+        NEXT_INTERNAL_PORT: String(testPort + 1),
       },
       reuseExistingServer: false,
       timeout: 60000,

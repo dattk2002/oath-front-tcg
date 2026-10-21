@@ -28,6 +28,9 @@ const verifyIdentity = neonJwtVerifier({
 });
 const app = buildApp({
   verifyIdentity,
+  ...(process.env.OATHFRONT_E2E_INGRESS === "1"
+    ? { ipTrust: { mode: "trusted-next", secret: process.env.UI_PROXY_SECRET } }
+    : {}),
   pool,
   origin: process.env.OATHFRONT_E2E_ORIGIN ?? "http://localhost:3200",
   secret: randomBytes(32).toString("hex"),

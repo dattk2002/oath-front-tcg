@@ -4,7 +4,7 @@ const owner = randomBytes(32).toString("hex"),
   runtime = randomBytes(32).toString("hex");
 writeFileSync(
   ".env.test.local",
-  `OATHFRONT_TEST_DATABASE=1\nOATHFRONT_DB_OWNER_PASSWORD=${owner}\nOATHFRONT_DB_RUNTIME_PASSWORD=${runtime}\nTEST_DATABASE_URL_UNPOOLED=postgresql://oathfront_migrator:${owner}@127.0.0.1:55432/oathfront_test\nTEST_DATABASE_URL=postgresql://oathfront_runtime:${runtime}@127.0.0.1:55432/oathfront_test\n`,
+  `OATHFRONT_TEST_DATABASE=1\nOATHFRONT_DB_OWNER_PASSWORD=${owner}\nOATHFRONT_DB_RUNTIME_PASSWORD=${runtime}\nTEST_DATABASE_URL_UNPOOLED=postgresql://oathfront_migrator:${owner}@127.0.0.1:55432/oathfront_verification_test\nTEST_DATABASE_URL=postgresql://oathfront_runtime:${runtime}@127.0.0.1:55432/oathfront_verification_test\n`,
   { mode: 0o600, flag: "wx" },
 );
 console.log(

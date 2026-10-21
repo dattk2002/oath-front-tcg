@@ -206,6 +206,7 @@ test("no legal target keeps an explicit enabled KEEP and Escape never sends it",
           : null),
     ),
   ).toBe(true);
+  await page.getByText("Siêu năng lực · 2", { exact: true }).click();
   await expect(page.locator(".reserve details").first()).toBeVisible();
   await page.locator(".reserve details summary").first().click();
   await expect(page.locator(".reserve details[open]")).toContainText(
@@ -326,8 +327,11 @@ test("snapshot history recovers 205 scanned rows across an empty private page wi
     await owner.end();
   }
   await page.reload();
+  await page.getByText("Nhật ký và cách thao tác", { exact: true }).click();
   await expect(
-    page.getByText("Một phần nhật ký đã hết hạn.").first(),
+    page
+      .locator("details[open]")
+      .getByText("Một phần nhật ký đã hết hạn.", { exact: true }),
   ).toBeVisible();
   await expect(page.getByRole("region", { name: "Bàn năm lộ" })).toBeVisible();
   await expect(page.locator(".battle-log [data-event-id]")).toHaveCount(104);

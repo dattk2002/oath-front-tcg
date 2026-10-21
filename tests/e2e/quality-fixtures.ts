@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { expect, type Page } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 import { randomUUID, randomBytes } from "node:crypto";
@@ -8,8 +9,10 @@ import {
   type CommandResponse,
   type UnitView,
 } from "../../packages/contracts/src/index.js";
-const evidence =
-  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-16-evidence/dev";
+const evidence = evidencePath(
+  "task16-dev",
+  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-16-evidence/dev",
+);
 // Validated public DTOs isolate choreography from random decks and bot decisions.
 export function checkpoint(revision = 1) {
   const result = response(revision);

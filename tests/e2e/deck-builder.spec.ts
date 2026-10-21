@@ -1,10 +1,13 @@
+import { evidencePath } from "./evidence-path.js";
 import { testOrigin } from "./test-origin.js";
 import { test, expect, type Page } from "@playwright/test";
 import { randomUUID, randomBytes } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import { create, command } from "./recovery-fixtures.js";
-const dir =
-  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-12-evidence";
+const dir = evidencePath(
+  "task12",
+  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-12-evidence",
+);
 const consoles = new WeakMap<Page, string[]>();
 test.beforeEach(({ page }) => {
   const messages: string[] = [];

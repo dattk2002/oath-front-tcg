@@ -127,7 +127,9 @@ test("playable trick label and unit-to-hero focus forecast follow the resolved l
   const { id, instanceId } = await cardFixture(page, true);
   await page.goto(`/matches/${id}`);
   const source = page.locator(`[data-card-id="${instanceId}"]`);
-  await expect(source).toHaveAccessibleName(/Phép, có thể chơi/);
+  await expect(source).toHaveAccessibleName(
+    "Có thể chơi. 2 năng lượng Ném Than",
+  );
   await expect(source).toHaveAttribute("data-playable-unit", "false");
   await source.click();
   await page.locator('[data-own-unit="false"]').first().focus();

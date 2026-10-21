@@ -3,6 +3,9 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   {
     ignores: [
+      ".superpowers/**",
+      "**/.vercel/**",
+      "**/.next*/**",
       "**/dist/**",
       "node_modules/**",
       "**/generated/**",
@@ -18,7 +21,14 @@ export default tseslint.config(
   {
     files: ["**/*.mjs"],
     languageOptions: {
-      globals: { process: "readonly", console: "readonly", URL: "readonly" },
+      globals: {
+        process: "readonly",
+        console: "readonly",
+        URL: "readonly",
+        fetch: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+      },
     },
   },
 );

@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { test, expect } from "@playwright/test";
 import {
   checkpoint,
@@ -8,7 +9,7 @@ import {
 } from "./quality-fixtures.js";
 const evidence =
   process.env.OATHFRONT_QUALITY_EVIDENCE_DIR ??
-  "docs/implementation/evidence/task16";
+  evidencePath("task16", "docs/implementation/evidence/task16");
 test.beforeAll(() => mkdir(evidence, { recursive: true }).then(() => {}));
 test("keyboard settings focus and full hand labels", async ({ page }) => {
   const dto = checkpoint();

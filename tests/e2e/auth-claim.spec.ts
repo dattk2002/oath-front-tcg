@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { testOrigin } from "./test-origin.js";
 import { test, expect } from "@playwright/test";
 test("guest can reach Google login and history without making guest play require identity", async ({
@@ -20,8 +21,10 @@ test("guest can reach Google login and history without making guest play require
 import { randomUUID, randomBytes } from "node:crypto";
 import { ownerPool } from "../../packages/db/tests/helpers.js";
 import { mkdir, writeFile } from "node:fs/promises";
-const evidence =
-  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-13-evidence";
+const evidence = evidencePath(
+  "task13",
+  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-13-evidence",
+);
 const logs = new WeakMap<import("@playwright/test").Page, string[]>();
 test.beforeEach(({ page }) => {
   const lines: string[] = [];

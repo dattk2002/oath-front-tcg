@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { test, expect } from "@playwright/test";
 test("new player can open tutorial and independent sound settings", async ({
   page,
@@ -191,7 +192,10 @@ for (const branch of ["USED", "KEPT"] as const)
 import { mkdir, writeFile } from "node:fs/promises";
 const evidence =
   process.env.OATHFRONT_EVIDENCE_DIR ??
-  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-14-evidence";
+  evidencePath(
+    "task14",
+    ".superpowers/sdd/2026-10-20-oathfront-implementation/task-14-evidence",
+  );
 test("real Web Audio gesture, settings restore and desktop/tablet/mobile review", async ({
   page,
 }) => {

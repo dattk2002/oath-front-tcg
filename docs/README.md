@@ -51,3 +51,10 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 - [Specification v0.1 gốc](reference/SPECIFICATION.v0.1.md), [kế hoạch trước khi chuyển sang Next.js](superpowers/plans/2026-10-20-ngulo-implementation.md).
 
 Các báo cáo kiểm tra tài liệu không phải bằng chứng game đã chạy. Kết quả kiểm thử implementation được ghi riêng trong `implementation/` khi thực hiện; không đánh đồng thiết kế đã duyệt với sản phẩm đã nghiệm thu.
+
+## Release và vận hành
+
+- [Release checklist — HOLD](implementation/release-checklist.md): gate kỹ thuật, acceptance còn mở và giới hạn cloud.
+- [Runbook](implementation/release-runbook.md): Docker ba image/service, hai Vercel project, secret/IP trust, retention, migration và rollback.
+- [Restore drill](implementation/restore-drill.md): pg_dump/pg_restore thật và resume BLOCK_RESPONSE.
+- [Task18 verification](implementation/release-verification.md): actual gate counts, corrected browser artifact, load and restore measurements, and remaining boundaries.

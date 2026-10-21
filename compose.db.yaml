@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: docker/db/Dockerfile
     environment:
-      POSTGRES_DB: oathfront_test
+      POSTGRES_DB: oathfront_verification_test
       POSTGRES_USER: oathfront_migrator
       POSTGRES_PASSWORD: ${OATHFRONT_DB_OWNER_PASSWORD:?Use --env-file .env.test.local}
     ports:
@@ -14,7 +14,7 @@ services:
     volumes:
       - oathfront_pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U oathfront_migrator -d oathfront_test"]
+      test: ["CMD-SHELL", "pg_isready -U oathfront_migrator -d oathfront_verification_test"]
       interval: 2s
       timeout: 3s
       retries: 20

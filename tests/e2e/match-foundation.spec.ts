@@ -1,10 +1,13 @@
+import { evidencePath } from "./evidence-path.js";
 import { testOrigin } from "./test-origin.js";
 import { test, expect } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
 import { ownerPool } from "../../packages/db/tests/helpers.js";
 import { validateWire } from "../../packages/contracts/src/index.js";
-const evidence =
-  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-9-evidence";
+const evidence = evidencePath(
+  "task9",
+  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-9-evidence",
+);
 for (const faction of ["GOOD", "EVIL"] as const) {
   test(`guest preset mulligan UNIT and pass as ${faction}`, async ({
     page,
@@ -223,11 +226,10 @@ test("exact versioned proxy preserves JSON and reserves local auth/unknown route
   const missing = await request.get("/api/v1/not-a-route");
   expect(missing.status()).toBe(404);
   expect(missing.headers()["content-type"]).toContain("application/json");
-  for (const path of [
-    "/api/auth/session",
-    "/api/unknown",
-    "/unknown-product-route",
-  ]) {
+  const managedAuth = await request.get("/api/auth/session");
+  expect(managedAuth.status()).toBe(503);
+  expect(await managedAuth.json()).toEqual({ error: "AUTH_UNAVAILABLE" });
+  for (const path of ["/api/unknown", "/unknown-product-route"]) {
     const result = await request.get(path);
     expect(result.status()).toBe(404);
     expect(await result.text()).not.toContain("Mỗi lộ là một lời thề.");

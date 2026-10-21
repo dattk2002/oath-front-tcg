@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { test, expect, type Page } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
 import { response } from "../../apps/web/tests/fixtures.js";
@@ -9,7 +10,10 @@ import {
 } from "../../packages/contracts/src/index.js";
 const evidence =
   process.env.OATHFRONT_MOTION_EVIDENCE_DIR ??
-  ".superpowers/sdd/2026-10-20-oathfront-implementation/task-10-evidence/final";
+  evidencePath(
+    "task10",
+    ".superpowers/sdd/2026-10-20-oathfront-implementation/task-10-evidence/final",
+  );
 // Validated public DTOs isolate choreography from random decks and bot decisions.
 function checkpoint(revision = 1) {
   const result = response(revision);

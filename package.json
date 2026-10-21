@@ -11,7 +11,7 @@
     "contracts:generate": "node scripts/generate-contracts.mjs",
     "contracts:check": "node scripts/generate-contracts.mjs --check",
     "test": "pnpm build:api && vitest run",
-    "typecheck": "tsc --noEmit && pnpm --filter @oathfront/web typecheck",
+    "typecheck": "tsc --noEmit && pnpm --filter @oathfront/web typecheck && tsc -p tools/simulation/tsconfig.json && tsc -p tools/load/tsconfig.json && tsc -p tools/assets/tsconfig.json",
     "lint": "eslint .",
     "build": "pnpm contracts:check && tsc -p tsconfig.build.json && pnpm build:api && pnpm --filter @oathfront/web build",
     "build:api": "node scripts/build-api.mjs",
