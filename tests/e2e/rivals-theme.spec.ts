@@ -15,13 +15,14 @@ test("Rivals presentation keeps hero selection, deck, settings and battle readab
       errors.push(m.text());
   });
   await mkdir(evidence, { recursive: true });
-  await page.request.post("/api/v1/guest", {
+  const guest = await page.request.post("/api/v1/guest", {
     headers: { Origin: testOrigin },
     data: {
       commandId: randomUUID(),
       recoverySecret: randomBytes(32).toString("base64url"),
     },
   });
+  expect(guest.status()).toBe(201);
   async function capture(name: string) {
     await page.evaluate(() => document.fonts.ready);
     if (await page.locator(".hero-detail").count())

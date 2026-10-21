@@ -545,6 +545,7 @@ main {
   font: 800 28px/1 var(--display);
 }
 .collection-card .card-art {
+  display: block;
   height: 144px;
   background: var(--raised);
   margin: 12px -4px;

@@ -1,6 +1,7 @@
 import manifest from "../../../../public/assets/core-v1/manifest.json" with { type: "json" };
 
 import presentation from "../../../../public/assets/rivals-v2/manifest.json" with { type: "json" };
+import cardPresentation from "../../../../public/assets/fivefold-cards-v3/manifest.json" with { type: "json" };
 
 export type AssetQuality = "low" | "high";
 export interface ArtReference {
@@ -14,7 +15,9 @@ export function resolveArt(
   variant = "thumb",
 ): ArtReference {
   const core = manifest.assets.find((a) => a.artKey === artKey);
-  const override = presentation.assets.find((a) => a.artKey === artKey);
+  const override =
+    cardPresentation.assets.find((a) => a.artKey === artKey) ??
+    presentation.assets.find((a) => a.artKey === artKey);
   const asset = { ...core, ...override };
   const variants: Record<string, string | undefined> = asset ?? {};
   return {
@@ -26,7 +29,11 @@ export function resolveArt(
 export function artById(id: string) {
   const core = manifest.assets.find((a) => a.id === id);
   return core
-    ? { ...core, ...presentation.assets.find((a) => a.id === id) }
+    ? {
+        ...core,
+        ...presentation.assets.find((a) => a.id === id),
+        ...cardPresentation.assets.find((a) => a.id === id),
+      }
     : undefined;
 }
 export function battleAssetRequests(
@@ -37,7 +44,9 @@ export function battleAssetRequests(
     throw Error("Unsupported art catalog");
   // No PlayerView, lane assignment, seed or unrevealed definition is accepted here.
   return [
-    ...manifest.atlases.filter((a) => a.quality === quality).map((a) => a.url),
+    ...cardPresentation.atlases
+      .filter((a) => a.quality === quality)
+      .map((a) => a.url),
     ...manifest.assets.filter((a) => a.kind === "terrain").map((a) => a.strip!),
     ...manifest.assets
       .filter((a) => a.kind === "board")
@@ -48,7 +57,7 @@ export interface AssetBundle {
   kind: "ILLUSTRATED";
   quality: AssetQuality;
   images: Map<string, HTMLImageElement>;
-  atlases: typeof manifest.atlases;
+  atlases: typeof cardPresentation.atlases;
   dispose(): void;
 }
 export async function loadBattleAssets(
@@ -90,7 +99,7 @@ export async function loadBattleAssets(
     kind: "ILLUSTRATED",
     quality,
     images,
-    atlases: manifest.atlases.filter((a) => a.quality === quality),
+    atlases: cardPresentation.atlases.filter((a) => a.quality === quality),
     dispose: () => images.clear(),
   };
 }

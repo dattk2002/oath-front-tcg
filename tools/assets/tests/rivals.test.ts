@@ -22,13 +22,16 @@ it("resolves all six hero identities to bounded versioned art while preserving c
     artKey: "missing.webp",
   });
   expect(resolveArt(coreCatalog.cards[0]!.artKey, "Card").src).toMatch(
-    /^\/assets\/core-v1\//,
+    /^\/assets\/fivefold-cards-v3\//,
   );
 });
-it("uses one coherent board override without dropping terrain or core atlases", () => {
+it("uses the current unit atlas, board override and complete terrain pool", () => {
   const requests = battleAssetRequests("core_v1", "low");
   expect(requests.filter((p) => p.includes("locations/"))).toHaveLength(8);
-  expect(requests).toContain("/assets/core-v1/atlases/cutouts-low.webp");
+  expect(requests).toContain(
+    "/assets/fivefold-cards-v3/atlases/cutouts-low.webp",
+  );
+  expect(requests).not.toContain("/assets/core-v1/atlases/cutouts-low.webp");
   expect(requests).toContain("/assets/rivals-v2/board/scene-wide.webp");
   expect(artById("board")?.wide).toBe(
     "/assets/rivals-v2/board/scene-wide.webp",
