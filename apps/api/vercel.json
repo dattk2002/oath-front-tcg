@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "fastify",
+  "regions": [
+    "sin1"
+  ],
+  "buildCommand": "pnpm --workspace-root build:api"
+}
