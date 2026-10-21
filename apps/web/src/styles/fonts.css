@@ -1,4 +1,25 @@
 @font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/pen-v1/BarlowCondensed-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/pen-v1/BarlowCondensed-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/pen-v1/BarlowCondensed-SemiBold.ttf") format("truetype");
+}
+@font-face {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 100 900;

@@ -1,0 +1,181 @@
+{
+  "version": "pen-v1",
+  "designSource": "docs/design/pen/oath-front-tcg-design.pen",
+  "designSha256": "a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3",
+  "assets": [
+    {
+      "output": "assets/pen-v1/logo-light.svg",
+      "sourceNode": "NqrjD",
+      "operation": "Exact Pen geometry with browser-measured intrinsic bounds and Pen node dimensions",
+      "sha256": "5b713ab580dc7bde341a00c2f76524f8302233619017f9fa923a139087c8d352"
+    },
+    {
+      "output": "assets/pen-v1/logo-dark.svg",
+      "sourceNode": "NqrjD",
+      "operation": "Exact Pen geometry with browser-measured intrinsic bounds and Pen node dimensions",
+      "sha256": "721a123edba25a01e514c170cfe06c578e3121120ea4dd497c8f152033ad4f36"
+    },
+    {
+      "output": "assets/pen-v1/clash-of-the-fivefold.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-3.png",
+      "sourceSha256": "ac47a06b66a961d37e7114ca180b0a5b62d331991018caaa3691f6a7bf27b891",
+      "sha256": "10f47d130bd0b531f275d7378629072d41c288a0a61a324d9213e90db02f435f",
+      "width": 1376,
+      "height": 768,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/clash-of-the-fivefold-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-3.png",
+      "sourceSha256": "ac47a06b66a961d37e7114ca180b0a5b62d331991018caaa3691f6a7bf27b891",
+      "sha256": "95b69a666c9da0c05635e4480aac4441eaff517cce7a060072110a7264fb73c1",
+      "width": 800,
+      "height": 447,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/briar-environment.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-8.png",
+      "sourceSha256": "28ab8042c57efbbfb6048c83cb5c08458a961b37dd0d48e685e544f2f54d4d51",
+      "sha256": "1311608139e9b3c1daa38cd58114166c2a32122dc178af4c62781bee7eacb9cd",
+      "width": 1376,
+      "height": 768,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/briar-environment-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-8.png",
+      "sourceSha256": "28ab8042c57efbbfb6048c83cb5c08458a961b37dd0d48e685e544f2f54d4d51",
+      "sha256": "57b7b546a14739f55c5d1308a813fbbd16c787475a550fd83b61806806ca8f44",
+      "width": 800,
+      "height": 447,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/aster-environment.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-5.png",
+      "sourceSha256": "dd49b0d35871f7813425ce4a0630324b8c5a522a25fae3bec699a27cf849b9c1",
+      "sha256": "48a7314dd2d3927f1258b6e01c380e515ac73736c20923d03aa2b3f3689c6dfa",
+      "width": 1376,
+      "height": 768,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/aster-environment-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-5.png",
+      "sourceSha256": "dd49b0d35871f7813425ce4a0630324b8c5a522a25fae3bec699a27cf849b9c1",
+      "sha256": "d07a73140969a338a07cab0a1574c6cb744a9656de0c2734a0bf7e1550f165c6",
+      "width": 800,
+      "height": 447,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/lumen-environment.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-7.png",
+      "sourceSha256": "f4e59c511b13427d0b230ecf2faf86348cdf88122bc03ca3998b04ea3ce4f81d",
+      "sha256": "6f03ed800849132f726cdb41ef725d8ddd8df480a88dad25d541f22ea0a03965",
+      "width": 1376,
+      "height": 768,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/lumen-environment-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-7.png",
+      "sourceSha256": "f4e59c511b13427d0b230ecf2faf86348cdf88122bc03ca3998b04ea3ce4f81d",
+      "sha256": "73ace31cdf5549f6a9a2ab699d05e6577cb5a249beecca8e0da8bba208a4a42d",
+      "width": 800,
+      "height": 447,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/cinder-environment.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-9.png",
+      "sourceSha256": "0386a17f4dd28ae38eaf847add4ab105810e9602a15f25867cef1060f1d67bb6",
+      "sha256": "3db239d9214f65da8b00a6ab697618eeee9488834d45dfeefb88e92a7f2ba386",
+      "width": 1376,
+      "height": 768,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/cinder-environment-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-9.png",
+      "sourceSha256": "0386a17f4dd28ae38eaf847add4ab105810e9602a15f25867cef1060f1d67bb6",
+      "sha256": "f7dbf31ebe4b8b785b9e253d6a59c229aba1e7158f869e8223552df82ed8ae68",
+      "width": 800,
+      "height": 447,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/vesper-environment.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-4.png",
+      "sourceSha256": "2870ffa287063e14ef5e6ae5e8b176ae7a543819c8556901a74f0974bea52413",
+      "sha256": "efd7a77c06bddcb717810ac9d28ae139cd08b38015b190f1cbec5e449eed694d",
+      "width": 1376,
+      "height": 768,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/vesper-environment-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-4.png",
+      "sourceSha256": "2870ffa287063e14ef5e6ae5e8b176ae7a543819c8556901a74f0974bea52413",
+      "sha256": "e20e0bf1327f37e630ddcfc4d1f2bc349b2e226b25686f92f456834304587e1c",
+      "width": 800,
+      "height": 447,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/morrow-environment.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-6.png",
+      "sourceSha256": "1ae25793bc18188b152132fe12dd5b0c316250c824482027ef26306165808e0c",
+      "sha256": "aa0845e2df3be2ee23903a0c82a135c75d435f704204e5d14e1b332a8a31af13",
+      "width": 1376,
+      "height": 768,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/morrow-environment-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated-6.png",
+      "sourceSha256": "1ae25793bc18188b152132fe12dd5b0c316250c824482027ef26306165808e0c",
+      "sha256": "251198be0c59dd5e075f284c4f97ff41846915d2b62477d7170394a957fd82d3",
+      "width": 800,
+      "height": 447,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/twilight-arena.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated.png",
+      "sourceSha256": "1602fa8aa0afc9dd5ca0ccfbb43120ae315573cfb403f4c87589af0e42e3bfb1",
+      "sha256": "780bb92e4513c772452215c94234792f17735417fead5ec7119536dfa623724f",
+      "width": 1456,
+      "height": 720,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/twilight-arena-small.webp",
+      "source": "docs/design/pen/oath-front-tcg-design-assets/generated.png",
+      "sourceSha256": "1602fa8aa0afc9dd5ca0ccfbb43120ae315573cfb403f4c87589af0e42e3bfb1",
+      "sha256": "f81163ed109c4c04fd2c024722befe14f88ff0c5b4e9b43612b79958ae6c8ade",
+      "width": 800,
+      "height": 396,
+      "operation": "Resize within original dimensions; WebP quality 90; no artwork regeneration"
+    },
+    {
+      "output": "assets/pen-v1/BarlowCondensed-Regular.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-Regular.ttf",
+      "sha256": "583cec5da3b84bc4dc7c9c72e2a565c94d34e431518b19d7e250b7830ad5f996",
+      "license": "OFL.txt"
+    },
+    {
+      "output": "assets/pen-v1/BarlowCondensed-Medium.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-Medium.ttf",
+      "sha256": "262bd143292ce479ee0cd09a42b47ab173fca8e9c6eb5ed0b5c8a845bc371d17",
+      "license": "OFL.txt"
+    },
+    {
+      "output": "assets/pen-v1/BarlowCondensed-SemiBold.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-SemiBold.ttf",
+      "sha256": "7b619d14bc2327509a9ef32b0890f709626f7ecc9ff61191c2a4314c5499d2d9",
+      "license": "OFL.txt"
+    }
+  ]
+}
