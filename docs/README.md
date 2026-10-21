@@ -60,3 +60,5 @@ Các báo cáo kiểm tra tài liệu không phải bằng chứng game đã ch�
 - [Runbook](implementation/release-runbook.md): Docker ba image/service, hai Vercel project, secret/IP trust, retention, migration và rollback.
 - [Restore drill](implementation/restore-drill.md): pg_dump/pg_restore thật và resume BLOCK_RESPONSE.
 - [Task18 verification](implementation/release-verification.md): actual gate counts, corrected browser artifact, load and restore measurements, and remaining boundaries.
+
+- [Pen implementation and verification](implementation/pen-design.md): shipped public pages, inherited game theme, motion, deviations and acceptance evidence.

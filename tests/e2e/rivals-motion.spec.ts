@@ -1,9 +1,12 @@
+import { evidencePath } from "./evidence-path.js";
 import { test, expect } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
 import { randomUUID, randomBytes } from "node:crypto";
 import { testOrigin } from "./test-origin.js";
-const evidence =
-  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser/motion";
+const evidence = evidencePath(
+  "pen-motion",
+  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser/motion",
+);
 test("home and roster expose intermediate motion; reduction, rapid selection and native dismissal settle cleanly", async ({
   page,
 }) => {

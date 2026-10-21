@@ -1,7 +1,10 @@
+import { evidencePath } from "./evidence-path.js";
 import { expect, test } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
-const evidence =
-  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser";
+const evidence = evidencePath(
+  "pen-campaign",
+  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser",
+);
 
 test("Editorial filters, detail links and empty categories are usable", async ({
   page,

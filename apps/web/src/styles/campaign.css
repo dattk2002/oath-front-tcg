@@ -22,6 +22,7 @@
 .campaign-header {
   min-height: 80px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 32px;
   padding: 0 48px;
@@ -41,6 +42,8 @@
 }
 .campaign-nav {
   display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
   align-items: center;
   gap: 32px;
   flex: 1;
@@ -313,7 +316,8 @@
 
 .campaign-home-stage {
   position: relative;
-  height: 720px;
+  min-height: 720px;
+  padding-bottom: 32px;
   isolation: isolate;
 }
 .campaign-home-art {
@@ -383,6 +387,7 @@
 .campaign-home-summary {
   min-height: 100px;
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   align-items: center;
   justify-content: space-between;
@@ -498,7 +503,8 @@
 }
 .campaign-profile-stage {
   position: relative;
-  height: 650px;
+  min-height: 650px;
+  padding-bottom: 40px;
   color: var(--campaign-ink);
   background: var(--campaign-paper);
   isolation: isolate;
@@ -617,7 +623,7 @@
 }
 @media (min-width: 861px) and (max-width: 1199px) {
   .campaign-home-stage {
-    height: 492px;
+    min-height: 492px;
   }
   .campaign-home-copy {
     margin-left: 40px;
@@ -679,7 +685,8 @@
 }
 @media (max-width: 860px) {
   .campaign-home-stage {
-    height: auto;
+    min-height: 0;
+    padding-bottom: 0;
   }
   .campaign-home-art {
     position: relative;
@@ -739,7 +746,7 @@
     height: 286px;
   }
   .campaign-profile-stage {
-    height: auto;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -874,7 +881,7 @@
   background: var(--campaign-slate);
 }
 .editorial-masthead {
-  height: 234px;
+  min-height: 234px;
   display: flex;
   align-items: center;
   gap: 40px;
@@ -902,6 +909,8 @@
 .editorial-masthead-art {
   display: flex;
   gap: 40px;
+  height: 178px;
+  align-items: center;
 }
 .editorial-masthead-art .campaign-artwork {
   width: 130px;
@@ -1108,7 +1117,7 @@
   font-size: 64px;
 }
 .features-hero {
-  height: 600px;
+  min-height: 600px;
   position: relative;
   isolation: isolate;
   display: grid;

@@ -1,11 +1,14 @@
+import { evidencePath } from "./evidence-path.js";
 import { test, expect } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 import { randomBytes, randomUUID } from "node:crypto";
 import { testOrigin } from "./test-origin.js";
 import { cardFixture } from "./recovery-fixtures.js";
 
-const evidence =
-  ".superpowers/sdd/2026-10-21-oathfront-rivals-redesign/task-3-evidence";
+const evidence = evidencePath(
+  "cards",
+  ".superpowers/sdd/2026-10-21-oathfront-rivals-redesign/task-3-evidence",
+);
 
 test("all sixty new card images load through the actual hero collections", async ({
   page,

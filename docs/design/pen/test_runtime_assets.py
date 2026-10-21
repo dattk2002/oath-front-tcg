@@ -34,6 +34,15 @@ class RuntimeAssetsTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'hash'):
             self.validate()
 
+    def test_rejects_missing_or_malformed_required_hashes(self):
+        for field in ('sha256', 'sourceSha256'):
+            for value in ('', None, 'not-a-digest'):
+                with self.subTest(field=field, value=value):
+                    manifest = copy.deepcopy(self.manifest)
+                    manifest['assets'][0][field] = value
+                    with self.assertRaisesRegex(ValueError, 'hash'):
+                        self.validate(manifest)
+
     def test_rejects_escape_duplicate_and_unknown_node(self):
         for field, value in [('output', '../../../../source.png'), ('sourceNode', 'missing')]:
             with self.subTest(field=field):

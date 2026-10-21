@@ -1,6 +1,6 @@
 # OathFront Pen ↔ Codex implementation contract
 
-**Status: `implementation_ready_scoped` (version 2).** The user approved recommendations 1A–7A, sequential M1–M7 implementation, and close fidelity to the supplied [editable design](oath-front-tcg-design.pen). This is readiness for the supplied campaign/Home screens and an explicitly approved theme adaptation of existing game screens. It is **not** complete Pen coverage or completed runtime acceptance.
+**Status: `implementation_ready_scoped` (version 2).** The user approved recommendations 1A–7A, sequential M1–M7 implementation, and close fidelity to the supplied [editable design](oath-front-tcg-design.pen). This is readiness for the supplied campaign/Home screens and an explicitly approved theme adaptation of existing game screens. Implementation and local runtime checks are complete within that approved scope; this is **not** complete Pen gameplay coverage or release certification.
 
 ## Source identity and verification
 
@@ -52,7 +52,7 @@ python3 docs/design/pen/check-design-contract.py
 
 `check-pending-contract.py` delegates to the v2 checker for command compatibility. It no longer asserts that all identity fields are null.
 
-The checks verify source hash/revision, used references and nested overrides, local dependencies, token bindings, inherited components, supplied campaign IDs and documentation links. The eight reader tests exercise malformed origins/overrides, cycles, variable errors, unsafe/missing image paths, duplicate IDs and source drift. Four additional derivative tests reject changed output/source bytes, unsafe paths, duplicate outputs and unknown source nodes. The 21 shipped campaign derivatives are checked alongside their licenses and source references. These checks do not prove runtime visual/accessibility quality.
+The checks verify source hash/revision, used references and nested overrides, local dependencies, token bindings, inherited components, supplied campaign IDs and documentation links. The eight reader tests exercise malformed origins/overrides, cycles, variable errors, unsafe/missing image paths, duplicate IDs and source drift. Five additional derivative tests reject changed output/source bytes, unsafe paths, duplicate outputs, unknown source nodes and missing/malformed required hashes. The 21 shipped campaign derivatives are checked alongside their licenses and source references. These checks do not prove runtime visual/accessibility quality.
 
 A change to the `.pen` bytes invalidates its mapping and review. Reinspect, preserve the old identity in history, resolve new conflicts and review before applying. Repository input hashes must be deliberately reconciled with a documented implementation change; never silently update them to hide drift. `implementationVerification` is updated only after actual code/browser checks.
 

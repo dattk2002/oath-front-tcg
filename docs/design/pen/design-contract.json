@@ -1842,13 +1842,15 @@
     "designSchema": "strict_JSON_2.20_used_structure_checks_only_not_full_external_schema",
     "nodeReferences": "1128_unique_nodes_98_origin_and_nested_override_paths_resolved_29_variables_18_images_hashed",
     "designVisualReview": "representative_supplied_exports_reviewed_source_tree_authoritative",
-    "designAccessibilityReview": "requirements_reconciled_browser_verification_pending",
-    "implementationVerification": "not_started",
+    "designAccessibilityReview": "automated_axe_keyboard_reflow_reduced_motion_and_text_growth_verified_real_AT_hold",
+    "implementationVerification": "local_build_types_lint_unit_integration_browser_and_independent_review_verified_scoped",
     "evidencePaths": [
       "docs/design/pen/campaign-design-inventory.json",
       "docs/design/pen/campaign-review",
       "docs/design/pen/CAMPAIGN-HANDOFF.md",
-      "docs/superpowers/specs/2026-10-21-pen-design-implementation.md"
+      "docs/superpowers/specs/2026-10-21-pen-design-implementation.md",
+      "docs/implementation/pen-design.md",
+      "docs/implementation/evidence/pen-design"
     ]
   },
   "implementationScope": {
@@ -1861,7 +1863,7 @@
       "Campaign tablet/reflow and omitted interaction/error states",
       "Static mock editorial detail content for listed entries"
     ],
-    "implementationStatus": "M1_to_M6_complete_M7_pending",
+    "implementationStatus": "implemented_verified_scoped",
     "deviations": [
       {
         "id": "public-route-isolation",
@@ -1886,6 +1888,10 @@
       {
         "id": "inherited-game-layout",
         "reason": "Apply exact Pen logo, Barlow and paper/slate/acid tokens to existing game structure; keep faction colors, card illustrations, battle dimensions and timing. No absent Pen game frame IDs are invented."
+      },
+      {
+        "id": "content-driven-stage-height",
+        "reason": "Pen stage dimensions are minimum heights so 200% text and fallback fonts cannot overlap following sections; default composition remains source-aligned."
       }
     ],
     "themeLayers": [

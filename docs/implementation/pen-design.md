@@ -29,12 +29,27 @@ Play now resumes an active match or opens the native hero selector. Profile Choo
 
 ## Verification record
 
-M1–M6 focused checks passed: 12 Python reader/derivative tests, seven campaign/editorial model tests, public entry/API outage, filters/details/404, artwork recovery, account disclosure, keyboard focus and reduced/interrupted motion. Public axe/reflow checks covered six surfaces at 1440, 720 and 375px. Existing game checks covered tutorial/auth, selection/deck/settings and dense ten-card/ten-unit boards at five sizes including 1024×640.
+M1–M6 focused checks passed: 13 Python reader/derivative tests, seven campaign/editorial model tests, public entry/API outage, filters/details/404, artwork recovery, account disclosure, keyboard focus and reduced/interrupted motion. Public axe/reflow checks covered six surfaces at 1440, 720 and 375px. Existing game checks covered tutorial/auth, selection/deck/settings and dense ten-card/ten-unit boards at five sizes including 1024×640.
 
-Representative source exports and browser captures were visually compared. This is close implementation fidelity, not a claim of pixel-identical Pen rendering. Final integration/review results are recorded below when complete.
+Representative source exports and browser captures were visually compared. This is close implementation fidelity, not a claim of pixel-identical Pen rendering. Independent final review confirmed the visual comparison and identified text-growth overlap in fixed-height campaign stages. The stages now retain Pen dimensions as minimum heights and grow with content. A new test failed on the original overlap, then passed with 200% text and Noto fallback across Home, profile, Features and News at 1440 and 1024px. Default source-aligned composition was visually rechecked.
 
 ## Remaining boundaries
 
 No production deployment is part of this change. Physical devices, real assistive technology, new balance certification and human playtests remain separate release gates. Unrelated in-progress background-music changes and the user's local `next-env.d.ts` are excluded from design commits.
 
 The later request for fourteen additional heroes is a separate expansion after this implementation, followed by another whole-app consistency/gameplay review. It must not be represented as already present in this frozen six-hero design snapshot.
+
+## Final local checks
+
+- `pnpm typecheck`, `pnpm lint`, `pnpm build`: passed. Production UI rebuilt with the isolated API target before browser verification.
+- `pnpm test`: 82 files, 664 tests passed in the working tree, including two tests in the separate uncommitted audio work. The committed design adds seven model tests to the existing suite.
+- Python source/asset checks: 13 tests passed; contract verifies source hash, references, 18 masters, 21 derivatives, baseline tokens and mappings.
+- Production browser sweep: 95 passed, two skipped, two old auth UI expectations failed. Both auth cases passed after using the approved Account disclosure. After the text-growth correction, all ten campaign/accessibility/reflow cases passed again. This is a combined verification record, not a claim that the initial sweep was fully green.
+- Skips: Firefox-only no-Navigation-API case and the opt-in three-minute hardware benchmark. Existing release holds remain open.
+- Independent review: no Critical finding; text-growth collision fixed RED→GREEN. Empty/null required asset hashes were hardened after a failing regression; 13/13 Python checks passed. Potential real-assistive-technology ambiguity around the artwork fallback grouping remains unverified; Chromium exposes its Retry button and keyboard access passed.
+
+[Representative production captures](evidence/pen-design/README.md) are committed. Detailed traces remain in the ignored task workspace. No gameplay rules, database schema or cloud configuration changed.
+
+## Decisions and limits
+
+The existing requested checkout/main branch was used under prior authorization. Public profiles use a separate route to preserve gameplay URLs. Readiness remains scoped and missing Pen game frames stay null. Background-music edits and local generated typings remain outside these commits. Required digest validation was treated as contract correctness rather than optional polish. Trace files were retained for diagnosis rather than deleting unrelated or user-owned material. The fourteen-hero expansion is subsequent work and does not change the meaning of this six-hero frozen source.

@@ -428,6 +428,7 @@ test("managed callback consumes verifier before token exchange and removes it fr
   const g = await guest(page),
     jwt = await token(page, "verifier-" + randomUUID());
   await page.goto("/");
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
   let consumed = false;
   let tokenRequested = false;
   const date = new Date().toISOString();
@@ -482,6 +483,10 @@ test("managed callback consumes verifier before token exchange and removes it fr
     g,
   );
   await page.goto("/?neon_auth_session_verifier=fixture-only-verifier");
+  await expect(page.locator(".campaign-account-link")).not.toHaveText(
+    "Sign in",
+  );
+  await page.getByRole("button", { name: "Account", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Sign out", exact: true }),
   ).toBeVisible();
@@ -667,6 +672,7 @@ test("review: provider-only logout retry survives guest navigation without revok
     data: { commandId: randomUUID(), identityToken: jwt },
   });
   await page.goto("/");
+  await page.getByRole("button", { name: "Account", exact: true }).click();
   let appLogouts = 0,
     providerLogouts = 0;
   page.on("request", (r) => {

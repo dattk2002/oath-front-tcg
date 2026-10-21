@@ -1,10 +1,13 @@
+import { evidencePath } from "./evidence-path.js";
 import { test, expect } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
 import { randomUUID, randomBytes } from "node:crypto";
 import { testOrigin } from "./test-origin.js";
 import { cardFixture } from "./recovery-fixtures.js";
-const evidence =
-  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser/game";
+const evidence = evidencePath(
+  "pen-game",
+  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser/game",
+);
 test("Pen presentation keeps hero selection, deck, settings and battle readable at supported sizes", async ({
   page,
 }) => {
