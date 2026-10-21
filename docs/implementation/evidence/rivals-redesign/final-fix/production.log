@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/e2e/match-foundation.spec.ts:221:1 › exact versioned proxy preserves JSON and reserves local auth/unknown routes (284ms)
+  ✓  2 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1440x900 (2.1s)
+  ✓  3 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1366x768 (1.6s)
+  ✓  4 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1280x720 (1.7s)
+  ✓  5 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x768 (1.5s)
+  ✓  6 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x640 (1.5s)
+
+  6 passed (11.8s)

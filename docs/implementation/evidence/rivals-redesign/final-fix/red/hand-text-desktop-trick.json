@@ -1,0 +1,238 @@
+[
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 16,
+      "right": 128.796875
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 26,
+      "right": 118.796875
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 26,
+        "right": 95
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 136.796875,
+      "right": 249.609375
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 146.796875,
+      "right": 239.609375
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 146.796875,
+        "right": 215.796875
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 257.609375,
+      "right": 370.40625
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 267.609375,
+      "right": 360.40625
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 267.609375,
+        "right": 336.609375
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 378.40625,
+      "right": 491.21875
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 388.40625,
+      "right": 481.21875
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 388.40625,
+        "right": 457.40625
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 499.21875,
+      "right": 612.015625
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 509.21875,
+      "right": 602.015625
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 509.21875,
+        "right": 578.21875
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 620.015625,
+      "right": 732.8125
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 630.015625,
+      "right": 722.8125
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 630.015625,
+        "right": 699.015625
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 740.8125,
+      "right": 853.609375
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 750.8125,
+      "right": 843.609375
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 750.8125,
+        "right": 819.8125
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 861.609375,
+      "right": 974.40625
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 871.609375,
+      "right": 964.40625
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 871.609375,
+        "right": 940.609375
+      }
+    ]
+  },
+  {
+    "text": "2 ATK / 3 HP",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 982.40625,
+      "right": 1095.203125
+    },
+    "summary": {
+      "top": 792,
+      "bottom": 808,
+      "left": 992.40625,
+      "right": 1085.203125
+    },
+    "lines": [
+      {
+        "top": 791,
+        "bottom": 808,
+        "left": 992.40625,
+        "right": 1061.40625
+      }
+    ]
+  },
+  {
+    "text": "Select to read effects",
+    "card": {
+      "top": 674,
+      "bottom": 818,
+      "left": 1103.203125,
+      "right": 1216
+    },
+    "summary": {
+      "top": 788,
+      "bottom": 820,
+      "left": 1113.203125,
+      "right": 1206
+    },
+    "lines": [
+      {
+        "top": 787,
+        "bottom": 804,
+        "left": 1113.203125,
+        "right": 1193.203125
+      },
+      {
+        "top": 803,
+        "bottom": 820,
+        "left": 1113.203125,
+        "right": 1153.203125
+      }
+    ]
+  }
+]

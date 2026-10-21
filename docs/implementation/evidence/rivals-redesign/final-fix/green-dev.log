@@ -1,0 +1,38 @@
+
+Running 2 tests using 1 worker
+
+  ✘  1 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1440x900 (5.1s)
+  ✓  2 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x640 (3.4s)
+
+
+  1) tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1440x900 ──────────────────────
+
+    Error: Select to read effects
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 818
+    Received:    820
+
+      81 |       for (const bounds of [summary, ...lines]) {
+      82 |         expect(bounds.top, text!).toBeGreaterThanOrEqual(card.top);
+    > 83 |         expect(bounds.bottom, text!).toBeLessThanOrEqual(card.bottom);
+         |                                      ^
+      84 |         expect(bounds.left, text!).toBeGreaterThanOrEqual(card.left);
+      85 |         expect(bounds.right, text!).toBeLessThanOrEqual(card.right);
+      86 |         expect(bounds.bottom, text!).toBeLessThanOrEqual(height!);
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/responsive.spec.ts:83:38
+
+    Error Context: test-results/responsive-ten-cards-and-ten-units-fit-1440x900/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-ten-cards-and-ten-units-fit-1440x900/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/responsive-ten-cards-and-ten-units-fit-1440x900/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1440x900 ───────────────────────
+  1 passed (18.2s)

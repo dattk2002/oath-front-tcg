@@ -13,7 +13,7 @@
     "inspectedAt": null
   },
   "repository": {
-    "baselineCommit": "8ada783171cd3db642a0c106b1c12430102df28f",
+    "baselineCommit": "0f5354d7ca7a0dff66039fce1847ef0110fb3865",
     "inputs": [
       {
         "path": "apps/web/src/styles/tokens.css",
@@ -21,7 +21,7 @@
       },
       {
         "path": "apps/web/src/styles/rivals.css",
-        "sha256": "e614ad0640e4af762dee5290a79d190a2505c7b6bc19bdf40376d99087051fb2"
+        "sha256": "2a8af36cb80c2050213c4368fe05593e67a242d4872f9b40abe5d9d4cd75196f"
       },
       {
         "path": "apps/web/src/content/english-content.ts",
@@ -45,7 +45,7 @@
       },
       {
         "path": "docs/implementation/rivals-redesign-qa.md",
-        "sha256": "385369444ee4b79f37de9eaa60a0a75a8bf06781b730898361e8ef2374bcd38a"
+        "sha256": "431b61610894a0d5155155b9a5c85ec4c8aa2accd0925460565f0e54e7b28aa5"
       }
     ]
   },

@@ -1,0 +1,36 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x640 (1.7s)
+
+
+  1) tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x640 ──────────────────────
+
+    Error: 1 ATK / 2 HP
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 634
+    Received:    648
+
+      81 |       for (const bounds of [summary, ...lines]) {
+      82 |         expect(bounds.top, text!).toBeGreaterThanOrEqual(card.top);
+    > 83 |         expect(bounds.bottom, text!).toBeLessThanOrEqual(card.bottom);
+         |                                      ^
+      84 |         expect(bounds.left, text!).toBeGreaterThanOrEqual(card.left);
+      85 |         expect(bounds.right, text!).toBeLessThanOrEqual(card.right);
+      86 |         expect(bounds.bottom, text!).toBeLessThanOrEqual(height!);
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/responsive.spec.ts:83:38
+
+    Error Context: test-results/responsive-ten-cards-and-ten-units-fit-1024x640/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-ten-cards-and-ten-units-fit-1024x640/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/responsive-ten-cards-and-ten-units-fit-1024x640/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x640 ───────────────────────

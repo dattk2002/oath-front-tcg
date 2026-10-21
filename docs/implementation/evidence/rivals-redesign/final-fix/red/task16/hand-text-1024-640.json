@@ -1,0 +1,412 @@
+[
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 16,
+      "right": 87.1875
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 58,
+      "right": 77.1875
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 58,
+        "right": 65
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 58,
+        "right": 80
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 58,
+        "right": 73
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 58,
+        "right": 74
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 95.1875,
+      "right": 166.390625
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 137.1875,
+      "right": 156.390625
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 137.1875,
+        "right": 144.1875
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 137.1875,
+        "right": 159.1875
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 137.1875,
+        "right": 152.1875
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 137.1875,
+        "right": 153.1875
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 174.390625,
+      "right": 245.578125
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 216.390625,
+      "right": 235.578125
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 216.390625,
+        "right": 223.390625
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 216.390625,
+        "right": 238.390625
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 216.390625,
+        "right": 231.390625
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 216.390625,
+        "right": 232.390625
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 253.578125,
+      "right": 324.78125
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 295.578125,
+      "right": 314.78125
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 295.578125,
+        "right": 302.578125
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 295.578125,
+        "right": 317.578125
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 295.578125,
+        "right": 310.578125
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 295.578125,
+        "right": 311.578125
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 332.78125,
+      "right": 403.984375
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 374.78125,
+      "right": 393.984375
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 374.78125,
+        "right": 381.78125
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 374.78125,
+        "right": 396.78125
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 374.78125,
+        "right": 389.78125
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 374.78125,
+        "right": 390.78125
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 411.984375,
+      "right": 483.1875
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 453.984375,
+      "right": 473.1875
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 453.984375,
+        "right": 460.984375
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 453.984375,
+        "right": 475.984375
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 453.984375,
+        "right": 468.984375
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 453.984375,
+        "right": 469.984375
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 491.1875,
+      "right": 562.390625
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 533.1875,
+      "right": 552.390625
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 533.1875,
+        "right": 540.1875
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 533.1875,
+        "right": 555.1875
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 533.1875,
+        "right": 548.1875
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 533.1875,
+        "right": 549.1875
+      }
+    ]
+  },
+  {
+    "text": "1 ATK / 2 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 570.390625,
+      "right": 641.59375
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 612.390625,
+      "right": 631.59375
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 612.390625,
+        "right": 619.390625
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 612.390625,
+        "right": 634.390625
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 612.390625,
+        "right": 627.390625
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 612.390625,
+        "right": 628.390625
+      }
+    ]
+  },
+  {
+    "text": "2 ATK / 3 HP",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 649.59375,
+      "right": 720.796875
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 691.59375,
+      "right": 710.796875
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 691.59375,
+        "right": 698.59375
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 691.59375,
+        "right": 713.59375
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 691.59375,
+        "right": 706.59375
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 691.59375,
+        "right": 707.59375
+      }
+    ]
+  },
+  {
+    "text": "Select to read effects",
+    "card": {
+      "top": 546,
+      "bottom": 634,
+      "left": 728.796875,
+      "right": 800
+    },
+    "summary": {
+      "top": 592,
+      "bottom": 648,
+      "left": 770.796875,
+      "right": 790
+    },
+    "lines": [
+      {
+        "top": 590,
+        "bottom": 607,
+        "left": 770.796875,
+        "right": 805.796875
+      },
+      {
+        "top": 604,
+        "bottom": 621,
+        "left": 770.796875,
+        "right": 782.796875
+      },
+      {
+        "top": 618,
+        "bottom": 635,
+        "left": 770.796875,
+        "right": 797.796875
+      },
+      {
+        "top": 632,
+        "bottom": 649,
+        "left": 770.796875,
+        "right": 810.796875
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1440x900 (5.3s)
+  ✓  2 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1366x768 (3.2s)
+  ✓  3 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1280x720 (3.2s)
+  ✓  4 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x768 (2.9s)
+  ✓  5 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x640 (3.0s)
+
+  5 passed (26.1s)

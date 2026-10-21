@@ -8,7 +8,7 @@ The missing input is the **real editable OathFront `.pen` file**, preferably `do
 
 The contract connects the existing English five-lane game to a future editable design without transferring gameplay authority to a drawing. Logical IDs such as `hero_roster` or `battle_events` are repository requirements, never invented Pen IDs. The prompt retains the user's required guidance structure and explicit **must**/**should** rules. The [approved spec](../../superpowers/specs/2026-10-21-oathfront-rivals-redesign.md), [current state/QA rules](../../implementation/rivals-redesign-qa.md), [English catalog guide](../../PRESENTATION-EN.md), and [art direction](../../ART-DIRECTION.md) supply the baseline.
 
-The current repository inputs are pinned by SHA256 and baseline commit in JSON. Those hashes describe existing CSS/catalog/manifests/motion, not a Pen file. If those inputs change, the handoff must be reconciled; blindly updating the hashes is not validation.
+The current repository inputs are pinned by SHA256 and baseline commit in JSON. Those hashes describe existing CSS/catalog/manifests/motion, not a Pen file. The final hand-readability fix is reconciled against source commit `0f5354d7ca7a0dff66039fce1847ef0110fb3865`: compact summaries now span the card, desktop trick cues have two lines, and QA describes each dialog’s existing Escape behavior. Only the changed CSS/QA inputs received new hashes; actual Pen identity, mappings and validation remain unresolved. If those inputs change, the handoff must be reconciled; blindly updating the hashes is not validation.
 
 ## Verified Pen capabilities and limits
 
