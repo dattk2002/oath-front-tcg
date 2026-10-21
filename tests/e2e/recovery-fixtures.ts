@@ -213,45 +213,139 @@ export async function denseLogFixture(page: Page) {
   }
   return match;
 }
-const consoleByPage = new WeakMap<Page, string[]>();
+interface ConsoleIssue {
+  kind: "console" | "pageerror";
+  text: string;
+  url: string;
+  at: number;
+}
+type FailureRule = { url: string | RegExp; once?: boolean } & (
+  { status: number; errorText?: never } | { errorText: string; status?: never }
+);
+interface ObservedFailure {
+  url: string;
+  status?: number;
+  errorText?: string | undefined;
+  at: number;
+  expectedSince?: number;
+}
+const consoleByPage = new WeakMap<
+  Page,
+  {
+    issues: ConsoleIssue[];
+    failures: ObservedFailure[];
+    scopes: Map<FailureRule, number>;
+  }
+>();
 export function observeConsole(page: Page) {
-  const errors: string[] = [];
-  consoleByPage.set(page, errors);
-  page.on("pageerror", (error) => errors.push(`pageerror: ${error.message}`));
+  const state = {
+    issues: [] as ConsoleIssue[],
+    failures: [] as ObservedFailure[],
+    scopes: new Map<FailureRule, number>(),
+  };
+  consoleByPage.set(page, state);
+  page.on("pageerror", (error) =>
+    state.issues.push({
+      kind: "pageerror",
+      text: `pageerror: ${error.message}`,
+      url: "",
+      at: Date.now(),
+    }),
+  );
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(message.text());
+    if (message.type() === "error")
+      state.issues.push({
+        kind: "console",
+        text: message.text(),
+        url: message.location().url,
+        at: Date.now(),
+      });
+  });
+  const record = (failure: ObservedFailure) => {
+    for (const [rule, since] of state.scopes) {
+      if (
+        (typeof rule.url === "string"
+          ? rule.url === failure.url
+          : rule.url.test(failure.url)) &&
+        (rule.status !== undefined
+          ? rule.status === failure.status
+          : rule.errorText === failure.errorText)
+      ) {
+        failure.expectedSince = since;
+        if (rule.once) state.scopes.delete(rule);
+        break;
+      }
+    }
+    state.failures.push(failure);
+  };
+  page.on("requestfailed", (request) =>
+    record({
+      url: request.url(),
+      errorText: request.failure()?.errorText,
+      at: Date.now(),
+    }),
+  );
+  page.on("response", (response) => {
+    if (response.status() >= 400)
+      record({
+        url: response.url(),
+        status: response.status(),
+        at: Date.now(),
+      });
   });
 }
+/** Register only around deliberate injection; console text alone never grants an exception. */
+export function expectNetworkFailure(page: Page, rule: FailureRule) {
+  const state = consoleByPage.get(page);
+  if (!state) throw Error("Console observation must start before an injection");
+  state.scopes.set(rule, Date.now());
+  return () => state.scopes.delete(rule);
+}
+export function consoleEvidence(page: Page) {
+  const state = consoleByPage.get(page) ?? {
+    issues: [],
+    failures: [],
+    scopes: new Map(),
+  };
+  const available = state.failures.filter(
+    (failure) => failure.expectedSince !== undefined,
+  );
+  const expected: ConsoleIssue[] = [],
+    unexpected: ConsoleIssue[] = [];
+  for (const issue of state.issues) {
+    const index = available.findIndex(
+      (failure) =>
+        issue.kind === "console" &&
+        issue.url === failure.url &&
+        issue.at >= failure.expectedSince! &&
+        (failure.errorText !== undefined
+          ? issue.text === `Failed to load resource: ${failure.errorText}`
+          : issue.text.match(
+              /^Failed to load resource: the server responded with a status of (\d+)(?: \([^)]*\))?$/,
+            )?.[1] === String(failure.status)),
+    );
+    if (index < 0) unexpected.push(issue);
+    else {
+      expected.push(issue);
+      available.splice(index, 1);
+    }
+  }
+  return {
+    allErrors: state.issues.map((issue) => issue.text),
+    issues: state.issues,
+    networkFailures: state.failures,
+    expected,
+    unexpected: unexpected.map((issue) => issue.text),
+  };
+}
 export async function finishEvidence(page: Page, name: string) {
-  const errors = consoleByPage.get(page) ?? [];
-  const expectedNetwork =
-    /lost|offline|snapshot history|failed snapshot|history expiry/.test(name);
-  const unexpected = errors.filter(
-    (error) =>
-      !(
-        expectedNetwork &&
-        /net::ERR_FAILED|net::ERR_INTERNET_DISCONNECTED|status of 410|status of 503/.test(
-          error,
-        )
-      ),
-  );
-  await captureEvidence(
-    page,
-    name.replace(/[^a-z0-9]+/gi, "-").slice(0, 115),
-    unexpected,
-  );
+  const result = consoleEvidence(page);
+  const slug = name.replace(/[^a-z0-9]+/gi, "-").slice(0, 115);
+  await captureEvidence(page, slug, result.unexpected);
   const dir = `${evidencePath("task11", ".superpowers/sdd/2026-10-20-oathfront-implementation/task-11-evidence")}/${process.env.OATHFRONT_E2E_PRODUCTION === "1" ? "final" : "dev"}`;
   await writeFile(
-    `${dir}/${name.replace(/[^a-z0-9]+/gi, "-").slice(0, 115)}-all-console.json`,
-    JSON.stringify(
-      {
-        allErrors: errors,
-        expectedNetworkInjection: expectedNetwork,
-        unexpected,
-      },
-      null,
-      2,
-    ),
+    `${dir}/${slug}-all-console.json`,
+    JSON.stringify(result, null, 2),
   );
-  expect(unexpected).toEqual([]);
+  expect(result.unexpected).toEqual([]);
 }

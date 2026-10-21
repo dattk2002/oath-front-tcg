@@ -1,4 +1,10 @@
-import { observeConsole, finishEvidence } from "./recovery-fixtures.js";
+import { testOrigin } from "./test-origin.js";
+import {
+  observeConsole,
+  finishEvidence,
+  expectNetworkFailure,
+  consoleEvidence,
+} from "./recovery-fixtures.js";
 import { test, expect } from "@playwright/test";
 test.beforeEach(({ page }) => observeConsole(page));
 test.afterEach(async ({ page }, testInfo) => {
@@ -18,18 +24,6 @@ for (const faction of ["GOOD", "EVIL"] as const)
   }) => {
     test.setTimeout(180000);
     const { id } = await create(page, faction);
-    const errors: string[] = [];
-    page.on("pageerror", (e) => errors.push(e.message));
-    page.on("console", (message) => {
-      if (
-        message.type() === "error" &&
-        !(
-          message.text().includes("status of 410") &&
-          message.location().url.endsWith(`/api/v1/matches/${id}`)
-        )
-      )
-        errors.push(message.text());
-    });
     await page.goto(`/matches/${id}`);
     await page.getByRole("button", { name: "Xác nhận đổi bài" }).click();
     for (let i = 0; i < 100; i++) {
@@ -76,23 +70,58 @@ for (const faction of ["GOOD", "EVIL"] as const)
       }
     await page.keyboard.press("Escape");
     await expect(resultDialog).toBeVisible();
-    await captureEvidence(page, `${faction.toLowerCase()}-result`, errors);
+    await captureEvidence(
+      page,
+      `${faction.toLowerCase()}-result`,
+      consoleEvidence(page).unexpected,
+    );
     if (faction === "GOOD") {
       await page.setViewportSize({ width: 1024, height: 768 });
-      await captureEvidence(page, "result-tablet", errors);
+      await captureEvidence(
+        page,
+        "result-tablet",
+        consoleEvidence(page).unexpected,
+      );
       await page.setViewportSize({ width: 375, height: 812 });
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
         ),
       ).toBe(true);
-      await captureEvidence(page, "result-mobile", errors);
+      await captureEvidence(
+        page,
+        "result-mobile",
+        consoleEvidence(page).unexpected,
+      );
       await page.setViewportSize({ width: 1440, height: 900 });
     }
+    let releaseLog!: () => void;
+    const logGate = new Promise<void>((resolve) => {
+      releaseLog = resolve;
+    });
+    let logHeld = false;
+    await page.route(
+      `**/api/v1/matches/${id}/events?**`,
+      async (route) => {
+        logHeld = true;
+        await logGate;
+        await route.continue();
+      },
+      { times: 1 },
+    );
     await page.reload();
     await expect(
       page.getByText("Thời gian hoạt động", { exact: true }),
     ).toBeVisible();
+    await expect.poll(() => logHeld).toBe(true);
+    const stopSnapshotExpiry = expectNetworkFailure(page, {
+      url: `${testOrigin}/api/v1/matches/${id}`,
+      status: 410,
+    });
+    const stopLogExpiry = expectNetworkFailure(page, {
+      url: new RegExp(`^${testOrigin}/api/v1/matches/${id}/events[?]`),
+      status: 410,
+    });
     const owner = ownerPool();
     try {
       await owner.query("DELETE FROM match_checkpoints WHERE match_id=$1", [
@@ -101,6 +130,13 @@ for (const faction of ["GOOD", "EVIL"] as const)
     } finally {
       await owner.end();
     }
+    const expiredLog = page.waitForResponse(
+      (response) =>
+        new URL(response.url()).pathname === `/api/v1/matches/${id}/events` &&
+        response.status() === 410,
+    );
+    releaseLog();
+    await expiredLog;
     await page.goto(`/matches/${id}`);
     await expect(
       page.getByText("Thời gian hoạt động", { exact: true }),
@@ -112,6 +148,8 @@ for (const faction of ["GOOD", "EVIL"] as const)
     await expect(
       page.getByRole("button", { name: "Chơi lại", exact: true }),
     ).toBeEnabled();
+    stopSnapshotExpiry();
+    stopLogExpiry();
     await page
       .getByRole("button", { name: "Chơi lại", exact: true })
       .dblclick();
@@ -123,8 +161,12 @@ for (const faction of ["GOOD", "EVIL"] as const)
     const fresh = await snapshot(page, page.url().split("/").at(-1)!);
     expect(fresh.view.self.side).toBe(faction);
     expect(fresh.view.turn).toBe(0);
-    expect(errors).toEqual([]);
-    await captureEvidence(page, `${faction.toLowerCase()}-rematch`, errors);
+    expect(consoleEvidence(page).unexpected).toEqual([]);
+    await captureEvidence(
+      page,
+      `${faction.toLowerCase()}-rematch`,
+      consoleEvidence(page).unexpected,
+    );
   });
 test("version drift shows retained source and original/current versions without any replacement create", async ({
   page,
@@ -171,6 +213,11 @@ test("lost rematch response is restored after reload and retries the same exact 
       drop = false;
       const committed = await route.fetch();
       expect(committed.status()).toBe(201);
+      expectNetworkFailure(page, {
+        url: route.request().url(),
+        once: true,
+        errorText: "net::ERR_FAILED",
+      });
       await route.abort("failed");
     } else await route.continue();
   });

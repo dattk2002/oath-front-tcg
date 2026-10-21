@@ -305,15 +305,31 @@ test("expired paused session exposes login inside the modal and explicitly retri
       action: { kind: "PAUSE" },
     },
   });
+  let releaseRecovery!: () => void;
+  const recoveryGate = new Promise<void>((resolve) => {
+    releaseRecovery = resolve;
+  });
+  let matchReads = 0;
+  await page.route(`**/api/v1/matches/${made.view.matchId}`, async (route) => {
+    if (++matchReads === 2) await recoveryGate;
+    await route.continue();
+  });
   await page.goto(`/matches/${made.view.matchId}`);
   const modal = page.getByRole("dialog", { name: "Tạm dừng", exact: true });
   await expect(modal).toBeVisible();
+  await expect.poll(() => matchReads).toBe(2);
+  // Modal visibility precedes initial recovery; expire only once commands are available.
+  releaseRecovery();
+  await expect(
+    modal.getByRole("button", { name: "Tiếp tục", exact: true }),
+  ).toBeEnabled();
   const owner = ownerPool();
   await owner.query(
     "UPDATE app_sessions SET expires_at=now()-interval '1 second' WHERE principal_id=$1 AND revoked_at IS NULL",
     [a.principal.id],
   );
   await owner.end();
+
   await page.route("**/api/auth/token*", (r) =>
     r.fulfill({
       status: 401,

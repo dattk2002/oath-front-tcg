@@ -1,4 +1,9 @@
-import { observeConsole, finishEvidence } from "./recovery-fixtures.js";
+import { testOrigin } from "./test-origin.js";
+import {
+  observeConsole,
+  finishEvidence,
+  expectNetworkFailure,
+} from "./recovery-fixtures.js";
 import { test, expect } from "@playwright/test";
 test.beforeEach(({ page }) => observeConsole(page));
 test.afterEach(async ({ page }, testInfo) => {
@@ -38,6 +43,10 @@ for (const choice of ["KEEP", "USE"] as const)
     await expect(
       page.getByRole("heading", { name: "Đã chặn đòn" }),
     ).toBeVisible();
+    const stopOffline = expectNetworkFailure(page, {
+      url: new RegExp(`^${testOrigin}/`),
+      errorText: "net::ERR_INTERNET_DISCONNECTED",
+    });
     await context.setOffline(true);
     await expect(page.getByTestId("command-status")).toContainText(
       "Mất kết nối",
@@ -47,6 +56,7 @@ for (const choice of ["KEEP", "USE"] as const)
       page.getByRole("button", { name: "Để dành", exact: true }),
     ).toBeEnabled();
     const afterReconnect = await snapshot(page, id);
+    stopOffline();
     expect(afterReconnect.view.combat?.laneId).toBe(1);
     const owner = ownerPool();
     try {
@@ -123,6 +133,11 @@ test("lost block receipt survives reload and retries the identical command witho
       lose = false;
       const committed = await route.fetch();
       expect(committed.status()).toBe(200);
+      expectNetworkFailure(page, {
+        url: route.request().url(),
+        once: true,
+        errorText: "net::ERR_FAILED",
+      });
       await route.abort("failed");
     } else await route.continue();
   });
@@ -276,6 +291,10 @@ test("offline during a heal tween fetches the changed server checkpoint on recon
     .click();
   await page.locator('[data-own-unit="true"]').first().click();
   await expect(page.locator('[data-presentation="playing"]')).toBeVisible();
+  const stopOffline = expectNetworkFailure(page, {
+    url: new RegExp(`^${testOrigin}/`),
+    errorText: "net::ERR_INTERNET_DISCONNECTED",
+  });
   await context.setOffline(true);
   await command(page, id, csrf, { kind: "PAUSE" });
   const remote = await snapshot(page, id);
@@ -285,6 +304,7 @@ test("offline during a heal tween fetches the changed server checkpoint on recon
     page.getByRole("dialog", { name: "Tạm dừng", exact: true }),
   ).toBeVisible();
   await expect(page.locator('[data-presentation="idle"]')).toBeAttached();
+  stopOffline();
   await captureEvidence(page, "recovered-paused");
 });
 test("snapshot history recovers 205 scanned rows across an empty private page without cosmetic replay", async ({
@@ -318,6 +338,10 @@ test("snapshot history recovers 205 scanned rows across an empty private page wi
   await captureEvidence(page, "complete-log");
   await page.reload();
   await expect(page.locator(".battle-log [data-event-id]")).toHaveCount(105);
+  expectNetworkFailure(page, {
+    url: new RegExp(`^${testOrigin}/api/v1/matches/${id}/events[?]`),
+    status: 410,
+  });
   const owner = ownerPool();
   try {
     await owner.query("DELETE FROM match_events WHERE match_id=$1 AND seq=1", [
@@ -397,8 +421,14 @@ test("lost RESUME before commit retries the identical envelope inside the pause 
     if (body.action.kind !== "RESUME") return route.continue();
     sent.push(body);
     // Fail before forwarding: the server must remain PAUSED, with no receipt.
-    if (sent.length <= 2) await route.abort("failed");
-    else await route.continue();
+    if (sent.length <= 2) {
+      expectNetworkFailure(page, {
+        url: route.request().url(),
+        once: true,
+        errorText: "net::ERR_FAILED",
+      });
+      await route.abort("failed");
+    } else await route.continue();
   });
   await modal.getByRole("button", { name: "Tiếp tục", exact: true }).click();
   await expect(page.getByTestId("command-status")).toContainText(
@@ -487,6 +517,11 @@ for (const paused of [false, true])
     await page.route(`**/api/v1/matches/${id}`, async (route) => {
       if (fail) {
         fail = false;
+        expectNetworkFailure(page, {
+          url: route.request().url(),
+          status: 503,
+          once: true,
+        });
         await route.fulfill({
           status: 503,
           json: {
