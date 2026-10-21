@@ -1,3 +1,7 @@
+import { clientIp } from "./client-ip.js";
+import type { IpTrust } from "./client-ip.js";
+import { inspectSupportedVersions } from "./maintenance/versions.js";
+import type { VersionRegistry } from "./maintenance/versions.js";
 import Fastify, { LogController } from "fastify";
 import { canonicalJson } from "@oathfront/game-engine";
 import type { Pool } from "@oathfront/db";
@@ -26,6 +30,9 @@ import { exchangeIdentity } from "./auth/exchange.js";
 import { claimGuest } from "./auth/claim.js";
 import { logout } from "./auth/logout.js";
 export interface AppDependencies {
+  ipTrust?: IpTrust;
+  versionRegistry?: VersionRegistry;
+  extendLifetime?: (work: Promise<unknown>) => void;
   verifyIdentity?: (token: string) => Promise<VerifiedIdentity>;
   pool: Pool;
   origin: string;
@@ -47,7 +54,10 @@ export function buildApp(deps: AppDependencies) {
     genReqId: () => randomUUID(),
     requestTimeout: 5000,
   });
-  const deadline = mutationLifetime(deps.commandDeadlineMs);
+  const deadline = mutationLifetime(
+    deps.commandDeadlineMs,
+    deps.extendLifetime,
+  );
   app.addHook("onClose", async () => {
     await deadline.drain();
   });
@@ -59,9 +69,20 @@ export function buildApp(deps: AppDependencies) {
   });
   app.addHook("onReady", async () => {
     await services.repository.registerRelease();
+    if (
+      !(await inspectSupportedVersions(deps.pool, deps.versionRegistry))
+        .canRelease
+    )
+      throw new PersistenceError("VERSION_UNSUPPORTED");
   });
   app.addHook("onRequest", async (req, reply) => {
     reply.header("Cache-Control", "no-store");
+    if (
+      req.url.startsWith("/api/v1/") &&
+      deps.ipTrust &&
+      deps.ipTrust.mode !== "direct"
+    )
+      clientIp(req.ip, req.headers, deps.ipTrust);
     reply.header("X-Content-Type-Options", "nosniff");
     if (
       req.url.startsWith("/api/v1/") &&
@@ -115,7 +136,10 @@ export function buildApp(deps: AppDependencies) {
       requireCsrf(req.headers["x-csrf-token"], s.csrfHash);
       throw new HttpError(403, "FORBIDDEN");
     }
-    await limit("GUEST_BOOTSTRAP", req.ip);
+    await limit(
+      "GUEST_BOOTSTRAP",
+      clientIp(req.ip, req.headers, deps.ipTrust ?? { mode: "direct" }),
+    );
     const issued = await bootstrapGuest(deps.pool, body, deps.secret, now());
     const value = await authenticate(
       deps.pool,
@@ -218,6 +242,11 @@ export function buildApp(deps: AppDependencies) {
     try {
       await deps.pool.query("SELECT 1");
       await services.repository.registerRelease();
+      if (
+        !(await inspectSupportedVersions(deps.pool, deps.versionRegistry))
+          .canRelease
+      )
+        throw new PersistenceError("VERSION_UNSUPPORTED");
       return { status: "ready" };
     } catch {
       return reply.code(503).send({ status: "not_ready" });

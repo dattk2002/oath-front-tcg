@@ -1,6 +1,9 @@
 import type { FastifyReply } from "fastify";
 /** Native Fastify handlerTimeout bounds HTTP; this tracks uncancelled accepted work until settlement. */
-export function mutationLifetime(handlerTimeout = 5000) {
+export function mutationLifetime(
+  handlerTimeout = 5000,
+  extendLifetime?: (work: Promise<unknown>) => void,
+) {
   if (
     !Number.isSafeInteger(handlerTimeout) ||
     handlerTimeout < 1 ||
@@ -15,6 +18,13 @@ export function mutationLifetime(handlerTimeout = 5000) {
   ) {
     const work = Promise.resolve().then(operation);
     inFlightMutations.add(work);
+    // Register while request context is active, before the response can time out.
+    extendLifetime?.(
+      work.then(
+        () => undefined,
+        () => undefined,
+      ),
+    );
     void work.then(
       () => inFlightMutations.delete(work),
       () => inFlightMutations.delete(work),
