@@ -5,14 +5,13 @@ import { performance } from "node:perf_hooks";
 import { chooseBotAction } from "../../packages/bot/src/index.js";
 import { validateWire } from "../../packages/contracts/src/index.js";
 import type { CommandResponse, PlayerAction } from "../../packages/contracts/src/index.js";
+import { parseConcurrency } from "./concurrency.js";
 try {
   process.loadEnvFile(".env.test.local");
 } catch {
   /* CI supplies environment. */
 }
-const concurrency = Number(
-  process.argv[process.argv.indexOf("--concurrency") + 1] ?? 20,
-);
+const concurrency = parseConcurrency(process.argv);
 const db = new URL(process.env.TEST_DATABASE_URL ?? "");
 if (
   process.env.OATHFRONT_TEST_DATABASE !== "1" ||
