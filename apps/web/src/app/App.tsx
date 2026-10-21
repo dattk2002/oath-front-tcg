@@ -1,7 +1,13 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useUiMotion } from "../features/motion/use-ui-motion";
-import ArtImage from "../features/match/ArtImage";
+import { CampaignHeader } from "../features/campaign/CampaignHeader";
+import { CampaignHome } from "../features/campaign/CampaignHome";
+import { CampaignPage } from "../features/campaign/CampaignPage";
+import {
+  gameEntryDestination,
+  type CampaignView,
+} from "../features/campaign/model";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -49,8 +55,10 @@ function AppContent({
   deckId,
   presetId,
   reviewMatchId,
+  campaign,
 }: {
   screen?:
+    | "campaign"
     | "history"
     | "home"
     | "setup"
@@ -64,10 +72,20 @@ function AppContent({
   presetId?: string;
   reviewMatchId?: string;
   matchId?: string;
+  campaign?: CampaignView;
 }) {
   const router = useRouter();
   const main = useRef<HTMLElement>(null);
+  const publicPage = screen === "home" || screen === "campaign";
+  const [accountOpen, setAccountOpen] = useState(false);
+  const accountArea = useRef<HTMLDivElement>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  useEffect(() => {
+    if (accountOpen) {
+      accountArea.current?.scrollIntoView({ block: "nearest" });
+      accountArea.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    }
+  }, [accountOpen]);
   const [tutorialSide, setTutorialSide] = useState<"GOOD" | "EVIL" | null>(
     null,
   );
@@ -164,18 +182,18 @@ function AppContent({
       active = false;
     };
   }, [attempt, screen]);
-  async function start() {
-    if (busy) return;
+  async function start(selectedHeroId?: string) {
+    if (busy || loading) return;
+    if (!catalog) {
+      setError("Game data is unavailable. Retry the connection to play.");
+      return;
+    }
     setBusy(true);
     setError(null);
     try {
       const current = session ?? (await startGuestSession(api, sessionStorage));
       adoptSession(current);
-      router.push(
-        current.activeMatchId
-          ? routes.match(current.activeMatchId)
-          : routes.heroes,
-      );
+      router.push(gameEntryDestination(current.activeMatchId, selectedHeroId));
     } catch {
       setError(
         "Your session could not start. Retrying restores the same request.",
@@ -201,7 +219,7 @@ function AppContent({
     main,
     "home",
     ownerEpoch,
-    screen === "home" && !loading && !error,
+    false, // The Pen campaign owns its scoped entrance choreography.
   );
   const authPanel = (
     <AuthPanel
@@ -225,39 +243,63 @@ function AppContent({
       <a className="skip-link" href="#main">
         Skip to main content
       </a>
-      <header
-        className={screen === "match" ? "site-header in-match" : "site-header"}
-      >
-        <Brand />
-        <nav aria-label="Main navigation">
-          <button onClick={() => setSettingsOpen(true)}>Settings</button>
-          <Link
-            href={routes.home}
-            aria-current={screen === "home" ? "page" : undefined}
+      {publicPage ? (
+        <CampaignHeader
+          active={screen === "home" ? "home" : "heroes"}
+          onPlay={() => void start()}
+          busy={busy || loading}
+          accountLabel={
+            session?.principal.kind === "ACCOUNT"
+              ? session.principal.displayName
+              : "Sign in"
+          }
+          onAccount={() => setAccountOpen((value) => !value)}
+        />
+      ) : (
+        <header
+          className={
+            screen === "match" ? "site-header in-match" : "site-header"
+          }
+        >
+          <Brand />
+          <nav aria-label="Main navigation">
+            <button onClick={() => setSettingsOpen(true)}>Settings</button>
+            <Link href={routes.home}>Home</Link>
+            {session?.activeMatchId && (
+              <Link href={routes.match(session.activeMatchId)}>
+                Resume match
+              </Link>
+            )}
+            {session && (
+              <Link
+                href="/history"
+                aria-current={screen === "history" ? "page" : undefined}
+              >
+                History
+              </Link>
+            )}
+            <span className="session-label">
+              {session?.principal.kind === "ACCOUNT"
+                ? "Account"
+                : session
+                  ? "Guest session"
+                  : "Play without an account"}
+            </span>
+          </nav>
+        </header>
+      )}
+      {screen !== "match" &&
+        (publicPage ? (
+          <div
+            ref={accountArea}
+            className="campaign-account-area"
+            data-open={accountOpen}
           >
-            Home
-          </Link>
-          {session?.activeMatchId && (
-            <Link href={routes.match(session.activeMatchId)}>Resume match</Link>
-          )}
-          {session && (
-            <Link
-              href="/history"
-              aria-current={screen === "history" ? "page" : undefined}
-            >
-              History
-            </Link>
-          )}
-          <span className="session-label">
-            {session?.principal.kind === "ACCOUNT"
-              ? "Account"
-              : session
-                ? "Guest session"
-                : "Play without an account"}
-          </span>
-        </nav>
-      </header>
-      {screen !== "match" && authPanel}
+            {authPanel}
+          </div>
+        ) : (
+          authPanel
+        ))}
       <SessionRecoveryContext.Provider value={expired}>
         <PrivateStorageContext.Provider value={storage}>
           {settingsOpen && (
@@ -281,8 +323,44 @@ function AppContent({
               {storageWarning}
             </p>
           )}
-          <main ref={main} id="main" data-screen={screen} key={ownerEpoch}>
-            {error ? (
+          {publicPage && error && (
+            <div className="campaign-feedback" role="alert">
+              <p>{error}</p>
+              <button
+                onClick={() => {
+                  setError(null);
+                  setLoading(true);
+                  setAttempt((value) => value + 1);
+                }}
+              >
+                Retry connection
+              </button>
+            </div>
+          )}
+          <main
+            ref={main}
+            id="main"
+            className={publicPage ? "campaign-page" : undefined}
+            data-screen={screen}
+            key={ownerEpoch}
+          >
+            {publicPage ? (
+              campaign ? (
+                <CampaignPage
+                  view={campaign}
+                  onChooseHero={(id) => void start(id)}
+                  busy={busy || loading}
+                  resume={!!session?.activeMatchId}
+                />
+              ) : (
+                <CampaignHome
+                  onPlay={() => void start()}
+                  onLearn={() => void startTutorial("GOOD")}
+                  busy={busy || loading}
+                  resume={!!session?.activeMatchId}
+                />
+              )
+            ) : error ? (
               <section className="status-panel panel" role="alert">
                 <h1>Unable to connect</h1>
                 <p>{error}</p>
@@ -338,85 +416,44 @@ function AppContent({
                 {...(reviewMatchId ? { reviewMatchId } : {})}
               />
             ) : (
-              <section className="home panel" data-home-stage>
-                <div className="home-copy">
-                  <p className="eyebrow">
-                    A tactical card game in the Fivefold
-                  </p>
-                  <h1 data-home-headline>
-                    FIVE LANES.
-                    <br />
-                    ONE OATH.
-                  </h1>
-                  <p>
-                    Lead Dawnward or the Ashen Court. Deploy your units,
-                    conserve energy and choose the moment to turn the battle.
-                  </p>
-                  <button
-                    className="primary"
-                    aria-label={
-                      session?.activeMatchId
-                        ? "Continue match"
-                        : "Play now · Play vs bot"
-                    }
-                    disabled={busy || !catalog}
-                    onClick={() => void start()}
-                  >
-                    {busy
-                      ? "Connecting…"
-                      : session?.activeMatchId
-                        ? "Continue match"
-                        : "Play now"}
-                  </button>
-                  <button
-                    disabled={busy || !catalog}
-                    onClick={() => void startTutorial("GOOD")}
-                  >
-                    Learn to play
-                  </button>
-                  <p className="muted">
-                    Six heroes · Six preset decks · Easy and Normal bots
-                  </p>
-                </div>
-                <div
-                  className="home-art-stage"
-                  aria-hidden="true"
-                  data-home-art
+              <section className="status-panel panel">
+                <h1>Ready to enter the Fivefold?</h1>
+                <p>Start a guest session to choose your hero.</p>
+                <button
+                  className="primary"
+                  onClick={() => void start()}
+                  disabled={busy || loading}
                 >
-                  <span className="home-faction-word">THE FIVEFOLD</span>
-                  <div className="home-hero home-hero-evil">
-                    <ArtImage
-                      artKey="heroes/h_e_fx/portrait.webp"
-                      name="Cinder"
-                      variant="bust"
-                      eager
-                      retry={false}
-                    />
-                  </div>
-                  <div className="home-hero home-hero-good">
-                    <ArtImage
-                      artKey="heroes/h_g_bv/portrait.webp"
-                      name="Briar"
-                      variant="bust"
-                      eager
-                      retry={false}
-                    />
-                  </div>
-                  <div className="home-factions">
-                    <span>Dawnward</span>
-                    <span>Ashen Court</span>
-                  </div>
-                </div>
+                  Play now · Play vs bot
+                </button>
               </section>
             )}
           </main>
         </PrivateStorageContext.Provider>
       </SessionRecoveryContext.Provider>
       {screen === "match" && authPanel}
-      <footer className="site-footer">
-        OathFront · The Fivefold
-        <span>Rules and stats are always available as text.</span>
-      </footer>
+      {publicPage ? (
+        <footer className="campaign-footer">
+          <span>OathFront · The Fivefold</span>
+          <nav aria-label="Player options">
+            <button onClick={() => setSettingsOpen(true)}>Settings</button>
+            {session && <Link href="/history">History</Link>}
+            {session?.activeMatchId && (
+              <Link href={routes.match(session.activeMatchId)}>
+                Resume match
+              </Link>
+            )}
+            <button onClick={() => setAccountOpen((value) => !value)}>
+              {accountOpen ? "Close account controls" : "Account"}
+            </button>
+          </nav>
+        </footer>
+      ) : (
+        <footer className="site-footer">
+          OathFront · The Fivefold
+          <span>Rules and stats are always available as text.</span>
+        </footer>
+      )}
     </>
   );
 }

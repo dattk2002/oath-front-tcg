@@ -61,7 +61,7 @@ export function CampaignHeader({
         className="campaign-button campaign-header-play"
         disabled={busy}
         onClick={onPlay}
-        aria-label="Play now · Play vs bot"
+        aria-label="Play now · Navigation"
       >
         {busy ? (
           "Connecting…"

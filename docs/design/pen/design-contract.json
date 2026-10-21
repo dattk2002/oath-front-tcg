@@ -45,15 +45,15 @@
       },
       {
         "logicalId": "campaign_heroes_list",
-        "repoPath": null,
-        "repoComponent": null,
+        "repoPath": "apps/web/src/features/campaign/CampaignPage.tsx",
+        "repoComponent": "CampaignPage",
         "desktop": "xaC80",
         "mobile": "ImQTb"
       },
       {
         "logicalId": "campaign_hero_detail",
-        "repoPath": null,
-        "repoComponent": null,
+        "repoPath": "apps/web/src/features/campaign/HeroProfile.tsx",
+        "repoComponent": "HeroProfile",
         "desktop": [
           "CFFhD",
           "xWCNu",
@@ -1843,7 +1843,28 @@
       "Campaign tablet/reflow and omitted interaction/error states",
       "Static mock editorial detail content for listed entries"
     ],
-    "implementationStatus": "not_started",
-    "deviations": []
+    "implementationStatus": "M1_M2_M3_complete_M4_pending",
+    "deviations": [
+      {
+        "id": "public-route-isolation",
+        "reason": "Preserve existing /heroes game selection and saved links; public profiles use /explore/heroes."
+      },
+      {
+        "id": "shared-mobile-navigation",
+        "reason": "Older Home mobile/compact used Blogs; approved campaign navigation is shared across pages, with all actual destinations."
+      },
+      {
+        "id": "account-and-player-options",
+        "reason": "Keep optional login, Settings, History and resume through header disclosure and footer; urgent auth recovery remains visible."
+      },
+      {
+        "id": "readable-rules",
+        "reason": "Power descriptions enlarged from Pen 14px to 16px, with 12px minimum small meaningful copy and visible focus."
+      },
+      {
+        "id": "public-api-error",
+        "reason": "Game/account API errors show an actionable banner; public content remains browsable."
+      }
+    ]
   }
 }
