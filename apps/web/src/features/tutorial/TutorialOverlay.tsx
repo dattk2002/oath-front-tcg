@@ -38,12 +38,12 @@ export default function TutorialOverlay({
     <aside
       ref={ref}
       className="tutorial-panel panel"
-      aria-label="Hướng dẫn chơi"
+      aria-label="Tutorial"
       data-step={t.stepId}
     >
       <div aria-live="polite" aria-atomic="true">
         <p className="muted">
-          Tình huống luyện tập ·{" "}
+          Practice scenario ·{" "}
           {t.stepId.startsWith("G")
             ? `${Number(t.stepId.slice(1))} / 8`
             : `${Number(t.stepId.slice(1))} / 2`}
@@ -56,8 +56,8 @@ export default function TutorialOverlay({
           <>
             <p>
               {confirm === "skip"
-                ? "Bỏ qua hướng dẫn? Bạn có thể học lại bất kỳ lúc nào."
-                : "Học lại tình huống này? Các bài trước vẫn được giữ."}
+                ? "Skip the tutorial? You can play it again anytime."
+                : "Restart this scenario? Earlier lessons will be kept."}
             </p>
             <button
               disabled={disabled}
@@ -70,9 +70,9 @@ export default function TutorialOverlay({
                 setConfirm(null);
               }}
             >
-              Xác nhận
+              Confirm
             </button>
-            <button onClick={() => setConfirm(null)}>Ở lại</button>
+            <button onClick={() => setConfirm(null)}>Stay</button>
           </>
         ) : (
           <>
@@ -91,13 +91,13 @@ export default function TutorialOverlay({
               disabled={!can("TUTORIAL_RESTART")}
               onClick={() => setConfirm("restart")}
             >
-              Học lại tình huống
+              Restart scenario
             </button>
             <button
               disabled={!can("TUTORIAL_SKIP")}
               onClick={() => setConfirm("skip")}
             >
-              Bỏ qua hướng dẫn
+              Skip tutorial
             </button>
           </>
         )}

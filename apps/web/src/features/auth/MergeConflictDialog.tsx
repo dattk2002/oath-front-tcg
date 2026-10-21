@@ -1,3 +1,4 @@
+import { contentName } from "../../content/english-content";
 import { useEffect, useRef } from "react";
 import type { MatchSummary, PublicCatalog } from "@oathfront/contracts";
 import { openDialog } from "../match/keyboard";
@@ -36,16 +37,16 @@ export default function MergeConflictDialog({
       }}
     >
       <h2 id="merge-title" ref={heading} tabIndex={-1}>
-        Chọn trận muốn tiếp tục
+        Choose a match to resume
       </h2>
       <p>
-        Cả phiên khách và tài khoản đều có trận đang chơi. Trận còn lại sẽ đóng,
-        không tính là thua. Bộ bài và lịch sử của cả hai được giữ.
+        Your guest session and account both have active matches. The other match
+        will close without a loss. Decks and history from both are preserved.
       </p>
       <div className="merge-choices">
         {[
-          { match: guestMatch, label: "Trận của khách" },
-          { match: accountMatch, label: "Trận của tài khoản" },
+          { match: guestMatch, label: "Guest match" },
+          { match: accountMatch, label: "Account match" },
         ].map(({ match: m, label }) => {
           return (
             <button
@@ -55,24 +56,27 @@ export default function MergeConflictDialog({
             >
               <strong>{label}</strong>
               <span>
-                {catalog.heroes.find((h) => h.id === m.humanHeroId)?.nameVi} ·
-                Lượt {m.turns}
+                {contentName(
+                  catalog.heroes.find((h) => h.id === m.humanHeroId)?.id ?? "",
+                )}{" "}
+                · Turn {m.turns}
               </span>
               <span>
-                Gặp{" "}
-                {catalog.heroes.find((h) => h.id === m.opponentHeroId)?.nameVi}{" "}
-                · {m.difficulty === "NORMAL" ? "Thường" : "Dễ"}
+                Opponent{" "}
+                {contentName(
+                  catalog.heroes.find((h) => h.id === m.opponentHeroId)?.id ??
+                    "",
+                )}{" "}
+                · {m.difficulty === "NORMAL" ? "Normal" : "Easy"}
               </span>
-              <span>{new Date(m.createdAt).toLocaleString("vi-VN")}</span>
-              <span>
-                {m.lifecycle === "PAUSED" ? "Đang tạm dừng" : "Đang diễn ra"}
-              </span>
+              <span>{new Date(m.createdAt).toLocaleString("en-US")}</span>
+              <span>{m.lifecycle === "PAUSED" ? "Paused" : "Active"}</span>
             </button>
           );
         })}
       </div>
       <button disabled={busy} onClick={onClose}>
-        Quay lại phiên khách
+        Back to guest session
       </button>
     </dialog>
   );

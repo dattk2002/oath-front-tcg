@@ -1,3 +1,4 @@
+import { contentName } from "../../content/english-content";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { HeroId, PublicCatalog } from "@oathfront/contracts/browser";
@@ -37,11 +38,11 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
   return (
     <section className="setup" ref={root}>
       <div className="screen-heading">
-        <h1>Chọn người dẫn lối</h1>
-        <p>Sáu hero · Tất cả đều mở sẵn</p>
+        <h1>Choose your hero</h1>
+        <p>Six heroes · All unlocked</p>
       </div>
       <div className="hero-select-layout">
-        <div role="radiogroup" aria-label="Chọn hero" className="hero-grid">
+        <div role="radiogroup" aria-label="Choose hero" className="hero-grid">
           {catalog.heroes.map((h, i) => (
             <label
               key={h.id}
@@ -64,16 +65,16 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
               <span className="hero-portrait">
                 <ArtImage
                   artKey={h.portraitKey}
-                  name={h.nameVi}
+                  name={contentName(h.id)}
                   variant="hud"
                   eager
                 />
               </span>
-              <strong>{h.nameVi}</strong>
+              <strong>{contentName(h.id)}</strong>
               <span>{h.classes.map((c) => classLabel[c]).join(" · ")}</span>
               <span>{strategies[h.id]}</span>
-              {i === 0 && <small>Đề xuất cho người mới</small>}
-              {h.id === selected && <b>Đã chọn</b>}
+              {i === 0 && <small>Recommended for new players</small>}
+              {h.id === selected && <b>Selected</b>}
             </label>
           ))}
         </div>
@@ -84,9 +85,9 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
           className="primary"
           onClick={() => router.push(`/heroes/${selected}/decks`)}
         >
-          Chọn bộ bài
+          Choose deck
         </button>
-        <button onClick={() => router.push("/")}>Học cách chơi</button>
+        <button onClick={() => router.push("/")}>Learn to play</button>
       </div>
     </section>
   );

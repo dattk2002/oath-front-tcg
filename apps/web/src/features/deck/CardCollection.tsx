@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import { useState } from "react";
 import type {
   CardDefinitionView,
@@ -22,15 +23,15 @@ export function QuantityControls({
   return (
     <div className="quantity-controls" onClick={(e) => e.stopPropagation()}>
       <button
-        aria-label={`Bớt ${card.nameVi}`}
+        aria-label={`Remove ${contentName(card.id)}`}
         disabled={!quantity}
         onClick={() => onChange(card.id, -1)}
       >
         −
       </button>
-      <span aria-label={`${quantity} trên 2 bản`}>{quantity}/2</span>
+      <span aria-label={`${quantity} of 2 copies`}>{quantity}/2</span>
       <button
-        aria-label={`Thêm ${card.nameVi}`}
+        aria-label={`Add ${contentName(card.id)}`}
         disabled={quantity >= 2 || total >= 30}
         onClick={() => onChange(card.id, 1)}
       >
@@ -38,9 +39,9 @@ export function QuantityControls({
       </button>
       <small>
         {quantity >= 2
-          ? "Tối đa 2 bản"
+          ? "Maximum 2 copies"
           : total >= 30
-            ? "Bộ bài đã đủ 30 lá"
+            ? "Your deck already has 30 cards"
             : ""}
       </small>
     </div>
@@ -66,36 +67,36 @@ export default function CardCollection({
   const cards = filterCards(catalog, hero, { search, classId, type, cost });
   const total = entries.reduce((n, e) => n + e.quantity, 0);
   return (
-    <section className="collection" aria-label="Bộ sưu tập">
+    <section className="collection" aria-label="Collection">
       <div className="collection-filters">
         <label>
-          Tìm tên hoặc keyword
+          Search names, rules or keywords
           <input value={search} onChange={(e) => setSearch(e.target.value)} />
         </label>
         <label>
           Class
           <select value={classId} onChange={(e) => setClass(e.target.value)}>
-            <option value="ALL">Tất cả class</option>
+            <option value="ALL">All classes</option>
             {hero.classes.map((c) => (
               <option key={c} value={c}>
                 {classLabel[c]}
               </option>
             ))}
-            <option value="COMMON">Chung</option>
+            <option value="COMMON">Common</option>
           </select>
         </label>
         <label>
-          Loại
+          Type
           <select value={type} onChange={(e) => setType(e.target.value)}>
-            <option value="ALL">Tất cả loại</option>
-            <option value="UNIT">Nhân vật</option>
+            <option value="ALL">All types</option>
+            <option value="UNIT">Unit</option>
             <option value="TRICK">Trick</option>
           </select>
         </label>
         <label>
-          Chi phí
+          Cost
           <select value={cost} onChange={(e) => setCost(e.target.value)}>
-            <option value="ALL">Tất cả chi phí</option>
+            <option value="ALL">All costs</option>
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <option key={n} value={n}>
                 {n === 6 ? "6+" : n}
@@ -104,7 +105,7 @@ export default function CardCollection({
           </select>
         </label>
       </div>
-      <p role="status">{cards.length} lá phù hợp</p>
+      <p role="status">{cards.length} matching cards</p>
       <div className="collection-grid">
         {cards.map((c) => (
           <article
@@ -120,17 +121,17 @@ export default function CardCollection({
                 onInspect(c);
               }}
             >
-              {c.nameVi}
+              {contentName(c.id)}
             </button>
             <span className={`card-art ${c.faction.toLowerCase()}`}>
-              <ArtImage artKey={c.artKey} name={c.nameVi} />
+              <ArtImage artKey={c.artKey} name={contentName(c.id)} />
             </span>
             <p>
               {c.type === "UNIT"
-                ? `${c.printed.attack} Công · ${c.printed.hp} Máu`
+                ? `${c.printed.attack} ATK · ${c.printed.hp} HP`
                 : "Trick"}
             </p>
-            <p className="card-rules">{c.exactTextVi}</p>
+            <p className="card-rules">{contentText(c.id)}</p>
             <QuantityControls
               card={c}
               quantity={entries.find((e) => e.cardId === c.id)?.quantity ?? 0}
@@ -141,7 +142,7 @@ export default function CardCollection({
         ))}
       </div>
       {!cards.length && (
-        <p>Không có lá phù hợp. Hãy đổi bộ lọc hoặc tìm kiếm.</p>
+        <p>No matching cards. Change your filters or search.</p>
       )}
     </section>
   );

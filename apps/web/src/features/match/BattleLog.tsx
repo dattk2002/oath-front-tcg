@@ -9,12 +9,12 @@ export default function BattleLog({
 }) {
   const content = (
     <>
-      <h2>Nhật ký</h2>
-      {snapshot.logExpired && <p role="status">Một phần nhật ký đã hết hạn.</p>}
-      <ol aria-label="Diễn biến trận">
+      <h2>Battle log</h2>
+      {snapshot.logExpired && <p role="status">Part of the log has expired.</p>}
+      <ol aria-label="Match events">
         {snapshot.events.map((event) => (
           <li key={event.eventId} data-event-id={event.eventId}>
-            {event.sequence} · {eventLabel[event.kind] ?? "Cập nhật bàn chơi"}
+            {event.sequence} · {eventLabel[event.kind] ?? "Board updated"}
           </li>
         ))}
       </ol>
@@ -22,10 +22,10 @@ export default function BattleLog({
   );
   return compact ? (
     <details className="tablet-inspect">
-      <summary>Nhật ký và cách thao tác</summary>
+      <summary>Log and controls</summary>
       <p>
-        Chọn bài rồi chọn mục tiêu. Tab, phím mũi tên, Enter và Esc; kéo bài
-        dùng cùng hành động.
+        Select a card, then a target. Use Tab, arrow keys, Enter and Esc;
+        dragging uses the same action.
       </p>
       {content}
     </details>

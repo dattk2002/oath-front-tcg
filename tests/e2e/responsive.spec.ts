@@ -46,7 +46,7 @@ for (const [width, height] of [
     await page.setViewportSize({ width: width!, height: height! });
     await enter(page, dto.view.matchId);
     await expect(
-      page.getByRole("button", { name: "Kết thúc hành động", exact: true }),
+      page.getByRole("button", { name: "End phase", exact: true }),
     ).toBeInViewport({ ratio: 1 });
     await fits(page, ".hero-panel,.lane,.hand-card,.phase-controls");
     const cards = await page.locator(".hand-card").evaluateAll((nodes) =>
@@ -84,10 +84,10 @@ test("375px fallback preserves readable lane list", async ({ page }) => {
   await page.goto(`/matches/${dto.view.matchId}`);
   await expect(
     page.getByRole("heading", {
-      name: "Xoay ngang hoặc dùng màn hình lớn để vào trận",
+      name: "Rotate your device or use a larger screen to play",
     }),
   ).toBeVisible();
-  await page.getByText("Đọc bàn hiện tại", { exact: true }).click();
+  await page.getByText("Read the current board", { exact: true }).click();
   await expect(page.locator(".small-fallback ol li")).toHaveCount(5);
   expect(
     await page.evaluate(
@@ -104,12 +104,12 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
   const errors = collectBrowserErrors(page);
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Học cách chơi", exact: true })
+    .getByRole("button", { name: "Learn to play", exact: true })
     .click();
   await page.waitForURL(/matches/);
-  const next = async (name = "Tiếp tục") => {
+  const next = async (name = "Continue") => {
     await page
-      .getByRole("complementary", { name: "Hướng dẫn chơi" })
+      .getByRole("complementary", { name: "Tutorial" })
       .getByRole("button", { name, exact: true })
       .click();
   };
@@ -126,7 +126,7 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
       if (await page.locator(".block-response").count()) {
         await fits(page, ".block-response");
         await expect(
-          page.getByRole("button", { name: "Để dành", exact: true }),
+          page.getByRole("button", { name: "Keep for later", exact: true }),
         ).toBeInViewport({ ratio: 1 });
       } else await fits(page, ".hand-card,.phase-controls");
     }
@@ -137,10 +137,10 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
   );
   await expect(page.locator(".hand-card").first()).toBeVisible();
   await expect(
-    page.locator(".hand-card").filter({ hasText: "Người Gác Đèn" }),
+    page.locator(".hand-card").filter({ hasText: "Lanternkeeper" }),
   ).toHaveAttribute("data-playable-unit", "true");
   await check("G01");
-  await page.locator(".hand-card").filter({ hasText: "Người Gác Đèn" }).click();
+  await page.locator(".hand-card").filter({ hasText: "Lanternkeeper" }).click();
   await page.locator('[data-lane-id="2"]').click();
   await next();
   await expect(page.locator(".tutorial-panel")).toHaveAttribute(
@@ -148,9 +148,9 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
     "G02",
   );
   await check("G02");
-  await page.locator(".hand-card").filter({ hasText: "Kỵ Sĩ Lá" }).click();
+  await page.locator(".hand-card").filter({ hasText: "Leaf Knight" }).click();
   await expect(
-    page.getByText("Cần 2 năng lượng, hiện có 0.", { exact: false }),
+    page.getByText("Requires 2 energy; you have 0.", { exact: false }),
   ).toBeVisible();
   for (const [width, height] of [
     [1440, 900],
@@ -158,10 +158,10 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
   ]) {
     await page.setViewportSize({ width: width!, height: height! });
     const inspect = page.getByRole("complementary", {
-      name: "Chi tiết lựa chọn",
+      name: "Selection details",
     });
     const tutorial = page.getByRole("complementary", {
-      name: "Hướng dẫn chơi",
+      name: "Tutorial",
     });
     const bounds = {
       inspect: await inspect.boundingBox(),
@@ -178,17 +178,19 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
       bounds.tutorial!.y + bounds.tutorial!.height,
     );
     const proceed = tutorial.getByRole("button", {
-      name: "Đã hiểu",
+      name: "Got it",
       exact: true,
     });
     await expect(proceed).toBeInViewport({ ratio: 1 });
     await proceed.click({ trial: true, timeout: 2000 });
-    await inspect.getByRole("button", { name: "Hủy lựa chọn · Esc" }).focus();
+    await inspect
+      .getByRole("button", { name: "Cancel selection · Esc" })
+      .focus();
     await expect(
-      inspect.getByRole("button", { name: "Hủy lựa chọn · Esc" }),
+      inspect.getByRole("button", { name: "Cancel selection · Esc" }),
     ).toBeInViewport({ ratio: 1 });
     const skip = tutorial.getByRole("button", {
-      name: "Bỏ qua hướng dẫn",
+      name: "Skip tutorial",
       exact: true,
     });
     await skip.focus();
@@ -196,37 +198,33 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
     await proceed.focus();
     await expect(proceed).toBeInViewport({ ratio: 1 });
   }
-  await next("Đã hiểu");
-  await page
-    .getByRole("button", { name: "Kết thúc hành động", exact: true })
-    .click();
-  await next("Bài tiếp theo");
+  await next("Got it");
+  await page.getByRole("button", { name: "End phase", exact: true }).click();
+  await next("Next lesson");
   await expect(page.locator(".tutorial-panel")).toHaveAttribute(
     "data-step",
     "G04",
   );
   await expect(
-    page.locator(".hand-card").filter({ hasText: "Tia Đèn" }),
+    page.locator(".hand-card").filter({ hasText: "Lantern Ray" }),
   ).toHaveAttribute("data-playable", "true");
-  await page.locator(".hand-card").filter({ hasText: "Tia Đèn" }).click();
+  await page.locator(".hand-card").filter({ hasText: "Lantern Ray" }).click();
   await page
-    .getByRole("button", { name: /Lộ 4, Lính Tro.*mục tiêu hợp lệ/ })
+    .getByRole("button", { name: /Lane 4, Ash Soldier.*legal target/ })
     .click();
   await next();
-  await page
-    .getByRole("button", { name: "Kết thúc hành động", exact: true })
-    .click();
-  await next("Bài tiếp theo");
+  await page.getByRole("button", { name: "End phase", exact: true }).click();
+  await next("Next lesson");
   await expect(page.locator(".tutorial-panel")).toHaveAttribute(
     "data-step",
     "G06",
   );
   await expect(
-    page.locator(".hand-card").filter({ hasText: "Mầm Khiên" }),
+    page.locator(".hand-card").filter({ hasText: "Shieldseed" }),
   ).toHaveAttribute("data-playable-unit", "true");
-  await page.locator(".hand-card").filter({ hasText: "Mầm Khiên" }).click();
+  await page.locator(".hand-card").filter({ hasText: "Shieldseed" }).click();
   await page.locator('[data-lane-id="3"]').click();
-  await next("Bài tiếp theo");
+  await next("Next lesson");
   await expect(page.locator(".block-response")).toBeVisible();
   await expect(page.locator('[data-presentation="idle"]')).toBeAttached();
   await check("G07");
@@ -253,9 +251,7 @@ test("empty hand, pending command and renderer failure keep essential controls r
   await expect(page.locator('[data-scene-status="fallback"]')).toBeAttached({
     timeout: 15000,
   });
-  await expect(
-    page.getByText("Tay bài trống.", { exact: false }),
-  ).toBeVisible();
+  await expect(page.getByText("Hand empty.", { exact: false })).toBeVisible();
   await fits(page, ".hero-panel,.lane,.phase-controls");
   await page.screenshot({
     path: `${evidence}/empty-renderer-fallback.png`,
@@ -268,19 +264,15 @@ test("empty hand, pending command and renderer failure keep essential controls r
     await gate;
     await r.fulfill({ json: { ...dto, revision: 2 } });
   });
-  await page
-    .getByRole("button", { name: "Kết thúc hành động", exact: true })
-    .click();
-  await expect(page.getByTestId("command-status")).toContainText(
-    "Đang xác nhận",
-  );
+  await page.getByRole("button", { name: "End phase", exact: true }).click();
+  await expect(page.getByTestId("command-status")).toContainText("Checking…");
   await fits(page, '[data-testid="command-status"]');
   await page.screenshot({
     path: `${evidence}/pending.png`,
   });
   release();
   await expect(page.getByTestId("command-status")).not.toContainText(
-    "Đang xác nhận",
+    "Checking…",
   );
   expect(errors).toEqual([]);
 });

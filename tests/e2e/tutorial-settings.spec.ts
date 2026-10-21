@@ -5,12 +5,12 @@ test("new player can open tutorial and independent sound settings", async ({
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("button", { name: "Học cách chơi", exact: true }),
+    page.getByRole("button", { name: "Learn to play", exact: true }),
   ).toBeVisible({ timeout: 10000 });
-  await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
-  await expect(page.getByRole("slider", { name: "Nhạc" })).toBeVisible();
+  await page.getByRole("button", { name: "Settings", exact: true }).click();
+  await expect(page.getByRole("slider", { name: "Music" })).toBeVisible();
   await expect(
-    page.getByRole("slider", { name: "Hiệu ứng âm thanh" }),
+    page.getByRole("slider", { name: "Sound effects" }),
   ).toBeVisible();
 });
 
@@ -27,9 +27,9 @@ async function step(page: Page, id: string) {
     page.locator(`.tutorial-panel[data-step="${id}"]`),
   ).toBeVisible();
 }
-async function next(page: Page, label = "Tiếp tục") {
+async function next(page: Page, label = "Continue") {
   const button = page
-    .getByRole("complementary", { name: "Hướng dẫn chơi" })
+    .getByRole("complementary", { name: "Tutorial" })
     .getByRole("button", { name: label, exact: true });
   await expect(button).toBeEnabled();
   await button.click();
@@ -62,17 +62,17 @@ for (const branch of ["USED", "KEPT"] as const)
     });
     await page.goto("/");
     await page
-      .getByRole("button", { name: "Học cách chơi", exact: true })
+      .getByRole("button", { name: "Learn to play", exact: true })
       .click();
     await page.waitForURL(/\/matches\//);
     await step(page, "G01");
     await expect(page.locator(".hand-card").first()).toBeVisible();
     await expect(page.locator('[data-scene-status="ready"]')).toBeVisible();
-    await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
+    await page.getByRole("button", { name: "Settings", exact: true }).click();
     await expect(
-      page.getByRole("slider", { name: "Nhạc", exact: true }),
+      page.getByRole("slider", { name: "Music", exact: true }),
     ).toBeVisible();
-    await page.getByRole("button", { name: "Đóng cài đặt" }).click();
+    await page.getByRole("button", { name: "Close settings" }).click();
     if (branch === "USED") {
       await mkdir(evidence, { recursive: true });
       for (const [label, width, height] of [
@@ -93,98 +93,98 @@ for (const branch of ["USED", "KEPT"] as const)
       }
       await page.setViewportSize({ width: 1440, height: 900 });
     }
-    await card(page, "Người Gác Đèn", 2, keyboard);
+    await card(page, "Lanternkeeper", 2, keyboard);
     await next(page);
     await step(page, "G02");
-    await page.locator(".hand-card").filter({ hasText: "Kỵ Sĩ Lá" }).click();
+    await page.locator(".hand-card").filter({ hasText: "Leaf Knight" }).click();
     await expect(
-      page.getByText("Cần 2 năng lượng, hiện có 0.", { exact: false }),
+      page.getByText("Requires 2 energy; you have 0.", { exact: false }),
     ).toBeVisible();
-    await next(page, "Đã hiểu");
+    await next(page, "Got it");
     await step(page, "G03");
-    await page
-      .getByRole("button", { name: "Kết thúc hành động", exact: true })
-      .click();
-    await next(page, "Bài tiếp theo");
+    await page.getByRole("button", { name: "End phase", exact: true }).click();
+    await next(page, "Next lesson");
     await step(page, "G04");
-    await page.locator(".hand-card").filter({ hasText: "Tia Đèn" }).click();
+    await page.locator(".hand-card").filter({ hasText: "Lantern Ray" }).click();
     await page
-      .getByRole("button", { name: /Lộ 4, Lính Tro.*mục tiêu hợp lệ/ })
+      .getByRole("button", { name: /Lane 4, Ash Soldier.*legal target/ })
       .click();
     await next(page);
     await step(page, "G05");
-    await page
-      .getByRole("button", { name: "Kết thúc hành động", exact: true })
-      .click();
-    await next(page, "Bài tiếp theo");
+    await page.getByRole("button", { name: "End phase", exact: true }).click();
+    await next(page, "Next lesson");
     await step(page, "G06");
-    await card(page, "Mầm Khiên", 3, keyboard);
-    await next(page, "Bài tiếp theo");
+    await card(page, "Shieldseed", 3, keyboard);
+    await next(page, "Next lesson");
     await step(page, "G07");
     await expect(
-      page.getByRole("heading", { name: "Đã chặn đòn" }),
+      page.getByRole("heading", { name: "Attack blocked" }),
     ).toBeVisible();
     await page.reload();
     await expect(
-      page.getByRole("heading", { name: "Đã chặn đòn" }),
+      page.getByRole("heading", { name: "Attack blocked" }),
     ).toBeVisible();
     if (branch === "USED") {
       await page.screenshot({
         path: `${evidence}/tutorial-block.png`,
         fullPage: true,
       });
-      await page.getByRole("button", { name: "Dùng ngay · 0" }).click();
+      await page.getByRole("button", { name: "Use now · 0" }).click();
       const target = page.getByRole("button", {
-        name: /Lộ 4, Kỵ Sĩ Lá.*mục tiêu hợp lệ/,
+        name: /Lane 4, Leaf Knight.*legal target/,
       });
       await target.focus();
       await page.keyboard.press("Enter");
     } else
-      await page.getByRole("button", { name: "Để dành", exact: true }).click();
+      await page
+        .getByRole("button", { name: "Keep for later", exact: true })
+        .click();
     await next(page);
     await step(page, "G08");
     await expect.poll(async () => (await snapshot(page)).view.turn).toBe(5);
     const s = await snapshot(page);
     expect(s.view.players.GOOD.hp).toBe(branch === "USED" ? 12 : 10);
     expect(s.view.players.EVIL.hp).toBe(18);
-    await next(page, "Hoàn thành");
+    await next(page, "Finish");
     await expect(
-      page.getByRole("heading", { name: "Đã hoàn thành hướng dẫn" }),
+      page.getByRole("heading", { name: "Tutorial complete" }),
     ).toBeVisible();
-    await page.getByRole("button", { name: "Học phe Ác", exact: true }).click();
-    await step(page, "E01");
-    await card(page, "Lính Tro", 2, keyboard);
     await page
-      .getByRole("button", { name: "Kết thúc triển khai", exact: true })
+      .getByRole("button", { name: "Learn Ashen Court", exact: true })
+      .click();
+    await step(page, "E01");
+    await card(page, "Ash Soldier", 2, keyboard);
+    await page
+      .getByRole("button", { name: "End deployment", exact: true })
       .click();
     await next(page);
     await step(page, "E02");
     await expect
       .poll(async () => (await snapshot(page)).view.phase)
       .toBe("EVIL_TRICKS");
-    await page.locator(".hand-card").filter({ hasText: "Mũi Than" }).click();
+    await page.locator(".hand-card").filter({ hasText: "Coal Lance" }).click();
     await page
-      .getByRole("button", { name: /Lộ 5, Người Gác Đèn.*mục tiêu hợp lệ/ })
+      .getByRole("button", { name: /Lane 5, Lanternkeeper.*legal target/ })
       .click();
+    await page.getByRole("button", { name: "End tricks", exact: true }).click();
+    await expect(
+      page.getByText("Leaf Knight has 1 HP left", { exact: false }),
+    ).toBeVisible();
+    await next(page, "Finish");
+    await expect(
+      page.getByRole("heading", { name: "Tutorial complete" }),
+    ).toBeVisible();
     await page
-      .getByRole("button", { name: "Kết thúc trick", exact: true })
+      .getByRole("button", { name: "Replay tutorial", exact: true })
       .click();
-    await expect(
-      page.getByText("Kỵ Sĩ Lá còn 1 HP", { exact: false }),
-    ).toBeVisible();
-    await next(page, "Hoàn thành");
-    await expect(
-      page.getByRole("heading", { name: "Đã hoàn thành hướng dẫn" }),
-    ).toBeVisible();
-    await page.getByRole("button", { name: "Học lại", exact: true }).click();
     await step(page, "G01");
-    await next(page, "Học lại tình huống");
-    await next(page, "Xác nhận");
+    await next(page, "Restart scenario");
+    await next(page, "Confirm");
     await step(page, "G01");
-    await next(page, "Bỏ qua hướng dẫn");
-    await next(page, "Xác nhận");
+    await next(page, "Skip tutorial");
+    await next(page, "Confirm");
     await expect(
-      page.getByRole("heading", { name: "Đã bỏ qua hướng dẫn" }),
+      page.getByRole("heading", { name: "Tutorial skipped" }),
     ).toBeVisible();
     expect(errors).toEqual([]);
   });
@@ -237,7 +237,7 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
   });
   await page.goto("/");
   await expect(
-    page.getByRole("button", { name: "Học cách chơi", exact: true }),
+    page.getByRole("button", { name: "Learn to play", exact: true }),
   ).toBeVisible();
   const audio = () =>
     page.evaluate(() => {
@@ -251,19 +251,19 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
     });
   expect((await audio()).contexts).toBe(0);
   expect((await audio()).starts).toBe(0);
-  await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
+  await page.getByRole("button", { name: "Settings", exact: true }).click();
   await expect.poll(async () => (await audio()).states[0]).toBe("running");
   await expect.poll(async () => (await audio()).starts).toBeGreaterThan(0);
-  const music = page.getByRole("slider", { name: "Nhạc", exact: true });
+  const music = page.getByRole("slider", { name: "Music", exact: true });
   await music.focus();
   await page.keyboard.press("Home");
   await expect(music).toHaveValue("0");
-  await expect(
-    page.getByRole("slider", { name: "Hiệu ứng âm thanh" }),
-  ).toHaveValue("0.6");
-  await page.getByRole("checkbox", { name: "Tắt toàn bộ âm thanh" }).check();
+  await expect(page.getByRole("slider", { name: "Sound effects" })).toHaveValue(
+    "0.6",
+  );
+  await page.getByRole("checkbox", { name: "Mute all audio" }).check();
   expect((await audio()).gains.slice(0, 2)).toEqual([0, 0]);
-  await page.getByRole("checkbox", { name: "Giảm chuyển động" }).check();
+  await page.getByRole("checkbox", { name: "Reduce motion" }).check();
   await mkdir(evidence, { recursive: true });
   for (const [label, width, height] of [
     ["desktop", 1440, 900],
@@ -272,7 +272,7 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
   ] as const) {
     await page.setViewportSize({ width, height });
     await expect(
-      page.getByRole("button", { name: "Đóng cài đặt" }),
+      page.getByRole("button", { name: "Close settings" }),
     ).toBeInViewport();
     expect(
       await page.evaluate(
@@ -286,71 +286,71 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
   }
   await page.keyboard.press("Escape");
   await expect(
-    page.getByRole("button", { name: "Cài đặt", exact: true }),
+    page.getByRole("button", { name: "Settings", exact: true }),
   ).toBeFocused();
   await page.reload();
-  await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
+  await page.getByRole("button", { name: "Settings", exact: true }).click();
   await expect(music).toHaveValue("0");
+  await expect(page.getByRole("slider", { name: "Sound effects" })).toHaveValue(
+    "0.6",
+  );
   await expect(
-    page.getByRole("slider", { name: "Hiệu ứng âm thanh" }),
-  ).toHaveValue("0.6");
-  await expect(
-    page.getByRole("checkbox", { name: "Tắt toàn bộ âm thanh" }),
+    page.getByRole("checkbox", { name: "Mute all audio" }),
   ).toBeChecked();
   await expect(
-    page.getByRole("checkbox", { name: "Giảm chuyển động" }),
+    page.getByRole("checkbox", { name: "Reduce motion" }),
   ).toBeChecked();
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.getByRole("checkbox", { name: "Tắt toàn bộ âm thanh" }).uncheck();
-  await page.getByRole("button", { name: "Đóng cài đặt" }).click();
+  await page.getByRole("checkbox", { name: "Mute all audio" }).uncheck();
+  await page.getByRole("button", { name: "Close settings" }).click();
   await page
-    .getByRole("button", { name: "Học cách chơi", exact: true })
+    .getByRole("button", { name: "Learn to play", exact: true })
     .click();
   await page.waitForURL(/\/matches\//);
   await step(page, "G01");
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible();
   const beforePlay = (await audio()).starts;
-  await card(page, "Người Gác Đèn", 2, false);
+  await card(page, "Lanternkeeper", 2, false);
   await expect
     .poll(async () => (await audio()).starts)
     .toBeGreaterThan(beforePlay);
-  await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
+  await page.getByRole("button", { name: "Pause", exact: true }).click();
   await expect
     .poll(async () => (await audio()).states.at(-1))
     .toBe("suspended");
   await page
-    .getByRole("dialog", { name: "Tạm dừng" })
-    .getByRole("button", { name: "Cài đặt", exact: true })
+    .getByRole("dialog", { name: "Paused" })
+    .getByRole("button", { name: "Settings", exact: true })
     .click();
   await expect(
-    page.getByRole("slider", { name: "Nhạc", exact: true }),
+    page.getByRole("slider", { name: "Music", exact: true }),
   ).toHaveValue("0");
   await page.keyboard.press("Escape");
   await expect(
-    page.getByRole("dialog", { name: "Cài đặt", exact: true }),
+    page.getByRole("dialog", { name: "Settings", exact: true }),
   ).toBeHidden();
   await expect(
-    page.getByRole("dialog", { name: "Tạm dừng", exact: true }),
+    page.getByRole("dialog", { name: "Paused", exact: true }),
   ).toBeVisible();
   expect((await snapshot(page)).view.lifecycle).toBe("PAUSED");
   expect((await audio()).states.at(-1)).toBe("suspended");
   const pausedSettings = page
-    .getByRole("dialog", { name: "Tạm dừng", exact: true })
-    .getByRole("button", { name: "Cài đặt", exact: true });
+    .getByRole("dialog", { name: "Paused", exact: true })
+    .getByRole("button", { name: "Settings", exact: true });
   await expect(pausedSettings).toBeFocused();
   await pausedSettings.click();
-  await page.getByRole("button", { name: "Đóng cài đặt" }).click();
+  await page.getByRole("button", { name: "Close settings" }).click();
   await expect(pausedSettings).toBeFocused();
   expect((await snapshot(page)).view.lifecycle).toBe("PAUSED");
   await page
-    .getByRole("dialog", { name: "Tạm dừng" })
-    .getByRole("button", { name: "Tiếp tục", exact: true })
+    .getByRole("dialog", { name: "Paused" })
+    .getByRole("button", { name: "Continue", exact: true })
     .click();
   await expect.poll(async () => (await audio()).states.at(-1)).toBe("running");
   await expect(
-    page.getByRole("button", { name: "Tạm dừng", exact: true }),
+    page.getByRole("button", { name: "Pause", exact: true }),
   ).toBeFocused();
-  await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
+  await page.getByRole("button", { name: "Pause", exact: true }).click();
   await expect
     .poll(async () => (await audio()).states.at(-1))
     .toBe("suspended");
@@ -381,7 +381,7 @@ test("settled tutorial layout exposes settings, energy focus and small-screen fa
 }) => {
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Học cách chơi", exact: true })
+    .getByRole("button", { name: "Learn to play", exact: true })
     .click();
   await page.waitForURL(/\/matches\//);
   await step(page, "G01");
@@ -405,21 +405,21 @@ test("settled tutorial layout exposes settings, energy focus and small-screen fa
     });
   }
   await expect(
-    page.getByText("Xoay ngang hoặc dùng màn hình lớn để vào trận", {
+    page.getByText("Rotate your device or use a larger screen to play", {
       exact: true,
     }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
+  await page.getByRole("button", { name: "Settings", exact: true }).click();
   await expect(
-    page.getByRole("slider", { name: "Nhạc", exact: true }),
+    page.getByRole("slider", { name: "Music", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Đóng cài đặt" }).click();
+  await page.getByRole("button", { name: "Close settings" }).click();
   await page.setViewportSize({ width: 1440, height: 900 });
-  await card(page, "Người Gác Đèn", 2, true);
+  await card(page, "Lanternkeeper", 2, true);
   await next(page);
   const cardCost = page
     .locator(".hand-card")
-    .filter({ hasText: "Kỵ Sĩ Lá" })
+    .filter({ hasText: "Leaf Knight" })
     .locator(".card-cost");
   await expect(cardCost).toContainText("2");
   expect(
@@ -461,19 +461,21 @@ test("uncertain tutorial create retains identity and explains a different pendin
   });
   await page.goto("/");
   await page
-    .getByRole("button", { name: "Học cách chơi", exact: true })
+    .getByRole("button", { name: "Learn to play", exact: true })
     .click();
   await expect(
-    page.getByText(/Chưa xác định kết quả tạo hướng dẫn/),
+    page.getByText(/Tutorial creation is unconfirmed/),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
-  await page.getByRole("button", { name: "Học phe Ác", exact: true }).click();
+  await page.getByRole("button", { name: "Settings", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Learn Ashen Court", exact: true })
+    .click();
   await expect(
-    page.getByText(/Có yêu cầu hướng dẫn phe Thiện chưa được xác nhận/),
+    page.getByText(/An unconfirmed tutorial request for Dawnward is pending/),
   ).toBeVisible();
   expect(sent).toHaveLength(1);
   await page
-    .getByRole("button", { name: "Thử lại mở hướng dẫn", exact: true })
+    .getByRole("button", { name: "Retry tutorial", exact: true })
     .click();
   await page.waitForURL(/\/matches\//);
   await step(page, "G01");

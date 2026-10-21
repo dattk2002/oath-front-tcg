@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import { useEffect, useRef } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import type { IntentController } from "./intent-controller";
@@ -46,37 +47,35 @@ export default function BlockResponse({
     (action) => action.kind === "KEEP_BLOCK_POWER",
   );
   return (
-    <section
-      className="block-response panel"
-      aria-label="Lựa chọn sau chặn đòn"
-    >
+    <section className="block-response panel" aria-label="Block response">
       <h2 ref={heading} tabIndex={-1}>
-        Đã chặn đòn
+        Attack blocked
       </h2>
       <p>
-        Chặn 0 / 8 · Còn {3 - view.players[view.self.side].block.used} lần chặn
+        Block 0 / 8 · {3 - view.players[view.self.side].block.used} blocks
+        remaining
       </p>
-      <h3>{power?.nameVi}</h3>
+      <h3>{contentName(power?.id ?? "")}</h3>
       {power && (
         <div className="block-power-art">
-          <ArtImage artKey={power.artKey} name={power.nameVi} />
+          <ArtImage artKey={power.artKey} name={contentName(power.id)} />
         </div>
       )}
-      {power?.signatureOwner && <p>Năng lực đặc trưng</p>}
-      <p className="free-power">Miễn phí lúc này</p>
-      <p>{power?.exactTextVi}</p>
-      {!online && <p role="status">Đang kết nối lại</p>}
+      {power?.signatureOwner && <p>Signature power</p>}
+      <p className="free-power">Free right now</p>
+      <p>{contentText(power?.id ?? "")}</p>
+      {!online && <p role="status">Reconnecting</p>}
       {targeting ? (
         <>
-          <h3>Chọn mục tiêu</h3>
-          <p>Chọn vùng được đánh dấu. Esc để hủy mục tiêu.</p>
+          <h3>Choose a target</h3>
+          <p>Choose a highlighted area. Esc cancels targeting.</p>
           <button onClick={() => controller.cancelSelection()}>
-            Hủy chọn mục tiêu
+            Cancel target
           </button>
         </>
       ) : (
         <>
-          {!actions.length && <p>Hiện không có mục tiêu hợp lệ</p>}
+          {!actions.length && <p>No legal targets right now</p>}
           <button
             ref={useButton}
             className="primary"
@@ -89,7 +88,7 @@ export default function BlockResponse({
               else controller.selectCard(response.powerInstanceId);
             }}
           >
-            Dùng ngay · 0
+            Use now · 0
           </button>
         </>
       )}
@@ -99,7 +98,7 @@ export default function BlockResponse({
           if (keep) void controller.submitIntent(keep);
         }}
       >
-        Để dành
+        Keep for later
       </button>
     </section>
   );

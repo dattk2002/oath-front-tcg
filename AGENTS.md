@@ -6,4 +6,4 @@ Use Next.js App Router for `apps/web`, Fastify for `apps/api`, pnpm workspace pa
 
 Follow the 18-task plan sequentially. SDD implementers never spawn agents; controller dispatches required task reviews. Do not push until controller verifies integration. User has authorized working in this newly cloned empty repo on main. Preserve full core content and game rules.
 
-UI uses GSAP and PixiJS with semantic DOM. Follow approved battle/screen designs over generic marketing/AIDA templates or layout randomization. Vietnamese labels, keyboard, reduced motion and 375px device fallback required.
+UI uses GSAP and PixiJS with semantic DOM. Follow approved battle/screen designs over generic marketing/AIDA templates or layout randomization. Current presentation is English throughout visible copy, metadata and accessibility labels; see `docs/PRESENTATION-EN.md`. Keep `core_v1`, `locations_v1`, `tutorial_v1`, source-parity/history records, wire fields and user-entered names unchanged. Keyboard, reduced motion and 375px device fallback remain required.

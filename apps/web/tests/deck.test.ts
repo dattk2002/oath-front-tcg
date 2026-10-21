@@ -26,7 +26,7 @@ it("collection combines accent-insensitive name/keyword, class/type/cost with AN
     }),
   ).toHaveLength(22);
   const filters = {
-    search: "ky si la",
+    search: "leaf knight",
     classId: "COMMON",
     type: "UNIT",
     cost: "2",

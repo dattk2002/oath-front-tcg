@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import type {
   PlayerAction,
   PlayerView,
@@ -8,12 +9,12 @@ import { previewPublicAction } from "@oathfront/game-engine/preview";
 import { keywordLabel, unitStatuses } from "./labels";
 import ArtImage from "./ArtImage";
 const unknownLabel = {
-  DRAW: "Bài rút chưa biết",
-  POWER_GRANT: "Power cấp ngẫu nhiên",
-  HIDDEN_LOCATION: "Địa hình còn ẩn",
-  TRIGGER_HISTORY: "Lịch sử kích hoạt chưa biết",
-  OPPONENT_RESPONSE: "Phản hồi của đối phương",
-  MULLIGAN: "Bài đổi chưa biết",
+  DRAW: "Unknown card draw",
+  POWER_GRANT: "Random power grant",
+  HIDDEN_LOCATION: "Hidden location",
+  TRIGGER_HISTORY: "Unknown trigger history",
+  OPPONENT_RESPONSE: "Opponent response",
+  MULLIGAN: "Unknown mulligan cards",
 };
 export default function InspectPanel({
   view,
@@ -41,24 +42,30 @@ export default function InspectPanel({
   );
   const preview = action ? previewPublicAction(view, action) : null;
   return (
-    <aside className="inspect panel" aria-label="Chi tiết lựa chọn">
-      <h2>{def?.nameVi ?? "Đọc bàn, chọn thời điểm"}</h2>
+    <aside className="inspect panel" aria-label="Selection details">
+      <h2>
+        {def ? contentName(def.id) : "Read the board, choose your moment"}
+      </h2>
       {def ? (
         <>
           <p className="eyebrow">
             {"cost" in def
-              ? `${def.cost} năng lượng`
+              ? `${def.cost} energy`
               : "normalCost" in (selected ?? {})
-                ? "Power · 1 năng lượng"
-                : "Quân triệu hồi"}
+                ? "Power · 1 energy"
+                : "Summoned unit"}
           </p>
           <div className="inspect-art">
-            <ArtImage artKey={def.artKey} name={def.nameVi} variant="inspect" />
+            <ArtImage
+              artKey={def.artKey}
+              name={contentName(def.id)}
+              variant="inspect"
+            />
           </div>
           <p>
             {"exactTextVi" in def
-              ? def.exactTextVi
-              : "Quân được triệu hồi trên bàn."}
+              ? contentText(def.id)
+              : "A unit summoned onto the board."}
           </p>
           {"keywords" in def && (
             <p>{def.keywords.map((key) => keywordLabel[key]).join(" · ")}</p>
@@ -66,25 +73,25 @@ export default function InspectPanel({
           {unit && (
             <>
               <p>
-                Chỉ số gốc: {unit.printed.attack} công / {unit.printed.hp} HP
+                Printed stats: {unit.printed.attack} ATK / {unit.printed.hp} HP
               </p>
               <p>
-                Hiện tại: {unit.current.attack} công / {unit.current.hp} HP
+                Current: {unit.current.attack} ATK / {unit.current.hp} HP
               </p>
               <p>{unitStatuses(unit).join(" · ")}</p>
               {unit.modifiers.length > 0 && (
                 <details>
-                  <summary>Nguồn thay đổi chỉ số</summary>
+                  <summary>Sources of stat changes</summary>
                   <ul>
                     {unit.modifiers.map((modifier, index) => (
                       <li key={index}>
                         {modifier.attackDelta >= 0 ? "+" : ""}
-                        {modifier.attackDelta} công /{" "}
+                        {modifier.attackDelta} ATK /{" "}
                         {modifier.healthDelta >= 0 ? "+" : ""}
                         {modifier.healthDelta} HP ·{" "}
                         {modifier.duration === "TURN_END"
-                          ? "Hết lượt"
-                          : "Vĩnh viễn"}{" "}
+                          ? "Until turn end"
+                          : "Permanent"}{" "}
                         · {modifier.sourceDefinitionId}
                       </li>
                     ))}
@@ -96,25 +103,25 @@ export default function InspectPanel({
         </>
       ) : (
         <p className="muted">
-          Chọn bài để đọc đầy đủ hiệu ứng. Chọn quân trên bàn để xem chỉ số và
-          trạng thái.
+          Select a card to read its full effects. Select a unit on the board to
+          read its stats and statuses.
         </p>
       )}
       {preview && preview.forecast !== "NONE" ? (
-        <section className="forecast" aria-label="Dự kiến công khai">
-          <h3>Dự kiến theo bàn hiện tại</h3>
+        <section className="forecast" aria-label="Public forecast">
+          <h3>Forecast for the current board</h3>
           <p>
-            {action?.kind === "PLAY_UNIT" ? `Lộ ${action.laneId} · ` : ""}Tốn{" "}
-            {preview.energySpent} năng lượng
+            {action?.kind === "PLAY_UNIT" ? `Lane ${action.laneId} · ` : ""}
+            Costs {preview.energySpent} energy
           </p>
           <p>
-            Sát thương hero địch: {preview.enemyHeroDamage}
+            Enemy hero damage: {preview.enemyHeroDamage}
             <br />
-            Sát thương hero bạn: {preview.ownHeroDamage}
+            Your hero damage: {preview.ownHeroDamage}
           </p>
           {preview.uncertainty && (
             <p className="notice">
-              Chưa chắc chắn:{" "}
+              Uncertain:{" "}
               {preview.unknowns.map((key) => unknownLabel[key]).join("; ")}.
             </p>
           )}
@@ -122,17 +129,17 @@ export default function InspectPanel({
       ) : (
         selected && (
           <p className="muted">
-            Chọn hoặc đặt con trỏ vào mục tiêu hợp lệ để xem dự kiến.
+            Select or hover a legal target to see a forecast.
           </p>
         )
       )}
       {action && "target" in action && action.target.kind === "NONE" && (
         <button className="primary" onClick={() => onConfirm(action)}>
-          Xác nhận dùng bài
+          Confirm card use
         </button>
       )}
       {(selected || unit) && (
-        <button onClick={onCancel}>Hủy lựa chọn · Esc</button>
+        <button onClick={onCancel}>Cancel selection · Esc</button>
       )}
     </aside>
   );

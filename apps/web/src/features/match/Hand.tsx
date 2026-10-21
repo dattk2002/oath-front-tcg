@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import { useRef } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import { crossedDragThreshold, dropTarget } from "./drag";
@@ -32,11 +33,11 @@ export default function Hand({
     <>
       <section
         className="hand-region"
-        aria-label={mulligan ? "Bài đầu trận" : "Tay bài"}
+        aria-label={mulligan ? "Opening hand" : "Hand"}
       >
         <div className="region-heading">
-          <h2>{mulligan ? "Chọn lá muốn đổi" : "Tay bài"}</h2>
-          <span>{view.self.hand.length} / 10 lá</span>
+          <h2>{mulligan ? "Choose cards to replace" : "Hand"}</h2>
+          <span>{view.self.hand.length} / 10 cards</span>
         </div>
         <div className="hand" onKeyDown={groupArrows}>
           {view.self.hand.map((card) => {
@@ -112,41 +113,42 @@ export default function Hand({
                 }}
               >
                 <span className="sr-only">
-                  {!mulligan && (playable ? "Có thể chơi. " : "Xem chi tiết. ")}
+                  {!mulligan && (playable ? "Playable." : "Details.")}
                 </span>
                 <span className="card-cost">
                   {def.cost}
-                  <span className="sr-only"> năng lượng</span>
+                  <span className="sr-only"> energy</span>
                 </span>
-                <strong>{def.nameVi}</strong>
+                <strong>{contentName(def.id)}</strong>
                 <span className="hand-art">
                   <ArtImage
                     artKey={def.artKey}
-                    name={def.nameVi}
+                    name={contentName(def.id)}
                     retry={false}
                   />
                 </span>
                 <span className="card-kind">
-                  {def.type === "UNIT" ? "Nhân vật" : "Phép"}
+                  {def.type === "UNIT" ? "Unit" : "Trick"}
                 </span>
                 <span className="card-summary">
                   {def.printed
-                    ? `${def.printed.attack} công / ${def.printed.hp} HP`
-                    : "Chọn để đọc hiệu ứng"}
+                    ? `${def.printed.attack} ATK / ${def.printed.hp} HP`
+                    : "Select to read effects"}
                 </span>
-                {mulligan && <span>{selected ? "Sẽ đổi" : "Giữ lại"}</span>}
+                {mulligan && <span>{selected ? "Replace" : "Keep"}</span>}
               </button>
             );
           })}
         </div>
         {!view.self.hand.length && (
           <p className="muted">
-            Tay bài trống. Bạn vẫn có thể xem bàn và kết thúc hành động.
+            Your hand is empty. You can still inspect the board and end the
+            phase.
           </p>
         )}
       </section>
       <details className="hand-list">
-        <summary>Tay bài dạng danh sách</summary>
+        <summary>Hand as a list</summary>
         <ul>
           {view.self.hand.map((card) => {
             const def = catalog.cards.find(
@@ -168,9 +170,9 @@ export default function Hand({
                     else controller.selectCard(card.instanceId);
                   }}
                 >
-                  {def.nameVi} · {def.cost} năng lượng
+                  {contentName(def.id)} · {def.cost} energy
                 </button>
-                <p>{def.exactTextVi}</p>
+                <p>{contentText(def.id)}</p>
               </li>
             );
           })}

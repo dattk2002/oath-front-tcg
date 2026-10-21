@@ -36,7 +36,7 @@ function localDeck(value: unknown): value is DeckInput {
     "name" in value &&
     typeof value.name === "string" &&
     value.name.length <= 80 &&
-    validateBrowserWire("DeckInput", { ...value, name: "Bản nháp" })
+    validateBrowserWire("DeckInput", { ...value, name: "Draft" })
   );
 }
 export function readDraft(

@@ -1,3 +1,4 @@
+import { contentName } from "../../content/english-content";
 import type { HeroView, PublicCatalog, Side } from "@oathfront/contracts";
 import { sideLabel } from "./labels";
 import ArtImage from "./ArtImage";
@@ -25,7 +26,7 @@ export default function HeroPanel({
     <section
       className={`hero-panel panel ${side.toLowerCase()}`}
       data-hero-side={side}
-      aria-label={`${own ? "Hero của bạn" : "Hero đối thủ"} · Phe ${sideLabel[side]}`}
+      aria-label={`${own ? "Your hero" : "Opponent hero"} · ${sideLabel[side]}`}
     >
       <button
         className="hero-target"
@@ -36,21 +37,23 @@ export default function HeroPanel({
         onPointerEnter={onPreview}
         onFocus={onPreview}
       >
-        <span className="sr-only">Chọn hero </span>
+        <span className="sr-only">Choose hero </span>
         {definition && (
           <span className="hero-hud-art">
             <ArtImage
               artKey={definition.portraitKey}
-              name={definition.nameVi}
+              name={contentName(definition.id)}
               variant="hud"
               retry={false}
             />
           </span>
         )}
         <strong>
-          {catalog.heroes.find((item) => item.id === hero.heroId)?.nameVi}{" "}
+          {contentName(
+            catalog.heroes.find((item) => item.id === hero.heroId)?.id ?? "",
+          )}{" "}
           <span>
-            · {own ? "Bạn" : "Bot"} · {sideLabel[side]}
+            · {own ? "You" : "Bot"} · {sideLabel[side]}
           </span>
         </strong>
         <span>
@@ -62,16 +65,16 @@ export default function HeroPanel({
           data-tutorial-focus={tutorialEnergyFocus}
           data-testid={own ? "own-energy" : "opponent-energy"}
         >
-          Năng lượng{" "}
+          Energy{" "}
           <b>
             {hero.energy.current} / {hero.energy.max}
           </b>
         </span>
         <span>
-          Chặn <b>{hero.block.charge} / 8</b> · Đã dùng {hero.block.used} / 3
+          Block <b>{hero.block.charge} / 8</b> · Used {hero.block.used} / 3
         </span>
         <span className="muted">
-          Tay {hero.handCount} · Bộ bài {hero.deckCount} · Power{" "}
+          Tay {hero.handCount} · Deck {hero.deckCount} · Power{" "}
           {hero.reserveCount}
         </span>
       </div>

@@ -9,14 +9,14 @@ export default function ManaCurve({
 }) {
   const s = deckStats(entries, catalog);
   return (
-    <section className="mana-curve" aria-label="Thống kê bộ bài">
+    <section className="mana-curve" aria-label="Deck statistics">
       <p>
-        <strong>{s.total}/30 lá</strong> · {s.units} Nhân vật / {s.tricks} Trick
-        · Trung bình {s.average}
+        <strong>{s.total}/30 cards</strong> · {s.units} Units / {s.tricks}{" "}
+        Tricks · Average {s.average}
       </p>
       <div className="curve-bars" aria-hidden="true">
         {s.curve.map((n, i) => (
-          <div key={i} title={`${i === 5 ? "6+" : i + 1}: ${n} lá`}>
+          <div key={i} title={`${i === 5 ? "6+" : i + 1}: ${n} cards`}>
             <span style={{ height: `${Math.max(3, n * 4)}px` }} />
             <b>{n}</b>
             <small>{i === 5 ? "6+" : i + 1}</small>
@@ -24,7 +24,7 @@ export default function ManaCurve({
         ))}
       </div>
       <table className="curve-table">
-        <caption>Chi phí theo số bản</caption>
+        <caption>Cost by copy count</caption>
         <thead>
           <tr>
             {s.curve.map((_, i) => (

@@ -10,20 +10,20 @@ export default function SessionRecovery({
   return (
     <div className="session-recovery">
       <p>
-        Phiên đã hết hạn. Khôi phục rồi thử lại; yêu cầu đang giữ không thay
-        đổi.
+        Your session expired. Restore it and retry; your pending request is
+        unchanged.
       </p>
       <button
         disabled={!online}
         onClick={() => window.dispatchEvent(new Event("oathfront:renew"))}
       >
-        Khôi phục phiên
+        Restore session
       </button>
       <button
         disabled={!online}
         onClick={() => window.dispatchEvent(new Event("oathfront:login"))}
       >
-        Đăng nhập Google
+        Sign in with Google
       </button>
     </div>
   );

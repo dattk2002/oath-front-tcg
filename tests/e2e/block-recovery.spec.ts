@@ -26,22 +26,22 @@ for (const choice of ["KEEP", "USE"] as const)
     const original = await snapshot(page, id);
     await page.goto(`/matches/${id}`);
     await expect(
-      page.getByRole("heading", { name: "Đã chặn đòn" }),
+      page.getByRole("heading", { name: "Attack blocked" }),
     ).toBeVisible();
     await expect(
-      page.getByText("Miễn phí lúc này", { exact: true }),
+      page.getByText("Free right now", { exact: true }),
     ).toBeVisible();
     await expect(
-      page.getByRole("button", { name: "Để dành", exact: true }),
+      page.getByRole("button", { name: "Keep for later", exact: true }),
     ).toBeEnabled();
     await page
-      .getByRole("button", { name: "Dùng ngay · 0", exact: true })
+      .getByRole("button", { name: "Use now · 0", exact: true })
       .click();
     await page.keyboard.press("Escape");
     expect((await snapshot(page, id)).revision).toBe(original.revision);
     await page.reload();
     await expect(
-      page.getByRole("heading", { name: "Đã chặn đòn" }),
+      page.getByRole("heading", { name: "Attack blocked" }),
     ).toBeVisible();
     const stopOffline = expectNetworkFailure(page, {
       url: new RegExp(`^${testOrigin}/`),
@@ -49,11 +49,11 @@ for (const choice of ["KEEP", "USE"] as const)
     });
     await context.setOffline(true);
     await expect(page.getByTestId("command-status")).toContainText(
-      "Mất kết nối",
+      "Connection lost",
     );
     await context.setOffline(false);
     await expect(
-      page.getByRole("button", { name: "Để dành", exact: true }),
+      page.getByRole("button", { name: "Keep for later", exact: true }),
     ).toBeEnabled();
     const afterReconnect = await snapshot(page, id);
     stopOffline();
@@ -78,15 +78,15 @@ for (const choice of ["KEEP", "USE"] as const)
         if (name === "mobile")
           await expect(
             page.getByRole("heading", {
-              name: "Xoay ngang hoặc dùng màn hình lớn để vào trận",
+              name: "Rotate your device or use a larger screen to play",
             }),
           ).toBeVisible();
         else {
           await expect(
-            page.getByRole("region", { name: "Bàn năm lộ" }),
+            page.getByRole("region", { name: "Five-lane board" }),
           ).toBeVisible();
           await expect(
-            page.getByRole("heading", { name: "Đã chặn đòn" }),
+            page.getByRole("heading", { name: "Attack blocked" }),
           ).toBeVisible();
         }
         expect(
@@ -99,10 +99,12 @@ for (const choice of ["KEEP", "USE"] as const)
       await page.setViewportSize({ width: 1440, height: 900 });
     }
     if (choice === "KEEP")
-      await page.getByRole("button", { name: "Để dành", exact: true }).click();
+      await page
+        .getByRole("button", { name: "Keep for later", exact: true })
+        .click();
     else {
       await page
-        .getByRole("button", { name: "Dùng ngay · 0", exact: true })
+        .getByRole("button", { name: "Use now · 0", exact: true })
         .click();
       await page.locator('[data-own-unit="true"]').first().click();
     }
@@ -142,19 +144,21 @@ test("lost block receipt survives reload and retries the identical command witho
     } else await route.continue();
   });
   await page.goto(`/matches/${id}`);
-  await page.getByRole("button", { name: "Để dành", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Keep for later", exact: true })
+    .click();
   await expect(
-    page.getByRole("button", { name: "Thử lại yêu cầu", exact: true }),
+    page.getByRole("button", { name: "Retry request", exact: true }),
   ).toBeVisible();
   const accepted = await snapshot(page, id);
   expect(accepted.view.blockResponse).toBeNull();
   expect(accepted.view.combat?.laneId).toBe(1);
   await page.reload();
   await page
-    .getByRole("button", { name: "Thử lại yêu cầu", exact: true })
+    .getByRole("button", { name: "Retry request", exact: true })
     .click();
   await expect(page.getByTestId("command-status")).not.toContainText(
-    "Chưa xác định",
+    "unconfirmed",
   );
   expect(sent).toHaveLength(2);
   expect(sent[1]).toEqual(sent[0]);
@@ -174,11 +178,9 @@ test("a visible five-second refresh never times out an unchanged response or tar
 }) => {
   const { id } = await blockFixture(page);
   await page.goto(`/matches/${id}`);
-  await page
-    .getByRole("button", { name: "Dùng ngay · 0", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Use now · 0", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Chọn mục tiêu", exact: true }),
+    page.getByRole("heading", { name: "Choose a target", exact: true }),
   ).toBeVisible();
   await expect(page.locator('[data-own-unit="true"]').first()).toBeFocused();
   const requests = page.waitForResponse(
@@ -194,7 +196,7 @@ test("a visible five-second refresh never times out an unchanged response or tar
       ),
   );
   await expect(
-    page.getByRole("heading", { name: "Chọn mục tiêu", exact: true }),
+    page.getByRole("heading", { name: "Choose a target", exact: true }),
   ).toBeVisible();
   await expect(page.locator('[data-own-unit="true"]').first()).toBeFocused();
   expect((await snapshot(page, id)).view.blockResponse?.visibility).toBe("OWN");
@@ -204,12 +206,12 @@ test("no legal target keeps an explicit enabled KEEP and Escape never sends it",
 }) => {
   const { id } = await blockFixture(page, true);
   await page.goto(`/matches/${id}`);
-  await expect(page.getByText("Hiện không có mục tiêu hợp lệ")).toBeVisible();
+  await expect(page.getByText("No legal targets right now")).toBeVisible();
   await expect(
-    page.getByRole("button", { name: "Dùng ngay · 0", exact: true }),
+    page.getByRole("button", { name: "Use now · 0", exact: true }),
   ).toBeDisabled();
   await expect(
-    page.getByRole("button", { name: "Để dành", exact: true }),
+    page.getByRole("button", { name: "Keep for later", exact: true }),
   ).toBeEnabled();
   const old = await snapshot(page, id);
   expect(
@@ -221,18 +223,20 @@ test("no legal target keeps an explicit enabled KEEP and Escape never sends it",
           : null),
     ),
   ).toBe(true);
-  await page.getByText("Siêu năng lực · 2", { exact: true }).click();
+  await page.getByText("Powers · 2", { exact: true }).click();
   await expect(page.locator(".reserve details").first()).toBeVisible();
   await page.locator(".reserve details summary").first().click();
   await expect(page.locator(".reserve details[open]")).toContainText(
-    "Chỉ xem trong lúc chờ phản hồi",
+    "Inspect only while awaiting a response",
   );
   await page.keyboard.press("Escape");
   expect((await snapshot(page, id)).revision).toBe(0);
   await captureEvidence(page, "block-no-target");
-  await page.getByRole("button", { name: "Để dành", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Keep for later", exact: true })
+    .click();
   await expect(
-    page.getByRole("heading", { name: "Đã chặn đòn" }),
+    page.getByRole("heading", { name: "Attack blocked" }),
   ).not.toBeVisible();
 });
 test("two visible tabs recover a paused checkpoint without duplicating the response", async ({
@@ -244,26 +248,28 @@ test("two visible tabs recover a paused checkpoint without duplicating the respo
   await page.goto(`/matches/${id}`);
   await other.goto(`/matches/${id}`);
   await expect(
-    page.getByRole("button", { name: "Để dành", exact: true }),
+    page.getByRole("button", { name: "Keep for later", exact: true }),
   ).toBeEnabled();
   await expect(
-    other.getByRole("button", { name: "Để dành", exact: true }),
+    other.getByRole("button", { name: "Keep for later", exact: true }),
   ).toBeEnabled();
   await command(page, id, csrf, { kind: "PAUSE" });
   await expect(
-    page.getByRole("dialog", { name: "Tạm dừng", exact: true }),
+    page.getByRole("dialog", { name: "Paused", exact: true }),
   ).toBeVisible({ timeout: 8000 });
   await expect(
-    other.getByRole("dialog", { name: "Tạm dừng", exact: true }),
+    other.getByRole("dialog", { name: "Paused", exact: true }),
   ).toBeVisible({ timeout: 8000 });
   expect((await snapshot(page, id)).view.blockResponse?.visibility).toBe("OWN");
-  await other.getByRole("button", { name: "Tiếp tục", exact: true }).click();
+  await other.getByRole("button", { name: "Continue", exact: true }).click();
   await expect(
-    page.getByRole("dialog", { name: "Tạm dừng", exact: true }),
+    page.getByRole("dialog", { name: "Paused", exact: true }),
   ).not.toBeVisible({ timeout: 8000 });
-  await page.getByRole("button", { name: "Để dành", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Keep for later", exact: true })
+    .click();
   await expect(
-    other.getByRole("heading", { name: "Đã chặn đòn" }),
+    other.getByRole("heading", { name: "Attack blocked" }),
   ).not.toBeVisible({ timeout: 8000 });
   const owner = ownerPool();
   try {
@@ -286,9 +292,7 @@ test("offline during a heal tween fetches the changed server checkpoint on recon
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
     timeout: 15000,
   });
-  await page
-    .getByRole("button", { name: "Dùng ngay · 0", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Use now · 0", exact: true }).click();
   await page.locator('[data-own-unit="true"]').first().click();
   await expect(page.locator('[data-presentation="playing"]')).toBeVisible();
   const stopOffline = expectNetworkFailure(page, {
@@ -301,7 +305,7 @@ test("offline during a heal tween fetches the changed server checkpoint on recon
   expect(remote.view.lifecycle).toBe("PAUSED");
   await context.setOffline(false);
   await expect(
-    page.getByRole("dialog", { name: "Tạm dừng", exact: true }),
+    page.getByRole("dialog", { name: "Paused", exact: true }),
   ).toBeVisible();
   await expect(page.locator('[data-presentation="idle"]')).toBeAttached();
   stopOffline();
@@ -351,13 +355,15 @@ test("snapshot history recovers 205 scanned rows across an empty private page wi
     await owner.end();
   }
   await page.reload();
-  await page.getByText("Nhật ký và cách thao tác", { exact: true }).click();
+  await page.getByText("Log and controls", { exact: true }).click();
   await expect(
     page
       .locator("details[open]")
-      .getByText("Một phần nhật ký đã hết hạn.", { exact: true }),
+      .getByText("Part of the log has expired.", { exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("region", { name: "Bàn năm lộ" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Five-lane board" }),
+  ).toBeVisible();
   await expect(page.locator(".battle-log [data-event-id]")).toHaveCount(104);
   await captureEvidence(page, "expired-log");
 });
@@ -367,7 +373,7 @@ test("hidden lifecycle stops snapshot polling and foreground resumes server reco
   const { id } = await blockFixture(page);
   await page.goto(`/matches/${id}`);
   await expect(
-    page.getByRole("button", { name: "Để dành", exact: true }),
+    page.getByRole("button", { name: "Keep for later", exact: true }),
   ).toBeEnabled();
   let snapshots = 0;
   page.on("request", (request) => {
@@ -398,7 +404,7 @@ test("hidden lifecycle stops snapshot polling and foreground resumes server reco
   });
   await expect.poll(() => snapshots).toBeGreaterThan(0);
   await expect(
-    page.getByRole("button", { name: "Để dành", exact: true }),
+    page.getByRole("button", { name: "Keep for later", exact: true }),
   ).toBeEnabled();
 });
 test("lost RESUME before commit retries the identical envelope inside the pause modal by keyboard and pointer", async ({
@@ -407,12 +413,12 @@ test("lost RESUME before commit retries the identical envelope inside the pause 
   const { id } = await blockFixture(page);
   await page.goto(`/matches/${id}`);
   await expect(
-    page.getByRole("button", { name: "Để dành", exact: true }),
+    page.getByRole("button", { name: "Keep for later", exact: true }),
   ).toBeEnabled();
-  await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
-  const modal = page.getByRole("dialog", { name: "Tạm dừng", exact: true });
+  await page.getByRole("button", { name: "Pause", exact: true }).click();
+  const modal = page.getByRole("dialog", { name: "Paused", exact: true });
   await expect(
-    modal.getByRole("button", { name: "Tiếp tục", exact: true }),
+    modal.getByRole("button", { name: "Continue", exact: true }),
   ).toBeEnabled();
   const paused = await snapshot(page, id);
   const sent: unknown[] = [];
@@ -430,16 +436,14 @@ test("lost RESUME before commit retries the identical envelope inside the pause 
       await route.abort("failed");
     } else await route.continue();
   });
-  await modal.getByRole("button", { name: "Tiếp tục", exact: true }).click();
-  await expect(page.getByTestId("command-status")).toContainText(
-    "Chưa xác định",
-  );
+  await modal.getByRole("button", { name: "Continue", exact: true }).click();
+  await expect(page.getByTestId("command-status")).toContainText("unconfirmed");
   const unchanged = await snapshot(page, id);
   expect(unchanged.revision).toBe(paused.revision);
   expect(unchanged.view.lifecycle).toBe("PAUSED");
   expect(sent[0]).toMatchObject({ action: { kind: "RESUME" } });
   const retry = modal.getByRole("button", {
-    name: "Thử lại yêu cầu",
+    name: "Retry request",
     exact: true,
   });
   await expect(retry).toBeEnabled();
@@ -455,13 +459,13 @@ test("lost RESUME before commit retries the identical envelope inside the pause 
   await expect(retry).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(modal.getByTestId("command-status")).toContainText(
-    "Chưa xác định",
+    "unconfirmed",
   );
   expect(sent).toEqual([sent[0], sent[0]]);
   await page.reload();
   await expect(retry).toBeEnabled();
   await expect(
-    modal.getByRole("button", { name: "Tiếp tục", exact: true }),
+    modal.getByRole("button", { name: "Continue", exact: true }),
   ).toBeDisabled();
   await captureEvidence(page, "pause-uncertain-retry");
   for (const [name, width, height] of [
@@ -481,10 +485,10 @@ test("lost RESUME before commit retries the identical envelope inside the pause 
   await retry.click();
   await expect(modal).not.toBeVisible();
   await expect(
-    page.getByRole("button", { name: "Tạm dừng", exact: true }),
+    page.getByRole("button", { name: "Pause", exact: true }),
   ).toBeFocused();
   await expect(
-    page.getByRole("button", { name: "Để dành", exact: true }),
+    page.getByRole("button", { name: "Keep for later", exact: true }),
   ).toBeEnabled();
   expect((await snapshot(page, id)).view.lifecycle).toBe("ACTIVE");
   expect(sent).toEqual([sent[0], sent[0], sent[0]]);
@@ -496,21 +500,21 @@ for (const paused of [false, true])
     const { id } = await blockFixture(page);
     await page.goto(`/matches/${id}`);
     await expect(
-      page.getByRole("button", { name: "Để dành", exact: true }),
+      page.getByRole("button", { name: "Keep for later", exact: true }),
     ).toBeEnabled();
     if (paused) {
-      await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
+      await page.getByRole("button", { name: "Pause", exact: true }).click();
       await expect(
         page
           .getByRole("dialog")
-          .getByRole("button", { name: "Tiếp tục", exact: true }),
+          .getByRole("button", { name: "Continue", exact: true }),
       ).toBeEnabled();
     }
     const surface = paused
-      ? page.getByRole("dialog", { name: "Tạm dừng", exact: true })
+      ? page.getByRole("dialog", { name: "Paused", exact: true })
       : page.locator(".match-screen");
     const action = surface.getByRole("button", {
-      name: paused ? "Tiếp tục" : "Để dành",
+      name: paused ? "Continue" : "Keep for later",
       exact: true,
     });
     let fail = true;
@@ -538,7 +542,7 @@ for (const paused of [false, true])
     });
     await page.evaluate(() => window.dispatchEvent(new Event("online")));
     await expect(surface.getByTestId("command-status")).toContainText(
-      "Không tải được bàn mới nhất",
+      "Latest board unavailable",
     );
     await expect(action).toBeDisabled();
     if (paused) {
@@ -547,17 +551,17 @@ for (const paused of [false, true])
       await captureEvidence(page, "pause-snapshot-recovery");
     }
     await surface
-      .getByRole("button", { name: "Kết nối lại", exact: true })
+      .getByRole("button", { name: "Reconnect", exact: true })
       .click();
     await expect(action).toBeEnabled();
     await expect(surface.getByTestId("command-status")).not.toContainText(
-      "Không tải được bàn mới nhất",
+      "Latest board unavailable",
     );
     if (paused) {
       await action.click();
       await expect(surface).not.toBeVisible();
       await expect(
-        page.getByRole("button", { name: "Tạm dừng", exact: true }),
+        page.getByRole("button", { name: "Pause", exact: true }),
       ).toBeFocused();
     }
   });

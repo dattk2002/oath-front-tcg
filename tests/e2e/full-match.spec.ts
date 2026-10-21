@@ -25,21 +25,24 @@ for (const faction of ["GOOD", "EVIL"] as const)
     test.setTimeout(180000);
     const { id } = await create(page, faction);
     await page.goto(`/matches/${id}`);
-    await page.getByRole("button", { name: "Xác nhận đổi bài" }).click();
+    await page.getByRole("button", { name: "Confirm mulligan" }).click();
     for (let i = 0; i < 100; i++) {
       const s = await snapshot(page, id);
       if (!["ACTIVE", "PAUSED"].includes(s.view.lifecycle)) break;
       const pass = page.getByRole("button", {
-        name: "Kết thúc hành động",
+        name: "End phase",
         exact: true,
       });
-      const keep = page.getByRole("button", { name: "Để dành", exact: true });
+      const keep = page.getByRole("button", {
+        name: "Keep for later",
+        exact: true,
+      });
       await expect
         .poll(
           async () =>
             (await page.getByRole("dialog").count()) > 0 ||
             (await page
-              .getByRole("button", { name: /^(Kết thúc hành động|Để dành)$/ })
+              .getByRole("button", { name: /^(End phase|Keep for later)$/ })
               .evaluateAll((buttons) =>
                 buttons.some(
                   (button) => !(button as HTMLButtonElement).disabled,
@@ -53,10 +56,10 @@ for (const faction of ["GOOD", "EVIL"] as const)
       else await pass.click();
     }
     await expect(
-      page.getByRole("dialog", { name: /Thất bại|Chiến thắng|Hòa/ }),
+      page.getByRole("dialog", { name: /Defeat|Victory|Draw/ }),
     ).toBeVisible();
     const resultDialog = page.getByRole("dialog", {
-      name: /Thất bại|Chiến thắng|Hòa/,
+      name: /Defeat|Victory|Draw/,
     });
     await expect(resultDialog.locator("h2")).toBeFocused();
     for (const key of ["Tab", "Shift+Tab"])
@@ -110,9 +113,7 @@ for (const faction of ["GOOD", "EVIL"] as const)
       { times: 1 },
     );
     await page.reload();
-    await expect(
-      page.getByText("Thời gian hoạt động", { exact: true }),
-    ).toBeVisible();
+    await expect(page.getByText("Active time", { exact: true })).toBeVisible();
     await expect.poll(() => logHeld).toBe(true);
     const stopSnapshotExpiry = expectNetworkFailure(page, {
       url: `${testOrigin}/api/v1/matches/${id}`,
@@ -138,25 +139,21 @@ for (const faction of ["GOOD", "EVIL"] as const)
     releaseLog();
     await expiredLog;
     await page.goto(`/matches/${id}`);
+    await expect(page.getByText("Active time", { exact: true })).toBeVisible();
     await expect(
-      page.getByText("Thời gian hoạt động", { exact: true }),
-    ).toBeVisible();
-    await expect(page.getByRole("region", { name: "Bàn năm lộ" })).toHaveCount(
-      0,
-    );
+      page.getByRole("region", { name: "Five-lane board" }),
+    ).toHaveCount(0);
     await page.goto(`/history/${id}`);
     await expect(
-      page.getByRole("button", { name: "Chơi lại", exact: true }),
+      page.getByRole("button", { name: "Rematch", exact: true }),
     ).toBeEnabled();
     stopSnapshotExpiry();
     stopLogExpiry();
-    await page
-      .getByRole("button", { name: "Chơi lại", exact: true })
-      .dblclick();
+    await page.getByRole("button", { name: "Rematch", exact: true }).dblclick();
     await expect(page).toHaveURL(/\/matches\//);
     expect(page.url()).not.toContain(id);
     await expect(
-      page.getByRole("heading", { name: "Đổi bài đầu trận" }),
+      page.getByRole("heading", { name: "Opening mulligan" }),
     ).toBeVisible();
     const fresh = await snapshot(page, page.url().split("/").at(-1)!);
     expect(fresh.view.self.side).toBe(faction);
@@ -188,8 +185,8 @@ test("version drift shows retained source and original/current versions without 
       creates++;
   });
   await page.goto(`/history/${id}`);
-  await page.getByRole("button", { name: "Chơi lại", exact: true }).click();
-  const review = page.getByRole("region", { name: "Xem lại bộ bài" });
+  await page.getByRole("button", { name: "Rematch", exact: true }).click();
+  const review = page.getByRole("region", { name: "Review deck" });
   await expect(review).toContainText("D_G_BP");
   await expect(review).toContainText("core_v0");
   await expect(review).toContainText("core_v1");
@@ -222,13 +219,13 @@ test("lost rematch response is restored after reload and retries the same exact 
     } else await route.continue();
   });
   await page.goto(`/history/${id}`);
-  await page.getByRole("button", { name: "Chơi lại", exact: true }).click();
-  await expect(page.getByText(/Chưa xác định kết quả tạo trận/)).toBeVisible();
+  await page.getByRole("button", { name: "Rematch", exact: true }).click();
+  await expect(page.getByText(/Match creation is unconfirmed/)).toBeVisible();
   await page.reload();
-  await page.getByRole("button", { name: "Chơi lại", exact: true }).click();
+  await page.getByRole("button", { name: "Rematch", exact: true }).click();
   await expect(page).toHaveURL(/\/matches\//);
   await expect(
-    page.getByRole("heading", { name: "Đổi bài đầu trận" }),
+    page.getByRole("heading", { name: "Opening mulligan" }),
   ).toBeVisible();
   expect(sent).toHaveLength(2);
   expect(sent[1]).toEqual(sent[0]);
@@ -240,7 +237,7 @@ test("direct in-app rematch discards the old store and ignores a delayed old-mat
   await command(page, id, csrf, { kind: "SURRENDER" });
   await page.goto(`/matches/${id}`);
   await expect(
-    page.getByRole("button", { name: "Chơi lại", exact: true }),
+    page.getByRole("button", { name: "Rematch", exact: true }),
   ).toBeEnabled();
   let release!: () => void;
   const held = new Promise<void>((resolve) => {
@@ -257,7 +254,7 @@ test("direct in-app rematch discards the old store and ignores a delayed old-mat
     await route.fulfill({ response: old });
   });
   await received;
-  await page.getByRole("button", { name: "Chơi lại", exact: true }).click();
+  await page.getByRole("button", { name: "Rematch", exact: true }).click();
   await expect(page).not.toHaveURL(new RegExp(id));
   const oldResponse = page.waitForResponse(
     (response) => new URL(response.url()).pathname === `/api/v1/matches/${id}`,
@@ -271,13 +268,13 @@ test("direct in-app rematch discards the old store and ignores a delayed old-mat
       ),
   );
   await expect(
-    page.getByRole("heading", { name: "Đổi bài đầu trận" }),
+    page.getByRole("heading", { name: "Opening mulligan" }),
   ).toBeVisible();
   await expect(page.getByRole("dialog")).toHaveCount(0);
   await expect(page.locator('[data-own-unit="true"]')).toHaveCount(0);
   const fresh = await snapshot(page, page.url().split("/").at(-1)!);
   expect(fresh.view.turn).toBe(0);
   await expect(
-    page.getByRole("button", { name: "Xác nhận đổi bài" }),
+    page.getByRole("button", { name: "Confirm mulligan" }),
   ).toBeEnabled();
 });

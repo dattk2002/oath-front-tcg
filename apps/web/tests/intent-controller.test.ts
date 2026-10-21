@@ -195,7 +195,7 @@ it("throwing persistence still sends and retains the exact uncertain envelope in
   });
   await controller.submitIntent({ kind: "PASS_PHASE" });
   expect(store.getSnapshot().pendingCommand?.status).toBe("UNCERTAIN");
-  expect(store.getSnapshot().message).toContain("tải lại");
+  expect(store.getSnapshot().message).toContain("reloading loses request recovery");
   await controller.retryPending();
   expect(sent).toHaveLength(2);
   expect(sent[1]).toEqual(sent[0]);

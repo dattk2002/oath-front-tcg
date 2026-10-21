@@ -1,3 +1,8 @@
+import {
+  contentName,
+  heroTitle,
+  contentText,
+} from "../../content/english-content";
 import { usePrivateStorage } from "../auth/private-storage";
 import ArtImage from "../match/ArtImage";
 import { useState } from "react";
@@ -12,12 +17,12 @@ import type { ApiClient } from "../match/api-client";
 import { ApiError } from "../match/api-error";
 import { classLabel, sideLabel } from "../match/labels";
 const strategies: Record<HeroId, string> = {
-  H_G_BV: "Giữ quân bằng Khiên, hồi phục rồi giành bàn.",
-  H_G_BP: "Chặn nhịp đối thủ và giữ vị trí tốt.",
-  H_G_VP: "Tăng sức quân, đổi lộ để mở đường.",
-  H_E_FX: "Gây sát thương, kết hợp Độc để bào mòn.",
-  H_E_FS: "Tấn công nhanh và tạo đòn Xuyên.",
-  H_E_XS: "Đổi vị trí, đặt Độc và duy trì lợi thế bài.",
+  H_G_BV: "Protect units with Shield, heal, then take the board.",
+  H_G_BP: "Disrupt the opponent and hold strong positions.",
+  H_G_VP: "Grow your units and switch lanes to clear a path.",
+  H_E_FX: "Combine damage and Poison to wear down the enemy.",
+  H_E_FS: "Attack quickly and create piercing strikes.",
+  H_E_XS: "Reposition, Poison and maintain card advantage.",
 };
 export default function PresetSetup({
   catalog,
@@ -65,7 +70,7 @@ export default function PresetSetup({
   const [busy, setBusy] = useState(false),
     [message, setMessage] = useState<string | null>(
       original
-        ? "Có yêu cầu tạo trận chưa được xác nhận. Thử lại để kiểm tra cùng lựa chọn."
+        ? "A match request is unconfirmed. Retry to check the same choices."
         : null,
     );
   const [rejected, setRejected] = useState(false);
@@ -117,7 +122,7 @@ export default function PresetSetup({
           /* Confirmed or rejected receipt; memory still tracks the request. */
         }
         setPending(null);
-        setMessage("Bạn có một trận đang diễn ra. Tiếp tục trận đó trước.");
+        setMessage("You have an active match. Resume it first.");
       } else if (
         error instanceof ApiError &&
         error.status !== 401 &&
@@ -132,11 +137,11 @@ export default function PresetSetup({
         setPending(null);
         setRejected(true);
         setMessage(
-          "Yêu cầu chưa được chấp nhận. Hãy xem lại hero và bộ bài trước khi tạo trận mới.",
+          "The request was rejected. Review your hero and deck before creating another match.",
         );
       } else
         setMessage(
-          `Chưa xác định kết quả tạo trận. Khôi phục phiên nếu đã hết hạn, rồi thử lại cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
+          `Match creation is unconfirmed. Restore your session if expired, then retry the same request.${durable ? "" : " The request could not be saved; keep this page open and do not reload."}`,
         );
     } finally {
       setBusy(false);
@@ -145,10 +150,10 @@ export default function PresetSetup({
   if (rejected)
     return (
       <section className="status-panel panel" role="alert">
-        <h1>Xem lại bộ bài</h1>
+        <h1>Review deck</h1>
         <p>{message}</p>
         <button className="primary" onClick={onRejected}>
-          Chọn bộ bài khác
+          Choose another deck
         </button>
       </section>
     );
@@ -172,14 +177,14 @@ export default function PresetSetup({
   )
     return (
       <section className="status-panel panel" role="alert">
-        <h1>Cần khôi phục yêu cầu tạo trận</h1>
+        <h1>Restore pending match request</h1>
         <p>
-          Bộ bài hoặc phiên bản đã lưu không có trong dữ liệu hiện tại. Yêu cầu
-          gốc vẫn được giữ nguyên; chưa có lựa chọn nào được thay thế.
+          The saved deck or revision is unavailable in the current catalog. Your
+          original request is preserved; no choices have been replaced.
         </p>
         <p>
-          Thử lại để kiểm tra kết quả đã ghi nhận, hoặc về trang chủ để tiếp tục
-          trận đang có.
+          Retry to check the recorded result, or return home to resume your
+          active match.
         </p>
         {message && <p>{message}</p>}
         <button
@@ -187,7 +192,7 @@ export default function PresetSetup({
           disabled={busy}
           onClick={() => void create()}
         >
-          {busy ? "Đang kiểm tra…" : "Thử lại yêu cầu tạo trận"}
+          {busy ? "Checking…" : "Retry match request"}
         </button>
       </section>
     );
@@ -195,25 +200,25 @@ export default function PresetSetup({
     <section className="setup" aria-labelledby="setup-title">
       <div className="screen-heading">
         <div>
-          <p className="eyebrow">Chơi với bot</p>
+          <p className="eyebrow">Play vs bot</p>
           <h1 id="setup-title">
             {stage === "HERO"
-              ? "Chọn người dẫn lối"
+              ? "Choose your hero"
               : stage === "DECK"
-                ? "Bộ bài của bạn"
-                : "Chọn đối thủ"}
+                ? "Your deck"
+                : "Choose your opponent"}
           </h1>
         </div>
         <p className="muted">
           {stage === "HERO"
-            ? "Sáu hero · Tất cả đều sẵn sàng"
-            : `${hero.nameVi} · Phe ${sideLabel[hero.faction]}`}
+            ? "Six heroes · All ready"
+            : `${contentName(hero.id)} · ${sideLabel[hero.faction]}`}
         </p>
       </div>
       {stage === "HERO" ? (
         <div className="hero-selection">
           <fieldset className="hero-grid">
-            <legend className="sr-only">Chọn hero</legend>
+            <legend className="sr-only">Choose hero</legend>
             {catalog.heroes.map((item) => (
               <label
                 className={`hero-tile ${item.faction.toLowerCase()}`}
@@ -229,37 +234,37 @@ export default function PresetSetup({
                 <span className="hero-portrait">
                   <ArtImage
                     artKey={item.portraitKey}
-                    name={item.nameVi}
+                    name={contentName(item.id)}
                     eager
                   />
                 </span>
-                <span className="eyebrow">Phe {sideLabel[item.faction]}</span>
-                <strong>{item.nameVi}</strong>
+                <span className="eyebrow">{sideLabel[item.faction]}</span>
+                <strong>{contentName(item.id)}</strong>
                 <span>
                   {item.classes.map((id) => classLabel[id]).join(" + ")}
                 </span>
                 <span className="muted">{strategies[item.id]}</span>
                 <span className="selection-label">
-                  {heroId === item.id ? "Đã chọn" : "Chọn hero"}
+                  {heroId === item.id ? "Selected" : "Choose hero"}
                 </span>
               </label>
             ))}
           </fieldset>
           <aside className={`hero-detail panel ${hero.faction.toLowerCase()}`}>
-            <p className="eyebrow">{hero.titleVi}</p>
-            <h2>{hero.nameVi}</h2>
+            <p className="eyebrow">{heroTitle(hero.id)}</p>
+            <h2>{contentName(hero.id)}</h2>
             <p>{strategies[hero.id]}</p>
-            <h3>Bốn siêu năng lực</h3>
+            <h3>Four powers</h3>
             <ul className="power-list">
               {hero.powerIds.map((id) => {
                 const power = catalog.powers.find((item) => item.id === id)!;
                 return (
                   <li key={id}>
-                    <strong>{power.nameVi}</strong>
+                    <strong>{contentName(power.id)}</strong>
                     {power.signatureOwner && (
-                      <span className="signature">Đặc trưng</span>
+                      <span className="signature">Signature</span>
                     )}
-                    <p>{power.exactTextVi}</p>
+                    <p>{contentText(power.id)}</p>
                   </li>
                 );
               })}
@@ -268,24 +273,24 @@ export default function PresetSetup({
         </div>
       ) : stage === "DECK" ? (
         <article className="preset panel">
-          <p className="eyebrow">Bộ bài mẫu · Đề xuất</p>
+          <p className="eyebrow">Preset deck · Recommended</p>
           <h2>{preset.name}</h2>
           <p>{strategies[hero.id]}</p>
-          <strong className="deck-count">30 / 30 lá</strong>
+          <strong className="deck-count">30 / 30 cards</strong>
           <p className="muted">
-            Mỗi lá tối đa hai bản ·{" "}
+            Maximum two copies per card ·{" "}
             {hero.classes.map((id) => classLabel[id]).join(" + ")}
           </p>
           <details>
-            <summary>Danh sách 15 loại bài</summary>
+            <summary>15 card types</summary>
             <ul className="deck-list">
               {preset.entries.map((entry) => (
                 <li key={entry.cardId}>
                   <span>
-                    {
+                    {contentName(
                       catalog.cards.find((item) => item.id === entry.cardId)
-                        ?.nameVi
-                    }
+                        ?.id ?? "",
+                    )}
                   </span>
                   <strong>×{entry.quantity}</strong>
                 </li>
@@ -296,9 +301,9 @@ export default function PresetSetup({
       ) : (
         <section className="opponent panel">
           <fieldset disabled={busy || !!pending}>
-            <legend>Đối thủ của {hero.nameVi}</legend>
+            <legend>Opponent for {contentName(hero.id)}</legend>
             <label>
-              Hero bot
+              Opponent hero
               <select
                 value={opponent.id}
                 onChange={(event) => {
@@ -310,13 +315,13 @@ export default function PresetSetup({
               >
                 {opponents.map((item) => (
                   <option value={item.id} key={item.id}>
-                    {item.nameVi} · Phe {sideLabel[item.faction]}
+                    {contentName(item.id)} · {sideLabel[item.faction]}
                   </option>
                 ))}
               </select>
             </label>
             <label>
-              Độ khó
+              Difficulty
               <select
                 value={difficulty}
                 onChange={(event) =>
@@ -325,14 +330,14 @@ export default function PresetSetup({
                   )
                 }
               >
-                <option value="EASY">Dễ</option>
-                <option value="NORMAL">Thường</option>
+                <option value="EASY">Easy</option>
+                <option value="NORMAL">Normal</option>
               </select>
             </label>
           </fieldset>
           <p>
-            Trận đấu chỉ bắt đầu khi bạn xác nhận. Hai phe giữ thứ tự lộ 1 đến
-            5.
+            The match starts only after you confirm. Both factions resolve lanes
+            from 1 to 5.
           </p>
         </section>
       )}
@@ -351,12 +356,12 @@ export default function PresetSetup({
                 : setStage(stage === "DECK" ? "HERO" : "DECK")
             }
           >
-            Quay lại
+            Back
           </button>
         )}
         {conflict ? (
           <button className="primary" onClick={() => onResume(conflict)}>
-            Tiếp tục trận
+            Resume match
           </button>
         ) : (
           <button
@@ -369,14 +374,14 @@ export default function PresetSetup({
             }}
           >
             {stage === "HERO"
-              ? "Chọn bộ bài"
+              ? "Choose deck"
               : stage === "DECK"
-                ? "Dùng bộ bài này"
+                ? "Use this deck"
                 : busy
-                  ? "Đang tạo trận…"
+                  ? "Creating match…"
                   : pending
-                    ? "Thử lại tạo trận"
-                    : "Bắt đầu trận"}
+                    ? "Retry match creation"
+                    : "Start match"}
           </button>
         )}
       </div>

@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import { usePrivateStorage } from "../auth/private-storage";
 import ArtImage from "../match/ArtImage";
 import { useEffect, useRef, useState } from "react";
@@ -25,13 +26,14 @@ import { changeQuantity, normalize } from "./model";
 import { draftLocation, readDraft, writeDraft } from "./draft-storage";
 import type { DraftLocation, PendingSave } from "./draft-storage";
 const keywordCopy: Record<string, string> = {
-  SHIELD: "Chặn một gói sát thương dương rồi mất Khiên.",
-  ARMOR: "Giảm 1 sát thương mỗi gói; không cộng dồn.",
-  POISONED: "Nhận 1 sát thương ở cuối lượt; Độc không cộng dồn.",
+  SHIELD: "Blocks one positive damage packet, then consumes Shield.",
+  ARMOR: "Reduces each damage packet by 1; does not stack.",
+  POISONED: "Takes 1 damage at turn end; Poison does not stack.",
   STUNNED:
-    "Không tấn công trong phần còn lại của lượt; vẫn chặn lộ và kích hoạt ability.",
-  PIERCE: "Đòn đánh thường gây sát thương cho quân chặn và hero phía sau.",
-  MOVE: "Đổi lộ, giữ nguyên HP, trạng thái và dấu đã tấn công.",
+    "Cannot attack for the rest of this turn; still blocks the lane and triggers abilities.",
+  PIERCE:
+    "Regular attacks damage both the blocking unit and the hero behind it.",
+  MOVE: "Changes lanes while keeping HP, statuses and its attack marker.",
 };
 function Modal({
   title,
@@ -140,13 +142,13 @@ export default function DeckBuilder({
         pending.current = restored.draft.pending;
         setMessage(
           matchesSavedBase && !restored.draft.pending
-            ? "Đã lưu"
-            : "Đã khôi phục bản nháp cục bộ; chưa lưu trên máy chủ.",
+            ? "Saved"
+            : "Local draft restored; not yet saved to the server.",
         );
       }
     } catch {
       setMessage(
-        "Không đọc được bản nháp cục bộ. Giữ trang này khi chỉnh sửa.",
+        "The local draft could not be read. Keep this page open while editing.",
       );
     }
     setReady(true);
@@ -162,7 +164,7 @@ export default function DeckBuilder({
       );
     } catch {
       setMessage(
-        "Không lưu được bản nháp cục bộ. Giữ trang này để tránh mất thay đổi.",
+        "The local draft could not be saved. Keep this page open to preserve your changes.",
       );
     }
   }, [deck, base, ready, review?.matchId]);
@@ -333,7 +335,7 @@ export default function DeckBuilder({
           ? await api.updateDeck(p.id, p.body)
           : await api.saveDeck(p.body);
       adoptSaved(result);
-      setMessage("Đã lưu");
+      setMessage("Saved");
       if (navigate && !review) router.replace(`/decks/${result.id}/edit`);
       return result;
     } catch (error) {
@@ -351,11 +353,11 @@ export default function DeckBuilder({
       ) {
         pending.current = null;
         setMessage(
-          "Chưa lưu được bộ bài. Kiểm tra tên, số bản và class; bản nháp vẫn được giữ.",
+          "The deck could not be saved. Check its name, copy counts and classes; your draft is preserved.",
         );
       } else
         setMessage(
-          `Chưa xác định kết quả lưu. Khôi phục phiên nếu đã hết hạn, rồi thử lại cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
+          `Save result is unconfirmed. Restore your session if expired, then retry the same request.${durable ? "" : " The request could not be saved; keep this page open and do not reload."}`,
         );
       try {
         storedLocation.current = writeDraft(
@@ -430,12 +432,10 @@ export default function DeckBuilder({
         error.status < 500
       ) {
         createPending.current = null;
-        setMessage(
-          "Yêu cầu không được chấp nhận. Hãy kiểm tra lại nguồn bộ bài.",
-        );
+        setMessage("The request was rejected. Check the deck source.");
       } else
         setMessage(
-          `Chưa xác định kết quả tạo trận. Thử lại gửi cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
+          `Match creation is unconfirmed. Retry sends the same request.${durable ? "" : " The request could not be saved; keep this page open and do not reload."}`,
         );
     } finally {
       lock.current = false;
@@ -468,16 +468,16 @@ export default function DeckBuilder({
     .sort(
       (a, b) =>
         (a.card?.cost ?? 0) - (b.card?.cost ?? 0) ||
-        normalize(a.card?.nameVi ?? a.entry.cardId).localeCompare(
-          normalize(b.card?.nameVi ?? b.entry.cardId),
-          "vi",
+        normalize(
+          a.card ? contentName(a.card.id) : a.entry.cardId,
+        ).localeCompare(
+          normalize(b.card ? contentName(b.card.id) : b.entry.cardId),
+          "en",
         ),
     );
   const deckPanel = (
-    <aside className="panel deck-panel" aria-label="Danh sách bộ bài">
-      <h2 className="deck-summary-count">
-        Bộ bài · {validation.totalCards}/30
-      </h2>
+    <aside className="panel deck-panel" aria-label="Deck list">
+      <h2 className="deck-summary-count">Deck · {validation.totalCards}/30</h2>
       <ManaCurve catalog={catalog} entries={deck.entries} />
       <ul className="builder-rows">
         {rows.map(({ entry, card }) => (
@@ -491,7 +491,7 @@ export default function DeckBuilder({
                     setInspect(card);
                   }}
                 >
-                  {card.cost} · {card.nameVi}
+                  {card.cost} · {contentName(card.id)}
                 </button>
                 <QuantityControls
                   card={card}
@@ -506,9 +506,11 @@ export default function DeckBuilder({
           </li>
         ))}
       </ul>
-      {!rows.length && <p>Bộ bài trống. Thêm lá từ bộ sưu tập.</p>}
+      {!rows.length && (
+        <p>Your deck is empty. Add cards from the collection.</p>
+      )}
       {!validation.playable && (
-        <p role="status">Bản nháp · Cần đủ 30 lá hợp lệ để chơi.</p>
+        <p role="status">Draft · Add 30 legal cards to play.</p>
       )}
     </aside>
   );
@@ -516,28 +518,29 @@ export default function DeckBuilder({
     <section className="setup deck-builder" ref={root}>
       <div className="screen-heading">
         <div>
-          <h1>{review ? "Xem lại bộ bài" : "Xây dựng bộ bài"}</h1>
+          <h1>{review ? "Review deck" : "Build your deck"}</h1>
           <p>
-            {hero.nameVi} · {hero.classes.map((c) => classLabel[c]).join(" · ")}
+            {contentName(hero.id)} ·{" "}
+            {hero.classes.map((c) => classLabel[c]).join(" · ")}
           </p>
         </div>
-        <Link href={`/heroes/${hero.id}/decks`}>Quay lại bộ bài</Link>
+        <Link href={`/heroes/${hero.id}/decks`}>Back to decks</Link>
       </div>
       {review && (
         <section className="panel review-source">
-          <h2>Nguồn bộ bài được giữ lại</h2>
+          <h2>Original deck source preserved</h2>
           <p>
             {review.config.deck.kind === "PRESET"
               ? `PRESET ${review.config.deck.presetId}`
-              : `SAVED ${review.config.deck.deckId} · phiên bản ${review.config.deck.deckRevision}`}
+              : `SAVED ${review.config.deck.deckId} · revision ${review.config.deck.deckRevision}`}
           </p>
           <p>
-            Nội dung gốc: {review.config.expectedContentVersion} · Hiện hành:{" "}
+            Original content: {review.config.expectedContentVersion} · Current:{" "}
             {catalog.version}
           </p>
           <p>
-            Kiểm tra bộ bài bên dưới. Chỉ tạo trận sau khi bạn chấp nhận rõ
-            ràng.
+            Review the deck below. A match starts only after you explicitly
+            accept.
           </p>
         </section>
       )}
@@ -555,7 +558,7 @@ export default function DeckBuilder({
               document.getElementById("deck-name")?.focus();
             }}
           >
-            Tên bộ bài phải có 1–40 ký tự.
+            Deck names must contain 1–40 characters.
           </a>
         </div>
       )}
@@ -564,7 +567,7 @@ export default function DeckBuilder({
         className="builder-fields"
       >
         <label className="deck-name">
-          Tên bộ bài
+          Deck name
           <input
             id="deck-name"
             maxLength={80}
@@ -580,7 +583,7 @@ export default function DeckBuilder({
         </label>
         {nameError && !nameValid && (
           <p id="deck-name-error" role="alert">
-            Nhập tên từ 1 đến 40 ký tự.
+            Enter a name with 1 to 40 characters.
           </p>
         )}
         <div className="deck-builder-layout">
@@ -600,18 +603,18 @@ export default function DeckBuilder({
           aria-haspopup="dialog"
           onClick={() => setDeckOpen(true)}
         >
-          Bộ bài · {validation.totalCards}/30
+          Deck · {validation.totalCards}/30
         </button>
         <p role="status">
           {busy
-            ? "Đang xác nhận…"
-            : message || (dirty ? "Bản nháp cục bộ · Chưa lưu" : "Đã lưu")}
+            ? "Checking…"
+            : message || (dirty ? "Local draft · Unsaved" : "Saved")}
         </p>
         <button
           disabled={busy || !!createPending.current}
           onClick={() => void save(false, true)}
         >
-          Lưu bộ bài
+          Save deck
         </button>
         {review ? (
           <button
@@ -619,7 +622,7 @@ export default function DeckBuilder({
             disabled={busy || !validation.playable || !nameValid}
             onClick={() => void acceptReview()}
           >
-            Chấp nhận và tạo trận mới
+            Accept and create match
           </button>
         ) : (
           <button
@@ -630,16 +633,14 @@ export default function DeckBuilder({
               if (result) onContinue(result);
             }}
           >
-            {dirty || !base ? "Lưu và tiếp tục" : "Chọn đối thủ"}
+            {dirty || !base ? "Save and continue" : "Choose your opponent"}
           </button>
         )}
       </div>
-      {conflict && (
-        <Link href={`/matches/${conflict}`}>Tiếp tục trận đang chơi</Link>
-      )}
+      {conflict && <Link href={`/matches/${conflict}`}>Resume match</Link>}
       {deckOpen && (
         <Modal
-          title={`Bộ bài · ${validation.totalCards}/30`}
+          title={`Deck · ${validation.totalCards}/30`}
           onClose={() => setDeckOpen(false)}
         >
           <fieldset
@@ -648,19 +649,19 @@ export default function DeckBuilder({
           >
             {deckPanel}
           </fieldset>
-          <button onClick={() => setDeckOpen(false)}>Đóng bộ bài</button>
+          <button onClick={() => setDeckOpen(false)}>Close deck</button>
         </Modal>
       )}
       {inspect && (
-        <Modal title={inspect.nameVi} onClose={() => setInspect(null)}>
+        <Modal title={contentName(inspect.id)} onClose={() => setInspect(null)}>
           <div className="deck-inspect-art">
             <ArtImage
               artKey={inspect.artKey}
-              name={inspect.nameVi}
+              name={contentName(inspect.id)}
               variant="inspect"
             />
           </div>
-          <p>{inspect.exactTextVi}</p>
+          <p>{contentText(inspect.id)}</p>
           <div className="keyword-help">
             {inspect.keywords.map((k) => (
               <details key={k}>
@@ -677,32 +678,30 @@ export default function DeckBuilder({
             total={validation.totalCards}
             onChange={change}
           />
-          <button onClick={() => setInspect(null)}>Đóng chi tiết lá bài</button>
+          <button onClick={() => setInspect(null)}>Close card details</button>
         </Modal>
       )}
       {stale && (
-        <Modal title="Bộ bài đã thay đổi ở tab khác">
+        <Modal title="This deck changed in another tab">
           <p>
-            Bản nháp của bạn vẫn được giữ. Bản trên máy chủ hiện ở phiên bản{" "}
+            Your draft is preserved. The server version is now revision{" "}
             {stale.revision}.
           </p>
           <button
             onClick={() => {
               adoptSaved(stale);
-              setMessage("Đã tải bản mới");
+              setMessage("Latest version loaded");
             }}
           >
-            Tải bản mới
+            Load latest version
           </button>
-          <button onClick={() => void save(true, true)}>
-            Lưu thành bản sao
-          </button>
-          <button onClick={() => setStale(null)}>Ở lại</button>
+          <button onClick={() => void save(true, true)}>Save as copy</button>
+          <button onClick={() => setStale(null)}>Stay</button>
         </Modal>
       )}
       {leave && (
         <Modal
-          title="Bộ bài có thay đổi chưa lưu"
+          title="Your deck has unsaved changes"
           onClose={() => setLeave(null)}
         >
           <button
@@ -716,7 +715,7 @@ export default function DeckBuilder({
               }
             }}
           >
-            Lưu
+            Save
           </button>
           <button
             disabled={busy}
@@ -725,9 +724,9 @@ export default function DeckBuilder({
               router.push(leave);
             }}
           >
-            Rời đi
+            Leave
           </button>
-          <button onClick={() => setLeave(null)}>Ở lại</button>
+          <button onClick={() => setLeave(null)}>Stay</button>
         </Modal>
       )}
     </section>

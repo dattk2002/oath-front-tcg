@@ -1,3 +1,4 @@
+import { contentName } from "../../content/english-content";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type {
@@ -65,10 +66,10 @@ export default function DeckList({
   return (
     <section className="setup">
       <div className="screen-heading">
-        <h1>Bộ bài của {hero.nameVi}</h1>
-        <Link href="/heroes">Đổi hero</Link>
+        <h1>Decks for {contentName(hero.id)}</h1>
+        <Link href="/heroes">Change hero</Link>
       </div>
-      <h2>Deck mẫu — đề xuất</h2>
+      <h2>Recommended preset deck</h2>
       <article
         className="panel deck-choice"
         onClick={() => setPreview(preset.presetId)}
@@ -91,17 +92,17 @@ export default function DeckList({
               onSelect({ kind: "PRESET", presetId: preset.presetId })
             }
           >
-            Dùng bộ bài này
+            Use this deck
           </button>
           <Link
             className="button-link"
             href={`/decks/new?hero=${heroId}&preset=${preset.presetId}`}
           >
-            Tùy chỉnh
+            Customize
           </Link>
         </div>
       </article>
-      <h2>Bộ bài cá nhân</h2>
+      <h2>My decks</h2>
       <div className="saved-decks">
         {items
           .filter((d) => d.heroId === heroId)
@@ -122,7 +123,7 @@ export default function DeckList({
               </button>
               <p>
                 {d.validation.totalCards}/30 ·{" "}
-                {d.validation.playable ? "Sẵn sàng" : "Bản nháp"} · phiên bản{" "}
+                {d.validation.playable ? "Ready" : "Draft"} · revision{" "}
                 {d.revision}
               </p>
               <div className="button-row" onClick={(e) => e.stopPropagation()}>
@@ -136,37 +137,37 @@ export default function DeckList({
                     })
                   }
                 >
-                  Dùng bộ bài này
+                  Use this deck
                 </button>
-                <Link href={`/decks/${d.id}/edit`}>Sửa bộ bài</Link>
+                <Link href={`/decks/${d.id}/edit`}>Edit deck</Link>
               </div>
             </article>
           ))}
       </div>
       {loading ? (
-        <p role="status">Đang tải bộ bài…</p>
+        <p role="status">Loading decks…</p>
       ) : error ? (
         <p role="alert">
-          Không tải được bộ bài.{" "}
+          Decks could not be loaded.{" "}
           <button onClick={() => void load(cursor ?? undefined)}>
-            Thử lại bộ bài
+            Retry decks
           </button>
         </p>
       ) : (
         !items.some((d) => d.heroId === heroId) && (
-          <p>Chưa có bộ bài cá nhân cho hero này.</p>
+          <p>No saved decks for this hero yet.</p>
         )
       )}
       {cursor && (
         <button disabled={loading} onClick={() => void load(cursor)}>
-          Tải thêm bộ bài
+          Load more decks
         </button>
       )}
       <Link className="button-link" href={`/decks/new?hero=${heroId}`}>
-        Tạo bộ bài
+        Create deck
       </Link>
       {preview && (
-        <section className="panel deck-preview" aria-label="Xem trước bộ bài">
+        <section className="panel deck-preview" aria-label="Deck preview">
           <h2>
             {preview === preset.presetId
               ? presetNames[preset.presetId]
@@ -178,12 +179,14 @@ export default function DeckList({
               : (items.find((d) => d.id === preview)?.entries ?? [])
             ).map((e) => (
               <li key={e.cardId}>
-                {catalog.cards.find((c) => c.id === e.cardId)?.nameVi} ×{" "}
-                {e.quantity}
+                {contentName(
+                  catalog.cards.find((c) => c.id === e.cardId)?.id ?? "",
+                )}{" "}
+                × {e.quantity}
               </li>
             ))}
           </ul>
-          <button onClick={() => setPreview(null)}>Đóng xem trước</button>
+          <button onClick={() => setPreview(null)}>Close preview</button>
         </section>
       )}
     </section>

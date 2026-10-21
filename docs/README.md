@@ -2,11 +2,11 @@
 
 Đây là bộ tài liệu đã thống nhất cho dự án `oath-front-tcg`. Thư mục làm việc chính là `/home/bia/Works/Coding/oath-front-tcg`; repository: [dattk2002/oath-front-tcg](https://github.com/dattk2002/oath-front-tcg).
 
-Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép đầy đủ, gồm Markdown, JSON contract/fixture và mockup SVG/PNG. Tên thế giới “Ngũ Lộ — Bình Minh & Tro Tàn” trong tài liệu thiết kế là nội dung của game; OathFront là tên project mới.
+Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép đầy đủ, gồm Markdown, JSON contract/fixture và mockup SVG/PNG. Tên tiếng Việt trong tài liệu gốc là hồ sơ lịch sử và nguồn kiểm tra luật bất biến. Bản trình bày hiện tại là [The Fivefold, Dawnward và Ashen Court bằng tiếng Anh](PRESENTATION-EN.md); OathFront vẫn là thương hiệu.
 
 ## Đọc trước
 
-1. [Quyết định triển khai mới nhất](OATHFRONT.md): Next.js, monorepo, GitHub và Docker; có ưu tiên cao hơn các lựa chọn Vite/Render trong bản thiết kế ban đầu.
+1. [Quyết định triển khai mới nhất](OATHFRONT.md) và [bản trình bày tiếng Anh](PRESENTATION-EN.md): Next.js, monorepo, GitHub, Docker và tên/luật hiển thị hiện tại.
 2. [Specification tổng thể](../SPECIFICATION.md): phạm vi game và sáu milestone.
 3. [Hosting miễn phí và cấu hình môi trường](HOSTING.md): Vercel Hobby, Neon Free và Docker local.
 4. [Kế hoạch triển khai OathFront](superpowers/plans/2026-10-20-oathfront-implementation.md): 18 task theo M1–M6.

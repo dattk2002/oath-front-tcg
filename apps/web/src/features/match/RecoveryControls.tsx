@@ -37,19 +37,19 @@ export default function RecoveryControls({
       aria-live="polite"
     >
       {!online
-        ? "Mất kết nối. Bàn chơi được giữ; kết nối lại để tiếp tục."
+        ? "Connection lost. Your match is saved. Reconnect to continue."
         : recovering
-          ? "Đang kết nối lại…"
+          ? "Reconnecting…"
           : snapshot.pendingCommand?.status === "SENDING"
-            ? "Đang xác nhận…"
+            ? "Checking…"
             : (snapshot.message ??
               (snapshot.pendingCommand?.status === "UNCERTAIN"
-                ? "Có yêu cầu chưa được xác nhận. Hãy thử lại cùng yêu cầu."
+                ? "A request is unconfirmed. Retry the same request."
                 : ""))}
       <SessionRecovery online={online} />
-      {online && snapshot.message?.includes("Kết nối lại") && (
+      {online && snapshot.message?.includes("Reconnect") && (
         <button disabled={recovering} onClick={onRecover}>
-          Kết nối lại
+          Reconnect
         </button>
       )}
       {snapshot.pendingCommand?.status === "UNCERTAIN" && (
@@ -57,7 +57,7 @@ export default function RecoveryControls({
           disabled={!online || expired}
           onClick={() => void controller.retryPending()}
         >
-          Thử lại yêu cầu
+          Retry request
         </button>
       )}
     </div>

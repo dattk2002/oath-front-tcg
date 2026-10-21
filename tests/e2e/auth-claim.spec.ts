@@ -6,17 +6,17 @@ test("guest can reach Google login and history without making guest play require
 }) => {
   await page.goto("/");
   await expect(
-    page.getByRole("button", { name: "Đăng nhập Google", exact: true }),
+    page.getByRole("button", { name: "Sign in with Google", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Chơi với bot" }).click();
+  await page.getByRole("button", { name: "Play vs bot" }).click();
   await expect(
-    page.getByRole("heading", { name: "Chọn người dẫn lối" }),
+    page.getByRole("heading", { name: "Choose your hero" }),
   ).toBeVisible();
-  await page.getByRole("link", { name: "Lịch sử", exact: true }).click();
+  await page.getByRole("link", { name: "History", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Lịch sử trận đấu" }),
+    page.getByRole("heading", { name: "Match history" }),
   ).toBeVisible();
-  await expect(page.getByText("Chưa có trận đấu.")).toBeVisible();
+  await expect(page.getByText("No matches yet.")).toBeVisible();
 });
 import { randomUUID, randomBytes } from "node:crypto";
 import { ownerPool } from "../../packages/db/tests/helpers.js";
@@ -96,7 +96,7 @@ async function callback(
   }, session);
   await page.reload();
   await expect(
-    page.getByRole("button", { name: "Đăng xuất", exact: true }),
+    page.getByRole("button", { name: "Sign out", exact: true }),
   ).toBeVisible();
 }
 test("signed fixture identity claims guest through Next/API/DB, preserves draft, renews a rejected save and isolates logout", async ({
@@ -109,10 +109,10 @@ test("signed fixture identity claims guest through Next/API/DB, preserves draft,
   await page.goto("/decks/new?hero=H_G_BV");
   // Use the canonical hero picker link to the blank builder.
   await page.goto("/heroes/H_G_BV/decks");
-  await page.getByRole("link", { name: "Tạo bộ bài" }).click();
-  await page.getByLabel("Tên bộ bài").fill("Bản nháp trước đăng nhập");
+  await page.getByRole("link", { name: "Create deck" }).click();
+  await page.getByLabel("Deck name").fill("Bản nháp trước đăng nhập");
   await callback(page, jwt, g);
-  await expect(page.getByLabel("Tên bộ bài")).toHaveValue(
+  await expect(page.getByLabel("Deck name")).toHaveValue(
     "Bản nháp trước đăng nhập",
   );
   const current = await (await page.request.get("/api/v1/session")).json();
@@ -132,12 +132,10 @@ test("signed fixture identity claims guest through Next/API/DB, preserves draft,
   const renewed = page.waitForResponse(
     (r) => r.url().endsWith("/api/v1/auth/exchange") && r.status() === 200,
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await renewed;
   await expect(
-    page.getByText(
-      "Đã khôi phục tài khoản. Bạn có thể thử lại yêu cầu đang giữ.",
-    ),
+    page.getByText("Account restored. You can retry your pending request."),
   ).toBeVisible();
   expect(payloads).toHaveLength(1);
   const saved = page.waitForResponse(
@@ -146,10 +144,10 @@ test("signed fixture identity claims guest through Next/API/DB, preserves draft,
       r.request().method() === "POST" &&
       r.status() === 201,
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   const savedDeck = await (await saved).json();
   await expect(page).toHaveURL(new RegExp(`/decks/${savedDeck.id}/edit$`));
-  await expect(page.getByLabel("Tên bộ bài")).toHaveValue(
+  await expect(page.getByLabel("Deck name")).toHaveValue(
     "Bản nháp trước đăng nhập",
   );
   expect(payloads).toHaveLength(2);
@@ -157,17 +155,15 @@ test("signed fixture identity claims guest through Next/API/DB, preserves draft,
   await page.route("**/api/auth/sign-out", (r) =>
     r.fulfill({ json: { success: true } }),
   );
-  await page.getByRole("button", { name: "Đăng xuất", exact: true }).click();
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Play vs bot" })).toBeVisible();
+  await page.getByRole("button", { name: "Play vs bot" }).click();
   await expect(
-    page.getByRole("button", { name: "Chơi với bot" }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Chơi với bot" }).click();
-  await expect(
-    page.getByRole("heading", { name: "Chọn người dẫn lối" }),
+    page.getByRole("heading", { name: "Choose your hero" }),
   ).toBeVisible();
   await page.goto("/heroes/H_G_BV/decks");
-  await page.getByRole("link", { name: "Tạo bộ bài" }).click();
-  await expect(page.getByLabel("Tên bộ bài")).not.toHaveValue(
+  await page.getByRole("link", { name: "Create deck" }).click();
+  await expect(page.getByLabel("Deck name")).not.toHaveValue(
     "Bản nháp trước đăng nhập",
   );
   expect(errors).toEqual([]);
@@ -224,7 +220,7 @@ test("merge choice keeps guest draft and selected match, preserves abandoned his
   const g = await guest(page),
     gm = await make(page, g.csrfToken);
   await page.goto("/decks/new?hero=H_G_BV");
-  await page.getByLabel("Tên bộ bài").fill("Bản nháp cần giữ");
+  await page.getByLabel("Deck name").fill("Bản nháp cần giữ");
   await page.route("**/api/auth/token*", (r) =>
     r.fulfill({ json: { token: jwt } }),
   );
@@ -243,7 +239,7 @@ test("merge choice keeps guest draft and selected match, preserves abandoned his
     g,
   );
   await page.reload();
-  const dialog = page.getByRole("dialog", { name: "Chọn trận muốn tiếp tục" });
+  const dialog = page.getByRole("dialog", { name: "Choose a match to resume" });
   await expect(dialog).toBeVisible();
   await mkdir(evidence, { recursive: true });
   await page.screenshot({
@@ -265,9 +261,9 @@ test("merge choice keeps guest draft and selected match, preserves abandoned his
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
-  await dialog.getByRole("button", { name: /Trận của khách/ }).click();
+  await dialog.getByRole("button", { name: /Guest match/ }).click();
   await expect(dialog).not.toBeVisible();
-  await expect(page.getByLabel("Tên bộ bài")).toHaveValue("Bản nháp cần giữ");
+  await expect(page.getByLabel("Deck name")).toHaveValue("Bản nháp cần giữ");
   const current = await (await page.request.get("/api/v1/session")).json();
   expect(current.principal.id).toBe(account.principal.id);
   expect(current.activeMatchId).toBe(gm.view.matchId);
@@ -278,7 +274,7 @@ test("merge choice keeps guest draft and selected match, preserves abandoned his
   expect(summary.outcome.result).toBe("NONE");
   await page.goto("/history");
   await expect(
-    page.getByRole("link", { name: /Đã đóng · không tính thua/ }),
+    page.getByRole("link", { name: /Closed · no loss recorded/ }),
   ).toBeVisible();
   await page.screenshot({
     path: `${evidence}/history-mobile.png`,
@@ -315,13 +311,13 @@ test("expired paused session exposes login inside the modal and explicitly retri
     await route.continue();
   });
   await page.goto(`/matches/${made.view.matchId}`);
-  const modal = page.getByRole("dialog", { name: "Tạm dừng", exact: true });
+  const modal = page.getByRole("dialog", { name: "Paused", exact: true });
   await expect(modal).toBeVisible();
   await expect.poll(() => matchReads).toBe(2);
   // Modal visibility precedes initial recovery; expire only once commands are available.
   releaseRecovery();
   await expect(
-    modal.getByRole("button", { name: "Tiếp tục", exact: true }),
+    modal.getByRole("button", { name: "Continue", exact: true }),
   ).toBeEnabled();
   const owner = ownerPool();
   await owner.query(
@@ -344,9 +340,9 @@ test("expired paused session exposes login inside the modal and explicitly retri
     )
       sent.push(r.postData()!);
   });
-  await modal.getByRole("button", { name: "Tiếp tục", exact: true }).click();
+  await modal.getByRole("button", { name: "Continue", exact: true }).click();
   await expect(
-    modal.getByRole("button", { name: "Đăng nhập Google" }),
+    modal.getByRole("button", { name: "Sign in with Google" }),
   ).toBeVisible();
   let loginRequested = false;
   await page.route("**/api/auth/sign-in/social", (r) => {
@@ -360,18 +356,18 @@ test("expired paused session exposes login inside the modal and explicitly retri
       json: { message: "Test provider stopped before account selection" },
     });
   });
-  await modal.getByRole("button", { name: "Đăng nhập Google" }).click();
+  await modal.getByRole("button", { name: "Sign in with Google" }).click();
   await expect.poll(() => loginRequested).toBe(true);
   await page.unroute("**/api/auth/token*");
   await page.route("**/api/auth/token*", (r) =>
     r.fulfill({ json: { token: jwt } }),
   );
-  await modal.getByRole("button", { name: "Khôi phục phiên" }).click();
+  await modal.getByRole("button", { name: "Restore session" }).click();
   await expect(
-    modal.getByRole("button", { name: "Thử lại yêu cầu" }),
+    modal.getByRole("button", { name: "Retry request" }),
   ).toBeEnabled();
   expect(sent).toHaveLength(1);
-  await modal.getByRole("button", { name: "Thử lại yêu cầu" }).click();
+  await modal.getByRole("button", { name: "Retry request" }).click();
   await expect(modal).not.toBeVisible();
   expect(sent).toHaveLength(2);
   expect(sent[1]).toBe(sent[0]);
@@ -381,7 +377,7 @@ test("throwing storage plus uncertain save and create keep the no-reload warning
 }) => {
   await guest(page);
   await page.goto("/decks/new?hero=H_G_BV");
-  await page.getByLabel("Tên bộ bài").fill("Nháp lỗi bộ nhớ");
+  await page.getByLabel("Deck name").fill("Nháp lỗi bộ nhớ");
   await page.evaluate(() => {
     Storage.prototype.setItem = () => {
       throw Error("storage unavailable");
@@ -392,17 +388,17 @@ test("throwing storage plus uncertain save and create keep the no-reload warning
     saved.push(r.request().postData()!);
     return r.abort();
   });
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(page.locator(".deck-footer").getByRole("status")).toContainText(
-    "không tải lại",
+    /do not reload/i,
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   expect(saved[1]).toBe(saved[0]);
   await page.goto("/heroes/H_G_BV/decks");
   await page.unroute("**/api/v1/decks");
   await page.reload();
   await page
-    .getByRole("button", { name: "Dùng bộ bài này", exact: true })
+    .getByRole("button", { name: "Use this deck", exact: true })
     .click();
   await page.evaluate(() => {
     Storage.prototype.setItem = () => {
@@ -414,14 +410,14 @@ test("throwing storage plus uncertain save and create keep the no-reload warning
     created.push(r.request().postData()!);
     return r.abort();
   });
-  await page.getByRole("button", { name: "Bắt đầu trận", exact: true }).click();
+  await page.getByRole("button", { name: "Start match", exact: true }).click();
   await expect(
     page
       .getByRole("alert")
-      .filter({ hasText: "Chưa xác định kết quả tạo trận" }),
-  ).toContainText("không tải lại");
+      .filter({ hasText: "Match creation is unconfirmed" }),
+  ).toContainText(/do not reload/i);
   await page
-    .getByRole("button", { name: "Thử lại tạo trận", exact: true })
+    .getByRole("button", { name: "Retry match creation", exact: true })
     .click();
   expect(created[1]).toBe(created[0]);
 });
@@ -468,7 +464,7 @@ test("managed callback consumes verifier before token exchange and removes it fr
     return r.fulfill({ json: { token: jwt } });
   });
   await expect(
-    page.getByRole("button", { name: "Đăng nhập Google", exact: true }),
+    page.getByRole("button", { name: "Sign in with Google", exact: true }),
   ).toBeEnabled();
   await page.evaluate(
     (s) =>
@@ -486,7 +482,7 @@ test("managed callback consumes verifier before token exchange and removes it fr
   );
   await page.goto("/?neon_auth_session_verifier=fixture-only-verifier");
   await expect(
-    page.getByRole("button", { name: "Đăng xuất", exact: true }),
+    page.getByRole("button", { name: "Sign out", exact: true }),
   ).toBeVisible();
   expect(consumed).toBe(true);
   expect(tokenRequested).toBe(true);
@@ -509,7 +505,7 @@ test("review: throwing storage renews in place and preserves exact auth and save
     r.fulfill({ json: { token: jwt } }),
   );
   await page.goto("/decks/new?hero=H_G_BV");
-  await page.getByLabel("Tên bộ bài").fill("Nháp cần khôi phục trong trang");
+  await page.getByLabel("Deck name").fill("Nháp cần khôi phục trong trang");
   await page.evaluate(() => {
     Storage.prototype.setItem = () => {
       throw Error("storage unavailable");
@@ -531,13 +527,11 @@ test("review: throwing storage renews in place and preserves exact auth and save
     exchanges.push(r.request().postData()!);
     return exchanges.length === 1 ? r.abort() : r.continue();
   });
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect.poll(() => exchanges.length).toBe(1);
-  const auth = page.getByRole("region", { name: "Tài khoản" });
-  await expect(auth.getByRole("alert")).toContainText("Không tải lại trang");
-  await expect(auth.getByRole("status")).toContainText(
-    "Chưa hoàn tất đăng nhập",
-  );
+  const auth = page.getByRole("region", { name: "Account" });
+  await expect(auth.getByRole("alert")).toContainText("Do not reload");
+  await expect(auth.getByRole("status")).toContainText("Sign-in is incomplete");
   expect(saves).toHaveLength(1);
   let redirectRequested = false;
   await page.route("**/api/auth/sign-in/social", (r) => {
@@ -545,23 +539,23 @@ test("review: throwing storage renews in place and preserves exact auth and save
     return r.fulfill({ json: { redirect: false } });
   });
   await auth
-    .getByRole("button", { name: "Đăng nhập Google", exact: true })
+    .getByRole("button", { name: "Sign in with Google", exact: true })
     .click();
   await expect(auth.getByRole("status")).toContainText(
-    "Không thể chuyển sang Google",
+    "Google sign-in cannot open",
   );
   expect(redirectRequested).toBe(false);
   const renewed = page.waitForResponse(
     (r) => r.url().endsWith("/api/v1/auth/exchange") && r.status() === 200,
   );
   await auth
-    .getByRole("button", { name: "Khôi phục phiên", exact: true })
+    .getByRole("button", { name: "Restore session", exact: true })
     .click();
   await renewed;
   await expect(
-    auth.getByRole("button", { name: "Đăng xuất", exact: true }),
+    auth.getByRole("button", { name: "Sign out", exact: true }),
   ).toBeVisible();
-  await expect(auth.getByRole("alert")).toContainText("Không tải lại trang");
+  await expect(auth.getByRole("alert")).toContainText("Do not reload");
   expect(exchanges).toHaveLength(2);
   expect(exchanges[1]).toBe(exchanges[0]);
   expect(saves).toHaveLength(1);
@@ -580,13 +574,13 @@ test("review: throwing storage renews in place and preserves exact auth and save
       ),
     ).toBe(true);
   }
-  await expect(page.getByLabel("Tên bộ bài")).toHaveValue(
+  await expect(page.getByLabel("Deck name")).toHaveValue(
     "Nháp cần khôi phục trong trang",
   );
   const saved = page.waitForResponse(
     (r) => r.url().endsWith("/api/v1/decks") && r.status() === 201,
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await saved;
   expect(saves).toHaveLength(2);
   expect(saves[1]).toBe(saves[0]);
@@ -627,7 +621,7 @@ test("review: history refreshes on an in-place claim into an existing account", 
   });
   const g = await guest(page);
   await page.goto("/history");
-  await expect(page.getByText("Chưa có trận đấu.")).toBeVisible();
+  await expect(page.getByText("No matches yet.")).toBeVisible();
   let release: () => void;
   const ready = new Promise<void>((resolve) => {
     release = resolve;
@@ -651,15 +645,15 @@ test("review: history refreshes on an in-place claim into an existing account", 
     g,
   );
   await page.reload();
-  await expect(page.getByText("Chưa có trận đấu.")).toBeVisible();
+  await expect(page.getByText("No matches yet.")).toBeVisible();
   release!();
   await expect(
-    page.getByRole("button", { name: "Đăng xuất", exact: true }),
+    page.getByRole("button", { name: "Sign out", exact: true }),
   ).toBeVisible();
   await expect(
     page.locator(`.history-list a[href="/history/${match.view.matchId}"]`),
   ).toBeVisible();
-  await expect(page.getByText("Chưa có trận đấu.")).not.toBeVisible();
+  await expect(page.getByText("No matches yet.")).not.toBeVisible();
   await expect(page).toHaveURL(/\/history$/);
 });
 
@@ -688,18 +682,18 @@ test("review: provider-only logout retry survives guest navigation without revok
         : { json: { success: true } },
     );
   });
-  await page.getByRole("button", { name: "Đăng xuất", exact: true }).click();
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await expect(
-    page.getByRole("button", { name: "Thử đăng xuất Google lại", exact: true }),
+    page.getByRole("button", { name: "Retry Google sign-out", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Chơi với bot", exact: true }).click();
+  await page.getByRole("button", { name: "Play vs bot", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Chọn người dẫn lối" }),
+    page.getByRole("heading", { name: "Choose your hero" }),
   ).toBeVisible();
   const guestBefore = await (await page.request.get("/api/v1/session")).json();
   expect(guestBefore.principal.kind).toBe("GUEST");
   const retry = page.getByRole("button", {
-    name: "Thử đăng xuất Google lại",
+    name: "Retry Google sign-out",
     exact: true,
   });
   await expect(retry).toBeVisible();
@@ -719,6 +713,6 @@ test("review: provider-only logout retry survives guest navigation without revok
   expect(appLogouts).toBe(1);
   expect(providerLogouts).toBe(2);
   await expect(
-    page.getByRole("heading", { name: "Chọn người dẫn lối" }),
+    page.getByRole("heading", { name: "Choose your hero" }),
   ).toBeVisible();
 });

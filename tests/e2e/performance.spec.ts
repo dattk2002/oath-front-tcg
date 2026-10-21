@@ -22,7 +22,7 @@ async function harness(page: import("@playwright/test").Page) {
   await page.route("**/__quality", (r) =>
     r.fulfill({
       contentType: "text/html",
-      body: '<html><body><main data-battle-root style="width:1000px;height:560px"><canvas></canvas><button class="hand-card">Lá bài</button></main></body></html>',
+      body: '<html><body><main data-battle-root style="width:1000px;height:560px"><canvas></canvas><button class="hand-card">Card</button></main></body></html>',
     }),
   );
   await page.goto("/__quality");
@@ -75,7 +75,7 @@ test("measured full hand mass effect workload and twenty scene lifecycles", asyn
   await instrument(page);
   await page.goto("/");
   await expect(
-    page.getByRole("button", { name: "Tiếp tục trận", exact: true }),
+    page.getByRole("button", { name: "Resume match", exact: true }),
   ).toBeVisible();
   await page.waitForLoadState("networkidle");
   const shell = await page.evaluate(() =>
@@ -127,9 +127,7 @@ test("measured full hand mass effect workload and twenty scene lifecycles", asyn
       await route.fulfill({ json: next });
     },
   );
-  await page
-    .getByRole("button", { name: "Tiếp tục trận", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Resume match", exact: true }).click();
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible();
   const renderer = await page.locator("canvas").evaluate((c) => {
     const gl = (c as HTMLCanvasElement).getContext("webgl2")!;
@@ -346,7 +344,7 @@ test("measured full hand mass effect workload and twenty scene lifecycles", asyn
     const heap = await cdp.send("Runtime.getHeapUsage");
     cycles.push({ ...sample, heap: heap.usedSize });
     await page
-      .getByRole("button", { name: "Tiếp tục trận", exact: true })
+      .getByRole("button", { name: "Resume match", exact: true })
       .click();
     await expect(page.locator('[data-scene-status="ready"]')).toBeVisible();
   }

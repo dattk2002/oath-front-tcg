@@ -139,7 +139,9 @@ async function prepare(page: Page, initial: CommandResponse) {
 async function enter(page: Page, id: string) {
   const started = Date.now();
   await page.goto(`/matches/${id}`);
-  await expect(page.getByRole("region", { name: "Bàn năm lộ" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Five-lane board" }),
+  ).toBeVisible();
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
     timeout: 15000,
   });
@@ -167,7 +169,7 @@ async function enter(page: Page, id: string) {
   };
 }
 const pass = (page: Page) =>
-  page.getByRole("button", { name: "Kết thúc hành động", exact: true });
+  page.getByRole("button", { name: "End phase", exact: true });
 async function requestPass(page: Page) {
   const received = page.waitForResponse(
     (response) =>
@@ -231,7 +233,7 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
   await page.keyboard.press("Enter");
   await expect(page.locator('[data-presentation="idle"]')).toBeVisible();
   await expect(
-    page.getByRole("region", { name: /Hero đối thủ/ }),
+    page.getByRole("region", { name: /Opponent hero/ }),
   ).toContainText("11");
   expect(commands).toBe(2);
   await page.keyboard.press("Escape");
@@ -248,7 +250,7 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
   await expect(page.locator('[data-presentation="idle"]')).toBeVisible();
   expect(commands).toBe(4);
   // Explicit reduction can only add to the OS preference.
-  await page.getByRole("checkbox", { name: "Giảm chuyển động / VFX" }).check();
+  await page.getByRole("checkbox", { name: "Reduce motion / VFX" }).check();
   for (const [name, width, height] of [
     ["desktop", 1440, 900],
     ["tablet", 1024, 768],
@@ -506,21 +508,21 @@ test("failed renderer keeps the latest semantic board and retries with one canva
   );
   await page.goto(`/matches/${initial.view.matchId}`);
   await expect(
-    page.getByText("Đang dùng bàn văn bản.", { exact: false }),
+    page.getByText("Using the text board.", { exact: false }),
   ).toBeVisible({ timeout: 15000 });
   await requestPass(page);
   await expect(
-    page.getByRole("region", { name: /Hero đối thủ/ }),
+    page.getByRole("region", { name: /Opponent hero/ }),
   ).toContainText("9");
   await page
-    .getByRole("button", { name: "Thử lại hình ảnh", exact: true })
+    .getByRole("button", { name: "Retry artwork", exact: true })
     .click();
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
     timeout: 15000,
   });
   await expect(page.locator("canvas")).toHaveCount(1);
   await expect(
-    page.getByRole("region", { name: /Hero đối thủ/ }),
+    page.getByRole("region", { name: /Opponent hero/ }),
   ).toContainText("9");
   expect(errors).toEqual([]);
 });

@@ -5,26 +5,26 @@ export interface TutorialStep {
   continueLabel: string;
 }
 const instructions: Record<TutorialView["stepId"], string> = {
-  G01: "Chọn Người Gác Đèn, rồi chọn lane 2 để chặn Lính Tro.",
-  G02: "Bạn đã dùng hết 1 năng lượng. Kỵ Sĩ Lá cần 2 nên chưa thể chơi. Cần 2 năng lượng, hiện có 0.",
-  G03: "Người Trồng Mầm ở lane 4 không gặp quân địch, nên sẽ đánh thẳng hero. Bấm Kết thúc hành động.",
-  G04: "Dùng Tia Đèn lên Lính Tro ở lane 4 để mở đường cho quân mình.",
-  G05: "Kỵ Sĩ Lá và Gác Lò đều 2 công / 3 HP. Cả hai sẽ gây 2 sát thương. Bấm Kết thúc hành động.",
-  G06: "Chơi Mầm Khiên vào lane 3. Rừng Cổ Đăng tăng 1 HP cho quân chơi từ tay vào đây.",
-  G07: "Bạn nhận Lời Thề Nảy Mầm. Dùng ngay miễn phí lên Kỵ Sĩ Lá ở lane 4, hoặc giữ để dùng giá 1 trong pha Thiện.",
-  G08: "Location mở ở các lượt 1, 3, 5. Lane 2 và 4 luôn thường. Bạn đã sẵn sàng chơi một trận.",
-  E01: "Phe Ác chơi nhân vật trước. Chơi Lính Tro vào lane 2, rồi kết thúc triển khai.",
-  E02: "Giờ bạn đã thấy quân của phe Thiện. Dùng Mũi Than lên Người Gác Đèn ở lane 5, rồi Kết thúc trick.",
+  G01: "Select Lanternkeeper, then choose lane 2 to block Ash Soldier.",
+  G02: "You spent your 1 energy. Leaf Knight costs 2 and cannot be played yet. Requires 2 energy; you have 0.",
+  G03: "Seed Tender in lane 4 has no enemy opposite, so it will attack the hero directly. Select End phase.",
+  G04: "Use Lantern Ray on Ash Soldier in lane 4 to clear a path for your unit.",
+  G05: "Leaf Knight and Furnace Guard both have 2 ATK / 3 HP. Each will deal 2 damage. Select End phase.",
+  G06: "Play Shieldseed in lane 3. Elder Lanternwood grants 1 HP to units played here from hand.",
+  G07: "You received Oath of Growth. Use it now for free on Leaf Knight in lane 4, or keep it to use for 1 energy during the Dawnward phase.",
+  G08: "Locations reveal on turns 1, 3 and 5. Lanes 2 and 4 are always normal. You are ready for a match.",
+  E01: "Ashen Court deploys units first. Play Ash Soldier in lane 2, then end deployment.",
+  E02: "You can now see Dawnward's units. Use Coal Lance on Lanternkeeper in lane 5, then select End tricks.",
 };
 const results: Partial<Record<TutorialView["stepId"], string>> = {
-  G01: "Quân cùng lane sẽ giao tranh. Quân vừa chơi có thể đánh ngay.",
-  G03: "Lane 4 gây 1 sát thương lên hero. Lane 2 đã chặn đường tấn công.",
-  G04: "Trick có hiệu lực ngay. Bạn vẫn đang ở pha Thiện.",
-  G05: "Đòn ác hiện trước, nhưng quân thiện vẫn gây sát thương trong cùng giao tranh.",
-  G06: "Quân cũ giữ nguyên. Mầm Khiên mới nhận +0/+1.",
-  G07: "Lựa chọn đã được giữ. Tiếp tục để xem Location ở lượt 5.",
-  E01: "Bạn còn 2 mana cho pha trick. Năng lượng không hồi lại giữa hai pha Ác.",
-  E02: "Kỵ Sĩ Lá còn 1 HP. Quân ở lane 4 gây 2 sát thương lên hero Thiện.",
+  G01: "Units in the same lane fight each other. Newly played units can attack immediately.",
+  G03: "Lane 4 dealt 1 damage to the hero. Lane 2 blocked the attack path.",
+  G04: "Tricks take effect immediately. You are still in the Dawnward phase.",
+  G05: "The Ashen Court attack appears first, but the Dawnward unit still deals damage in the same combat.",
+  G06: "Existing units are unchanged. The newly played Shieldseed gained +0/+1.",
+  G07: "Your choice was saved. Continue to see the location on turn 5.",
+  E01: "You have 2 energy left for tricks. Energy does not refill between Ashen Court's two phases.",
+  E02: "Leaf Knight has 1 HP left. The unit in lane 4 dealt 2 damage to the Dawnward hero.",
 };
 export function getTutorialStep(
   view: PlayerView,
@@ -36,29 +36,29 @@ export function getTutorialStep(
     : instructions[progress.stepId];
   if (progress.stepId === "G06" && view.turn < 3)
     copy =
-      "Sắp sang lượt 3: Location ở lane 3 sẽ được mở. Quân đã có ở đây không được buff hồi tố.";
+      "Turn 3 is next: the location in lane 3 will reveal. Units already here do not gain its entry bonus retroactively.";
   if (progress.stepId === "G07" && !view.blockResponse && !ready)
-    copy = "Meter đang 6/8. Đòn combat tiếp theo sẽ được chặn.";
+    copy = "Your meter is at 6/8. The next combat attack will be blocked.";
   if (progress.stepId === "G08" && !ready)
-    copy = "Đang hoàn tất lượt 4 và mở Location ở lượt 5…";
+    copy = "Finishing turn 4 and revealing the location on turn 5…";
   const chapter = {
-    A: "Đặt quân và năng lượng",
-    B: "Dùng trick",
+    A: "Units and energy",
+    B: "Play tricks",
     C: "Location",
-    D: "Phản hồi block",
-    E: "Hai pha của phe Ác",
+    D: "Block response",
+    E: "Ashen Court's two phases",
   }[progress.chapterId];
   return {
-    title: `Tình huống ${progress.chapterId === "E" ? 1 : "ABCD".indexOf(progress.chapterId) + 1}: ${chapter}`,
+    title: `Scenario ${progress.chapterId === "E" ? 1 : "ABCD".indexOf(progress.chapterId) + 1}: ${chapter}`,
     copy,
     continueLabel:
       progress.stepId === "G02"
-        ? "Đã hiểu"
+        ? "Got it"
         : ["G08", "E02"].includes(progress.stepId)
-          ? "Hoàn thành"
+          ? "Finish"
           : ["G03", "G05", "G06"].includes(progress.stepId)
-            ? "Bài tiếp theo"
-            : "Tiếp tục",
+            ? "Next lesson"
+            : "Continue",
   };
 }
 
@@ -109,7 +109,7 @@ export function TutorialEntry({
           const expected = side === "GOOD" ? "tutorial_v1" : "tutorial_evil_v1";
           if (saved.scenarioId !== expected) {
             setMessage(
-              `Có yêu cầu hướng dẫn phe ${saved.scenarioId === "tutorial_v1" ? "Thiện" : "Ác"} chưa được xác nhận. Thử lại yêu cầu này trước khi chọn bài khác.`,
+              `An unconfirmed tutorial request for ${saved.scenarioId === "tutorial_v1" ? "Dawnward" : "Ashen Court"} is pending. Retry that request before choosing another lesson.`,
             );
             sending.current = false;
             setBusy(false);
@@ -158,11 +158,11 @@ export function TutorialEntry({
           /* Confirmed rejection. */
         }
         setMessage(
-          "Bạn có một trận đang diễn ra. Tiếp tục trận đó trước khi mở hướng dẫn.",
+          "You have an active match. Resume it before starting a tutorial.",
         );
       } else {
         setMessage(
-          `Chưa xác định kết quả tạo hướng dẫn. Khôi phục phiên nếu cần rồi thử lại cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
+          `Tutorial creation is unconfirmed. Restore your session if needed, then retry the same request.${durable ? "" : " The request could not be saved; keep this page open and do not reload."}`,
         );
       }
     } finally {
@@ -180,15 +180,15 @@ export function TutorialEntry({
     <section className="tutorial-entry">
       <button disabled={busy || !!conflict} onClick={() => void start()}>
         {busy
-          ? "Đang mở hướng dẫn…"
+          ? "Opening tutorial…"
           : message && !conflict
-            ? "Thử lại mở hướng dẫn"
+            ? "Retry tutorial"
             : label}
       </button>
       {message && <p role="status">{message}</p>}
-      {conflict && <a href={`/matches/${conflict}`}>Tiếp tục trận</a>}
+      {conflict && <a href={`/matches/${conflict}`}>Resume match</a>}
       <SessionRecovery />
-      {onDismiss && !busy && <button onClick={onDismiss}>Đóng</button>}
+      {onDismiss && !busy && <button onClick={onDismiss}>Close</button>}
     </section>
   );
 }

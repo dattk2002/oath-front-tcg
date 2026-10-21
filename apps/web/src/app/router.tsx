@@ -15,8 +15,8 @@ export function Brand() {
         <i />
       </span>
       <span>
-        OATHFRONT <small>NGŨ LỘ</small>
-        <span className="sr-only"> · Trang chủ</span>
+        OATHFRONT <small>THE FIVEFOLD</small>
+        <span className="sr-only"> · Home</span>
       </span>
     </Link>
   );

@@ -11,19 +11,17 @@ test("keyboard block targeting and pointer KEEP are explicit; pause surrender co
   const { id } = await blockFixture(page);
   await page.goto(`/matches/${id}`);
   await expect(
-    page.getByRole("button", { name: "Dùng ngay · 0", exact: true }),
+    page.getByRole("button", { name: "Use now · 0", exact: true }),
   ).toBeEnabled();
-  await page
-    .getByRole("button", { name: "Dùng ngay · 0", exact: true })
-    .focus();
+  await page.getByRole("button", { name: "Use now · 0", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.locator('[data-own-unit="true"]').first()).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(
-    page.getByRole("button", { name: "Dùng ngay · 0", exact: true }),
+    page.getByRole("button", { name: "Use now · 0", exact: true }),
   ).toBeFocused();
-  await page.getByRole("button", { name: "Tạm dừng", exact: true }).click();
-  await expect(page.getByRole("dialog", { name: "Tạm dừng" })).toBeVisible();
+  await page.getByRole("button", { name: "Pause", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Paused" })).toBeVisible();
   await expect(page.getByRole("dialog").locator("h2")).toBeFocused();
   for (const key of ["Tab", "Shift+Tab"])
     for (let tab = 0; tab < 8; tab++) {
@@ -32,26 +30,28 @@ test("keyboard block targeting and pointer KEEP are explicit; pause surrender co
         await page.evaluate(() => !!document.activeElement?.closest("dialog")),
       ).toBe(true);
     }
-  await page.getByRole("button", { name: "Đầu hàng", exact: true }).click();
+  await page.getByRole("button", { name: "Surrender", exact: true }).click();
   await expect(
-    page.getByText("Xác nhận đầu hàng?", { exact: true }),
+    page.getByText("Confirm surrender?", { exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("button", { name: "Quay lại trận", exact: true })
+    .getByRole("button", { name: "Return to match", exact: true })
     .click();
   expect((await snapshot(page, id)).view.lifecycle).toBe("PAUSED");
-  await page.getByRole("button", { name: "Tiếp tục", exact: true }).focus();
+  await page.getByRole("button", { name: "Continue", exact: true }).focus();
   await page.keyboard.press("Escape");
   await expect(
-    page.getByRole("dialog", { name: "Tạm dừng", exact: true }),
+    page.getByRole("dialog", { name: "Paused", exact: true }),
   ).not.toBeVisible();
   await expect(
-    page.getByRole("button", { name: "Tạm dừng", exact: true }),
+    page.getByRole("button", { name: "Pause", exact: true }),
   ).toBeFocused();
   await expect(
-    page.getByRole("heading", { name: "Đã chặn đòn" }),
+    page.getByRole("heading", { name: "Attack blocked" }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Để dành", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Keep for later", exact: true })
+    .click();
 });
 for (const input of ["pointer", "keyboard", "drag"] as const)
   test(`${input} plays the same exact public unit intent`, async ({ page }) => {
@@ -68,14 +68,14 @@ for (const input of ["pointer", "keyboard", "drag"] as const)
       await source.focus();
       await page.keyboard.press("Enter");
       const lane = page.getByRole("button", {
-        name: "Chọn lộ 1, mục tiêu hợp lệ",
+        name: "Choose lane 1, legal target",
         exact: true,
       });
       await lane.focus();
       await page.keyboard.press("ArrowRight");
       await expect(
         page.getByRole("button", {
-          name: "Chọn lộ 2, mục tiêu hợp lệ",
+          name: "Choose lane 2, legal target",
           exact: true,
         }),
       ).toBeFocused();
@@ -84,7 +84,7 @@ for (const input of ["pointer", "keyboard", "drag"] as const)
       await source.click();
       await page
         .getByRole("button", {
-          name: "Chọn lộ 2, mục tiêu hợp lệ",
+          name: "Choose lane 2, legal target",
           exact: true,
         })
         .click();
@@ -102,7 +102,7 @@ for (const input of ["pointer", "keyboard", "drag"] as const)
       await page.mouse.move(box!.x + 40, box!.y - 20, { steps: 5 });
       const target = await page
         .getByRole("button", {
-          name: "Chọn lộ 2, mục tiêu hợp lệ",
+          name: "Choose lane 2, legal target",
           exact: true,
         })
         .boundingBox();
@@ -127,16 +127,14 @@ test("playable trick label and unit-to-hero focus forecast follow the resolved l
   const { id, instanceId } = await cardFixture(page, true);
   await page.goto(`/matches/${id}`);
   const source = page.locator(`[data-card-id="${instanceId}"]`);
-  await expect(source).toHaveAccessibleName(
-    "Có thể chơi. 2 năng lượng Ném Than",
-  );
+  await expect(source).toHaveAccessibleName("Playable. 2 energy Coalshot");
   await expect(source).toHaveAttribute("data-playable-unit", "false");
   await source.click();
   await page.locator('[data-own-unit="false"]').first().focus();
-  const forecast = page.getByRole("region", { name: "Dự kiến công khai" });
-  await expect(forecast).toContainText("Sát thương hero địch: 0");
+  const forecast = page.getByRole("region", { name: "Public forecast" });
+  await expect(forecast).toContainText("Enemy hero damage: 0");
   await page.locator('[data-hero-side="GOOD"] button').focus();
-  await expect(forecast).toContainText("Sát thương hero địch: 3");
+  await expect(forecast).toContainText("Enemy hero damage: 3");
   await page.keyboard.press("Enter");
   await expect
     .poll(async () => (await snapshot(page, id)).view.players.GOOD.hp)

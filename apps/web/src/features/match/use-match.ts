@@ -137,8 +137,8 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
         }
         setRecoveryFailed(false);
         if (
-          before.message?.startsWith("Không tải được bàn mới nhất") ||
-          before.message?.startsWith("Chưa tải đủ nhật ký")
+          before.message?.startsWith("Latest board unavailable") ||
+          before.message?.startsWith("Incomplete battle log")
         )
           store.setMessage(null);
         store.mergeLog(
@@ -150,7 +150,7 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
         if (active) {
           setRecoveryFailed(true);
           store.setMessage(
-            "Không tải được bàn mới nhất. Kết nối lại để thử lại.",
+            "The latest board could not be loaded. Reconnect to retry.",
           );
         }
       } finally {
@@ -201,7 +201,9 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
           store.mergeLog(log.logEvents, log.logCursor, log.logExpired);
       } catch {
         if (active)
-          store.setMessage("Chưa tải đủ nhật ký. Kết nối lại để khôi phục.");
+          store.setMessage(
+            "The battle log is incomplete. Reconnect to restore it.",
+          );
       } finally {
         scanning = false;
         if (active && store.getSnapshot().latestSeq > current.latestSeq)

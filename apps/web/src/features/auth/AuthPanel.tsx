@@ -161,9 +161,7 @@ export default function AuthPanel({
         setStorageUnavailable(true);
       }
       setConflict(null);
-      setMessage(
-        "Đã khôi phục tài khoản. Bạn có thể thử lại yêu cầu đang giữ.",
-      );
+      setMessage("Account restored. You can retry your pending request.");
     } catch (error) {
       if (
         error instanceof ApiError &&
@@ -176,11 +174,11 @@ export default function AuthPanel({
       ) {
         setConflict(null);
         setMessage(
-          "Không thể gộp do yêu cầu trùng mã. Chưa có dữ liệu nào được chuyển; phiên khách vẫn được giữ.",
+          "The merge request ID was already used. No data was transferred; your guest session is preserved.",
         );
       } else
         setMessage(
-          "Chưa hoàn tất đăng nhập. Yêu cầu và lựa chọn vẫn được giữ. Đăng nhập Google hoặc thử khôi phục phiên.",
+          "Sign-in is incomplete. Your request and choices are preserved. Sign in with Google or restore your session.",
         );
     } finally {
       api.bindSession(adopted ?? session);
@@ -230,7 +228,7 @@ export default function AuthPanel({
     try {
       if (!persistIntent(prepare())) {
         setMessage(
-          "Không thể chuyển sang Google vì bộ nhớ thiết bị không lưu được yêu cầu. Chuyển trang sẽ mất dữ liệu đang giữ trong bộ nhớ; hãy thử Khôi phục phiên tại đây.",
+          "Google sign-in cannot open because device storage could not save the request. Leaving this page would lose the data held in memory; select Restore session here.",
         );
         return;
       }
@@ -241,7 +239,7 @@ export default function AuthPanel({
       if (result.error) throw Error();
     } catch {
       setMessage(
-        "Không mở được Google. Phiên chơi hiện tại vẫn được giữ; hãy thử lại.",
+        "Google could not be opened. Your current session is preserved; try again.",
       );
     } finally {
       lock.current = false;
@@ -271,7 +269,7 @@ export default function AuthPanel({
       onLogout();
       await cleanup;
     } catch {
-      setMessage("Chưa xác nhận được đăng xuất. Hãy thử lại.");
+      setMessage("Sign-out is unconfirmed. Try again.");
     } finally {
       lock.current = false;
       setBusy(false);
@@ -280,7 +278,7 @@ export default function AuthPanel({
   return (
     <section
       className="auth-panel"
-      aria-label="Tài khoản"
+      aria-label="Account"
       data-urgent={
         !!(
           expired ||
@@ -295,20 +293,20 @@ export default function AuthPanel({
         <>
           <span>{session.principal.displayName}</span>
           <button disabled={authBusy} onClick={() => void signOut()}>
-            Đăng xuất
+            Sign out
           </button>
         </>
       ) : (
         <>
           <span>
             {expired
-              ? "Phiên đã hết hạn. Giữ nguyên trang để khôi phục."
+              ? "Your session expired. Keep this page open to restore it."
               : session
-                ? "Lưu bộ bài và trận đấu với tài khoản."
-                : "Chơi ngay bằng phiên khách hoặc lưu tiến trình với Google."}
+                ? "Save decks and matches to your account."
+                : "Play as a guest or save your progress with Google."}
           </span>
           <button disabled={authBusy || !ready} onClick={() => void login()}>
-            Đăng nhập Google
+            Sign in with Google
           </button>
         </>
       )}
@@ -325,34 +323,34 @@ export default function AuthPanel({
             void complete();
           }}
         >
-          Đăng nhập tài khoản đã lưu
+          Sign in to a saved account
         </button>
       )}
       {(expired || message) && (
         <button disabled={authBusy} onClick={() => void complete()}>
-          {busy ? "Đang khôi phục…" : "Khôi phục phiên"}
+          {busy ? "Restoring…" : "Restore session"}
         </button>
       )}
       {message && <p role="status">{message}</p>}
       {storageUnavailable && (
         <p role="alert">
-          Bộ nhớ thiết bị không lưu được dữ liệu. Yêu cầu hiện tại được giữ
-          trong bộ nhớ của trang. Không tải lại trang hoặc chuyển trang; dữ liệu
-          này sẽ không theo bạn sang Google.
+          Device storage could not save your data. The current request is held
+          in this page's memory. Do not reload or leave this page; this data
+          will not follow you to Google.
         </p>
       )}
       {providerCleanup !== "idle" && (
         <>
           <p role="status">
             {providerCleanup === "running"
-              ? "Đang kết thúc phiên Google…"
-              : "Phiên chơi đã kết thúc. Chưa kết thúc được phiên Google; bạn có thể thử lại bên dưới."}
+              ? "Ending Google session…"
+              : "Your game session ended. The Google session could not be ended; you can retry below."}
           </p>
           <button
             disabled={authBusy}
             onClick={() => void signOutProviderSession()}
           >
-            Thử đăng xuất Google lại
+            Retry Google sign-out
           </button>
         </>
       )}

@@ -99,28 +99,28 @@ export default function BattleScene({
               setAnnouncement(
                 event.kind === "DamageBatchResolved"
                   ? [
-                      "Sát thương đồng thời",
+                      "Simultaneous damage",
                       ...event.payload.hpChanges.map((change) => {
                         if (change.target.kind === "HERO")
-                          return `Hero ${change.target.side === "GOOD" ? "Thiện" : "Ác"}: ${change.after} HP`;
+                          return `Hero ${change.target.side === "GOOD" ? "Dawnward" : "Ashen Court"}: ${change.after} HP`;
                         const id = change.target.instanceId;
                         const unit = scene
                           .getView()
                           ?.board.flatMap((lane) => [lane.good, lane.evil])
                           .find((unit) => unit?.instanceId === id);
-                        return `${unit ? `Lộ ${unit.laneId}, ${unit.owner === "GOOD" ? "Thiện" : "Ác"}` : "Quân"}: ${change.after} HP`;
+                        return `${unit ? `Lane ${unit.laneId}, ${unit.owner === "GOOD" ? "Dawnward" : "Ashen Court"}` : "Unit"}: ${change.after} HP`;
                       }),
                       ...event.payload.packets.flatMap((packet) =>
                         packet.blocked
-                          ? ["Chặn"]
+                          ? ["Block"]
                           : packet.shieldConsumed
-                            ? ["Khiên"]
+                            ? ["Shield"]
                             : packet.mitigatedDamage > 0
-                              ? [`Giáp −${packet.mitigatedDamage}`]
+                              ? [`Armor −${packet.mitigatedDamage}`]
                               : [],
                       ),
                     ].join(" · ")
-                  : (eventLabel[event.kind] ?? "Bàn chơi đã cập nhật"),
+                  : (eventLabel[event.kind] ?? "Board updated"),
               );
           },
         });
@@ -239,19 +239,19 @@ export default function BattleScene({
               )
             }
           >
-            Đến bàn hiện tại
+            Jump to current board
           </button>
         )}
         {status === "loading" && (
           <span role="status">
-            Đang tải hình · {progress.loaded} / {progress.total}
+            Loading art · {progress.loaded} / {progress.total}
           </span>
         )}
         {status === "fallback" && (
           <span role="status">
-            Đang dùng bàn văn bản.{" "}
+            Using the text board.{" "}
             <button onClick={() => setAttempt((n) => n + 1)}>
-              Thử lại hình ảnh
+              Retry artwork
             </button>
           </span>
         )}
@@ -265,7 +265,7 @@ export default function BattleScene({
               update({ reducedMotion: event.target.checked })
             }
           />{" "}
-          Giảm chuyển động / VFX
+          Reduce motion / VFX
         </label>
       </div>
       <p className="motion-announcement" aria-live="polite" aria-atomic="true">

@@ -47,9 +47,9 @@ async function guest(page: Page) {
 async function copy(page: Page) {
   await guest(page);
   await page.goto("/heroes/H_G_BV/decks");
-  await page.getByRole("link", { name: "Tùy chỉnh" }).click();
+  await page.getByRole("link", { name: "Customize" }).click();
   await expect(
-    page.getByRole("heading", { name: "Xây dựng bộ bài" }),
+    page.getByRole("heading", { name: "Build your deck" }),
   ).toBeVisible();
 }
 async function screenshot(page: Page, name: string) {
@@ -76,7 +76,7 @@ test("six heroes expose exact four powers and signature without early match crea
   await expect(page.getByRole("radio")).toHaveCount(6);
   for (const hero of catalog.heroes) {
     await page.locator(`input[type="radio"][value="${hero.id}"]`).check();
-    const detail = page.getByRole("complementary", { name: "Chi tiết hero" });
+    const detail = page.getByRole("complementary", { name: "Hero details" });
     await expect(
       detail.getByRole("heading", { name: hero.nameVi, exact: true }),
     ).toBeVisible();
@@ -105,19 +105,19 @@ test("six heroes expose exact four powers and signature without early match crea
     await page.setViewportSize({ width, height });
     await screenshot(page, `heroes-${name}`);
   }
-  await page.getByRole("button", { name: "Chọn bộ bài", exact: true }).click();
-  await expect(page.getByRole("link", { name: "Tùy chỉnh" })).toBeVisible();
+  await page.getByRole("button", { name: "Choose deck", exact: true }).click();
+  await expect(page.getByRole("link", { name: "Customize" })).toBeVisible();
   expect(creates).toBe(0);
 });
 test("collection filters curve copies and independent quantity controls across responsive layouts", async ({
   page,
 }) => {
   await copy(page);
-  const collection = page.getByRole("region", { name: "Bộ sưu tập" });
-  await expect(collection.getByText("22 lá phù hợp")).toBeVisible();
+  const collection = page.getByRole("region", { name: "Collection" });
+  await expect(collection.getByText("22 matching cards")).toBeVisible();
   await expect(
-    page.getByRole("complementary", { name: "Danh sách bộ bài" }),
-  ).toContainText("22 Nhân vật / 8 Trick · Trung bình 2.33");
+    page.getByRole("complementary", { name: "Deck list" }),
+  ).toContainText("22 Units / 8 Tricks · Average 2.33");
   await expect(page.getByRole("table").getByRole("cell")).toHaveText([
     "8",
     "12",
@@ -126,43 +126,43 @@ test("collection filters curve copies and independent quantity controls across r
     "0",
     "2",
   ]);
-  await collection.getByLabel("Tìm tên hoặc keyword").fill("KY SI LA");
+  await collection
+    .getByLabel("Search names, rules or keywords")
+    .fill("LEAF KNIGHT");
   await collection
     .getByRole("combobox", { name: /^Class/ })
     .selectOption("COMMON");
   await collection
-    .getByRole("combobox", { name: /^Loại/ })
+    .getByRole("combobox", { name: /^Type/ })
     .selectOption("UNIT");
-  await collection
-    .getByRole("combobox", { name: /^Chi phí/ })
-    .selectOption("2");
+  await collection.getByRole("combobox", { name: /^Cost/ }).selectOption("2");
   await expect(collection.locator("article")).toHaveCount(1);
   const tile = collection.locator("article");
   await expect(
-    tile.getByRole("button", { name: "Thêm Kỵ Sĩ Lá" }),
+    tile.getByRole("button", { name: "Add Leaf Knight" }),
   ).toBeDisabled();
-  await tile.getByRole("button", { name: "Bớt Kỵ Sĩ Lá" }).click();
+  await tile.getByRole("button", { name: "Remove Leaf Knight" }).click();
   await expect(
-    page.getByRole("heading", { name: "Bộ bài · 29/30" }),
+    page.getByRole("heading", { name: "Deck · 29/30" }),
   ).toBeVisible();
   await expect(page.getByRole("dialog")).toHaveCount(0);
-  await tile.getByRole("button", { name: "Thêm Kỵ Sĩ Lá" }).click();
-  await tile.getByRole("button", { name: "Kỵ Sĩ Lá", exact: true }).click();
-  await expect(page.getByRole("dialog")).toContainText("Không có ability.");
+  await tile.getByRole("button", { name: "Add Leaf Knight" }).click();
+  await tile.getByRole("button", { name: "Leaf Knight", exact: true }).click();
+  await expect(page.getByRole("dialog")).toContainText("No abilities.");
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).toHaveCount(0);
-  await collection.getByLabel("Tìm tên hoặc keyword").fill("không tồn tại");
+  await collection
+    .getByLabel("Search names, rules or keywords")
+    .fill("không tồn tại");
   await expect(
-    collection.getByText("Không có lá phù hợp.", { exact: false }),
+    collection.getByText("No matching cards.", { exact: false }),
   ).toBeVisible();
-  await collection.getByLabel("Tìm tên hoặc keyword").fill("");
+  await collection.getByLabel("Search names, rules or keywords").fill("");
   await collection
     .getByRole("combobox", { name: /^Class/ })
     .selectOption("ALL");
-  await collection.getByRole("combobox", { name: /^Loại/ }).selectOption("ALL");
-  await collection
-    .getByRole("combobox", { name: /^Chi phí/ })
-    .selectOption("ALL");
+  await collection.getByRole("combobox", { name: /^Type/ }).selectOption("ALL");
+  await collection.getByRole("combobox", { name: /^Cost/ }).selectOption("ALL");
   for (const [name, width, height] of [
     ["desktop", 1440, 900],
     ["tablet", 1024, 768],
@@ -172,19 +172,21 @@ test("collection filters curve copies and independent quantity controls across r
     await screenshot(page, `builder-${name}`);
     if (name === "mobile") {
       const opener = page.getByRole("button", {
-        name: "Bộ bài · 30/30",
+        name: "Deck · 30/30",
         exact: true,
       });
       await opener.click();
       const drawer = page.getByRole("dialog");
-      await expect(drawer).toContainText("22 Nhân vật / 8 Trick");
-      await drawer.getByRole("button", { name: "Bớt Người Gác Đèn" }).click();
+      await expect(drawer).toContainText("22 Units / 8 Trick");
+      await drawer
+        .getByRole("button", { name: "Remove Lanternkeeper" })
+        .click();
       await expect(
         drawer
-          .getByRole("heading", { name: "Bộ bài · 29/30", exact: true })
+          .getByRole("heading", { name: "Deck · 29/30", exact: true })
           .first(),
       ).toBeVisible();
-      await drawer.getByRole("button", { name: "Thêm Người Gác Đèn" }).click();
+      await drawer.getByRole("button", { name: "Add Lanternkeeper" }).click();
       await screenshot(page, "builder-mobile-drawer");
       await page.keyboard.press("Escape");
       await expect(drawer).toHaveCount(0);
@@ -197,39 +199,39 @@ test("offline draft survives retry reload, blocks Play under30 and completes sav
 }) => {
   await copy(page);
   await page
-    .getByLabel("Tên bộ bài", { exact: true })
+    .getByLabel("Deck name", { exact: true })
     .fill("Vườn riêng với tên tiếng Việt dài");
-  const c = page.getByRole("region", { name: "Bộ sưu tập" });
-  await c.getByRole("button", { name: "Bớt Người Gác Đèn" }).click();
+  const c = page.getByRole("region", { name: "Collection" });
+  await c.getByRole("button", { name: "Remove Lanternkeeper" }).click();
   await expect(
-    page.getByRole("button", { name: "Lưu và tiếp tục" }),
+    page.getByRole("button", { name: "Save and continue" }),
   ).toBeDisabled();
   let fail = true;
   await page.route("**/api/v1/decks", (r) =>
     r.request().method() === "POST" && fail ? r.abort("failed") : r.continue(),
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(
-    page.getByRole("status").filter({ hasText: "Chưa xác định kết quả lưu" }),
+    page.getByRole("status").filter({ hasText: "Save result is unconfirmed" }),
   ).toBeVisible();
   fail = false;
   await page.reload();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Vườn riêng với tên tiếng Việt dài",
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(
-    page.getByRole("status").filter({ hasText: "Đã lưu" }),
+    page.getByRole("status").filter({ hasText: "Saved" }),
   ).toBeVisible();
-  await c.getByRole("button", { name: "Thêm Người Gác Đèn" }).click();
-  await page.getByRole("button", { name: "Lưu và tiếp tục" }).click();
+  await c.getByRole("button", { name: "Add Lanternkeeper" }).click();
+  await page.getByRole("button", { name: "Save and continue" }).click();
   await expect(
-    page.getByRole("heading", { name: "Chọn đối thủ" }),
+    page.getByRole("heading", { name: "Choose your opponent" }),
   ).toBeVisible();
   const request = page.waitForRequest(
     (r) => r.method() === "POST" && r.url().endsWith("/matches"),
   );
-  await page.getByRole("button", { name: "Bắt đầu trận" }).click();
+  await page.getByRole("button", { name: "Start match" }).click();
   const body = (await request).postDataJSON();
   expect(body.deck.kind).toBe("SAVED");
   expect(body.deck.deckRevision).toBe(2);
@@ -239,30 +241,28 @@ test("dirty navigation and focusable name errors preserve draft", async ({
   page,
 }) => {
   await copy(page);
-  await page.getByLabel("Tên bộ bài", { exact: true }).fill("");
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByLabel("Deck name", { exact: true }).fill("");
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(page.locator("#deck-error-summary")).toBeFocused();
   await page.locator("#deck-error-summary a").click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toBeFocused();
-  await page
-    .getByLabel("Tên bộ bài", { exact: true })
-    .fill("Bản nháp chưa lưu");
-  await page.getByRole("link", { name: "Quay lại bộ bài" }).click();
+  await expect(page.getByLabel("Deck name", { exact: true })).toBeFocused();
+  await page.getByLabel("Deck name", { exact: true }).fill("Bản nháp chưa lưu");
+  await page.getByRole("link", { name: "Back to decks" }).click();
   const dialog = page.getByRole("dialog");
   await expect(
-    dialog.getByRole("button", { name: "Lưu", exact: true }),
+    dialog.getByRole("button", { name: "Save", exact: true }),
   ).toBeVisible();
   await expect(
-    dialog.getByRole("button", { name: "Rời đi", exact: true }),
+    dialog.getByRole("button", { name: "Leave", exact: true }),
   ).toBeVisible();
-  await dialog.getByRole("button", { name: "Ở lại", exact: true }).click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await dialog.getByRole("button", { name: "Stay", exact: true }).click();
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Bản nháp chưa lưu",
   );
-  await page.getByRole("link", { name: "Quay lại bộ bài" }).click();
+  await page.getByRole("link", { name: "Back to decks" }).click();
   await page
     .getByRole("dialog")
-    .getByRole("button", { name: "Lưu", exact: true })
+    .getByRole("button", { name: "Save", exact: true })
     .click();
   await expect(page).toHaveURL(/\/heroes\/H_G_BV\/decks/);
   await expect(
@@ -292,10 +292,10 @@ test("stale revision offers load latest and save copy without overwriting", asyn
     })
   ).json();
   await page.goto(`/decks/${saved.id}/edit`);
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Bộ gốc",
   );
-  await page.getByLabel("Tên bộ bài", { exact: true }).fill("Bản cục bộ");
+  await page.getByLabel("Deck name", { exact: true }).fill("Bản cục bộ");
   await page.request.put(`/api/v1/decks/${saved.id}`, {
     headers,
     data: {
@@ -304,19 +304,19 @@ test("stale revision offers load latest and save copy without overwriting", asyn
       deck: { ...deck, name: "Bản tab khác" },
     },
   });
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   const dialog = page.getByRole("dialog");
-  await expect(dialog).toContainText("Bộ bài đã thay đổi ở tab khác");
-  await dialog.getByRole("button", { name: "Lưu thành bản sao" }).click();
+  await expect(dialog).toContainText("This deck changed in another tab");
+  await dialog.getByRole("button", { name: "Save as copy" }).click();
   await expect(dialog).toHaveCount(0);
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Bản cục bộ",
   );
   expect(
     (await (await page.request.get(`/api/v1/decks/${saved.id}`)).json()).name,
   ).toBe("Bản tab khác");
   await page.goto(`/decks/${saved.id}/edit`);
-  await page.getByLabel("Tên bộ bài", { exact: true }).fill("Lần sửa sau");
+  await page.getByLabel("Deck name", { exact: true }).fill("Lần sửa sau");
   await page.request.put(`/api/v1/decks/${saved.id}`, {
     headers,
     data: {
@@ -325,12 +325,12 @@ test("stale revision offers load latest and save copy without overwriting", asyn
       deck: { ...deck, name: "Bản mới nhất" },
     },
   });
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await page
     .getByRole("dialog")
-    .getByRole("button", { name: "Tải bản mới" })
+    .getByRole("button", { name: "Load latest version" })
     .click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Bản mới nhất",
   );
 });
@@ -404,20 +404,20 @@ for (const kind of ["PRESET", "SAVED"] as const)
         requests.push(r.postDataJSON());
     });
     await page.goto(`/history/${id}`);
-    await page.getByRole("button", { name: "Chơi lại", exact: true }).click();
+    await page.getByRole("button", { name: "Rematch", exact: true }).click();
     expect(requests).toEqual([]);
-    await page.getByRole("link", { name: "Mở bộ bài gốc để xem lại" }).click();
+    await page
+      .getByRole("link", { name: "Open original deck for review" })
+      .click();
     await expect(
-      page.getByRole("heading", { name: "Xem lại bộ bài", exact: true }),
+      page.getByRole("heading", { name: "Review deck", exact: true }),
     ).toBeVisible();
     await expect(
-      page.getByRole("heading", { name: "Bộ bài · 30/30" }),
+      page.getByRole("heading", { name: "Deck · 30/30" }),
     ).toBeVisible();
     expect(requests).toEqual([]);
     await screenshot(page, `review-${kind.toLowerCase()}`);
-    await page
-      .getByRole("button", { name: "Chấp nhận và tạo trận mới" })
-      .click();
+    await page.getByRole("button", { name: "Accept and create match" }).click();
     await expect(page).toHaveURL(/\/matches\//);
     expect(requests).toHaveLength(1);
     expect(requests[0]).toMatchObject({
@@ -447,9 +447,9 @@ test("throwing storage and rejected create retain no-reload warning and exact re
     return r.abort("failed");
   });
   await page.goto(`/history/${id}`);
-  await page.getByRole("button", { name: "Chơi lại", exact: true }).click();
-  await expect(page.getByRole("status")).toContainText("không tải lại");
-  await page.getByRole("button", { name: "Chơi lại", exact: true }).click();
+  await page.getByRole("button", { name: "Rematch", exact: true }).click();
+  await expect(page.getByRole("status")).toContainText(/do not reload/i);
+  await page.getByRole("button", { name: "Rematch", exact: true }).click();
   expect(bodies).toHaveLength(2);
   expect(bodies[1]).toEqual(bodies[0]);
 });
@@ -460,20 +460,20 @@ test("dirty browser Back offers stay and leave; empty new deck remains editable 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/heroes/H_G_BV/decks");
-  await page.getByRole("link", { name: "Tạo bộ bài", exact: true }).click();
+  await page.getByRole("link", { name: "Create deck", exact: true }).click();
   await expect(
-    page.getByRole("button", { name: "Bộ bài · 0/30", exact: true }),
+    page.getByRole("button", { name: "Deck · 0/30", exact: true }),
   ).toBeVisible();
-  await page.getByLabel("Tên bộ bài", { exact: true }).fill("");
+  await page.getByLabel("Deck name", { exact: true }).fill("");
   await page.reload();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue("");
-  await page.getByLabel("Tên bộ bài", { exact: true }).fill("Giữ khi quay lại");
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue("");
+  await page.getByLabel("Deck name", { exact: true }).fill("Giữ khi quay lại");
   await page.evaluate(() => history.back());
   await expect(page.getByRole("dialog")).toContainText(
-    "Bộ bài có thay đổi chưa lưu",
+    "Your deck has unsaved changes",
   );
-  await page.getByRole("button", { name: "Ở lại", exact: true }).click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await page.getByRole("button", { name: "Stay", exact: true }).click();
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Giữ khi quay lại",
   );
   await screenshot(page, "empty-mobile-reduced");
@@ -483,14 +483,16 @@ test("offline committed saved create reload restores exact source opponent and i
 }) => {
   await guest(page);
   await page.goto("/decks/new?hero=H_E_FX&preset=D_E_FX");
-  await page.getByRole("button", { name: "Lưu và tiếp tục" }).click();
+  await page.getByRole("button", { name: "Save and continue" }).click();
   await expect(
-    page.getByRole("heading", { name: "Chọn đối thủ", exact: true }),
+    page.getByRole("heading", { name: "Choose your opponent", exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("combobox", { name: /^Hero bot/ })
+    .getByRole("combobox", { name: /^Opponent hero/ })
     .selectOption("H_G_BP");
-  await page.getByRole("combobox", { name: /^Độ khó/ }).selectOption("NORMAL");
+  await page
+    .getByRole("combobox", { name: /^Difficulty/ })
+    .selectOption("NORMAL");
   const bodies: unknown[] = [];
   let drop = true;
   await page.route("**/api/v1/matches", async (route) => {
@@ -502,23 +504,23 @@ test("offline committed saved create reload restores exact source opponent and i
       await route.abort("failed");
     } else await route.continue();
   });
-  await page.getByRole("button", { name: "Bắt đầu trận" }).click();
-  await expect(page.getByText(/Chưa xác định kết quả tạo trận/)).toBeVisible();
+  await page.getByRole("button", { name: "Start match" }).click();
+  await expect(page.getByText(/Match creation is unconfirmed/)).toBeVisible();
   await page.reload();
   await expect(
-    page.getByRole("heading", { name: "Chọn đối thủ", exact: true }),
+    page.getByRole("heading", { name: "Choose your opponent", exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("combobox", { name: /^Hero bot/ })).toHaveValue(
+  await expect(page.getByRole("combobox", { name: /^Opponent hero/ })).toHaveValue(
     "H_G_BP",
   );
-  await expect(page.getByRole("combobox", { name: /^Độ khó/ })).toHaveValue(
+  await expect(page.getByRole("combobox", { name: /^Difficulty/ })).toHaveValue(
     "NORMAL",
   );
   await expect(
-    page.getByText("Hắc Luyện · Phe Ác", { exact: true }),
+    page.getByText("Cinder · Ashen Court", { exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("button", { name: "Thử lại tạo trận", exact: true })
+    .getByRole("button", { name: "Retry match creation", exact: true })
     .click();
   await expect(page).toHaveURL(/\/matches\//);
   expect(bodies).toHaveLength(2);
@@ -553,7 +555,7 @@ test("draft revision migration: stale load latest edit reload retains new draft"
 }) => {
   const { headers, deck, saved } = await savedFixture(page);
   await page.goto(`/decks/${saved.id}/edit`);
-  await page.getByLabel("Tên bộ bài", { exact: true }).fill("Sửa cũ");
+  await page.getByLabel("Deck name", { exact: true }).fill("Sửa cũ");
   expect(
     (
       await page.request.put(`/api/v1/decks/${saved.id}`, {
@@ -566,24 +568,24 @@ test("draft revision migration: stale load latest edit reload retains new draft"
       })
     ).status(),
   ).toBe(200);
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await page
     .getByRole("dialog")
-    .getByRole("button", { name: "Tải bản mới", exact: true })
+    .getByRole("button", { name: "Load latest version", exact: true })
     .click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Phiên bản hai",
   );
   await page
-    .getByLabel("Tên bộ bài", { exact: true })
+    .getByLabel("Deck name", { exact: true })
     .fill("Sửa sau khi tải bản hai");
   await page.reload();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Sửa sau khi tải bản hai",
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(
-    page.getByRole("status").filter({ hasText: "Đã lưu" }),
+    page.getByRole("status").filter({ hasText: "Saved" }),
   ).toBeVisible();
   expect(
     (await (await page.request.get(`/api/v1/decks/${saved.id}`)).json())
@@ -596,21 +598,21 @@ test("draft revision migration: same route save edit reload retains unsaved edit
   const { saved } = await savedFixture(page);
   await page.goto(`/decks/${saved.id}/edit`);
   await page
-    .getByLabel("Tên bộ bài", { exact: true })
+    .getByLabel("Deck name", { exact: true })
     .fill("Đã lưu phiên bản hai");
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(
-    page.getByRole("status").filter({ hasText: "Đã lưu" }),
+    page.getByRole("status").filter({ hasText: "Saved" }),
   ).toBeVisible();
   await page
-    .getByLabel("Tên bộ bài", { exact: true })
+    .getByLabel("Deck name", { exact: true })
     .fill("Chưa lưu sau phiên bản hai");
   await page.reload();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Chưa lưu sau phiên bản hai",
   );
   await expect(
-    page.getByRole("status").filter({ hasText: "chưa lưu trên máy chủ" }),
+    page.getByRole("status").filter({ hasText: "not yet saved to the server" }),
   ).toBeVisible();
 });
 test("offline committed save reload preserves original receipt and requires stale choice for later revision", async ({
@@ -619,7 +621,7 @@ test("offline committed save reload preserves original receipt and requires stal
   const { headers, deck, saved } = await savedFixture(page);
   await page.goto(`/decks/${saved.id}/edit`);
   await page
-    .getByLabel("Tên bộ bài", { exact: true })
+    .getByLabel("Deck name", { exact: true })
     .fill("Yêu cầu lưu nguyên bản");
   const bodies: unknown[] = [];
   let drop = true;
@@ -632,9 +634,9 @@ test("offline committed save reload preserves original receipt and requires stal
       await route.abort("failed");
     } else await route.continue();
   });
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(
-    page.getByRole("status").filter({ hasText: "Chưa xác định kết quả lưu" }),
+    page.getByRole("status").filter({ hasText: "Save result is unconfirmed" }),
   ).toBeVisible();
   expect(
     (
@@ -649,12 +651,12 @@ test("offline committed save reload preserves original receipt and requires stal
     ).status(),
   ).toBe(200);
   await page.reload();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Yêu cầu lưu nguyên bản",
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(
-    page.getByRole("status").filter({ hasText: "Đã lưu" }),
+    page.getByRole("status").filter({ hasText: "Saved" }),
   ).toBeVisible();
   expect(bodies).toHaveLength(2);
   expect(bodies[1]).toEqual(bodies[0]);
@@ -663,24 +665,24 @@ test("offline committed save reload preserves original receipt and requires stal
       .revision,
   ).toBe(3);
   await page
-    .getByLabel("Tên bộ bài", { exact: true })
+    .getByLabel("Deck name", { exact: true })
     .fill("Thay đổi dựa trên bản hai");
   await page.reload();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Thay đổi dựa trên bản hai",
   );
-  await page.getByRole("button", { name: "Lưu bộ bài", exact: true }).click();
+  await page.getByRole("button", { name: "Save deck", exact: true }).click();
   await expect(page.getByRole("dialog")).toContainText(
-    "Bộ bài đã thay đổi ở tab khác",
+    "This deck changed in another tab",
   );
   expect(
     (await (await page.request.get(`/api/v1/decks/${saved.id}`)).json()).name,
   ).toBe("Phiên bản ba từ tab khác");
   await page
     .getByRole("dialog")
-    .getByRole("button", { name: "Tải bản mới", exact: true })
+    .getByRole("button", { name: "Load latest version", exact: true })
     .click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Phiên bản ba từ tab khác",
   );
 });
@@ -694,7 +696,7 @@ test("definitive create rejection then another hero posts the visibly selected p
     .filter({
       has: page.getByRole("button", { name: saved.name, exact: true }),
     })
-    .getByRole("button", { name: "Dùng bộ bài này", exact: true })
+    .getByRole("button", { name: "Use this deck", exact: true })
     .click();
   let reject = true;
   const requests: unknown[] = [];
@@ -717,8 +719,8 @@ test("definitive create rejection then another hero posts the visibly selected p
       });
     } else await route.continue();
   });
-  await page.getByRole("button", { name: "Bắt đầu trận", exact: true }).click();
-  await expect(page.getByText(/Yêu cầu chưa được chấp nhận/)).toBeVisible();
+  await page.getByRole("button", { name: "Start match", exact: true }).click();
+  await expect(page.getByText(/The request was rejected/)).toBeVisible();
   for (const [label, width, height] of [
     ["mobile", 375, 812],
     ["tablet", 1024, 768],
@@ -728,22 +730,22 @@ test("definitive create rejection then another hero posts the visibly selected p
     await screenshot(page, `fix-round1/create-rejection-${label}`);
   }
   const change = page.getByRole("button", {
-    name: "Chọn bộ bài khác",
+    name: "Choose another deck",
     exact: true,
   });
   await change.click();
   await expect(
-    page.getByRole("heading", { name: "Chọn người dẫn lối", exact: true }),
+    page.getByRole("heading", { name: "Choose your hero", exact: true }),
   ).toBeVisible();
-  await page.getByRole("radio", { name: /Lam Vệ/ }).check();
-  await page.getByRole("button", { name: "Chọn bộ bài", exact: true }).click();
+  await page.getByRole("radio", { name: /Aster/ }).check();
+  await page.getByRole("button", { name: "Choose deck", exact: true }).click();
   await page
-    .getByRole("button", { name: "Dùng bộ bài này", exact: true })
+    .getByRole("button", { name: "Use this deck", exact: true })
     .click();
   await expect(
-    page.getByText("Lam Vệ · Phe Thiện", { exact: true }),
+    page.getByText("Aster · Dawnward", { exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Bắt đầu trận", exact: true }).click();
+  await page.getByRole("button", { name: "Start match", exact: true }).click();
   await expect(page).toHaveURL(/\/matches\//);
   expect(requests).toHaveLength(2);
   expect(requests[0]).toMatchObject({
@@ -759,7 +761,7 @@ test("429 create preserves selected source command id and body for explicit retr
   await guest(page);
   await page.goto("/heroes/H_G_BP/decks");
   await page
-    .getByRole("button", { name: "Dùng bộ bài này", exact: true })
+    .getByRole("button", { name: "Use this deck", exact: true })
     .click();
   const requests: unknown[] = [];
   let limit = true;
@@ -782,15 +784,15 @@ test("429 create preserves selected source command id and body for explicit retr
       });
     } else await route.continue();
   });
-  await page.getByRole("button", { name: "Bắt đầu trận", exact: true }).click();
+  await page.getByRole("button", { name: "Start match", exact: true }).click();
   await expect(
-    page.getByRole("button", { name: "Thử lại tạo trận", exact: true }),
+    page.getByRole("button", { name: "Retry match creation", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByText("Lam Vệ · Phe Thiện", { exact: true }),
+    page.getByText("Aster · Dawnward", { exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("button", { name: "Thử lại tạo trận", exact: true })
+    .getByRole("button", { name: "Retry match creation", exact: true })
     .click();
   await expect(page).toHaveURL(/\/matches\//);
   expect(requests).toHaveLength(2);

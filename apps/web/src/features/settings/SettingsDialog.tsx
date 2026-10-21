@@ -39,7 +39,7 @@ export function SettingsProvider({
       initial = restoreSettings(localStorage.getItem(settingsKey));
     } catch {
       setWarning(
-        "Không truy cập được bộ nhớ thiết bị. Cài đặt chỉ giữ trong trang này.",
+        "Device storage is unavailable. Settings will apply only on this page.",
       );
     }
     setSettings(initial);
@@ -49,8 +49,7 @@ export function SettingsProvider({
     const unlock = (e: Event) => {
       if (!e.isTrusted) return;
       void a.unlockFromGesture().then((ok) => {
-        if (!ok)
-          setWarning("Âm thanh không khả dụng. Bạn vẫn có thể tiếp tục chơi.");
+        if (!ok) setWarning("Audio is unavailable. You can still play.");
       });
     };
     const visibility = () => a.setHidden(document.hidden);
@@ -84,7 +83,7 @@ export function SettingsProvider({
       localStorage.setItem(settingsKey, JSON.stringify(next));
     } catch {
       setWarning(
-        "Không lưu được cài đặt. Lựa chọn hiện tại vẫn áp dụng trong trang này.",
+        "Settings could not be saved. Your current choices still apply on this page.",
       );
     }
   }
@@ -117,7 +116,7 @@ export default function SettingsDialog({
       }}
     >
       <h2 ref={heading} tabIndex={-1} id="settings-heading">
-        Cài đặt
+        Settings
       </h2>
       <label className="setting-toggle">
         <input
@@ -125,12 +124,12 @@ export default function SettingsDialog({
           checked={settings.muted}
           onChange={(e) => update({ muted: e.target.checked })}
         />
-        Tắt toàn bộ âm thanh
+        Mute all audio
       </label>
       <label>
-        Nhạc <output>{Math.round(settings.musicVolume * 100)}%</output>
+        Music <output>{Math.round(settings.musicVolume * 100)}%</output>
         <input
-          aria-label="Nhạc"
+          aria-label="Music"
           type="range"
           min="0"
           max="1"
@@ -140,10 +139,9 @@ export default function SettingsDialog({
         />
       </label>
       <label>
-        Hiệu ứng âm thanh{" "}
-        <output>{Math.round(settings.sfxVolume * 100)}%</output>
+        Sound effects <output>{Math.round(settings.sfxVolume * 100)}%</output>
         <input
-          aria-label="Hiệu ứng âm thanh"
+          aria-label="Sound effects"
           type="range"
           min="0"
           max="1"
@@ -158,15 +156,15 @@ export default function SettingsDialog({
           checked={settings.reducedMotion}
           onChange={(e) => update({ reducedMotion: e.target.checked })}
         />
-        Giảm chuyển động
+        Reduce motion
       </label>
       <p className="muted">
-        Luôn tôn trọng cài đặt giảm chuyển động của thiết bị.
+        Your device's reduced-motion preference is always respected.
       </p>
       <label>
-        Chất lượng hình ảnh
+        Visual quality
         <select
-          aria-label="Chất lượng hình ảnh"
+          aria-label="Visual quality"
           value={settings.quality}
           onChange={(e) => {
             const quality = e.target.value;
@@ -178,21 +176,21 @@ export default function SettingsDialog({
               update({ quality });
           }}
         >
-          <option value="auto">Tự động</option>
-          <option value="low">Thấp</option>
-          <option value="standard">Tiêu chuẩn</option>
+          <option value="auto">Automatic</option>
+          <option value="low">Low</option>
+          <option value="standard">Standard</option>
         </select>
       </label>
       {onTutorial && (
         <div className="settings-tutorial">
-          <h3>Hướng dẫn</h3>
+          <h3>Tutorials</h3>
           <button
             onClick={() => {
               onClose();
               onTutorial("GOOD");
             }}
           >
-            Học lại phe Thiện
+            Replay Dawnward tutorial
           </button>
           <button
             onClick={() => {
@@ -200,13 +198,13 @@ export default function SettingsDialog({
               onTutorial("EVIL");
             }}
           >
-            Học phe Ác
+            Learn Ashen Court
           </button>
         </div>
       )}
       {warning && <p role="status">{warning}</p>}
       <button className="primary" onClick={onClose}>
-        Đóng cài đặt
+        Close settings
       </button>
     </dialog>
   );

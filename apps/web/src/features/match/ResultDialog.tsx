@@ -1,3 +1,4 @@
+import { contentName } from "../../content/english-content";
 import { TutorialEntry } from "../tutorial/tutorial-controller";
 import ArtImage from "./ArtImage";
 import { usePrivateStorage } from "../auth/private-storage";
@@ -16,46 +17,46 @@ import { ApiError } from "./api-error";
 import { openDialog } from "./keyboard";
 const titles: Record<NonNullable<MatchSummary["outcome"]>["reason"], string> = {
   HERO_DEFEATED: "",
-  SIMULTANEOUS_LETHAL: "Hòa",
-  TURN_LIMIT: "Hòa",
-  SURRENDER: "Đã đầu hàng",
-  EXPIRED: "Trận đã đóng",
-  ACCOUNT_MERGE: "Trận đã đóng",
-  ENGINE_FAULT: "Trận bị gián đoạn",
-  TUTORIAL_COMPLETED: "Đã hoàn thành hướng dẫn",
-  TUTORIAL_SKIPPED: "Đã bỏ qua hướng dẫn",
+  SIMULTANEOUS_LETHAL: "Draw",
+  TURN_LIMIT: "Draw",
+  SURRENDER: "Surrendered",
+  EXPIRED: "Match closed",
+  ACCOUNT_MERGE: "Match closed",
+  ENGINE_FAULT: "Match interrupted",
+  TUTORIAL_COMPLETED: "Tutorial complete",
+  TUTORIAL_SKIPPED: "Tutorial skipped",
 };
 export function resultCopy(summary: MatchSummary) {
   const outcome = summary.outcome;
   const heading = outcome
     ? (outcome.reason === "SURRENDER" && outcome.result === "WIN"
-        ? "Chiến thắng"
+        ? "Victory"
         : titles[outcome.reason]) ||
       (outcome.result === "WIN"
-        ? "Chiến thắng"
+        ? "Victory"
         : outcome.result === "LOSS"
-          ? "Thất bại"
-          : "Hòa")
-    : "Trận đã kết thúc";
+          ? "Defeat"
+          : "Draw")
+    : "Match finished";
   const reason = outcome?.reason;
   const body =
     reason === "HERO_DEFEATED"
       ? outcome?.result === "WIN"
-        ? "Hero đối phương đã bị hạ."
-        : "Hero của bạn đã bị hạ."
+        ? "The enemy hero was defeated."
+        : "Your hero was defeated."
       : reason === "SIMULTANEOUS_LETHAL"
-        ? "Hai hero cùng bị hạ trong một chuỗi hiệu ứng."
+        ? "Both heroes were defeated in the same effect chain."
         : reason === "TURN_LIMIT"
-          ? "Đã kết thúc lượt 20."
+          ? "Turn 20 has ended."
           : reason === "ENGINE_FAULT"
-            ? "Không tính thắng hoặc thua."
+            ? "No win or loss recorded."
             : reason === "EXPIRED"
-              ? "Trận đã hết hạn; không tính thua."
+              ? "This match expired; no loss recorded."
               : reason === "ACCOUNT_MERGE"
-                ? "Trận đã đóng khi hợp nhất phiên chơi; không tính thua."
+                ? "This match closed when sessions merged; no loss recorded."
                 : reason === "TUTORIAL_SKIPPED"
-                  ? "Bạn có thể học lại trong phần Cài đặt."
-                  : "Trận đấu đã kết thúc.";
+                  ? "You can replay the tutorial in Settings."
+                  : "The match has ended.";
   return { heading, body };
 }
 export default function ResultDialog({
@@ -124,7 +125,7 @@ export default function ResultDialog({
     } catch {
       durable = false;
       setMessage(
-        "Không lưu được yêu cầu. Giữ trang này để thử lại cùng yêu cầu.",
+        "The request could not be saved. Keep this page open to retry the same request.",
       );
     }
     try {
@@ -157,7 +158,7 @@ export default function ResultDialog({
         }
       } else
         setMessage(
-          `Chưa xác định kết quả tạo trận. Thử lại Chơi lại sẽ gửi cùng yêu cầu.${durable ? "" : " Không lưu được yêu cầu; giữ trang này, không tải lại."}`,
+          `Match creation is unconfirmed. Retry Rematch to send the same request.${durable ? "" : " The request could not be saved; keep this page open and do not reload."}`,
         );
     } finally {
       sending.current = false;
@@ -181,61 +182,63 @@ export default function ResultDialog({
             catalog.heroes.find((hero) => hero.id === summary.humanHeroId)!
               .portraitKey
           }
-          name={
-            catalog.heroes.find((hero) => hero.id === summary.humanHeroId)!
-              .nameVi
-          }
+          name={contentName(
+            catalog.heroes.find((hero) => hero.id === summary.humanHeroId)!.id,
+          )}
           variant="bust"
         />
       </div>
       <SessionRecovery />
       <p>
-        {catalog.heroes.find((hero) => hero.id === summary.humanHeroId)?.nameVi}
+        {contentName(
+          catalog.heroes.find((hero) => hero.id === summary.humanHeroId)?.id ??
+            "",
+        )}
       </p>
       <dl className="result-stats">
         <div>
-          <dt>Lượt</dt>
+          <dt>Turn</dt>
           <dd>{summary.turns}</dd>
         </div>
         <div>
-          <dt>Thời gian hoạt động</dt>
-          <dd>{Math.round(summary.activeDurationMs / 1000)} giây</dd>
+          <dt>Active time</dt>
+          <dd>{Math.round(summary.activeDurationMs / 1000)} seconds</dd>
         </div>
         <div>
-          <dt>Sát thương lên hero địch</dt>
-          <dd title="Tổng sát thương có thể lớn hơn 20 nếu hero được hồi máu.">
+          <dt>Damage to enemy hero</dt>
+          <dd title="Total damage can exceed 20 if the hero was healed.">
             {summary.damageDealt}
           </dd>
         </div>
         <div>
-          <dt>Đã chặn</dt>
+          <dt>Blocks</dt>
           <dd>{summary.blocksUsed}</dd>
         </div>
       </dl>
-      {summary.lifecycle === "FAULTED" && <p>Mã trận: {summary.matchId}</p>}
+      {summary.lifecycle === "FAULTED" && <p>Match ID: {summary.matchId}</p>}
       {review ? (
-        <section className="deck-review" aria-label="Xem lại bộ bài">
-          <h3>Xem lại bộ bài</h3>
+        <section className="deck-review" aria-label="Review deck">
+          <h3>Review deck</h3>
           <p>
-            Nội dung hoặc bộ bài đã thay đổi. Hãy kiểm tra bộ bài hiện hành
-            trước khi bắt đầu trận mới.
+            Content or the deck has changed. Review the current deck before
+            starting another match.
           </p>
           <p>
-            Nguồn bộ bài:{" "}
+            Deck source:{" "}
             {summary.rematch?.deck.kind === "PRESET"
               ? summary.rematch.deck.presetId
               : summary.rematch?.deck.kind === "SAVED"
-                ? `${summary.rematch.deck.deckId} · phiên bản ${summary.rematch.deck.deckRevision}`
-                : "Không có"}
+                ? `${summary.rematch.deck.deckId}· revision${summary.rematch.deck.deckRevision}`
+                : "None"}
           </p>
           <p>
-            Nội dung gốc: {summary.rematch?.expectedContentVersion} · Hiện hành:{" "}
-            {catalog.version}
+            Original content: {summary.rematch?.expectedContentVersion} ·
+            Current: {catalog.version}
           </p>
           <Link href={`/decks/review/${summary.matchId}`}>
-            Mở bộ bài gốc để xem lại
+            Open original deck for review
           </Link>
-          <Link href="/heroes">Chọn bộ bài khác</Link>
+          <Link href="/heroes">Choose another deck</Link>
         </section>
       ) : (
         summary.rematch &&
@@ -245,23 +248,21 @@ export default function ResultDialog({
             disabled={busy}
             onClick={() => void rematch()}
           >
-            {busy ? "Đang tạo trận…" : "Chơi lại"}
+            {busy ? "Creating match…" : "Rematch"}
           </button>
         )
       )}
       {summary.mode === "TUTORIAL" ? (
         <>
-          <Link href="/heroes">Chơi với bot</Link>
-          <TutorialEntry api={api} side="EVIL" label="Học phe Ác" />
-          <TutorialEntry api={api} side="GOOD" label="Học lại" />
+          <Link href="/heroes">Play vs bot</Link>
+          <TutorialEntry api={api} side="EVIL" label="Learn Ashen Court" />
+          <TutorialEntry api={api} side="GOOD" label="Replay tutorial" />
         </>
       ) : (
-        <Link href="/heroes">Đổi bộ bài</Link>
+        <Link href="/heroes">Change deck</Link>
       )}
-      {conflict && (
-        <Link href={`/matches/${conflict}`}>Tiếp tục trận đang chơi</Link>
-      )}
-      <Link href="/">Về trang chủ</Link>
+      {conflict && <Link href={`/matches/${conflict}`}>Resume match</Link>}
+      <Link href="/">Back home</Link>
       <p role="status">{message}</p>
     </dialog>
   );
@@ -295,8 +296,8 @@ export function ResultDetail({
   if (summary?.matchId === matchId && summary.resumable)
     return (
       <section className="status-panel panel">
-        <h1>Trận đang diễn ra</h1>
-        <Link href={`/matches/${matchId}`}>Tiếp tục trận</Link>
+        <h1>Match in progress</h1>
+        <Link href={`/matches/${matchId}`}>Resume match</Link>
       </section>
     );
   if (summary?.matchId === matchId)
@@ -310,21 +311,21 @@ export function ResultDetail({
     );
   return (
     <section className="status-panel panel">
-      <h1>Kết quả trận</h1>
+      <h1>Match result</h1>
       {failed ? (
         <>
-          <p>Không tải được kết quả trận.</p>
+          <p>The match result could not be loaded.</p>
           <button
             onClick={() => {
               setFailed(false);
               setAttempt((value) => value + 1);
             }}
           >
-            Thử lại kết quả
+            Retry result
           </button>
         </>
       ) : (
-        <p role="status">Đang tải kết quả…</p>
+        <p role="status">Loading result…</p>
       )}
     </section>
   );

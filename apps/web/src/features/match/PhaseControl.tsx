@@ -30,20 +30,20 @@ export default function PhaseControl({
         }
       >
         {keep
-          ? "Để dành"
+          ? "Keep for later"
           : view.tutorial?.stepId === "E01"
-            ? "Kết thúc triển khai"
+            ? "End deployment"
             : view.tutorial?.stepId === "E02"
-              ? "Kết thúc trick"
-              : "Kết thúc hành động"}
+              ? "End tricks"
+              : "End phase"}
       </button>
       <p className="muted">
         {snapshot.needsAdvance
-          ? "Đang xử lý lượt của bot và giao tranh…"
+          ? "Resolving the bot's turn and combat…"
           : snapshot.authoritativeView.activeSide ===
               snapshot.authoritativeView.self.side
-            ? "Đến lượt bạn chọn hành động."
-            : "Chờ diễn biến tiếp theo."}
+            ? "Choose your action."
+            : "Waiting for the next event."}
       </p>
     </div>
   );

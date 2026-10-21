@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import type { PublicCatalog } from "@oathfront/contracts";
 import { useState } from "react";
 import SettingsDialog from "../settings/SettingsDialog";
@@ -33,7 +34,7 @@ export default function MatchShell({
   return (
     <section
       className="match-screen"
-      aria-label="Trận đấu"
+      aria-label="Match"
       onKeyDown={(event) => {
         if (event.target instanceof Element && event.target.closest("dialog"))
           return;
@@ -43,16 +44,16 @@ export default function MatchShell({
         }
       }}
     >
-      <h1 className="sr-only">Trận OathFront</h1>
+      <h1 className="sr-only">OathFront match</h1>
       <div className="match-heading">
         <p data-testid="phase-label" aria-live="polite" aria-atomic="true">
-          <strong>Lượt {view.turn}</strong>
+          <strong>Turn {view.turn}</strong>
           <span>
             · {phaseLabel[view.phase]}
-            {view.activeSide ? ` · Phe ${sideLabel[view.activeSide]}` : ""}
+            {view.activeSide ? ` · ${sideLabel[view.activeSide]}` : ""}
           </span>
         </p>
-        <button onClick={() => setSettingsOpen(true)}>Cài đặt</button>
+        <button onClick={() => setSettingsOpen(true)}>Settings</button>
         {
           <button
             data-pause-control
@@ -67,39 +68,39 @@ export default function MatchShell({
               })
             }
           >
-            Tạm dừng
+            Pause
           </button>
         }
       </div>
       <section className="small-fallback panel">
-        <h1>Xoay ngang hoặc dùng màn hình lớn để vào trận</h1>
+        <h1>Rotate your device or use a larger screen to play</h1>
         <p>
-          Trận đang được giữ. Bàn chơi cần ít nhất 1024 × 640 điểm ảnh để thao
-          tác.
+          Your match is saved. The battlefield needs at least 1024 × 640 pixels
+          for interaction.
         </p>
         <details>
-          <summary>Đọc bàn hiện tại</summary>
+          <summary>Read the current board</summary>
           <p>
-            Hero bạn: {view.players[view.self.side].hp} HP · Hero bot:{" "}
+            Your hero: {view.players[view.self.side].hp} HP · Opponent hero:{" "}
             {view.players[enemy].hp} HP
           </p>
           <ol>
             {view.board.map((lane) => (
               <li key={lane.laneId}>
-                Lộ {lane.laneId}: Thiện{" "}
+                Lane {lane.laneId}: Dawnward{" "}
                 {lane.good
-                  ? `${lane.good.current.attack} công / ${lane.good.current.hp} HP`
-                  : "trống"}
-                ; Ác{" "}
+                  ? `${lane.good.current.attack} ATK / ${lane.good.current.hp} HP`
+                  : "empty"}
+                ; Ashen Court{" "}
                 {lane.evil
-                  ? `${lane.evil.current.attack} công / ${lane.evil.current.hp} HP`
-                  : "trống"}
+                  ? `${lane.evil.current.attack} ATK / ${lane.evil.current.hp} HP`
+                  : "empty"}
               </li>
             ))}
           </ol>
         </details>
         <details>
-          <summary>Tay bài và siêu năng lực · đọc đầy đủ</summary>
+          <summary>Hand and powers · full text</summary>
           <ul>
             {[...view.self.hand, ...view.self.reserve].map((card) => {
               const def = [...catalog.cards, ...catalog.powers].find(
@@ -107,16 +108,16 @@ export default function MatchShell({
               );
               return (
                 <li key={card.instanceId}>
-                  <strong>{def?.nameVi}</strong>
-                  <p>{def?.exactTextVi}</p>
+                  <strong>{contentName(def?.id ?? "")}</strong>
+                  <p>{contentText(def?.id ?? "")}</p>
                 </li>
               );
             })}
           </ul>
         </details>
         <p className="muted">
-          Bạn có thể quay về trang chủ. Trận không tự đầu hàng khi đổi kích
-          thước màn hình.
+          You can return home. Resizing your screen does not surrender the
+          match.
         </p>
       </section>
       {settingsOpen && (

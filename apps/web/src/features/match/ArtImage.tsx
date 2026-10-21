@@ -25,7 +25,7 @@ export default function ArtImage({
       {retry && (
         <button
           type="button"
-          aria-label={`Thử lại hình ${name}`}
+          aria-label={`Retry art${name}`}
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -33,7 +33,7 @@ export default function ArtImage({
             setFailedKey(null);
           }}
         >
-          Thử lại hình
+          Retry art
         </button>
       )}
     </span>

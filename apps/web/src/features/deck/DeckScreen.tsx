@@ -145,8 +145,8 @@ export default function DeckScreen({
           result = {
             deck: {
               name: preset
-                ? `${presetNames[preset.presetId]} · bản sao`
-                : "Bộ bài mới",
+                ? `${presetNames[preset.presetId]} · copy`
+                : "New deck",
               heroId: hero.id,
               entries: preset?.entries ?? [],
               contentVersion: catalog.version,
@@ -157,7 +157,7 @@ export default function DeckScreen({
       } catch {
         if (active)
           setError(
-            "Không tải được đúng nguồn bộ bài. Bản gốc không được thay thế.",
+            "The original deck source could not be loaded. It has not been replaced.",
           );
       }
     })();
@@ -171,7 +171,7 @@ export default function DeckScreen({
     router.push("/heroes");
   }
   if (resolvingRestored)
-    return <p role="status">Đang khôi phục đúng nguồn bộ bài…</p>;
+    return <p role="status">Restoring the original deck source…</p>;
   if (restored)
     return (
       <PresetSetup
@@ -205,7 +205,7 @@ export default function DeckScreen({
   if (screen === "setup") return <HeroSelect catalog={catalog} />;
   if (screen === "decks") {
     const hero = catalog.heroes.find((h) => h.id === heroId);
-    if (!hero) return <p role="alert">Không tìm thấy hero.</p>;
+    if (!hero) return <p role="alert">Hero not found.</p>;
     return (
       <DeckList
         catalog={catalog}
@@ -218,14 +218,14 @@ export default function DeckScreen({
   if (error)
     return (
       <section className="status-panel panel" role="alert">
-        <h1>Chưa thể mở bộ bài</h1>
+        <h1>Deck unavailable</h1>
         <p>{error}</p>
         <button onClick={() => setAttempt((n) => n + 1)}>
-          Thử lại nguồn bộ bài
+          Retry deck source
         </button>
       </section>
     );
-  if (!loaded) return <p role="status">Đang tải bộ bài…</p>;
+  if (!loaded) return <p role="status">Loading decks…</p>;
   return (
     <DeckBuilder
       key={`${deckId ?? heroId ?? reviewMatchId}.${attempt}`}

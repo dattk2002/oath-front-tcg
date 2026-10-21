@@ -7,7 +7,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 const evidence =
   process.env.OATHFRONT_ASSET_EVIDENCE_DIR ??
   evidencePath("task15", "docs/implementation/evidence/task15");
-test("missing artwork keeps its Vietnamese name and supports explicit retry; slow art reserves its slot", async ({
+test("missing artwork keeps its English name and supports explicit retry; slow art reserves its slot", async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -30,18 +30,16 @@ test("missing artwork keeps its Vietnamese name and supports explicit retry; slo
   );
   await page.goto("/heroes");
   const tile = page.locator(".hero-tile").first();
+  await expect(tile.getByText("Briar", { exact: true }).first()).toBeVisible();
   await expect(
-    tile.getByText("An Nhiên", { exact: true }).first(),
-  ).toBeVisible();
-  await expect(
-    tile.getByRole("button", { name: "Thử lại hình An Nhiên" }),
+    tile.getByRole("button", { name: "Retry art Briar" }),
   ).toBeVisible();
   // Retry a different hero so accidental label/radio activation is observable.
   await page.locator("input[name=hero]").last().check();
   const selected = await page
     .locator("input[name=hero]:checked")
     .getAttribute("value");
-  const retry = tile.getByRole("button", { name: "Thử lại hình An Nhiên" });
+  const retry = tile.getByRole("button", { name: "Retry art Briar" });
   const failedBounds = [];
   await mkdir(evidence, { recursive: true });
   for (const [name, width, height] of [
@@ -51,7 +49,7 @@ test("missing artwork keeps its Vietnamese name and supports explicit retry; slo
     await page.setViewportSize({ width, height });
     await tile.locator(".hero-portrait").scrollIntoViewIfNeeded();
     await expect(
-      tile.locator(".art-fallback").getByText("An Nhiên", { exact: true }),
+      tile.locator(".art-fallback").getByText("Briar", { exact: true }),
     ).toBeVisible();
     const bounds = await retry.evaluate((button) => {
       const portrait = button
@@ -97,7 +95,7 @@ test("missing artwork keeps its Vietnamese name and supports explicit retry; slo
     expect(bounds.hitTestable).toBe(true);
   }
   fail = false;
-  await tile.getByRole("button", { name: "Thử lại hình An Nhiên" }).click();
+  await tile.getByRole("button", { name: "Retry art Briar" }).click();
   await expect(page.locator("input[name=hero]:checked")).toHaveValue(selected!);
   await expect(tile.locator("img[data-art-key]")).toBeVisible();
   await expect
@@ -212,11 +210,11 @@ test("battle atlas failure retries the complete public terrain pool and integrat
   await expect(page.locator("[data-scene-status=fallback]")).toHaveCount(1);
   await expect.poll(() => terrain.size).toBe(8);
   await expect(
-    page.getByRole("button", { name: /Người Gác Đèn/ }),
+    page.getByRole("button", { name: /Lanternkeeper/ }),
   ).toBeVisible();
   fail = false;
   await page
-    .getByRole("button", { name: "Thử lại hình ảnh", exact: true })
+    .getByRole("button", { name: "Retry artwork", exact: true })
     .click();
   await expect(page.locator("[data-scene-status=loading]")).toHaveCount(1);
   await expect(page.locator("[data-scene-status=ready]")).toHaveCount(1);

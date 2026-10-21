@@ -7,13 +7,13 @@ import "../styles/match.css";
 import "../styles/deck.css";
 import "../styles/assets.css";
 export const metadata: Metadata = {
-  title: "OathFront · Ngũ Lộ",
+  title: "OathFront · The Fivefold",
   description:
-    "Trò chơi thẻ bài chiến thuật năm lộ, chơi với bot bằng tiếng Việt.",
+    "A tactical five-lane card game. Choose your hero and challenge the bot in the Fivefold.",
 };
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="vi">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

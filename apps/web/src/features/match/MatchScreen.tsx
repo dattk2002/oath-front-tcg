@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import TutorialOverlay from "../tutorial/TutorialOverlay";
 import ArtImage from "./ArtImage";
 import { useSettings } from "../settings/SettingsDialog";
@@ -52,15 +53,15 @@ export default function MatchScreen({
   if (failed)
     return (
       <section className="status-panel panel">
-        <h1>Không tải được trận</h1>
-        <p>Trận có thể đã hết hạn hoặc kết nối đang gián đoạn.</p>
-        <button onClick={retry}>Thử lại tải trận</button>
+        <h1>Match unavailable</h1>
+        <p>The match may have expired or the connection may be interrupted.</p>
+        <button onClick={retry}>Retry match</button>
       </section>
     );
   if (!initial)
     return (
       <p className="loading" role="status">
-        Đang tải bàn chơi…
+        Loading battlefield…
       </p>
     );
   return (
@@ -247,38 +248,38 @@ function MatchRuntime({
         </div>
         {isMulligan && (
           <section className="mulligan-heading">
-            <h2>Đổi bài đầu trận</h2>
+            <h2>Opening mulligan</h2>
             <p>
-              Chọn tối đa bốn lá để đổi, hoặc giữ nguyên tay bài.{" "}
-              {mulligan.length} lá sẽ đổi.
+              Choose up to four cards to replace, or keep your hand.{" "}
+              {mulligan.length} cards to replace.
             </p>
           </section>
         )}
         <div className="hand-layout">
           <details className="reserve panel">
-            <summary>Siêu năng lực · {view.self.reserve.length}</summary>
+            <summary>Powers · {view.self.reserve.length}</summary>
             {view.self.reserve.length ? (
               view.self.reserve.map((power) =>
                 view.blockResponse?.visibility === "OWN" &&
                 power.instanceId !== view.blockResponse.powerInstanceId ? (
                   <details key={power.instanceId}>
                     <summary>
-                      {
+                      {contentName(
                         catalog.powers.find(
                           (def) => def.id === power.definitionId,
-                        )?.nameVi
-                      }
+                        )?.id ?? "",
+                      )}
                     </summary>
                     <p>
-                      {
+                      {contentText(
                         catalog.powers.find(
                           (def) => def.id === power.definitionId,
-                        )?.exactTextVi
-                      }
+                        )?.id ?? "",
+                      )}
                     </p>
                     <p>
-                      Chỉ xem trong lúc chờ phản hồi · 1 năng lượng khi đúng
-                      pha.
+                      Inspect only while awaiting a response · 1 energy in the
+                      correct phase.
                     </p>
                   </details>
                 ) : (
@@ -302,30 +303,30 @@ function MatchRuntime({
                             (def) => def.id === power.definitionId,
                           )!.artKey
                         }
-                        name={
+                        name={contentName(
                           catalog.powers.find(
                             (def) => def.id === power.definitionId,
-                          )!.nameVi
-                        }
+                          )!.id,
+                        )}
                         retry={false}
                       />
                     </span>
-                    {
+                    {contentName(
                       catalog.powers.find(
                         (def) => def.id === power.definitionId,
-                      )?.nameVi
-                    }
+                      )?.id ?? "",
+                    )}
                     <span>
                       {view.blockResponse?.visibility === "OWN" &&
                       view.blockResponse.powerInstanceId === power.instanceId
-                        ? "Power đang chờ lựa chọn"
-                        : "1 năng lượng"}
+                        ? "Power awaiting a choice"
+                        : "1 energy"}
                     </span>
                   </button>
                 ),
               )
             ) : (
-              <p className="muted">Chưa có power để dùng.</p>
+              <p className="muted">No powers available yet.</p>
             )}
           </details>
           <Hand
@@ -356,7 +357,7 @@ function MatchRuntime({
                   })
                 }
               >
-                Xác nhận đổi bài
+                Confirm mulligan
               </button>
             </div>
           ) : view.blockResponse?.visibility === "OWN" ? null : (

@@ -22,19 +22,19 @@ test("keyboard settings focus and full hand labels", async ({ page }) => {
   const errors = await prepare(page, dto);
   await enter(page, dto.view.matchId);
   await expect(page.locator(".board-unit").first()).toHaveAccessibleName(
-    "Lộ 1, Lính Tro 2 công / 6 HP Phe Ác · xem chi tiết · Khiên · Giáp 1 · Độc · Choáng",
+    "Lane 1, Ash Soldier 2 ATK / 6 HP Ashen Court · details · Shield · Armor 1 · Poison · Stun",
   );
-  await page.getByRole("button", { name: "Cài đặt", exact: true }).focus();
+  await page.getByRole("button", { name: "Settings", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(
-    page.getByRole("button", { name: "Cài đặt", exact: true }),
+    page.getByRole("button", { name: "Settings", exact: true }),
   ).toBeFocused();
   await page.keyboard.press("Tab");
   await expect(page.locator(".board-unit").first()).toBeFocused();
   for (const card of await page.locator(".hand-card").all()) {
-    await expect(card).toHaveAccessibleName(/năng lượng/);
+    await expect(card).toHaveAccessibleName(/energy/);
     const b = await card.boundingBox();
     expect(b!.width).toBeGreaterThanOrEqual(44);
     expect(b!.height).toBeGreaterThanOrEqual(44);
@@ -44,7 +44,7 @@ test("keyboard settings focus and full hand labels", async ({ page }) => {
 
 import AxeBuilder from "@axe-core/playwright";
 import { mkdir, writeFile } from "node:fs/promises";
-test("WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow", async ({
+test("WCAG AA scan, English copy, settings and 200 percent reflow", async ({
   page,
 }) => {
   const dto = checkpoint();
@@ -53,11 +53,11 @@ test("WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow", async (
   await page.evaluate(() => document.fonts.ready);
   for (const state of ["battle", "settings", "zoom"]) {
     if (state === "settings")
-      await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
+      await page.getByRole("button", { name: "Settings", exact: true }).click();
     if (state === "zoom") {
       await page.keyboard.press("Escape");
       await page.setViewportSize({ width: 720, height: 450 });
-      await page.getByText("Đọc bàn hiện tại", { exact: true }).click();
+      await page.getByText("Read the current board", { exact: true }).click();
       await expect(page.locator(".small-fallback ol li")).toHaveCount(5);
     }
     const result = await new AxeBuilder({ page })
@@ -90,31 +90,31 @@ test("dirty Back Stay Leave preserves draft without Navigation API", async ({
   await create(page);
   await page.goto("/heroes/H_G_BV/decks");
   expect(await page.evaluate(() => "navigation" in window)).toBe(false);
-  await page.getByRole("link", { name: "Tạo bộ bài", exact: true }).click();
+  await page.getByRole("link", { name: "Create deck", exact: true }).click();
   await page
-    .getByLabel("Tên bộ bài", { exact: true })
+    .getByLabel("Deck name", { exact: true })
     .fill("Bản nháp không mất");
   await page.evaluate(() => history.back());
   await expect(page.getByRole("dialog")).toContainText(
-    "Bộ bài có thay đổi chưa lưu",
+    "Your deck has unsaved changes",
   );
-  await page.getByRole("button", { name: "Ở lại", exact: true }).click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await page.getByRole("button", { name: "Stay", exact: true }).click();
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Bản nháp không mất",
   );
   await page.reload();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
     "Bản nháp không mất",
   );
   await page.evaluate(() => history.back());
   await expect(page.getByRole("dialog")).toContainText(
-    "Bộ bài có thay đổi chưa lưu",
+    "Your deck has unsaved changes",
   );
-  await page.getByRole("button", { name: "Rời đi", exact: true }).click();
+  await page.getByRole("button", { name: "Leave", exact: true }).click();
   await expect(page).toHaveURL(/heroes\/H_G_BV\/decks/);
-  await page.getByRole("link", { name: "Tạo bộ bài", exact: true }).click();
-  await expect(page.getByLabel("Tên bộ bài", { exact: true })).toHaveValue(
-    "Bộ bài mới",
+  await page.getByRole("link", { name: "Create deck", exact: true }).click();
+  await expect(page.getByLabel("Deck name", { exact: true })).toHaveValue(
+    "New deck",
   );
   await writeFile(
     `${evidence}/firefox.json`,
@@ -202,21 +202,17 @@ test("quality and legacy reduced-motion preferences persist without changing bat
     ),
   );
   await enter(page, dto.view.matchId);
-  await page.getByRole("button", { name: "Cài đặt", exact: true }).click();
+  await page.getByRole("button", { name: "Settings", exact: true }).click();
+  await expect(page.getByLabel("Reduce motion", { exact: true })).toBeChecked();
   await expect(
-    page.getByLabel("Giảm chuyển động", { exact: true }),
-  ).toBeChecked();
-  await expect(
-    page.getByRole("slider", { name: "Nhạc", exact: true }),
+    page.getByRole("slider", { name: "Music", exact: true }),
   ).toHaveValue("0.15");
-  await page
-    .getByLabel("Chất lượng hình ảnh", { exact: true })
-    .selectOption("low");
+  await page.getByLabel("Visual quality", { exact: true }).selectOption("low");
   await expect(
-    page.getByRole("button", { name: "Đóng cài đặt", exact: true }),
+    page.getByRole("button", { name: "Close settings", exact: true }),
   ).toBeVisible({ timeout: 5000 });
   await page
-    .getByRole("button", { name: "Đóng cài đặt", exact: true })
+    .getByRole("button", { name: "Close settings", exact: true })
     .click({ timeout: 5000 });
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible();
   expect(

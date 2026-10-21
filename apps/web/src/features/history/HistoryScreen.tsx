@@ -1,3 +1,4 @@
+import { contentName } from "../../content/english-content";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { MatchList, PublicCatalog } from "@oathfront/contracts";
@@ -50,26 +51,26 @@ export default function HistoryScreen({
     <section className="history-screen">
       <div className="screen-heading">
         <div>
-          <p className="eyebrow">Những trận đã chơi</p>
-          <h1>Lịch sử trận đấu</h1>
+          <p className="eyebrow">Your past matches</p>
+          <h1>Match history</h1>
         </div>
-        <Link href="/heroes">Chơi trận mới</Link>
+        <Link href="/heroes">New match</Link>
       </div>
       {error && (
         <p role="alert">
-          Chưa tải được lịch sử.{" "}
+          History could not be loaded.{" "}
           <button
             onClick={() => (page ? void more() : setAttempt((v) => v + 1))}
           >
-            Thử lại
+            Retry
           </button>
         </p>
       )}
-      {!page && !error && <p role="status">Đang tải lịch sử…</p>}
+      {!page && !error && <p role="status">Loading history…</p>}
       {page?.items.length === 0 && (
         <div className="panel">
-          <p>Chưa có trận đấu.</p>
-          <Link href="/heroes">Chọn hero để bắt đầu</Link>
+          <p>No matches yet.</p>
+          <Link href="/heroes">Choose a hero to begin</Link>
         </div>
       )}
       <ol className="history-list">
@@ -83,27 +84,34 @@ export default function HistoryScreen({
             >
               <span>
                 <strong>
-                  {catalog.heroes.find((h) => h.id === m.humanHeroId)?.nameVi}
+                  {contentName(
+                    catalog.heroes.find((h) => h.id === m.humanHeroId)?.id ??
+                      "",
+                  )}
                 </strong>{" "}
-                gặp{" "}
-                {catalog.heroes.find((h) => h.id === m.opponentHeroId)?.nameVi}
+                versus{" "}
+                {contentName(
+                  catalog.heroes.find((h) => h.id === m.opponentHeroId)?.id ??
+                    "",
+                )}
                 <small>
-                  {new Date(m.createdAt).toLocaleString("vi-VN")} ·{" "}
-                  {m.difficulty === "NORMAL" ? "Thường" : "Dễ"} · {m.turns} lượt
+                  {new Date(m.createdAt).toLocaleString("en-US")} ·{" "}
+                  {m.difficulty === "NORMAL" ? "Normal" : "Easy"} · {m.turns}{" "}
+                  turns
                 </small>
               </span>
               <strong>
                 {m.resumable
-                  ? "Tiếp tục trận"
+                  ? "Resume match"
                   : m.lifecycle === "ABANDONED"
-                    ? "Đã đóng · không tính thua"
+                    ? "Closed · no loss recorded"
                     : m.lifecycle === "FAULTED"
-                      ? "Trận lỗi"
+                      ? "Match error"
                       : m.outcome?.result === "WIN"
-                        ? "Thắng"
+                        ? "Win"
                         : m.outcome?.result === "LOSS"
                           ? "Thua"
-                          : "Hòa"}
+                          : "Draw"}
               </strong>
             </Link>
           </li>
@@ -111,7 +119,7 @@ export default function HistoryScreen({
       </ol>
       {page?.nextCursor && (
         <button disabled={busy} onClick={() => void more()}>
-          {busy ? "Đang tải…" : "Tải thêm 20 trận"}
+          {busy ? "Loading…" : "Load 20 more matches"}
         </button>
       )}
     </section>

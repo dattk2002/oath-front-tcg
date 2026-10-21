@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import { groupArrows } from "./keyboard";
 import type {
   PlayerAction,
@@ -58,7 +59,7 @@ export default function Board({
           data-slot-side={own ? view.self.side : enemy}
           data-slot-lane={laneId}
         >
-          Ô trống · {sideLabel[own ? view.self.side : enemy]}
+          Empty slot · {sideLabel[own ? view.self.side : enemy]}
         </div>
       );
     const def = [...catalog.cards, ...catalog.tokens].find(
@@ -77,19 +78,19 @@ export default function Board({
         onPointerEnter={() => onPreview(action ?? null)}
         onClick={() => (action ? onTarget(target) : onInspect(unit))}
       >
-        <span className="sr-only">Lộ {laneId}, </span>
+        <span className="sr-only">Lane {laneId}, </span>
         <span className="scene-art" aria-hidden="true">
           <ArtImage
             artKey={def.artKey}
-            name={def.nameVi}
+            name={contentName(def.id)}
             variant="cutout"
             retry={false}
           />
         </span>
-        <strong>{def.nameVi}</strong>
+        <strong>{contentName(def.id)}</strong>
         <span className="unit-stats">
           <span>
-            <b>{unit.current.attack}</b> công
+            <b>{unit.current.attack}</b> ATK
           </span>{" "}
           /{" "}
           <span>
@@ -97,26 +98,29 @@ export default function Board({
           </span>
         </span>
         <span className="sr-only">
-          Phe {sideLabel[unit.owner]} ·{" "}
-          {action ? "mục tiêu hợp lệ" : "xem chi tiết"} ·{" "}
+          {sideLabel[unit.owner]} · {action ? "legal target" : "details"} ·{" "}
           {unitStatuses(unit).join(" · ")}
         </span>
-        {unit.isToken && <span>Triệu hồi</span>}
+        {unit.isToken && <span>Summoned</span>}
         <span
           className="status-text"
           aria-hidden="true"
           data-has-status={unitStatuses(unit).length > 0}
         >
-          {unitStatuses(unit).slice(0, 3).join(" · ") || "Không có trạng thái"}
+          {unitStatuses(unit).slice(0, 3).join(" · ") || "No statuses"}
           {unitStatuses(unit).length > 3
-            ? ` · +${unitStatuses(unit).length - 3} trạng thái`
+            ? ` · +${unitStatuses(unit).length - 3} statuses`
             : ""}
         </span>
       </button>
     );
   }
   return (
-    <section aria-label="Bàn năm lộ" className="board" onKeyDown={groupArrows}>
+    <section
+      aria-label="Five-lane board"
+      className="board"
+      onKeyDown={groupArrows}
+    >
       <ol className="lanes">
         {view.board.map((lane) => {
           const target: Target = { kind: "LANE", laneId: lane.laneId };
@@ -136,7 +140,7 @@ export default function Board({
               className={`lane ${lane.location.state.toLowerCase()}`}
               key={lane.laneId}
             >
-              <h2>Lộ {lane.laneId}</h2>
+              <h2>Lane {lane.laneId}</h2>
               {unitButton(
                 enemy === "GOOD" ? lane.good : lane.evil,
                 lane.laneId,
@@ -145,26 +149,26 @@ export default function Board({
               <div className="terrain" data-terrain-lane={lane.laneId}>
                 {lane.location.state === "HIDDEN" ? (
                   <>
-                    <strong>? · Địa hình ẩn</strong>
-                    <span>Mở lượt {lane.location.revealTurn}</span>
+                    <strong>? · Hidden location</strong>
+                    <span>Reveals on turn {lane.location.revealTurn}</span>
                   </>
                 ) : location ? (
                   <details>
-                    <summary>{location.nameVi}</summary>
+                    <summary>{contentName(location.id)}</summary>
                     <span className="terrain-art">
                       <ArtImage
                         artKey={location.artKey}
-                        name={location.nameVi}
+                        name={contentName(location.id)}
                         variant="strip"
                         retry={false}
                       />
                     </span>
-                    <p>{location.exactTextVi}</p>
+                    <p>{contentText(location.id)}</p>
                   </details>
                 ) : (
                   <>
-                    <strong>Lộ thường</strong>
-                    <span>Không hiệu ứng</span>
+                    <strong>Normal lane</strong>
+                    <span>No effects</span>
                   </>
                 )}
               </div>
@@ -185,9 +189,9 @@ export default function Board({
                 onFocus={() => onPreview(action ?? null)}
                 onPointerEnter={() => onPreview(action ?? null)}
                 onClick={() => onTarget(target)}
-                aria-label={`Chọn lộ ${lane.laneId}${action ? ", mục tiêu hợp lệ" : ", chưa thể chọn"}`}
+                aria-label={`Choose lane${lane.laneId}${action ? ", legal target" : ", unavailable"}`}
               >
-                {action ? "Chọn lộ này" : "Lộ " + lane.laneId}
+                {action ? "Choose this lane" : "Lane" + lane.laneId}
               </button>
             </li>
           );

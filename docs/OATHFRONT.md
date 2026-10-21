@@ -1,6 +1,6 @@
 # OathFront — execution decisions
 
-The user approved the full game spec and requested implementation on 2026-10-20. The project is now OathFront. Existing Vietnamese world/hero/card names and all numeric rules remain unchanged.
+The user approved the full game spec and requested implementation on 2026-10-20. The project is OathFront. The current interface and world presentation are English; see [PRESENTATION-EN.md](PRESENTATION-EN.md) for The Fivefold, Dawnward, Ashen Court, and stable-ID name/rules mappings. Original Vietnamese source names remain in immutable `core_v1`, `locations_v1`, `tutorial_v1`, source-parity tables, historical records and legacy wire fields. Numeric rules, IDs, stored checkpoints and user-entered names remain unchanged.
 
 ## Latest user requirements
 

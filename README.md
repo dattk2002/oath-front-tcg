@@ -1,6 +1,6 @@
 # OathFront
 
-Vietnamese online PvE card game: Next.js frontend, Fastify authoritative API, PostgreSQL persistence, deterministic engine/bot and immutable `core_v1` content. Tutorial and skirmish support both factions. No PvP, shop or LLM gameplay.
+English presentation for an online PvE card game: Next.js frontend, Fastify authoritative API, PostgreSQL persistence, deterministic engine/bot and immutable `core_v1` content. Tutorial and skirmish support Dawnward and the Ashen Court. See the [English presentation catalog](docs/PRESENTATION-EN.md). No PvP, shop or LLM gameplay.
 
 **Release is on hold.** Technical checks are separate from the open frame-time, balance, human playtest and physical-device acceptance gates. See the [release checklist](docs/implementation/release-checklist.md) and [documentation index](docs/README.md).
 

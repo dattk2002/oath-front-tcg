@@ -168,7 +168,9 @@ export async function prepare(
 export async function enter(page: Page, id: string) {
   const started = Date.now();
   await page.goto(`/matches/${id}`);
-  await expect(page.getByRole("region", { name: "Bàn năm lộ" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Five-lane board" }),
+  ).toBeVisible();
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
     timeout: 15000,
   });

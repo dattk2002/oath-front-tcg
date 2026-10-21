@@ -38,19 +38,19 @@ export default function PauseDialog({
       }}
     >
       <h2 id="pause-heading" ref={heading} tabIndex={-1}>
-        Tạm dừng
+        Paused
       </h2>
       {confirm ? (
         <>
           <h3>
             {snapshot.authoritativeView.mode === "TUTORIAL"
-              ? "Bỏ qua hướng dẫn?"
-              : "Xác nhận đầu hàng?"}
+              ? "Skip tutorial?"
+              : "Confirm surrender?"}
           </h3>
           <p>
             {snapshot.authoritativeView.mode === "TUTORIAL"
-              ? "Bạn có thể học lại bất kỳ lúc nào; không tính thua."
-              : "Trận đấu sẽ kết thúc và được ghi nhận là đầu hàng."}
+              ? "You can replay anytime; no loss is recorded."
+              : "The match will end and be recorded as a surrender."}
           </p>
           <button
             disabled={disabled}
@@ -64,32 +64,32 @@ export default function PauseDialog({
             }
           >
             {snapshot.authoritativeView.mode === "TUTORIAL"
-              ? "Xác nhận bỏ qua"
-              : "Xác nhận đầu hàng"}
+              ? "Confirm skip"
+              : "Confirm surrender"}
           </button>
           <button disabled={disabled} onClick={() => setConfirm(false)}>
-            Quay lại trận
+            Return to match
           </button>
         </>
       ) : (
         <>
-          <p>Bàn chơi được giữ. Tiếp tục khi bạn sẵn sàng.</p>
+          <p>Your board is saved. Continue when you are ready.</p>
           <button
             className="primary"
             disabled={disabled}
             onClick={() => void controller.submitIntent({ kind: "RESUME" })}
           >
-            Tiếp tục
+            Continue
           </button>
           <button disabled={disabled} onClick={() => setConfirm(true)}>
             {snapshot.authoritativeView.mode === "TUTORIAL"
-              ? "Bỏ qua hướng dẫn"
-              : "Đầu hàng"}
+              ? "Skip tutorial"
+              : "Surrender"}
           </button>
-          <a href="/">Về trang chủ</a>
+          <a href="/">Back home</a>
         </>
       )}
-      <button onClick={() => setSettingsOpen(true)}>Cài đặt</button>
+      <button onClick={() => setSettingsOpen(true)}>Settings</button>
       {settingsOpen && (
         <SettingsDialog onClose={() => setSettingsOpen(false)} />
       )}

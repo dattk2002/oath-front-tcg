@@ -24,13 +24,13 @@ it("a surrendered LOSS is distinct from a WIN with the opponent surrendering", (
       ...summary,
       outcome: { result: "LOSS", winner: "EVIL", reason: "SURRENDER" },
     }).heading,
-  ).toBe("Đã đầu hàng");
+  ).toBe("Surrendered");
   expect(
     resultCopy({
       ...summary,
       outcome: { result: "WIN", winner: "GOOD", reason: "SURRENDER" },
     }).heading,
-  ).toBe("Chiến thắng");
+  ).toBe("Victory");
 });
 it("draw, abandonment, fault and tutorial outcomes stay distinct from ranked win/loss copy", () => {
   expect(
@@ -38,7 +38,7 @@ it("draw, abandonment, fault and tutorial outcomes stay distinct from ranked win
       ...summary,
       outcome: { result: "DRAW", winner: null, reason: "TURN_LIMIT" },
     }),
-  ).toEqual({ heading: "Hòa", body: "Đã kết thúc lượt 20." });
+  ).toEqual({ heading: "Draw", body: "Turn 20 has ended." });
   expect(
     resultCopy({
       ...summary,
@@ -46,8 +46,8 @@ it("draw, abandonment, fault and tutorial outcomes stay distinct from ranked win
       outcome: { result: "NONE", winner: null, reason: "EXPIRED" },
     }),
   ).toEqual({
-    heading: "Trận đã đóng",
-    body: "Trận đã hết hạn; không tính thua.",
+    heading: "Match closed",
+    body: "This match expired; no loss recorded.",
   });
   expect(
     resultCopy({
@@ -56,8 +56,8 @@ it("draw, abandonment, fault and tutorial outcomes stay distinct from ranked win
       outcome: { result: "NONE", winner: null, reason: "ENGINE_FAULT" },
     }),
   ).toEqual({
-    heading: "Trận bị gián đoạn",
-    body: "Không tính thắng hoặc thua.",
+    heading: "Match interrupted",
+    body: "No win or loss recorded.",
   });
   expect(
     resultCopy({
@@ -65,5 +65,5 @@ it("draw, abandonment, fault and tutorial outcomes stay distinct from ranked win
       mode: "TUTORIAL",
       outcome: { result: "NONE", winner: null, reason: "TUTORIAL_COMPLETED" },
     }).heading,
-  ).toBe("Đã hoàn thành hướng dẫn");
+  ).toBe("Tutorial complete");
 });

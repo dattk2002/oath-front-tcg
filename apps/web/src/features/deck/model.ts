@@ -1,3 +1,4 @@
+import { contentName, contentText } from "../../content/english-content";
 import type {
   DeckEntry,
   PublicCatalog,
@@ -31,13 +32,16 @@ export function filterCards(
             ? c.cost >= 6
             : c.cost === Number(filter.cost))) &&
         normalize(
-          `${c.nameVi} ${c.exactTextVi} ${c.keywords.map((k) => `${k} ${keywordLabel[k]}`).join(" ")}`,
+          `${contentName(c.id)} ${contentText(c.id)} ${c.keywords.map((k) => `${k} ${keywordLabel[k]}`).join(" ")}`,
         ).includes(normalize(filter.search.trim())),
     )
     .sort(
       (a, b) =>
         a.cost - b.cost ||
-        normalize(a.nameVi).localeCompare(normalize(b.nameVi), "vi") ||
+        normalize(contentName(a.id)).localeCompare(
+          normalize(contentName(b.id)),
+          "en",
+        ) ||
         a.id.localeCompare(b.id),
     );
 }

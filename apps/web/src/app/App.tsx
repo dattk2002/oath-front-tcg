@@ -24,13 +24,13 @@ import SettingsDialog, {
 } from "../features/settings/SettingsDialog";
 import { TutorialEntry } from "../features/tutorial/tutorial-controller";
 const DeckScreen = dynamic(() => import("../features/deck/DeckScreen"), {
-  loading: () => <p role="status">Đang tải bộ bài…</p>,
+  loading: () => <p role="status">Loading decks…</p>,
 });
 const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
   ssr: false,
   loading: () => (
     <p role="status" className="loading">
-      Đang chuẩn bị bàn chơi…
+      Preparing the battlefield…
     </p>
   ),
 });
@@ -97,7 +97,7 @@ function AppContent({
       } catch {
         nextStorageOwner = sourceId;
         setStorageWarning(
-          "Đã lưu tài khoản; bản nháp chỉ được giữ trên trang này vì bộ nhớ thiết bị bị lỗi. Không tải lại trang.",
+          "Account saved; drafts are kept only on this page because device storage failed. Do not reload this page.",
         );
       }
     }
@@ -109,7 +109,7 @@ function AppContent({
       rememberSession(sessionStorage, next);
     } catch {
       setStorageWarning(
-        "Phiên được giữ trên trang này vì bộ nhớ thiết bị không truy cập được. Không tải lại trang.",
+        "Your session is kept only on this page because device storage is unavailable. Do not reload this page.",
       );
     }
     setSession(next);
@@ -132,7 +132,7 @@ function AppContent({
             currentCatalog = { ...currentCatalog, presets: decks.presets };
           } catch {
             if (active) {
-              setError("Không tải được bộ bài mẫu. Hãy thử lại.");
+              setError("Preset decks could not be loaded. Try again.");
               setLoading(false);
             }
             return;
@@ -144,7 +144,7 @@ function AppContent({
           !(auth.reason instanceof ApiError) ||
           auth.reason.body.error.code !== "SESSION_EXPIRED"
         )
-          setError("Không kết nối được phiên chơi. Hãy thử lại.");
+          setError("Your session could not connect. Try again.");
         else {
           const remembered = readRememberedSession(sessionStorage);
           if (remembered) {
@@ -154,7 +154,7 @@ function AppContent({
           }
         }
         if (currentCatalog) setCatalog(currentCatalog);
-        else setError("Không tải được dữ liệu bài. Hãy thử lại.");
+        else setError("Card data could not be loaded. Try again.");
         setLoading(false);
       },
     );
@@ -176,7 +176,7 @@ function AppContent({
       );
     } catch {
       setError(
-        "Không thể bắt đầu phiên chơi. Thử lại sẽ khôi phục cùng yêu cầu.",
+        "Your session could not start. Retrying restores the same request.",
       );
     } finally {
       setBusy(false);
@@ -190,7 +190,7 @@ function AppContent({
       adoptSession(current);
       setTutorialSide(side);
     } catch {
-      setError("Không thể mở phiên hướng dẫn. Hãy thử lại.");
+      setError("The tutorial session could not open. Try again.");
     } finally {
       setBusy(false);
     }
@@ -215,27 +215,25 @@ function AppContent({
   return (
     <>
       <a className="skip-link" href="#main">
-        Đến nội dung chính
+        Skip to main content
       </a>
       <header
         className={screen === "match" ? "site-header in-match" : "site-header"}
       >
         <Brand />
-        <nav aria-label="Điều hướng chính">
-          <button onClick={() => setSettingsOpen(true)}>Cài đặt</button>
-          <Link href={routes.home}>Trang chủ</Link>
+        <nav aria-label="Main navigation">
+          <button onClick={() => setSettingsOpen(true)}>Settings</button>
+          <Link href={routes.home}>Home</Link>
           {session?.activeMatchId && (
-            <Link href={routes.match(session.activeMatchId)}>
-              Tiếp tục trận
-            </Link>
+            <Link href={routes.match(session.activeMatchId)}>Resume match</Link>
           )}
-          {session && <Link href="/history">Lịch sử</Link>}
+          {session && <Link href="/history">History</Link>}
           <span className="session-label">
             {session?.principal.kind === "ACCOUNT"
-              ? "Tài khoản"
+              ? "Account"
               : session
-                ? "Phiên khách"
-                : "Chơi không cần tài khoản"}
+                ? "Guest session"
+                : "Play without an account"}
           </span>
         </nav>
       </header>
@@ -253,7 +251,7 @@ function AppContent({
               key={tutorialSide}
               api={api}
               side={tutorialSide}
-              label="Mở hướng dẫn"
+              label="Open tutorial"
               autoStart
               onDismiss={() => setTutorialSide(null)}
             />
@@ -266,7 +264,7 @@ function AppContent({
           <main id="main" data-screen={screen} key={ownerEpoch}>
             {error ? (
               <section className="status-panel panel" role="alert">
-                <h1>Chưa thể kết nối</h1>
+                <h1>Unable to connect</h1>
                 <p>{error}</p>
                 <button
                   onClick={() => {
@@ -275,7 +273,7 @@ function AppContent({
                     setAttempt((value) => value + 1);
                   }}
                 >
-                  Thử lại
+                  Retry
                 </button>
               </section>
             ) : loading ? (
@@ -284,8 +282,8 @@ function AppContent({
                 className="status-panel panel"
                 aria-busy="true"
               >
-                <h1>OathFront · Ngũ Lộ</h1>
-                <p role="status">Đang tải dữ liệu trò chơi…</p>
+                <h1>OathFront · The Fivefold</h1>
+                <p role="status">Loading game data…</p>
               </section>
             ) : screen === "history" && catalog && session ? (
               <HistoryScreen
@@ -322,11 +320,11 @@ function AppContent({
             ) : (
               <section className="home panel">
                 <div className="home-copy">
-                  <p className="eyebrow">Trận chiến của năm con đường</p>
-                  <h1>Mỗi lộ là một lời thề.</h1>
+                  <p className="eyebrow">Battle for the five routes</p>
+                  <h1>Every lane is an oath.</h1>
                   <p>
-                    Dẫn dắt phe Thiện hoặc phe Ác. Dựng đội hình, giữ năng lượng
-                    và chọn thời điểm thay đổi cục diện.
+                    Lead Dawnward or the Ashen Court. Deploy your units,
+                    conserve energy and choose the moment to turn the battle.
                   </p>
                   <button
                     className="primary"
@@ -334,19 +332,19 @@ function AppContent({
                     onClick={() => void start()}
                   >
                     {busy
-                      ? "Đang kết nối…"
+                      ? "Connecting…"
                       : session?.activeMatchId
-                        ? "Tiếp tục trận"
-                        : "Chơi với bot"}
+                        ? "Resume match"
+                        : "Play vs bot"}
                   </button>
                   <button
                     disabled={busy || !catalog}
                     onClick={() => void startTutorial("GOOD")}
                   >
-                    Học cách chơi
+                    Learn to play
                   </button>
                   <p className="muted">
-                    Sáu hero · Sáu bộ bài mẫu · Bot Dễ và Thường
+                    Six heroes · Six preset decks · Easy and Normal bots
                   </p>
                 </div>
                 <div className="home-board" aria-hidden="true">
@@ -370,8 +368,8 @@ function AppContent({
       </SessionRecoveryContext.Provider>
       {screen === "match" && authPanel}
       <footer className="site-footer">
-        OathFront · Ngũ Lộ
-        <span>Luật và chỉ số luôn hiển thị bằng văn bản.</span>
+        OathFront · The Fivefold
+        <span>Rules and stats are always available as text.</span>
       </footer>
     </>
   );

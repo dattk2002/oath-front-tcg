@@ -89,27 +89,27 @@ export function createIntentController(
         store.setPresentationCursor(store.getSnapshot().latestSeq);
         pending(null);
         store.setSelection(null);
-        store.setMessage("Bàn chơi đã thay đổi. Hãy chọn lại hành động.");
+        store.setMessage("The board changed. Choose your action again.");
       } else if (
         error instanceof ApiError &&
         error.body.error.code === "SESSION_EXPIRED"
       ) {
         pending(envelope, "UNCERTAIN");
         store.setMessage(
-          "Phiên đã hết hạn. Khôi phục phiên ở đầu trang, rồi thử lại cùng yêu cầu.",
+          "Your session expired. Restore it at the top of the page, then retry the same request.",
         );
       } else if (!(error instanceof ApiError) || error.status >= 500) {
         pending(envelope, "UNCERTAIN");
         store.setMessage(
           durable
-            ? "Chưa xác định kết quả gửi. Thử lại cùng yêu cầu để xác nhận."
-            : "Không lưu được yêu cầu trên thiết bị. Giữ trang này và thử lại; tải lại sẽ mất khả năng khôi phục yêu cầu.",
+            ? "Send result is unconfirmed. Retry the same request to confirm."
+            : "The request could not be saved on this device. Keep this page open and retry; reloading loses request recovery.",
         );
       } else {
         pending(null);
         store.setSelection(null);
         store.setMessage(
-          "Không thể thực hiện hành động. Hãy tải lại bàn chơi hoặc chọn lại.",
+          "That action could not be performed. Reload the board or choose again.",
         );
       }
     }
@@ -124,7 +124,7 @@ export function createIntentController(
             actionEqual(candidate, action),
           );
     if (!legal) {
-      store.setMessage("Mục tiêu hoặc hành động không còn hợp lệ.");
+      store.setMessage("That target or action is no longer legal.");
       return;
     }
     if (
@@ -199,7 +199,7 @@ export function createIntentController(
         store.setSelection({ ...selection, unitInstanceId: target.instanceId });
         return;
       }
-      store.setMessage("Mục tiêu không hợp lệ. Chọn vùng đang được đánh dấu.");
+      store.setMessage("Invalid target. Choose a highlighted area.");
     },
     cancelSelection() {
       if (!store.getSnapshot().pendingCommand) {

@@ -9,6 +9,7 @@ export default defineConfig({
       "packages/*/tests/**/*.test.ts",
       "apps/api/tests/**/*.test.{ts,mjs}",
       "apps/web/tests/**/*.test.ts",
+      "apps/web/src/content/**/*.test.ts",
     ],
   },
 });

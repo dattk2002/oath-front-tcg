@@ -48,31 +48,34 @@ for (const faction of ["GOOD", "EVIL"] as const) {
         });
       });
     await page.goto("/");
-    await page.getByRole("button", { name: "Chơi với bot" }).click();
+    await page.getByRole("button", { name: "Play vs bot" }).click();
     await page
       .getByRole("radio", {
-        name: faction === "GOOD" ? "An Nhiên" : "Hắc Luyện",
+        name: faction === "GOOD" ? "Briar" : "Cinder",
         exact: false,
       })
       .check();
-    await page.getByRole("button", { name: "Chọn bộ bài" }).click();
-    await expect(page.getByText("30/30 lá", { exact: true })).toBeVisible();
-    await page.getByRole("button", { name: "Dùng bộ bài này" }).click();
-    await page.getByRole("button", { name: "Bắt đầu trận" }).click();
+    await page.getByRole("button", { name: "Choose deck" }).click();
+    await expect(page.getByText("30/30 cards", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "Use this deck" }).click();
+    await page.getByRole("button", { name: "Start match" }).click();
     await expect(
-      page.getByRole("heading", { name: "Đổi bài đầu trận" }),
+      page.getByRole("heading", { name: "Opening mulligan" }),
     ).toBeVisible();
-    await page.getByRole("button", { name: "Xác nhận đổi bài" }).click();
+    await page.getByRole("button", { name: "Confirm mulligan" }).click();
     await expect(
-      page.getByRole("heading", { name: "Đổi bài đầu trận" }),
+      page.getByRole("heading", { name: "Opening mulligan" }),
     ).not.toBeVisible();
     let played = false;
     for (let step = 0; step < 16 && !played; step++) {
       const pass = page.getByRole("button", {
-          name: "Kết thúc hành động",
+          name: "End phase",
           exact: true,
         }),
-        keep = page.getByRole("button", { name: "Để dành", exact: true });
+        keep = page.getByRole("button", {
+          name: "Keep for later",
+          exact: true,
+        });
       await expect
         .poll(
           async () =>
@@ -131,13 +134,13 @@ for (const faction of ["GOOD", "EVIL"] as const) {
       if (name === "mobile") {
         await expect(
           page.getByRole("heading", {
-            name: "Xoay ngang hoặc dùng màn hình lớn để vào trận",
+            name: "Rotate your device or use a larger screen to play",
           }),
         ).toBeVisible();
-        await page.getByText("Đọc bàn hiện tại", { exact: true }).click();
+        await page.getByText("Read the current board", { exact: true }).click();
       } else
         await expect(
-          page.getByRole("region", { name: "Bàn năm lộ" }),
+          page.getByRole("region", { name: "Five-lane board" }),
         ).toBeVisible();
       expect(
         await page.evaluate(
@@ -151,17 +154,15 @@ for (const faction of ["GOOD", "EVIL"] as const) {
     }
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await page
-      .getByRole("button", { name: "Kết thúc hành động", exact: true })
-      .click();
+    await page.getByRole("button", { name: "End phase", exact: true }).click();
     await expect(page.getByTestId("command-status")).not.toContainText(
-      "Đang xác nhận",
+      "Checking…",
     );
     const matchUrl = page.url(),
       id = matchUrl.split("/").at(-1)!;
     await page.reload();
     await expect(
-      page.getByRole("region", { name: "Bàn năm lộ" }),
+      page.getByRole("region", { name: "Five-lane board" }),
     ).toBeVisible();
     expect(page.url()).toBe(matchUrl);
     const received = await page.request.get(`/api/v1/matches/${id}`);
@@ -174,7 +175,7 @@ for (const faction of ["GOOD", "EVIL"] as const) {
     expect(snapshot.view.self.side).toBe(faction);
     expect(snapshot.revision).toBeGreaterThanOrEqual(4);
     await expect(page.getByTestId("phase-label")).toContainText(
-      /Triển khai Ác|Lượt Thiện|Mưu kế Ác|Giao tranh|Bắt đầu lượt|Kết thúc lượt/,
+      /Ashen deployment|Dawnward play|Ashen tricks|Giao tranh|Turn start|Turn end/,
     );
     const owner = ownerPool();
     try {
@@ -232,21 +233,23 @@ test("exact versioned proxy preserves JSON and reserves local auth/unknown route
   for (const path of ["/api/unknown", "/unknown-product-route"]) {
     const result = await request.get(path);
     expect(result.status()).toBe(404);
-    expect(await result.text()).not.toContain("Mỗi lộ là một lời thề.");
+    expect(await result.text()).not.toContain("Every lane is an oath.");
   }
 });
 test("lost create response restores displayed choices on reload and retries identical request", async ({
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Chơi với bot" }).click();
-  await page.getByRole("radio", { name: "Hắc Luyện", exact: false }).check();
-  await page.getByRole("button", { name: "Chọn bộ bài" }).click();
-  await page.getByRole("button", { name: "Dùng bộ bài này" }).click();
+  await page.getByRole("button", { name: "Play vs bot" }).click();
+  await page.getByRole("radio", { name: "Cinder", exact: false }).check();
+  await page.getByRole("button", { name: "Choose deck" }).click();
+  await page.getByRole("button", { name: "Use this deck" }).click();
   await page
-    .getByRole("combobox", { name: /^Hero bot/ })
+    .getByRole("combobox", { name: /^Opponent hero/ })
     .selectOption("H_G_BP");
-  await page.getByRole("combobox", { name: /^Độ khó/ }).selectOption("NORMAL");
+  await page
+    .getByRole("combobox", { name: /^Difficulty/ })
+    .selectOption("NORMAL");
   const sent: unknown[] = [];
   let drop = true;
   await page.route("**/api/v1/matches", async (route) => {
@@ -262,8 +265,8 @@ test("lost create response restores displayed choices on reload and retries iden
       await route.abort("failed");
     } else await route.continue();
   });
-  await page.getByRole("button", { name: "Bắt đầu trận" }).click();
-  await expect(page.getByText(/Chưa xác định kết quả tạo trận/)).toBeVisible();
+  await page.getByRole("button", { name: "Start match" }).click();
+  await expect(page.getByText(/Match creation is unconfirmed/)).toBeVisible();
   let failDecks = true;
   await page.route("**/api/v1/decks", async (route) => {
     if (failDecks) {
@@ -277,29 +280,29 @@ test("lost create response restores displayed choices on reload and retries iden
   });
   await page.reload();
   await expect(
-    page.getByText("Không tải được bộ bài mẫu. Hãy thử lại."),
+    page.getByText("Preset decks could not be loaded. Try again."),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Thử lại", exact: true }).click();
+  await page.getByRole("button", { name: "Retry", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Chọn đối thủ", exact: true }),
+    page.getByRole("heading", { name: "Choose your opponent", exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("combobox", { name: /^Hero bot/ })).toHaveValue(
+  await expect(page.getByRole("combobox", { name: /^Opponent hero/ })).toHaveValue(
     "H_G_BP",
   );
-  await expect(page.getByRole("combobox", { name: /^Độ khó/ })).toHaveValue(
+  await expect(page.getByRole("combobox", { name: /^Difficulty/ })).toHaveValue(
     "NORMAL",
   );
   await expect(
-    page.getByRole("combobox", { name: /^Hero bot/ }),
+    page.getByRole("combobox", { name: /^Opponent hero/ }),
   ).toBeDisabled();
   await expect(
-    page.getByText("Hắc Luyện · Phe Ác", { exact: true }),
+    page.getByText("Cinder · Ashen Court", { exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("button", { name: "Thử lại tạo trận", exact: true })
+    .getByRole("button", { name: "Retry match creation", exact: true })
     .click();
   await expect(
-    page.getByRole("heading", { name: "Đổi bài đầu trận" }),
+    page.getByRole("heading", { name: "Opening mulligan" }),
   ).toBeVisible();
   expect(sent).toHaveLength(2);
   expect(sent[1]).toEqual(sent[0]);
