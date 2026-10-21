@@ -1,0 +1,7 @@
+undefined
+/tmp/oathfront-ci-startup-K4OY7u/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command "tsx" not found
+
+Did you mean "pnpm exec tsc"?
+
+EXIT=1

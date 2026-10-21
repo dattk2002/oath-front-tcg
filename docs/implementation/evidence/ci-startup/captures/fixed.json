@@ -1,0 +1,49 @@
+{
+  "target": "/tmp/oathfront-ci-startup-FsdGwh",
+  "files": [
+    "apps/api/package.json",
+    "apps/web/package.json",
+    "package.json",
+    "packages/bot/package.json",
+    "packages/contracts/package.json",
+    "packages/db/package.json",
+    "packages/game-content/package.json",
+    "packages/game-engine/package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "results": [
+    {
+      "name": "fixed-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "fixed-root-tsx",
+      "command": [
+        "pnpm",
+        "exec",
+        "tsx",
+        "--version"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "fixed-api-tsx",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@oathfront/api",
+        "exec",
+        "tsx",
+        "--version"
+      ],
+      "exit": 0
+    }
+  ],
+  "rootTsxBin": true
+}

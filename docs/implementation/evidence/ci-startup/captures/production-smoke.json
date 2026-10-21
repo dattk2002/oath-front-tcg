@@ -1,0 +1,23 @@
+{
+  "command": [
+    "pnpm",
+    "exec",
+    "playwright",
+    "test",
+    "tests/e2e/match-foundation.spec.ts",
+    "--grep",
+    "guest preset mulligan UNIT and pass as GOOD"
+  ],
+  "target": "/tmp/oathfront-ci-startup-FsdGwh",
+  "start": "2026-10-21T01:20:20.152Z",
+  "end": "2026-10-21T01:20:30.829Z",
+  "exit": 0,
+  "identity": {
+    "buildId": "V0isFAUtbXD_Bsuxb73A6",
+    "apiApp": "dc643f488ccf6a8d52bdc780020d45bc814aea05ba7e197f5d2cfdeab7a076bf",
+    "standaloneServer": "0b1c9b22e13d1e1b76e3592fe0748b98b093af94be9252f7e9c896a33163bdcc"
+  },
+  "database": "oathfront_verification_test",
+  "rebuilt": false,
+  "secretFilesCopied": false
+}

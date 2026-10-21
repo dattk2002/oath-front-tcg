@@ -1,0 +1,10 @@
+{
+  "source": "https://registry.npmjs.org/tsx",
+  "version": "4.23.15",
+  "published": "2026-09-20T07:22:17.792Z",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "distIntegrity": "sha512-Yiex1Ovn8z2xPpOWckIiysV1SSyRMY9BkLF++q0yKiDxCqRhosKfMg3janKkiLBwZ5c/YryloKwGZcrEmtwxKw=="
+}

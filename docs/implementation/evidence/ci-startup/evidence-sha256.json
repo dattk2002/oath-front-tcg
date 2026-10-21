@@ -1,0 +1,29 @@
+{
+  "files": {
+    ".gitattributes": "dffa674be2eba4c625acd01673314ed06d83a35dc39081fdc1b3bf0fd862c54f",
+    "README.md": "3085db378f15b3ad54ab3e136c2ea0410b8e5dbf30f855b6ed6ea75f3fead907",
+    "captures/baseline.json": "dc10b39da9a3df3b052674390a5589903e2d77df3d3d0302c2284f586bce7ce6",
+    "captures/browser/task9/good-desktop.png": "1531ea0e7f19781375b475191717bf85bb83def3db9d45e567931b0c6a27cc98",
+    "captures/browser/task9/good-mobile.png": "fba00fb6b31d5ddfbfea54d20f435d9238cbda0d4c9c95c452cd32aae0b7edba",
+    "captures/browser/task9/good-network.json": "8607c404720d847c41a9db266957399ab707e9ecf21dd09fef37f30239602843",
+    "captures/browser/task9/good-tablet.png": "a2a6afbf26d0e66cd5a99d04c262d58989ca7ec2d3cf3fdcc61a07b85eba4635",
+    "captures/clean-api-start.log": "393145129492233e25cd686d44e9a1354896112c22dff21667c60b210fb8147e",
+    "captures/clean-install.log": "1e131c02b51d7e8bd46f2a64e59d231e8ce9c978636ef5a2c752a8909fd63179",
+    "captures/clean-root-tsx.log": "0c3f502416a6aa246e793b5527587f826d77f635f04f9a0942534676ae81f767",
+    "captures/evidence-sha256.json": "2bb3d57902b36473bd897c88dcfe30606d3220dc3597e1b9cc3aacaa4d8fcfd7",
+    "captures/fixed-api-tsx.log": "5a1000ce202726b5881ce5b0b675a19a82bac4f277e8959fd5792482fd13c7b1",
+    "captures/fixed-install.log": "2afd9e352dd358ebaecd6d1cee73fa24f1439f3459c7b2a6d1409e26a1247c21",
+    "captures/fixed-root-tsx.log": "5a1000ce202726b5881ce5b0b675a19a82bac4f277e8959fd5792482fd13c7b1",
+    "captures/fixed.json": "3031ce3f5c3b87205119a33652dd63a5bfb883a7032e0b0eef82e49b2ffadbef",
+    "captures/production-smoke.json": "e098fd4ce963af392d97aecee337d95ab1a5c87394f61836999195e7821ff016",
+    "captures/production-smoke.log": "85b6acf7bc8585399b7859bbcc0febc9ea9862aa423d4102ad42f03d214ac528",
+    "captures/reproduce.mjs": "126d6ae7cbe9748e07ebe40efea3fbb11940c8e5a6b601e075ff74045bd13392",
+    "captures/smoke.mjs": "79fc01fc27a622c5df82f14c7584d31a7fdcd47d3fe8ccefd0916d3332d958ad",
+    "captures/tsx-metadata.json": "d6d88cde6e0ec43f387dfe3b48b3b40875e90ef5c79114045c201a4ac6aff09e",
+    "captures/verify-clean.mjs": "1a4652ef004d53e1bf76b21111732a1cdf9715b8daf67069b102ebe142881938",
+    "first-run-browser-failure.log": "c6d26b2a5c04819e73a9bdd9b19e85c1bc215609ba94687965c354df4c6e2a54",
+    "first-run.json": "13a8a49e4f6a11dcdfe3e937784a7a671507e42a0f13958f71e2353856f1a0ad",
+    "implementation-report.md": "bf4035944e1c980d2ea4a6a4ed33a95dca12a1cc1a62e2abac3105fe34bc56bf",
+    "review.md": "65c18b836a68764d7e9eabe5d2cd32ed7f4be9e2428253dcf714a1ef53621542"
+  }
+}

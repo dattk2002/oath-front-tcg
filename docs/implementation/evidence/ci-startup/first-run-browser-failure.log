@@ -1,0 +1,20 @@
+workspace	Browser integration (production standalone through trusted ingress)	﻿2026-10-21T01:12:56.5106222Z ##[group]Run OATHFRONT_E2E_PRODUCTION=1 pnpm test:e2e
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5106615Z ^[[36;1mOATHFRONT_E2E_PRODUCTION=1 pnpm test:e2e^[[0m
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5136433Z shell: /usr/bin/bash -e {0}
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5136701Z env:
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5136908Z   OATHFRONT_TEST_DATABASE: 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5137183Z   OATHFRONT_TEST_DB_CONTAINER: oathfront-ci-db-1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5137476Z   OATHFRONT_E2E_PORT: 3200
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5137730Z   API_ORIGIN: http://127.0.0.1:3101
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5137992Z   NEXT_TELEMETRY_DISABLED: 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5138253Z   OATHFRONT_EVIDENCE_ROOT: artifacts/ci-browser
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5138584Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.5138874Z ##[endgroup]
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:56.9338406Z $ pnpm build:api && playwright test
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:57.3546932Z $ node scripts/build-api.mjs
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:58.8539343Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:58.8540335Z Error: Process from config.webServer was not able to start. Exit code: 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:58.8548143Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:58.8549536Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:58.8890487Z [ELIFECYCLE] Command failed with exit code 1.
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:12:58.9067400Z ##[error]Process completed with exit code 1.

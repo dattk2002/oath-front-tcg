@@ -1,0 +1,137 @@
+{
+  "faction": "GOOD",
+  "revision": 5,
+  "phase": "COMBAT",
+  "expectedUnauthenticatedSessionResponses": 2,
+  "unexpectedConsoleErrors": [],
+  "network": [
+    {
+      "path": "/api/v1/session",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 401
+    },
+    {
+      "path": "/api/v1/guest",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/decks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/decks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/decks",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches",
+      "status": 201
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/commands",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/catalog/core_v1",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/matches/4558dcae-cb68-407a-8d0b-c460c5ab386c/events",
+      "status": 200
+    }
+  ]
+}

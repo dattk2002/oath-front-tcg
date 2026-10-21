@@ -1,0 +1,50 @@
+2026-10-21T01:20:21.112Z pw:webserver HTTP GET: http://127.0.0.1:3101/health/ready
+2026-10-21T01:20:21.119Z pw:webserver Error while checking if http://127.0.0.1:3101/health/ready is available: connect ECONNREFUSED 127.0.0.1:3101
+2026-10-21T01:20:21.119Z pw:webserver Starting WebServer process pnpm --filter @oathfront/api exec tsx tests/browser-server.mjs...
+2026-10-21T01:20:21.123Z pw:webserver Process started
+2026-10-21T01:20:21.123Z pw:webserver Waiting for availability...
+2026-10-21T01:20:21.123Z pw:webserver HTTP GET: http://127.0.0.1:3101/health/ready
+2026-10-21T01:20:21.128Z pw:webserver Error while checking if http://127.0.0.1:3101/health/ready is available: connect ECONNREFUSED 127.0.0.1:3101
+2026-10-21T01:20:21.128Z pw:webserver Waiting 100ms
+2026-10-21T01:20:21.228Z pw:webserver HTTP GET: http://127.0.0.1:3101/health/ready
+2026-10-21T01:20:21.229Z pw:webserver Error while checking if http://127.0.0.1:3101/health/ready is available: connect ECONNREFUSED 127.0.0.1:3101
+2026-10-21T01:20:21.229Z pw:webserver Waiting 250ms
+2026-10-21T01:20:21.479Z pw:webserver HTTP GET: http://127.0.0.1:3101/health/ready
+2026-10-21T01:20:21.480Z pw:webserver Error while checking if http://127.0.0.1:3101/health/ready is available: connect ECONNREFUSED 127.0.0.1:3101
+2026-10-21T01:20:21.480Z pw:webserver Waiting 500ms
+2026-10-21T01:20:21.981Z pw:webserver HTTP GET: http://127.0.0.1:3101/health/ready
+2026-10-21T01:20:21.981Z pw:webserver Error while checking if http://127.0.0.1:3101/health/ready is available: connect ECONNREFUSED 127.0.0.1:3101
+2026-10-21T01:20:21.982Z pw:webserver Waiting 1000ms
+[WebServer] Browser API fixture ready
+2026-10-21T01:20:22.982Z pw:webserver HTTP GET: http://127.0.0.1:3101/health/ready
+2026-10-21T01:20:23.000Z pw:webserver HTTP Status: 200
+2026-10-21T01:20:23.001Z pw:webserver WebServer available
+2026-10-21T01:20:23.001Z pw:webserver HTTP GET: http://localhost:3200/
+2026-10-21T01:20:23.009Z pw:webserver Error while checking if http://localhost:3200/ is available: connect ECONNREFUSED ::1:3200
+connect ECONNREFUSED 127.0.0.1:3200
+2026-10-21T01:20:23.009Z pw:webserver Starting WebServer process node scripts/ui-server.mjs...
+2026-10-21T01:20:23.012Z pw:webserver Process started
+2026-10-21T01:20:23.012Z pw:webserver Waiting for availability...
+2026-10-21T01:20:23.012Z pw:webserver HTTP GET: http://localhost:3200/
+2026-10-21T01:20:23.013Z pw:webserver Error while checking if http://localhost:3200/ is available: connect ECONNREFUSED ::1:3200
+connect ECONNREFUSED 127.0.0.1:3200
+2026-10-21T01:20:23.013Z pw:webserver Waiting 100ms
+2026-10-21T01:20:23.113Z pw:webserver HTTP GET: http://localhost:3200/
+2026-10-21T01:20:23.122Z pw:webserver HTTP Status: 502
+2026-10-21T01:20:23.122Z pw:webserver Waiting 250ms
+[WebServer] ▲ Next.js 16.4.2
+[WebServer] - Local:         http://127.0.0.1:3201
+[WebServer] - Network:       http://127.0.0.1:3201
+[WebServer] ✓ Ready in 0ms
+[WebServer] ✓ Running next.config took 3ms
+2026-10-21T01:20:23.372Z pw:webserver HTTP GET: http://localhost:3200/
+2026-10-21T01:20:23.429Z pw:webserver HTTP Status: 200
+2026-10-21T01:20:23.429Z pw:webserver WebServer available
+
+Running 1 test using 1 worker
+·2026-10-21T01:20:30.785Z pw:webserver Terminating the WebServer
+2026-10-21T01:20:30.792Z pw:webserver Terminated the WebServer
+2026-10-21T01:20:30.792Z pw:webserver Terminating the WebServer
+2026-10-21T01:20:30.807Z pw:webserver Terminated the WebServer
+
+  1 passed (9.7s)

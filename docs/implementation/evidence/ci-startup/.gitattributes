@@ -1,0 +1,3 @@
+# Preserve captured tool and CI output exactly.
+*.log -text -whitespace
+captures/*.log -text -whitespace

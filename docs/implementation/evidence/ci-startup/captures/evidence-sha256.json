@@ -1,0 +1,20 @@
+{
+  "reproduce.mjs": "126d6ae7cbe9748e07ebe40efea3fbb11940c8e5a6b601e075ff74045bd13392",
+  "clean-install.log": "1e131c02b51d7e8bd46f2a64e59d231e8ce9c978636ef5a2c752a8909fd63179",
+  "baseline.json": "dc10b39da9a3df3b052674390a5589903e2d77df3d3d0302c2284f586bce7ce6",
+  "clean-root-tsx.log": "0c3f502416a6aa246e793b5527587f826d77f635f04f9a0942534676ae81f767",
+  "clean-api-start.log": "393145129492233e25cd686d44e9a1354896112c22dff21667c60b210fb8147e",
+  "tsx-metadata.json": "d6d88cde6e0ec43f387dfe3b48b3b40875e90ef5c79114045c201a4ac6aff09e",
+  "verify-clean.mjs": "1a4652ef004d53e1bf76b21111732a1cdf9715b8daf67069b102ebe142881938",
+  "fixed-install.log": "2afd9e352dd358ebaecd6d1cee73fa24f1439f3459c7b2a6d1409e26a1247c21",
+  "fixed.json": "3031ce3f5c3b87205119a33652dd63a5bfb883a7032e0b0eef82e49b2ffadbef",
+  "fixed-root-tsx.log": "5a1000ce202726b5881ce5b0b675a19a82bac4f277e8959fd5792482fd13c7b1",
+  "fixed-api-tsx.log": "5a1000ce202726b5881ce5b0b675a19a82bac4f277e8959fd5792482fd13c7b1",
+  "smoke.mjs": "79fc01fc27a622c5df82f14c7584d31a7fdcd47d3fe8ccefd0916d3332d958ad",
+  "production-smoke.log": "85b6acf7bc8585399b7859bbcc0febc9ea9862aa423d4102ad42f03d214ac528",
+  "production-smoke.json": "e098fd4ce963af392d97aecee337d95ab1a5c87394f61836999195e7821ff016",
+  "browser/task9/good-desktop.png": "1531ea0e7f19781375b475191717bf85bb83def3db9d45e567931b0c6a27cc98",
+  "browser/task9/good-tablet.png": "a2a6afbf26d0e66cd5a99d04c262d58989ca7ec2d3cf3fdcc61a07b85eba4635",
+  "browser/task9/good-mobile.png": "fba00fb6b31d5ddfbfea54d20f435d9238cbda0d4c9c95c452cd32aae0b7edba",
+  "browser/task9/good-network.json": "8607c404720d847c41a9db266957399ab707e9ecf21dd09fef37f30239602843"
+}

@@ -1,0 +1,29 @@
+Scope: all 8 workspace projects
+? Verifying lockfile against supply-chain policies (602 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +475
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: /tmp/.pnpm-store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 475, reused 474, downloaded 0, added 475, done
+✓ Lockfile passes supply-chain policies (602 entries in 3.7s)
+
+devDependencies:
++ @axe-core/playwright 4.14.0
++ @eslint/js 10.0.1
++ @playwright/test 1.64.1
++ @types/node 24.19.2
++ esbuild 0.28.2
++ eslint 10.13.0
++ json-schema-to-typescript 16.0.0
++ prettier 3.9.10
++ tsx 4.23.15
++ typescript 6.0.3
++ typescript-eslint 8.72.0
++ vitest 5.0.5
+
+Done in 4.4s using pnpm v11.25.0
+
+EXIT=0

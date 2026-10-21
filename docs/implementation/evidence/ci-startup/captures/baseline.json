@@ -1,0 +1,49 @@
+{
+  "target": "/tmp/oathfront-ci-startup-K4OY7u",
+  "files": [
+    "apps/api/package.json",
+    "apps/web/package.json",
+    "package.json",
+    "packages/bot/package.json",
+    "packages/contracts/package.json",
+    "packages/db/package.json",
+    "packages/game-content/package.json",
+    "packages/game-engine/package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml"
+  ],
+  "results": [
+    {
+      "name": "clean-install",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "clean-root-tsx",
+      "command": [
+        "pnpm",
+        "exec",
+        "tsx",
+        "--version"
+      ],
+      "exit": 1
+    },
+    {
+      "name": "clean-api-start",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@oathfront/api",
+        "exec",
+        "tsx",
+        "tests/browser-server.mjs"
+      ],
+      "exit": 1
+    }
+  ],
+  "rootTsxBin": false
+}
