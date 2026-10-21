@@ -157,6 +157,12 @@ test("Pen Home and hero pages retain artwork and readable responsive layouts", a
       await page.goto(path!);
       await expect(page.locator("main h1")).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
+      // Full-page evidence must include portraits below the initial viewport.
+      // Scroll naturally so this also exercises production lazy loading.
+      for (const image of await page.locator("main img").all()) {
+        await image.scrollIntoViewIfNeeded();
+      }
+      await page.evaluate(() => window.scrollTo(0, 0));
       await expect
         .poll(() =>
           page
@@ -164,15 +170,11 @@ test("Pen Home and hero pages retain artwork and readable responsive layouts", a
             .evaluateAll(
               (images) =>
                 images.length > 0 &&
-                images
-                  .filter(
-                    (image) => image.getBoundingClientRect().top < innerHeight,
-                  )
-                  .every(
-                    (image) =>
-                      (image as HTMLImageElement).complete &&
-                      (image as HTMLImageElement).naturalWidth > 0,
-                  ),
+                images.every(
+                  (image) =>
+                    (image as HTMLImageElement).complete &&
+                    (image as HTMLImageElement).naturalWidth > 0,
+                ),
             ),
         )
         .toBe(true);

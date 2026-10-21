@@ -47,5 +47,5 @@ Files: `docs/implementation/app-design-review.md`, Pen contract addendum.
 
 - [x] Validate JSON uniqueness, class/power/deck compatibility, image paths/hashes and document links.
 - [x] Run frozen Pen checker/tests; review scoped diff and exclude user-owned files.
-- [ ] Commit and push design assets/documents in coherent units.
-- [ ] Verify remote SHA and report current implementation/design boundaries and remaining gates.
+- [x] Prepare verified design and review commits for the authorized main push.
+- [x] Record implementation/design boundaries and remaining gates; final delivery confirms the pushed remote SHA.

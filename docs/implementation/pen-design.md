@@ -1,5 +1,7 @@
 # Pen design implementation
 
+Follow-up: [whole-app review and fourteen-hero design boundary](app-design-review.md). Exact runtime commit `1194199` passed GitHub CI run 39642006445: 662 unit/integration tests and 97 browser tests, with two intentional browser skips.
+
 Source: [oath-front-tcg-design.pen](../design/pen/oath-front-tcg-design.pen), SHA256 `a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3`. The source bytes remain unchanged. [Contract](../design/pen/DESIGN-CONTRACT.md) and [approved scope](../superpowers/specs/2026-10-21-pen-design-implementation.md) distinguish actual Pen frames from the approved adaptation of existing game screens.
 
 ## Delivered surfaces

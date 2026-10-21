@@ -5,6 +5,7 @@ Representative Chromium captures at the supplied design sizes. Home, hero, News 
 - `home-desktop.png`: Home at 1440px, source BXxLv.
 - `hero-desktop.png`: Briar at 1440px, source CFFhD.
 - `heroes-mobile.png`: roster at 375px, source ImQTb.
+  Refreshed on 2026-10-22 after scrolling through every lazy portrait and verifying all images loaded; includes all six heroes.
 - `features-desktop.png`: Game Features at 1440px, source Wcfik.
 - `news-desktop.png`: News at 1440px, source BsnWN.
 - `dense-battle-compact.png`: inherited game skin at 1024×640; no new Pen battle frame is claimed.
