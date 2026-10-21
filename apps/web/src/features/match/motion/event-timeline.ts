@@ -141,16 +141,14 @@ export function bindCardFeedback(root: HTMLElement, reduced: () => boolean) {
     else if (owner.hovered || owner.focused) owner.tween.play();
     else owner.tween.reverse();
   }
-  const reset = () => {
+  const sync = () => {
     cards.forEach((owner) => {
-      owner.tween.pause(0);
+      if (reduced() || document.hidden) owner.tween.pause(0);
+      else if (owner.hovered || owner.focused) owner.tween.play();
     });
   };
-  const os = observeReducedMotion(reset);
-  const hidden = () => {
-    if (document.hidden) reset();
-  };
-  document.addEventListener("visibilitychange", hidden);
+  const os = observeReducedMotion(sync);
+  document.addEventListener("visibilitychange", sync);
   const enter = (event: Event) => animate(event, true);
   const leave = (event: Event) => animate(event, false);
   const observer = new MutationObserver(() => {
@@ -168,7 +166,7 @@ export function bindCardFeedback(root: HTMLElement, reduced: () => boolean) {
   return () => {
     observer.disconnect();
     os.dispose();
-    document.removeEventListener("visibilitychange", hidden);
+    document.removeEventListener("visibilitychange", sync);
     root.removeEventListener("pointerover", enter);
     root.removeEventListener("focusin", enter);
     root.removeEventListener("pointerout", leave);

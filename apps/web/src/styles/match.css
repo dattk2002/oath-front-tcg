@@ -886,6 +886,9 @@
     max-height: calc(100dvh - 208px);
     overflow: auto;
   }
+  .tutorial-panel {
+    scroll-padding-bottom: 8px;
+  }
   .inspect:not(:has(.inspect-art)) {
     display: block;
   }

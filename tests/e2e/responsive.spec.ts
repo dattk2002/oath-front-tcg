@@ -194,6 +194,28 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
       exact: true,
     });
     await skip.focus();
+    await writeFile(
+      `${evidence}/tutorial-skip-focus-${width}.json`,
+      JSON.stringify(
+        await skip.evaluate((button) => {
+          const panel = button.closest(".tutorial-panel")!;
+          const bounds = button.getBoundingClientRect();
+          const panelBounds = panel.getBoundingClientRect();
+          return {
+            button: {
+              top: bounds.top,
+              bottom: bounds.bottom,
+              height: bounds.height,
+            },
+            panel: { top: panelBounds.top, bottom: panelBounds.bottom },
+            scrollTop: panel.scrollTop,
+            scrollHeight: panel.scrollHeight,
+            clientHeight: panel.clientHeight,
+            viewportHeight: innerHeight,
+          };
+        }),
+      ),
+    );
     await expect(skip).toBeInViewport({ ratio: 1 });
     await proceed.focus();
     await expect(proceed).toBeInViewport({ ratio: 1 });
@@ -243,10 +265,10 @@ test("empty hand, pending command and renderer failure keep essential controls r
   const errors = await prepare(
     page,
     dto,
-    /\/assets\/core-v1\/atlases\/[^/]+\.webp$/,
+    /\/assets\/fivefold-cards-v3\/atlases\/[^/]+\.webp$/,
   );
   await page.setViewportSize({ width: 1024, height: 640 });
-  await page.route("**/assets/core-v1/atlases/**", (r) => r.abort());
+  await page.route("**/assets/fivefold-cards-v3/atlases/**", (r) => r.abort());
   await page.goto(`/matches/${dto.view.matchId}`);
   await expect(page.locator('[data-scene-status="fallback"]')).toBeAttached({
     timeout: 15000,

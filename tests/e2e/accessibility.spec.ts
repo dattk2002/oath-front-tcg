@@ -59,6 +59,7 @@ test("WCAG AA scan, English copy, settings and 200 percent reflow", async ({
       await page.setViewportSize({ width: 720, height: 450 });
       await page.getByText("Read the current board", { exact: true }).click();
       await expect(page.locator(".small-fallback ol li")).toHaveCount(5);
+      await page.screenshot({ path: `${evidence}/zoom-200-reflow.png` });
     }
     const result = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])

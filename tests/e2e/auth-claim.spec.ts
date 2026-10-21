@@ -686,7 +686,9 @@ test("review: provider-only logout retry survives guest navigation without revok
   await expect(
     page.getByRole("button", { name: "Retry Google sign-out", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Play vs bot", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Play now · Play vs bot", exact: true })
+    .click();
   await expect(
     page.getByRole("heading", { name: "Choose your hero" }),
   ).toBeVisible();

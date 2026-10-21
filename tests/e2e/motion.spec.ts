@@ -245,6 +245,13 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
     });
     document.dispatchEvent(new Event("visibilitychange"));
   });
+  await expect
+    .poll(() =>
+      handCard.evaluate(
+        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
+      ),
+    )
+    .toBeLessThan(-5);
   await page
     .getByRole("heading", { name: "OathFront match" })
     .evaluate((el) => (el as HTMLElement).focus());
@@ -265,6 +272,13 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
     )
     .toBe(0);
   await page.emulateMedia({ reducedMotion: "no-preference" });
+  await expect
+    .poll(() =>
+      handCard.evaluate(
+        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
+      ),
+    )
+    .toBeLessThan(-5);
   const before = await page
     .locator("canvas")
     .screenshot({ path: `${evidence}/canvas-before.png` });
