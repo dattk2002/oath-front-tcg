@@ -19,6 +19,15 @@ import {
   type CommandResponse,
 } from "../../packages/contracts/src/index.js";
 export async function create(page: Page, faction: "GOOD" | "EVIL" = "GOOD") {
+  // Serial browser fixtures share one trusted ingress IP; isolate only their guest quota.
+  const owner = ownerPool();
+  try {
+    await owner.query(
+      "DELETE FROM rate_limit_windows WHERE scope='GUEST_BOOTSTRAP'",
+    );
+  } finally {
+    await owner.end();
+  }
   const guest = await page.request.post("/api/v1/guest", {
     headers: { Origin: testOrigin },
     data: {
