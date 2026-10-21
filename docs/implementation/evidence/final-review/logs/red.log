@@ -1,0 +1,91 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+ ❯ tools/load/tests/concurrency.test.ts (15 tests | 12 failed) 13ms
+   × defaults to 20 when --concurrency is omitted 6ms
+   × rejects an explicitly missing concurrency value 2ms
+   × rejects invalid or out-of-range concurrency "" 0ms
+   × rejects invalid or out-of-range concurrency " " 0ms
+   × rejects invalid or out-of-range concurrency "abc" 0ms
+   × rejects invalid or out-of-range concurrency "--other" 0ms
+   × rejects invalid or out-of-range concurrency "NaN" 0ms
+   × rejects invalid or out-of-range concurrency "Infinity" 0ms
+   × rejects invalid or out-of-range concurrency "1.5" 0ms
+   × rejects invalid or out-of-range concurrency "0" 0ms
+   × rejects invalid or out-of-range concurrency "-1" 0ms
+   × rejects invalid or out-of-range concurrency "21" 0ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 12 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/load/tests/concurrency.test.ts > defaults to 20 when --concurrency is omitted
+AssertionError: expected NaN to be 20 // Object.is equality
+
+- Expected
++ Received
+
+- 20
++ NaN
+
+ ❯ tools/load/tests/concurrency.test.ts:7:34
+      5|
+      6| it("defaults to 20 when --concurrency is omitted", () => {
+      7|   expect(parseConcurrency(argv)).toBe(20);
+       |                                  ^
+      8| });
+      9|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+ FAIL  tools/load/tests/concurrency.test.ts > rejects an explicitly missing concurrency value
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tools/load/tests/concurrency.test.ts:15:62
+     13|
+     14| it("rejects an explicitly missing concurrency value", () => {
+     15|   expect(() => parseConcurrency([...argv, "--concurrency"])).toThrow(
+       |                                                              ^
+     16|     /--concurrency.*integer.*1.*20/i,
+     17|   );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency ""
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency " "
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "abc"
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "--other"
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "NaN"
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "Infinity"
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "1.5"
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "0"
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "-1"
+ FAIL  tools/load/tests/concurrency.test.ts > rejects invalid or out-of-range concurrency "21"
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ tools/load/tests/concurrency.test.ts:23:71
+     21|   "rejects invalid or out-of-range concurrency %j",
+     22|   (value) => {
+     23|     expect(() => parseConcurrency([...argv, "--concurrency", value])).…
+       |                                                                       ^
+     24|       /--concurrency.*integer.*1.*20/i,
+     25|     );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  12 failed | 3 passed (15)
+   Start at  08:00:56
+   Duration  204ms (transform 46%, tests 27%, import 20%, worker 7%)
+

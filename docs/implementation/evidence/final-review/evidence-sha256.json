@@ -1,0 +1,15 @@
+{
+  "files": {
+    ".gitattributes": "03ce4397323331d882b35520ec23168d627d4303ca1dbbc7e620cf30e9eaf682",
+    "README.md": "68414eadcf5ed45956c6eecd0f4763a12f4781f2d583b62dfc7616a728b4a274",
+    "controller-verification.json": "28979541441654a63c5ed016a3ad9a84d0a43afeec8ad8d5f6ec5432fc009e40",
+    "fix-report.md": "bfc77177b701cfc02a94964cd228fb381adf3c11d188957a0b65393b9e80b66f",
+    "known-secret-audit.json": "f921c81f6e7fa41cb1e664a9b077891e1e6f9280842282585bbf3a5ccf9cb247",
+    "logs/green.log": "41a8846eaf3b12398249192bd3e5da98a39d7b909ce380482fd0529fd85006f2",
+    "logs/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logs/red.log": "d30fe2337936702d7a806d5a99d4cf7af10e85d8e3ea866a829fe8683207f11f",
+    "logs/typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rereview.md": "0b902ba2650876690fc88fb823829fc901ad891d5646b39e4a68a360f9c71143",
+    "review.md": "e0a37c84682884c99e66a2ef8f93f3466db2d10abcce16c8bffa00d529224731"
+  }
+}

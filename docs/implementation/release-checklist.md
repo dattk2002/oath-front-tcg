@@ -1,6 +1,6 @@
 # Release checklist — HOLD
 
-This is a technical release-candidate preparation record, **not approval to deploy or a claim of production readiness**. Task18 review approved the technical scope; whole-branch review is still pending. CI passing does not close the following acceptance items.
+This is a technical release-candidate preparation record, **not approval to deploy or a claim of production readiness**. Task18 and whole-branch reviews approved the technical scope; the final parser fix passed scoped re-review. CI passing does not close the following acceptance items.
 
 | Gate | Current disposition |
 | --- | --- |
@@ -13,12 +13,12 @@ This is a technical release-candidate preparation record, **not approval to depl
 | Hosted deployment | Not requested/performed. No Vercel project/login/production deploy, registry publish or new Neon branch. Real edge trust, OAuth, quotas and cloud lifetime tests pending. |
 | Neon development migrations | Verified0001/0002/0003 ledger and restricted runtime grants; explicit development target only. |
 | Interactive DB migration | Pending explicit operator maintenance; never reset or migrate automatically. |
-| Operations implementation | Task18 technical review approved; three minor follow-ups are recorded for whole-branch review. |
+| Operations implementation | Task18 and whole-branch technical review approved; load parser fixed and re-reviewed. SDK peer and Vercel entrypoint warnings remain disclosed. |
 
 Before an authorized release:
 
 - [ ] Resolve acceptance holds or obtain explicit scoped product disposition; do not lower thresholds or call the game balanced.
-- [ ] Complete task18 and whole-branch reviews; preserve all evidence and source/artifact hashes.
+- [x] Complete Task18, whole-branch and final scoped reviews; [retain evidence and source/artifact hashes](evidence/final-review/README.md).
 - [ ] Verify two Vercel Hobby project scopes, actual account quotas/noncommercial eligibility, Node24, Singapore region and Neon current free-plan capacity. No promise of unlimited free service.
 - [ ] Keep DB/session secrets only in API, managed-auth cookie secret only in Next, and owner/migration credentials outside hosted runtime. Configure the distinct forwarding secret on both projects.
 - [ ] Verify exact HTTPS frontend origin/provider callbacks, no wildcard CSRF origin, API direct proof rejection, real trusted-IP forwarding and repeat-command receipt recovery.

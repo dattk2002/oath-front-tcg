@@ -1,0 +1,26 @@
+{
+  "verifiedAt": "2026-10-21T01:04:15.497674+00:00",
+  "head": "8be9466a00f683d86b28ad16e07e4c7cea4e1397",
+  "sourceBaselineBuildId": "V0isFAUtbXD_Bsuxb73A6",
+  "implementationEntriesCompared": 627,
+  "unchangedImplementationEntries": 626,
+  "expectedChangedComparedToBaseline": [
+    "tools/load/pve.ts"
+  ],
+  "missing": [],
+  "finalFixFiles": [
+    "tools/load/concurrency.ts",
+    "tools/load/pve.ts",
+    "tools/load/tests/concurrency.test.ts",
+    "vitest.config.ts"
+  ],
+  "finalFixSHA256": {
+    "tools/load/concurrency.ts": "a0a8b4e051f98320ea77d064e9ba9ef4ac3031cd3a3422f2469bf195382efcb7",
+    "tools/load/pve.ts": "02a7218bb9a09bda81b6b6c20c36a4cdc7d3044fea54102f72319f50e67114de",
+    "tools/load/tests/concurrency.test.ts": "ceb44910cdce547635a11865a150ec31e1c8a06f0baa07894d2435aab07b3270",
+    "vitest.config.ts": "f2d88c501aa6fbd8c81c0651859df9a350c05d5c3617aa2c4e907ee5d91f347f"
+  },
+  "runtimeArtifactEntriesCompared": 2541,
+  "runtimeArtifactMismatches": [],
+  "scope": "Fresh byte audit only. No tests/builds/load rerun. Final change is pure load-tool argument parsing, focused test and Vitest discovery."
+}
