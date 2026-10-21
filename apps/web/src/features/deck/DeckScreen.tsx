@@ -10,7 +10,7 @@ import type {
 } from "@oathfront/contracts/browser";
 import { useRouter } from "next/navigation";
 import type { ApiClient } from "../match/api-client";
-import { presetNames } from "../hero/HeroInspect";
+import { deckDisplayName } from "../../content/english-content";
 import { restorePresetCreate } from "../setup/pending-create";
 import HeroSelect from "../hero/HeroSelect";
 import DeckList from "./DeckList";
@@ -99,7 +99,7 @@ export default function DeckScreen({
             const saved = await api.deck(source.deckId, source.deckRevision);
             result = {
               deck: {
-                name: saved.name,
+                name: deckDisplayName({ kind: "SAVED", name: saved.name }),
                 heroId: saved.heroId,
                 entries: saved.entries,
                 contentVersion: saved.contentVersion,
@@ -114,7 +114,11 @@ export default function DeckScreen({
             if (!preset) throw Error();
             result = {
               deck: {
-                name: preset.name,
+                name: deckDisplayName({
+                  kind: "PRESET",
+                  presetId: preset.presetId,
+                  name: preset.name,
+                }),
                 heroId: preset.heroId,
                 entries: preset.entries,
                 contentVersion: catalog.version,
@@ -126,7 +130,7 @@ export default function DeckScreen({
           const saved = await api.deck(deckId);
           result = {
             deck: {
-              name: saved.name,
+              name: deckDisplayName({ kind: "SAVED", name: saved.name }),
               heroId: saved.heroId,
               contentVersion: saved.contentVersion,
               entries: saved.entries,
@@ -145,7 +149,7 @@ export default function DeckScreen({
           result = {
             deck: {
               name: preset
-                ? `${presetNames[preset.presetId]} · copy`
+                ? `${deckDisplayName({ kind: "PRESET", presetId: preset.presetId, name: preset.name })} · copy`
                 : "New deck",
               heroId: hero.id,
               entries: preset?.entries ?? [],

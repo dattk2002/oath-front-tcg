@@ -251,7 +251,9 @@ test("empty hand, pending command and renderer failure keep essential controls r
   await expect(page.locator('[data-scene-status="fallback"]')).toBeAttached({
     timeout: 15000,
   });
-  await expect(page.getByText("Hand empty.", { exact: false })).toBeVisible();
+  await expect(
+    page.getByText("Your hand is empty.", { exact: false }),
+  ).toBeVisible();
   await fits(page, ".hero-panel,.lane,.phase-controls");
   await page.screenshot({
     path: `${evidence}/empty-renderer-fallback.png`,

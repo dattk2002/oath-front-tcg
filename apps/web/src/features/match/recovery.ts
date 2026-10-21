@@ -1,6 +1,16 @@
 import type { CommandResponse, VisibleEvent } from "@oathfront/contracts";
 import { createApiClient, type ApiClient } from "./api-client";
 import { ApiError } from "./api-error";
+export const latestBoardRecoveryError =
+  "The latest board could not be loaded. Reconnect to retry.";
+export const incompleteLogRecoveryError =
+  "The battle log is incomplete. Reconnect to restore it.";
+export function isRecoveryFailureMessage(message: string | null): boolean {
+  return (
+    message === latestBoardRecoveryError ||
+    message === incompleteLogRecoveryError
+  );
+}
 export interface RecoveredMatch {
   response: CommandResponse;
   logEvents: VisibleEvent[];

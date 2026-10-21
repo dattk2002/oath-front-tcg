@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { resolveArt } from "./rendering/asset-manifest";
+export const retryArtLabel = (name: string): string => `Retry art ${name}`;
 
 /** Fixed-size decorative art; semantic names/rules always remain in the parent UI. */
 export default function ArtImage({
@@ -25,7 +26,7 @@ export default function ArtImage({
       {retry && (
         <button
           type="button"
-          aria-label={`Retry art${name}`}
+          aria-label={retryArtLabel(art.fallbackLabel)}
           onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();

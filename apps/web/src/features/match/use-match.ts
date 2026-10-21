@@ -10,7 +10,13 @@ import type { CommandResponse } from "@oathfront/contracts";
 import { validateBrowserWire } from "@oathfront/contracts/browser";
 import type { PresentationController } from "./motion/presentation-controller";
 import { ApiError } from "./api-error";
-import { recoverMatch, scanLog } from "./recovery";
+import {
+  recoverMatch,
+  scanLog,
+  latestBoardRecoveryError,
+  incompleteLogRecoveryError,
+  isRecoveryFailureMessage,
+} from "./recovery";
 import type { ApiClient } from "./api-client";
 import { createMatchViewStore } from "./view-store";
 import { createIntentController } from "./intent-controller";
@@ -136,11 +142,7 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
           store.setSelection(null);
         }
         setRecoveryFailed(false);
-        if (
-          before.message?.startsWith("Latest board unavailable") ||
-          before.message?.startsWith("Incomplete battle log")
-        )
-          store.setMessage(null);
+        if (isRecoveryFailureMessage(before.message)) store.setMessage(null);
         store.mergeLog(
           recovered.logEvents,
           recovered.logCursor,
@@ -149,9 +151,7 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
       } catch {
         if (active) {
           setRecoveryFailed(true);
-          store.setMessage(
-            "The latest board could not be loaded. Reconnect to retry.",
-          );
+          store.setMessage(latestBoardRecoveryError);
         }
       } finally {
         inFlight = false;
@@ -200,10 +200,7 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
         if (active)
           store.mergeLog(log.logEvents, log.logCursor, log.logExpired);
       } catch {
-        if (active)
-          store.setMessage(
-            "The battle log is incomplete. Reconnect to restore it.",
-          );
+        if (active) store.setMessage(incompleteLogRecoveryError);
       } finally {
         scanning = false;
         if (active && store.getSnapshot().latestSeq > current.latestSeq)

@@ -423,3 +423,10 @@ export const contentText = (id: string): string =>
   entry(id)?.text ?? "Rules unavailable.";
 export const heroTitle = (id: string): string =>
   entry(id)?.title ?? "Unknown hero";
+export function deckDisplayName(
+  source:
+    | Readonly<{ kind: "PRESET"; presetId: string; name: string }>
+    | Readonly<{ kind: "SAVED"; name: string }>,
+): string {
+  return source.kind === "PRESET" ? contentName(source.presetId) : source.name;
+}

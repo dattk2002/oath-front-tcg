@@ -189,9 +189,9 @@ export default function Board({
                 onFocus={() => onPreview(action ?? null)}
                 onPointerEnter={() => onPreview(action ?? null)}
                 onClick={() => onTarget(target)}
-                aria-label={`Choose lane${lane.laneId}${action ? ", legal target" : ", unavailable"}`}
+                aria-label={`Choose lane ${lane.laneId}${action ? ", legal target" : ", unavailable"}`}
               >
-                {action ? "Choose this lane" : "Lane" + lane.laneId}
+                {action ? "Choose this lane" : `Lane ${lane.laneId}`}
               </button>
             </li>
           );

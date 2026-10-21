@@ -1,8 +1,22 @@
 import { contentName } from "../../content/english-content";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import type { MatchList, PublicCatalog } from "@oathfront/contracts";
+import type {
+  MatchList,
+  MatchSummary,
+  PublicCatalog,
+} from "@oathfront/contracts";
 import type { ApiClient } from "../match/api-client";
+export function historyResultLabel(
+  match: Pick<MatchSummary, "resumable" | "lifecycle" | "outcome">,
+): string {
+  if (match.resumable) return "Resume match";
+  if (match.lifecycle === "ABANDONED") return "Closed · no loss recorded";
+  if (match.lifecycle === "FAULTED") return "Match error";
+  if (match.outcome?.result === "WIN") return "Win";
+  if (match.outcome?.result === "LOSS") return "Loss";
+  return "Draw";
+}
 export default function HistoryScreen({
   api,
   catalog,
@@ -100,19 +114,7 @@ export default function HistoryScreen({
                   turns
                 </small>
               </span>
-              <strong>
-                {m.resumable
-                  ? "Resume match"
-                  : m.lifecycle === "ABANDONED"
-                    ? "Closed · no loss recorded"
-                    : m.lifecycle === "FAULTED"
-                      ? "Match error"
-                      : m.outcome?.result === "WIN"
-                        ? "Win"
-                        : m.outcome?.result === "LOSS"
-                          ? "Thua"
-                          : "Draw"}
-              </strong>
+              <strong>{historyResultLabel(m)}</strong>
             </Link>
           </li>
         ))}

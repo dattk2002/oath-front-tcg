@@ -542,7 +542,7 @@ for (const paused of [false, true])
     });
     await page.evaluate(() => window.dispatchEvent(new Event("online")));
     await expect(surface.getByTestId("command-status")).toContainText(
-      "Latest board unavailable",
+      "The latest board could not be loaded. Reconnect to retry.",
     );
     await expect(action).toBeDisabled();
     if (paused) {
@@ -555,7 +555,7 @@ for (const paused of [false, true])
       .click();
     await expect(action).toBeEnabled();
     await expect(surface.getByTestId("command-status")).not.toContainText(
-      "Latest board unavailable",
+      "The latest board could not be loaded. Reconnect to retry.",
     );
     if (paused) {
       await action.click();

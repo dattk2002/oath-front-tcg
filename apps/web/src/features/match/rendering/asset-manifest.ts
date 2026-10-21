@@ -15,7 +15,7 @@ export function resolveArt(
   const variants: Record<string, string | undefined> = asset ?? {};
   return {
     src: variants[variant] ?? `/assets/core-v1/${artKey}`,
-    fallbackLabel: fallbackLabel || asset?.fallbackLabel || "Illustration",
+    fallbackLabel: fallbackLabel || "Illustration",
     artKey,
   };
 }

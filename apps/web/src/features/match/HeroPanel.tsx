@@ -74,7 +74,7 @@ export default function HeroPanel({
           Block <b>{hero.block.charge} / 8</b> · Used {hero.block.used} / 3
         </span>
         <span className="muted">
-          Tay {hero.handCount} · Deck {hero.deckCount} · Power{" "}
+          Hand {hero.handCount} · Deck {hero.deckCount} · Power{" "}
           {hero.reserveCount}
         </span>
       </div>

@@ -4,6 +4,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { randomUUID, randomBytes } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import { create, command } from "./recovery-fixtures.js";
+import { contentName } from "../../apps/web/src/content/english-content.js";
 const dir = evidencePath(
   "task12",
   ".superpowers/sdd/2026-10-20-oathfront-implementation/task-12-evidence",
@@ -78,12 +79,12 @@ test("six heroes expose exact four powers and signature without early match crea
     await page.locator(`input[type="radio"][value="${hero.id}"]`).check();
     const detail = page.getByRole("complementary", { name: "Hero details" });
     await expect(
-      detail.getByRole("heading", { name: hero.nameVi, exact: true }),
+      detail.getByRole("heading", { name: contentName(hero.id), exact: true }),
     ).toBeVisible();
     for (const id of hero.powerIds) {
       const power = catalog.powers.find((p: { id: string }) => p.id === id);
       await expect(
-        detail.getByRole("button", { name: new RegExp(power.nameVi) }),
+        detail.getByRole("button", { name: new RegExp(contentName(power.id)) }),
       ).toBeVisible();
     }
     await expect(detail.getByText("Signature", { exact: true })).toHaveCount(1);
@@ -510,9 +511,9 @@ test("offline committed saved create reload restores exact source opponent and i
   await expect(
     page.getByRole("heading", { name: "Choose your opponent", exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("combobox", { name: /^Opponent hero/ })).toHaveValue(
-    "H_G_BP",
-  );
+  await expect(
+    page.getByRole("combobox", { name: /^Opponent hero/ }),
+  ).toHaveValue("H_G_BP");
   await expect(page.getByRole("combobox", { name: /^Difficulty/ })).toHaveValue(
     "NORMAL",
   );

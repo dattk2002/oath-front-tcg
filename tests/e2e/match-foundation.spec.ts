@@ -175,7 +175,7 @@ for (const faction of ["GOOD", "EVIL"] as const) {
     expect(snapshot.view.self.side).toBe(faction);
     expect(snapshot.revision).toBeGreaterThanOrEqual(4);
     await expect(page.getByTestId("phase-label")).toContainText(
-      /Ashen deployment|Dawnward play|Ashen tricks|Giao tranh|Turn start|Turn end/,
+      /Ashen deployment|Dawnward play|Ashen tricks|Combat|Turn start|Turn end/,
     );
     const owner = ownerPool();
     try {
@@ -286,9 +286,9 @@ test("lost create response restores displayed choices on reload and retries iden
   await expect(
     page.getByRole("heading", { name: "Choose your opponent", exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("combobox", { name: /^Opponent hero/ })).toHaveValue(
-    "H_G_BP",
-  );
+  await expect(
+    page.getByRole("combobox", { name: /^Opponent hero/ }),
+  ).toHaveValue("H_G_BP");
   await expect(page.getByRole("combobox", { name: /^Difficulty/ })).toHaveValue(
     "NORMAL",
   );

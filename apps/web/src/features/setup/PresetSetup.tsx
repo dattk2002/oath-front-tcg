@@ -2,6 +2,7 @@ import {
   contentName,
   heroTitle,
   contentText,
+  deckDisplayName,
 } from "../../content/english-content";
 import { usePrivateStorage } from "../auth/private-storage";
 import ArtImage from "../match/ArtImage";
@@ -274,7 +275,13 @@ export default function PresetSetup({
       ) : stage === "DECK" ? (
         <article className="preset panel">
           <p className="eyebrow">Preset deck · Recommended</p>
-          <h2>{preset.name}</h2>
+          <h2>
+            {deckDisplayName({
+              kind: "PRESET",
+              presetId: preset.presetId,
+              name: preset.name,
+            })}
+          </h2>
           <p>{strategies[hero.id]}</p>
           <strong className="deck-count">30 / 30 cards</strong>
           <p className="muted">

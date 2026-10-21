@@ -25,3 +25,24 @@ Per the task brief, no full 618-test suite, build, development server, or browse
 ## Scope for integration
 
 This report and Task 1 code/docs/tests are the only files to commit. The controller-owned design spec/plan changes and `assets/source/rivals-v2/` are outside this task and remain unstaged. No push or deployment was performed.
+
+## Review fix round 1 (after `e2389a0`)
+
+The eight review findings were checked against their rendering paths and corrected together:
+
+- Recovery failures now use shared English message constants. Successful reconnect recognizes and clears the exact latest-board and incomplete-log messages while retaining unrelated command errors. The block-recovery E2E assertion checks the rendered latest-board message and its removal.
+- Preset setup, preset-source review, and preset-derived draft names resolve `presetId` to the English presentation. Saved deck names still pass through unchanged. History LOSS is `Loss`; the hero HUD resource line begins `Hand`.
+- Retry artwork and lane actions include spaces in accessible names. An empty art label now falls back to `Illustration`, avoiding historical manifest copy.
+- E2E hero/power selectors resolve names by stable ID. The empty-hand selector uses the rendered sentence, and the phase alternatives include `Combat`.
+
+The new `apps/web/tests/english-presentation.test.ts` was run before implementation and failed in all five cases, exposing the missing preset/recovery helpers, malformed lane label, historical art fallback, and missing loss label. Each amended case then passed in a focused run. The test renders the actual board and hero HUD with the API's public-catalog projection and checks saved-name preservation.
+
+Final fix-round checks:
+
+- `pnpm exec vitest run apps/web/tests/english-presentation.test.ts apps/web/src/content/english-content.test.ts apps/web/tests/recovery.test.ts apps/web/tests/deck.test.ts` — **4 files, 25 tests passed**.
+- `pnpm typecheck` — **exit 0**. An intermediate run found only that the new test's hand-built catalog lacked the API tuple shape; the fixture now uses the real `publicCatalog()` projection, and the final run passed.
+- `pnpm exec eslint` on the 15 amended source/test files — **exit 0**.
+- `pnpm exec playwright test --list` — **exit 0; 81 tests in 13 files discovered**. This is syntax/discovery evidence only; no browser test was run.
+- `git diff --check` — **exit 0**.
+
+The full browser suite and build remain deferred to Task 4. No application server, port, database, push, or deployment was used in this fix round.
