@@ -1,0 +1,426 @@
+{
+  "method": "Controller inspected each built-in generated image at completion; integration worker also inspects source/contact sheets/crops.",
+  "entries": [
+    {
+      "id": "GC01",
+      "sha256": "c1cfc3cfc7e974583f685ea0e6e9a29aa8f85b6936e67f8a7ef472bcaeb55001",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "GC02",
+      "sha256": "df6ebdd3157e0ea65bebd16e79161c35186f8a94825fedfdb79f6962ef18ae1c",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "GC03",
+      "sha256": "cb87ef3295cc315b4d898dac49fcfc05b53701126000328ac1771b5d1e18ef31",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Targeted framing edit inspected and accepted; complete trumpet/antler now visible. Earlier source and prompt retained in revisions."
+    },
+    {
+      "id": "GC04",
+      "sha256": "d0e02b76fd16e1a3d1855ca44a6adb26d90dbd7ad865a3c9544868870262467a",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "GC05",
+      "sha256": "7b788e22c2a5e7888e8329b1249bb13d62946b95c71557a231cc2b8f82c484b4",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "GC06",
+      "sha256": "9ab87ec869ea517967f925d90e96775d2b81dcdce6a6e44dea536e8f0680f71d",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B01",
+      "sha256": "b6e1aa31697152449d92fe543bd3eaf466ad40f2c5a13afa1974553e3f931ea1",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B02",
+      "sha256": "3f275d5c13da5e3438050c2714dbbd9ffb2a06713d41a5f5f305846ad2c91afa",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B03",
+      "sha256": "4728a3b242ffa2584d228d7a49ae5b2423f8437d22d759c48f96e20ac341c698",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B04",
+      "sha256": "4dbffd916d4bd89bb295502e87e66d62f265be6161dc56b480864316dae130d5",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B05",
+      "sha256": "2f42a2ab1d4c72c712d59fcc97f3efbf9daaacc3a63d4b391acf2b56a52f0684",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B06",
+      "sha256": "0accfaf72c9d592022908950f91964d22895f1bc302c32b0d09237d1968827cb",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B07",
+      "sha256": "66d0edf12227447da1ad7b039882bf57a0efe767bc9ffeb0b711dc44f09c26f9",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "B08",
+      "sha256": "c3c30cd53a14675ef854b92035ada064ef977b3faecf754f3854326834f412dc",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "V01",
+      "sha256": "013b36ffaeee62ac583ccd6802b3d574639061d07ef8d2f5301c137cf953ac13",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "V02",
+      "sha256": "1d9dcd50a903919f7e972d923927f3c227de83fd460256b56221e50bd712dadc",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Targeted framing edit inspected and accepted; complete trumpet/antler now visible. Earlier source and prompt retained in revisions."
+    },
+    {
+      "id": "V03",
+      "sha256": "27a9759d0063f1c699230e4cc1a35db2890da7c953aadc027c62fcddb507dd67",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "V04",
+      "sha256": "6424ca4b2c9440f47ece5bd7b60aa4fc7d7343779420bbba3457493e84bec10c",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "V05",
+      "sha256": "fde377ce4776d049d5a6c0c4c5d08bf22fd51421fce5c244332c2d4c54a41da2",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "V06",
+      "sha256": "80ed718019d0d33108c01a53a4ba48bce5f7ae1c8c00e5b7697525781c508b97",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "V07",
+      "sha256": "2018ceeee4c1c7656b23810c9a56920cb852710b5de21bd90cbbe0869bba2230",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "V08",
+      "sha256": "de556ca5188ef95c4dc165f4634e30e3522f4dc5d47acc83315fad12ab5835c7",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "P01",
+      "sha256": "d045548f5c89f4dd5b7b3fee5e9e4254d2b18e7caf47f90453e1e7425143443b",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "P02",
+      "sha256": "ee8b87c71d58c76f853f779c27397da61337607ba027006bd224ac8aefa6f275",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "P03",
+      "sha256": "cb738107f436218b74cad4b79ec61af4c2edd1103e4a6c372095d1aff013d2f3",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "P04",
+      "sha256": "eb27c5eb5061c6eb2cdc0ea5551901ef3d91778bc23b8fe3d8cbbdbffa6a4613",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "P05",
+      "sha256": "8d8f023046e96de02a3c4e3731e4b99a1427649c83de259aba09fda0e68ca1d3",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Controller and integration worker inspected wing extremities; solid anatomy is intact. Sparse edge pixels are effect halo."
+    },
+    {
+      "id": "P06",
+      "sha256": "ee33b106951f37e1593dc86ca49ee6eeaf9bb0c4d640f9dcdee2a2cbb47f8bc6",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "P07",
+      "sha256": "5a9b21b2499442ce808cd3fa03e3a1ab080dee236a6332c3d5c6fcea55ff7f23",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "P08",
+      "sha256": "71d02ea4521509d09d01ab61c447a5047d40b51c4ed03a09930a711455038623",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "EC01",
+      "sha256": "63cfca96a149964ee9d53eb6bd1a8d769d6b382e80ac1c8dadfe3f41c9b0cdff",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "EC02",
+      "sha256": "4c41ead0b965c02ce293d37a4f520e957016d5b61abd3aa340b1ad88ecd048a8",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "EC03",
+      "sha256": "8210f228451e76f3911f8b0f564f96b893ee2ab48d62e87f76acebf96a10dcd1",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "EC04",
+      "sha256": "f2504fc05c15055ff5ba29e27f2f0f432fefca2aa9b14be6707032c8c1e131eb",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "EC05",
+      "sha256": "9bff8355ba57961c179e11d772a31a2af58a191a2a49ce18acc44481721d4752",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "EC06",
+      "sha256": "37506e6791543b57e905991013354ae408f40c73d2c3616d2c14c120cdc5126a",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F01",
+      "sha256": "2081d274f19c8ab9a80a4f2d01fc008b1d3e0a766385009b45780cbb04153642",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F02",
+      "sha256": "f4410be936ae5d9a78963ae468b49683c4352df7fad7d67af3308390ea5a9e61",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F03",
+      "sha256": "41ac2fecf1f764345b6bed65fcf4f4e4e1d50bda9391df38af8923c5e469d744",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F04",
+      "sha256": "2911d1f36b28baa6eae49c643ffbd8190888ffc811efae752fd728e8dc7c3b31",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F05",
+      "sha256": "59fa21802fa73adb37988230e3e32eefbd6a9fd15b23c90890d2c392814cb5c5",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F06",
+      "sha256": "6df65dd2b24a1243b2e37f1bf212ff4d878e883cdaa13b03c93604ec9e344ff6",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F07",
+      "sha256": "b9020223d082aeb9967612d2e2ed2af4eb6876aed9275ea6a4b66d8252abc927",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "F08",
+      "sha256": "87cdf04f232469361721a50b2128718a12ce8e9871ad485197aede39d4106b2d",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X01",
+      "sha256": "729264eab124756e7521710e51f7cad6c28b627bf70358583fb73b9514dbb648",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X02",
+      "sha256": "5029f2862a647ede45f5b9d3c2b79e912d29f9bade1719b16da0c76c61ed207b",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X03",
+      "sha256": "dfbf40411683c01d3b5add2bd6dc2f45e5e1a780e1cf9c5853b479635636090a",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X04",
+      "sha256": "8904265ad45dcb996486296a2a5cd9ae6df1f35e0e05173cb3d8362588057329",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X05",
+      "sha256": "99052ed2939a4ca0dbf86679bec2b88aae4187504cb0fe1db83af5d5c47439e4",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X06",
+      "sha256": "83042dbd6cf1ac84a2c71b5c7a9ef3575f362c02c1378ee4645511774c457792",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X07",
+      "sha256": "8a3ff76360655d3dca1c9f1f37f567bd03f1e4340b488d205485442146c5b85b",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "X08",
+      "sha256": "8c45c92986fe4ea325cc023500e690fe6473661d6161b13f7cb2c74e36f5c9f0",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "S01",
+      "sha256": "1ed0019a1352a43595aebd28ba8b649cb0a7a796b745723e309ce7b461aa705a",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Controller and integration worker inspected wing extremities; solid anatomy is intact. Sparse edge pixels are effect halo."
+    },
+    {
+      "id": "S02",
+      "sha256": "419aa9a507737ef7aed9599986bf9b53319240e053d95fac476f818f5d1ad663",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "S03",
+      "sha256": "fb7d0f4cf62f400445d8b1b095c2dce70f0c1e9cfcecf31c071c2a8ef1211e1c",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "S04",
+      "sha256": "fb635efb5a1f7e57d390b7514e4e35c81aa995915a8c48cb7f6e5b00490781a5",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Controller inspected local full-resolution source; halberd tip is intact within border, so no regeneration needed."
+    },
+    {
+      "id": "S05",
+      "sha256": "3ffdfced8ede68d842cd1850f3fa3d940243dd78062f8cb0b000ef39d8dc74ce",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "S06",
+      "sha256": "5d5b7c2c7630024e74b89fcd795b8f6c583cede0d0018f49c394ed7f1b993a50",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "S07",
+      "sha256": "9ee170bd589e1d97834c571670d4b398817de0b4d8bf5db6f15786ca6049571a",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    },
+    {
+      "id": "S08",
+      "sha256": "538377da86a8ee8d4d04fb7e3238958b6eb84b1158c310b1f9ee6979bb9f1977",
+      "review": "Controller inspected the generated full image: unique subject, coherent faction materials, readable silhouette or focal action, and no baked text.",
+      "status": "accepted",
+      "note": "Preserve source proportions and alpha; deterministic exports add padding."
+    }
+  ],
+  "completedCount": 60
+}

@@ -1,0 +1,15 @@
+{
+  "id": "X02",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-fafd8920-23f7-4370-b46b-5dff4f3b90a3.png",
+  "path": "masters/X02.png",
+  "sha256": "5029f2862a647ede45f5b9d3c2b79e912d29f9bade1719b16da0c76c61ed207b",
+  "bytes": 1796882,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

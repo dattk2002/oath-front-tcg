@@ -25,10 +25,10 @@
 ## Review Focus
 
 - A saved old match or deck must display English without rewriting identifiers, saved names or checkpoint/content hashes: Task1 compatibility test.
-- Rapid hero changes, interrupted navigation, reduced-motion toggles and hidden tab must not leave controls invisible or leak timelines: Task3 lifecycle checks.
-- Long user names, ten-card hands, fallback imagery and200% zoom must not clip text/focus/retry controls: Tasks2/4 visual/keyboard checks.
-- A command response during a signature/death animation must retain the original revision/damage/fast-forward guarantees: Task3 existing controller regression coverage.
-- Missing/late imagery and intentionally failed requests must retain actual error reporting, named fallbacks and explicit recovery: Tasks2/4 covering browser scenarios.
+- Rapid hero changes, interrupted navigation, reduced-motion toggles and hidden tab must not leave controls invisible or leak timelines: Task4 lifecycle checks.
+- Long user names, ten-card hands, fallback imagery and200% zoom must not clip text/focus/retry controls: Tasks2/5 visual/keyboard checks.
+- A command response during a signature/death animation must retain the original revision/damage/fast-forward guarantees: Task4 existing controller regression coverage.
+- Missing/late imagery and intentionally failed requests must retain actual error reporting, named fallbacks and explicit recovery: Tasks2/5 covering browser scenarios.
 
 ---
 
@@ -59,7 +59,21 @@ Parent additionally produced `assets/source/rivals-v2/fivefold-board.png` and `b
 - [ ] Review via ui-ux-pro-max: contrast, focus, responsive density, long-content overflow, touch and fallback states. Fix objective findings before verification.
 - [ ] Run focused asset/resolve checks, type/lint and browser visual probes on isolated dev UI when available; capture375,1024×640,1440×900 and fallback. Do not repeat broad engine/load tests. Commit coherent art/theme changes and report exact assets touched.
 
-### Task 3: GSAP choreography and comic combat effects
+### Task 3: Complete sixty-card illustration refresh
+
+User explicitly selected **redraw all 60 card artworks to match the new heroes**, with ArtStation as an additional reference. This supersedes the original retained-card-art scope. Six completed hero illustrations remain the style anchors. All 60 stable card IDs must receive original new art; power/token/terrain illustrations outside those 60 retain current support.
+
+**Files:** Create source masters/prompts/provenance under `assets/source/fivefold-cards-v3`, bounded exports/manifest/low-high unit atlases under `apps/web/public/assets/fivefold-cards-v3`, focused export command/tests under `tools/assets`, and current art-direction documentation. Extend the presentation asset resolver and rendering asset loader to consume all card overrides and new unit frames while preserving existing token/hero fallback and all eight terrain preload invariants.
+
+**Interfaces:** `resolveArt`, `artById`, `battleAssetRequests`, `AssetBundle.atlases` and stable definition IDs remain compatible. Core manifest, canonical content versions, source-parity rules and API payloads do not change. Parent produces 60 built-in imagegen originals and exact per-ID requests; implementer consumes source metadata and handles deterministic web export/integration. Never infer completion from placeholder images or reuse one master for unrelated cards.
+
+- [ ] Read the amended spec and ArtStation reference notes, inspect the generated masters. All 38 units have actual transparent backgrounds and intact readable silhouettes; all 22 tricks are square compositions with a clear single effect and no baked text/UI. Generate missing/corrective assets with built-in imagegen, not SVG stand-ins. Original heroes are material/rendering references only, not duplicated characters.
+- [ ] Export intentional bounded card thumb/inspect variants and unit atlas frames. Replace unit presentation textures with new art through a complete manifest and preserve unchanged token frames as needed. New runtime preload must be independent of secret/selected lanes, decks and opponent data, with measured entry/decode budgets.
+- [ ] Add meaningful coverage for 60-ID completeness, source hashes/alpha/outputs, consistent resolver+atlas loading, unchanged pool of all eight terrain strips and missing-image recovery. Do not rewrite original core assets or loosen historical source-parity validators.
+- [ ] Inspect all 60 assets using readable review sheets plus individual files for suspicious crops; record IDs and any targeted corrections. Verify actual card collection/hand/board images in focused dev browser probes at supported sizes. Keep rules and controls legible.
+- [ ] Update art direction, image provenance, current implementation docs and Pen handoff inputs; commit coherent source/export/integration changes. No full engine or full production browser suite here; Task 5 handles final integration once.
+
+### Task 4: GSAP choreography and comic combat effects
 
 **Files:** Modify `apps/web/src/features/match/motion/event-timeline.ts`, existing presentation/rendering files, relevant UI components; create focused owned UI-motion helpers under `apps/web/src/features/motion` only if shared; add/update relevant existing motion tests and `tests/e2e/rivals-motion.spec.ts`; update motion documentation.
 
@@ -71,22 +85,22 @@ Parent additionally produced `assets/source/rivals-v2/fivefold-board.png` and `b
 - [ ] Verify normal/reduced mode, rapid selection/unmount, pause/hidden tab, fast-forward, and unchanged command/revision behavior in focused tests. Review motion accessibility/performance with ui-ux-pro-max. No physical benchmark claim without an actual measurement.
 - [ ] Commit the motion change with scoped test evidence and any remaining concrete limitations.
 
-### Task 4: Integrated verification, documents and delivery
+### Task 5: Integrated verification, documents and delivery
 
 **Files:** Update current documentation index, redesign report/QA checklist, current spec pointers and milestone record. Adjust tests only for proven regressions. No unrelated backend changes.
 
-**Interfaces:** Consume final English presentation, art manifest and motion behavior from Tasks1–3; preserve original release checklist holds. Native commits/push remain authorized; controller handles review and push.
+**Interfaces:** Consume final English presentation, art manifest and motion behavior from Tasks1–4; preserve original release checklist holds. Native commits/push remain authorized; controller handles review and push.
 
 - [ ] Run final English static-copy audit allowing historical transport fields/comments/user text; verify current docs name mappings and links. Run typecheck, lint and relevant frontend/content tests once on integrated source.
 - [ ] Build production once with API_ORIGIN=http://127.0.0.1:3121 and run final production browser suite sequentially against isolated verification DB. Preserve actual failures and use only covering reruns for fixes.
 - [ ] Inspect actual browser UI at375,1024×640,1440×900 and200% reflow; play hero/deck/mulligan/deploy/pass/pause/reload flow, normal/reduced motion, fallback and console. Record what was visually verified rather than inferring from unit tests.
 - [ ] If a live preview is delivered, build/start a separate `oathfront-redesign` Docker stack at free loopback3400 with separate volume and run a focused guest-play smoke; do not replace3300 or migrate user DB. Record exact startup instructions.
 - [ ] Complete current documentation with tokens, all component state/keyboard/pointer/touch rules, motion timings, asset provenance, screenshots, testable QA checks and known limits. Original user Markdown must remain intact as reference.
-- [ ] Commit task changes, report checks and actual skipped gates; controller performs whole-change review, applies at most the defined scoped final fix wave, then pushes small commits and verifies actual automatic CI. No production deployment.
+- [ ] Commit task changes, report checks and actual skipped gates; controller performs whole-change review after Task6, applies at most the defined scoped final fix wave, then pushes small commits once and verifies actual automatic CI. No production deployment.
 
-### Task 5: Pen.dev prompt and design-to-code handoff
+### Task 6: Pen.dev prompt and design-to-code handoff
 
-Added by the user after execution began; perform after the current redesign is complete. This does not replace Tasks1–4.
+Added by the user after execution began; perform after the current redesign is complete. This does not replace Tasks1–5.
 
 **Files:** Create `docs/design/pen/OATHFRONT-PEN-PROMPT.md`, `docs/design/pen/DESIGN-CONTRACT.md`, `docs/design/pen/design-contract.json` and a narrowly useful schema/check command if the actual format warrants it; link from current docs index.
 

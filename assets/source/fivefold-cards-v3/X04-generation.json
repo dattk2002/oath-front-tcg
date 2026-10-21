@@ -1,0 +1,15 @@
+{
+  "id": "X04",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-fae127d6-6855-4088-8dcf-c79f7dee2fe3.png",
+  "path": "masters/X04.png",
+  "sha256": "8904265ad45dcb996486296a2a5cd9ae6df1f35e0e05173cb3d8362588057329",
+  "bytes": 1869258,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

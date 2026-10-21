@@ -1,0 +1,15 @@
+{
+  "id": "F04",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-d16dfecc-b700-418e-966f-ec7c94b581c1.png",
+  "path": "masters/F04.png",
+  "sha256": "2911d1f36b28baa6eae49c643ffbd8190888ffc811efae752fd728e8dc7c3b31",
+  "bytes": 1877375,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

@@ -1,0 +1,2998 @@
+{
+  "version": "fivefold-cards-v3",
+  "catalogVersion": "core_v1",
+  "assets": [
+    {
+      "id": "GC01",
+      "kind": "unit",
+      "artKey": "cards/gc01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/GC01.png",
+        "sha256": "c1cfc3cfc7e974583f685ea0e6e9a29aa8f85b6936e67f8a7ef472bcaeb55001",
+        "bytes": 1676109,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/GC01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/GC01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc01-thumb.webp",
+          "sha256": "a7a484b8a3bb3ff0bccd049c9749dbeacaf1665c4956e4fd228dab30d9d9fb04",
+          "bytes": 25298,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc01-inspect.webp",
+          "sha256": "35dd834eb878b3c6335552cb155c076bb2fadfd2dc3ce2233c4655a83b3c1c15",
+          "bytes": 71484,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc01-cutout.webp",
+          "sha256": "35dd834eb878b3c6335552cb155c076bb2fadfd2dc3ce2233c4655a83b3c1c15",
+          "bytes": 71484,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "GC02",
+      "kind": "unit",
+      "artKey": "cards/gc02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/GC02.png",
+        "sha256": "df6ebdd3157e0ea65bebd16e79161c35186f8a94825fedfdb79f6962ef18ae1c",
+        "bytes": 1523489,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/GC02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/GC02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc02-thumb.webp",
+          "sha256": "d37281b35b37afab33cc4a79ec752d5bacea050ec8863a5f9a5d6b25fea31d8a",
+          "bytes": 23708,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc02-inspect.webp",
+          "sha256": "607d2c0d81cd3952193f6cf9088fb6540bec48af3e0cc32b9cee136a3fe9aadf",
+          "bytes": 65092,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc02-cutout.webp",
+          "sha256": "607d2c0d81cd3952193f6cf9088fb6540bec48af3e0cc32b9cee136a3fe9aadf",
+          "bytes": 65092,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "GC03",
+      "kind": "unit",
+      "artKey": "cards/gc03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/GC03.png",
+        "sha256": "cb87ef3295cc315b4d898dac49fcfc05b53701126000328ac1771b5d1e18ef31",
+        "bytes": 1660049,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/GC03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/GC03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc03-thumb.webp",
+          "sha256": "1e021ec2a4efd5b5ea90ca2542182207ecf9ba81e4b93fefcb4f11dfc5a14420",
+          "bytes": 24966,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc03-inspect.webp",
+          "sha256": "f05bd3d961aeeb412d51a8e873d7f63778a0e341f1cc46832571d5ec7810f5d0",
+          "bytes": 68886,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc03-cutout.webp",
+          "sha256": "f05bd3d961aeeb412d51a8e873d7f63778a0e341f1cc46832571d5ec7810f5d0",
+          "bytes": 68886,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "GC04",
+      "kind": "unit",
+      "artKey": "cards/gc04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/GC04.png",
+        "sha256": "d0e02b76fd16e1a3d1855ca44a6adb26d90dbd7ad865a3c9544868870262467a",
+        "bytes": 2430874,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/GC04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/GC04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc04-thumb.webp",
+          "sha256": "364a9028f51c073850cbc932291a6d9bb98aef21f373b355f4501f9fa31ee32a",
+          "bytes": 32152,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc04-inspect.webp",
+          "sha256": "1b358f1c85ff142f5bc3c770742e30e1776615cc3b93a3e5b324eded6cd76f56",
+          "bytes": 95686,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc04-cutout.webp",
+          "sha256": "1b358f1c85ff142f5bc3c770742e30e1776615cc3b93a3e5b324eded6cd76f56",
+          "bytes": 95686,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "GC05",
+      "kind": "trick",
+      "artKey": "cards/gc05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/GC05.png",
+        "sha256": "7b788e22c2a5e7888e8329b1249bb13d62946b95c71557a231cc2b8f82c484b4",
+        "bytes": 2574098,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/GC05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/GC05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc05-thumb.webp",
+          "sha256": "ee94151466f612e44cfd2c0a0348db87139b62aa4f3c1b87ef79158ac47d362b",
+          "bytes": 27562,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc05-inspect.webp",
+          "sha256": "fd82b6b32ebc9469733afdeb6bd01ca6aeb4ec68975758a1ded695aa6d52571d",
+          "bytes": 81770,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "GC06",
+      "kind": "trick",
+      "artKey": "cards/gc06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/GC06.png",
+        "sha256": "9ab87ec869ea517967f925d90e96775d2b81dcdce6a6e44dea536e8f0680f71d",
+        "bytes": 2807956,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/GC06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/GC06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc06-thumb.webp",
+          "sha256": "d6f0a0421ec1b93807deea51ea259aa4895a5e7567c16aa984d7fce4a96d7fa7",
+          "bytes": 28110,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/gc06-inspect.webp",
+          "sha256": "ce6164588649512d55c3de137acebead90e4e1b74674df552385c3c8abf159c9",
+          "bytes": 88574,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "B01",
+      "kind": "unit",
+      "artKey": "cards/b01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B01.png",
+        "sha256": "b6e1aa31697152449d92fe543bd3eaf466ad40f2c5a13afa1974553e3f931ea1",
+        "bytes": 2211529,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b01-thumb.webp",
+          "sha256": "e0186cc01ace88c4997086a91bd505ceadd5d78652eeda2a6983d2bb74cebced",
+          "bytes": 27292,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b01-inspect.webp",
+          "sha256": "d9f530ea8f1abfb3c0f3ba0b85de2843d4d945ee6d26625a906d71872197a809",
+          "bytes": 78348,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b01-cutout.webp",
+          "sha256": "d9f530ea8f1abfb3c0f3ba0b85de2843d4d945ee6d26625a906d71872197a809",
+          "bytes": 78348,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "B02",
+      "kind": "unit",
+      "artKey": "cards/b02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B02.png",
+        "sha256": "3f275d5c13da5e3438050c2714dbbd9ffb2a06713d41a5f5f305846ad2c91afa",
+        "bytes": 2455631,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b02-thumb.webp",
+          "sha256": "0f609630a581d5d7c77f61824f1399fd1c44f102812939328c9d0e85abb2de05",
+          "bytes": 30680,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b02-inspect.webp",
+          "sha256": "df8de664a290f94880c36868f7e9a9f99e564f1272c1d6ced8a4aa7977cf064e",
+          "bytes": 93198,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b02-cutout.webp",
+          "sha256": "df8de664a290f94880c36868f7e9a9f99e564f1272c1d6ced8a4aa7977cf064e",
+          "bytes": 93198,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "B03",
+      "kind": "unit",
+      "artKey": "cards/b03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B03.png",
+        "sha256": "4728a3b242ffa2584d228d7a49ae5b2423f8437d22d759c48f96e20ac341c698",
+        "bytes": 1966608,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b03-thumb.webp",
+          "sha256": "8cc5cdaba2958fd63ccdd4f8a8f332e3cb40b36a44bc26503aa94bc936fbe309",
+          "bytes": 29424,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b03-inspect.webp",
+          "sha256": "9ae5233c7a83fa382b02e68e8eb8277e5e1eb27727ec03cbc23770197c57d9dc",
+          "bytes": 85330,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b03-cutout.webp",
+          "sha256": "9ae5233c7a83fa382b02e68e8eb8277e5e1eb27727ec03cbc23770197c57d9dc",
+          "bytes": 85330,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "B04",
+      "kind": "unit",
+      "artKey": "cards/b04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B04.png",
+        "sha256": "4dbffd916d4bd89bb295502e87e66d62f265be6161dc56b480864316dae130d5",
+        "bytes": 1653057,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b04-thumb.webp",
+          "sha256": "713d4eba3341ba73a240a819c9b9fa8c34130243f62730e6b8d4d1db36dc3ff5",
+          "bytes": 24302,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b04-inspect.webp",
+          "sha256": "367ed189d5909fd51aa7f5d5331954e952a07595e5fdc0d0a1c4f2fdaf886a19",
+          "bytes": 65140,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b04-cutout.webp",
+          "sha256": "367ed189d5909fd51aa7f5d5331954e952a07595e5fdc0d0a1c4f2fdaf886a19",
+          "bytes": 65140,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "B05",
+      "kind": "unit",
+      "artKey": "cards/b05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B05.png",
+        "sha256": "2f42a2ab1d4c72c712d59fcc97f3efbf9daaacc3a63d4b391acf2b56a52f0684",
+        "bytes": 2042983,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b05-thumb.webp",
+          "sha256": "bb34d3a762282e652a0dd8126f4c57b5cd2471b0121e919c562f853ee1402c2e",
+          "bytes": 26512,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b05-inspect.webp",
+          "sha256": "7729aba38245343c43fdeb7d029304dc7f9ef02fe0f501fb5e89122daebd1f3f",
+          "bytes": 73628,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b05-cutout.webp",
+          "sha256": "7729aba38245343c43fdeb7d029304dc7f9ef02fe0f501fb5e89122daebd1f3f",
+          "bytes": 73628,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "B06",
+      "kind": "trick",
+      "artKey": "cards/b06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B06.png",
+        "sha256": "0accfaf72c9d592022908950f91964d22895f1bc302c32b0d09237d1968827cb",
+        "bytes": 2788958,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b06-thumb.webp",
+          "sha256": "db0bfe7f7417dc866d0a5a57d9e6b5cf5f66888ea3b35fd4711a6c7c775c099b",
+          "bytes": 28448,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b06-inspect.webp",
+          "sha256": "1e5220b6b5e41059c86d044290753818eb8c9d7052ff34469effae0aa2ff80c0",
+          "bytes": 90264,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "B07",
+      "kind": "trick",
+      "artKey": "cards/b07.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B07.png",
+        "sha256": "66d0edf12227447da1ad7b039882bf57a0efe767bc9ffeb0b711dc44f09c26f9",
+        "bytes": 2399097,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B07.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B07-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b07-thumb.webp",
+          "sha256": "8624efb4fc2397a582b73461944a359edcc4d0e1d7b0b192a3b1c4d822bded2e",
+          "bytes": 23768,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b07-inspect.webp",
+          "sha256": "cd3f6584590020e04d5b4cc5212e72f97d8142d00b77706ab3a4c8ee0abe4fe4",
+          "bytes": 66024,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "B08",
+      "kind": "trick",
+      "artKey": "cards/b08.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/B08.png",
+        "sha256": "c3c30cd53a14675ef854b92035ada064ef977b3faecf754f3854326834f412dc",
+        "bytes": 2809116,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/B08.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/B08-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b08-thumb.webp",
+          "sha256": "b2d191796c2a3d0858316bceae8289ab24b288615f85c7c6b9527c09a46541cc",
+          "bytes": 29010,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/b08-inspect.webp",
+          "sha256": "85c3388d4b7326ca1ff93e1950e4c9ee1ecfc62708ecbd751c76191fba5acfcf",
+          "bytes": 89530,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "V01",
+      "kind": "unit",
+      "artKey": "cards/v01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V01.png",
+        "sha256": "013b36ffaeee62ac583ccd6802b3d574639061d07ef8d2f5301c137cf953ac13",
+        "bytes": 1911155,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v01-thumb.webp",
+          "sha256": "7f204809ba0e9f88688204aa30414cfaaef167b25706ccb1af0dac5624e74f2b",
+          "bytes": 29524,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v01-inspect.webp",
+          "sha256": "711da04b7d8007633a2b851df0013ede99bbd23571bd570a10b975e2dc0e51d5",
+          "bytes": 86934,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v01-cutout.webp",
+          "sha256": "711da04b7d8007633a2b851df0013ede99bbd23571bd570a10b975e2dc0e51d5",
+          "bytes": 86934,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "V02",
+      "kind": "unit",
+      "artKey": "cards/v02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V02.png",
+        "sha256": "1d9dcd50a903919f7e972d923927f3c227de83fd460256b56221e50bd712dadc",
+        "bytes": 1647744,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v02-thumb.webp",
+          "sha256": "d95e8879a7613da909a16854454f74dfa439e35ebae86bc39b25a2bb658412c0",
+          "bytes": 23902,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v02-inspect.webp",
+          "sha256": "84fdf5d9856bdf85d57a08be5fcfb7f9c7d00e10b40690756acb77def00ab51f",
+          "bytes": 70884,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v02-cutout.webp",
+          "sha256": "84fdf5d9856bdf85d57a08be5fcfb7f9c7d00e10b40690756acb77def00ab51f",
+          "bytes": 70884,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "V03",
+      "kind": "unit",
+      "artKey": "cards/v03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V03.png",
+        "sha256": "27a9759d0063f1c699230e4cc1a35db2890da7c953aadc027c62fcddb507dd67",
+        "bytes": 1805529,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v03-thumb.webp",
+          "sha256": "c974c4f442c3a33e2c895165294e66291cbd8d8d984c4c47cf45d34a98c3a91e",
+          "bytes": 29056,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v03-inspect.webp",
+          "sha256": "35d88dfa161154a1cd37cfdf813ada969f1193fcdc1fbfc916b086007d72822b",
+          "bytes": 81078,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v03-cutout.webp",
+          "sha256": "35d88dfa161154a1cd37cfdf813ada969f1193fcdc1fbfc916b086007d72822b",
+          "bytes": 81078,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "V04",
+      "kind": "unit",
+      "artKey": "cards/v04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V04.png",
+        "sha256": "6424ca4b2c9440f47ece5bd7b60aa4fc7d7343779420bbba3457493e84bec10c",
+        "bytes": 2354748,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v04-thumb.webp",
+          "sha256": "aebd5fbbdbf53ed7562fec79514dc9e270425e0fae0de5a161c619b2e4688bf2",
+          "bytes": 33820,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v04-inspect.webp",
+          "sha256": "85fcdd1b707802c337158af9a7badd93afa650e02de6f047cb4252d3eac7d433",
+          "bytes": 103622,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v04-cutout.webp",
+          "sha256": "85fcdd1b707802c337158af9a7badd93afa650e02de6f047cb4252d3eac7d433",
+          "bytes": 103622,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "V05",
+      "kind": "unit",
+      "artKey": "cards/v05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V05.png",
+        "sha256": "fde377ce4776d049d5a6c0c4c5d08bf22fd51421fce5c244332c2d4c54a41da2",
+        "bytes": 2046411,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v05-thumb.webp",
+          "sha256": "c5003259695efbe21ba59b70d98f710c96adc3c70cf00e68bc08ecbfc09a1249",
+          "bytes": 35912,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v05-inspect.webp",
+          "sha256": "5e947647f2d1f2c34b278e189f33417b7ab29a67df1fdf9ece7368b5183e65a8",
+          "bytes": 107842,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v05-cutout.webp",
+          "sha256": "5e947647f2d1f2c34b278e189f33417b7ab29a67df1fdf9ece7368b5183e65a8",
+          "bytes": 107842,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "V06",
+      "kind": "trick",
+      "artKey": "cards/v06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V06.png",
+        "sha256": "80ed718019d0d33108c01a53a4ba48bce5f7ae1c8c00e5b7697525781c508b97",
+        "bytes": 2819629,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v06-thumb.webp",
+          "sha256": "22c8ccb709dd9477502b1c0b28d5f6ecf1c690d537908c4fcafc945d97bf61c2",
+          "bytes": 30032,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v06-inspect.webp",
+          "sha256": "a329d3cd0f021ffcc7cbc44fb9b7d5e22301e06e466f089b89ad579bae5d7fb3",
+          "bytes": 92146,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "V07",
+      "kind": "trick",
+      "artKey": "cards/v07.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V07.png",
+        "sha256": "2018ceeee4c1c7656b23810c9a56920cb852710b5de21bd90cbbe0869bba2230",
+        "bytes": 2876415,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V07.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V07-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v07-thumb.webp",
+          "sha256": "ca891c97b3179503519e001d284fa18763b54d8cb8aa7ae714978fb5eca0e53e",
+          "bytes": 29582,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v07-inspect.webp",
+          "sha256": "247eac6eb9a42871798ef4bae4f66114ae0e368c0e2da51440a10b3b0d7eb34d",
+          "bytes": 94770,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "V08",
+      "kind": "trick",
+      "artKey": "cards/v08.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/V08.png",
+        "sha256": "de556ca5188ef95c4dc165f4634e30e3522f4dc5d47acc83315fad12ab5835c7",
+        "bytes": 2474355,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/V08.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/V08-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v08-thumb.webp",
+          "sha256": "9a68f1bf19e56c270888b7ea87dcaf7bd62a40eedb2e719ce1afd3b51a80d121",
+          "bytes": 26482,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/v08-inspect.webp",
+          "sha256": "4d7afa2a6b203e8fdc0f66ae0b176316df0881cb98d589cace6c033ba1033fbb",
+          "bytes": 76022,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "P01",
+      "kind": "unit",
+      "artKey": "cards/p01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P01.png",
+        "sha256": "d045548f5c89f4dd5b7b3fee5e9e4254d2b18e7caf47f90453e1e7425143443b",
+        "bytes": 1900962,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p01-thumb.webp",
+          "sha256": "e60773aa602e148cd539a516fe3df183a8b9d0105aaf7f92f2410842621206ed",
+          "bytes": 29448,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p01-inspect.webp",
+          "sha256": "ed42f02849cce9abb2bf64ffe75c359720bdda69fefe56012ff8e701c0809869",
+          "bytes": 84912,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p01-cutout.webp",
+          "sha256": "ed42f02849cce9abb2bf64ffe75c359720bdda69fefe56012ff8e701c0809869",
+          "bytes": 84912,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "P02",
+      "kind": "unit",
+      "artKey": "cards/p02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P02.png",
+        "sha256": "ee8b87c71d58c76f853f779c27397da61337607ba027006bd224ac8aefa6f275",
+        "bytes": 1978611,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p02-thumb.webp",
+          "sha256": "9e01072c2cfbba4f8046ee2240499478bacfae3340a218917b5ad004dd269dca",
+          "bytes": 33884,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p02-inspect.webp",
+          "sha256": "25a13e2bcfda1be0328634ce17b69689a8ae0cbdb3a4976182603ab04aed88d2",
+          "bytes": 99094,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p02-cutout.webp",
+          "sha256": "25a13e2bcfda1be0328634ce17b69689a8ae0cbdb3a4976182603ab04aed88d2",
+          "bytes": 99094,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "P03",
+      "kind": "unit",
+      "artKey": "cards/p03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P03.png",
+        "sha256": "cb738107f436218b74cad4b79ec61af4c2edd1103e4a6c372095d1aff013d2f3",
+        "bytes": 1714103,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p03-thumb.webp",
+          "sha256": "6c9d759268826b002c99b0b8603f05b3eb90eb8e1e1bd648d14e9c6bc8f7fe2c",
+          "bytes": 25072,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p03-inspect.webp",
+          "sha256": "e5b5eacc23f6994c3a6d2259249c4675d05ad04cd1e5131b0e0341e550df680c",
+          "bytes": 72254,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p03-cutout.webp",
+          "sha256": "e5b5eacc23f6994c3a6d2259249c4675d05ad04cd1e5131b0e0341e550df680c",
+          "bytes": 72254,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "P04",
+      "kind": "unit",
+      "artKey": "cards/p04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P04.png",
+        "sha256": "eb27c5eb5061c6eb2cdc0ea5551901ef3d91778bc23b8fe3d8cbbdbffa6a4613",
+        "bytes": 1906152,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p04-thumb.webp",
+          "sha256": "7b8702e359ac154924dd1a41ff5d4b0e9b2713abc0300187acdef1baf8c373d8",
+          "bytes": 31138,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p04-inspect.webp",
+          "sha256": "6ab166c112f8341d604f120982c1f8ea9e13223727c5e5f32e177edbb8a4f5b5",
+          "bytes": 90410,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p04-cutout.webp",
+          "sha256": "6ab166c112f8341d604f120982c1f8ea9e13223727c5e5f32e177edbb8a4f5b5",
+          "bytes": 90410,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "P05",
+      "kind": "unit",
+      "artKey": "cards/p05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P05.png",
+        "sha256": "8d8f023046e96de02a3c4e3731e4b99a1427649c83de259aba09fda0e68ca1d3",
+        "bytes": 2168091,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p05-thumb.webp",
+          "sha256": "5f500ac65782a1803efc4f7cded18b6538f750ad08b2685d2e4c5581c32c1de9",
+          "bytes": 32654,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p05-inspect.webp",
+          "sha256": "b693538fc59053052e65ac322c5fd5fd8c31527f928f541e503a746d6799ab5e",
+          "bytes": 93604,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p05-cutout.webp",
+          "sha256": "b693538fc59053052e65ac322c5fd5fd8c31527f928f541e503a746d6799ab5e",
+          "bytes": 93604,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "P06",
+      "kind": "trick",
+      "artKey": "cards/p06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P06.png",
+        "sha256": "ee33b106951f37e1593dc86ca49ee6eeaf9bb0c4d640f9dcdee2a2cbb47f8bc6",
+        "bytes": 2760168,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p06-thumb.webp",
+          "sha256": "0721419887cda69492ac04f9947fcc4222fbd3ce5c59a57c1b4eccdf6e504a9a",
+          "bytes": 27926,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p06-inspect.webp",
+          "sha256": "ea1cf4c4d21b7fa06acc6897ca56933885d8e94e77ba08f964fc89ca295fa8b1",
+          "bytes": 89036,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "P07",
+      "kind": "trick",
+      "artKey": "cards/p07.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P07.png",
+        "sha256": "5a9b21b2499442ce808cd3fa03e3a1ab080dee236a6332c3d5c6fcea55ff7f23",
+        "bytes": 2840580,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P07.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P07-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p07-thumb.webp",
+          "sha256": "427902b2c49581feb4833dc52b8d2911902819907c6d94e5b9405253e0d8e062",
+          "bytes": 28190,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p07-inspect.webp",
+          "sha256": "a9d7ed40208478ea3f6e8fc0010e8f0f7a3e08d5468b1437defe33e155dc54e1",
+          "bytes": 87990,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "P08",
+      "kind": "trick",
+      "artKey": "cards/p08.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/P08.png",
+        "sha256": "71d02ea4521509d09d01ab61c447a5047d40b51c4ed03a09930a711455038623",
+        "bytes": 2437162,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/P08.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/P08-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p08-thumb.webp",
+          "sha256": "93d8dfc1b72b8dcff4c25ae418b0fbb873d1520b4f8825826f06880fdf622856",
+          "bytes": 24406,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/p08-inspect.webp",
+          "sha256": "0a63bbc3943cacf092deb33637e9e0dd65735b03bfa0bf47834455ed390786b7",
+          "bytes": 70066,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "EC01",
+      "kind": "unit",
+      "artKey": "cards/ec01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/EC01.png",
+        "sha256": "63cfca96a149964ee9d53eb6bd1a8d769d6b382e80ac1c8dadfe3f41c9b0cdff",
+        "bytes": 1756812,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/EC01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/EC01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec01-thumb.webp",
+          "sha256": "3ebdcf4900ae5c91e32a6454b3821276ca8faa39931fe7e6607f3a420839dc22",
+          "bytes": 24182,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec01-inspect.webp",
+          "sha256": "f2b9afc36eaaa2454cba51bd5d3065824d6646fc4314b07af39373ada07034d1",
+          "bytes": 71764,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec01-cutout.webp",
+          "sha256": "f2b9afc36eaaa2454cba51bd5d3065824d6646fc4314b07af39373ada07034d1",
+          "bytes": 71764,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "EC02",
+      "kind": "unit",
+      "artKey": "cards/ec02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/EC02.png",
+        "sha256": "4c41ead0b965c02ce293d37a4f520e957016d5b61abd3aa340b1ad88ecd048a8",
+        "bytes": 1467321,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/EC02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/EC02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec02-thumb.webp",
+          "sha256": "b5e56de57b252cd31e2529b9339ba5ca60cdcfdbc05fd41b7c95a9833ef390e6",
+          "bytes": 21910,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec02-inspect.webp",
+          "sha256": "e2fe9285a23e53c628a068290d6d7553f136c0358a4d16bd96389bf6a47e1aff",
+          "bytes": 60162,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec02-cutout.webp",
+          "sha256": "e2fe9285a23e53c628a068290d6d7553f136c0358a4d16bd96389bf6a47e1aff",
+          "bytes": 60162,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "EC03",
+      "kind": "unit",
+      "artKey": "cards/ec03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/EC03.png",
+        "sha256": "8210f228451e76f3911f8b0f564f96b893ee2ab48d62e87f76acebf96a10dcd1",
+        "bytes": 1701361,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/EC03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/EC03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec03-thumb.webp",
+          "sha256": "c85e712b9e3d9e46bb8a83c32a34b19fa4d1264ca67d2f1d515cee850a4f1d22",
+          "bytes": 23212,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec03-inspect.webp",
+          "sha256": "60aa104328834882680b7c8be24391b7f76e58265a75861a43dff551c66c774f",
+          "bytes": 68022,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec03-cutout.webp",
+          "sha256": "60aa104328834882680b7c8be24391b7f76e58265a75861a43dff551c66c774f",
+          "bytes": 68022,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "EC04",
+      "kind": "unit",
+      "artKey": "cards/ec04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/EC04.png",
+        "sha256": "f2504fc05c15055ff5ba29e27f2f0f432fefca2aa9b14be6707032c8c1e131eb",
+        "bytes": 1990072,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/EC04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/EC04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec04-thumb.webp",
+          "sha256": "4aef9aa98eadccedb9f85e58ff6698e5fd9414b5a62b0792d5efcaddaa25c0dd",
+          "bytes": 28190,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec04-inspect.webp",
+          "sha256": "d374bcce3203efb96f930207be4f70ee5bc8cc5df4eaeaf58330b689612dfd45",
+          "bytes": 82828,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec04-cutout.webp",
+          "sha256": "d374bcce3203efb96f930207be4f70ee5bc8cc5df4eaeaf58330b689612dfd45",
+          "bytes": 82828,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "EC05",
+      "kind": "trick",
+      "artKey": "cards/ec05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/EC05.png",
+        "sha256": "9bff8355ba57961c179e11d772a31a2af58a191a2a49ce18acc44481721d4752",
+        "bytes": 2291082,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/EC05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/EC05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec05-thumb.webp",
+          "sha256": "500d0879512b9bf15e1007296f9cfe4877cfbf8f4d55df1d490f4fab4bcb07bf",
+          "bytes": 21688,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec05-inspect.webp",
+          "sha256": "eb057d6753d7bd220c8f19a9d6dfab937122c8c30003d04797766325cb5e4259",
+          "bytes": 63452,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "EC06",
+      "kind": "trick",
+      "artKey": "cards/ec06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/EC06.png",
+        "sha256": "37506e6791543b57e905991013354ae408f40c73d2c3616d2c14c120cdc5126a",
+        "bytes": 2478796,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/EC06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/EC06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec06-thumb.webp",
+          "sha256": "e53e3161c215a77b34e10e76a42968aca0368b7343dd605cfb83099cdee2b88e",
+          "bytes": 21146,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/ec06-inspect.webp",
+          "sha256": "65024cd80f6695a82b1246dc4f33046227b59be6543b27009ad375e948015e95",
+          "bytes": 65614,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "F01",
+      "kind": "unit",
+      "artKey": "cards/f01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F01.png",
+        "sha256": "2081d274f19c8ab9a80a4f2d01fc008b1d3e0a766385009b45780cbb04153642",
+        "bytes": 1796381,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f01-thumb.webp",
+          "sha256": "6b601ac87b4ce1df8cce59ab22457bc392c1c6bc593ec0b82db09f463c91c9e1",
+          "bytes": 23518,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f01-inspect.webp",
+          "sha256": "a313b208f28a6bd4213a9f217de3592c097b3aded12d945b886f264c9b6f6ce0",
+          "bytes": 70042,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f01-cutout.webp",
+          "sha256": "a313b208f28a6bd4213a9f217de3592c097b3aded12d945b886f264c9b6f6ce0",
+          "bytes": 70042,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "F02",
+      "kind": "unit",
+      "artKey": "cards/f02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F02.png",
+        "sha256": "f4410be936ae5d9a78963ae468b49683c4352df7fad7d67af3308390ea5a9e61",
+        "bytes": 1434644,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f02-thumb.webp",
+          "sha256": "323df36f5639c0930670b8af6e88fa3849b841308d47a163f72318c753ec10e8",
+          "bytes": 20612,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f02-inspect.webp",
+          "sha256": "1f0e6b57bae452f60d8565a99d23e59a1494a5a3d5aaaa23588b87ab2d8593bf",
+          "bytes": 59742,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f02-cutout.webp",
+          "sha256": "1f0e6b57bae452f60d8565a99d23e59a1494a5a3d5aaaa23588b87ab2d8593bf",
+          "bytes": 59742,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "F03",
+      "kind": "unit",
+      "artKey": "cards/f03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F03.png",
+        "sha256": "41ac2fecf1f764345b6bed65fcf4f4e4e1d50bda9391df38af8923c5e469d744",
+        "bytes": 1624455,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f03-thumb.webp",
+          "sha256": "6f4e83482f8a67dd71e7f9db0a2f85e89dfd3a554a02586bea2e2b41daf57f86",
+          "bytes": 23214,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f03-inspect.webp",
+          "sha256": "12084e0b9d79af8a67bcca83ce8b5b222dbac381d94c56445da4b6e828a4eb3b",
+          "bytes": 69090,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f03-cutout.webp",
+          "sha256": "12084e0b9d79af8a67bcca83ce8b5b222dbac381d94c56445da4b6e828a4eb3b",
+          "bytes": 69090,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "F04",
+      "kind": "unit",
+      "artKey": "cards/f04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F04.png",
+        "sha256": "2911d1f36b28baa6eae49c643ffbd8190888ffc811efae752fd728e8dc7c3b31",
+        "bytes": 1877375,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f04-thumb.webp",
+          "sha256": "5857dc6f8bb3cd99ee8563f42d46891a8ca6147d2a6c2902c5cdbb57d22ecf02",
+          "bytes": 24572,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f04-inspect.webp",
+          "sha256": "e975556e527b56730806f814bfce34fe5f4c95570c9db811cca2911307af3442",
+          "bytes": 73550,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f04-cutout.webp",
+          "sha256": "e975556e527b56730806f814bfce34fe5f4c95570c9db811cca2911307af3442",
+          "bytes": 73550,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "F05",
+      "kind": "unit",
+      "artKey": "cards/f05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F05.png",
+        "sha256": "59fa21802fa73adb37988230e3e32eefbd6a9fd15b23c90890d2c392814cb5c5",
+        "bytes": 2082581,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f05-thumb.webp",
+          "sha256": "19b42744c2bb4cdaa779a74dbb20fa3ba69ad60df6ae0a9a5fd449f18043fd63",
+          "bytes": 26374,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f05-inspect.webp",
+          "sha256": "f3338408e5c557d55103098a86799f52f71e9d94036770ab36f0d5cb48b1abf7",
+          "bytes": 78734,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f05-cutout.webp",
+          "sha256": "f3338408e5c557d55103098a86799f52f71e9d94036770ab36f0d5cb48b1abf7",
+          "bytes": 78734,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "F06",
+      "kind": "trick",
+      "artKey": "cards/f06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F06.png",
+        "sha256": "6df65dd2b24a1243b2e37f1bf212ff4d878e883cdaa13b03c93604ec9e344ff6",
+        "bytes": 2315868,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f06-thumb.webp",
+          "sha256": "7d930332fa6d1f92fce7bc4fd5c63fbef49a3de32939a170a5998b3521807ea6",
+          "bytes": 26844,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f06-inspect.webp",
+          "sha256": "af621c36077068d4553a7c0c6a2f132533323307064f8046543f11a9071712ae",
+          "bytes": 76376,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "F07",
+      "kind": "trick",
+      "artKey": "cards/f07.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F07.png",
+        "sha256": "b9020223d082aeb9967612d2e2ed2af4eb6876aed9275ea6a4b66d8252abc927",
+        "bytes": 2323833,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F07.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F07-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f07-thumb.webp",
+          "sha256": "39397a55c9d0fd56a7bc5ab96b949a6f97574447744dc16e9daa5b0f4869b569",
+          "bytes": 24290,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f07-inspect.webp",
+          "sha256": "b67ee1115ffe7d3b8863ba23a556b011bbc346e62bd1add2a6ae186a7c3bfab7",
+          "bytes": 68894,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "F08",
+      "kind": "trick",
+      "artKey": "cards/f08.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/F08.png",
+        "sha256": "87cdf04f232469361721a50b2128718a12ce8e9871ad485197aede39d4106b2d",
+        "bytes": 2712149,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/F08.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/F08-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f08-thumb.webp",
+          "sha256": "bbb39364b6eb54b69206ff88f84f448bbb6b56dba7793f0d4e63dc935d4a726e",
+          "bytes": 28800,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/f08-inspect.webp",
+          "sha256": "971521f88015ebe5bda89935bd0e545f958bc5f01f52e748798e2d74831efb0d",
+          "bytes": 93420,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "X01",
+      "kind": "unit",
+      "artKey": "cards/x01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X01.png",
+        "sha256": "729264eab124756e7521710e51f7cad6c28b627bf70358583fb73b9514dbb648",
+        "bytes": 1598830,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x01-thumb.webp",
+          "sha256": "d631643a7f88c9c3df08a029f2ca9bf87651b03a372be02ee37dcd4e08c1b6fc",
+          "bytes": 23096,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x01-inspect.webp",
+          "sha256": "c96c28db030aec6613f0c6042db364d3bf162fbcb92fdcd3971e8a1cb1933e15",
+          "bytes": 64832,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x01-cutout.webp",
+          "sha256": "c96c28db030aec6613f0c6042db364d3bf162fbcb92fdcd3971e8a1cb1933e15",
+          "bytes": 64832,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "X02",
+      "kind": "unit",
+      "artKey": "cards/x02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X02.png",
+        "sha256": "5029f2862a647ede45f5b9d3c2b79e912d29f9bade1719b16da0c76c61ed207b",
+        "bytes": 1796882,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x02-thumb.webp",
+          "sha256": "df3a19793678c496c3942e7ea02be0c575d3ccaea8d1893e3c8501a67b1f1cb4",
+          "bytes": 27976,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x02-inspect.webp",
+          "sha256": "46d45aec3946373828967b7763582cad7f7ced3eccf20ea6b8a81713d09d6fd2",
+          "bytes": 79834,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x02-cutout.webp",
+          "sha256": "46d45aec3946373828967b7763582cad7f7ced3eccf20ea6b8a81713d09d6fd2",
+          "bytes": 79834,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "X03",
+      "kind": "unit",
+      "artKey": "cards/x03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X03.png",
+        "sha256": "dfbf40411683c01d3b5add2bd6dc2f45e5e1a780e1cf9c5853b479635636090a",
+        "bytes": 1655656,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x03-thumb.webp",
+          "sha256": "946d67de1231c69c8596f202f8abf1f1db95c628ac8632f3de8a0ba56878767a",
+          "bytes": 24702,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x03-inspect.webp",
+          "sha256": "1677b02251c2f5f8d5bfdc3305b194410731318d284005eb498c994a4db775dc",
+          "bytes": 70532,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x03-cutout.webp",
+          "sha256": "1677b02251c2f5f8d5bfdc3305b194410731318d284005eb498c994a4db775dc",
+          "bytes": 70532,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "X04",
+      "kind": "unit",
+      "artKey": "cards/x04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X04.png",
+        "sha256": "8904265ad45dcb996486296a2a5cd9ae6df1f35e0e05173cb3d8362588057329",
+        "bytes": 1869258,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x04-thumb.webp",
+          "sha256": "a4317b7dcb9c3a7d0054163280461514d411813fd3de16dcc0cdf0c6a996d53d",
+          "bytes": 30450,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x04-inspect.webp",
+          "sha256": "6baf70dd32d2303a1fc059c17f2be5619092398e60c4dd60a2569a43c6798443",
+          "bytes": 87250,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x04-cutout.webp",
+          "sha256": "6baf70dd32d2303a1fc059c17f2be5619092398e60c4dd60a2569a43c6798443",
+          "bytes": 87250,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "X05",
+      "kind": "unit",
+      "artKey": "cards/x05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X05.png",
+        "sha256": "99052ed2939a4ca0dbf86679bec2b88aae4187504cb0fe1db83af5d5c47439e4",
+        "bytes": 1743522,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x05-thumb.webp",
+          "sha256": "2009401ab2ed71cb9bdcc02526864a158f40ba8efaa42540b6a8801681ec1eba",
+          "bytes": 25710,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x05-inspect.webp",
+          "sha256": "6c99dc7e31f2ad66e661200eb9d354dc343f4c59521d8d73c36126817ec985fe",
+          "bytes": 71102,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x05-cutout.webp",
+          "sha256": "6c99dc7e31f2ad66e661200eb9d354dc343f4c59521d8d73c36126817ec985fe",
+          "bytes": 71102,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "X06",
+      "kind": "trick",
+      "artKey": "cards/x06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X06.png",
+        "sha256": "83042dbd6cf1ac84a2c71b5c7a9ef3575f362c02c1378ee4645511774c457792",
+        "bytes": 2321328,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x06-thumb.webp",
+          "sha256": "eaf29f49f7be4347e59b8b55087127d00b4874653631efb33fcd4f729f36a7cc",
+          "bytes": 19510,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x06-inspect.webp",
+          "sha256": "108b45aed24f625aa60331f921aefee0b0031011d7b1bfae0094acae76e44fc2",
+          "bytes": 56948,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "X07",
+      "kind": "trick",
+      "artKey": "cards/x07.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X07.png",
+        "sha256": "8a3ff76360655d3dca1c9f1f37f567bd03f1e4340b488d205485442146c5b85b",
+        "bytes": 2265274,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X07.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X07-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x07-thumb.webp",
+          "sha256": "0d67d44f0263525b51892dd02058e7fee4889e04f2d38c0fd53f6eb30ff4c228",
+          "bytes": 18774,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x07-inspect.webp",
+          "sha256": "cbdbbda8f6393185ba38cce6ad8806bebcefc8b3679af7914bcbdcf12e19b7ac",
+          "bytes": 52078,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "X08",
+      "kind": "trick",
+      "artKey": "cards/x08.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/X08.png",
+        "sha256": "8c45c92986fe4ea325cc023500e690fe6473661d6161b13f7cb2c74e36f5c9f0",
+        "bytes": 2461461,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/X08.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/X08-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x08-thumb.webp",
+          "sha256": "2e5714a897b6afacdc6245d38295660d66e79909758582d7d6d4df4e18dbbbd4",
+          "bytes": 22080,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/x08-inspect.webp",
+          "sha256": "319abb393ebdad3463d84f29c4c93446dd208756aa66947699c534569e4518e1",
+          "bytes": 64034,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "S01",
+      "kind": "unit",
+      "artKey": "cards/s01.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S01.png",
+        "sha256": "1ed0019a1352a43595aebd28ba8b649cb0a7a796b745723e309ce7b461aa705a",
+        "bytes": 1759335,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S01.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S01-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s01-thumb.webp",
+          "sha256": "6fdaa922e3085e55af2635cdbfb305373345c51a85bd7c12fe70f190d28e2a76",
+          "bytes": 25582,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s01-inspect.webp",
+          "sha256": "737e6619ffb99a9f7feb81b4b98400fe524455e22325364b0d02191535b45ad0",
+          "bytes": 71244,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s01-cutout.webp",
+          "sha256": "737e6619ffb99a9f7feb81b4b98400fe524455e22325364b0d02191535b45ad0",
+          "bytes": 71244,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "kind": "unit",
+      "artKey": "cards/s02.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S02.png",
+        "sha256": "419aa9a507737ef7aed9599986bf9b53319240e053d95fac476f818f5d1ad663",
+        "bytes": 1638560,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S02.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S02-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s02-thumb.webp",
+          "sha256": "33f9aa4a1ae5143d805840b2dad56e5631a3291a62cdc25e35d59cad22ca5a54",
+          "bytes": 21972,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s02-inspect.webp",
+          "sha256": "80b976897145f723b6a11baf5e9dd16d1d6dddfe22cb2e51cdcc33a435278d93",
+          "bytes": 62034,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s02-cutout.webp",
+          "sha256": "80b976897145f723b6a11baf5e9dd16d1d6dddfe22cb2e51cdcc33a435278d93",
+          "bytes": 62034,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "kind": "unit",
+      "artKey": "cards/s03.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S03.png",
+        "sha256": "fb7d0f4cf62f400445d8b1b095c2dce70f0c1e9cfcecf31c071c2a8ef1211e1c",
+        "bytes": 1732445,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S03.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S03-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s03-thumb.webp",
+          "sha256": "a03a038c99a76490b1ce52e863bd24e1d68a04451e856e0cb20fffc1912bcc27",
+          "bytes": 25032,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s03-inspect.webp",
+          "sha256": "84ce8f596dbd627f6fe2bcbe788983ce34cf1362738abb0dca4a5cfa83772163",
+          "bytes": 72972,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s03-cutout.webp",
+          "sha256": "84ce8f596dbd627f6fe2bcbe788983ce34cf1362738abb0dca4a5cfa83772163",
+          "bytes": 72972,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "kind": "unit",
+      "artKey": "cards/s04.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S04.png",
+        "sha256": "fb635efb5a1f7e57d390b7514e4e35c81aa995915a8c48cb7f6e5b00490781a5",
+        "bytes": 1306899,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S04.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S04-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s04-thumb.webp",
+          "sha256": "d8621e26987137f5041d3e8c423b23ba2561c090826cc30d5ad3e2ef48ea0311",
+          "bytes": 19448,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s04-inspect.webp",
+          "sha256": "1c52cae335a82f63160c3bae9a282fde7f2cd63e59880a19c47a3422dcfaae5c",
+          "bytes": 52634,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s04-cutout.webp",
+          "sha256": "1c52cae335a82f63160c3bae9a282fde7f2cd63e59880a19c47a3422dcfaae5c",
+          "bytes": 52634,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "S05",
+      "kind": "unit",
+      "artKey": "cards/s05.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S05.png",
+        "sha256": "3ffdfced8ede68d842cd1850f3fa3d940243dd78062f8cb0b000ef39d8dc74ce",
+        "bytes": 1867592,
+        "width": 1254,
+        "height": 1254,
+        "alpha": true
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S05.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S05-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s05-thumb.webp",
+          "sha256": "c5666b5474741add1ef99f788dfcfae2650d33f9fe0a9b95d57dc89de0bb1da0",
+          "bytes": 28418,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s05-inspect.webp",
+          "sha256": "bd457cc80ffcb92f9db59a62c9be74eb0fa924e47c8428d2b60a1193df441c5f",
+          "bytes": 82578,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "cutout": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s05-cutout.webp",
+          "sha256": "bd457cc80ffcb92f9db59a62c9be74eb0fa924e47c8428d2b60a1193df441c5f",
+          "bytes": 82578,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "S06",
+      "kind": "trick",
+      "artKey": "cards/s06.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S06.png",
+        "sha256": "5d5b7c2c7630024e74b89fcd795b8f6c583cede0d0018f49c394ed7f1b993a50",
+        "bytes": 2436260,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S06.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S06-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s06-thumb.webp",
+          "sha256": "b8b141f4578afe8a7761ee28eba41f1929f8195799de0f1dae524a192e137997",
+          "bytes": 21904,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s06-inspect.webp",
+          "sha256": "47a5113a3bcbf689314779d88b2f2b84464c565145c30f4875eb03674644d8d0",
+          "bytes": 64098,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "S07",
+      "kind": "trick",
+      "artKey": "cards/s07.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S07.png",
+        "sha256": "9ee170bd589e1d97834c571670d4b398817de0b4d8bf5db6f15786ca6049571a",
+        "bytes": 2393893,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S07.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S07-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s07-thumb.webp",
+          "sha256": "08ca91a26b5d6141199fe45c4818379bb9c404ed0cf0e31badcb6d19d3d55e06",
+          "bytes": 23584,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s07-inspect.webp",
+          "sha256": "0e0c9c9e366955a6b24a538e95d3cdb37deab8adb2b5a8f5b8661a3f93b895a0",
+          "bytes": 67994,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    },
+    {
+      "id": "S08",
+      "kind": "trick",
+      "artKey": "cards/s08.webp",
+      "source": {
+        "path": "assets/source/fivefold-cards-v3/masters/S08.png",
+        "sha256": "538377da86a8ee8d4d04fb7e3238958b6eb84b1158c310b1f9ee6979bb9f1977",
+        "bytes": 2449131,
+        "width": 1254,
+        "height": 1254,
+        "alpha": false
+      },
+      "promptPath": "assets/source/fivefold-cards-v3/prompts/S08.txt",
+      "generationRecord": "assets/source/fivefold-cards-v3/S08-generation.json",
+      "provenance": "Original OathFront image_gen illustration; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s08-thumb.webp",
+          "sha256": "9ad7276658379e5a9a64f81f81d816b645b16875bc0ea559410b86c96d027129",
+          "bytes": 21240,
+          "width": 256,
+          "height": 256,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/fivefold-cards-v3/cards/s08-inspect.webp",
+          "sha256": "fc251ffadda315e2b531752aaba1d8cafd0c2a8b57829223d35e43d2e7583906",
+          "bytes": 63466,
+          "width": 512,
+          "height": 512,
+          "alpha": false
+        }
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "path": "apps/web/public/assets/fivefold-cards-v3/atlases/cutouts-low.webp",
+      "sha256": "8fd60bbaf4fd09113d79d5c5489446f9a9222ff62e48fd109a8a8880925dddb8",
+      "bytes": 456874,
+      "width": 924,
+      "height": 924,
+      "alpha": true,
+      "quality": "low",
+      "frames": {
+        "H_G_BV": {
+          "x": 2,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_BP": {
+          "x": 134,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_VP": {
+          "x": 266,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_FX": {
+          "x": 398,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_FS": {
+          "x": 530,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_XS": {
+          "x": 662,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "TK_G_SEED": {
+          "x": 794,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "TK_G_LANTERN": {
+          "x": 2,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "TK_E_CINDER": {
+          "x": 134,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "GC01": {
+          "x": 266,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "GC02": {
+          "x": 398,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "GC03": {
+          "x": 530,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "GC04": {
+          "x": 662,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "B01": {
+          "x": 794,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "B02": {
+          "x": 2,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "B03": {
+          "x": 134,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "B04": {
+          "x": 266,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "B05": {
+          "x": 398,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "V01": {
+          "x": 530,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "V02": {
+          "x": 662,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "V03": {
+          "x": 794,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "V04": {
+          "x": 2,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "V05": {
+          "x": 134,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "P01": {
+          "x": 266,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "P02": {
+          "x": 398,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "P03": {
+          "x": 530,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "P04": {
+          "x": 662,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "P05": {
+          "x": 794,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "EC01": {
+          "x": 2,
+          "y": 530,
+          "width": 128,
+          "height": 128
+        },
+        "EC02": {
+          "x": 134,
+          "y": 530,
+          "width": 128,
+          "height": 128
+        },
+        "EC03": {
+          "x": 266,
+          "y": 530,
+          "width": 128,
+          "height": 128
+        },
+        "EC04": {
+          "x": 398,
+          "y": 530,
+          "width": 128,
+          "height": 128
+        },
+        "F01": {
+          "x": 530,
+          "y": 530,
+          "width": 128,
+          "height": 128
+        },
+        "F02": {
+          "x": 662,
+          "y": 530,
+          "width": 128,
+          "height": 128
+        },
+        "F03": {
+          "x": 794,
+          "y": 530,
+          "width": 128,
+          "height": 128
+        },
+        "F04": {
+          "x": 2,
+          "y": 662,
+          "width": 128,
+          "height": 128
+        },
+        "F05": {
+          "x": 134,
+          "y": 662,
+          "width": 128,
+          "height": 128
+        },
+        "X01": {
+          "x": 266,
+          "y": 662,
+          "width": 128,
+          "height": 128
+        },
+        "X02": {
+          "x": 398,
+          "y": 662,
+          "width": 128,
+          "height": 128
+        },
+        "X03": {
+          "x": 530,
+          "y": 662,
+          "width": 128,
+          "height": 128
+        },
+        "X04": {
+          "x": 662,
+          "y": 662,
+          "width": 128,
+          "height": 128
+        },
+        "X05": {
+          "x": 794,
+          "y": 662,
+          "width": 128,
+          "height": 128
+        },
+        "S01": {
+          "x": 2,
+          "y": 794,
+          "width": 128,
+          "height": 128
+        },
+        "S02": {
+          "x": 134,
+          "y": 794,
+          "width": 128,
+          "height": 128
+        },
+        "S03": {
+          "x": 266,
+          "y": 794,
+          "width": 128,
+          "height": 128
+        },
+        "S04": {
+          "x": 398,
+          "y": 794,
+          "width": 128,
+          "height": 128
+        },
+        "S05": {
+          "x": 530,
+          "y": 794,
+          "width": 128,
+          "height": 128
+        }
+      }
+    },
+    {
+      "path": "apps/web/public/assets/fivefold-cards-v3/atlases/cutouts-high.webp",
+      "sha256": "6126fe09b75aadc2b8575db739dd42a4b1955fc8923a6c671ed968715418440f",
+      "bytes": 1322566,
+      "width": 1820,
+      "height": 1820,
+      "alpha": true,
+      "quality": "high",
+      "frames": {
+        "H_G_BV": {
+          "x": 2,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_BP": {
+          "x": 262,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_VP": {
+          "x": 522,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_FX": {
+          "x": 782,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_FS": {
+          "x": 1042,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_XS": {
+          "x": 1302,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "TK_G_SEED": {
+          "x": 1562,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "TK_G_LANTERN": {
+          "x": 2,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "TK_E_CINDER": {
+          "x": 262,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "GC01": {
+          "x": 522,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "GC02": {
+          "x": 782,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "GC03": {
+          "x": 1042,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "GC04": {
+          "x": 1302,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "B01": {
+          "x": 1562,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "B02": {
+          "x": 2,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "B03": {
+          "x": 262,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "B04": {
+          "x": 522,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "B05": {
+          "x": 782,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "V01": {
+          "x": 1042,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "V02": {
+          "x": 1302,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "V03": {
+          "x": 1562,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "V04": {
+          "x": 2,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "V05": {
+          "x": 262,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "P01": {
+          "x": 522,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "P02": {
+          "x": 782,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "P03": {
+          "x": 1042,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "P04": {
+          "x": 1302,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "P05": {
+          "x": 1562,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "EC01": {
+          "x": 2,
+          "y": 1042,
+          "width": 256,
+          "height": 256
+        },
+        "EC02": {
+          "x": 262,
+          "y": 1042,
+          "width": 256,
+          "height": 256
+        },
+        "EC03": {
+          "x": 522,
+          "y": 1042,
+          "width": 256,
+          "height": 256
+        },
+        "EC04": {
+          "x": 782,
+          "y": 1042,
+          "width": 256,
+          "height": 256
+        },
+        "F01": {
+          "x": 1042,
+          "y": 1042,
+          "width": 256,
+          "height": 256
+        },
+        "F02": {
+          "x": 1302,
+          "y": 1042,
+          "width": 256,
+          "height": 256
+        },
+        "F03": {
+          "x": 1562,
+          "y": 1042,
+          "width": 256,
+          "height": 256
+        },
+        "F04": {
+          "x": 2,
+          "y": 1302,
+          "width": 256,
+          "height": 256
+        },
+        "F05": {
+          "x": 262,
+          "y": 1302,
+          "width": 256,
+          "height": 256
+        },
+        "X01": {
+          "x": 522,
+          "y": 1302,
+          "width": 256,
+          "height": 256
+        },
+        "X02": {
+          "x": 782,
+          "y": 1302,
+          "width": 256,
+          "height": 256
+        },
+        "X03": {
+          "x": 1042,
+          "y": 1302,
+          "width": 256,
+          "height": 256
+        },
+        "X04": {
+          "x": 1302,
+          "y": 1302,
+          "width": 256,
+          "height": 256
+        },
+        "X05": {
+          "x": 1562,
+          "y": 1302,
+          "width": 256,
+          "height": 256
+        },
+        "S01": {
+          "x": 2,
+          "y": 1562,
+          "width": 256,
+          "height": 256
+        },
+        "S02": {
+          "x": 262,
+          "y": 1562,
+          "width": 256,
+          "height": 256
+        },
+        "S03": {
+          "x": 522,
+          "y": 1562,
+          "width": 256,
+          "height": 256
+        },
+        "S04": {
+          "x": 782,
+          "y": 1562,
+          "width": 256,
+          "height": 256
+        },
+        "S05": {
+          "x": 1042,
+          "y": 1562,
+          "width": 256,
+          "height": 256
+        }
+      }
+    }
+  ]
+}

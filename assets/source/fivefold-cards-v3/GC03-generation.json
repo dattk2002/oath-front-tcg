@@ -1,0 +1,18 @@
+{
+  "id": "GC03",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-8cbf51b7-9d57-4904-b6c5-327ec1d26c90.png",
+  "path": "masters/GC03.png",
+  "sha256": "cb87ef3295cc315b4d898dac49fcfc05b53701126000328ac1771b5d1e18ef31",
+  "bytes": 1660049,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in",
+  "revision": "framing-margin",
+  "editPrompt": "Use case: precise-object-edit. Edit target: the attached original OathFront Dawn Herald GC03 cutout. Change ONLY framing: fit the entire same figure, trumpet bell, gold sound-ribbon plume, cape tips and boots inside the square canvas with a clear transparent margin of at least 7% on every edge. Reconstruct only the tiny cropped upper trumpet rim and outer right gold plume if necessary. Keep the same character identity, face, pose, ivory-gold-teal armor and cloth, weapon, lighting, linework, mature stylized comic rendering, and transparent background. Do not add text, logos, new props or scenery. The whole original subject must remain fully visible at a slightly smaller scale.",
+  "previous": "revisions/GC03-before-framing-generation.json"
+}

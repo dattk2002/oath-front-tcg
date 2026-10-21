@@ -1,0 +1,15 @@
+{
+  "id": "GC04",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-5dff0fb1-4a2b-4adc-950e-22e689d42c7c.png",
+  "path": "masters/GC04.png",
+  "sha256": "d0e02b76fd16e1a3d1855ca44a6adb26d90dbd7ad865a3c9544868870262467a",
+  "bytes": 2430874,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

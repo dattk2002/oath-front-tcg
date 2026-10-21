@@ -1,0 +1,15 @@
+{
+  "id": "S03",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-56af5b5e-48fe-4eff-8d96-d932f1eaed31.png",
+  "path": "masters/S03.png",
+  "sha256": "fb7d0f4cf62f400445d8b1b095c2dce70f0c1e9cfcecf31c071c2a8ef1211e1c",
+  "bytes": 1732445,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

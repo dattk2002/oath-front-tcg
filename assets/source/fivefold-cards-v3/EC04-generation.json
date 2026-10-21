@@ -1,0 +1,15 @@
+{
+  "id": "EC04",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-b3638fad-e2b3-4088-a93d-e5dc90a350e4.png",
+  "path": "masters/EC04.png",
+  "sha256": "f2504fc05c15055ff5ba29e27f2f0f432fefca2aa9b14be6707032c8c1e131eb",
+  "bytes": 1990072,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

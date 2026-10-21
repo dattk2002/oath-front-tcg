@@ -1,0 +1,15 @@
+{
+  "id": "GC02",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-d4617bb5-8e0f-40cd-8d3d-4bb6d06ca6bf.png",
+  "path": "masters/GC02.png",
+  "sha256": "df6ebdd3157e0ea65bebd16e79161c35186f8a94825fedfdb79f6962ef18ae1c",
+  "bytes": 1523489,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

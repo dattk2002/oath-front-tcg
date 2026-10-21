@@ -1,0 +1,15 @@
+{
+  "id": "P05",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-b9bd4a9f-2b25-46e2-a9b4-48e2495b078b.png",
+  "path": "masters/P05.png",
+  "sha256": "8d8f023046e96de02a3c4e3731e4b99a1427649c83de259aba09fda0e68ca1d3",
+  "bytes": 2168091,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

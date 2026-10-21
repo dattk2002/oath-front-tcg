@@ -1,0 +1,15 @@
+{
+  "id": "EC03",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-700d2aee-df2e-4dcc-958f-f0d1be6b688f.png",
+  "path": "masters/EC03.png",
+  "sha256": "8210f228451e76f3911f8b0f564f96b893ee2ab48d62e87f76acebf96a10dcd1",
+  "bytes": 1701361,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

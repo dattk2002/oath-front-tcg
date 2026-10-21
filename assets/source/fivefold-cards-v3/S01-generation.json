@@ -1,0 +1,15 @@
+{
+  "id": "S01",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-c1081ec8-ee9b-4966-bb49-744b1e128926.png",
+  "path": "masters/S01.png",
+  "sha256": "1ed0019a1352a43595aebd28ba8b649cb0a7a796b745723e309ce7b461aa705a",
+  "bytes": 1759335,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in"
+}

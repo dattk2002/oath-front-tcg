@@ -1,0 +1,18 @@
+{
+  "id": "V02",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-302c927d-9191-4934-93d1-7d3e722d8c67.png",
+  "path": "masters/V02.png",
+  "sha256": "1d9dcd50a903919f7e972d923927f3c227de83fd460256b56221e50bd712dadc",
+  "bytes": 1647744,
+  "width": 1254,
+  "height": 1254,
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "tool": "image_gen built-in",
+  "revision": "framing-margin",
+  "editPrompt": "Use case: precise-object-edit. Edit target: the attached original OathFront Moss Stag V02 cutout. Correct ONLY framing: zoom out so the entire stag including all antler tips, leaf details and four hooves is inside the square canvas with a transparent margin on every edge. Reconstruct the tiny clipped topmost antler tip. Keep the same creature design, anatomy, pose, ivory antlers and fur, jade leaf armor, gold seed lights, rendering and lighting. Do not redesign any part or add props. Truly transparent RGBA background, no text or scenery. Prioritize the complete antler silhouette; nothing should touch the top border.",
+  "previous": "revisions/V02-before-framing-generation.json"
+}

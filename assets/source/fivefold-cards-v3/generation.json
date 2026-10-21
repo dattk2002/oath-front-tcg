@@ -1,0 +1,857 @@
+{
+  "version": "fivefold-cards-v3",
+  "tool": "image_gen built-in",
+  "references": [
+    "https://www.marvelrivals.com/heroes/teamup.html",
+    "https://room8studio.artstation.com/projects/V2vPvn",
+    "https://castartstudios.artstation.com/projects/Qzxno4"
+  ],
+  "styleAnchors": [
+    "assets/source/rivals-v2/heroes/briar.png",
+    "assets/source/rivals-v2/heroes/cinder.png"
+  ],
+  "entries": [
+    {
+      "id": "GC01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-edfd20fc-4288-4dbc-b27c-73479c564b8e.png",
+      "path": "masters/GC01.png",
+      "sha256": "c1cfc3cfc7e974583f685ea0e6e9a29aa8f85b6936e67f8a7ef472bcaeb55001",
+      "bytes": 1676109,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "GC02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-d4617bb5-8e0f-40cd-8d3d-4bb6d06ca6bf.png",
+      "path": "masters/GC02.png",
+      "sha256": "df6ebdd3157e0ea65bebd16e79161c35186f8a94825fedfdb79f6962ef18ae1c",
+      "bytes": 1523489,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "GC03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-8cbf51b7-9d57-4904-b6c5-327ec1d26c90.png",
+      "path": "masters/GC03.png",
+      "sha256": "cb87ef3295cc315b4d898dac49fcfc05b53701126000328ac1771b5d1e18ef31",
+      "bytes": 1660049,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in",
+      "revision": "framing-margin",
+      "editPrompt": "Use case: precise-object-edit. Edit target: the attached original OathFront Dawn Herald GC03 cutout. Change ONLY framing: fit the entire same figure, trumpet bell, gold sound-ribbon plume, cape tips and boots inside the square canvas with a clear transparent margin of at least 7% on every edge. Reconstruct only the tiny cropped upper trumpet rim and outer right gold plume if necessary. Keep the same character identity, face, pose, ivory-gold-teal armor and cloth, weapon, lighting, linework, mature stylized comic rendering, and transparent background. Do not add text, logos, new props or scenery. The whole original subject must remain fully visible at a slightly smaller scale.",
+      "previous": "revisions/GC03-before-framing-generation.json"
+    },
+    {
+      "id": "GC04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-5dff0fb1-4a2b-4adc-950e-22e689d42c7c.png",
+      "path": "masters/GC04.png",
+      "sha256": "d0e02b76fd16e1a3d1855ca44a6adb26d90dbd7ad865a3c9544868870262467a",
+      "bytes": 2430874,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "GC05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-671bd105-acfb-45dc-b6f3-bd7411b8c628.png",
+      "path": "masters/GC05.png",
+      "sha256": "7b788e22c2a5e7888e8329b1249bb13d62946b95c71557a231cc2b8f82c484b4",
+      "bytes": 2574098,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "GC06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-2ff9dd28-6e4c-493f-83f4-f8bff3303e42.png",
+      "path": "masters/GC06.png",
+      "sha256": "9ab87ec869ea517967f925d90e96775d2b81dcdce6a6e44dea536e8f0680f71d",
+      "bytes": 2807956,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-46973797-73d1-4ce0-8617-ab64a7227d4c.png",
+      "path": "masters/B01.png",
+      "sha256": "b6e1aa31697152449d92fe543bd3eaf466ad40f2c5a13afa1974553e3f931ea1",
+      "bytes": 2211529,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-1bdd4d15-0876-4d8a-ae99-803e7626c340.png",
+      "path": "masters/B02.png",
+      "sha256": "3f275d5c13da5e3438050c2714dbbd9ffb2a06713d41a5f5f305846ad2c91afa",
+      "bytes": 2455631,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-2f0ee8c3-9eb8-4106-b9ca-167350129647.png",
+      "path": "masters/B03.png",
+      "sha256": "4728a3b242ffa2584d228d7a49ae5b2423f8437d22d759c48f96e20ac341c698",
+      "bytes": 1966608,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-5f3d3f4c-a0fd-4eff-9121-755d23cf9953.png",
+      "path": "masters/B04.png",
+      "sha256": "4dbffd916d4bd89bb295502e87e66d62f265be6161dc56b480864316dae130d5",
+      "bytes": 1653057,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-c97fa782-cc71-4a08-8ec8-451e18b35ed7.png",
+      "path": "masters/B05.png",
+      "sha256": "2f42a2ab1d4c72c712d59fcc97f3efbf9daaacc3a63d4b391acf2b56a52f0684",
+      "bytes": 2042983,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-8a86735b-5bc2-4610-b4f8-14dc16c195c3.png",
+      "path": "masters/B06.png",
+      "sha256": "0accfaf72c9d592022908950f91964d22895f1bc302c32b0d09237d1968827cb",
+      "bytes": 2788958,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B07",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-abdc0450-8ab4-4601-9539-6cf73e363870.png",
+      "path": "masters/B07.png",
+      "sha256": "66d0edf12227447da1ad7b039882bf57a0efe767bc9ffeb0b711dc44f09c26f9",
+      "bytes": 2399097,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "B08",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-e4b3545a-49fe-4899-a52a-564c18fc9af9.png",
+      "path": "masters/B08.png",
+      "sha256": "c3c30cd53a14675ef854b92035ada064ef977b3faecf754f3854326834f412dc",
+      "bytes": 2809116,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "V01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-00356f2f-34b2-4425-bc72-02f3a64a51e6.png",
+      "path": "masters/V01.png",
+      "sha256": "013b36ffaeee62ac583ccd6802b3d574639061d07ef8d2f5301c137cf953ac13",
+      "bytes": 1911155,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "V02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-302c927d-9191-4934-93d1-7d3e722d8c67.png",
+      "path": "masters/V02.png",
+      "sha256": "1d9dcd50a903919f7e972d923927f3c227de83fd460256b56221e50bd712dadc",
+      "bytes": 1647744,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in",
+      "revision": "framing-margin",
+      "editPrompt": "Use case: precise-object-edit. Edit target: the attached original OathFront Moss Stag V02 cutout. Correct ONLY framing: zoom out so the entire stag including all antler tips, leaf details and four hooves is inside the square canvas with a transparent margin on every edge. Reconstruct the tiny clipped topmost antler tip. Keep the same creature design, anatomy, pose, ivory antlers and fur, jade leaf armor, gold seed lights, rendering and lighting. Do not redesign any part or add props. Truly transparent RGBA background, no text or scenery. Prioritize the complete antler silhouette; nothing should touch the top border.",
+      "previous": "revisions/V02-before-framing-generation.json"
+    },
+    {
+      "id": "V03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-584ff488-0e52-4a28-b7d1-21ac73b60eff.png",
+      "path": "masters/V03.png",
+      "sha256": "27a9759d0063f1c699230e4cc1a35db2890da7c953aadc027c62fcddb507dd67",
+      "bytes": 1805529,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "V04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-ba5693f7-ba40-4f6a-9132-71fe47c1a55f.png",
+      "path": "masters/V04.png",
+      "sha256": "6424ca4b2c9440f47ece5bd7b60aa4fc7d7343779420bbba3457493e84bec10c",
+      "bytes": 2354748,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "V05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-98a01595-b4cb-413d-aae5-6c7f0d8fc12e.png",
+      "path": "masters/V05.png",
+      "sha256": "fde377ce4776d049d5a6c0c4c5d08bf22fd51421fce5c244332c2d4c54a41da2",
+      "bytes": 2046411,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "V06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-92d08039-1a8f-4fee-a713-b44f959930c6.png",
+      "path": "masters/V06.png",
+      "sha256": "80ed718019d0d33108c01a53a4ba48bce5f7ae1c8c00e5b7697525781c508b97",
+      "bytes": 2819629,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "V07",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-ef254ec7-5bc1-49c3-ab22-edc3beab01d4.png",
+      "path": "masters/V07.png",
+      "sha256": "2018ceeee4c1c7656b23810c9a56920cb852710b5de21bd90cbbe0869bba2230",
+      "bytes": 2876415,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "V08",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-7d7402b9-fabb-4eb8-8bac-45b31f1d2139.png",
+      "path": "masters/V08.png",
+      "sha256": "de556ca5188ef95c4dc165f4634e30e3522f4dc5d47acc83315fad12ab5835c7",
+      "bytes": 2474355,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-a284df55-a494-465e-8a5e-fe3cfd58ae24.png",
+      "path": "masters/P01.png",
+      "sha256": "d045548f5c89f4dd5b7b3fee5e9e4254d2b18e7caf47f90453e1e7425143443b",
+      "bytes": 1900962,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-88e97a36-a977-49b5-ac68-8e669a869753.png",
+      "path": "masters/P02.png",
+      "sha256": "ee8b87c71d58c76f853f779c27397da61337607ba027006bd224ac8aefa6f275",
+      "bytes": 1978611,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-96b26ee3-9eb0-42da-ba00-aa50dab07561.png",
+      "path": "masters/P03.png",
+      "sha256": "cb738107f436218b74cad4b79ec61af4c2edd1103e4a6c372095d1aff013d2f3",
+      "bytes": 1714103,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-f7bce3f2-fafe-451f-a1d9-a595be9768f6.png",
+      "path": "masters/P04.png",
+      "sha256": "eb27c5eb5061c6eb2cdc0ea5551901ef3d91778bc23b8fe3d8cbbdbffa6a4613",
+      "bytes": 1906152,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-b9bd4a9f-2b25-46e2-a9b4-48e2495b078b.png",
+      "path": "masters/P05.png",
+      "sha256": "8d8f023046e96de02a3c4e3731e4b99a1427649c83de259aba09fda0e68ca1d3",
+      "bytes": 2168091,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-36410ec7-3ed6-46f1-b821-85ece497b3a6.png",
+      "path": "masters/P06.png",
+      "sha256": "ee33b106951f37e1593dc86ca49ee6eeaf9bb0c4d640f9dcdee2a2cbb47f8bc6",
+      "bytes": 2760168,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P07",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-08c7102b-3424-469a-aaf8-25d4ac486352.png",
+      "path": "masters/P07.png",
+      "sha256": "5a9b21b2499442ce808cd3fa03e3a1ab080dee236a6332c3d5c6fcea55ff7f23",
+      "bytes": 2840580,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "P08",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-b51b0ac8-0ef7-46d6-9c2d-3f5c31f947cf.png",
+      "path": "masters/P08.png",
+      "sha256": "71d02ea4521509d09d01ab61c447a5047d40b51c4ed03a09930a711455038623",
+      "bytes": 2437162,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "EC01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-73c6fbc2-d240-4c27-b8e1-d515eb422414.png",
+      "path": "masters/EC01.png",
+      "sha256": "63cfca96a149964ee9d53eb6bd1a8d769d6b382e80ac1c8dadfe3f41c9b0cdff",
+      "bytes": 1756812,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "EC02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-d409c044-646e-4c91-a653-7a0203eaa36a.png",
+      "path": "masters/EC02.png",
+      "sha256": "4c41ead0b965c02ce293d37a4f520e957016d5b61abd3aa340b1ad88ecd048a8",
+      "bytes": 1467321,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "EC03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-700d2aee-df2e-4dcc-958f-f0d1be6b688f.png",
+      "path": "masters/EC03.png",
+      "sha256": "8210f228451e76f3911f8b0f564f96b893ee2ab48d62e87f76acebf96a10dcd1",
+      "bytes": 1701361,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "EC04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-b3638fad-e2b3-4088-a93d-e5dc90a350e4.png",
+      "path": "masters/EC04.png",
+      "sha256": "f2504fc05c15055ff5ba29e27f2f0f432fefca2aa9b14be6707032c8c1e131eb",
+      "bytes": 1990072,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "EC05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-4d491921-ebc0-45cc-b10c-5f771994a100.png",
+      "path": "masters/EC05.png",
+      "sha256": "9bff8355ba57961c179e11d772a31a2af58a191a2a49ce18acc44481721d4752",
+      "bytes": 2291082,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "EC06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-75ee943f-f459-4882-a16f-ca2e81907c66.png",
+      "path": "masters/EC06.png",
+      "sha256": "37506e6791543b57e905991013354ae408f40c73d2c3616d2c14c120cdc5126a",
+      "bytes": 2478796,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-82e2b6e3-d9b7-4920-8e66-f9eb4ec08241.png",
+      "path": "masters/F01.png",
+      "sha256": "2081d274f19c8ab9a80a4f2d01fc008b1d3e0a766385009b45780cbb04153642",
+      "bytes": 1796381,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-0e067cd0-5270-4a92-ac2d-00f8e38a1589.png",
+      "path": "masters/F02.png",
+      "sha256": "f4410be936ae5d9a78963ae468b49683c4352df7fad7d67af3308390ea5a9e61",
+      "bytes": 1434644,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-ecaf84bc-0112-4f71-84d3-4304af0e7585.png",
+      "path": "masters/F03.png",
+      "sha256": "41ac2fecf1f764345b6bed65fcf4f4e4e1d50bda9391df38af8923c5e469d744",
+      "bytes": 1624455,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-d16dfecc-b700-418e-966f-ec7c94b581c1.png",
+      "path": "masters/F04.png",
+      "sha256": "2911d1f36b28baa6eae49c643ffbd8190888ffc811efae752fd728e8dc7c3b31",
+      "bytes": 1877375,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-0fc11cf8-1161-47f6-8428-6095d4a3460c.png",
+      "path": "masters/F05.png",
+      "sha256": "59fa21802fa73adb37988230e3e32eefbd6a9fd15b23c90890d2c392814cb5c5",
+      "bytes": 2082581,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-2edb73ac-a27a-4ad7-821b-ce1a294baf83.png",
+      "path": "masters/F06.png",
+      "sha256": "6df65dd2b24a1243b2e37f1bf212ff4d878e883cdaa13b03c93604ec9e344ff6",
+      "bytes": 2315868,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F07",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-e983cf0d-e6b1-4442-894f-d215b2d1e240.png",
+      "path": "masters/F07.png",
+      "sha256": "b9020223d082aeb9967612d2e2ed2af4eb6876aed9275ea6a4b66d8252abc927",
+      "bytes": 2323833,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "F08",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-c3114a4b-c733-44bf-a6eb-12347d9eb10c.png",
+      "path": "masters/F08.png",
+      "sha256": "87cdf04f232469361721a50b2128718a12ce8e9871ad485197aede39d4106b2d",
+      "bytes": 2712149,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-cee48267-a52c-4ae5-953e-9197bbbd1ab4.png",
+      "path": "masters/X01.png",
+      "sha256": "729264eab124756e7521710e51f7cad6c28b627bf70358583fb73b9514dbb648",
+      "bytes": 1598830,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-fafd8920-23f7-4370-b46b-5dff4f3b90a3.png",
+      "path": "masters/X02.png",
+      "sha256": "5029f2862a647ede45f5b9d3c2b79e912d29f9bade1719b16da0c76c61ed207b",
+      "bytes": 1796882,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-8ed5026a-d6c6-4b12-9285-9d20f6e8901c.png",
+      "path": "masters/X03.png",
+      "sha256": "dfbf40411683c01d3b5add2bd6dc2f45e5e1a780e1cf9c5853b479635636090a",
+      "bytes": 1655656,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-fae127d6-6855-4088-8dcf-c79f7dee2fe3.png",
+      "path": "masters/X04.png",
+      "sha256": "8904265ad45dcb996486296a2a5cd9ae6df1f35e0e05173cb3d8362588057329",
+      "bytes": 1869258,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-5b79df6c-93d2-416f-a3a0-47495234dd1b.png",
+      "path": "masters/X05.png",
+      "sha256": "99052ed2939a4ca0dbf86679bec2b88aae4187504cb0fe1db83af5d5c47439e4",
+      "bytes": 1743522,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-955d5874-6968-4781-8083-7a08b5679e96.png",
+      "path": "masters/X06.png",
+      "sha256": "83042dbd6cf1ac84a2c71b5c7a9ef3575f362c02c1378ee4645511774c457792",
+      "bytes": 2321328,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X07",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-146e90fb-78f7-4fb7-9660-af3cd05f269c.png",
+      "path": "masters/X07.png",
+      "sha256": "8a3ff76360655d3dca1c9f1f37f567bd03f1e4340b488d205485442146c5b85b",
+      "bytes": 2265274,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "X08",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-b36b2969-5ca4-4406-a960-d003354d8d78.png",
+      "path": "masters/X08.png",
+      "sha256": "8c45c92986fe4ea325cc023500e690fe6473661d6161b13f7cb2c74e36f5c9f0",
+      "bytes": 2461461,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S01",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-c1081ec8-ee9b-4966-bb49-744b1e128926.png",
+      "path": "masters/S01.png",
+      "sha256": "1ed0019a1352a43595aebd28ba8b649cb0a7a796b745723e309ce7b461aa705a",
+      "bytes": 1759335,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S02",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-d8b0c955-9876-48bf-9b13-0cd0053d80f9.png",
+      "path": "masters/S02.png",
+      "sha256": "419aa9a507737ef7aed9599986bf9b53319240e053d95fac476f818f5d1ad663",
+      "bytes": 1638560,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S03",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-56af5b5e-48fe-4eff-8d96-d932f1eaed31.png",
+      "path": "masters/S03.png",
+      "sha256": "fb7d0f4cf62f400445d8b1b095c2dce70f0c1e9cfcecf31c071c2a8ef1211e1c",
+      "bytes": 1732445,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S04",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-3d5e6a2a-7f2a-437e-b923-909ae934a6c0.png",
+      "path": "masters/S04.png",
+      "sha256": "fb635efb5a1f7e57d390b7514e4e35c81aa995915a8c48cb7f6e5b00490781a5",
+      "bytes": 1306899,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S05",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-ebb938e2-e751-4589-8234-6d7a9c0dd117.png",
+      "path": "masters/S05.png",
+      "sha256": "3ffdfced8ede68d842cd1850f3fa3d940243dd78062f8cb0b000ef39d8dc74ce",
+      "bytes": 1867592,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S06",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-9252039f-5eaf-4464-bc56-973081c95268.png",
+      "path": "masters/S06.png",
+      "sha256": "5d5b7c2c7630024e74b89fcd795b8f6c583cede0d0018f49c394ed7f1b993a50",
+      "bytes": 2436260,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S07",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-a3a8c448-4283-4952-b1ca-9dc25b665d8e.png",
+      "path": "masters/S07.png",
+      "sha256": "9ee170bd589e1d97834c571670d4b398817de0b4d8bf5db6f15786ca6049571a",
+      "bytes": 2393893,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    },
+    {
+      "id": "S08",
+      "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-a9c79602-2168-4684-98ba-876680dbede7.png",
+      "path": "masters/S08.png",
+      "sha256": "538377da86a8ee8d4d04fb7e3238958b6eb84b1158c310b1f9ee6979bb9f1977",
+      "bytes": 2449131,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "tool": "image_gen built-in"
+    }
+  ],
+  "completedCount": 60,
+  "expectedCount": 60
+}
