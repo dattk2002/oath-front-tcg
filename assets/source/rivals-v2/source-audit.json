@@ -1,0 +1,120 @@
+{
+  "generator": "built-in image_gen",
+  "originalAssets": [
+    {
+      "id": "H_G_BV",
+      "name": "briar",
+      "path": "assets/source/rivals-v2/heroes/briar.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.3963,
+      "solidBounds": [
+        30,
+        6,
+        1020,
+        1535
+      ],
+      "bytes": 2704547,
+      "sha256": "5e2682304d58c00144fc578b2f04ecc5b66ef41e0eb1702f6d9c98f4ccd43713"
+    },
+    {
+      "id": "H_G_BP",
+      "name": "aster",
+      "path": "assets/source/rivals-v2/heroes/aster.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.5399,
+      "solidBounds": [
+        29,
+        27,
+        1000,
+        1518
+      ],
+      "bytes": 2304046,
+      "sha256": "6ac0d320c02a534ac7e5ce891e18f85b8507dc3851aa50b2b8376c23c7d74c58"
+    },
+    {
+      "id": "H_G_VP",
+      "name": "lumen",
+      "path": "assets/source/rivals-v2/heroes/lumen.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.5588,
+      "solidBounds": [
+        37,
+        62,
+        1017,
+        1485
+      ],
+      "bytes": 2349337,
+      "sha256": "7ac426ef2e099fffacbf95e31e8c9971bbcec2f481a86514ad9b720f00c8ad98"
+    },
+    {
+      "id": "H_E_FX",
+      "name": "cinder",
+      "path": "assets/source/rivals-v2/heroes/cinder.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.436,
+      "solidBounds": [
+        28,
+        49,
+        1016,
+        1507
+      ],
+      "bytes": 2739915,
+      "sha256": "c46899bf58d2b4bc9a822f6a59df072c0760d5a245523c64fba0359b3a3ff191"
+    },
+    {
+      "id": "H_E_FS",
+      "name": "vesper",
+      "path": "assets/source/rivals-v2/heroes/vesper.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.5448,
+      "solidBounds": [
+        20,
+        15,
+        1015,
+        1521
+      ],
+      "bytes": 2342674,
+      "sha256": "b5f74ce4b135f1e152084b4819870b063e302ecf404ef29133c0e54e2ae7690d"
+    },
+    {
+      "id": "H_E_XS",
+      "name": "morrow",
+      "path": "assets/source/rivals-v2/heroes/morrow.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.5291,
+      "solidBounds": [
+        50,
+        26,
+        986,
+        1516
+      ],
+      "bytes": 2429784,
+      "sha256": "2ae581ed3cc039bee52c5d94833f485703a536e0b34700a9476be133c90fca71"
+    }
+  ],
+  "visualReview": "All six images individually inspected by controller; distinct requested identities, no text or logos. Full figures/large equipment remain readable; some decorative tips approach edges, use contain for full art and explicit portrait-safe crops."
+}

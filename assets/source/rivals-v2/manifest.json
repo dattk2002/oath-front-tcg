@@ -1,0 +1,384 @@
+{
+  "version": "rivals-v2",
+  "catalogVersion": "core_v1",
+  "assets": [
+    {
+      "id": "H_G_BV",
+      "kind": "hero",
+      "artKey": "heroes/h_g_bv/portrait.webp",
+      "source": {
+        "path": "assets/source/rivals-v2/heroes/briar.png",
+        "sha256": "5e2682304d58c00144fc578b2f04ecc5b66ef41e0eb1702f6d9c98f4ccd43713",
+        "bytes": 2704547,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "bounds": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "promptPath": "assets/source/rivals-v2/generation.json",
+      "provenance": "Original OathFront character generated with built-in image_gen; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/briar/thumb.webp",
+          "sha256": "ebd0f8e159d6fc46d1d640a05f0469be131ace6b5d62a151ece65071f8f9fb21",
+          "bytes": 34612,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/briar/hud.webp",
+          "sha256": "4e6ed7a1782d00e5ad3a5460e47da0b4b91d078ca500bc864924a0981876085a",
+          "bytes": 11126,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/briar/inspect.webp",
+          "sha256": "7b36fd783ca4add5cf449021d4836d87cc0e497b198a3814cd9c4640d4cefbe4",
+          "bytes": 113386,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/briar/bust.webp",
+          "sha256": "d6d7c209ca2a08c4503fd1797f42970268842289d08e56b83b257b9ef76fbe68",
+          "bytes": 190382,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_BP",
+      "kind": "hero",
+      "artKey": "heroes/h_g_bp/portrait.webp",
+      "source": {
+        "path": "assets/source/rivals-v2/heroes/aster.png",
+        "sha256": "6ac0d320c02a534ac7e5ce891e18f85b8507dc3851aa50b2b8376c23c7d74c58",
+        "bytes": 2304046,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "bounds": [
+        0,
+        18,
+        1012,
+        1521
+      ],
+      "promptPath": "assets/source/rivals-v2/generation.json",
+      "provenance": "Original OathFront character generated with built-in image_gen; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/aster/thumb.webp",
+          "sha256": "a1eae34814e135ffefd229b9c9b6dc3471af5613bda8d2a3290a610557c35221",
+          "bytes": 28902,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/aster/hud.webp",
+          "sha256": "1fa6962733ddcb7a344f406e107b2d24276f6ec049b9bf27ecbc0aa8a9805f59",
+          "bytes": 7560,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/aster/inspect.webp",
+          "sha256": "5c83cb508cbb3b7f8e344155151423bae3efe6febae22f96c8f6c618a71302a4",
+          "bytes": 92044,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/aster/bust.webp",
+          "sha256": "64f1607a4a51f67eb9b3ad564e24dc88668d7d860efcafd859ecc64af4c59db4",
+          "bytes": 167646,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_VP",
+      "kind": "hero",
+      "artKey": "heroes/h_g_vp/portrait.webp",
+      "source": {
+        "path": "assets/source/rivals-v2/heroes/lumen.png",
+        "sha256": "7ac426ef2e099fffacbf95e31e8c9971bbcec2f481a86514ad9b720f00c8ad98",
+        "bytes": 2349337,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "bounds": [
+        0,
+        3,
+        1024,
+        1536
+      ],
+      "promptPath": "assets/source/rivals-v2/generation.json",
+      "provenance": "Original OathFront character generated with built-in image_gen; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/lumen/thumb.webp",
+          "sha256": "5a133480fc227c93c76f28c4cb35681f5121fa1fc01c06063e9a140b81d1291b",
+          "bytes": 36896,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/lumen/hud.webp",
+          "sha256": "2fe2fba5733881e7f2ef1bc737ea15e2228e27975d98a71a238a5f198a9b70be",
+          "bytes": 10552,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/lumen/inspect.webp",
+          "sha256": "f65fcb3229a9322ebba5cc93aa15e8afacaf24d17f1345da9b77ca59e0665b6a",
+          "bytes": 117312,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/lumen/bust.webp",
+          "sha256": "7902f3b16a0ddb6db60a5db5aceafd644488a7745053dca7b124f341916942c0",
+          "bytes": 191784,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_FX",
+      "kind": "hero",
+      "artKey": "heroes/h_e_fx/portrait.webp",
+      "source": {
+        "path": "assets/source/rivals-v2/heroes/cinder.png",
+        "sha256": "c46899bf58d2b4bc9a822f6a59df072c0760d5a245523c64fba0359b3a3ff191",
+        "bytes": 2739915,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "bounds": [
+        20,
+        35,
+        1024,
+        1536
+      ],
+      "promptPath": "assets/source/rivals-v2/generation.json",
+      "provenance": "Original OathFront character generated with built-in image_gen; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/cinder/thumb.webp",
+          "sha256": "a6530bf2392ab77a097b9dc0318fc12296dcb67f395ad952a2818122eef9e8df",
+          "bytes": 32026,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/cinder/hud.webp",
+          "sha256": "c94ee06a644d29692ff122d9d6f523940ead8bbc1feb009425e15a891c3c7a99",
+          "bytes": 9144,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/cinder/inspect.webp",
+          "sha256": "42b3e87f1c610d12a350f2c1110899ab0b539a19230e27cb4be4fe5604dcc7b7",
+          "bytes": 109428,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/cinder/bust.webp",
+          "sha256": "7688698b7867259549903d898266a569061e0564867b298891e94d330e36e5c3",
+          "bytes": 194896,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_FS",
+      "kind": "hero",
+      "artKey": "heroes/h_e_fs/portrait.webp",
+      "source": {
+        "path": "assets/source/rivals-v2/heroes/vesper.png",
+        "sha256": "b5f74ce4b135f1e152084b4819870b063e302ecf404ef29133c0e54e2ae7690d",
+        "bytes": 2342674,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "bounds": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "promptPath": "assets/source/rivals-v2/generation.json",
+      "provenance": "Original OathFront character generated with built-in image_gen; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/vesper/thumb.webp",
+          "sha256": "7577963da8b673f8d557f405a129fff868961ca380ca0494a4e2250c7bb958e2",
+          "bytes": 30438,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/vesper/hud.webp",
+          "sha256": "c078945b63c40b5b5c3efc938996485a8a3dc035a6644446ebdd1ac2d0c1d523",
+          "bytes": 8084,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/vesper/inspect.webp",
+          "sha256": "6d4f8aa2e057e47895b5093fe12f338e6c661a091e2d1b1d6859d34739b18998",
+          "bytes": 95392,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/vesper/bust.webp",
+          "sha256": "025a6960e13282fd89d4adbcef665011d57ca2cfded9005407007eb09b16d9c5",
+          "bytes": 173808,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_XS",
+      "kind": "hero",
+      "artKey": "heroes/h_e_xs/portrait.webp",
+      "source": {
+        "path": "assets/source/rivals-v2/heroes/morrow.png",
+        "sha256": "2ae581ed3cc039bee52c5d94833f485703a536e0b34700a9476be133c90fca71",
+        "bytes": 2429784,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "bounds": [
+        0,
+        19,
+        992,
+        1536
+      ],
+      "promptPath": "assets/source/rivals-v2/generation.json",
+      "provenance": "Original OathFront character generated with built-in image_gen; exact prompt and selected PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/morrow/thumb.webp",
+          "sha256": "ce0ea3c1c545d415b7594d047c505f50661e280efefa885aae2ac209d40ed5ff",
+          "bytes": 37184,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/morrow/hud.webp",
+          "sha256": "8a97025184a0de3c53df1b6a97522c773d23b90f1db59dd07c18bf45700133b0",
+          "bytes": 11298,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/morrow/inspect.webp",
+          "sha256": "ebbebd081513570b436168f97b3b928b2498e98bcca701864453b6c79a9bcb32",
+          "bytes": 119628,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/rivals-v2/heroes/morrow/bust.webp",
+          "sha256": "540c67afe6476fcc20f2b6d784b3efacccd592964ee226b3e889171fa72ee5fc",
+          "bytes": 182354,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "board",
+      "kind": "board",
+      "artKey": "board/scene.webp",
+      "source": {
+        "path": "assets/source/rivals-v2/fivefold-board.png",
+        "sha256": "7dd327124c3b57b7ad6e8899770525512a0a809e138cac683579e5d48ae582f6",
+        "bytes": 2745502,
+        "width": 1672,
+        "height": 941,
+        "alpha": false
+      },
+      "promptPath": "assets/source/rivals-v2/board-generation.json",
+      "provenance": "Original shared Fivefold battlefield generated with built-in image_gen; exact prompt retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/rivals-v2/board/scene.webp",
+          "sha256": "ae49120e84ea0469f185eba850530ceaea73f712c43b4bdc238799bef7d2d8c9",
+          "bytes": 12182,
+          "width": 256,
+          "height": 144,
+          "alpha": false
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/rivals-v2/board/scene-inspect.webp",
+          "sha256": "d02754aad63c0f6307cf4816219fbd85cd383e1a8816f72561a62fec950b06e5",
+          "bytes": 94374,
+          "width": 800,
+          "height": 450,
+          "alpha": false
+        },
+        "wide": {
+          "path": "apps/web/public/assets/rivals-v2/board/scene-wide.webp",
+          "sha256": "496d49f8d0797d664baf6dbfb949318ccbbf098a9a41530c306546cf79c28fa8",
+          "bytes": 280884,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
+        }
+      }
+    }
+  ]
+}

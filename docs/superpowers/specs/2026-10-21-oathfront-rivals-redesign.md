@@ -29,6 +29,8 @@ The user-supplied `0px` font size, browser-default blue link color, fractional e
 | action / focus | `#FFE34D`, ink foreground |
 | Dawnward / GOOD | `#80E3E0` |
 | Ashen Court / EVIL | `#FF957B` |
+| Dawnward text on paper | `#165F62` |
+| Ashen Court text on paper | `#8B392B` |
 | error | `#FFB4AB`, icon/text supplement |
 | border | `#7D8798` for meaningful control boundaries |
 | spacing | 4, 8, 12, 16, 24, 32, 48, 64 CSS px |
@@ -38,6 +40,8 @@ The user-supplied `0px` font size, browser-default blue link color, fractional e
 | motion | feedback120ms, panel240ms, reveal480ms; use existing event-specific battle budgets below |
 
 Components must consume semantic CSS variables. The developer must check actual foreground/background contrast, rather than assuming every accent works as text on paper. Black-on-yellow actions and ink-on-paper hero detail are primary contrast pairs. Focus rings must remain outside decorative clipping; interactive surfaces must not lose their hit area to clip-path.
+
+Calculated solid-color pairs are16.65:1 text/surface,8.35:1 muted/raised,16.24:1 ink/paper,14.57:1 ink/action,6.40:1 Dawnward-ink/paper and6.70:1 Ashen-ink/paper. Light faction accents on paper are only1.30:1 and1.85:1 and must not serve as text or essential boundaries there. Paper panels must use an ink-colored focus ring. These calculations do not replace checks of rendered overlays, gradients and disabled/error states.
 
 ## World, English identity and art
 
@@ -53,6 +57,8 @@ The world is **The Fivefold**, floating sanctuaries joined by five contested rou
 | H_E_XS | Morrow | The Hex Architect | Androgynous masked sorcerer; ink-black/violet geometric robes, floating seal plates and pale lavender threads, tall triangular silhouette; Hex/Veil |
 
 These must be original characters, sharing the reference's expressive comic treatment without importing Marvel character identities, logos, costumes, or website assets. Generate six individual full-body/bust-safe transparent illustrations with the built-in image tool. Save originals, prompts, source paths and derived optimized assets in this repo; use a versioned presentation asset layer such as `rivals-v2`. Each hero must have one consistent identity across home, selection, inspect and battle HUD. The existing unit/card/terrain artwork should be integrated with the new faction palettes, framing and stronger effect families; existing card IDs and game semantics must stay intact. Additional unit art replacement must not silently become a required 60-image regeneration.
+
+The new `fivefold-board.png` is the shared battlefield background: pale sanctuary architecture at one edge, dark furnace ruins at the other, and a low-noise dark central play surface. Use the versioned presentation override for `board/scene.webp`, including its wide battle request, without replacing the eight Location strips or changing preload behavior based on hidden assignments.
 
 All visible UI, metadata, accessible names, errors, tutorial steps, class/keyword names, card/power/location names and rules text must be English. User-entered account names and deck names must remain unmodified. OathFront must not display the former Vietnamese game subtitle. Hero/card translations must live in a centralized ID-keyed English presentation catalog; English rules must preserve targets, amounts, durations, ordering, and triggers exactly.
 

@@ -1,0 +1,15 @@
+{
+  "key": "fivefold",
+  "id": "board",
+  "artKey": "board/scene.webp",
+  "generator": "built-in image_gen",
+  "transparentBackground": false,
+  "prompt": "Use case: stylized-concept. Production wide battlefield BACKGROUND illustration for OathFront, an original fantasy hero card game with a bold modern comic art direction inspired by Marvel Rivals. Landscape 16:9 composition, slightly elevated near-top-down view of a vast ancient floating arena suspended over an abyss. The far left perimeter has ivory ruins and cool turquoise crystal/plant architecture, the far right perimeter has charcoal furnace ruins with restrained ember-orange fissures; both are part of one fractured arcane citadel. THE CENTRAL TWO THIRDS MUST BE AN EMPTY DARK SLATE PLAY SURFACE with only subtle low-contrast stone facets, no objects, no symbols, no characters, no dramatic highlights, so five game lanes can be overlaid in HTML. Keep all spectacular architecture, shards, ivy and atmospheric light at the outer edges; long clear central rectangle. Graphic comic hard-edged painted facets, restrained ink contours, deep charcoal and navy values, thin yellow and cyan rim accents on the periphery. Crisp high quality original game background, NOT photorealism. No hero, person, creature, playing cards, text, letters, logo, watermark, UI, buttons, frames or painted grid/lane divisions. Do not show five literal cards. Mood: tactical, powerful, mythic. Low visual noise where UI will be placed.",
+  "source": "fivefold-board.png",
+  "generatedSource": "/home/bia/.codex/generated_images/01a15862-9ac3-7c10-8d62-d22af57045da/exec-5997414f-b755-4aad-b3be-2ba292ec482c.png",
+  "sha256": "7dd327124c3b57b7ad6e8899770525512a0a809e138cac683579e5d48ae582f6",
+  "size": [
+    1672,
+    941
+  ]
+}

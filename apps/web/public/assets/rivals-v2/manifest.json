@@ -1,0 +1,68 @@
+{
+  "version": "rivals-v2",
+  "catalogVersion": "core_v1",
+  "assets": [
+    {
+      "id": "H_G_BV",
+      "kind": "hero",
+      "artKey": "heroes/h_g_bv/portrait.webp",
+      "thumb": "/assets/rivals-v2/heroes/briar/thumb.webp",
+      "hud": "/assets/rivals-v2/heroes/briar/hud.webp",
+      "inspect": "/assets/rivals-v2/heroes/briar/inspect.webp",
+      "bust": "/assets/rivals-v2/heroes/briar/bust.webp"
+    },
+    {
+      "id": "H_G_BP",
+      "kind": "hero",
+      "artKey": "heroes/h_g_bp/portrait.webp",
+      "thumb": "/assets/rivals-v2/heroes/aster/thumb.webp",
+      "hud": "/assets/rivals-v2/heroes/aster/hud.webp",
+      "inspect": "/assets/rivals-v2/heroes/aster/inspect.webp",
+      "bust": "/assets/rivals-v2/heroes/aster/bust.webp"
+    },
+    {
+      "id": "H_G_VP",
+      "kind": "hero",
+      "artKey": "heroes/h_g_vp/portrait.webp",
+      "thumb": "/assets/rivals-v2/heroes/lumen/thumb.webp",
+      "hud": "/assets/rivals-v2/heroes/lumen/hud.webp",
+      "inspect": "/assets/rivals-v2/heroes/lumen/inspect.webp",
+      "bust": "/assets/rivals-v2/heroes/lumen/bust.webp"
+    },
+    {
+      "id": "H_E_FX",
+      "kind": "hero",
+      "artKey": "heroes/h_e_fx/portrait.webp",
+      "thumb": "/assets/rivals-v2/heroes/cinder/thumb.webp",
+      "hud": "/assets/rivals-v2/heroes/cinder/hud.webp",
+      "inspect": "/assets/rivals-v2/heroes/cinder/inspect.webp",
+      "bust": "/assets/rivals-v2/heroes/cinder/bust.webp"
+    },
+    {
+      "id": "H_E_FS",
+      "kind": "hero",
+      "artKey": "heroes/h_e_fs/portrait.webp",
+      "thumb": "/assets/rivals-v2/heroes/vesper/thumb.webp",
+      "hud": "/assets/rivals-v2/heroes/vesper/hud.webp",
+      "inspect": "/assets/rivals-v2/heroes/vesper/inspect.webp",
+      "bust": "/assets/rivals-v2/heroes/vesper/bust.webp"
+    },
+    {
+      "id": "H_E_XS",
+      "kind": "hero",
+      "artKey": "heroes/h_e_xs/portrait.webp",
+      "thumb": "/assets/rivals-v2/heroes/morrow/thumb.webp",
+      "hud": "/assets/rivals-v2/heroes/morrow/hud.webp",
+      "inspect": "/assets/rivals-v2/heroes/morrow/inspect.webp",
+      "bust": "/assets/rivals-v2/heroes/morrow/bust.webp"
+    },
+    {
+      "id": "board",
+      "kind": "board",
+      "artKey": "board/scene.webp",
+      "thumb": "/assets/rivals-v2/board/scene.webp",
+      "inspect": "/assets/rivals-v2/board/scene-inspect.webp",
+      "wide": "/assets/rivals-v2/board/scene-wide.webp"
+    }
+  ]
+}

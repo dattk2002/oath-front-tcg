@@ -18,7 +18,7 @@
 - GSAP must own choreography; OS/game reduced-motion, cleanup, reconnect fast-forward and authoritative damage timing must remain effective.
 - Targets must be≥44×44px with≥8px gaps; text contrast4.5:1, large text3:1;375px fallback,1024×640 and1440×900 layouts and200% reflow must remain usable.
 - Source art must be original and versioned; no Marvel character/logo/site assets. Every final generated asset must be saved in the repo with prompt/provenance.
-- Preserve user3000/3001/oathfront_interactive, unrelated3100 and existing3300Docker. Tests only use isolated verification DB and3200/3101/internal3201. Any final preview uses a distinct task-owned Docker project/port3400 after checking availability.
+- Preserve user3000/3001/oathfront_interactive, unrelated3100/3101 and existing3300Docker. Tests only use isolated verification DB and3200/3121/internal3201. Any final preview uses a distinct task-owned Docker project/port3400 after checking availability.
 - Work in the existing authorized main checkout, preserve user changes, native small commits; controller alone pushes after integration. No production deploy, registry publish, dependency upgrades, cloud DB changes or destructive cleanup.
 - Run focused checks during implementation; one final production build/browser gate. Do not repeat full engine/balance/physical suites for presentation-only changes. Report existing release holds truthfully.
 
@@ -50,6 +50,9 @@
 
 **Interfaces:** Keep `resolveArt(artKey,fallbackLabel,variant)` and existing core manifest/atlas contracts. Versioned hero overrides cover existing hero art keys and `thumb`, `hud`, `inspect`, `bust` variants. Root controller may produce six original design assets with built-in imagegen while Task1 runs; worker consumes their manifest/provenance, never invents asset paths or silently omits a hero. Existing unit art/terrain remains supported.
 
+Parent additionally produced `assets/source/rivals-v2/fivefold-board.png` and `board-generation.json`. Add the coherent `board/scene.webp` presentation override, including `artById` and `battleAssetRequests` consumers, while keeping all eight Location strips and their unconditional pool loading intact.
+
+- [ ] Make the browser-fixture API port configurable (default3101 for existing CI, local override3121), with a validated loopback test origin shared by config/server/auth fixture. The user now has an unrelated Next app on3101; never stop it. Check ports before probes and use existing isolated verification DB only.
 - [ ] Inspect source art and supplied reference screenshot/design. Apply gpt-taste within game constraints, use the spec's tokens rather than random marketing layout. New art must show all six specified distinct silhouettes and complete required crop-safe regions.
 - [ ] Integrate generated originals and bounded web derivatives through the existing asset pipeline, retaining provenance/hash/license metadata; verify every hero resolves and fallback works. Preserve unrelated core atlas assets and hidden-terrain preload invariants.
 - [ ] Implement the full theme: angular black/paper/yellow shell, editorial home, prominent hero stage/roster, readable card/skill anatomy, themed deck/setup/battle HUD/dialogs/history/settings/auth. Preserve semantic controls and flow; never reduce hit areas to gain space.
@@ -75,8 +78,22 @@
 **Interfaces:** Consume final English presentation, art manifest and motion behavior from Tasks1–3; preserve original release checklist holds. Native commits/push remain authorized; controller handles review and push.
 
 - [ ] Run final English static-copy audit allowing historical transport fields/comments/user text; verify current docs name mappings and links. Run typecheck, lint and relevant frontend/content tests once on integrated source.
-- [ ] Build production once with API_ORIGIN=http://127.0.0.1:3101 and run final production browser suite sequentially against isolated verification DB. Preserve actual failures and use only covering reruns for fixes.
+- [ ] Build production once with API_ORIGIN=http://127.0.0.1:3121 and run final production browser suite sequentially against isolated verification DB. Preserve actual failures and use only covering reruns for fixes.
 - [ ] Inspect actual browser UI at375,1024×640,1440×900 and200% reflow; play hero/deck/mulligan/deploy/pass/pause/reload flow, normal/reduced motion, fallback and console. Record what was visually verified rather than inferring from unit tests.
 - [ ] If a live preview is delivered, build/start a separate `oathfront-redesign` Docker stack at free loopback3400 with separate volume and run a focused guest-play smoke; do not replace3300 or migrate user DB. Record exact startup instructions.
 - [ ] Complete current documentation with tokens, all component state/keyboard/pointer/touch rules, motion timings, asset provenance, screenshots, testable QA checks and known limits. Original user Markdown must remain intact as reference.
 - [ ] Commit task changes, report checks and actual skipped gates; controller performs whole-change review, applies at most the defined scoped final fix wave, then pushes small commits and verifies actual automatic CI. No production deployment.
+
+### Task 5: Pen.dev prompt and design-to-code handoff
+
+Added by the user after execution began; perform after the current redesign is complete. This does not replace Tasks1–4.
+
+**Files:** Create `docs/design/pen/OATHFRONT-PEN-PROMPT.md`, `docs/design/pen/DESIGN-CONTRACT.md`, `docs/design/pen/design-contract.json` and a narrowly useful schema/check command if the actual format warrants it; link from current docs index.
+
+**Interfaces:** Prompt consumes final implemented tokens, original hero assets, English catalog, screen/state inventory and motion spec. Contract maps actual Pen file/node identifiers to repository components, semantic token names, assets, responsive variants, interaction states and GSAP cues. It must identify the source file/hash/revision and distinguish design intent from runtime gameplay authority.
+
+- [ ] Verify current official Pen.dev documentation for .pen format, variables/components and design↔code handoff. Do not invent unsupported MCP/CLI operations or layer IDs.
+- [ ] Write a ready-to-paste English design prompt covering every gameplay screen, responsive size, state, asset reuse and concrete deliverables; tell Pen to design editable components and named variables, not flatten the UI to images.
+- [ ] Write the Pen↔Codex workflow and a contract structure tied to actual final repo paths/tokens. Until the user supplies or creates a real design file, mark it `awaiting_design` with unresolved source/node IDs, never as approved or implementation-ready.
+- [ ] When a real Pen design file becomes available, read it, verify source identity and resolve node/token/component/asset mappings, record conflicts against immutable game rules, and validate before applying that design. If no file exists yet, finish the prompt and honest pending contract handoff without inventing a design or blocking completed redesign delivery.
+- [ ] Check links/JSON/schema as applicable, commit handoff docs and report the exact file needed to finalize the contract. No external Pen account/project creation or design publication implied by writing this prompt.

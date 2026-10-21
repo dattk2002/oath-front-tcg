@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import type { HeroId, PublicCatalog } from "@oathfront/contracts/browser";
 import { gsap } from "gsap";
 import { classLabel } from "../match/labels";
-import HeroInspect, { strategies } from "./HeroInspect";
+import HeroInspect from "./HeroInspect";
 import ArtImage from "../match/ArtImage";
 export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
   const router = useRouter();
@@ -42,7 +42,11 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
         <p>Six heroes · All unlocked</p>
       </div>
       <div className="hero-select-layout">
-        <div role="radiogroup" aria-label="Choose hero" className="hero-grid">
+        <div
+          role="radiogroup"
+          aria-label="Choose hero"
+          className="hero-grid roster-grid"
+        >
           {catalog.heroes.map((h, i) => (
             <label
               key={h.id}
@@ -66,14 +70,16 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
                 <ArtImage
                   artKey={h.portraitKey}
                   name={contentName(h.id)}
-                  variant="hud"
+                  variant="thumb"
                   eager
                 />
               </span>
               <strong>{contentName(h.id)}</strong>
               <span>{h.classes.map((c) => classLabel[c]).join(" · ")}</span>
-              <span>{strategies[h.id]}</span>
-              {i === 0 && <small>Recommended for new players</small>}
+              <span className="roster-faction">
+                {h.faction === "GOOD" ? "Dawnward" : "Ashen Court"}
+              </span>
+              {i === 0 && <small>Start here</small>}
               {h.id === selected && <b>Selected</b>}
             </label>
           ))}

@@ -1,5 +1,12 @@
 # UI, art direction và motion
 
+> **Current runtime presentation (2026-10-21):** the approved [Rivals redesign](superpowers/specs/2026-10-21-oathfront-rivals-redesign.md) and [implementation](implementation/rivals-redesign.md) supersede the historical visual proposals below. Runtime copy is English; historical source names/mockups remain provenance, not current UI copy. The current theme uses black/paper/yellow, Barlow Condensed display and Noto Sans body, six original heroes, a shared Fivefold arena, unclipped focus and 44px controls. Game rules and stable IDs are unchanged.
+
+The current home headline is **FIVE LANES. ONE OATH.** Hero selection is a compact six-portrait roster plus a large paper character stage and four-power rail; its footer is in document flow. Collection uses paper card anatomy with independent quantity controls. Setup reuses hero portraits; battle preserves five lanes and the complete hidden-terrain asset pool. Supported visual checks are 375px fallback, 1024×640 and 1440×900; reflow remains available at 200%. Settings/history/auth/results share these tokens. Major new GSAP choreography is tracked separately in the redesign plan.
+
+---
+
+
 Tham khảo bố cục đã render: [desktop](design/battle-desktop.png), [tablet](design/battle-tablet.png), [card anatomy](design/card-anatomy.png). SVG cùng tên là nguồn chỉnh sửa. Đây là **wireframe tĩnh**, không phải artwork hoàn thiện hoặc bằng chứng animation chạy mượt.
 
 Bốn màn hình còn lại và tám mockup desktop/tablet ở [SCREENS](SCREENS.md); lời hướng dẫn/gameplay gates ở [TUTORIAL](TUTORIAL.md). SCREENS cụ thể hóa flow hero/deck/block/result mà không thay design tokens dưới đây.

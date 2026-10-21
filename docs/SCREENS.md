@@ -1,5 +1,12 @@
 # Màn hình chi tiết — đề xuất v1
 
+> **Current runtime presentation (2026-10-21):** the approved [Rivals redesign](superpowers/specs/2026-10-21-oathfront-rivals-redesign.md) and [implementation](implementation/rivals-redesign.md) supersede the historical visual proposals below. Runtime copy is English; historical source names/mockups remain provenance, not current UI copy. The current theme uses black/paper/yellow, Barlow Condensed display and Noto Sans body, six original heroes, a shared Fivefold arena, unclipped focus and 44px controls. Game rules and stable IDs are unchanged.
+
+The current home headline is **FIVE LANES. ONE OATH.** Hero selection is a compact six-portrait roster plus a large paper character stage and four-power rail; its footer is in document flow. Collection uses paper card anatomy with independent quantity controls. Setup reuses hero portraits; battle preserves five lanes and the complete hidden-terrain asset pool. Supported visual checks are 375px fallback, 1024×640 and 1440×900; reflow remains available at 200%. Settings/history/auth/results share these tokens. Major new GSAP choreography is tracked separately in the redesign plan.
+
+---
+
+
 Tiếp nối design tokens trong [UI-MOTION](UI-MOTION.md). Bốn màn hình còn thiếu được chốt ở đây: hero select, deck builder, block response và result. Đây là thiết kế/mẫu tĩnh; chưa có UI runtime.
 
 PvZ Heroes giúp định hướng cách gắn hero, class, power và deck thành một lựa chọn chiến thuật. Trailer Strategy Decks chính thức mô tả deck mẫu riêng theo hero; Ngũ Lộ áp dụng cách giới thiệu đó với toàn bộ card mở sẵn. [Strategy Decks — Plants vs. Zombies](https://www.youtube.com/watch?v=L5qlwZscq5U).

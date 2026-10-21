@@ -1,5 +1,7 @@
 import manifest from "../../../../public/assets/core-v1/manifest.json" with { type: "json" };
 
+import presentation from "../../../../public/assets/rivals-v2/manifest.json" with { type: "json" };
+
 export type AssetQuality = "low" | "high";
 export interface ArtReference {
   src: string;
@@ -11,7 +13,9 @@ export function resolveArt(
   fallbackLabel: string,
   variant = "thumb",
 ): ArtReference {
-  const asset = manifest.assets.find((a) => a.artKey === artKey);
+  const core = manifest.assets.find((a) => a.artKey === artKey);
+  const override = presentation.assets.find((a) => a.artKey === artKey);
+  const asset = { ...core, ...override };
   const variants: Record<string, string | undefined> = asset ?? {};
   return {
     src: variants[variant] ?? `/assets/core-v1/${artKey}`,
@@ -20,7 +24,10 @@ export function resolveArt(
   };
 }
 export function artById(id: string) {
-  return manifest.assets.find((a) => a.id === id);
+  const core = manifest.assets.find((a) => a.id === id);
+  return core
+    ? { ...core, ...presentation.assets.find((a) => a.id === id) }
+    : undefined;
 }
 export function battleAssetRequests(
   catalogVersion: string,
@@ -32,7 +39,9 @@ export function battleAssetRequests(
   return [
     ...manifest.atlases.filter((a) => a.quality === quality).map((a) => a.url),
     ...manifest.assets.filter((a) => a.kind === "terrain").map((a) => a.strip!),
-    ...manifest.assets.filter((a) => a.kind === "board").map((a) => a.wide!),
+    ...manifest.assets
+      .filter((a) => a.kind === "board")
+      .map((a) => artById(a.id)!.wide!),
   ];
 }
 export interface AssetBundle {

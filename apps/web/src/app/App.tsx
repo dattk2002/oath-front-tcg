@@ -223,11 +223,23 @@ function AppContent({
         <Brand />
         <nav aria-label="Main navigation">
           <button onClick={() => setSettingsOpen(true)}>Settings</button>
-          <Link href={routes.home}>Home</Link>
+          <Link
+            href={routes.home}
+            aria-current={screen === "home" ? "page" : undefined}
+          >
+            Home
+          </Link>
           {session?.activeMatchId && (
             <Link href={routes.match(session.activeMatchId)}>Resume match</Link>
           )}
-          {session && <Link href="/history">History</Link>}
+          {session && (
+            <Link
+              href="/history"
+              aria-current={screen === "history" ? "page" : undefined}
+            >
+              History
+            </Link>
+          )}
           <span className="session-label">
             {session?.principal.kind === "ACCOUNT"
               ? "Account"
@@ -318,24 +330,35 @@ function AppContent({
                 {...(reviewMatchId ? { reviewMatchId } : {})}
               />
             ) : (
-              <section className="home panel">
+              <section className="home panel" data-home-stage>
                 <div className="home-copy">
-                  <p className="eyebrow">Battle for the five routes</p>
-                  <h1>Every lane is an oath.</h1>
+                  <p className="eyebrow">
+                    A tactical card game in the Fivefold
+                  </p>
+                  <h1 data-home-headline>
+                    FIVE LANES.
+                    <br />
+                    ONE OATH.
+                  </h1>
                   <p>
                     Lead Dawnward or the Ashen Court. Deploy your units,
                     conserve energy and choose the moment to turn the battle.
                   </p>
                   <button
                     className="primary"
+                    aria-label={
+                      session?.activeMatchId
+                        ? "Continue match"
+                        : "Play now · Play vs bot"
+                    }
                     disabled={busy || !catalog}
                     onClick={() => void start()}
                   >
                     {busy
                       ? "Connecting…"
                       : session?.activeMatchId
-                        ? "Resume match"
-                        : "Play vs bot"}
+                        ? "Continue match"
+                        : "Play now"}
                   </button>
                   <button
                     disabled={busy || !catalog}
@@ -347,19 +370,34 @@ function AppContent({
                     Six heroes · Six preset decks · Easy and Normal bots
                   </p>
                 </div>
-                <div className="home-board" aria-hidden="true">
-                  {[1, 2, 3, 4, 5].map((lane) => (
-                    <div key={lane}>
-                      <span>{lane}</span>
-                      <span className="home-unit-art">
-                        <ArtImage
-                          artKey={`cards/${["gc01", "b02", "v02", "p03", "ec01"][lane - 1]}.webp`}
-                          name=""
-                          retry={false}
-                        />
-                      </span>
-                    </div>
-                  ))}
+                <div
+                  className="home-art-stage"
+                  aria-hidden="true"
+                  data-home-art
+                >
+                  <span className="home-faction-word">THE FIVEFOLD</span>
+                  <div className="home-hero home-hero-evil">
+                    <ArtImage
+                      artKey="heroes/h_e_fx/portrait.webp"
+                      name="Cinder"
+                      variant="bust"
+                      eager
+                      retry={false}
+                    />
+                  </div>
+                  <div className="home-hero home-hero-good">
+                    <ArtImage
+                      artKey="heroes/h_g_bv/portrait.webp"
+                      name="Briar"
+                      variant="bust"
+                      eager
+                      retry={false}
+                    />
+                  </div>
+                  <div className="home-factions">
+                    <span>Dawnward</span>
+                    <span>Ashen Court</span>
+                  </div>
                 </div>
               </section>
             )}

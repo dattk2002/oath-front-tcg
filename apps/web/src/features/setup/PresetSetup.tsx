@@ -307,6 +307,25 @@ export default function PresetSetup({
         </article>
       ) : (
         <section className="opponent panel">
+          <div className="matchup-art" aria-hidden="true">
+            <div>
+              <ArtImage
+                artKey={hero.portraitKey}
+                name={contentName(hero.id)}
+                variant="inspect"
+              />
+              <strong>{contentName(hero.id)}</strong>
+            </div>
+            <span>VS</span>
+            <div>
+              <ArtImage
+                artKey={opponent.portraitKey}
+                name={contentName(opponent.id)}
+                variant="inspect"
+              />
+              <strong>{contentName(opponent.id)}</strong>
+            </div>
+          </div>
           <fieldset disabled={busy || !!pending}>
             <legend>Opponent for {contentName(hero.id)}</legend>
             <label>

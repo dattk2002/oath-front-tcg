@@ -109,7 +109,7 @@ export default function CardCollection({
       <div className="collection-grid">
         {cards.map((c) => (
           <article
-            className="collection-card panel"
+            className={`collection-card panel ${c.faction.toLowerCase()}`}
             key={c.id}
             onClick={() => onInspect(c)}
           >
@@ -126,7 +126,7 @@ export default function CardCollection({
             <span className={`card-art ${c.faction.toLowerCase()}`}>
               <ArtImage artKey={c.artKey} name={contentName(c.id)} />
             </span>
-            <p>
+            <p className="card-stat-plate">
               {c.type === "UNIT"
                 ? `${c.printed.attack} ATK · ${c.printed.hp} HP`
                 : "Trick"}
