@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 tests/e2e/auth-claim.spec.ts:288:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal (2.6s)
+  ✓  2 tests/e2e/block-recovery.spec.ts:21:3 › block reload and reconnect preserves one grant and lane; KEEP before Volcano (3.8s)
+  ✓  3 tests/e2e/block-recovery.spec.ts:21:3 › block reload and reconnect preserves one grant and lane; USE before Volcano (3.6s)
+  ✓  4 tests/e2e/full-match.spec.ts:22:3 › complete GOOD match result reload history expiry rematch (15.1s)
+  ✓  5 tests/e2e/network-evidence.spec.ts:11:1 › explicit network evidence rejects wrong resource status scope and unrelated errors (93ms)
+
+  5 passed (28.7s)

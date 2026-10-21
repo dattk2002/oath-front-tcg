@@ -1,0 +1,118 @@
+{
+  "allErrors": [
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "pageerror: unrelated page sentinel",
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)"
+  ],
+  "issues": [
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "at": 1792547539718
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "at": 1792547539723
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/__console-evidence/match-b",
+      "at": 1792547539730
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "at": 1792547539734
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "",
+      "at": 1792547539737
+    },
+    {
+      "kind": "pageerror",
+      "text": "pageerror: unrelated page sentinel",
+      "url": "",
+      "at": 1792547539737
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "at": 1792547539742
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "at": 1792547539746
+    }
+  ],
+  "networkFailures": [
+    {
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "status": 410,
+      "at": 1792547539718,
+      "expectedSince": 1792547539713
+    },
+    {
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "status": 503,
+      "at": 1792547539723
+    },
+    {
+      "url": "http://localhost:3200/__console-evidence/match-b",
+      "status": 410,
+      "at": 1792547539730
+    },
+    {
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "status": 410,
+      "at": 1792547539734
+    },
+    {
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "status": 410,
+      "at": 1792547539741,
+      "expectedSince": 1792547539738
+    },
+    {
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "status": 410,
+      "at": 1792547539745
+    }
+  ],
+  "expected": [
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "at": 1792547539718
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/__console-evidence/match-a",
+      "at": 1792547539742
+    }
+  ],
+  "unexpected": [
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "pageerror: unrelated page sentinel",
+    "Failed to load resource: the server responded with a status of 410 (Gone)"
+  ]
+}

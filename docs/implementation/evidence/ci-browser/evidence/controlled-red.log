@@ -1,0 +1,99 @@
+
+Running 2 tests using 1 worker
+
+AUTH_RECOVERY_PROBE /api/v1/matches/efb53ea3-2278-4ac6-90c4-7681ee9dca74 200
+AUTH_RECOVERY_PROBE /api/v1/matches/efb53ea3-2278-4ac6-90c4-7681ee9dca74/events 200
+AUTH_RECOVERY_PROBE /api/v1/matches/efb53ea3-2278-4ac6-90c4-7681ee9dca74 401
+AUTH_RECOVERY_PROBE /api/v1/matches/efb53ea3-2278-4ac6-90c4-7681ee9dca74 401
+  ✘  1 tests/e2e/auth-claim.spec.ts:288:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal (7.1s)
+  ✘  2 tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch (16.3s)
+
+
+  1) tests/e2e/auth-claim.spec.ts:288:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator:  getByRole('dialog', { name: 'Tạm dừng', exact: true }).getByRole('button', { name: 'Tiếp tục', exact: true })
+    Expected: enabled
+    Received: disabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('dialog', { name: 'Tạm dừng', exact: true }).getByRole('button', { name: 'Tiếp tục', exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Tạm dừng', exact: true }).getByRole('button', { name: 'Tiếp tục', exact: true })
+        14 × locator resolved to <button disabled class="primary">Tiếp tục</button>
+           - unexpected value "disabled"
+
+
+      325 |   await owner.end();
+      326 |   releaseRecovery();
+    > 327 |   await expect(modal.getByRole("button", { name: "Tiếp tục", exact: true })).toBeEnabled();
+          |                                                                              ^
+      328 |
+      329 |   await page.route("**/api/auth/token*", (r) =>
+      330 |     r.fulfill({
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/auth-claim.spec.ts:327:78
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    + ]
+
+      52 |     JSON.stringify({ all, unexpected }, null, 2),
+      53 |   );
+    > 54 |   expect(unexpected).toEqual([]);
+         |                      ^
+      55 | });
+      56 |
+      57 | async function guest(page: import("@playwright/test").Page) {
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/auth-claim.spec.ts:54:22
+
+    Error Context: test-results/auth-claim-expired-paused--0ac49-tical-command-after-renewal/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/auth-claim-expired-paused--0ac49-tical-command-after-renewal/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/auth-claim-expired-paused--0ac49-tical-command-after-renewal/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch ──
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 410 (Gone)",
+    + ]
+
+      137 |     expect(fresh.view.self.side).toBe(faction);
+      138 |     expect(fresh.view.turn).toBe(0);
+    > 139 |     expect(errors).toEqual([]);
+          |                    ^
+      140 |     await captureEvidence(page, `${faction.toLowerCase()}-rematch`, errors);
+      141 |   });
+      142 | test("version drift shows retained source and original/current versions without any replacement create", async ({
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/full-match.spec.ts:139:20
+
+    Error Context: test-results/full-match-complete-GOOD-m-5478e-load-history-expiry-rematch/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/full-match-complete-GOOD-m-5478e-load-history-expiry-rematch/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/full-match-complete-GOOD-m-5478e-load-history-expiry-rematch/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/auth-claim.spec.ts:288:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal 
+    tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch ───

@@ -1,0 +1,9 @@
+
+Running 4 tests using 1 worker
+
+  ✓  1 tests/e2e/block-recovery.spec.ts:119:1 › lost block receipt survives reload and retries the identical command without regrant (3.6s)
+  ✓  2 tests/e2e/block-recovery.spec.ts:493:3 › failed snapshot recovery disables actions until explicit retry and clears the failure after success (1.7s)
+  ✓  3 tests/e2e/block-recovery.spec.ts:493:3 › paused failed snapshot recovery disables actions until explicit retry and clears the failure after success (1.9s)
+  ✓  4 tests/e2e/network-evidence.spec.ts:11:1 › explicit network evidence rejects wrong resource status scope and unrelated errors (95ms)
+
+  4 passed (10.9s)

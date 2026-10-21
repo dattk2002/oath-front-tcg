@@ -1,0 +1,135 @@
+{
+  "allErrors": [
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+  ],
+  "diagnostic": [
+    {
+      "kind": "requestfailed",
+      "at": 1792547010305,
+      "url": "http://localhost:3200/assets/core-v1/atlases/cutouts-high.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010305,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/atlases/cutouts-high.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010305,
+      "url": "http://localhost:3200/assets/core-v1/locations/ancient_forest-strip.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010305,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/locations/ancient_forest-strip.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010305,
+      "url": "http://localhost:3200/assets/core-v1/locations/storm_peak-strip.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010305,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/locations/storm_peak-strip.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010305,
+      "url": "http://localhost:3200/assets/core-v1/locations/frozen_lake-strip.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010305,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/locations/frozen_lake-strip.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010305,
+      "url": "http://localhost:3200/assets/core-v1/locations/desert-strip.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010305,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/locations/desert-strip.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010306,
+      "url": "http://localhost:3200/assets/core-v1/locations/healing_spring-strip.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010306,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/locations/healing_spring-strip.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010306,
+      "url": "http://localhost:3200/assets/core-v1/locations/ruined_arena-strip.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010306,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/locations/ruined_arena-strip.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010306,
+      "url": "http://localhost:3200/assets/core-v1/locations/quiet_meadow-strip.webp",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010306,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/assets/core-v1/locations/quiet_meadow-strip.webp"
+    },
+    {
+      "kind": "requestfailed",
+      "at": 1792547010320,
+      "url": "http://localhost:3200/api/v1/matches/0cd90985-ed38-420e-8c8a-b67cd7280898/events?afterSeq=0&throughSeq=9",
+      "error": "net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "console",
+      "at": 1792547010320,
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+      "url": "http://localhost:3200/api/v1/matches/0cd90985-ed38-420e-8c8a-b67cd7280898/events?afterSeq=0&throughSeq=9"
+    }
+  ],
+  "expectedNetworkInjection": false,
+  "unexpected": [
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+  ]
+}

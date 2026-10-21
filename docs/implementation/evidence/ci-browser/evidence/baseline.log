@@ -1,0 +1,53 @@
+
+Running 4 tests using 1 worker
+
+  ✓  1 tests/e2e/auth-claim.spec.ts:288:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal (2.5s)
+  ✓  2 tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; KEEP before Volcano (4.0s)
+  ✘  3 tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; USE before Volcano (3.8s)
+  ✓  4 tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch (16.2s)
+
+
+  1) tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; USE before Volcano 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 11
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+    + ]
+
+       at recovery-fixtures.ts:263
+
+      261 |     ),
+      262 |   );
+    > 263 |   expect(unexpected).toEqual([]);
+          |                      ^
+      264 | }
+      265 |
+        at finishEvidence (/home/bia/Works/Coding/oath-front-tcg/tests/e2e/recovery-fixtures.ts:263:22)
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/block-recovery.spec.ts:5:3
+
+    Error Context: test-results/block-recovery-block-reloa-4d04d-and-lane-USE-before-Volcano/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/block-recovery-block-reloa-4d04d-and-lane-USE-before-Volcano/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/block-recovery-block-reloa-4d04d-and-lane-USE-before-Volcano/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; USE before Volcano 
+  3 passed (30.8s)

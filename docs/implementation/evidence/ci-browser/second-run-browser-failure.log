@@ -1,0 +1,167 @@
+workspace	Browser integration (production standalone through trusted ingress)	﻿2026-10-21T01:32:08.8720549Z ##[group]Run OATHFRONT_E2E_PRODUCTION=1 pnpm test:e2e
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8720992Z ^[[36;1mOATHFRONT_E2E_PRODUCTION=1 pnpm test:e2e^[[0m
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8773524Z shell: /usr/bin/bash -e {0}
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8773802Z env:
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8774011Z   OATHFRONT_TEST_DATABASE: 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8774318Z   OATHFRONT_TEST_DB_CONTAINER: oathfront-ci-db-1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8774650Z   OATHFRONT_E2E_PORT: 3200
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8774946Z   API_ORIGIN: http://127.0.0.1:3101
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8775229Z   NEXT_TELEMETRY_DISABLED: 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8775510Z   OATHFRONT_EVIDENCE_ROOT: artifacts/ci-browser
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8775867Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:08.8776183Z ##[endgroup]
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:09.3514687Z $ pnpm build:api && playwright test
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:09.8076565Z $ node scripts/build-api.mjs
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:14.5550048Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:32:14.5550599Z Running 80 tests using 1 worker
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1276124Z ··°·········T·····FF·························F···················°··············
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1289961Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1305222Z   1) tests/e2e/auth-claim.spec.ts:288:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1307132Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1307540Z     Test timeout of 60000ms exceeded.
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1308147Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1308680Z     Error: locator.click: Test timeout of 60000ms exceeded.
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1309429Z     Call log:
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1310863Z       - waiting for getByRole('dialog', { name: 'Tạm dừng', exact: true }).getByRole('button', { name: 'Tiếp tục', exact: true })
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1311905Z         - locator resolved to <button disabled class="primary">Tiếp tục</button>
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1312495Z       - attempting click action
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1313050Z         2 × waiting for element to be visible, enabled and stable
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1314270Z           - element is not enabled
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1315072Z         - retrying click action
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1315652Z         - waiting 20ms
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1316448Z         2 × waiting for element to be visible, enabled and stable
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1317186Z           - element is not enabled
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1317783Z         - retrying click action
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1318327Z           - waiting 100ms
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1319569Z         110 × waiting for element to be visible, enabled and stable
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1320321Z             - element is not enabled
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1320935Z           - retrying click action
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1321494Z             - waiting 500ms
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1322186Z         - waiting for element to be visible, enabled and stable
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1322734Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1322891Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1323647Z       329 |       sent.push(r.postData()!);
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1324354Z       330 |   });
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1325354Z     > 331 |   await modal.getByRole("button", { name: "Tiếp tục", exact: true }).click();
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1326063Z           |                                                                      ^
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1326526Z       332 |   await expect(
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1327084Z       333 |     modal.getByRole("button", { name: "Đăng nhập Google" }),
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1327592Z       334 |   ).toBeVisible();
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1328192Z         at /home/runner/work/oath-front-tcg/oath-front-tcg/tests/e2e/auth-claim.spec.ts:331:70
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1328686Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1329231Z     Error Context: test-results/auth-claim-expired-paused--0ac49-tical-command-after-renewal/error-context.md
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1329810Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1330345Z     attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1331546Z     test-results/auth-claim-expired-paused--0ac49-tical-command-after-renewal/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1332196Z     Usage:
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1332433Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1333031Z         pnpm exec playwright show-trace test-results/auth-claim-expired-paused--0ac49-tical-command-after-renewal/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1334923Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1335745Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1336277Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1337002Z   2) tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; KEEP before Volcano 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1337505Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1337719Z     Error: expect(received).toEqual(expected) // deep equality
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1337980Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1338078Z     - Expected  - 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1338307Z     + Received  + 3
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1338441Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1338527Z     - Array []
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1338784Z     + Array [
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1339386Z     +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1339972Z     + ]
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1340122Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1340351Z        at recovery-fixtures.ts:256
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1340681Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1340826Z       254 |     ),
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1341259Z       255 |   );
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1341720Z     > 256 |   expect(unexpected).toEqual([]);
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1342304Z           |                      ^
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1342730Z       257 | }
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1343072Z       258 |
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1344458Z         at finishEvidence (/home/runner/work/oath-front-tcg/oath-front-tcg/tests/e2e/recovery-fixtures.ts:256:22)
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1345807Z         at /home/runner/work/oath-front-tcg/oath-front-tcg/tests/e2e/block-recovery.spec.ts:5:3
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1346203Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1346649Z     Error Context: test-results/block-recovery-block-reloa-91146-nd-lane-KEEP-before-Volcano/error-context.md
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1347120Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1347578Z     attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1348252Z     test-results/block-recovery-block-reloa-91146-nd-lane-KEEP-before-Volcano/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1348737Z     Usage:
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1348849Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1349320Z         pnpm exec playwright show-trace test-results/block-recovery-block-reloa-91146-nd-lane-KEEP-before-Volcano/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1349827Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1350172Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1350687Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1351205Z   3) tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; USE before Volcano 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1351672Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1351886Z     Error: expect(received).toEqual(expected) // deep equality
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1352148Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1352252Z     - Expected  - 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1352475Z     + Received  + 3
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1352600Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1352683Z     - Array []
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1352885Z     + Array [
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1353741Z     +   "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1354119Z     + ]
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1354235Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1354361Z        at recovery-fixtures.ts:256
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1354542Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1354623Z       254 |     ),
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1354834Z       255 |   );
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1355088Z     > 256 |   expect(unexpected).toEqual([]);
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1355406Z           |                      ^
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1355650Z       257 | }
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1355834Z       258 |
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1356343Z         at finishEvidence (/home/runner/work/oath-front-tcg/oath-front-tcg/tests/e2e/recovery-fixtures.ts:256:22)
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1357096Z         at /home/runner/work/oath-front-tcg/oath-front-tcg/tests/e2e/block-recovery.spec.ts:5:3
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1357463Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1357897Z     Error Context: test-results/block-recovery-block-reloa-4d04d-and-lane-USE-before-Volcano/error-context.md
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1358371Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1358982Z     attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1359672Z     test-results/block-recovery-block-reloa-4d04d-and-lane-USE-before-Volcano/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1360152Z     Usage:
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1360261Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1360740Z         pnpm exec playwright show-trace test-results/block-recovery-block-reloa-4d04d-and-lane-USE-before-Volcano/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1361263Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1361618Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1361914Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1362315Z   4) tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch ──
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1362689Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1362895Z     Error: expect(received).toEqual(expected) // deep equality
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1363395Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1363507Z     - Expected  - 1
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1363731Z     + Received  + 3
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1363872Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1363954Z     - Array []
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1364154Z     + Array [
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1364540Z     +   "Failed to load resource: the server responded with a status of 410 (Gone)",
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1364931Z     + ]
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1365032Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1365215Z       124 |     expect(fresh.view.self.side).toBe(faction);
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1365599Z       125 |     expect(fresh.view.turn).toBe(0);
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1365944Z     > 126 |     expect(errors).toEqual([]);
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1366259Z           |                    ^
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1366698Z       127 |     await captureEvidence(page, `${faction.toLowerCase()}-rematch`, errors);
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1367119Z       128 |   });
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1367665Z       129 | test("version drift shows retained source and original/current versions without any replacement create", async ({
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1368438Z         at /home/runner/work/oath-front-tcg/oath-front-tcg/tests/e2e/full-match.spec.ts:126:20
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1368808Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1369235Z     Error Context: test-results/full-match-complete-GOOD-m-5478e-load-history-expiry-rematch/error-context.md
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1369693Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1370108Z     attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1370782Z     test-results/full-match-complete-GOOD-m-5478e-load-history-expiry-rematch/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1371412Z     Usage:
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1371533Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1372006Z         pnpm exec playwright show-trace test-results/full-match-complete-GOOD-m-5478e-load-history-expiry-rematch/trace.zip
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1372507Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1372862Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1373371Z 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1373462Z   4 failed
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1374237Z     tests/e2e/auth-claim.spec.ts:288:1 › expired paused session exposes login inside the modal and explicitly retries the identical command after renewal 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1375465Z     tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; KEEP before Volcano 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1376424Z     tests/e2e/block-recovery.spec.ts:16:3 › block reload and reconnect preserves one grant and lane; USE before Volcano 
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1377275Z     tests/e2e/full-match.spec.ts:16:3 › complete GOOD match result reload history expiry rematch ───
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1377726Z   2 skipped
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1377929Z   74 passed (6.5m)
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.1730807Z [ELIFECYCLE] Command failed with exit code 1.
+workspace	Browser integration (production standalone through trusted ingress)	2026-10-21T01:38:38.2012797Z ##[error]Process completed with exit code 1.

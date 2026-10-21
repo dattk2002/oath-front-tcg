@@ -1,0 +1,49 @@
+{
+  "allErrors": [
+    "Failed to load resource: the server responded with a status of 410 (Gone)",
+    "Failed to load resource: the server responded with a status of 410 (Gone)"
+  ],
+  "issues": [
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/api/v1/matches/48d2a5d9-897d-4166-9614-0476b989ce4c/events?afterSeq=0&throughSeq=131",
+      "at": 1792547427114
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/api/v1/matches/48d2a5d9-897d-4166-9614-0476b989ce4c",
+      "at": 1792547427687
+    }
+  ],
+  "networkFailures": [
+    {
+      "url": "http://localhost:3200/api/v1/matches/48d2a5d9-897d-4166-9614-0476b989ce4c/events?afterSeq=0&throughSeq=131",
+      "status": 410,
+      "at": 1792547427112,
+      "expectedSince": 1792547427081
+    },
+    {
+      "url": "http://localhost:3200/api/v1/matches/48d2a5d9-897d-4166-9614-0476b989ce4c",
+      "status": 410,
+      "at": 1792547427687,
+      "expectedSince": 1792547427081
+    }
+  ],
+  "expected": [
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/api/v1/matches/48d2a5d9-897d-4166-9614-0476b989ce4c/events?afterSeq=0&throughSeq=131",
+      "at": 1792547427114
+    },
+    {
+      "kind": "console",
+      "text": "Failed to load resource: the server responded with a status of 410 (Gone)",
+      "url": "http://localhost:3200/api/v1/matches/48d2a5d9-897d-4166-9614-0476b989ce4c",
+      "at": 1792547427687
+    }
+  ],
+  "unexpected": []
+}
