@@ -1,4 +1,9 @@
-import { testOrigin, testPort } from "./tests/e2e/test-origin.js";
+import {
+  testOrigin,
+  testPort,
+  testApiPort,
+  testApiOrigin,
+} from "./tests/e2e/test-origin.js";
 import { defineConfig } from "@playwright/test";
 // Playwright supplies FORCE_COLOR; inherited NO_COLOR otherwise warns in every worker.
 delete process.env.NO_COLOR;
@@ -27,9 +32,10 @@ export default defineConfig({
   webServer: [
     {
       command: "pnpm --filter @oathfront/api exec tsx tests/browser-server.mjs",
-      url: "http://127.0.0.1:3101/health/ready",
+      url: `${testApiOrigin}/health/ready`,
       env: {
         OATHFRONT_E2E_ORIGIN: testOrigin,
+        OATHFRONT_E2E_API_PORT: String(testApiPort),
         OATHFRONT_E2E_INGRESS: process.env.OATHFRONT_E2E_PRODUCTION ?? "0",
         UI_PROXY_SECRET: "local-test-proxy-".repeat(4),
       },
@@ -45,7 +51,7 @@ export default defineConfig({
       env: {
         OATHFRONT_TEST_DEV:
           process.env.OATHFRONT_E2E_PRODUCTION === "1" ? "0" : "1",
-        API_ORIGIN: "http://127.0.0.1:3101",
+        API_ORIGIN: testApiOrigin,
         PORT: String(testPort),
         HOSTNAME: "localhost",
         UI_PROXY_SECRET: "local-test-proxy-".repeat(4),

@@ -1,5 +1,6 @@
 // Dedicated browser fixture: real compiled production app + explicitly disposable local DB.
 // Playwright runs serially after Vitest DB resetters have stopped.
+import { testApiPort, testOrigin } from "../../../tests/e2e/test-origin.ts";
 import { generateKeyPair, SignJWT, exportJWK, createLocalJWKSet } from "jose";
 import { neonJwtVerifier } from "../src/auth/neon-jwt.ts";
 import { randomBytes } from "node:crypto";
@@ -32,7 +33,7 @@ const app = buildApp({
     ? { ipTrust: { mode: "trusted-next", secret: process.env.UI_PROXY_SECRET } }
     : {}),
   pool,
-  origin: process.env.OATHFRONT_E2E_ORIGIN ?? "http://localhost:3200",
+  origin: testOrigin,
   secret: randomBytes(32).toString("hex"),
 });
 // This route exists only in this explicitly disposable loopback test harness.
@@ -51,7 +52,7 @@ app.post("/__fixture/identity", async (req) => {
   };
 });
 await app.services.repository.registerRelease();
-await app.listen({ host: "127.0.0.1", port: 3101 });
+await app.listen({ host: "127.0.0.1", port: testApiPort });
 console.info("Browser API fixture ready");
 async function close() {
   await app.close();

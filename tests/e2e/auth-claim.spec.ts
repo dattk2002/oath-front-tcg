@@ -1,5 +1,5 @@
 import { evidencePath } from "./evidence-path.js";
-import { testOrigin } from "./test-origin.js";
+import { testOrigin, testApiOrigin } from "./test-origin.js";
 import { test, expect } from "@playwright/test";
 test("guest can reach Google login and history without making guest play require identity", async ({
   page,
@@ -68,7 +68,7 @@ async function guest(page: import("@playwright/test").Page) {
 async function token(page: import("@playwright/test").Page, subject: string) {
   return (
     await (
-      await page.request.post("http://127.0.0.1:3101/__fixture/identity", {
+      await page.request.post(`${testApiOrigin}/__fixture/identity`, {
         data: { subject },
       })
     ).json()
