@@ -33,7 +33,7 @@ The JSON retains all 24 baseline CSS tokens and now maps them to actual Pen vari
 
 All 67 existing runtime hero/board/card identities remain covered. Only IDs actually present in Pen receive `penNodesByContentId` bindings; omitted gallery cards remain null and retain their existing images. Image identity is matched by bytes, not by renamed filenames. Optimized runtime derivatives must have source hashes in their manifest.
 
-The original 36 repository component relations are preserved. A screen frame is not a reusable component origin: App/Layout composition does not acquire a fabricated `penOriginId`. Every family has a `designBasis` and explicit explanation of missing Pen coverage. Actual campaign code mappings are filled as the components are implemented; planned paths must not masquerade as existing exports. The raw inventory records actual origins, instances and descendant overrides.
+The original 36 repository component relations are preserved. A screen frame is not a reusable component origin: App/Layout composition does not acquire a fabricated `penOriginId`. Every family has a `designBasis` and explicit explanation of missing Pen coverage. Actual campaign code mappings now point to shipped components, with shared header, Home and logo relations recorded separately. Planned paths must not masquerade as existing exports. The raw inventory records actual origins, instances and descendant overrides.
 
 ## Fidelity and accessibility
 
@@ -52,10 +52,12 @@ python3 docs/design/pen/check-design-contract.py
 
 `check-pending-contract.py` delegates to the v2 checker for command compatibility. It no longer asserts that all identity fields are null.
 
-The checks verify source hash/revision, used references and nested overrides, local dependencies, token bindings, inherited components, supplied campaign IDs and documentation links. The eight reader tests exercise malformed origins/overrides, cycles, variable errors, unsafe/missing image paths, duplicate IDs and source drift. These checks do not prove runtime visual/accessibility quality.
+The checks verify source hash/revision, used references and nested overrides, local dependencies, token bindings, inherited components, supplied campaign IDs and documentation links. The eight reader tests exercise malformed origins/overrides, cycles, variable errors, unsafe/missing image paths, duplicate IDs and source drift. Four additional derivative tests reject changed output/source bytes, unsafe paths, duplicate outputs and unknown source nodes. The 21 shipped campaign derivatives are checked alongside their licenses and source references. These checks do not prove runtime visual/accessibility quality.
 
 A change to the `.pen` bytes invalidates its mapping and review. Reinspect, preserve the old identity in history, resolve new conflicts and review before applying. Repository input hashes must be deliberately reconciled with a documented implementation change; never silently update them to hide drift. `implementationVerification` is updated only after actual code/browser checks.
 
 Physical-device, assistive-technology, performance, balance and human-playtest holds in the [release checklist](../../implementation/release-checklist.md) remain separate. This design implementation does not clear them.
 
 The [single-file prompt library](OATHFRONT-PEN-PROMPTS.md) and [original full brief](OATHFRONT-PEN-PROMPT.md) remain historical design-authoring references. Their earlier pending-design wording is superseded by this contract and the approved specification.
+
+Implementation and verification evidence: [Pen implementation report](../../implementation/pen-design.md).

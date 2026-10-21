@@ -116,7 +116,7 @@
       "desktopNavigation": "20px / 700",
       "mobileNavigation": "18px / 700",
       "scope": "All existing UI screens and shared origins; documentation and baseline Foundations excluded",
-      "userApprovedDeparture": "Replaces Noto Sans in UI design only; runtime and baseline CSS values unchanged",
+      "userApprovedDeparture": "Barlow Condensed throughout UI via campaign.css and game-theme.css; original baseline tokens stay pinned for provenance.",
       "resolvedNonBarlowUITextCount": 0
     },
     "promotionalKeyArt": {
@@ -154,7 +154,25 @@
       "Derived tablet/reflow and omitted states require browser validation",
       "Full external Pen schema/renderer certification not performed"
     ],
-    "checkerCompatibility": "Validated by check-design-contract.py; compatibility entry check-pending-contract.py delegates to v2."
+    "checkerCompatibility": "Validated by check-design-contract.py; compatibility entry check-pending-contract.py delegates to v2.",
+    "runtimeManifestPath": "apps/web/public/assets/pen-v1/manifest.json",
+    "sharedImplementation": [
+      {
+        "repoPath": "apps/web/src/features/campaign/CampaignHeader.tsx",
+        "repoComponent": "CampaignHeader",
+        "penOriginId": "hsZRy"
+      },
+      {
+        "repoPath": "apps/web/src/features/campaign/CampaignHome.tsx",
+        "repoComponent": "CampaignHome",
+        "penNodeId": "BXxLv"
+      },
+      {
+        "repoPath": "apps/web/src/app/router.tsx",
+        "repoComponent": "Brand",
+        "penOriginId": "NqrjD"
+      }
+    ]
   },
   "repository": {
     "baselineCommit": "0f5354d7ca7a0dff66039fce1847ef0110fb3865",

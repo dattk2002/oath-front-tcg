@@ -31,6 +31,10 @@ jobs:
           docker compose --env-file .env.test.local -p oathfront-ci -f compose.db.yaml up -d --build --wait
       - run: pnpm --filter @oathfront/web exec next typegen
       - run: pnpm contracts:check && pnpm typecheck && pnpm lint
+      - name: Frozen Pen source and runtime design assets
+        run: |
+          python3 -m unittest discover -s docs/design/pen -p 'test_*.py'
+          python3 docs/design/pen/check-design-contract.py
       - name: Unit, PostgreSQL, migration and restore integration (serial DB fixtures)
         run: pnpm test
       - name: Build production with API target baked before Next compilation

@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote
 from pen_document import inspect_document, walk
 from contract_requirements import REQUIRED_COMPONENTS, REQUIRED_RESPONSIVE
+from runtime_assets import validate_runtime_assets
 
 ROOT = Path(__file__).resolve().parents[3]
 HANDOFF = ROOT / 'docs/design/pen'
@@ -34,6 +35,9 @@ def main():
     require(source['revision'] == 'sha256:' + source['sha256'], 'revision must pin exact source bytes')
     require(source['schemaVersion'] == inspection['document']['version'], 'schema version drift')
     nodes = inspection['nodes']
+    manifest = json.loads(repo_path(data['campaignExtension']['runtimeManifestPath']).read_text())
+    derivatives = validate_runtime_assets(ROOT, manifest, source['sha256'], nodes)
+    require(derivatives == 21, 'campaign derivative inventory drift')
     inventory = json.loads(repo_path(data['campaignExtension']['inventoryPath']).read_text())
     require(inventory['source'] == source, 'inventory source identity drift')
     require(inventory['dependencies'] == inspection['dependencies'], 'asset dependency hash drift')
@@ -89,7 +93,7 @@ def main():
         for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', path.read_text()):
             if '://' not in target and not target.startswith('#'):
                 require((path.parent / unquote(target.split('#')[0])).exists(), f'broken link: {path.name}: {target}')
-    print(f'PASS: source/hash/revision; {len(nodes)} nodes with nested overrides; {len(inspection["dependencies"])} image hashes; {len(tokens)} baseline tokens; 67 runtime assets; 12 inherited families/{relations} relations; campaign mappings.')
+    print(f'PASS: source/hash/revision; {len(nodes)} nodes with nested overrides; {len(inspection["dependencies"])} image hashes; {len(tokens)} baseline tokens; 67 runtime assets; {derivatives} campaign derivatives; 12 inherited families/{relations} relations; campaign mappings.')
     print('SCOPED READINESS: supplied campaign/Home + approved derived game skin. Full Pen schema/rendering and browser implementation acceptance are separate checks.')
 
 
