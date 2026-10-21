@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function CampaignArtwork({
   src,
@@ -20,6 +20,12 @@ export function CampaignArtwork({
 }) {
   const [failedSource, setFailedSource] = useState<string | null>(null);
   const failed = failedSource === src;
+  const image = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    // An SSR image may fail before React attaches its error listener.
+    if (image.current?.complete && !image.current.naturalWidth)
+      setFailedSource(src);
+  }, [src, failed]);
   return (
     <span className={`campaign-artwork ${className}`}>
       {failed ? (
@@ -39,6 +45,7 @@ export function CampaignArtwork({
         </span>
       ) : (
         <img
+          ref={image}
           src={src}
           srcSet={srcSet}
           sizes={sizes}

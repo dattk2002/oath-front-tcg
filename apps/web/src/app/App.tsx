@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useUiMotion } from "../features/motion/use-ui-motion";
+import { useCampaignMotion } from "../features/campaign/use-campaign-motion";
 import { CampaignHeader } from "../features/campaign/CampaignHeader";
 import { CampaignHome } from "../features/campaign/CampaignHome";
 import { CampaignPage } from "../features/campaign/CampaignPage";
@@ -80,12 +80,6 @@ function AppContent({
   const [accountOpen, setAccountOpen] = useState(false);
   const accountArea = useRef<HTMLDivElement>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  useEffect(() => {
-    if (accountOpen) {
-      accountArea.current?.scrollIntoView({ block: "nearest" });
-      accountArea.current?.querySelector<HTMLButtonElement>("button")?.focus();
-    }
-  }, [accountOpen]);
   const [tutorialSide, setTutorialSide] = useState<"GOOD" | "EVIL" | null>(
     null,
   );
@@ -94,6 +88,21 @@ function AppContent({
     [loading, setLoading] = useState(true),
     [busy, setBusy] = useState(false),
     [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    const area = accountArea.current;
+    if (!accountOpen || !area) return;
+    // Opening during connection focuses the panel, then the ready action. Do not
+    // steal focus if the player has already navigated elsewhere while waiting.
+    if (
+      document.activeElement === area ||
+      document.activeElement?.matches('[aria-controls="campaign-account"]')
+    ) {
+      area.scrollIntoView({ block: "nearest" });
+      (
+        area.querySelector<HTMLButtonElement>("button:not(:disabled)") ?? area
+      ).focus();
+    }
+  }, [accountOpen, loading]);
   const [attempt, setAttempt] = useState(0);
   const [storageWarning, setStorageWarning] = useState("");
   const [storageOwner, setStorageOwner] = useState<string | null>(null);
@@ -215,11 +224,10 @@ function AppContent({
       setBusy(false);
     }
   }
-  useUiMotion(
+  useCampaignMotion(
     main,
-    "home",
-    ownerEpoch,
-    false, // The Pen campaign owns its scoped entrance choreography.
+    `${ownerEpoch}:${screen}:${JSON.stringify(campaign ?? null)}`,
+    publicPage,
   );
   const authPanel = (
     <AuthPanel
@@ -260,6 +268,7 @@ function AppContent({
               : "Sign in"
           }
           onAccount={() => setAccountOpen((value) => !value)}
+          accountOpen={accountOpen}
         />
       ) : (
         <header
@@ -298,6 +307,8 @@ function AppContent({
         (publicPage ? (
           <div
             ref={accountArea}
+            id="campaign-account"
+            tabIndex={-1}
             className="campaign-account-area"
             data-open={accountOpen}
           >
@@ -450,7 +461,11 @@ function AppContent({
                 Resume match
               </Link>
             )}
-            <button onClick={() => setAccountOpen((value) => !value)}>
+            <button
+              onClick={() => setAccountOpen((value) => !value)}
+              aria-expanded={accountOpen}
+              aria-controls="campaign-account"
+            >
               {accountOpen ? "Close account controls" : "Account"}
             </button>
           </nav>

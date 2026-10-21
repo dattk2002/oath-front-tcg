@@ -3,7 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { randomUUID, randomBytes } from "node:crypto";
 import { testOrigin } from "./test-origin.js";
 const evidence =
-  ".superpowers/sdd/2026-10-21-oathfront-rivals-redesign/task-4-evidence";
+  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser/motion";
 test("home and roster expose intermediate motion; reduction, rapid selection and native dismissal settle cleanly", async ({
   page,
 }) => {
@@ -94,7 +94,7 @@ test("home and roster expose intermediate motion; reduction, rapid selection and
   await expect
     .poll(() =>
       page
-        .locator(".home-hero .asset-image")
+        .locator(".campaign-home-art img")
         .first()
         .evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m41),
     )
@@ -110,7 +110,7 @@ test("home and roster expose intermediate motion; reduction, rapid selection and
     "transform",
     "none",
   );
-  await expect(page.locator(".home-hero .asset-image").first()).toHaveCSS(
+  await expect(page.locator(".campaign-home-art img").first()).toHaveCSS(
     "transform",
     "none",
   );
@@ -264,7 +264,7 @@ test("home and roster motion fit compact and mobile surfaces", async ({
     await expect
       .poll(() =>
         page
-          .locator(".home-hero img")
+          .locator(".campaign-home-art img")
           .evaluateAll((images) =>
             images.every(
               (image) => (image as HTMLImageElement).naturalWidth > 0,

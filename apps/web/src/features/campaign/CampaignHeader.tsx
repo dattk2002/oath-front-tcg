@@ -20,12 +20,14 @@ export function CampaignHeader({
   busy,
   accountLabel,
   onAccount,
+  accountOpen,
 }: {
   active: string;
   onPlay: () => void;
   busy: boolean;
   accountLabel: string;
   onAccount: () => void;
+  accountOpen: boolean;
 }) {
   return (
     <header className="campaign-header" data-pen-node="hsZRy">
@@ -54,7 +56,12 @@ export function CampaignHeader({
           </Link>
         ))}
       </nav>
-      <button className="campaign-account-link" onClick={onAccount}>
+      <button
+        className="campaign-account-link"
+        onClick={onAccount}
+        aria-expanded={accountOpen}
+        aria-controls="campaign-account"
+      >
         {accountLabel}
       </button>
       <button

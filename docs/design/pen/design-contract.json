@@ -1843,7 +1843,7 @@
       "Campaign tablet/reflow and omitted interaction/error states",
       "Static mock editorial detail content for listed entries"
     ],
-    "implementationStatus": "M1_to_M5_complete_M6_pending",
+    "implementationStatus": "M1_to_M6_complete_M7_pending",
     "deviations": [
       {
         "id": "public-route-isolation",
