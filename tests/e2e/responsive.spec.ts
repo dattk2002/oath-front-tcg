@@ -42,6 +42,8 @@ for (const [width, height] of [
 ])
   test(`ten cards and ten units fit ${width}x${height}`, async ({ page }) => {
     const dto = checkpoint();
+    dto.view.self.hand[8]!.definitionId = "B03";
+    dto.view.self.hand[9]!.definitionId = "GC05";
     const errors = await prepare(page, dto);
     await page.setViewportSize({ width: width!, height: height! });
     await enter(page, dto.view.matchId);
@@ -49,6 +51,41 @@ for (const [width, height] of [
       page.getByRole("button", { name: "End phase", exact: true }),
     ).toBeInViewport({ ratio: 1 });
     await fits(page, ".hero-panel,.lane,.hand-card,.phase-controls");
+    await page.evaluate(() => document.fonts.ready);
+    // Parent rectangles alone miss text overflowing a fixed compact grid row.
+    const summaries = await page.locator(".hand-card").evaluateAll((nodes) =>
+      nodes.map((card) => {
+        const summary = card.querySelector<HTMLElement>(".card-summary")!;
+        const range = document.createRange();
+        range.selectNodeContents(summary);
+        const rect = (r: DOMRect) => ({
+          top: r.top,
+          bottom: r.bottom,
+          left: r.left,
+          right: r.right,
+        });
+        return {
+          text: summary.textContent,
+          card: rect(card.getBoundingClientRect()),
+          summary: rect(summary.getBoundingClientRect()),
+          lines: Array.from(range.getClientRects(), rect),
+        };
+      }),
+    );
+    await writeFile(
+      `${evidence}/hand-text-${width}-${height}.json`,
+      JSON.stringify(summaries, null, 2),
+    );
+    for (const { text, card, summary, lines } of summaries) {
+      expect(lines.length, text!).toBeGreaterThan(0);
+      for (const bounds of [summary, ...lines]) {
+        expect(bounds.top, text!).toBeGreaterThanOrEqual(card.top);
+        expect(bounds.bottom, text!).toBeLessThanOrEqual(card.bottom);
+        expect(bounds.left, text!).toBeGreaterThanOrEqual(card.left);
+        expect(bounds.right, text!).toBeLessThanOrEqual(card.right);
+        expect(bounds.bottom, text!).toBeLessThanOrEqual(height!);
+      }
+    }
     const cards = await page.locator(".hand-card").evaluateAll((nodes) =>
       nodes.map((n) => {
         const r = n.getBoundingClientRect();
@@ -75,6 +112,33 @@ for (const [width, height] of [
     await page.screenshot({
       path: `${evidence}/battle-${width}-${height}.png`,
     });
+    // Long names may clamp in the hand, but pointer/keyboard selection must
+    // expose their full heading and rules; the trick's three-line cue must fit.
+    const inspect = page.getByRole("complementary", {
+      name: "Selection details",
+    });
+    await page.locator(".hand-card").nth(8).click();
+    await expect(
+      inspect.getByRole("heading", { name: "Bronze Shieldsmith", exact: true }),
+    ).toBeVisible();
+    await expect(
+      inspect.getByText(
+        "On play: grant Shield to allied units in the two adjacent lanes.",
+        { exact: true },
+      ),
+    ).toBeVisible();
+    await fits(page, ".inspect h2");
+    await page.locator(".hand-card").nth(9).focus();
+    await page.keyboard.press("Enter");
+    await expect(
+      inspect.getByRole("heading", { name: "Lantern Ray", exact: true }),
+    ).toBeVisible();
+    await expect(
+      inspect.getByText("Deal 2 damage to an enemy unit.", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: "End phase", exact: true }),
+    ).toBeInViewport({ ratio: 1 });
     expect(errors).toEqual([]);
   });
 test("375px fallback preserves readable lane list", async ({ page }) => {

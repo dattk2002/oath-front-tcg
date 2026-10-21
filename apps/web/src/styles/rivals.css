@@ -1015,7 +1015,7 @@ main {
   .hand-card {
     display: grid;
     grid-template-columns: 28px minmax(0, 1fr);
-    grid-template-rows: 36px 60px 20px;
+    grid-template-rows: 36px 48px 32px;
     gap: 4px;
     padding: 8px;
   }
@@ -1030,7 +1030,7 @@ main {
   }
   .hand-card .hand-art {
     grid-column: 1/-1;
-    height: 60px;
+    height: 48px;
   }
   .hand-card .card-summary {
     display: block;
@@ -1076,33 +1076,30 @@ main {
     align-self: stretch;
     justify-content: center;
   }
+  /* Ten-card hands reserve full-width text rows; art is decorative here. */
   .hand-card {
     display: grid;
-    grid-template-columns: 28px minmax(0, 1fr);
-    grid-template-rows: 32px 28px;
-    gap: 4px;
-    padding: 8px;
+    grid-template-columns: 16px minmax(0, 1fr);
+    grid-template-rows: 28px 42px;
+    gap: 2px;
+    padding: 4px;
   }
   .hand-card .card-cost {
     line-height: 28px;
     align-self: start;
   }
   .hand-card strong {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 14px;
     -webkit-line-clamp: 2;
   }
   .hand-card .hand-art {
-    display: block;
-    width: 28px;
-    height: 28px;
-    grid-row: 2;
-    grid-column: 1;
+    display: none;
   }
   .hand-card .card-summary {
     display: block;
     grid-row: 2;
-    grid-column: 2;
+    grid-column: 1 / -1;
     font-size: 12px;
     line-height: 14px;
     color: var(--ink);

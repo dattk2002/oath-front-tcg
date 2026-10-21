@@ -233,7 +233,7 @@ test("exact versioned proxy preserves JSON and reserves local auth/unknown route
   for (const path of ["/api/unknown", "/unknown-product-route"]) {
     const result = await request.get(path);
     expect(result.status()).toBe(404);
-    expect(await result.text()).not.toContain("Every lane is an oath.");
+    expect(await result.text()).not.toContain("data-home-headline");
   }
 });
 test("lost create response restores displayed choices on reload and retries identical request", async ({
