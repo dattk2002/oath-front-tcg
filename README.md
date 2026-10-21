@@ -44,7 +44,7 @@ OATHFRONT_E2E_PORT=3200 OATHFRONT_E2E_PRODUCTION=1 pnpm test:e2e
 pnpm exec tsx tools/load/pve.ts --concurrency 20
 ```
 
-Run DB suites, builds and browser suites sequentially. UI3200/API3101 are verification ports; unrelated3100 and interactive3000/3001 are reserved. Next bakes its rewrite destination during build. The normal E2E suite skips the explicit hardware benchmark; existing 900/400 balance reports are audited, not regenerated.
+Run DB suites, builds and browser suites sequentially. UI3200/API3101 are the CI verification defaults. If local3101 is occupied, use the existing isolated test DB and a free loopback port such as3121: `API_ORIGIN=http://127.0.0.1:3121 pnpm build`, then `OATHFRONT_E2E_API_PORT=3121 OATHFRONT_E2E_PORT=3200 OATHFRONT_E2E_PRODUCTION=1 pnpm exec playwright test`. Interactive3000/3001, unrelated services and the player's database are reserved. Next bakes its rewrite destination during build, so the API override must match. The normal E2E suite skips the explicit hardware benchmark; existing 900/400 balance reports are audited, not regenerated.
 
 ## Docker and hosting
 

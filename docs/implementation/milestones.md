@@ -2,6 +2,8 @@
 
 Cập nhật ngày 2026-10-21. Đây là tiến độ implementation; các báo cáo trong giai đoạn thiết kế không thay thế kiểm thử sản phẩm.
 
+Current English/Rivals presentation is documented in [rivals-redesign.md](rivals-redesign.md), its [state/QA contract](rivals-redesign-qa.md) and the [Task 1–5 evidence archive](evidence/rivals-redesign/README.md). The integrated production browser gate first recorded 82 passed / 4 failed / 2 skipped; the four affected cases passed on a covering production rebuild after three outdated test expectations/routes and one compact tutorial focus-clearance fix. Task 6 Pen handoff, whole-change review, push and automatic CI remain with the controller. The M5 and release acceptance holds below are unchanged.
+
 | Milestone | Task | Trạng thái | Kết quả |
 |---|---|---|---|
 | M1 — Content và engine | 1–5 | Đã kiểm thử và review | Catalog đầy đủ, luật/hiệu ứng/combat, projection, public preview và replay deterministic |

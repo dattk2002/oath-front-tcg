@@ -2,6 +2,8 @@
 
 This is a technical release-candidate preparation record, **not approval to deploy or a claim of production readiness**. Task18 and whole-branch reviews approved the technical scope; the final parser fix passed scoped re-review. CI passing does not close the following acceptance items.
 
+The 2026-10-21 [English/Rivals redesign](rivals-redesign.md) has its own [integrated browser and review evidence](evidence/rivals-redesign/README.md): first production suite 82 passed / 4 failed / 2 skipped, then all four affected cases passed on the covering artifact. This presentation verification does not replace the open release gates below. Task 6 Pen handoff, final whole-change review and automatic CI after the authorized push remain pending.
+
 | Gate | Current disposition |
 | --- | --- |
 | PERF-P95-01 | **FAILED / OPEN**. Task16 Intel Mesa/GNOME Wayland3×60s p95=21.4/21.7/22.5ms against20ms. Median16.7ms, p99≤33.3ms and0 long tasks pass separately. New release artifacts are not that benchmark artifact. |
