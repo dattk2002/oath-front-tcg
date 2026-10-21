@@ -16,3 +16,4 @@ test-results/
 .next-e2e/
 
 .vercel/
+__pycache__/

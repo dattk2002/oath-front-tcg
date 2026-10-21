@@ -1,0 +1,2713 @@
+{
+  "source": {
+    "path": "docs/design/pen/oath-front-tcg-design.pen",
+    "sha256": "a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3",
+    "revision": "sha256:a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3",
+    "schemaVersion": "2.20",
+    "documentId": null,
+    "inspectedAt": "2026-10-21T16:13:40.070750+00:00"
+  },
+  "frames": [
+    {
+      "id": "bi8Au",
+      "name": "00 / Design Notes — scope & progress",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "BXxLv",
+      "name": "05 / Home — Six-hero battle background / Desktop",
+      "width": 1440,
+      "height": 900,
+      "reusable": null
+    },
+    {
+      "id": "RSru9",
+      "name": "Control / Primary / Default",
+      "width": 260,
+      "height": 60,
+      "reusable": true
+    },
+    {
+      "id": "OtRzR",
+      "name": "01 / Foundations — exact existing tokens",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "bec8B",
+      "name": "05 / Home — Six-hero battle background / Compact",
+      "width": 1024,
+      "height": 640,
+      "reusable": null
+    },
+    {
+      "id": "vtHuB",
+      "name": "05 / Home — Six-hero battle background / Mobile",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "hsZRy",
+      "name": "Campaign / Navigation / Desktop origin",
+      "width": 1440,
+      "height": 80,
+      "reusable": true
+    },
+    {
+      "id": "iIIoZ",
+      "name": "Campaign / Editorial card / origin",
+      "width": 420,
+      "height": null,
+      "reusable": true
+    },
+    {
+      "id": "BsnWN",
+      "name": "Campaign / News / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "xaC80",
+      "name": "Campaign / Heroes List / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "F27zFz",
+      "name": "Campaign / Hero showcase / origin",
+      "width": 1440,
+      "height": 650,
+      "reusable": true
+    },
+    {
+      "id": "CFFhD",
+      "name": "Campaign / Hero Detail / Briar / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "xWCNu",
+      "name": "Campaign / Hero Detail / Aster / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "PdL8F",
+      "name": "Campaign / Hero Detail / Lumen / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "kwF10",
+      "name": "Campaign / Hero Detail / Cinder / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "wOMyT",
+      "name": "Campaign / Hero Detail / Vesper / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "MjPlg",
+      "name": "Campaign / Hero Detail / Morrow / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "Wcfik",
+      "name": "Campaign / Game Features / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "QXjQb",
+      "name": "Campaign / Events / Desktop",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "U1rbi",
+      "name": "Campaign / Navigation / Mobile origin",
+      "width": 375,
+      "height": null,
+      "reusable": true
+    },
+    {
+      "id": "mqwt0",
+      "name": "Campaign / News / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "pNR5Q",
+      "name": "Campaign / Events / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "ImQTb",
+      "name": "Campaign / Heroes List / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "ap90K",
+      "name": "Campaign / Game Features / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "J1zPFH",
+      "name": "Campaign / Hero showcase / Mobile origin",
+      "width": 375,
+      "height": null,
+      "reusable": true
+    },
+    {
+      "id": "V2TyW",
+      "name": "Campaign / Hero Detail / Briar / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "OO9Cw",
+      "name": "Campaign / Hero Detail / Aster / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "k1qOH",
+      "name": "Campaign / Hero Detail / Lumen / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "P0Kr5",
+      "name": "Campaign / Hero Detail / Cinder / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "LFX8n",
+      "name": "Campaign / Hero Detail / Vesper / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "RbKMC",
+      "name": "Campaign / Hero Detail / Morrow / Mobile 375",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "x67YO7",
+      "name": "Campaign / News Article / Desktop / Mock",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "di6Pk",
+      "name": "Campaign / Event Detail / Desktop / Mock",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "g72q4",
+      "name": "Campaign / News Article / Mobile 375 / Mock",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "c9F7A",
+      "name": "Campaign / Event Detail / Mobile 375 / Mock",
+      "width": 375,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "gnUh9",
+      "name": "Campaign / States & interaction handoff",
+      "width": 1440,
+      "height": null,
+      "reusable": null
+    },
+    {
+      "id": "NqrjD",
+      "name": "Brand / OathFront / Kinetic vector logo",
+      "width": 144,
+      "height": 52,
+      "reusable": true
+    },
+    {
+      "id": "A1rpGz",
+      "name": "Brand / News thumbnail / Shared origin",
+      "width": 420,
+      "height": 230,
+      "reusable": true
+    },
+    {
+      "id": "oz8eb",
+      "name": "Brand / Events thumbnail / Shared origin",
+      "width": 420,
+      "height": 230,
+      "reusable": true
+    },
+    {
+      "id": "uH99S",
+      "name": "Brand / OathFront / Custom kinetic wordmark master",
+      "width": 720,
+      "height": 300,
+      "reusable": null
+    },
+    {
+      "id": "slomn",
+      "name": "Artwork / Clash of the Fivefold / Detailed revision",
+      "width": 1600,
+      "height": 900,
+      "reusable": null
+    },
+    {
+      "id": "MfFuq",
+      "name": "Art library / Six hero environments",
+      "width": 1624,
+      "height": null,
+      "reusable": null
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#090b10"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#151820"
+    },
+    "raised": {
+      "type": "color",
+      "value": "#222733"
+    },
+    "text": {
+      "type": "color",
+      "value": "#f8f8f2"
+    },
+    "muted": {
+      "type": "color",
+      "value": "#bcc2ce"
+    },
+    "good": {
+      "type": "color",
+      "value": "#80e3e0"
+    },
+    "evil": {
+      "type": "color",
+      "value": "#ff957b"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#ffe34d"
+    },
+    "paper": {
+      "type": "color",
+      "value": "#f0efe8"
+    },
+    "ink": {
+      "type": "color",
+      "value": "#101218"
+    },
+    "border": {
+      "type": "color",
+      "value": "#7d8798"
+    },
+    "error": {
+      "type": "color",
+      "value": "#ffb4ab"
+    },
+    "radius": {
+      "type": "number",
+      "value": 2
+    },
+    "control-radius": {
+      "type": "number",
+      "value": 2
+    },
+    "good-ink": {
+      "type": "color",
+      "value": "#165f62"
+    },
+    "evil-ink": {
+      "type": "color",
+      "value": "#8b392b"
+    },
+    "fx-kinetic": {
+      "type": "color",
+      "value": "#ffe34d"
+    },
+    "fx-shield": {
+      "type": "color",
+      "value": "#80e3e0"
+    },
+    "fx-growth": {
+      "type": "color",
+      "value": "#b6ee92"
+    },
+    "fx-prism": {
+      "type": "color",
+      "value": "#b2d9ff"
+    },
+    "fx-ember": {
+      "type": "color",
+      "value": "#ff957b"
+    },
+    "fx-ink": {
+      "type": "color",
+      "value": "#d2b6ff"
+    },
+    "fx-veil": {
+      "type": "color",
+      "value": "#f0efe8"
+    },
+    "display": {
+      "type": "string",
+      "value": "\"Barlow Condensed\", \"Noto Sans\", sans-serif"
+    },
+    "campaign-paper": {
+      "type": "color",
+      "value": "#EDEDE6"
+    },
+    "campaign-ink": {
+      "type": "color",
+      "value": "#191927"
+    },
+    "campaign-slate": {
+      "type": "color",
+      "value": "#303047"
+    },
+    "campaign-acid": {
+      "type": "color",
+      "value": "#E8FF57"
+    },
+    "campaign-lilac": {
+      "type": "color",
+      "value": "#C8C2ED"
+    }
+  },
+  "origins": [
+    {
+      "id": "RSru9",
+      "name": "Control / Primary / Default"
+    },
+    {
+      "id": "hsZRy",
+      "name": "Campaign / Navigation / Desktop origin"
+    },
+    {
+      "id": "iIIoZ",
+      "name": "Campaign / Editorial card / origin"
+    },
+    {
+      "id": "F27zFz",
+      "name": "Campaign / Hero showcase / origin"
+    },
+    {
+      "id": "U1rbi",
+      "name": "Campaign / Navigation / Mobile origin"
+    },
+    {
+      "id": "J1zPFH",
+      "name": "Campaign / Hero showcase / Mobile origin"
+    },
+    {
+      "id": "NqrjD",
+      "name": "Brand / OathFront / Kinetic vector logo"
+    },
+    {
+      "id": "A1rpGz",
+      "name": "Brand / News thumbnail / Shared origin"
+    },
+    {
+      "id": "oz8eb",
+      "name": "Brand / Events thumbnail / Shared origin"
+    }
+  ],
+  "instances": [
+    {
+      "id": "gQCIY",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Campaign navigation / Home",
+      "x": 0,
+      "y": 0,
+      "descendants": {
+        "Cegpk": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "lz2Y4",
+      "type": "ref",
+      "ref": "RSru9",
+      "name": "Play now — guest permitted",
+      "width": 228
+    },
+    {
+      "id": "aPiBW",
+      "type": "ref",
+      "ref": "NqrjD",
+      "name": "OathFront / transparent shared wordmark",
+      "descendants": {
+        "nmr9D": {
+          "fill": "$campaign-paper"
+        },
+        "kk25G": {
+          "fill": "$campaign-paper"
+        },
+        "vcVnf": {
+          "fill": "$campaign-paper"
+        },
+        "RKrdQ": {
+          "fill": "$campaign-paper"
+        },
+        "QqLrX": {
+          "fill": "$campaign-paper"
+        },
+        "NBCIk": {
+          "fill": "$campaign-paper"
+        },
+        "aF6y8": {
+          "fill": "$campaign-paper"
+        },
+        "HTdmI": {
+          "fill": "$campaign-paper"
+        },
+        "QptN0": {
+          "fill": "$campaign-paper"
+        }
+      }
+    },
+    {
+      "id": "QorDb",
+      "type": "ref",
+      "ref": "RSru9",
+      "name": "Play now — guest permitted",
+      "width": 190,
+      "height": 52
+    },
+    {
+      "id": "f8WGlP",
+      "type": "ref",
+      "ref": "NqrjD",
+      "name": "OathFront / transparent shared wordmark",
+      "descendants": {
+        "nmr9D": {
+          "fill": "$campaign-paper"
+        },
+        "kk25G": {
+          "fill": "$campaign-paper"
+        },
+        "vcVnf": {
+          "fill": "$campaign-paper"
+        },
+        "RKrdQ": {
+          "fill": "$campaign-paper"
+        },
+        "QqLrX": {
+          "fill": "$campaign-paper"
+        },
+        "NBCIk": {
+          "fill": "$campaign-paper"
+        },
+        "aF6y8": {
+          "fill": "$campaign-paper"
+        },
+        "HTdmI": {
+          "fill": "$campaign-paper"
+        },
+        "QptN0": {
+          "fill": "$campaign-paper"
+        }
+      }
+    },
+    {
+      "id": "INPYh",
+      "type": "ref",
+      "ref": "RSru9",
+      "name": "Play now",
+      "width": "fill_container"
+    },
+    {
+      "id": "zIX5L",
+      "type": "ref",
+      "ref": "NqrjD",
+      "name": "OathFront vector logo",
+      "descendants": {
+        "nmr9D": {
+          "fill": "$campaign-paper"
+        },
+        "kk25G": {
+          "fill": "$campaign-paper"
+        },
+        "vcVnf": {
+          "fill": "$campaign-paper"
+        },
+        "RKrdQ": {
+          "fill": "$campaign-paper"
+        },
+        "QqLrX": {
+          "fill": "$campaign-paper"
+        },
+        "NBCIk": {
+          "fill": "$campaign-paper"
+        },
+        "aF6y8": {
+          "fill": "$campaign-paper"
+        },
+        "HTdmI": {
+          "fill": "$campaign-paper"
+        },
+        "QptN0": {
+          "fill": "$campaign-paper"
+        }
+      }
+    },
+    {
+      "id": "D31Wk7",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / News",
+      "descendants": {
+        "osUpw": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "q31WGQ",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Building the Fivefold",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "KS53z",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "BUILDING\nTHE FIVEFOLD",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "DEV DIARY / MOCK"
+        },
+        "HxylM": {
+          "content": "BUILDING THE FIVEFOLD"
+        },
+        "cNJMd": {
+          "content": "From quiet groves to ruined arenas: a world shaped around five lanes."
+        }
+      }
+    },
+    {
+      "id": "KS53z",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "BUILDING\nTHE FIVEFOLD",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "WGDqX",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Meet the Living Bastion",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "l2xVhA",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "THE LIVING\nBASTION",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "HERO SPOTLIGHT / MOCK"
+        },
+        "HxylM": {
+          "content": "MEET THE LIVING BASTION"
+        },
+        "cNJMd": {
+          "content": "A closer look at Briar and the identity of Dawnward."
+        }
+      }
+    },
+    {
+      "id": "l2xVhA",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "THE LIVING\nBASTION",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "LfCg5",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Every card tells a story",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "fUR4S",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "EVERY CARD\nTELLS A STORY",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "DESIGN NOTES / MOCK"
+        },
+        "HxylM": {
+          "content": "EVERY CARD TELLS A STORY"
+        },
+        "cNJMd": {
+          "content": "Exploring the illustration language of OathFront."
+        }
+      }
+    },
+    {
+      "id": "fUR4S",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "EVERY CARD\nTELLS A STORY",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "I5m61N",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Readability comes first",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "uwrFY",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "READABILITY\nCOMES FIRST",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "GAME UPDATE / MOCK"
+        },
+        "HxylM": {
+          "content": "READABILITY COMES FIRST"
+        },
+        "cNJMd": {
+          "content": "A preview of clearer rules, card details and battle feedback."
+        }
+      }
+    },
+    {
+      "id": "uwrFY",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "READABILITY\nCOMES FIRST",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "NrQl9",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Inside the Ashen Court",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "IqQbw",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "INSIDE THE\nASHEN COURT",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "HERO SPOTLIGHT / MOCK"
+        },
+        "HxylM": {
+          "content": "INSIDE THE ASHEN COURT"
+        },
+        "cNJMd": {
+          "content": "Introducing Cinder, Vesper and Morrow."
+        }
+      }
+    },
+    {
+      "id": "IqQbw",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "INSIDE THE\nASHEN COURT",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "pBJUz",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Two sides. One battlefield.",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "macCv",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "TWO SIDES.\nONE BATTLEFIELD.",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "DEV DIARY / MOCK"
+        },
+        "HxylM": {
+          "content": "TWO SIDES. ONE BATTLEFIELD."
+        },
+        "cNJMd": {
+          "content": "How contrasting factions share the same Fivefold."
+        }
+      }
+    },
+    {
+      "id": "macCv",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "TWO SIDES.\nONE BATTLEFIELD.",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "Nas5q",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Heroes",
+      "descendants": {
+        "OC0Fh": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "pqrK7",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Heroes",
+      "descendants": {
+        "OC0Fh": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "oQOl3",
+      "type": "ref",
+      "ref": "F27zFz",
+      "name": "Briar showcase",
+      "descendants": {
+        "vi9eC": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-8.png",
+            "mode": "cover"
+          }
+        },
+        "gUhsk": {
+          "content": "DAWNWARD / 20 HP"
+        },
+        "OHRhq": {
+          "content": "BRIAR"
+        },
+        "o7lkGM": {
+          "content": "THE LIVING BASTION"
+        },
+        "v2LQtO": {
+          "content": "Bastion · Verdant"
+        },
+        "ymhAN": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/bust-3.webp",
+            "mode": "contain"
+          }
+        },
+        "fV4ow": {
+          "content": "01 / 06"
+        }
+      }
+    },
+    {
+      "id": "SzKQY",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Heroes",
+      "descendants": {
+        "OC0Fh": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "pY11W",
+      "type": "ref",
+      "ref": "F27zFz",
+      "name": "Aster showcase",
+      "descendants": {
+        "vi9eC": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-5.png",
+            "mode": "cover"
+          }
+        },
+        "gUhsk": {
+          "content": "DAWNWARD / 20 HP"
+        },
+        "OHRhq": {
+          "content": "ASTER"
+        },
+        "o7lkGM": {
+          "content": "THE PRISM SENTINEL"
+        },
+        "v2LQtO": {
+          "content": "Bastion · Prism"
+        },
+        "ymhAN": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/bust.webp",
+            "mode": "contain"
+          }
+        },
+        "fV4ow": {
+          "content": "02 / 06"
+        }
+      }
+    },
+    {
+      "id": "onvz7",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Heroes",
+      "descendants": {
+        "OC0Fh": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "t1dSH",
+      "type": "ref",
+      "ref": "F27zFz",
+      "name": "Lumen showcase",
+      "descendants": {
+        "vi9eC": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-7.png",
+            "mode": "cover"
+          }
+        },
+        "gUhsk": {
+          "content": "DAWNWARD / 20 HP"
+        },
+        "OHRhq": {
+          "content": "LUMEN"
+        },
+        "o7lkGM": {
+          "content": "THE LIGHTWEAVER"
+        },
+        "v2LQtO": {
+          "content": "Verdant · Prism"
+        },
+        "ymhAN": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/bust-4.webp",
+            "mode": "contain"
+          }
+        },
+        "fV4ow": {
+          "content": "03 / 06"
+        }
+      }
+    },
+    {
+      "id": "jFBED",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Heroes",
+      "descendants": {
+        "OC0Fh": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "Wfemj",
+      "type": "ref",
+      "ref": "F27zFz",
+      "name": "Cinder showcase",
+      "descendants": {
+        "vi9eC": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-9.png",
+            "mode": "cover"
+          }
+        },
+        "gUhsk": {
+          "content": "ASHEN COURT / 20 HP"
+        },
+        "OHRhq": {
+          "content": "CINDER"
+        },
+        "o7lkGM": {
+          "content": "THE FURNACE KING"
+        },
+        "v2LQtO": {
+          "content": "Furnace · Hex"
+        },
+        "ymhAN": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/bust-5.webp",
+            "mode": "contain"
+          }
+        },
+        "fV4ow": {
+          "content": "04 / 06"
+        }
+      }
+    },
+    {
+      "id": "E5EY7O",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Heroes",
+      "descendants": {
+        "OC0Fh": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "CEkIU",
+      "type": "ref",
+      "ref": "F27zFz",
+      "name": "Vesper showcase",
+      "descendants": {
+        "vi9eC": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-4.png",
+            "mode": "cover"
+          }
+        },
+        "gUhsk": {
+          "content": "ASHEN COURT / 20 HP"
+        },
+        "OHRhq": {
+          "content": "VESPER"
+        },
+        "o7lkGM": {
+          "content": "THE DUSKBLADE"
+        },
+        "v2LQtO": {
+          "content": "Furnace · Veil"
+        },
+        "ymhAN": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/bust-2.webp",
+            "mode": "contain"
+          }
+        },
+        "fV4ow": {
+          "content": "05 / 06"
+        }
+      }
+    },
+    {
+      "id": "oiUFD",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Heroes",
+      "descendants": {
+        "OC0Fh": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "HbyEw",
+      "type": "ref",
+      "ref": "F27zFz",
+      "name": "Morrow showcase",
+      "descendants": {
+        "vi9eC": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-6.png",
+            "mode": "cover"
+          }
+        },
+        "gUhsk": {
+          "content": "ASHEN COURT / 20 HP"
+        },
+        "OHRhq": {
+          "content": "MORROW"
+        },
+        "o7lkGM": {
+          "content": "THE HEX ARCHITECT"
+        },
+        "v2LQtO": {
+          "content": "Hex · Veil"
+        },
+        "ymhAN": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/bust-6.webp",
+            "mode": "contain"
+          }
+        },
+        "fV4ow": {
+          "content": "06 / 06"
+        }
+      }
+    },
+    {
+      "id": "MA5v5",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / Game Features",
+      "descendants": {
+        "t1PGp": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "hxl94",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "Navigation / News",
+      "descendants": {
+        "osUpw": {
+          "fill": "$campaign-paper"
+        },
+        "pOtlE": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "bgZnR",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Building the Fivefold",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "zKqVd",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "THE FIVEFOLD\nSKETCHBOOK",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "THE FIVEFOLD SKETCHBOOK"
+        },
+        "cNJMd": {
+          "content": "A concept showcase for fan interpretations of the world."
+        }
+      }
+    },
+    {
+      "id": "zKqVd",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "THE FIVEFOLD\nSKETCHBOOK",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "ardxo",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Meet the Living Bastion",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "Sctjd",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "FIRST OATH\nPLAY SESSION",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "PLAYTEST / MOCK"
+        },
+        "HxylM": {
+          "content": "FIRST OATH PLAY SESSION"
+        },
+        "cNJMd": {
+          "content": "A sample event concept for exploring the game together."
+        }
+      }
+    },
+    {
+      "id": "Sctjd",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "FIRST OATH\nPLAY SESSION",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "fybHC",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Every card tells a story",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "Ug55n",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "DESIGN\nYOUR DECK",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "DESIGN YOUR DECK"
+        },
+        "cNJMd": {
+          "content": "A proposed spotlight on player-created deck ideas."
+        }
+      }
+    },
+    {
+      "id": "Ug55n",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "DESIGN\nYOUR DECK",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "kJpsA",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Readability comes first",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "dNidi",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "MEET\nTHE MAKERS",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "STUDIO / MOCK"
+        },
+        "HxylM": {
+          "content": "MEET THE MAKERS"
+        },
+        "cNJMd": {
+          "content": "A concept conversation about the art of the Fivefold."
+        }
+      }
+    },
+    {
+      "id": "dNidi",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "MEET\nTHE MAKERS",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "m4HXIP",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Inside the Ashen Court",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "V05mhN",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "FACTION\nFOCUS",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "FACTION FOCUS"
+        },
+        "cNJMd": {
+          "content": "A sample celebration of Dawnward and the Ashen Court."
+        }
+      }
+    },
+    {
+      "id": "V05mhN",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "FACTION\nFOCUS",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "hYPjL",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Two sides. One battlefield.",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "R1vzu",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "YOUR OATH,\nYOUR STORY",
+              "fontSize": 36,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "YOUR OATH, YOUR STORY"
+        },
+        "cNJMd": {
+          "content": "A concept space for stories inspired by the original heroes."
+        }
+      }
+    },
+    {
+      "id": "R1vzu",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "YOUR OATH,\nYOUR STORY",
+          "fontSize": 36,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "k8xEUv",
+      "type": "ref",
+      "ref": "NqrjD",
+      "name": "OathFront vector logo",
+      "descendants": {
+        "nmr9D": {
+          "fill": "$campaign-paper"
+        },
+        "kk25G": {
+          "fill": "$campaign-paper"
+        },
+        "vcVnf": {
+          "fill": "$campaign-paper"
+        },
+        "RKrdQ": {
+          "fill": "$campaign-paper"
+        },
+        "QqLrX": {
+          "fill": "$campaign-paper"
+        },
+        "NBCIk": {
+          "fill": "$campaign-paper"
+        },
+        "aF6y8": {
+          "fill": "$campaign-paper"
+        },
+        "HTdmI": {
+          "fill": "$campaign-paper"
+        },
+        "QptN0": {
+          "fill": "$campaign-paper"
+        }
+      }
+    },
+    {
+      "id": "Qgcbp",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile campaign navigation"
+    },
+    {
+      "id": "VpVMt",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Building the Fivefold",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "PyFmT",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "BUILDING\nTHE FIVEFOLD",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "DEV DIARY / MOCK"
+        },
+        "HxylM": {
+          "content": "BUILDING THE FIVEFOLD"
+        },
+        "cNJMd": {
+          "content": "From quiet groves to ruined arenas: a world shaped around five lanes."
+        }
+      }
+    },
+    {
+      "id": "PyFmT",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "BUILDING\nTHE FIVEFOLD",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "OgvGI",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Meet the Living Bastion",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "ir6JG",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "THE LIVING\nBASTION",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "HERO SPOTLIGHT / MOCK"
+        },
+        "HxylM": {
+          "content": "MEET THE LIVING BASTION"
+        },
+        "cNJMd": {
+          "content": "A closer look at Briar and the identity of Dawnward."
+        }
+      }
+    },
+    {
+      "id": "ir6JG",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "THE LIVING\nBASTION",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "YzXl7",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Every card tells a story",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "fqNbA",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "EVERY CARD\nTELLS A STORY",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "DESIGN NOTES / MOCK"
+        },
+        "HxylM": {
+          "content": "EVERY CARD TELLS A STORY"
+        },
+        "cNJMd": {
+          "content": "Exploring the illustration language of OathFront."
+        }
+      }
+    },
+    {
+      "id": "fqNbA",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "EVERY CARD\nTELLS A STORY",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "wsVj0",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Readability comes first",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "yGeVn",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "READABILITY\nCOMES FIRST",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "GAME UPDATE / MOCK"
+        },
+        "HxylM": {
+          "content": "READABILITY COMES FIRST"
+        },
+        "cNJMd": {
+          "content": "A preview of clearer rules, card details and battle feedback."
+        }
+      }
+    },
+    {
+      "id": "yGeVn",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "READABILITY\nCOMES FIRST",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "NkRKV",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Inside the Ashen Court",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "nWWiw",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "INSIDE THE\nASHEN COURT",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "HERO SPOTLIGHT / MOCK"
+        },
+        "HxylM": {
+          "content": "INSIDE THE ASHEN COURT"
+        },
+        "cNJMd": {
+          "content": "Introducing Cinder, Vesper and Morrow."
+        }
+      }
+    },
+    {
+      "id": "nWWiw",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "INSIDE THE\nASHEN COURT",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "FBnhs",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Two sides. One battlefield.",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "tody7",
+          "type": "ref",
+          "ref": "A1rpGz",
+          "name": "News branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "Z53sxb": {
+              "content": "TWO SIDES.\nONE BATTLEFIELD.",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "winsP": {
+              "content": "OATHFRONT / EDITORIAL MOCK"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "DEV DIARY / MOCK"
+        },
+        "HxylM": {
+          "content": "TWO SIDES. ONE BATTLEFIELD."
+        },
+        "cNJMd": {
+          "content": "How contrasting factions share the same Fivefold."
+        }
+      }
+    },
+    {
+      "id": "tody7",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "Z53sxb": {
+          "content": "TWO SIDES.\nONE BATTLEFIELD.",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "winsP": {
+          "content": "OATHFRONT / EDITORIAL MOCK"
+        }
+      }
+    },
+    {
+      "id": "c2G2Y1",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile campaign navigation"
+    },
+    {
+      "id": "pCBdL",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Building the Fivefold",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "WlcP9",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "THE FIVEFOLD\nSKETCHBOOK",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "THE FIVEFOLD SKETCHBOOK"
+        },
+        "cNJMd": {
+          "content": "A concept showcase for fan interpretations of the world."
+        }
+      }
+    },
+    {
+      "id": "WlcP9",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "THE FIVEFOLD\nSKETCHBOOK",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "bW7qb",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Meet the Living Bastion",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "Sep0x",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "FIRST OATH\nPLAY SESSION",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "PLAYTEST / MOCK"
+        },
+        "HxylM": {
+          "content": "FIRST OATH PLAY SESSION"
+        },
+        "cNJMd": {
+          "content": "A sample event concept for exploring the game together."
+        }
+      }
+    },
+    {
+      "id": "Sep0x",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "FIRST OATH\nPLAY SESSION",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "aMDUm",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Every card tells a story",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "ezqVU",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "DESIGN\nYOUR DECK",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "DESIGN YOUR DECK"
+        },
+        "cNJMd": {
+          "content": "A proposed spotlight on player-created deck ideas."
+        }
+      }
+    },
+    {
+      "id": "ezqVU",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "DESIGN\nYOUR DECK",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "fYNgm",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Readability comes first",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "Q3vZvd",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "MEET\nTHE MAKERS",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "STUDIO / MOCK"
+        },
+        "HxylM": {
+          "content": "MEET THE MAKERS"
+        },
+        "cNJMd": {
+          "content": "A concept conversation about the art of the Fivefold."
+        }
+      }
+    },
+    {
+      "id": "Q3vZvd",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "MEET\nTHE MAKERS",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "j1MGvm",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Inside the Ashen Court",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "M0giqx",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "FACTION\nFOCUS",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "FACTION FOCUS"
+        },
+        "cNJMd": {
+          "content": "A sample celebration of Dawnward and the Ashen Court."
+        }
+      }
+    },
+    {
+      "id": "M0giqx",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "FACTION\nFOCUS",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "SH0xJ",
+      "type": "ref",
+      "ref": "iIIoZ",
+      "name": "Two sides. One battlefield.",
+      "width": "fill_container",
+      "descendants": {
+        "X4tkMl": {
+          "id": "HBMBm",
+          "type": "ref",
+          "ref": "oz8eb",
+          "name": "Events branded thumbnail",
+          "width": "fill_container",
+          "descendants": {
+            "YcGPu": {
+              "content": "YOUR OATH,\nYOUR STORY",
+              "fontSize": 30,
+              "lineHeight": 1.05
+            },
+            "fveiQ": {
+              "content": "OATHFRONT / EVENT CONCEPT"
+            }
+          }
+        },
+        "tbOpj": {
+          "content": "COMMUNITY / MOCK"
+        },
+        "HxylM": {
+          "content": "YOUR OATH, YOUR STORY"
+        },
+        "cNJMd": {
+          "content": "A concept space for stories inspired by the original heroes."
+        }
+      }
+    },
+    {
+      "id": "HBMBm",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded thumbnail",
+      "width": "fill_container",
+      "descendants": {
+        "YcGPu": {
+          "content": "YOUR OATH,\nYOUR STORY",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        },
+        "fveiQ": {
+          "content": "OATHFRONT / EVENT CONCEPT"
+        }
+      }
+    },
+    {
+      "id": "P5g8m",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile campaign navigation"
+    },
+    {
+      "id": "u9cnj",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile campaign navigation"
+    },
+    {
+      "id": "v8tywg",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "Ww1BE",
+      "type": "ref",
+      "ref": "J1zPFH",
+      "name": "BRIAR mobile showcase",
+      "descendants": {
+        "nOaSR": {
+          "content": "DAWNWARD / 20 HP"
+        },
+        "NDaGF": {
+          "content": "BRIAR"
+        },
+        "s4nZMX": {
+          "content": "THE LIVING BASTION"
+        },
+        "wjOZr": {
+          "content": "Bastion · Verdant"
+        },
+        "IXTNT": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-8.png",
+            "mode": "cover"
+          }
+        }
+      }
+    },
+    {
+      "id": "GVfPf",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "oabfb",
+      "type": "ref",
+      "ref": "J1zPFH",
+      "name": "ASTER mobile showcase",
+      "descendants": {
+        "nOaSR": {
+          "content": "DAWNWARD / 20 HP"
+        },
+        "NDaGF": {
+          "content": "ASTER"
+        },
+        "s4nZMX": {
+          "content": "THE PRISM SENTINEL"
+        },
+        "wjOZr": {
+          "content": "Bastion · Prism"
+        },
+        "IXTNT": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-5.png",
+            "mode": "cover"
+          }
+        }
+      }
+    },
+    {
+      "id": "D3y4aF",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "z6Ndg",
+      "type": "ref",
+      "ref": "J1zPFH",
+      "name": "LUMEN mobile showcase",
+      "descendants": {
+        "nOaSR": {
+          "content": "DAWNWARD / 20 HP"
+        },
+        "NDaGF": {
+          "content": "LUMEN"
+        },
+        "s4nZMX": {
+          "content": "THE LIGHTWEAVER"
+        },
+        "wjOZr": {
+          "content": "Verdant · Prism"
+        },
+        "IXTNT": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-7.png",
+            "mode": "cover"
+          }
+        }
+      }
+    },
+    {
+      "id": "oOV40",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "DYhBd",
+      "type": "ref",
+      "ref": "J1zPFH",
+      "name": "CINDER mobile showcase",
+      "descendants": {
+        "nOaSR": {
+          "content": "ASHEN COURT / 20 HP"
+        },
+        "NDaGF": {
+          "content": "CINDER"
+        },
+        "s4nZMX": {
+          "content": "THE FURNACE KING"
+        },
+        "wjOZr": {
+          "content": "Furnace · Hex"
+        },
+        "IXTNT": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-9.png",
+            "mode": "cover"
+          }
+        }
+      }
+    },
+    {
+      "id": "rcLly",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "ZF8Es",
+      "type": "ref",
+      "ref": "J1zPFH",
+      "name": "VESPER mobile showcase",
+      "descendants": {
+        "nOaSR": {
+          "content": "ASHEN COURT / 20 HP"
+        },
+        "NDaGF": {
+          "content": "VESPER"
+        },
+        "s4nZMX": {
+          "content": "THE DUSKBLADE"
+        },
+        "wjOZr": {
+          "content": "Furnace · Veil"
+        },
+        "IXTNT": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-4.png",
+            "mode": "cover"
+          }
+        }
+      }
+    },
+    {
+      "id": "XaRYJ",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "hgRoV",
+      "type": "ref",
+      "ref": "J1zPFH",
+      "name": "MORROW mobile showcase",
+      "descendants": {
+        "nOaSR": {
+          "content": "ASHEN COURT / 20 HP"
+        },
+        "NDaGF": {
+          "content": "MORROW"
+        },
+        "s4nZMX": {
+          "content": "THE HEX ARCHITECT"
+        },
+        "wjOZr": {
+          "content": "Hex · Veil"
+        },
+        "IXTNT": {
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "oath-front-tcg-design-assets/generated-6.png",
+            "mode": "cover"
+          }
+        }
+      }
+    },
+    {
+      "id": "Z50vQ",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "News navigation",
+      "descendants": {
+        "osUpw": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "UqBwj",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded article cover",
+      "width": "fill_container",
+      "height": 400,
+      "descendants": {
+        "Z53sxb": {
+          "content": "BUILDING\nTHE FIVEFOLD",
+          "fontSize": 72,
+          "lineHeight": 1.05
+        }
+      }
+    },
+    {
+      "id": "QDTQR",
+      "type": "ref",
+      "ref": "hsZRy",
+      "name": "News navigation",
+      "descendants": {
+        "osUpw": {
+          "fill": "$campaign-acid"
+        }
+      }
+    },
+    {
+      "id": "n8y7wh",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded article cover",
+      "width": "fill_container",
+      "height": 400,
+      "descendants": {
+        "YcGPu": {
+          "content": "THE FIVEFOLD\nSKETCHBOOK",
+          "fontSize": 72,
+          "lineHeight": 1.05
+        }
+      }
+    },
+    {
+      "id": "k0q7F",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "jD0RV",
+      "type": "ref",
+      "ref": "A1rpGz",
+      "name": "News branded article cover",
+      "width": "fill_container",
+      "height": 230,
+      "descendants": {
+        "Z53sxb": {
+          "content": "BUILDING\nTHE FIVEFOLD",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        }
+      }
+    },
+    {
+      "id": "hcW4w",
+      "type": "ref",
+      "ref": "U1rbi",
+      "name": "Mobile navigation"
+    },
+    {
+      "id": "qf0oz",
+      "type": "ref",
+      "ref": "oz8eb",
+      "name": "Events branded article cover",
+      "width": "fill_container",
+      "height": 230,
+      "descendants": {
+        "YcGPu": {
+          "content": "THE FIVEFOLD\nSKETCHBOOK",
+          "fontSize": 30,
+          "lineHeight": 1.05
+        }
+      }
+    },
+    {
+      "id": "VLk7F",
+      "type": "ref",
+      "ref": "NqrjD",
+      "name": "OathFront logo"
+    },
+    {
+      "id": "D7fzZO",
+      "type": "ref",
+      "ref": "NqrjD",
+      "name": "OathFront logo",
+      "descendants": {
+        "nmr9D": {
+          "fill": "$campaign-paper"
+        },
+        "kk25G": {
+          "fill": "$campaign-paper"
+        },
+        "vcVnf": {
+          "fill": "$campaign-paper"
+        },
+        "RKrdQ": {
+          "fill": "$campaign-paper"
+        },
+        "QqLrX": {
+          "fill": "$campaign-paper"
+        },
+        "NBCIk": {
+          "fill": "$campaign-paper"
+        },
+        "aF6y8": {
+          "fill": "$campaign-paper"
+        },
+        "HTdmI": {
+          "fill": "$campaign-paper"
+        },
+        "QptN0": {
+          "fill": "$campaign-paper"
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "oath-front-tcg-design-assets/b03-inspect.webp",
+      "sha256": "9ae5233c7a83fa382b02e68e8eb8277e5e1eb27727ec03cbc23770197c57d9dc",
+      "bytes": 85330
+    },
+    {
+      "path": "oath-front-tcg-design-assets/bust-2.webp",
+      "sha256": "025a6960e13282fd89d4adbcef665011d57ca2cfded9005407007eb09b16d9c5",
+      "bytes": 173808
+    },
+    {
+      "path": "oath-front-tcg-design-assets/bust-3.webp",
+      "sha256": "d6d7c209ca2a08c4503fd1797f42970268842289d08e56b83b257b9ef76fbe68",
+      "bytes": 190382
+    },
+    {
+      "path": "oath-front-tcg-design-assets/bust-4.webp",
+      "sha256": "7902f3b16a0ddb6db60a5db5aceafd644488a7745053dca7b124f341916942c0",
+      "bytes": 191784
+    },
+    {
+      "path": "oath-front-tcg-design-assets/bust-5.webp",
+      "sha256": "7688698b7867259549903d898266a569061e0564867b298891e94d330e36e5c3",
+      "bytes": 194896
+    },
+    {
+      "path": "oath-front-tcg-design-assets/bust-6.webp",
+      "sha256": "540c67afe6476fcc20f2b6d784b3efacccd592964ee226b3e889171fa72ee5fc",
+      "bytes": 182354
+    },
+    {
+      "path": "oath-front-tcg-design-assets/bust.webp",
+      "sha256": "64f1607a4a51f67eb9b3ad564e24dc88668d7d860efcafd859ecc64af4c59db4",
+      "bytes": 167646
+    },
+    {
+      "path": "oath-front-tcg-design-assets/gc01-inspect.webp",
+      "sha256": "35dd834eb878b3c6335552cb155c076bb2fadfd2dc3ce2233c4655a83b3c1c15",
+      "bytes": 71484
+    },
+    {
+      "path": "oath-front-tcg-design-assets/gc05-inspect.webp",
+      "sha256": "fd82b6b32ebc9469733afdeb6bd01ca6aeb4ec68975758a1ded695aa6d52571d",
+      "bytes": 81770
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated-3.png",
+      "sha256": "ac47a06b66a961d37e7114ca180b0a5b62d331991018caaa3691f6a7bf27b891",
+      "bytes": 850185
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated-4.png",
+      "sha256": "2870ffa287063e14ef5e6ae5e8b176ae7a543819c8556901a74f0974bea52413",
+      "bytes": 673044
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated-5.png",
+      "sha256": "dd49b0d35871f7813425ce4a0630324b8c5a522a25fae3bec699a27cf849b9c1",
+      "bytes": 744164
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated-6.png",
+      "sha256": "1ae25793bc18188b152132fe12dd5b0c316250c824482027ef26306165808e0c",
+      "bytes": 702645
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated-7.png",
+      "sha256": "f4e59c511b13427d0b230ecf2faf86348cdf88122bc03ca3998b04ea3ce4f81d",
+      "bytes": 818883
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated-8.png",
+      "sha256": "28ab8042c57efbbfb6048c83cb5c08458a961b37dd0d48e685e544f2f54d4d51",
+      "bytes": 899523
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated-9.png",
+      "sha256": "0386a17f4dd28ae38eaf847add4ab105810e9602a15f25867cef1060f1d67bb6",
+      "bytes": 654059
+    },
+    {
+      "path": "oath-front-tcg-design-assets/generated.png",
+      "sha256": "1602fa8aa0afc9dd5ca0ccfbb43120ae315573cfb403f4c87589af0e42e3bfb1",
+      "bytes": 454675
+    },
+    {
+      "path": "oath-front-tcg-design-assets/scene-wide.webp",
+      "sha256": "496d49f8d0797d664baf6dbfb949318ccbbf098a9a41530c306546cf79c28fa8",
+      "bytes": 280884
+    }
+  ],
+  "checks": {
+    "nodeCount": 1128,
+    "duplicateIds": [],
+    "unresolvedRefOrigins": [],
+    "unresolvedOverrideTargets": [],
+    "undefinedVariables": [],
+    "allImageFilesExist": true,
+    "fullSchemaValidation": false,
+    "rendererValidation": false,
+    "runtimeVerification": "not_started"
+  },
+  "scope": {
+    "approval": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
+    "specPath": "docs/superpowers/specs/2026-10-21-pen-design-implementation.md",
+    "planPath": "docs/superpowers/plans/2026-10-21-pen-design-implementation.md",
+    "completePenGameplayCoverage": false,
+    "derivedWork": [
+      "Existing game screens retain structure and mechanics with approved new skin",
+      "Campaign tablet/reflow and omitted interaction/error states",
+      "Static mock editorial detail content for listed entries"
+    ],
+    "implementationStatus": "not_started",
+    "deviations": []
+  }
+}

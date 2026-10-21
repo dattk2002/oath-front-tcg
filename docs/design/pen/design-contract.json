@@ -1,16 +1,160 @@
 {
-  "contractVersion": 1,
-  "status": "awaiting_design",
-  "implementationReady": false,
-  "description": "Repository-side requirements only. Logical IDs are not Pen node IDs; no design has been supplied or approved.",
-  "requestedDesignDestination": "docs/design/pen/oathfront-rivals.pen",
+  "contractVersion": 2,
+  "status": "implementation_ready_scoped",
+  "implementationReady": true,
+  "description": "Verified supplied Pen snapshot for campaign/home plus explicitly approved inherited game skin. Scoped implementation readiness is not complete Pen gameplay coverage or runtime acceptance.",
+  "requestedDesignDestination": "docs/design/pen/oath-front-tcg-design.pen",
   "source": {
-    "path": null,
-    "sha256": null,
-    "revision": null,
-    "schemaVersion": null,
+    "path": "docs/design/pen/oath-front-tcg-design.pen",
+    "sha256": "a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3",
+    "revision": "sha256:a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3",
+    "schemaVersion": "2.20",
     "documentId": null,
-    "inspectedAt": null
+    "inspectedAt": "2026-10-21T16:13:40.070750+00:00"
+  },
+  "campaignExtension": {
+    "status": "verified_source_approved_for_implementation",
+    "authorization": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
+    "inventoryPath": "docs/design/pen/campaign-design-inventory.json",
+    "handoffPath": "docs/design/pen/CAMPAIGN-HANDOFF.md",
+    "visualDirection": "Comic-editorial: warm paper, slate violet, lilac and acid yellow. Original hero artwork remains full-body with contain framing.",
+    "proposedVariables": [
+      "campaign-paper",
+      "campaign-ink",
+      "campaign-slate",
+      "campaign-acid",
+      "campaign-lilac"
+    ],
+    "contentPolicy": "News articles and events are editorial mocks, not published announcements. No real schedule, rewards, registration or eligibility is asserted.",
+    "surfaces": [
+      {
+        "logicalId": "campaign_news",
+        "repoPath": null,
+        "repoComponent": null,
+        "desktop": "BsnWN",
+        "mobile": "mqwt0",
+        "detailDesktop": "x67YO7",
+        "detailMobile": "g72q4"
+      },
+      {
+        "logicalId": "campaign_game_features",
+        "repoPath": null,
+        "repoComponent": null,
+        "desktop": "Wcfik",
+        "mobile": "ap90K"
+      },
+      {
+        "logicalId": "campaign_heroes_list",
+        "repoPath": null,
+        "repoComponent": null,
+        "desktop": "xaC80",
+        "mobile": "ImQTb"
+      },
+      {
+        "logicalId": "campaign_hero_detail",
+        "repoPath": null,
+        "repoComponent": null,
+        "desktop": [
+          "CFFhD",
+          "xWCNu",
+          "PdL8F",
+          "kwF10",
+          "wOMyT",
+          "MjPlg"
+        ],
+        "mobile": [
+          "V2TyW",
+          "OO9Cw",
+          "k1qOH",
+          "P0Kr5",
+          "LFX8n",
+          "RbKMC"
+        ],
+        "contentIds": [
+          "H_G_BV",
+          "H_G_BP",
+          "H_G_VP",
+          "H_E_FX",
+          "H_E_FS",
+          "H_E_XS"
+        ]
+      },
+      {
+        "logicalId": "campaign_events",
+        "repoPath": null,
+        "repoComponent": null,
+        "desktop": "QXjQb",
+        "mobile": "pNR5Q",
+        "detailDesktop": "di6Pk",
+        "detailMobile": "c9F7A"
+      }
+    ],
+    "reusableOrigins": {
+      "desktopNavigation": "hsZRy",
+      "mobileNavigation": "U1rbi",
+      "editorialCard": "iIIoZ",
+      "desktopHeroStage": "F27zFz",
+      "mobileHeroStage": "J1zPFH"
+    },
+    "editorialBranding": {
+      "logoOrigin": "NqrjD",
+      "logoType": "editable_vector_paths",
+      "logoBackground": "transparent; light lettering on dark surfaces, dark lettering on yellow News",
+      "logoSynchronization": "All existing screen headers including legacy Home compact/mobile use the shared NqrjD origin; no enabled plain-text OATHFRONT wordmarks remain",
+      "logoMaster": "uH99S",
+      "logoDirection": "Custom kinetic OATHFRONT wordmark: nine angular forward-slanted glyphs, no separate emblem",
+      "newsThumbnailOrigin": "A1rpGz",
+      "newsRule": "Shared yellow geometric background; logo top-left",
+      "eventThumbnailOrigin": "oz8eb",
+      "eventRule": "Shared dark geometric background; logo top-right",
+      "coverage": "24 desktop/mobile list thumbnails and four detail covers",
+      "referenceCaveat": "Use the supplied current dark Event template per user approval; no additional reference is required."
+    },
+    "typographyRevision": {
+      "family": "Barlow Condensed",
+      "referenceNode": "el9uT",
+      "desktopNavigation": "20px / 700",
+      "mobileNavigation": "18px / 700",
+      "scope": "All existing UI screens and shared origins; documentation and baseline Foundations excluded",
+      "userApprovedDeparture": "Replaces Noto Sans in UI design only; runtime and baseline CSS values unchanged",
+      "resolvedNonBarlowUITextCount": 0
+    },
+    "promotionalKeyArt": {
+      "frameId": "slomn",
+      "imageNodeId": "nkcMm",
+      "asset": "docs/design/pen/oath-front-tcg-design-assets/generated-3.png",
+      "artRevision": "Detailed painterly characters: engraved armor, textile ornament, distinct facial features and weapons",
+      "status": "User-selected supplied Home composition; use optimized derivative without regenerating.",
+      "replacesRuntimeAssets": false,
+      "homeBackgroundNodes": [
+        "BXxLv",
+        "bec8B",
+        "vtHuB"
+      ],
+      "separateHomeBriarCinderCutouts": "removed at user request"
+    },
+    "heroEnvironments": {
+      "libraryNode": "MfFuq",
+      "backgroundNodes": {
+        "H_G_BV": "XQUtF",
+        "H_G_BP": "JM1Xl",
+        "H_G_VP": "A7k81X",
+        "H_E_FX": "O2niCN",
+        "H_E_FS": "TlStH",
+        "H_E_XS": "zT3S1"
+      },
+      "coverage": "All 12 list cards in xaC80/ImQTb and all 12 desktop/mobile hero-detail stages",
+      "mobileStageOriginChild": "IXTNT",
+      "status": "AI-generated promotional scenery, not gameplay locations"
+    },
+    "stateBoard": "gnUh9",
+    "unresolved": [
+      "Runtime implementation and browser verification",
+      "No complete original gameplay Pen frames; inherited skin authorized",
+      "Derived tablet/reflow and omitted states require browser validation",
+      "Full external Pen schema/renderer certification not performed"
+    ],
+    "checkerCompatibility": "Validated by check-design-contract.py; compatibility entry check-pending-contract.py delegates to v2."
   },
   "repository": {
     "baselineCommit": "0f5354d7ca7a0dff66039fce1847ef0110fb3865",
@@ -144,169 +288,217 @@
       "cssToken": "--bg",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#090b10",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "bg",
+      "penThemeValues": {
+        "default": "#090b10"
+      }
     },
     {
       "cssToken": "--surface",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#151820",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "surface",
+      "penThemeValues": {
+        "default": "#151820"
+      }
     },
     {
       "cssToken": "--raised",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#222733",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "raised",
+      "penThemeValues": {
+        "default": "#222733"
+      }
     },
     {
       "cssToken": "--text",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#f8f8f2",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "text",
+      "penThemeValues": {
+        "default": "#f8f8f2"
+      }
     },
     {
       "cssToken": "--muted",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#bcc2ce",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "muted",
+      "penThemeValues": {
+        "default": "#bcc2ce"
+      }
     },
     {
       "cssToken": "--good",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#80e3e0",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "good",
+      "penThemeValues": {
+        "default": "#80e3e0"
+      }
     },
     {
       "cssToken": "--evil",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#ff957b",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "evil",
+      "penThemeValues": {
+        "default": "#ff957b"
+      }
     },
     {
       "cssToken": "--primary",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#ffe34d",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "primary",
+      "penThemeValues": {
+        "default": "#ffe34d"
+      }
     },
     {
       "cssToken": "--error",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#ffb4ab",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "error",
+      "penThemeValues": {
+        "default": "#ffb4ab"
+      }
     },
     {
       "cssToken": "--border",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#7d8798",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "border",
+      "penThemeValues": {
+        "default": "#7d8798"
+      }
     },
     {
       "cssToken": "--radius",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "2px",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "radius",
+      "penThemeValues": {
+        "default": 2
+      }
     },
     {
       "cssToken": "--control-radius",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "2px",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "control-radius",
+      "penThemeValues": {
+        "default": 2
+      }
     },
     {
       "cssToken": "--paper",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#f0efe8",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "paper",
+      "penThemeValues": {
+        "default": "#f0efe8"
+      }
     },
     {
       "cssToken": "--ink",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#101218",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "ink",
+      "penThemeValues": {
+        "default": "#101218"
+      }
     },
     {
       "cssToken": "--good-ink",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#165f62",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "good-ink",
+      "penThemeValues": {
+        "default": "#165f62"
+      }
     },
     {
       "cssToken": "--evil-ink",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#8b392b",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "evil-ink",
+      "penThemeValues": {
+        "default": "#8b392b"
+      }
     },
     {
       "cssToken": "--fx-kinetic",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#ffe34d",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "fx-kinetic",
+      "penThemeValues": {
+        "default": "#ffe34d"
+      }
     },
     {
       "cssToken": "--fx-shield",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#80e3e0",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "fx-shield",
+      "penThemeValues": {
+        "default": "#80e3e0"
+      }
     },
     {
       "cssToken": "--fx-growth",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#b6ee92",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "fx-growth",
+      "penThemeValues": {
+        "default": "#b6ee92"
+      }
     },
     {
       "cssToken": "--fx-prism",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#b2d9ff",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "fx-prism",
+      "penThemeValues": {
+        "default": "#b2d9ff"
+      }
     },
     {
       "cssToken": "--fx-ember",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#ff957b",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "fx-ember",
+      "penThemeValues": {
+        "default": "#ff957b"
+      }
     },
     {
       "cssToken": "--fx-ink",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#d2b6ff",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "fx-ink",
+      "penThemeValues": {
+        "default": "#d2b6ff"
+      }
     },
     {
       "cssToken": "--fx-veil",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "#f0efe8",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "fx-veil",
+      "penThemeValues": {
+        "default": "#f0efe8"
+      }
     },
     {
       "cssToken": "--display",
       "repoPath": "apps/web/src/styles/tokens.css",
       "currentValue": "\"Barlow Condensed\", \"Noto Sans\", sans-serif",
-      "penVariableName": null,
-      "penThemeValues": null
+      "penVariableName": "display",
+      "penThemeValues": {
+        "default": "\"Barlow Condensed\", \"Noto Sans\", sans-serif"
+      }
     }
   ],
   "proposedScaleMappings": {
@@ -342,15 +534,82 @@
       "sourceManifestPath": "assets/source/rivals-v2/manifest.json",
       "expectedCount": 7,
       "penNodesByContentId": {
-        "H_G_BV": null,
-        "H_G_BP": null,
-        "H_G_VP": null,
-        "H_E_FX": null,
-        "H_E_FS": null,
-        "H_E_XS": null,
-        "board": null
+        "H_G_BV": [
+          "AaR4s",
+          "ymhAN",
+          "euaiK",
+          "zHY7R"
+        ],
+        "H_G_BP": [
+          "OSVOR",
+          "qYUQI",
+          "AFiqL",
+          "JHHkk",
+          "gYAeV",
+          "W7TI5o"
+        ],
+        "H_G_VP": [
+          "WwVPL",
+          "S1RXCQ"
+        ],
+        "H_E_FX": [
+          "SAqKy",
+          "ItQyO"
+        ],
+        "H_E_FS": [
+          "tbA8H",
+          "QoW2L",
+          "g5igY",
+          "b906z",
+          "VY71n",
+          "Ek7bd"
+        ],
+        "H_E_XS": [
+          "F2CsdD",
+          "vwNbM"
+        ],
+        "board": [
+          "X4tkMl"
+        ]
       },
-      "penImageReferences": null
+      "penImageReferences": [
+        {
+          "path": "oath-front-tcg-design-assets/bust-2.webp",
+          "sha256": "025a6960e13282fd89d4adbcef665011d57ca2cfded9005407007eb09b16d9c5",
+          "bytes": 173808
+        },
+        {
+          "path": "oath-front-tcg-design-assets/bust-3.webp",
+          "sha256": "d6d7c209ca2a08c4503fd1797f42970268842289d08e56b83b257b9ef76fbe68",
+          "bytes": 190382
+        },
+        {
+          "path": "oath-front-tcg-design-assets/bust-4.webp",
+          "sha256": "7902f3b16a0ddb6db60a5db5aceafd644488a7745053dca7b124f341916942c0",
+          "bytes": 191784
+        },
+        {
+          "path": "oath-front-tcg-design-assets/bust-5.webp",
+          "sha256": "7688698b7867259549903d898266a569061e0564867b298891e94d330e36e5c3",
+          "bytes": 194896
+        },
+        {
+          "path": "oath-front-tcg-design-assets/bust-6.webp",
+          "sha256": "540c67afe6476fcc20f2b6d784b3efacccd592964ee226b3e889171fa72ee5fc",
+          "bytes": 182354
+        },
+        {
+          "path": "oath-front-tcg-design-assets/bust.webp",
+          "sha256": "64f1607a4a51f67eb9b3ad564e24dc88668d7d860efcafd859ecc64af4c59db4",
+          "bytes": 167646
+        },
+        {
+          "path": "oath-front-tcg-design-assets/scene-wide.webp",
+          "sha256": "496d49f8d0797d664baf6dbfb949318ccbbf098a9a41530c306546cf79c28fa8",
+          "bytes": 280884
+        }
+      ],
+      "missingBindingPolicy": "Preserve original runtime assets; omitted artwork gallery nodes remain null, not fabricated."
     },
     {
       "version": "fivefold-cards-v3",
@@ -358,15 +617,24 @@
       "sourceManifestPath": "assets/source/fivefold-cards-v3/manifest.json",
       "expectedCount": 60,
       "penNodesByContentId": {
-        "GC01": null,
+        "GC01": [
+          "lXkcG",
+          "VNoUV"
+        ],
         "GC02": null,
         "GC03": null,
         "GC04": null,
-        "GC05": null,
+        "GC05": [
+          "v9RZTt",
+          "RiwyC"
+        ],
         "GC06": null,
         "B01": null,
         "B02": null,
-        "B03": null,
+        "B03": [
+          "rWTvd",
+          "lfmjv"
+        ],
         "B04": null,
         "B05": null,
         "B06": null,
@@ -419,7 +687,24 @@
         "S07": null,
         "S08": null
       },
-      "penImageReferences": null
+      "penImageReferences": [
+        {
+          "path": "oath-front-tcg-design-assets/b03-inspect.webp",
+          "sha256": "9ae5233c7a83fa382b02e68e8eb8277e5e1eb27727ec03cbc23770197c57d9dc",
+          "bytes": 85330
+        },
+        {
+          "path": "oath-front-tcg-design-assets/gc01-inspect.webp",
+          "sha256": "35dd834eb878b3c6335552cb155c076bb2fadfd2dc3ce2233c4655a83b3c1c15",
+          "bytes": 71484
+        },
+        {
+          "path": "oath-front-tcg-design-assets/gc05-inspect.webp",
+          "sha256": "fd82b6b32ebc9469733afdeb6bd01ca6aeb4ec68975758a1ded695aa6d52571d",
+          "bytes": 81770
+        }
+      ],
+      "missingBindingPolicy": "Preserve original runtime assets; omitted artwork gallery nodes remain null, not fabricated."
     }
   ],
   "assetResolverPath": "apps/web/src/features/match/rendering/asset-manifest.ts",
@@ -453,9 +738,20 @@
       "motionCueIds": [
         "home"
       ],
-      "penNodeId": null,
+      "penNodeId": "BXxLv",
       "penStateNodes": null,
-      "penResponsiveNodes": null,
+      "penResponsiveNodes": {
+        "desktop": [
+          "BXxLv"
+        ],
+        "compact": [
+          "bec8B"
+        ],
+        "mobile": [
+          "vtHuB"
+        ],
+        "reflow": []
+      },
       "componentMappings": [
         {
           "repoPath": "apps/web/src/app/App.tsx",
@@ -491,7 +787,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "supplied_home_composition_with_derived_runtime_states",
+      "missingPenCoverageReason": "App and Layout compose nonreusable screen frames; runtime error/account/reflow states are approved derived work."
     },
     {
       "logicalId": "hero_roster",
@@ -553,7 +851,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "decks_collection",
@@ -691,7 +991,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "setup",
@@ -736,7 +1038,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "mulligan",
@@ -797,7 +1101,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "battle",
@@ -957,7 +1263,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "inspect_log",
@@ -1039,7 +1347,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "block_response",
@@ -1085,7 +1395,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "pause_recovery",
@@ -1168,7 +1480,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "results_history",
@@ -1250,7 +1564,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "settings_tutorial",
@@ -1334,7 +1650,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     },
     {
       "logicalId": "auth",
@@ -1416,7 +1734,9 @@
             }
           ]
         }
-      ]
+      ],
+      "designBasis": "approved_inherited_runtime_skin",
+      "missingPenCoverageReason": "Not drawn in supplied Pen; user authorized retaining runtime layout and applying shared identity."
     }
   ],
   "motionMappings": [
@@ -1480,15 +1800,50 @@
     "Seven bounded VFX families and low-VFX mode remain supported."
   ],
   "conflictReview": {
-    "status": "not_performed_no_design",
-    "conflicts": null
+    "status": "approved_scope_reconciled",
+    "conflicts": [
+      {
+        "id": "old-source-identity",
+        "resolution": "Use actual supplied filename and byte SHA256; old export references superseded."
+      },
+      {
+        "id": "campaign-vs-gameplay",
+        "resolution": "Campaign profiles are distinct from native hero selector; gameplay nodes retain inherited structure."
+      },
+      {
+        "id": "typography",
+        "resolution": "Approved Barlow Condensed throughout UI, readable body sizes and Noto Unicode fallback."
+      },
+      {
+        "id": "missing-responsive-and-states",
+        "resolution": "Explicitly approved derived work; no fabricated Pen nodes."
+      }
+    ]
   },
   "validation": {
-    "designSchema": "not_run_no_design",
-    "nodeReferences": "not_run_no_design",
-    "designVisualReview": "not_run_no_design",
-    "designAccessibilityReview": "not_run_no_design",
-    "implementationVerification": "not_run_no_design",
-    "evidencePaths": []
+    "designSchema": "strict_JSON_2.20_used_structure_checks_only_not_full_external_schema",
+    "nodeReferences": "1128_unique_nodes_98_origin_and_nested_override_paths_resolved_29_variables_18_images_hashed",
+    "designVisualReview": "representative_supplied_exports_reviewed_source_tree_authoritative",
+    "designAccessibilityReview": "requirements_reconciled_browser_verification_pending",
+    "implementationVerification": "not_started",
+    "evidencePaths": [
+      "docs/design/pen/campaign-design-inventory.json",
+      "docs/design/pen/campaign-review",
+      "docs/design/pen/CAMPAIGN-HANDOFF.md",
+      "docs/superpowers/specs/2026-10-21-pen-design-implementation.md"
+    ]
+  },
+  "implementationScope": {
+    "approval": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
+    "specPath": "docs/superpowers/specs/2026-10-21-pen-design-implementation.md",
+    "planPath": "docs/superpowers/plans/2026-10-21-pen-design-implementation.md",
+    "completePenGameplayCoverage": false,
+    "derivedWork": [
+      "Existing game screens retain structure and mechanics with approved new skin",
+      "Campaign tablet/reflow and omitted interaction/error states",
+      "Static mock editorial detail content for listed entries"
+    ],
+    "implementationStatus": "not_started",
+    "deviations": []
   }
 }

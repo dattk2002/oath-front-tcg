@@ -1,5 +1,7 @@
 # OathFront — ready-to-paste Pen.dev design prompt
 
+**Recommended incremental workflow:** use the [21 small prompts and ordered checklist](OATHFRONT-PEN-PROMPTS.md) to design one component or screen family at a time in the same `.pen` document. They reference the current implementation and final battle screenshots. The comprehensive prompt below remains the full brief.
+
 Open the OathFront repository in the same workspace as your Pen design, then paste the prompt below. Give Pen access to the referenced files and image directories. If that access is unavailable, attach those inputs before designing. A screenshot alone is insufficient. This prompt requests a design artifact; it does not authorize application changes, account creation, publication or deployment.
 
 ---
