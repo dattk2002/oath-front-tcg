@@ -1,3 +1,4 @@
+import { evidencePath } from "./evidence-path.js";
 import { test, expect, type Page } from "@playwright/test";
 import {
   checkpoint,
@@ -6,10 +7,10 @@ import {
   collectBrowserErrors,
   createQualityGuest,
 } from "./quality-fixtures.js";
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 const evidence =
   process.env.OATHFRONT_QUALITY_EVIDENCE_DIR ??
-  "docs/implementation/evidence/task16";
+  evidencePath("task16", "docs/implementation/evidence/task16");
 test.beforeAll(() => mkdir(evidence, { recursive: true }).then(() => {}));
 export async function fits(page: Page, selector: string) {
   const bounds = await page.locator(selector).evaluateAll((nodes) =>
@@ -151,7 +152,50 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
   await expect(
     page.getByText("Cần 2 năng lượng, hiện có 0.", { exact: false }),
   ).toBeVisible();
-  await page.keyboard.press("Escape");
+  for (const [width, height] of [
+    [1440, 900],
+    [1024, 640],
+  ]) {
+    await page.setViewportSize({ width: width!, height: height! });
+    const inspect = page.getByRole("complementary", {
+      name: "Chi tiết lựa chọn",
+    });
+    const tutorial = page.getByRole("complementary", {
+      name: "Hướng dẫn chơi",
+    });
+    const bounds = {
+      inspect: await inspect.boundingBox(),
+      tutorial: await tutorial.boundingBox(),
+    };
+    await writeFile(
+      `${evidence}/tutorial-inspect-${width}.json`,
+      JSON.stringify(bounds),
+    );
+    await page.screenshot({
+      path: `${evidence}/tutorial-inspect-${width}.png`,
+    });
+    expect(bounds.inspect!.y).toBeGreaterThanOrEqual(
+      bounds.tutorial!.y + bounds.tutorial!.height,
+    );
+    const proceed = tutorial.getByRole("button", {
+      name: "Đã hiểu",
+      exact: true,
+    });
+    await expect(proceed).toBeInViewport({ ratio: 1 });
+    await proceed.click({ trial: true, timeout: 2000 });
+    await inspect.getByRole("button", { name: "Hủy lựa chọn · Esc" }).focus();
+    await expect(
+      inspect.getByRole("button", { name: "Hủy lựa chọn · Esc" }),
+    ).toBeInViewport({ ratio: 1 });
+    const skip = tutorial.getByRole("button", {
+      name: "Bỏ qua hướng dẫn",
+      exact: true,
+    });
+    await skip.focus();
+    await expect(skip).toBeInViewport({ ratio: 1 });
+    await proceed.focus();
+    await expect(proceed).toBeInViewport({ ratio: 1 });
+  }
   await next("Đã hiểu");
   await page
     .getByRole("button", { name: "Kết thúc hành động", exact: true })
@@ -186,6 +230,10 @@ test("actionable tutorial G01 G02 and block fit low tablet and desktop", async (
   await expect(page.locator(".block-response")).toBeVisible();
   await expect(page.locator('[data-presentation="idle"]')).toBeAttached();
   await check("G07");
+  await writeFile(
+    `${evidence}/tutorial-inspect-console.json`,
+    JSON.stringify(errors),
+  );
   expect(errors).toEqual([]);
 });
 test("empty hand, pending command and renderer failure keep essential controls readable", async ({

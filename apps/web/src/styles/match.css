@@ -900,13 +900,18 @@
   .gameplay:has(.tutorial-panel) .inspect:not(:has(.inspect-art)) {
     display: none;
   }
+  /* Tutorial and inspection share the sidebar without covering either action set. */
   .gameplay:has(.tutorial-panel) .inspect:has(.inspect-art) {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 260px;
-    z-index: 40;
-    box-shadow: 0 4px 16px #0008;
+    align-self: end;
+    height: 160px;
+    max-height: 160px;
+    contain: size;
+  }
+  .gameplay:has(.inspect-art) .tutorial-panel {
+    align-self: start;
+    height: calc(100% - 168px);
+    max-height: none;
+    contain: size;
   }
   .tutorial-panel {
     display: flex;
@@ -1092,9 +1097,6 @@
   .hand-card .hand-art {
     display: block;
     height: 40px;
-  }
-  .gameplay:has(.tutorial-panel) .inspect:has(.inspect-art) {
-    width: 300px;
   }
 }
 
