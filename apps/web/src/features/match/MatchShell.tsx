@@ -1,6 +1,7 @@
+import { useUiMotion } from "../motion/use-ui-motion";
 import { contentName, contentText } from "../../content/english-content";
 import type { PublicCatalog } from "@oathfront/contracts";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SettingsDialog from "../settings/SettingsDialog";
 import type { ReactNode } from "react";
 import type { MatchSnapshot } from "./view-store";
@@ -30,6 +31,13 @@ export default function MatchShell({
 }) {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const view = snapshot.authoritativeView;
+  const phase = useRef<HTMLParagraphElement>(null);
+  useUiMotion(
+    phase,
+    "phase",
+    `${view.turn}:${view.phase}:${view.activeSide}`,
+    view.lifecycle === "ACTIVE",
+  );
   const enemy = view.self.side === "GOOD" ? "EVIL" : "GOOD";
   return (
     <section
@@ -46,7 +54,12 @@ export default function MatchShell({
     >
       <h1 className="sr-only">OathFront match</h1>
       <div className="match-heading">
-        <p data-testid="phase-label" aria-live="polite" aria-atomic="true">
+        <p
+          ref={phase}
+          data-testid="phase-label"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <strong>Turn {view.turn}</strong>
           <span>
             · {phaseLabel[view.phase]}

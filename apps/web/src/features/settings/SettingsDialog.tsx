@@ -1,3 +1,4 @@
+import { useUiMotion } from "../motion/use-ui-motion";
 import {
   createContext,
   useContext,
@@ -103,6 +104,7 @@ export default function SettingsDialog({
   const { settings, update, warning } = useSettings();
   const ref = useRef<HTMLDialogElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
+  useUiMotion(ref, "panel");
   useEffect(() => openDialog(ref.current!, heading.current), []);
   return (
     <dialog

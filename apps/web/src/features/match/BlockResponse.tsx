@@ -1,3 +1,4 @@
+import { useUiMotion } from "../motion/use-ui-motion";
 import { contentName, contentText } from "../../content/english-content";
 import { useEffect, useRef } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
@@ -18,11 +19,13 @@ export default function BlockResponse({
   disabled: boolean;
   online: boolean;
 }) {
+  const panel = useRef<HTMLElement>(null);
   const heading = useRef<HTMLHeadingElement>(null),
     useButton = useRef<HTMLButtonElement>(null);
   const response = view.blockResponse;
   const powerId =
     response?.visibility === "OWN" ? response.powerInstanceId : null;
+  useUiMotion(panel, "panel", powerId ?? "", response?.visibility === "OWN");
   const targeting = !!powerId && selectedId === powerId;
   const wasTargeting = useRef(false);
   useEffect(() => {
@@ -47,7 +50,11 @@ export default function BlockResponse({
     (action) => action.kind === "KEEP_BLOCK_POWER",
   );
   return (
-    <section className="block-response panel" aria-label="Block response">
+    <section
+      ref={panel}
+      className="block-response panel"
+      aria-label="Block response"
+    >
       <h2 ref={heading} tabIndex={-1}>
         Attack blocked
       </h2>

@@ -1,3 +1,4 @@
+import { useUiMotion } from "../motion/use-ui-motion";
 import { contentName } from "../../content/english-content";
 import { TutorialEntry } from "../tutorial/tutorial-controller";
 import ArtImage from "./ArtImage";
@@ -80,6 +81,7 @@ export default function ResultDialog({
     [review, setReview] = useState(false),
     [conflict, setConflict] = useState<string | null>(null);
   const key = `oathfront.rematch.${summary.matchId}`;
+  useUiMotion(dialog, "panel");
   useEffect(() => {
     alive.current = true;
     const close = openDialog(dialog.current!, heading.current);

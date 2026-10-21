@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useUiMotion } from "../features/motion/use-ui-motion";
 import ArtImage from "../features/match/ArtImage";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -65,6 +66,7 @@ function AppContent({
   matchId?: string;
 }) {
   const router = useRouter();
+  const main = useRef<HTMLElement>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [tutorialSide, setTutorialSide] = useState<"GOOD" | "EVIL" | null>(
     null,
@@ -195,6 +197,12 @@ function AppContent({
       setBusy(false);
     }
   }
+  useUiMotion(
+    main,
+    "home",
+    ownerEpoch,
+    screen === "home" && !loading && !error,
+  );
   const authPanel = (
     <AuthPanel
       api={api}
@@ -273,7 +281,7 @@ function AppContent({
               {storageWarning}
             </p>
           )}
-          <main id="main" data-screen={screen} key={ownerEpoch}>
+          <main ref={main} id="main" data-screen={screen} key={ownerEpoch}>
             {error ? (
               <section className="status-panel panel" role="alert">
                 <h1>Unable to connect</h1>

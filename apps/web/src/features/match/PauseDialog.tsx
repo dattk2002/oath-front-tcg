@@ -1,3 +1,4 @@
+import { useUiMotion } from "../motion/use-ui-motion";
 import SettingsDialog from "../settings/SettingsDialog";
 import { useEffect, useRef, useState } from "react";
 import { openDialog } from "./keyboard";
@@ -18,6 +19,7 @@ export default function PauseDialog({
     heading = useRef<HTMLHeadingElement>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  useUiMotion(dialog, "panel");
   useEffect(
     () =>
       openDialog(dialog.current!, heading.current, () =>

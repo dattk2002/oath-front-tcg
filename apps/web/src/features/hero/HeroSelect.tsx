@@ -2,7 +2,7 @@ import { contentName } from "../../content/english-content";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { HeroId, PublicCatalog } from "@oathfront/contracts/browser";
-import { gsap } from "gsap";
+import { useUiMotion } from "../motion/use-ui-motion";
 import { classLabel } from "../match/labels";
 import HeroInspect from "./HeroInspect";
 import ArtImage from "../match/ArtImage";
@@ -18,22 +18,7 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
       /* Selection still works in memory. */
     }
   }, [catalog]);
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".hero-detail",
-        { opacity: 0.6, y: 4 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: matchMedia("(prefers-reduced-motion: reduce)").matches
-            ? 0
-            : 0.18,
-        },
-      );
-    }, root);
-    return () => ctx.revert();
-  }, [selected]);
+  useUiMotion(root, "hero", selected);
   const hero = catalog.heroes.find((h) => h.id === selected)!;
   return (
     <section className="setup" ref={root}>

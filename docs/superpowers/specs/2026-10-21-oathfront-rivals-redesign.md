@@ -92,7 +92,7 @@ GSAP must be the choreography engine; Pixi remains the scene renderer. Reuse sco
 - Battle: clear evil-first anticipation then good offset80ms, shared damage commit, directional slash/projectile trails and readable impact numbers; death follows damage. Preserve existing per-event duration caps and rules-independent callbacks.
 - Effects: kinetic slash, faceted shield, growth bloom, prism shards, ember burst, ink seals, veil ribbons; bounded reusable geometry, no full-screen flashing or continuous particle flood.
 - Signature powers: hero-colored portrait/rune accent plus existing target primitives, total≤900ms. Block/readiness and phase changes must be visually apparent.
-- Overlays: pause/block/result entry and exit use owned timelines, preserve focus and final visible state after cancellation.
+- Overlays: pause/block/result entrances must use owned timelines. Native dismissal must remain immediate, restore focus through the existing dialog helper, and kill/revert any entrance in progress. Do not delay semantic close for a visual exit or create a duplicate decorative dialog. Cancellation must leave the correct final visible state.
 
 OS/game reduced-motion must render a readable static or short-fade end state. No indefinite input lock, hidden button after interrupted tween, replay of cosmetic backlog after reconnect, or change to server actions/revisions is allowed. Existing backlog>2s fast-forward, pause/visibility handling, low-VFX mode and memory cleanup must remain effective.
 
