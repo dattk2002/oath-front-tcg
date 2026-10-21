@@ -1,0 +1,62 @@
+Vercel CLI 65.0.0 (Node.js 24.20.0)
+WARNING! Running dev server in local mode without a project setup:
+  - Environment variables will not be pulled from Vercel
+  - Project settings are defined by local configuration
+
+To link your project, run `vercel dev` without `-L` or `--local` or `vercel link`.
+> Local resources:
+  Vercel Queues   http://127.0.0.1:4782
+  Vercel Schedules http://127.0.0.1:4784
+  Runtime Cache   http://127.0.0.1:4783/v1/suspense-cache/
+> Ready! Available at http://127.0.0.1:3302
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+HTTP startup failed
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Error: Can't detect way to handle request
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.

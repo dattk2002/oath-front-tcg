@@ -1,0 +1,14 @@
+{
+  "node": "v24.20.0",
+  "pnpm": "11.25.0",
+  "lockSha256": "7615d2aa7b1fb643068284edf26ad0a40c749295ff2d96030e359e4b87988c90",
+  "functions": {
+    "version": "3.10.1",
+    "engines": {
+      "node": ">= 20"
+    },
+    "license": "Apache-2.0",
+    "published": "2026-10-13T22:38:10.877Z",
+    "excludedNewerPublished": "2026-10-20T23:06:38.150Z"
+  }
+}

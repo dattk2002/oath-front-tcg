@@ -1,0 +1,51 @@
+{
+  "project": "round-darkness-78734677",
+  "branch": "br-odd-pine-a1pw77e9",
+  "database": "oathfront",
+  "applied": [
+    "0002_bot_guard",
+    "0003_tutorial_result"
+  ],
+  "response": [
+    [
+      {
+        "verification": {
+          "ledger": [
+            {
+              "hash": "b6085719708a7d4f8a97900a85c8bf035a109f200320721d93888278684a36d3",
+              "created_at": 1792500179766
+            },
+            {
+              "hash": "01a7e2c471648be3ef56392cdd8da65f04211ecc474eea5a508bf81103376836",
+              "created_at": 1792500179767
+            },
+            {
+              "hash": "1a64af158c8d8b67fcdfca89c7324af6e6324e55bfa99615086232a522ccfe05",
+              "created_at": 1792524503102
+            }
+          ],
+          "constraints": [
+            {
+              "conname": "match_numbers",
+              "definition": "CHECK ((((bot_intents_this_turn >= 0) AND (bot_intents_this_turn <= 64)) AND (revision >= 0) AND (revision <= '9007199254740991'::bigint) AND (active_duration_ms >= 0) AND (active_duration_ms <= '9007199254740991'::bigint)))"
+            },
+            {
+              "conname": "result_enums",
+              "definition": "CHECK (((difficulty = ANY (ARRAY['EASY'::text, 'NORMAL'::text])) AND ((outcome = ANY (ARRAY['WIN'::text, 'LOSS'::text, 'DRAW'::text, 'ABANDONED'::text, 'FAULTED'::text])) OR ((outcome = 'NONE'::text) AND (reason = 'TUTORIAL_COMPLETED'::text)))))"
+            }
+          ],
+          "runtime": {
+            "superuser": false,
+            "createdb": false,
+            "createrole": false,
+            "bypassrls": false,
+            "can_read_matches": true,
+            "can_update_matches": true,
+            "can_delete_events": false,
+            "can_create_schema": false
+          }
+        }
+      }
+    ]
+  ]
+}

@@ -1,0 +1,34 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 tests/e2e/responsive.spec.ts:100:1 › actionable tutorial G01 G02 and block fit low tablet and desktop (3.6s)
+
+
+  1) tests/e2e/responsive.spec.ts:100:1 › actionable tutorial G01 G02 and block fit low tablet and desktop 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 614
+    Received:    56
+
+      160 |     await writeFile(`${evidence}/tutorial-inspect-${width}.json`, JSON.stringify(bounds));
+      161 |     await page.screenshot({ path: `${evidence}/tutorial-inspect-${width}.png` });
+    > 162 |     expect(bounds.inspect!.y).toBeGreaterThanOrEqual(bounds.tutorial!.y + bounds.tutorial!.height);
+          |                               ^
+      163 |     const proceed = tutorial.getByRole("button", { name: "Đã hiểu", exact: true });
+      164 |     await expect(proceed).toBeInViewport({ ratio: 1 });
+      165 |     await proceed.click({ trial: true, timeout: 2000 });
+        at /home/bia/Works/Coding/oath-front-tcg/tests/e2e/responsive.spec.ts:162:31
+
+    Error Context: test-results/responsive-actionable-tuto-b9ee2--fit-low-tablet-and-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/responsive-actionable-tuto-b9ee2--fit-low-tablet-and-desktop/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/responsive-actionable-tuto-b9ee2--fit-low-tablet-and-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/responsive.spec.ts:100:1 › actionable tutorial G01 G02 and block fit low tablet and desktop 

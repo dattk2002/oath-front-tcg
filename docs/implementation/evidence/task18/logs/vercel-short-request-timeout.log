@@ -1,0 +1,33 @@
+Vercel CLI 65.0.0 (Node.js 24.20.0)
+WARNING! Running dev server in local mode without a project setup:
+  - Environment variables will not be pulled from Vercel
+  - Project settings are defined by local configuration
+
+To link your project, run `vercel dev` without `-L` or `--local` or `vercel link`.
+> Local resources:
+  Vercel Queues   http://127.0.0.1:4782
+  Vercel Schedules http://127.0.0.1:4784
+  Runtime Cache   http://127.0.0.1:4783/v1/suspense-cache/
+> Ready! Available at http://127.0.0.1:3302
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+Multiple entrypoints found: server.ts, src/app.ts. Using server.ts.
+node:events:505
+    throw er; // Unhandled 'error' event
+    ^
+
+Error: write EPIPE
+    at target._send (node:internal/child_process:917:20)
+    at target.send (node:internal/child_process:792:19)
+    at main (/home/bia/.local/share/pnpm/store/v11/links/@vercel/node/26.0.0/15c52f2e0231f287d358e1682d5ece7bb49e5708c3b3b06d2bfba5b0ca56529f/node_modules/@vercel/node/dist/dev-server.mjs:1362:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Emitted 'error' event on process instance at:
+    at node:internal/child_process:921:39
+    at process.processTicksAndRejections (node:internal/process/task_queues:85:11) {
+  errno: -32,
+  code: 'EPIPE',
+  syscall: 'write'
+}
+
+Node.js v24.20.0

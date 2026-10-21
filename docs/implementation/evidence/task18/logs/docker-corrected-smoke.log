@@ -1,0 +1,17 @@
+{
+  "project": "oathfront-task18",
+  "images": [
+    "sha256:24fd2649662e775ce9a76eaa0519f9c251582efd28a6af05989c767237776888",
+    "sha256:9c3aa51fad7de2a71b80b248a2bb2ff3a5444fee82dde57489e43cf86812381e",
+    "sha256:9ce98c993f976d07824f8071a410d31f65280c7210818513c90da83ff4ce8d62"
+  ],
+  "services": 3,
+  "guest": 201,
+  "spoofedInboundProofOverwritten": true,
+  "managedAuthLocal": true,
+  "blockResponseBeforeRestart": true,
+  "revisionBefore": 22,
+  "revisionAfterRestart": 22,
+  "resumedRevision": 23,
+  "duplicateReceiptEqual": true
+}

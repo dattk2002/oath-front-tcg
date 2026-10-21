@@ -1,0 +1,21 @@
+{
+  "verifiedAt": "2026-10-21T00:39:56.706595+00:00",
+  "buildId": "V0isFAUtbXD_Bsuxb73A6",
+  "method": "SHA256 file bytes; symbolic link targets read with os.readlink and checked for resolved existence",
+  "checks": [
+    {
+      "manifest": "corrected-source-manifest.json",
+      "entries": 1331,
+      "symbolicLinks": 0,
+      "mismatches": [],
+      "missing": []
+    },
+    {
+      "manifest": "corrected-artifact-manifest.json",
+      "entries": 2541,
+      "symbolicLinks": 21,
+      "mismatches": [],
+      "missing": []
+    }
+  ]
+}

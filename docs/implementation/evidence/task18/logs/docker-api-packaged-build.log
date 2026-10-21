@@ -1,0 +1,93 @@
+ Image oath-front-api Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 968B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 919B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.20.0-bookworm-slim
+#3 DONE 1.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 316B done
+#4 DONE 0.0s
+
+#5 [build 1/6] FROM docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e
+#5 resolve docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 85.71kB 0.0s done
+#6 DONE 0.0s
+
+#7 [build 2/6] RUN npm install -g pnpm@11.25.0
+#7 CACHED
+
+#8 [build 3/6] WORKDIR /app
+#8 CACHED
+
+#9 [build 4/6] COPY . .
+#9 DONE 0.2s
+
+#10 [build 5/6] RUN --mount=type=cache,id=oathfront-pnpm,target=/root/.local/share/pnpm/store pnpm --filter @oathfront/api... --filter oathfront install --frozen-lockfile && pnpm build:api
+#10 0.775 Scope: 7 of 8 workspace projects
+#10 0.871 ? Verifying lockfile against supply-chain policies (602 entries)...
+#10 0.879 Lockfile is up to date, resolution step is skipped
+#10 0.950 Progress: resolved 1, reused 0, downloaded 0, added 0
+#10 0.991 .                                        | +243 ++++++++++++++++++++++++
+#10 1.181 Packages are copied from the content-addressable store to the virtual store.
+#10 1.181   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#10 1.181   Virtual store is at:             node_modules/.pnpm
+#10 1.406 
+#10 1.406    ╭──────────────────────────────────────────────────────────────────────╮
+#10 1.406    │                                                                      │
+#10 1.406    │                 Update available! 11.25.0 → 12.14.0.                 │
+#10 1.406    │                 Changelog: https://pnpm.io/v/12.14.0                 │
+#10 1.406    │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+#10 1.406    │                                                                      │
+#10 1.406    ╰──────────────────────────────────────────────────────────────────────╯
+#10 1.406 
+#10 1.952 Progress: resolved 243, reused 243, downloaded 0, added 241
+#10 2.011 Progress: resolved 243, reused 243, downloaded 0, added 243, done
+#10 6.355 ✓ Lockfile passes supply-chain policies (602 entries in 5.4s)
+#10 6.638 Done in 6.4s using pnpm v11.25.0
+#10 7.153 $ node scripts/build-api.mjs
+#10 DONE 7.9s
+
+#11 [build 6/6] RUN node scripts/package-api-runtime.mjs /runtime
+#11 0.450 Packaged 19 frozen installed runtime dependencies; package metadata/licenses retained
+#11 DONE 0.5s
+
+#12 [runtime 2/6] WORKDIR /app
+#12 CACHED
+
+#13 [runtime 3/6] COPY --from=build /runtime/node_modules ./node_modules
+#13 DONE 0.2s
+
+#14 [runtime 4/6] COPY --from=build /runtime/runtime-dependencies.json ./runtime-dependencies.json
+#14 DONE 0.1s
+
+#15 [runtime 5/6] COPY --from=build /app/apps/api/dist ./apps/api/dist
+#15 DONE 0.1s
+
+#16 [runtime 6/6] COPY --from=build /app/packages/db/migrations ./packages/db/migrations
+#16 DONE 0.1s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 0.4s done
+#17 exporting manifest sha256:1c9554c0fa113e43aaed77709609b70394fd912f68e5403512088f98a0b62a12 0.0s done
+#17 exporting config sha256:c3214e19ff842b8da3a715d3fef7f2e3b45d37aa314ced6a27dc6c119ada6ecb 0.0s done
+#17 exporting attestation manifest sha256:da1b15943d7a5c144551151369115e55195b2dbd2d669d36f0b3f4d3256bbd46 0.0s done
+#17 exporting manifest list sha256:9c3aa51fad7de2a71b80b248a2bb2ff3a5444fee82dde57489e43cf86812381e 0.0s done
+#17 naming to docker.io/library/oath-front-api:latest
+#17 naming to docker.io/library/oath-front-api:latest done
+#17 unpacking to docker.io/library/oath-front-api:latest
+#17 unpacking to docker.io/library/oath-front-api:latest 0.2s done
+#17 DONE 0.7s
+
+#18 resolving provenance for metadata file
+#18 DONE 0.0s
+ Image oath-front-api Built 

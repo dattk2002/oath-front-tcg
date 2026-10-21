@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+ ❯ apps/api/tests/proxy-ip.test.ts (2 tests | 1 failed) 425ms
+   × ignores spoofed forwarded headers in direct mode and requires validated explicit trust in hosted/private modes 35ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/api/tests/proxy-ip.test.ts > ignores spoofed forwarded headers in direct mode and requires validated explicit trust in hosted/private modes
+AssertionError: expected '203.0.113.1' to be '203.0.113.2' // Object.is equality
+
+Expected: "203.0.113.2"
+Received: "203.0.113.1"
+
+ ❯ apps/api/tests/proxy-ip.test.ts:20:5
+     18|       secret: "a".repeat(64),
+     19|     }),
+     20|   ).toBe("203.0.113.2");
+       |     ^
+     21|   expect(
+     22|     clientIp("127.0.0.1", headers, {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 3 passed (4)
+   Start at  06:47:29
+   Duration  1.75s (import 44%, tests 32%, transform 23%, worker 1%)
+

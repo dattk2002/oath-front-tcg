@@ -1,0 +1,12 @@
+{
+  "scope": "local compiled Node HTTP + PostgreSQL; 24 PvE commands/match then explicit surrender",
+  "concurrency": 20,
+  "coldStartMs": 284.001625,
+  "warmActions": 500,
+  "warmP95Ms": 312.07064100000025,
+  "autoBatches": 275,
+  "autoP95Ms": 308.59831299999996,
+  "autoMaxMs": 346.7321179999999,
+  "warmTargetPassed": true,
+  "autoTargetPassed": true
+}

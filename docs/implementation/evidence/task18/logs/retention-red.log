@@ -1,0 +1,94 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg/apps/api
+
+ ❯ tests/retention.test.ts (3 tests | 3 failed) 617ms
+   × keeps active details and receipts, expires account inactivity through a replayable EXPIRED transition, then retains summary until day180 453ms
+   × purges unclaimed guests only at absolute day7 and leaves account owners intact 69ms
+   × serializes concurrent cleanup and retains claim/bootstrap tombstones and referenced sessions for their audit lifetime 49ms
+ ❯ tests/release-safety.test.ts (2 tests | 1 failed) 695ms
+   × blocks an unsupported active rules version and missing tutorial binding while ignoring terminal rows 37ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/release-safety.test.ts > blocks an unsupported active rules version and missing tutorial binding while ignoring terminal rows
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/release-safety.test.ts:7:97
+      5| it('blocks an unsupported active rules version and missing tutorial bi…
+      6|  const match={id:'test',status:'ACTIVE',rules:'rules_v1',content:'core…
+      7|  expect(checkSupportedVersions(supportedRegistry,[{...match,rules:'fut…
+       |                                                                                                 ^
+      8|  expect(checkSupportedVersions(supportedRegistry,[{...match,status:'CO…
+      9|  expect(checkSupportedVersions(supportedRegistry,[{...match,scenarioId…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  tests/retention.test.ts > keeps active details and receipts, expires account inactivity through a replayable EXPIRED transition, then retains summary until day180
+AssertionError: expected 'ACTIVE' to be 'ABANDONED' // Object.is equality
+
+Expected: "ABANDONED"
+Received: "ACTIVE"
+
+ ❯ tests/retention.test.ts:25:34
+     23|  await runRetention(h.owner,expiry);
+     24|  const expired=await h.app.services.repository.loadMatch(g.id,id);
+     25|  expect(expired.state.lifecycle).toBe('ABANDONED');
+       |                                  ^
+     26|  expect(expired.state.outcome?.reason).toBe('EXPIRED');
+     27|  expect(hashState((await h.app.services.repository.replayMatch(g.id,id…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  tests/retention.test.ts > purges unclaimed guests only at absolute day7 and leaves account owners intact
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/retention.test.ts:42:88
+     40|  expect((await h.owner.query('SELECT * FROM matches WHERE id=$1',[id])…
+     41|  await runRetention(h.owner,expiry);
+     42|  expect((await h.owner.query('SELECT * FROM principals WHERE id=$1',[g…
+       |                                                                                        ^
+     43| });
+     44| it('serializes concurrent cleanup and retains claim/bootstrap tombston…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  tests/retention.test.ts > serializes concurrent cleanup and retains claim/bootstrap tombstones and referenced sessions for their audit lifetime
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/retention.test.ts:52:77
+     50|  await h.owner.query("UPDATE rate_limit_windows SET expires_at=$1",[da…
+     51|  await runRetention(h.owner,now);
+     52|  expect((await h.owner.query('SELECT * FROM rate_limit_windows')).rowC…
+       |                                                                             ^
+     53| });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  4 failed | 1 passed (5)
+   Start at  06:36:43
+   Duration  3.10s (tests 45%, import 43%, transform 12%)
+
+undefined
+/home/bia/Works/Coding/oath-front-tcg/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: vitest run tests/retention.test.ts tests/release-safety.test.ts

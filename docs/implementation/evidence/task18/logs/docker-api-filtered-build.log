@@ -1,0 +1,125 @@
+ Image oath-front-api Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 968B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 853B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.20.0-bookworm-slim
+#3 DONE 1.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 316B done
+#4 DONE 0.0s
+
+#5 [build 1/6] FROM docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e
+#5 resolve docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e 0.0s done
+#5 DONE 0.0s
+
+#6 [runtime 2/5] WORKDIR /app
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 82.89kB 0.0s done
+#7 DONE 0.1s
+
+#8 [build 2/6] RUN npm install -g pnpm@11.25.0
+#8 CACHED
+
+#9 [build 3/6] WORKDIR /app
+#9 CACHED
+
+#10 [build 4/6] COPY . .
+#10 DONE 0.3s
+
+#11 [build 5/6] RUN --mount=type=cache,id=oathfront-pnpm,target=/root/.local/share/pnpm/store pnpm --filter @oathfront/api... --filter oathfront install --frozen-lockfile && pnpm build:api
+#11 0.817 Scope: 7 of 8 workspace projects
+#11 0.910 ? Verifying lockfile against supply-chain policies (602 entries)...
+#11 0.918 Lockfile is up to date, resolution step is skipped
+#11 0.982 Progress: resolved 1, reused 0, downloaded 0, added 0
+#11 1.017 .                                        | +243 ++++++++++++++++++++++++
+#11 1.287 Packages are copied from the content-addressable store to the virtual store.
+#11 1.287   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#11 1.287   Virtual store is at:             node_modules/.pnpm
+#11 1.366 
+#11 1.366    ╭──────────────────────────────────────────────────────────────────────╮
+#11 1.366    │                                                                      │
+#11 1.366    │                 Update available! 11.25.0 → 12.14.0.                 │
+#11 1.366    │                 Changelog: https://pnpm.io/v/12.14.0                 │
+#11 1.366    │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+#11 1.366    │                                                                      │
+#11 1.366    ╰──────────────────────────────────────────────────────────────────────╯
+#11 1.366 
+#11 1.983 Progress: resolved 243, reused 0, downloaded 55, added 55
+#11 2.983 Progress: resolved 243, reused 0, downloaded 170, added 170
+#11 3.983 Progress: resolved 243, reused 0, downloaded 192, added 191
+#11 4.983 Progress: resolved 243, reused 0, downloaded 217, added 217
+#11 5.320 [WARN] Tarball download average speed 29 KiB/s (size 38 KiB) is below 50 KiB/s: https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz (GET)
+#11 5.985 Progress: resolved 243, reused 0, downloaded 234, added 234
+#11 6.985 Progress: resolved 243, reused 0, downloaded 238, added 238
+#11 8.434 Progress: resolved 243, reused 0, downloaded 239, added 238
+#11 9.434 Progress: resolved 243, reused 0, downloaded 240, added 239
+#11 10.43 Progress: resolved 243, reused 0, downloaded 241, added 241
+#11 11.43 Progress: resolved 243, reused 0, downloaded 242, added 242
+#11 11.58 ✓ Lockfile passes supply-chain policies (602 entries in 10.6s)
+#11 11.64 Progress: resolved 243, reused 0, downloaded 243, added 243, done
+#11 11.76 .../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+#11 11.76 .../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+#11 11.76 .../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+#11 11.82 .../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+#11 11.84 .../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+#11 11.84 .../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+#11 12.17 Done in 11.8s using pnpm v11.25.0
+#11 12.63 $ node scripts/build-api.mjs
+#11 DONE 13.7s
+
+#12 [build 6/6] RUN pnpm --filter @oathfront/api deploy --prod --legacy /runtime
+#12 0.654 [WARN] Shared workspace lockfile detected but configuration forces legacy deploy implementation.
+#12 0.727 Packages are cloned from the content-addressable store to the virtual store.
+#12 0.727   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#12 0.727   Virtual store is at:             ../runtime/node_modules/.pnpm
+#12 0.729 ✓ Lockfile passes supply-chain policies (verified 2s ago)
+#12 0.760 Progress: resolved 1, reused 0, downloaded 0, added 0
+#12 1.760 Progress: resolved 28, reused 0, downloaded 0, added 0
+#12 2.777 Progress: resolved 93, reused 0, downloaded 0, added 0
+#12 3.776 Progress: resolved 158, reused 0, downloaded 0, added 0
+#12 4.819 Progress: resolved 163, reused 0, downloaded 0, added 0
+#12 5.824 Progress: resolved 172, reused 0, downloaded 0, added 0
+#12 6.918 Progress: resolved 175, reused 0, downloaded 0, added 0
+#12 7.919 Progress: resolved 358, reused 0, downloaded 0, added 0
+#12 8.968 Progress: resolved 360, reused 0, downloaded 0, added 0
+#12 9.968 Progress: resolved 509, reused 0, downloaded 0, added 0
+#12 10.97 Progress: resolved 608, reused 0, downloaded 0, added 0
+#12 16.10 [WARN] 23 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5, @react-email/body@0.3.0, @react-email/button@0.2.1, @react-email/code-block@0.2.1, @react-email/code-inline@0.0.6, @react-email/column@0.0.14, @react-email/components@1.0.12, @react-email/container@0.0.16, @react-email/font@0.0.10, @react-email/head@0.0.13, @react-email/heading@0.0.16, @react-email/hr@0.0.12, @react-email/html@0.0.12, @react-email/img@0.0.12, @react-email/link@0.0.13, @react-email/markdown@0.0.18, @react-email/preview@0.0.14, @react-email/row@0.0.13, @react-email/section@0.0.17, @react-email/tailwind@2.0.7, @react-email/text@0.1.6, @types/earcut@3.2.4
+#12 16.10 Progress: resolved 608, reused 0, downloaded 0, added 0, done
+#12 16.10 [WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+#12 16.14 .                                        |  +97 ++++++++++
+#12 DONE 17.5s
+
+#13 [runtime 3/5] COPY --from=build /runtime/node_modules ./node_modules
+#13 DONE 0.8s
+
+#14 [runtime 4/5] COPY --from=build /app/apps/api/dist ./apps/api/dist
+#14 DONE 0.1s
+
+#15 [runtime 5/5] COPY --from=build /app/packages/db/migrations ./packages/db/migrations
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 1.5s done
+#16 exporting manifest sha256:c8bdff679e9c4e6a91fd8b1b44f7451cdcfcb701b80ef607ade865c910e1788c 0.0s done
+#16 exporting config sha256:0658879b8131c30f6cbddfc9814dae7982ed05ad1242b005fb2ecad6d956e0ac 0.0s done
+#16 exporting attestation manifest sha256:a6074a54db84de1fbc3c38554549148d6adc55ad5a00f9b0c434eb9f67d2c52e 0.0s done
+#16 exporting manifest list sha256:62dcbc71783b6c56fb740bc8651968efba3ed6b5ddc9a69483e42ddbc419e592 0.0s done
+#16 naming to docker.io/library/oath-front-api:latest
+#16 naming to docker.io/library/oath-front-api:latest done
+#16 unpacking to docker.io/library/oath-front-api:latest
+#16 unpacking to docker.io/library/oath-front-api:latest 0.8s done
+#16 DONE 2.5s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ Image oath-front-api Built 

@@ -1,0 +1,9 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+
+ Test Files  3 passed (3)
+      Tests  4 passed (4)
+   Start at  06:50:54
+   Duration  3.86s (import 49%, tests 48%, transform 3%)
+

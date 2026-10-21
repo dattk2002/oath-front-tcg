@@ -1,0 +1,29 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg/apps/api
+
+ ❯ tests/release-safety.test.ts (3 tests | 1 failed) 798ms
+   × readiness blocks a rollout that drops an active pinned version 83ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/release-safety.test.ts > readiness blocks a rollout that drops an active pinned version
+TypeError: Cannot read properties of undefined (reading 'family')
+ ❯ tests/release-safety.test.ts:27:28
+     25|  await h.app.inject({method:'POST',url:'/api/v1/matches',headers:h.hea…
+     26|  const next=buildApp({pool:h.pool,origin:'https://oathfront.test',secr…
+     27|  await expect(next.ready()).rejects.toThrow('VERSION_UNSUPPORTED');
+       |                            ^
+     28|  await next.close();
+     29| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  06:38:44
+   Duration  1.57s (tests 54%, import 39%, transform 6%)
+
+undefined
+/home/bia/Works/Coding/oath-front-tcg/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: vitest run tests/release-safety.test.ts

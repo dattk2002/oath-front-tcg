@@ -1,0 +1,25 @@
+Issues with peer dependencies found
+
+✕ unmet peer better-call
+  Installed: 1.4.0
+  Wanted:
+    1.4.2:
+      @better-auth/core@1.7.11
+
+✕ unmet peer better-call
+  Installed: 2.0.2
+  Wanted:
+    1.4.2:
+      @better-auth/api-key@1.7.11
+
+✕ unmet peer better-auth
+  Installed: 1.7.6
+  Wanted:
+    ^1.7.11:
+      @better-auth/api-key@1.7.11
+
+✕ unmet peer typescript
+  Installed: 6.0.3
+  Wanted:
+    ^5.0.0:
+      @triplit/logger@0.0.3

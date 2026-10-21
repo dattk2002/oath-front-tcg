@@ -1,0 +1,125 @@
+ Image oath-front-api Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 968B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 733B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.20.0-bookworm-slim
+#3 DONE 1.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 316B done
+#4 DONE 0.0s
+
+#5 [build 1/6] FROM docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e
+#5 resolve docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e 0.0s done
+#5 DONE 0.0s
+
+#6 [runtime 2/5] WORKDIR /app
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 79.75kB 0.0s done
+#7 DONE 0.0s
+
+#8 [build 2/6] RUN npm install -g pnpm@11.25.0
+#8 CACHED
+
+#9 [build 3/6] WORKDIR /app
+#9 CACHED
+
+#10 [build 4/6] COPY . .
+#10 DONE 0.3s
+
+#11 [build 5/6] RUN pnpm install --frozen-lockfile && pnpm build:api
+#11 0.763 Scope: all 8 workspace projects
+#11 0.860 ? Verifying lockfile against supply-chain policies (602 entries)...
+#11 0.869 Lockfile is up to date, resolution step is skipped
+#11 0.953 Progress: resolved 1, reused 0, downloaded 0, added 0
+#11 1.035 Packages: +475
+#11 1.035 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#11 1.260 Packages are cloned from the content-addressable store to the virtual store.
+#11 1.260   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#11 1.260   Virtual store is at:             node_modules/.pnpm
+#11 1.368 
+#11 1.368    ╭──────────────────────────────────────────────────────────────────────╮
+#11 1.368    │                                                                      │
+#11 1.368    │                 Update available! 11.25.0 → 12.14.0.                 │
+#11 1.368    │                 Changelog: https://pnpm.io/v/12.14.0                 │
+#11 1.368    │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+#11 1.368    │                                                                      │
+#11 1.368    ╰──────────────────────────────────────────────────────────────────────╯
+#11 1.368 
+#11 1.954 Progress: resolved 475, reused 0, downloaded 24, added 24
+#11 2.953 Progress: resolved 475, reused 0, downloaded 73, added 73
+#11 3.954 Progress: resolved 475, reused 0, downloaded 142, added 141
+#11 4.953 Progress: resolved 475, reused 0, downloaded 174, added 174
+#11 5.956 Progress: resolved 475, reused 0, downloaded 212, added 210
+#11 6.511 [WARN] Tarball download average speed 16 KiB/s (size 18 KiB) is below 50 KiB/s: https://registry.npmjs.org/@pinojs/redact/-/redact-0.4.0.tgz (GET)
+#11 6.957 Progress: resolved 475, reused 0, downloaded 251, added 252
+#11 7.958 Progress: resolved 475, reused 0, downloaded 300, added 301
+#11 8.958 Progress: resolved 475, reused 0, downloaded 376, added 375
+#11 9.959 Progress: resolved 475, reused 0, downloaded 419, added 420
+#11 10.96 Progress: resolved 475, reused 0, downloaded 454, added 455
+#11 11.96 Progress: resolved 475, reused 0, downloaded 460, added 461
+#11 12.96 Progress: resolved 475, reused 0, downloaded 464, added 465
+#11 13.96 Progress: resolved 475, reused 0, downloaded 466, added 467
+#11 64.15 [WARN] GET https://registry.npmjs.org/pixi.js/-/pixi.js-8.22.0.tgz error (23). Will retry in 10 seconds. 2 retries left.
+#11 64.15 [WARN] GET https://registry.npmjs.org/next/-/next-16.4.2.tgz error (23). Will retry in 10 seconds. 2 retries left.
+#11 64.15 [WARN] GET https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.4.2.tgz error (23). Will retry in 10 seconds. 2 retries left.
+#11 64.51 Progress: resolved 475, reused 0, downloaded 467, added 467
+#11 64.56 [WARN] Request took 50540ms: https://registry.npmjs.org/react-is
+#11 64.83 [WARN] Request took 55486ms: https://registry.npmjs.org/playwright
+#11 65.52 Progress: resolved 475, reused 0, downloaded 469, added 470
+#11 65.72 [WARN] Request took 50442ms: https://registry.npmjs.org/typescript
+#11 65.80 ✓ Lockfile passes supply-chain policies (602 entries in 1m 4.9s)
+#11 66.20 [WARN] GET https://registry.npmjs.org/@rolldown/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.2.14.tgz error (23). Will retry in 10 seconds. 2 retries left.
+#11 66.52 Progress: resolved 475, reused 0, downloaded 470, added 470
+#11 67.52 Progress: resolved 475, reused 0, downloaded 470, added 471
+#11 177.4 [WARN] GET https://registry.npmjs.org/next/-/next-16.4.2.tgz error (EPIPE). Will retry in 1 minute. 1 retries left.
+#11 181.2 Progress: resolved 475, reused 0, downloaded 471, added 471
+#11 182.2 Progress: resolved 475, reused 0, downloaded 472, added 473
+#11 183.9 Progress: resolved 475, reused 0, downloaded 473, added 473
+#11 184.8 Progress: resolved 475, reused 0, downloaded 473, added 474
+#11 700.9 [23] The operation was aborted due to timeout
+#11 700.9 
+#11 700.9 TimeoutError: The operation was aborted due to timeout
+#11 700.9     at new DOMException (node:internal/per_context/domexception:76:18)
+#11 700.9     at Timeout._onTimeout (node:internal/abort_controller:210:9)
+#11 700.9     at listOnTimeout (node:internal/timers:685:17)
+#11 700.9     at process.processTimers (node:internal/timers:618:7)
+#11 ERROR: process "/bin/sh -c pnpm install --frozen-lockfile && pnpm build:api" did not complete successfully: exit code: 1
+------
+ > [build 5/6] RUN pnpm install --frozen-lockfile && pnpm build:api:
+182.2 Progress: resolved 475, reused 0, downloaded 472, added 473
+183.9 Progress: resolved 475, reused 0, downloaded 473, added 473
+184.8 Progress: resolved 475, reused 0, downloaded 473, added 474
+700.9 [23] The operation was aborted due to timeout
+700.9 
+700.9 TimeoutError: The operation was aborted due to timeout
+700.9     at new DOMException (node:internal/per_context/domexception:76:18)
+700.9     at Timeout._onTimeout (node:internal/abort_controller:210:9)
+700.9     at listOnTimeout (node:internal/timers:685:17)
+700.9     at process.processTimers (node:internal/timers:618:7)
+------
+Dockerfile:5
+
+--------------------
+
+   3 |     WORKDIR /app
+
+   4 |     COPY . .
+
+   5 | >>> RUN pnpm install --frozen-lockfile && pnpm build:api
+
+   6 |     # Bundle runtime dependencies without development aliases or source artwork.
+
+   7 |     RUN pnpm --filter @oathfront/api deploy --prod --legacy /runtime
+
+--------------------
+
+failed to solve: process "/bin/sh -c pnpm install --frozen-lockfile && pnpm build:api" did not complete successfully: exit code: 1
+

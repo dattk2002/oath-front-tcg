@@ -1,0 +1,26 @@
+[
+  {
+    "command": "pnpm lint",
+    "started": "2026-10-21T00:37:10.380Z",
+    "ended": "2026-10-21T00:37:13.659Z",
+    "exit": 0
+  },
+  {
+    "command": "pnpm --filter @oathfront/web build",
+    "started": "2026-10-21T00:37:14.794Z",
+    "ended": "2026-10-21T00:37:41.090Z",
+    "exit": 0
+  },
+  {
+    "command": "pnpm exec playwright test --grep no legal target|snapshot history recovers|playable trick label|exact versioned proxy|TU12 visible|actionable tutorial|ten cards and ten units|375px fallback|WCAG AA scan",
+    "started": "2026-10-21T00:37:41.580Z",
+    "ended": "2026-10-21T00:38:43.620Z",
+    "exit": 0
+  },
+  {
+    "command": "pnpm exec tsx tools/load/pve.ts --concurrency 20",
+    "started": "2026-10-21T00:38:43.620Z",
+    "ended": "2026-10-21T00:38:51.148Z",
+    "exit": 0
+  }
+]

@@ -1,0 +1,137 @@
+ Image oath-front-ui Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.46kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 875B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.20.0-bookworm-slim
+#3 DONE 1.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 316B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [build 1/5] FROM docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e
+#6 resolve docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e 0.1s done
+#6 DONE 0.1s
+
+#7 [runtime 2/4] WORKDIR /app
+#7 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 81.74kB 0.0s done
+#5 DONE 0.0s
+
+#8 [build 2/5] RUN npm install -g pnpm@11.25.0
+#8 CACHED
+
+#9 [build 3/5] WORKDIR /app
+#9 CACHED
+
+#10 [build 4/5] COPY . .
+#10 DONE 0.2s
+
+#11 [build 5/5] RUN --mount=type=cache,id=oathfront-pnpm,target=/root/.local/share/pnpm/store pnpm --filter @oathfront/web... --filter oathfront install --frozen-lockfile && pnpm --filter @oathfront/web build
+#11 0.778 Scope: 5 of 8 workspace projects
+#11 0.872 ? Verifying lockfile against supply-chain policies (602 entries)...
+#11 0.880 Lockfile is up to date, resolution step is skipped
+#11 0.952 Progress: resolved 1, reused 0, downloaded 0, added 0
+#11 1.021 .                                        | +417 ++++++++++++++++++++++++++++++++
+#11 1.146 Packages are copied from the content-addressable store to the virtual store.
+#11 1.146   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#11 1.146   Virtual store is at:             node_modules/.pnpm
+#11 1.334 
+#11 1.334    ╭──────────────────────────────────────────────────────────────────────╮
+#11 1.334    │                                                                      │
+#11 1.334    │                 Update available! 11.25.0 → 12.14.0.                 │
+#11 1.334    │                 Changelog: https://pnpm.io/v/12.14.0                 │
+#11 1.334    │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+#11 1.334    │                                                                      │
+#11 1.334    ╰──────────────────────────────────────────────────────────────────────╯
+#11 1.334 
+#11 1.953 Progress: resolved 417, reused 185, downloaded 48, added 234
+#11 2.952 Progress: resolved 417, reused 185, downloaded 116, added 301
+#11 3.952 Progress: resolved 417, reused 185, downloaded 152, added 338
+#11 4.953 Progress: resolved 417, reused 185, downloaded 169, added 355
+#11 5.470 [WARN] Tarball download average speed 34 KiB/s (size 52 KiB) is below 50 KiB/s: https://registry.npmjs.org/comlink/-/comlink-4.4.2.tgz (GET)
+#11 5.953 Progress: resolved 417, reused 185, downloaded 179, added 365
+#11 6.954 Progress: resolved 417, reused 185, downloaded 221, added 407
+#11 7.956 Progress: resolved 417, reused 185, downloaded 224, added 410
+#11 10.02 Progress: resolved 417, reused 185, downloaded 225, added 410
+#11 11.02 Progress: resolved 417, reused 185, downloaded 227, added 412
+#11 12.03 Progress: resolved 417, reused 185, downloaded 227, added 413
+#11 16.43 Progress: resolved 417, reused 185, downloaded 228, added 413
+#11 17.43 Progress: resolved 417, reused 185, downloaded 229, added 415
+#11 18.43 Progress: resolved 417, reused 185, downloaded 230, added 415
+#11 19.03 ✓ Lockfile passes supply-chain policies (602 entries in 18.1s)
+#11 19.43 Progress: resolved 417, reused 185, downloaded 230, added 416
+#11 20.43 Progress: resolved 417, reused 185, downloaded 231, added 416
+#11 20.88 Progress: resolved 417, reused 185, downloaded 231, added 417, done
+#11 21.65 Done in 21.3s using pnpm v11.25.0
+#11 22.13 $ next build --webpack && node ../../scripts/prepare-web-standalone.mjs
+#11 22.47 ▲ Next.js 16.4.2 (webpack)
+#11 22.49 ✓ Running next.config.ts took 19ms
+#11 22.50 - Experiments (use with caution):
+#11 22.50   · extensionAlias
+#11 22.50 
+#11 22.52   Creating an optimized production build ...
+#11 35.10 ✓ Compiled successfully in 10.7s
+#11 35.10   Running TypeScript ...
+#11 39.89   Finished TypeScript in 4.8s ...
+#11 39.89   Collecting page data using 11 workers ...
+#11 40.83   Generating static pages using 11 workers (0/6) ...
+#11 41.73   Generating static pages using 11 workers (1/6) 
+#11 41.73   Generating static pages using 11 workers (2/6) 
+#11 41.73   Generating static pages using 11 workers (4/6) 
+#11 41.73 ✓ Generating static pages using 11 workers (6/6) in 906ms
+#11 42.16   Finalizing page optimization ...
+#11 42.16   Collecting build traces ...
+#11 55.91 
+#11 55.91 Route (app)
+#11 55.91 ┌ ○ /
+#11 55.91 ├ ○ /_not-found
+#11 55.91 ├ ƒ /api/auth/[...path]
+#11 55.91 ├ ƒ /api/forward-v1/[...path]
+#11 55.91 ├ ƒ /decks/[deckId]/edit
+#11 55.91 ├ ƒ /decks/new
+#11 55.91 ├ ƒ /decks/review/[matchId]
+#11 55.91 ├ ○ /heroes
+#11 55.91 ├ ƒ /heroes/[heroId]/decks
+#11 55.91 ├ ○ /history
+#11 55.91 ├ ƒ /history/[id]
+#11 55.91 └ ƒ /matches/[id]
+#11 55.91 
+#11 55.91 
+#11 55.91 ○  (Static)   prerendered as static content
+#11 55.91 ƒ  (Dynamic)  server-rendered on demand
+#11 55.91 
+#11 DONE 56.2s
+
+#12 [runtime 3/4] COPY --from=build --chown=node:node /app/apps/web/.next/standalone ./
+#12 DONE 0.3s
+
+#13 [runtime 4/4] COPY --from=build --chown=node:node /app/scripts/ui-server.mjs ./scripts/ui-server.mjs
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 2.6s done
+#14 exporting manifest sha256:f92e329f9b65c4b257991550a7bfd583109fb08b687e84b793ffb07871cf3179 0.0s done
+#14 exporting config sha256:5693e3ff209fa24bd8f786831a3f8cdf1ed1b51aa627415ab129c6b8be8e5524 0.0s done
+#14 exporting attestation manifest sha256:06c01efd28bf1afe7a7cf7e0212775bd6c4c3fbbca70df9010bcf2f3488d3d2f 0.0s done
+#14 exporting manifest list sha256:32f2902de8c428e95a69f82e2ec4e3034bef5f74ceb7711f5995754ea4d8fb2a 0.0s done
+#14 naming to docker.io/library/oath-front-ui:latest
+#14 naming to docker.io/library/oath-front-ui:latest done
+#14 unpacking to docker.io/library/oath-front-ui:latest
+#14 unpacking to docker.io/library/oath-front-ui:latest 0.8s done
+#14 DONE 3.6s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image oath-front-ui Built 

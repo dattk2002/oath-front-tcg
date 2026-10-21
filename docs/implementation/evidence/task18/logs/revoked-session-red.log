@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg/apps/api
+
+ ❯ tests/retention.test.ts (5 tests | 1 failed | 4 skipped) 166ms
+   × removes revoked sessions seven days after revocation even if their original expiry was later 117ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/retention.test.ts > removes revoked sessions seven days after revocation even if their original expiry was later
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/retention.test.ts:205:100
+    203|  await h.owner.query('UPDATE app_sessions SET revoked_at=$2 WHERE prin…
+    204|  await runRetention(h.owner,days(now,8));
+    205|  expect((await h.owner.query('SELECT * FROM app_sessions WHERE princip…
+       |                                                                                                    ^
+    206| });
+    207|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 skipped (5)
+   Start at  07:13:31
+   Duration  969ms (import 67%, tests 19%, transform 14%)
+
+undefined
+/home/bia/Works/Coding/oath-front-tcg/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: vitest run tests/retention.test.ts -t 'revoked sessions'

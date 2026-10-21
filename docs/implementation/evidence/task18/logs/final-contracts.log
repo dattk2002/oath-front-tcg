@@ -1,0 +1,1 @@
+$ node scripts/generate-contracts.mjs --check

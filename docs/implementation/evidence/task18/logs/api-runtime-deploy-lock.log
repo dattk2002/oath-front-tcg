@@ -1,0 +1,12 @@
+[WARN] Shared workspace lockfile detected but configuration forces legacy deploy implementation.
+Packages are copied from the content-addressable store to the virtual store.
+  Content-addressable store is at: /home/bia/.local/share/pnpm/store/v11
+  Virtual store is at:             ../../../../../tmp/oathfront-task18-runtime-check/node_modules/.pnpm
+✓ Lockfile passes supply-chain policies (verified 36m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 173, reused 0, downloaded 0, added 0
+Progress: resolved 569, reused 0, downloaded 0, added 0
+[WARN] 23 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5, @react-email/body@0.3.0, @react-email/button@0.2.1, @react-email/code-block@0.2.1, @react-email/code-inline@0.0.6, @react-email/column@0.0.14, @react-email/components@1.0.12, @react-email/container@0.0.16, @react-email/font@0.0.10, @react-email/head@0.0.13, @react-email/heading@0.0.16, @react-email/hr@0.0.12, @react-email/html@0.0.12, @react-email/img@0.0.12, @react-email/link@0.0.13, @react-email/markdown@0.0.18, @react-email/preview@0.0.14, @react-email/row@0.0.13, @react-email/section@0.0.17, @react-email/tailwind@2.0.7, @react-email/text@0.1.6, @types/earcut@3.2.4
+Progress: resolved 608, reused 0, downloaded 0, added 0, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+.                                        |  +97 ++++++++++

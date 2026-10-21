@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg/apps/api
+
+ ❯ tests/proxy-ip.test.ts (2 tests | 1 failed) 435ms
+   × ignores spoofed forwarded headers in direct mode and requires validated explicit trust in hosted/private modes 37ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/proxy-ip.test.ts > ignores spoofed forwarded headers in direct mode and requires validated explicit trust in hosted/private modes
+AssertionError: expected '127.0.0.1' to be '203.0.113.2' // Object.is equality
+
+Expected: "203.0.113.2"
+Received: "127.0.0.1"
+
+ ❯ tests/proxy-ip.test.ts:10:56
+      8|  const headers={'x-forwarded-for':'203.0.113.1','x-vercel-forwarded-fo…
+      9|  expect(clientIp('127.0.0.1',headers,{mode:'direct'})).toBe('127.0.0.1…
+     10|  expect(clientIp('127.0.0.1',headers,{mode:'vercel'})).toBe('203.0.113…
+       |                                                        ^
+     11|  expect(clientIp('127.0.0.1',headers,{mode:'trusted-next',secret:'a'.r…
+     12|  expect(()=>clientIp('127.0.0.1',headers,{mode:'trusted-next',secret:'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  06:41:00
+   Duration  1.23s (import 54%, tests 38%, transform 8%)
+
+undefined
+/home/bia/Works/Coding/oath-front-tcg/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: vitest run tests/proxy-ip.test.ts

@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg/apps/api
+
+ ❯ tests/runtime-package.test.mjs (1 test | 1 failed) 113ms
+   × runs pg and Ajv from the frozen external dependency closure without workspace/dev aliases 112ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/runtime-package.test.mjs > runs pg and Ajv from the frozen external dependency closure without workspace/dev aliases
+AssertionError: expected { isolated: false, …(3) } to deeply equal { isolated: true, …(3) }
+
+- Expected
++ Received
+
+  {
+    "invalid": false,
+-   "isolated": true,
++   "isolated": false,
+    "pool": "function",
+    "valid": true,
+  }
+
+ ❯ tests/runtime-package.test.mjs:10:29
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  07:18:27
+   Duration  225ms (tests 82%, transform 10%, import 6%, worker 2%)
+
+undefined
+/home/bia/Works/Coding/oath-front-tcg/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: vitest run tests/runtime-package.test.mjs

@@ -1,6 +1,6 @@
 # Release checklist — HOLD
 
-This is a technical release-candidate preparation record, **not approval to deploy or a claim of production readiness**. Controller task review and whole-branch review follow implementation. CI passing does not close the following acceptance items.
+This is a technical release-candidate preparation record, **not approval to deploy or a claim of production readiness**. Task18 review approved the technical scope; whole-branch review is still pending. CI passing does not close the following acceptance items.
 
 | Gate | Current disposition |
 | --- | --- |
@@ -13,7 +13,7 @@ This is a technical release-candidate preparation record, **not approval to depl
 | Hosted deployment | Not requested/performed. No Vercel project/login/production deploy, registry publish or new Neon branch. Real edge trust, OAuth, quotas and cloud lifetime tests pending. |
 | Neon development migrations | Verified0001/0002/0003 ledger and restricted runtime grants; explicit development target only. |
 | Interactive DB migration | Pending explicit operator maintenance; never reset or migrate automatically. |
-| Operations implementation | Task18 focused checks and final gate evidence recorded in its report; independent review pending. |
+| Operations implementation | Task18 technical review approved; three minor follow-ups are recorded for whole-branch review. |
 
 Before an authorized release:
 

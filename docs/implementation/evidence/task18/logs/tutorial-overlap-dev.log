@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/e2e/responsive.spec.ts:100:1 › actionable tutorial G01 G02 and block fit low tablet and desktop (15.0s)
+
+  1 passed (24.7s)

@@ -1,0 +1,19 @@
+
+Running 14 tests using 1 worker
+
+  ✓   1 tests/e2e/accessibility.spec.ts:47:1 › WCAG AA scan, Vietnamese glyphs, settings and 200 percent reflow (3.2s)
+  ✓   2 tests/e2e/block-recovery.spec.ts:187:1 › no legal target keeps an explicit enabled KEEP and Escape never sends it (2.4s)
+  ✓   3 tests/e2e/block-recovery.spec.ts:290:1 › snapshot history recovers 205 scanned rows across an empty private page without cosmetic replay (4.3s)
+  ✓   4 tests/e2e/input-parity.spec.ts:124:1 › playable trick label and unit-to-hero focus forecast follow the resolved legal action (1.4s)
+  ✓   5 tests/e2e/match-foundation.spec.ts:220:1 › exact versioned proxy preserves JSON and reserves local auth/unknown routes (54ms)
+  ✓   6 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1440x900 (1.3s)
+  ✓   7 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1366x768 (1.2s)
+  ✓   8 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1280x720 (1.1s)
+  ✓   9 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x768 (1.2s)
+  ✓  10 tests/e2e/responsive.spec.ts:43:3 › ten cards and ten units fit 1024x640 (1.3s)
+  ✓  11 tests/e2e/responsive.spec.ts:80:1 › 375px fallback preserves readable lane list (1.3s)
+  ✓  12 tests/e2e/responsive.spec.ts:100:1 › actionable tutorial G01 G02 and block fit low tablet and desktop (8.5s)
+  ✓  13 tests/e2e/tutorial-settings.spec.ts:53:3 › TU12 visible GOOD USED, reload, EVIL, skip/replay and settings persistence (13.9s)
+  ✓  14 tests/e2e/tutorial-settings.spec.ts:53:3 › TU12 visible GOOD KEPT, reload, EVIL, skip/replay and settings persistence (16.4s)
+
+  14 passed (1.0m)

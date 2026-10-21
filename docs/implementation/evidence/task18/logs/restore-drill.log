@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg/apps/api
+
+ ❯ tests/restore-drill.test.ts (2 tests | 1 failed) 2836ms
+   × restores a PostgreSQL snapshot at BLOCK_RESPONSE, resumes once and retries the same durable receipt 1298ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/restore-drill.test.ts > restores a PostgreSQL snapshot at BLOCK_RESPONSE, resumes once and retries the same durable receipt
+AssertionError: {"error":{"code":"VALIDATION_FAILED","details":{"issues":[{"path":"/","rule":"schema"}]},"messageKey":"error.VALIDATION_FAILED","requestId":"f95630bb-71c1-4262-9217-795595dc55b0","retryable":false}}: expected 400 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 400
+
+ ❯ tests/restore-drill.test.ts:132:34
+    130|       },
+    131|     });
+    132|     expect(r.statusCode, r.body).toBe(200);
+       |                                  ^
+    133|     current = r.json<CommandResponse>();
+    134|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  06:43:55
+   Duration  3.62s (tests 80%, import 16%, transform 3%)
+
+undefined
+/home/bia/Works/Coding/oath-front-tcg/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: vitest run tests/restore-drill.test.ts

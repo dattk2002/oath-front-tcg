@@ -1,0 +1,120 @@
+ Image oath-front-ui Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.46kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 875B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.20.0-bookworm-slim
+#3 DONE 1.9s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 327B done
+#4 DONE 0.0s
+
+#5 [build 1/5] FROM docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e
+#5 resolve docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 895.50kB 0.0s done
+#6 DONE 0.0s
+
+#7 [build 2/5] RUN npm install -g pnpm@11.25.0
+#7 CACHED
+
+#8 [build 3/5] WORKDIR /app
+#8 CACHED
+
+#9 [build 4/5] COPY . .
+#9 DONE 0.3s
+
+#10 [build 5/5] RUN --mount=type=cache,id=oathfront-pnpm,target=/root/.local/share/pnpm/store pnpm --filter @oathfront/web... --filter oathfront install --frozen-lockfile && pnpm --filter @oathfront/web build
+#10 0.773 Scope: 5 of 8 workspace projects
+#10 0.868 ? Verifying lockfile against supply-chain policies (602 entries)...
+#10 0.875 Lockfile is up to date, resolution step is skipped
+#10 0.946 Progress: resolved 1, reused 0, downloaded 0, added 0
+#10 1.020 .                                        | +417 ++++++++++++++++++++++++++++++++
+#10 1.222 Packages are copied from the content-addressable store to the virtual store.
+#10 1.222   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#10 1.222   Virtual store is at:             node_modules/.pnpm
+#10 1.423 
+#10 1.423    ╭──────────────────────────────────────────────────────────────────────╮
+#10 1.423    │                                                                      │
+#10 1.423    │                 Update available! 11.25.0 → 12.14.0.                 │
+#10 1.423    │                 Changelog: https://pnpm.io/v/12.14.0                 │
+#10 1.423    │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+#10 1.423    │                                                                      │
+#10 1.423    ╰──────────────────────────────────────────────────────────────────────╯
+#10 1.423 
+#10 1.948 Progress: resolved 417, reused 416, downloaded 0, added 126
+#10 2.954 Progress: resolved 417, reused 416, downloaded 0, added 315
+#10 3.954 Progress: resolved 417, reused 416, downloaded 0, added 416
+#10 4.456 Progress: resolved 417, reused 416, downloaded 0, added 417, done
+#10 7.235 ✓ Lockfile passes supply-chain policies (602 entries in 6.3s)
+#10 7.512 Done in 7.2s using pnpm v11.25.0
+#10 8.002 $ next build --webpack && node ../../scripts/prepare-web-standalone.mjs
+#10 8.333 ▲ Next.js 16.4.2 (webpack)
+#10 8.353 ✓ Running next.config.ts took 19ms
+#10 8.362 - Experiments (use with caution):
+#10 8.362   · extensionAlias
+#10 8.362 
+#10 8.383   Creating an optimized production build ...
+#10 21.08 ✓ Compiled successfully in 10.9s
+#10 21.08   Running TypeScript ...
+#10 26.24   Finished TypeScript in 5.2s ...
+#10 26.25   Collecting page data using 11 workers ...
+#10 27.22   Generating static pages using 11 workers (0/6) ...
+#10 28.11   Generating static pages using 11 workers (1/6) 
+#10 28.11   Generating static pages using 11 workers (2/6) 
+#10 28.11   Generating static pages using 11 workers (4/6) 
+#10 28.11 ✓ Generating static pages using 11 workers (6/6) in 885ms
+#10 28.54   Finalizing page optimization ...
+#10 28.54   Collecting build traces ...
+#10 43.11 
+#10 43.11 Route (app)
+#10 43.11 ┌ ○ /
+#10 43.11 ├ ○ /_not-found
+#10 43.11 ├ ƒ /api/auth/[...path]
+#10 43.11 ├ ƒ /api/forward-v1/[...path]
+#10 43.11 ├ ƒ /decks/[deckId]/edit
+#10 43.11 ├ ƒ /decks/new
+#10 43.11 ├ ƒ /decks/review/[matchId]
+#10 43.11 ├ ○ /heroes
+#10 43.11 ├ ƒ /heroes/[heroId]/decks
+#10 43.11 ├ ○ /history
+#10 43.11 ├ ƒ /history/[id]
+#10 43.11 └ ƒ /matches/[id]
+#10 43.11 
+#10 43.11 
+#10 43.11 ○  (Static)   prerendered as static content
+#10 43.11 ƒ  (Dynamic)  server-rendered on demand
+#10 43.11 
+#10 DONE 43.4s
+
+#11 [runtime 2/4] WORKDIR /app
+#11 CACHED
+
+#12 [runtime 3/4] COPY --from=build --chown=node:node /app/apps/web/.next/standalone ./
+#12 DONE 0.3s
+
+#13 [runtime 4/4] COPY --from=build --chown=node:node /app/scripts/ui-server.mjs ./scripts/ui-server.mjs
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 2.6s done
+#14 exporting manifest sha256:accebd5a29bd705168a16e5381a70e5bc84c7ffbb20efaa6b2856cf95d08f702 0.0s done
+#14 exporting config sha256:720016e852fd0d015d7143da1ba0f35eac56d742cb05380afa932302749dd6f8 0.0s done
+#14 exporting attestation manifest sha256:44d7f49d01b600013a66ab2b0d57aef7f3f71b5f12edddb8ee55b03120b7bbe8 0.0s done
+#14 exporting manifest list sha256:24fd2649662e775ce9a76eaa0519f9c251582efd28a6af05989c767237776888 0.0s done
+#14 naming to docker.io/library/oath-front-ui:latest done
+#14 unpacking to docker.io/library/oath-front-ui:latest
+#14 unpacking to docker.io/library/oath-front-ui:latest 0.8s done
+#14 DONE 3.6s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image oath-front-ui Built 

@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg/apps/api
+
+ ❯ tests/release-safety.test.ts (3 tests | 1 failed) 810ms
+   × readiness blocks a rollout that drops an active pinned version 93ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/release-safety.test.ts > readiness blocks a rollout that drops an active pinned version
+AssertionError: expected null to be 'VERSION_UNSUPPORTED' // Object.is equality
+
+- Expected:
+"VERSION_UNSUPPORTED"
+
++ Received:
+null
+
+ ❯ tests/release-safety.test.ts:27:73
+     25|  await h.app.inject({method:'POST',url:'/api/v1/matches',headers:h.hea…
+     26|  const next=buildApp({pool:h.pool,origin:'https://oathfront.test',secr…
+     27|  expect(await next.ready().then(()=>null,(error:Error)=>error.message)…
+       |                                                                         ^
+     28|  await next.close();
+     29| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  06:39:04
+   Duration  1.83s (tests 47%, import 35%, transform 18%)
+
+undefined
+/home/bia/Works/Coding/oath-front-tcg/apps/api:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: vitest run tests/release-safety.test.ts

@@ -1,0 +1,26 @@
+[
+  {
+    "command": "pnpm contracts:check",
+    "started": "2026-10-21T00:22:17.507Z",
+    "ended": "2026-10-21T00:22:18.595Z",
+    "exit": 0
+  },
+  {
+    "command": "pnpm test",
+    "started": "2026-10-21T00:22:18.595Z",
+    "ended": "2026-10-21T00:25:17.072Z",
+    "exit": 0
+  },
+  {
+    "command": "pnpm build",
+    "started": "2026-10-21T00:25:17.871Z",
+    "ended": "2026-10-21T00:25:52.293Z",
+    "exit": 0
+  },
+  {
+    "command": "pnpm test:e2e",
+    "started": "2026-10-21T00:25:52.816Z",
+    "ended": "2026-10-21T00:34:20.346Z",
+    "exit": 1
+  }
+]

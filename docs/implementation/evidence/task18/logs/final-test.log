@@ -1,0 +1,13 @@
+$ pnpm build:api && vitest run
+$ node scripts/build-api.mjs
+
+ RUN  v5.0.5 /home/bia/Works/Coding/oath-front-tcg
+
+MIGRATION_DRILL {"emptyLedger":3,"priorLedger":3,"schemasEquivalent":true,"emptyDatabase":"oathfront_restore_756334ff0e60429daa7ca5de628c6b16_test","priorDatabase":"oathfront_restore_61fb345812c64ca29a87a247053f6fbd_test"}
+RESTORE_DRILL {"recoveryMs":449.03667099999984,"snapshotBytes":73469,"sourceDatabase":"oathfront_verification_test","restoredDatabase":"oathfront_restore_9d6508e723b2487ab4208811540a7fd4_test","lostCommittedRevisions":0,"snapshotRevision":22,"resumedRevision":23,"phase":"BLOCK_RESPONSE","scope":"local PostgreSQL logical snapshot, quiescent source; not Neon PITR/RPO SLA"}
+
+ Test Files  72 passed (72)
+      Tests  603 passed (603)
+   Start at  07:22:19
+   Duration  177.12s (tests 90%, import 9%, transform 1%)
+

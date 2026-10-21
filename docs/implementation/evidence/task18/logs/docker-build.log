@@ -1,0 +1,376 @@
+ Image oath-front-db Building 
+ Image oath-front-api Building 
+ Image oath-front-ui Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.49kB done
+#1 DONE 0.0s
+
+#2 [db internal] load build definition from Dockerfile
+#2 transferring dockerfile: 195B done
+#2 DONE 0.0s
+
+#3 [api internal] load build definition from Dockerfile
+#3 transferring dockerfile: 733B done
+#3 DONE 0.1s
+
+#4 [ui internal] load build definition from Dockerfile
+#4 transferring dockerfile: 755B done
+#4 DONE 0.1s
+
+#5 [ui internal] load metadata for docker.io/library/node:24.20.0-bookworm-slim
+#5 DONE 1.9s
+
+#6 [db internal] load metadata for docker.io/library/postgres:17.10-alpine@sha256:742f40ea20b9ff2ff31db5458d127452988a2164df9e17441e191f3b72252193
+#6 DONE 1.9s
+
+#7 [api internal] load .dockerignore
+#7 transferring context: 271B done
+#7 DONE 0.0s
+
+#8 [ui internal] load build context
+#8 DONE 0.0s
+
+#9 [db 1/1] FROM docker.io/library/postgres:17.10-alpine@sha256:742f40ea20b9ff2ff31db5458d127452988a2164df9e17441e191f3b72252193
+#9 resolve docker.io/library/postgres:17.10-alpine@sha256:742f40ea20b9ff2ff31db5458d127452988a2164df9e17441e191f3b72252193 0.1s done
+#9 DONE 0.1s
+
+#10 [ui build 1/6] FROM docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e
+#10 resolve docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e
+#10 resolve docker.io/library/node:24.20.0-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e 0.1s done
+#10 CACHED
+
+#9 [db 1/1] FROM docker.io/library/postgres:17.10-alpine@sha256:742f40ea20b9ff2ff31db5458d127452988a2164df9e17441e191f3b72252193
+#9 CACHED
+
+#11 [ui runtime 2/5] WORKDIR /app
+#11 CACHED
+
+#12 [db] exporting to image
+#12 exporting layers done
+#12 exporting manifest sha256:a712a4bf1719eb2c5c0902e7bcbea2ccf49f2266a7d2b6a57fe750a37edb390f 0.0s done
+#12 exporting config sha256:970594e9c6dbe5db1206eeb6c31964c926a484d7efda9dbcc9203218c5e01046 0.0s done
+#12 exporting attestation manifest sha256:0044b5d5bf4b35eb458683aec296f355fade2497ddd5f09ceb2ba8ac6e453442 0.0s done
+#12 exporting manifest list sha256:9ce98c993f976d07824f8071a410d31f65280c7210818513c90da83ff4ce8d62 0.0s done
+#12 naming to docker.io/library/oath-front-db:latest
+#12 naming to docker.io/library/oath-front-db:latest done
+#12 unpacking to docker.io/library/oath-front-db:latest 0.0s done
+#12 DONE 0.3s
+
+#8 [ui internal] load build context
+#8 transferring context: 26.04MB 0.2s done
+#8 DONE 0.3s
+
+#13 [db] resolving provenance for metadata file
+#13 DONE 0.0s
+
+#14 [api build 2/6] RUN npm install -g pnpm@11.25.0
+#14 1.711 
+#14 1.711 added 1 package in 1s
+#14 1.711 
+#14 1.711 1 package is looking for funding
+#14 1.711   run `npm fund` for details
+#14 1.713 npm notice
+#14 1.713 npm notice New major version of npm available! 11.19.0 -> 12.2.0
+#14 1.713 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#14 1.713 npm notice To update run: npm install -g npm@12.2.0
+#14 1.713 npm notice
+#14 DONE 2.0s
+
+#15 [api build 3/6] WORKDIR /app
+#15 DONE 0.1s
+
+#16 [api build 4/6] COPY . .
+#16 DONE 0.2s
+
+#17 [ui build 5/5] RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build
+#17 0.845 Scope: all 8 workspace projects
+#17 0.968 ? Verifying lockfile against supply-chain policies (602 entries)...
+#17 0.976 Lockfile is up to date, resolution step is skipped
+#17 1.064 Progress: resolved 1, reused 0, downloaded 0, added 0
+#17 1.202 Packages: +475
+#17 1.202 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#17 1.496 Packages are cloned from the content-addressable store to the virtual store.
+#17 1.496   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#17 1.496   Virtual store is at:             node_modules/.pnpm
+#17 2.056 
+#17 2.056    ╭──────────────────────────────────────────────────────────────────────╮
+#17 2.056    │                                                                      │
+#17 2.056    │                 Update available! 11.25.0 → 12.14.0.                 │
+#17 2.056    │                 Changelog: https://pnpm.io/v/12.14.0                 │
+#17 2.056    │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+#17 2.056    │                                                                      │
+#17 2.056    ╰──────────────────────────────────────────────────────────────────────╯
+#17 2.056 
+#17 2.063 Progress: resolved 475, reused 0, downloaded 22, added 22
+#17 3.064 Progress: resolved 475, reused 0, downloaded 64, added 64
+#17 4.064 Progress: resolved 475, reused 0, downloaded 104, added 104
+#17 5.065 Progress: resolved 475, reused 0, downloaded 121, added 121
+#17 6.065 Progress: resolved 475, reused 0, downloaded 128, added 128
+#17 7.065 Progress: resolved 475, reused 0, downloaded 141, added 141
+#17 8.066 Progress: resolved 475, reused 0, downloaded 159, added 159
+#17 ...
+
+#18 [api build 5/6] RUN pnpm install --frozen-lockfile && pnpm build:api
+#18 0.839 Scope: all 8 workspace projects
+#18 0.962 ? Verifying lockfile against supply-chain policies (602 entries)...
+#18 0.971 Lockfile is up to date, resolution step is skipped
+#18 1.047 Progress: resolved 1, reused 0, downloaded 0, added 0
+#18 1.148 Packages: +475
+#18 1.148 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#18 1.469 Packages are cloned from the content-addressable store to the virtual store.
+#18 1.469   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#18 1.469   Virtual store is at:             node_modules/.pnpm
+#18 1.806 
+#18 1.806    ╭──────────────────────────────────────────────────────────────────────╮
+#18 1.806    │                                                                      │
+#18 1.806    │                 Update available! 11.25.0 → 12.14.0.                 │
+#18 1.806    │                 Changelog: https://pnpm.io/v/12.14.0                 │
+#18 1.806    │   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   │
+#18 1.806    │                                                                      │
+#18 1.806    ╰──────────────────────────────────────────────────────────────────────╯
+#18 1.806 
+#18 2.047 Progress: resolved 475, reused 0, downloaded 30, added 30
+#18 3.047 Progress: resolved 475, reused 0, downloaded 68, added 67
+#18 3.425 [WARN] Tarball download average speed 28 KiB/s (size 29 KiB) is below 50 KiB/s: https://registry.npmjs.org/chai/-/chai-6.3.0.tgz (GET)
+#18 3.926 [WARN] Tarball download average speed 9 KiB/s (size 9 KiB) is below 50 KiB/s: https://registry.npmjs.org/pg-pool/-/pg-pool-3.14.0.tgz (GET)
+#18 4.047 Progress: resolved 475, reused 0, downloaded 105, added 104
+#18 5.049 Progress: resolved 475, reused 0, downloaded 131, added 130
+#18 6.050 Progress: resolved 475, reused 0, downloaded 141, added 141
+#18 7.050 Progress: resolved 475, reused 0, downloaded 153, added 153
+#18 7.379 [WARN] Tarball download average speed 4 KiB/s (size 7 KiB) is below 50 KiB/s: https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz (GET)
+#18 7.514 [WARN] Tarball download average speed 9 KiB/s (size 12 KiB) is below 50 KiB/s: https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz (GET)
+#18 8.051 Progress: resolved 475, reused 0, downloaded 171, added 171
+#18 9.052 Progress: resolved 475, reused 0, downloaded 187, added 186
+#18 ...
+
+#17 [ui build 5/5] RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build
+#17 9.066 Progress: resolved 475, reused 0, downloaded 172, added 172
+#17 9.921 [WARN] Tarball download average speed 25 KiB/s (size 30 KiB) is below 50 KiB/s: https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz (GET)
+#17 10.04 [WARN] Tarball download average speed 1 KiB/s (size 5 KiB) is below 50 KiB/s: https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz (GET)
+#17 10.07 Progress: resolved 475, reused 0, downloaded 209, added 209
+#17 11.07 Progress: resolved 475, reused 0, downloaded 240, added 240
+#17 11.87 [WARN] Tarball download average speed 13 KiB/s (size 14 KiB) is below 50 KiB/s: https://registry.npmjs.org/@better-auth/kysely-adapter/-/kysely-adapter-1.7.6.tgz (GET)
+#17 12.07 Progress: resolved 475, reused 0, downloaded 257, added 258
+#17 13.07 Progress: resolved 475, reused 0, downloaded 269, added 270
+#17 14.07 Progress: resolved 475, reused 0, downloaded 277, added 278
+#17 14.67 [WARN] Tarball download average speed 35 KiB/s (size 47 KiB) is below 50 KiB/s: https://registry.npmjs.org/get-tsconfig/-/get-tsconfig-4.14.3.tgz (GET)
+#17 15.07 Progress: resolved 475, reused 0, downloaded 300, added 301
+#17 15.61 [WARN] Request took 10963ms: https://registry.npmjs.org/@radix-ui%2Freact-roving-focus
+#17 16.07 Progress: resolved 475, reused 0, downloaded 330, added 331
+#17 16.15 [WARN] Request took 12317ms: https://registry.npmjs.org/@playwright%2Ftest
+#17 16.87 [WARN] Request took 11556ms: https://registry.npmjs.org/@radix-ui%2Freact-tooltip
+#17 16.98 [WARN] Tarball download average speed 25 KiB/s (size 28 KiB) is below 50 KiB/s: https://registry.npmjs.org/esbuild/-/esbuild-0.18.20.tgz (GET)
+#17 17.07 Progress: resolved 475, reused 0, downloaded 368, added 367
+#17 18.07 Progress: resolved 475, reused 0, downloaded 398, added 399
+#17 19.07 Progress: resolved 475, reused 0, downloaded 411, added 412
+#17 19.16 [WARN] Tarball download average speed 41 KiB/s (size 52 KiB) is below 50 KiB/s: https://registry.npmjs.org/comlink/-/comlink-4.4.2.tgz (GET)
+#17 ...
+
+#18 [api build 5/6] RUN pnpm install --frozen-lockfile && pnpm build:api
+#18 9.243 [WARN] Tarball download average speed 22 KiB/s (size 30 KiB) is below 50 KiB/s: https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz (GET)
+#18 10.06 Progress: resolved 475, reused 0, downloaded 226, added 224
+#18 11.06 Progress: resolved 475, reused 0, downloaded 255, added 256
+#18 12.06 Progress: resolved 475, reused 0, downloaded 276, added 277
+#18 13.06 Progress: resolved 475, reused 0, downloaded 282, added 283
+#18 13.29 [WARN] Request took 10023ms: https://registry.npmjs.org/@next%2Fswc-darwin-x64
+#18 14.06 Progress: resolved 475, reused 0, downloaded 295, added 296
+#18 14.42 [WARN] Tarball download average speed 37 KiB/s (size 56 KiB) is below 50 KiB/s: https://registry.npmjs.org/@daveyplate/better-auth-tanstack/-/better-auth-tanstack-1.3.6.tgz (GET)
+#18 14.44 [WARN] Tarball download average speed 14 KiB/s (size 17 KiB) is below 50 KiB/s: https://registry.npmjs.org/@hcaptcha/react-hcaptcha/-/react-hcaptcha-2.2.0.tgz (GET)
+#18 14.51 [WARN] Request took 10371ms: https://registry.npmjs.org/@radix-ui%2Freact-menu
+#18 14.72 [WARN] Tarball download average speed 13 KiB/s (size 14 KiB) is below 50 KiB/s: https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.3.1.tgz (GET)
+#18 15.06 Progress: resolved 475, reused 0, downloaded 328, added 329
+#18 16.06 Progress: resolved 475, reused 0, downloaded 358, added 358
+#18 17.06 Progress: resolved 475, reused 0, downloaded 397, added 398
+#18 18.06 Progress: resolved 475, reused 0, downloaded 422, added 423
+#18 18.63 [WARN] Tarball download average speed 12 KiB/s (size 62 KiB) is below 50 KiB/s: https://registry.npmjs.org/bowser/-/bowser-2.14.1.tgz (GET)
+#18 19.06 Progress: resolved 475, reused 0, downloaded 439, added 440
+#18 19.09 [WARN] Tarball download average speed 45 KiB/s (size 58 KiB) is below 50 KiB/s: https://registry.npmjs.org/hookified/-/hookified-2.2.0.tgz (GET)
+#18 ...
+
+#17 [ui build 5/5] RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build
+#17 19.66 [WARN] Tarball download average speed 20 KiB/s (size 25 KiB) is below 50 KiB/s: https://registry.npmjs.org/@peculiar/utils/-/utils-2.0.3.tgz (GET)
+#17 19.86 [WARN] Tarball download average speed 46 KiB/s (size 58 KiB) is below 50 KiB/s: https://registry.npmjs.org/hookified/-/hookified-2.2.0.tgz (GET)
+#17 20.07 Progress: resolved 475, reused 0, downloaded 435, added 436
+#17 20.74 [WARN] Request took 10228ms: https://registry.npmjs.org/axe-core
+#17 21.07 Progress: resolved 475, reused 0, downloaded 455, added 456
+#17 22.07 Progress: resolved 475, reused 0, downloaded 460, added 461
+#17 23.07 Progress: resolved 475, reused 0, downloaded 461, added 462
+#17 23.30 [WARN] Request took 10091ms: https://registry.npmjs.org/esbuild
+#17 24.07 Progress: resolved 475, reused 0, downloaded 462, added 463
+#17 24.32 [WARN] Request took 14288ms: https://registry.npmjs.org/@types%2Fnode
+#17 25.07 Progress: resolved 475, reused 0, downloaded 463, added 464
+#17 26.39 Progress: resolved 475, reused 0, downloaded 464, added 464
+#17 27.53 [WARN] Request took 10681ms: https://registry.npmjs.org/next
+#17 27.56 Progress: resolved 475, reused 0, downloaded 465, added 466
+#17 28.30 [WARN] Request took 10446ms: https://registry.npmjs.org/playwright
+#17 28.56 Progress: resolved 475, reused 0, downloaded 467, added 468
+#17 ...
+
+#18 [api build 5/6] RUN pnpm install --frozen-lockfile && pnpm build:api
+#18 19.85 [WARN] Tarball download average speed 34 KiB/s (size 37 KiB) is below 50 KiB/s: https://registry.npmjs.org/htmlparser2/-/htmlparser2-8.0.2.tgz (GET)
+#18 19.95 [WARN] Tarball download average speed 25 KiB/s (size 173 KiB) is below 50 KiB/s: https://registry.npmjs.org/@instantdb/react/-/react-1.0.67.tgz (GET)
+#18 20.06 Progress: resolved 475, reused 0, downloaded 456, added 456
+#18 20.15 [WARN] Tarball download average speed 20 KiB/s (size 34 KiB) is below 50 KiB/s: https://registry.npmjs.org/@floating-ui/dom/-/dom-1.8.0.tgz (GET)
+#18 21.06 Progress: resolved 475, reused 0, downloaded 458, added 459
+#18 22.06 Progress: resolved 475, reused 0, downloaded 461, added 462
+#18 24.83 [WARN] Tarball download average speed 46 KiB/s (size 369 KiB) is below 50 KiB/s: https://registry.npmjs.org/@react-email/tailwind/-/tailwind-2.0.7.tgz (GET)
+#18 24.84 Progress: resolved 475, reused 0, downloaded 462, added 462
+#18 25.84 Progress: resolved 475, reused 0, downloaded 466, added 466
+#18 26.84 Progress: resolved 475, reused 0, downloaded 467, added 468
+#18 27.32 [WARN] Request took 10515ms: https://registry.npmjs.org/playwright
+#18 27.61 [WARN] Request took 10856ms: https://registry.npmjs.org/playwright-core
+#18 28.46 Progress: resolved 475, reused 0, downloaded 468, added 468
+#18 29.46 Progress: resolved 475, reused 0, downloaded 468, added 469
+#18 ...
+
+#17 [ui build 5/5] RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build
+#17 30.18 Progress: resolved 475, reused 0, downloaded 468, added 468
+#17 31.18 Progress: resolved 475, reused 0, downloaded 469, added 470
+#17 32.18 Progress: resolved 475, reused 0, downloaded 470, added 471
+#17 33.18 Progress: resolved 475, reused 0, downloaded 471, added 471
+#17 34.18 Progress: resolved 475, reused 0, downloaded 472, added 473
+#17 36.28 [WARN] Request took 18431ms: https://registry.npmjs.org/playwright-core
+#17 38.67 [WARN] Request took 11739ms: https://registry.npmjs.org/typescript
+#17 38.68 ✓ Lockfile passes supply-chain policies (602 entries in 37.7s)
+#17 ...
+
+#18 [api build 5/6] RUN pnpm install --frozen-lockfile && pnpm build:api
+#18 30.46 Progress: resolved 475, reused 0, downloaded 469, added 470
+#18 31.80 [WARN] Request took 14261ms: https://registry.npmjs.org/react
+#18 32.74 [WARN] Request took 11035ms: https://registry.npmjs.org/react-is
+#18 33.17 ✓ Lockfile passes supply-chain policies (602 entries in 32.2s)
+#18 33.19 Progress: resolved 475, reused 0, downloaded 470, added 470
+#18 34.19 Progress: resolved 475, reused 0, downloaded 470, added 471
+#18 35.19 Progress: resolved 475, reused 0, downloaded 472, added 473
+#18 39.68 Progress: resolved 475, reused 0, downloaded 473, added 473
+#18 40.68 Progress: resolved 475, reused 0, downloaded 474, added 474
+#18 41.72 Progress: resolved 475, reused 0, downloaded 474, added 475
+#18 41.72 Progress: resolved 475, reused 0, downloaded 474, added 475, done
+#18 ...
+
+#17 [ui build 5/5] RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build
+#17 41.83 Progress: resolved 475, reused 0, downloaded 473, added 473
+#17 42.83 Progress: resolved 475, reused 0, downloaded 474, added 474
+#17 43.34 Progress: resolved 475, reused 0, downloaded 474, added 475, done
+#17 43.62 .../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+#17 43.62 .../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+#17 43.62 .../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+#17 43.77 .../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+#17 ...
+
+#18 [api build 5/6] RUN pnpm install --frozen-lockfile && pnpm build:api
+#18 42.05 .../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+#18 42.05 .../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+#18 42.15 .../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+#18 42.21 .../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+#18 42.21 .../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+#18 42.27 .../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+#18 42.49 
+#18 42.49 devDependencies:
+#18 42.49 + @axe-core/playwright 4.14.0
+#18 42.49 + @eslint/js 10.0.1
+#18 42.49 + @playwright/test 1.64.1
+#18 42.49 + @types/node 24.19.2
+#18 42.49 + esbuild 0.28.2
+#18 42.49 + eslint 10.13.0
+#18 42.49 + json-schema-to-typescript 16.0.0
+#18 42.49 + prettier 3.9.10
+#18 42.49 + typescript 6.0.3
+#18 42.49 + typescript-eslint 8.72.0
+#18 42.49 + vitest 5.0.5
+#18 42.49 
+#18 42.64 Done in 42.3s using pnpm v11.25.0
+#18 43.25 $ node scripts/build-api.mjs
+#18 DONE 43.9s
+
+#17 [ui build 5/5] RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build
+#17 43.80 .../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+#17 43.83 .../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+#17 44.05 
+#17 44.05 devDependencies:
+#17 44.05 + @axe-core/playwright 4.14.0
+#17 44.05 + @eslint/js 10.0.1
+#17 44.05 + @playwright/test 1.64.1
+#17 44.05 + @types/node 24.19.2
+#17 44.05 + esbuild 0.28.2
+#17 44.05 + eslint 10.13.0
+#17 44.05 + json-schema-to-typescript 16.0.0
+#17 44.05 + prettier 3.9.10
+#17 44.05 + typescript 6.0.3
+#17 44.05 + typescript-eslint 8.72.0
+#17 44.05 + vitest 5.0.5
+#17 44.05 
+#17 44.20 Done in 43.9s using pnpm v11.25.0
+#17 44.77 $ next build --webpack && node ../../scripts/prepare-web-standalone.mjs
+#17 45.18 ▲ Next.js 16.4.2 (webpack)
+#17 45.25 ✓ Running next.config.ts took 66ms
+#17 45.26 - Experiments (use with caution):
+#17 45.26   · extensionAlias
+#17 45.26 
+#17 45.28   Creating an optimized production build ...
+#17 52.63 Failed to compile.
+#17 52.63 
+#17 52.63 ./src/features/match/rendering/vfx.ts
+#17 52.63 Module not found: Can't resolve '../../../../../../assets/source/effect-families.json'
+#17 52.63 
+#17 52.63 https://nextjs.org/docs/messages/module-not-found
+#17 52.63 
+#17 52.63 Import trace for requested module:
+#17 52.63 ./src/features/match/rendering/scene.ts
+#17 52.63 ./src/features/match/BattleScene.tsx
+#17 52.63 ./src/features/match/MatchScreen.tsx
+#17 52.63 ./src/app/App.tsx
+#17 52.63 
+#17 52.63 
+#17 52.63 > Build failed because of webpack errors
+#17 52.66 /app/apps/web:
+#17 52.66 [ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] @oathfront/web@0.0.0 build: `next build --webpack && node ../../scripts/prepare-web-standalone.mjs`
+#17 52.66 Exit status 1
+#17 ERROR: process "/bin/sh -c pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build" did not complete successfully: exit code: 1
+
+#19 [api build 6/6] RUN pnpm --filter @oathfront/api deploy --prod --legacy /runtime
+#19 2.029 [WARN] Shared workspace lockfile detected but configuration forces legacy deploy implementation.
+#19 2.090 Packages are cloned from the content-addressable store to the virtual store.
+#19 2.090   Content-addressable store is at: /root/.local/share/pnpm/store/v11
+#19 2.090   Virtual store is at:             ../runtime/node_modules/.pnpm
+#19 2.092 ✓ Lockfile passes supply-chain policies (verified 12s ago)
+#19 2.125 Progress: resolved 1, reused 0, downloaded 0, added 0
+#19 3.128 Progress: resolved 27, reused 0, downloaded 0, added 0
+#19 4.129 Progress: resolved 32, reused 0, downloaded 0, added 0
+#19 5.129 Progress: resolved 151, reused 0, downloaded 0, added 0
+#19 6.128 Progress: resolved 165, reused 0, downloaded 0, added 0
+#19 7.165 Progress: resolved 169, reused 0, downloaded 0, added 0
+#19 8.200 Progress: resolved 173, reused 0, downloaded 0, added 0
+#19 9.201 Progress: resolved 247, reused 0, downloaded 0, added 0
+#19 CANCELED
+------
+ > [ui build 5/5] RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build:
+52.63 ./src/features/match/rendering/scene.ts
+52.63 ./src/features/match/BattleScene.tsx
+52.63 ./src/features/match/MatchScreen.tsx
+52.63 ./src/app/App.tsx
+52.63 
+52.63 
+52.63 > Build failed because of webpack errors
+52.66 /app/apps/web:
+52.66 [ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] @oathfront/web@0.0.0 build: `next build --webpack && node ../../scripts/prepare-web-standalone.mjs`
+52.66 Exit status 1
+------
+Dockerfile:7
+
+--------------------
+
+   5 |     ARG API_ORIGIN=http://api:3001
+
+   6 |     ENV API_ORIGIN=$API_ORIGIN NEXT_TELEMETRY_DISABLED=1
+
+   7 | >>> RUN pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build
+
+   8 |     FROM node:24.20.0-bookworm-slim AS runtime
+
+   9 |     ENV NODE_ENV=production PORT=3000 HOSTNAME=0.0.0.0 NEXT_INTERNAL_PORT=3006 NEXT_SERVER=apps/web/server.js NEXT_TELEMETRY_DISABLED=1
+
+--------------------
+
+target ui: failed to solve: process "/bin/sh -c pnpm install --frozen-lockfile && pnpm --filter @oathfront/web build" did not complete successfully: exit code: 1
+

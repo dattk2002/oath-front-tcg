@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 tests/e2e/block-recovery.spec.ts:187:1 › no legal target keeps an explicit enabled KEEP and Escape never sends it (5.9s)
+  ✓  2 tests/e2e/block-recovery.spec.ts:290:1 › snapshot history recovers 205 scanned rows across an empty private page without cosmetic replay (7.9s)
+  ✓  3 tests/e2e/input-parity.spec.ts:124:1 › playable trick label and unit-to-hero focus forecast follow the resolved legal action (3.0s)
+  ✓  4 tests/e2e/match-foundation.spec.ts:220:1 › exact versioned proxy preserves JSON and reserves local auth/unknown routes (2.6s)
+  ✓  5 tests/e2e/tutorial-settings.spec.ts:53:3 › TU12 visible GOOD USED, reload, EVIL, skip/replay and settings persistence (19.0s)
+  ✓  6 tests/e2e/tutorial-settings.spec.ts:53:3 › TU12 visible GOOD KEPT, reload, EVIL, skip/replay and settings persistence (23.6s)
+
+  6 passed (1.2m)

@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-10-20T23:49:38.594785+00:00",
+  "project": "round-darkness-78734677",
+  "branch": "br-odd-pine-a1pw77e9",
+  "database": "oathfront",
+  "operation": "Controller independent read-only Neon MCP SELECT hash, created_at FROM drizzle.__drizzle_migrations ORDER BY created_at",
+  "rows": [
+    {
+      "migration": "0001_core.sql",
+      "remoteHash": "b6085719708a7d4f8a97900a85c8bf035a109f200320721d93888278684a36d3",
+      "localHash": "b6085719708a7d4f8a97900a85c8bf035a109f200320721d93888278684a36d3",
+      "createdAt": "1792500179766",
+      "matches": true
+    },
+    {
+      "migration": "0002_bot_guard.sql",
+      "remoteHash": "01a7e2c471648be3ef56392cdd8da65f04211ecc474eea5a508bf81103376836",
+      "localHash": "01a7e2c471648be3ef56392cdd8da65f04211ecc474eea5a508bf81103376836",
+      "createdAt": "1792500179767",
+      "matches": true
+    },
+    {
+      "migration": "0003_tutorial_result.sql",
+      "remoteHash": "1a64af158c8d8b67fcdfca89c7324af6e6324e55bfa99615086232a522ccfe05",
+      "localHash": "1a64af158c8d8b67fcdfca89c7324af6e6324e55bfa99615086232a522ccfe05",
+      "createdAt": "1792524503102",
+      "matches": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+Vercel CLI 65.0.0 (Node.js 24.20.0)
+WARNING! Running dev server in local mode without a project setup:
+  - Environment variables will not be pulled from Vercel
+  - Project settings are defined by local configuration
+
+To link your project, run `vercel dev` without `-L` or `--local` or `vercel link`.
+Error: [unused_function] The pattern "server.ts" defined in `functions` doesn't match any Serverless Functions inside the `api` directory.
+Learn More: https://vercel.link/unmatched-function-pattern

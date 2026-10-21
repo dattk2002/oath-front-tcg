@@ -1,0 +1,31 @@
+{
+  "checkedDate": "2026-10-21",
+  "method": "controller web open official pages",
+  "sources": [
+    {
+      "url": "https://neon.com/pricing",
+      "free": {
+        "databaseStoragePerProjectGB": 1,
+        "computeCUHoursMonthlyPerProject": 100,
+        "maximumCU": 2,
+        "branchesIncludedPerProject": 10,
+        "egressPerProjectGB": 5,
+        "restoreWindow": "up to6hours or1GB of changes"
+      },
+      "limitation": "Published generic scale-to-zero5min is not confirmation of this project raw suspend_timeout_seconds0."
+    },
+    {
+      "url": "https://vercel.com/docs/plans/hobby",
+      "hobby": {
+        "use": "personal noncommercial",
+        "activeCPUHours": 4,
+        "provisionedMemoryGBHours": 360,
+        "functionInvocations": 1000000,
+        "cdnRequests": 1000000,
+        "fastTransferGB": 100,
+        "originTransferGB": 10
+      },
+      "limitation": "Normal limits and pause behavior apply. Two project design does not promise double quota or unlimited free service."
+    }
+  ]
+}
