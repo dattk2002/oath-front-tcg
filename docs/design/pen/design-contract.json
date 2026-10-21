@@ -454,9 +454,44 @@
         "home"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/app/App.tsx",
+          "repoComponent": "App",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/app/layout.tsx",
+          "repoComponent": "Layout",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "hero_roster",
@@ -481,9 +516,44 @@
         "hero"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/hero/HeroSelect.tsx",
+          "repoComponent": "HeroSelect",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/hero/HeroInspect.tsx",
+          "repoComponent": "HeroInspect",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "decks_collection",
@@ -516,9 +586,112 @@
         "panel"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/deck/DeckScreen.tsx",
+          "repoComponent": "DeckScreen",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/deck/DeckList.tsx",
+          "repoComponent": "DeckList",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/deck/DeckBuilder.tsx",
+          "repoComponent": "DeckBuilder",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/deck/CardCollection.tsx",
+          "repoComponent": "CardCollection",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/deck/CardCollection.tsx",
+          "repoComponent": "QuantityControls",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/deck/ManaCurve.tsx",
+          "repoComponent": "ManaCurve",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "setup",
@@ -543,9 +716,27 @@
         "panel"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/setup/PresetSetup.tsx",
+          "repoComponent": "PresetSetup",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "mulligan",
@@ -569,9 +760,44 @@
         "card_feedback"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/match/MatchScreen.tsx",
+          "repoComponent": "MatchScreen",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/Hand.tsx",
+          "repoComponent": "Hand",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "battle",
@@ -609,9 +835,129 @@
         "battle_events"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/match/MatchScreen.tsx",
+          "repoComponent": "MatchScreen",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/MatchShell.tsx",
+          "repoComponent": "MatchShell",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/Board.tsx",
+          "repoComponent": "Board",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/HeroPanel.tsx",
+          "repoComponent": "HeroPanel",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/Hand.tsx",
+          "repoComponent": "Hand",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/PhaseControl.tsx",
+          "repoComponent": "PhaseControl",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/BattleScene.tsx",
+          "repoComponent": "BattleScene",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "inspect_log",
@@ -639,9 +985,61 @@
         "panel"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/match/InspectPanel.tsx",
+          "repoComponent": "InspectPanel",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/BattleLog.tsx",
+          "repoComponent": "BattleLog",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/ArtImage.tsx",
+          "repoComponent": "ArtImage",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "block_response",
@@ -667,9 +1065,27 @@
         "battle_events"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/match/BlockResponse.tsx",
+          "repoComponent": "BlockResponse",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "pause_recovery",
@@ -698,9 +1114,61 @@
         "panel"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/match/PauseDialog.tsx",
+          "repoComponent": "PauseDialog",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/RecoveryControls.tsx",
+          "repoComponent": "RecoveryControls",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/auth/SessionRecovery.tsx",
+          "repoComponent": "SessionRecovery",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "results_history",
@@ -728,9 +1196,61 @@
         "battle_events"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/match/ResultDialog.tsx",
+          "repoComponent": "ResultDialog",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/match/ResultDialog.tsx",
+          "repoComponent": "ResultDetail",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/history/HistoryScreen.tsx",
+          "repoComponent": "HistoryScreen",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "settings_tutorial",
@@ -760,9 +1280,61 @@
         "panel"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/settings/SettingsDialog.tsx",
+          "repoComponent": "SettingsDialog",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/tutorial/TutorialOverlay.tsx",
+          "repoComponent": "TutorialOverlay",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/tutorial/tutorial-controller.tsx",
+          "repoComponent": "TutorialEntry",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "logicalId": "auth",
@@ -790,9 +1362,61 @@
         "panel"
       ],
       "penNodeId": null,
-      "penComponentId": null,
       "penStateNodes": null,
-      "penResponsiveNodes": null
+      "penResponsiveNodes": null,
+      "componentMappings": [
+        {
+          "repoPath": "apps/web/src/features/auth/AuthPanel.tsx",
+          "repoComponent": "AuthPanel",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/auth/MergeConflictDialog.tsx",
+          "repoComponent": "MergeConflictDialog",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "repoPath": "apps/web/src/features/auth/SessionRecovery.tsx",
+          "repoComponent": "SessionRecovery",
+          "originBindings": [
+            {
+              "logicalVariant": "default",
+              "penOriginId": null,
+              "instances": [
+                {
+                  "logicalUsage": "default",
+                  "penInstanceId": null,
+                  "penOverrides": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "motionMappings": [
