@@ -1,0 +1,62 @@
+{
+  "renderer": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "readinessMs": 3018,
+    "lazyResources": [
+      {
+        "path": "/_next/static/chunks/webpack.js",
+        "durationMs": 14
+      },
+      {
+        "path": "/_next/static/chunks/main-app.js",
+        "durationMs": 444
+      },
+      {
+        "path": "/_next/static/chunks/app/not-found.js",
+        "durationMs": 17
+      },
+      {
+        "path": "/_next/static/chunks/app-pages-internals.js",
+        "durationMs": 18
+      },
+      {
+        "path": "/_next/static/chunks/app/matches/%5Bid%5D/page.js",
+        "durationMs": 193
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_MatchScreen_tsx.js",
+        "durationMs": 23
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_rendering_scene_ts.js",
+        "durationMs": 222
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_motion_presentation-controller_ts.js",
+        "durationMs": 22
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_motion_event-timeline_ts.js",
+        "durationMs": 22
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_node_modules_pnpm_pixi_js_8_22_0_node_modules_pixi_js_lib_unsafe-eval_init_mjs.js",
+        "durationMs": 148
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_node_modules_pnpm_pixi_js_8_22_0_node_modules_pixi_js_lib_environment-brow-aabb21.js",
+        "durationMs": 3
+      }
+    ]
+  },
+  "durationsMsIncludingTransportAndAssertions": [
+    897,
+    684,
+    680,
+    712,
+    695
+  ],
+  "sampledFrames": 123,
+  "commands": 5,
+  "errors": []
+}
