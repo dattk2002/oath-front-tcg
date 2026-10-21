@@ -2,7 +2,7 @@
 
 Cập nhật ngày 2026-10-21. Đây là tiến độ implementation; các báo cáo trong giai đoạn thiết kế không thay thế kiểm thử sản phẩm.
 
-Current English/Rivals presentation is documented in [rivals-redesign.md](rivals-redesign.md), its [state/QA contract](rivals-redesign-qa.md) and the [Task 1–5 evidence archive](evidence/rivals-redesign/README.md). The integrated production browser gate first recorded 82 passed / 4 failed / 2 skipped; the four affected cases passed on a covering production rebuild after three outdated test expectations/routes and one compact tutorial focus-clearance fix. Task 6 Pen handoff, whole-change review, push and automatic CI remain with the controller. The M5 and release acceptance holds below are unchanged.
+Current English/Rivals presentation is documented in [rivals-redesign.md](rivals-redesign.md), its [state/QA contract](rivals-redesign-qa.md) and the [Task 1–6 evidence archive](evidence/rivals-redesign/README.md). The integrated production browser gate first recorded 82 passed / 4 failed / 2 skipped; the four affected cases passed on a covering production rebuild after three outdated test expectations/routes and one compact tutorial focus-clearance fix. Task 6 prompt/pending contract and the whole-change/final scoped reviews are complete. The final compact-hand correction passed six focused production cases; see the [delivery record](evidence/rivals-redesign/delivery.md). Actual Pen design remains pending, and push/automatic CI are identified by their exact GitHub commit rather than inferred from local checks. The M5 and release acceptance holds below are unchanged.
 
 | Milestone | Task | Trạng thái | Kết quả |
 |---|---|---|---|

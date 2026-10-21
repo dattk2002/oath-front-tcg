@@ -6,7 +6,7 @@ This 2026-10-21 archive follows the current [implementation](../../rivals-redesi
 
 - [Task reports and reviews](reports/) cover English ID presentation, six heroes/theme, all sixty original card illustrations, GSAP/Pixi choreography, and integrated verification. Task 1 includes its scoped rereview. [Task 5 report](reports/task-5-report.md) has exact gate commands, original failures and covering runs. [Task 5 review](reports/task-5-review.md) is retained verbatim; its minor protected-port naming correction is applied in the current implementation document.
 - [Every current SDD `Ruling:` line](rulings.md) is copied verbatim with its stated cost. The first decision to retain old card paintings was **superseded** when the user approved new art for all 60 cards; the line remains for provenance.
-- [Task 6 report](reports/task-6-report.md) records the [ready-to-paste Pen prompt](../../../design/pen/OATHFRONT-PEN-PROMPT.md) and [pending Pen ↔ Codex contract](../../../design/pen/DESIGN-CONTRACT.md). No actual design file or resolved Pen node mappings exist yet. The controller handles whole-change review and the final authorized push/automatic CI. This archive is not production approval.
+- [Task 6 report](reports/task-6-report.md) records the [ready-to-paste Pen prompt](../../../design/pen/OATHFRONT-PEN-PROMPT.md) and [pending Pen ↔ Codex contract](../../../design/pen/DESIGN-CONTRACT.md). No actual design file or resolved Pen node mappings exist yet. The [Task 6 review](reports/task-6-review.md) and [scoped rereview](reports/task-6-rereview.md) retain the mapping findings and their resolution. [Delivery evidence](delivery.md) identifies the final reviewed source and verification scope. This archive is not production approval.
 
 ## Selected visual and browser evidence
 
@@ -22,7 +22,7 @@ The curated archive remains bounded; the final fix adds about 1.2 MiB of capture
 
 ## Final review fix wave
 
-The [final fix report](reports/final-fix-report.md) records the compact stat regression (RED), the related desktop trick-cue failure, five development passes and six focused passes on the new production build. [New production captures and text-bound measurements](final-fix/task16/) keep this evidence separate from the original run; [RED geometry](final-fix/red/) and bounded command logs preserve both failures. The actual 1024×640 and 1440×900 production captures were visually inspected. The Pen baseline is reconciled to the committed fix while remaining `awaiting_design`; controller rereview, final push and CI results are separate later steps.
+The [final fix report](reports/final-fix-report.md) records the compact stat regression (RED), the related desktop trick-cue failure, five development passes and six focused passes on the new production build. [New production captures and text-bound measurements](final-fix/task16/) keep this evidence separate from the original run; [RED geometry](final-fix/red/) and bounded command logs preserve both failures. The actual 1024×640 and 1440×900 production captures were visually inspected. The Pen baseline is reconciled to the committed fix while remaining `awaiting_design`; the [whole-change review](reports/final-review.md) and [final scoped rereview](reports/final-rereview.md) now record the findings and their resolution. The authorized push and its automatic CI are tracked separately by exact commit on GitHub.
 
 ## Gate and cost
 

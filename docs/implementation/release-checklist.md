@@ -2,7 +2,7 @@
 
 This is a technical release-candidate preparation record, **not approval to deploy or a claim of production readiness**. Task18 and whole-branch reviews approved the technical scope; the final parser fix passed scoped re-review. CI passing does not close the following acceptance items.
 
-The 2026-10-21 [English/Rivals redesign](rivals-redesign.md) has its own [integrated browser and review evidence](evidence/rivals-redesign/README.md): first production suite 82 passed / 4 failed / 2 skipped, then all four affected cases passed on the covering artifact. This presentation verification does not replace the open release gates below. Task 6 Pen handoff, final whole-change review and automatic CI after the authorized push remain pending.
+The 2026-10-21 [English/Rivals redesign](rivals-redesign.md) has its own [integrated browser and review evidence](evidence/rivals-redesign/README.md): first production suite 82 passed / 4 failed / 2 skipped, then all four affected cases passed on the covering artifact. This presentation verification does not replace the open release gates below. Task 6 prompt/pending contract and final whole-change/scoped reviews are complete; the final hand-readability fix passed six focused production cases. The [delivery record](evidence/rivals-redesign/delivery.md) separates reviewed source, local evidence, actual pending Pen design and remote CI. A GitHub result must be checked against its exact pushed commit.
 
 | Gate | Current disposition |
 | --- | --- |
