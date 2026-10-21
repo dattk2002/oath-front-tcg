@@ -1843,7 +1843,7 @@
       "Campaign tablet/reflow and omitted interaction/error states",
       "Static mock editorial detail content for listed entries"
     ],
-    "implementationStatus": "M1_M2_M3_M4_complete_M5_pending",
+    "implementationStatus": "M1_to_M5_complete_M6_pending",
     "deviations": [
       {
         "id": "public-route-isolation",
@@ -1864,7 +1864,15 @@
       {
         "id": "public-api-error",
         "reason": "Game/account API errors show an actionable banner; public content remains browsable."
+      },
+      {
+        "id": "inherited-game-layout",
+        "reason": "Apply exact Pen logo, Barlow and paper/slate/acid tokens to existing game structure; keep faction colors, card illustrations, battle dimensions and timing. No absent Pen game frame IDs are invented."
       }
+    ],
+    "themeLayers": [
+      "apps/web/src/styles/campaign.css",
+      "apps/web/src/styles/game-theme.css"
     ]
   }
 }

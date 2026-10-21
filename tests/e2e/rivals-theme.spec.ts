@@ -4,8 +4,8 @@ import { randomUUID, randomBytes } from "node:crypto";
 import { testOrigin } from "./test-origin.js";
 import { cardFixture } from "./recovery-fixtures.js";
 const evidence =
-  ".superpowers/sdd/2026-10-21-oathfront-rivals-redesign/task-2-evidence";
-test("Rivals presentation keeps hero selection, deck, settings and battle readable at supported sizes", async ({
+  ".superpowers/sdd/2026-10-21-pen-design-implementation/browser/game";
+test("Pen presentation keeps hero selection, deck, settings and battle readable at supported sizes", async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -51,10 +51,10 @@ test("Rivals presentation keeps hero selection, deck, settings and battle readab
     await expect
       .poll(() =>
         page
-          .locator(".home-hero img")
+          .locator(".campaign-home-art img")
           .evaluateAll(
             (imgs) =>
-              imgs.length === 2 &&
+              imgs.length === 1 &&
               imgs.every((im) => (im as HTMLImageElement).naturalWidth > 0),
           ),
       )

@@ -5,6 +5,7 @@ test("guest can reach Google login and history without making guest play require
   page,
 }) => {
   await page.goto("/");
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Sign in with Google", exact: true }),
   ).toBeVisible();

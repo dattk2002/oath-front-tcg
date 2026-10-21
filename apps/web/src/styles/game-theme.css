@@ -1,0 +1,83 @@
+/* Approved inherited game skin. Arena dimensions remain owned by match.css. */
+body {
+  --bg: var(--campaign-ink);
+  --surface: var(--campaign-slate);
+  --raised: color-mix(
+    in srgb,
+    var(--campaign-slate) 85%,
+    var(--campaign-lilac)
+  );
+  --text: var(--campaign-paper);
+  --muted: var(--campaign-muted);
+  --primary: var(--campaign-acid);
+  --border: var(--campaign-border);
+  --paper: var(--campaign-paper);
+  --ink: var(--campaign-ink);
+  font-family: var(--campaign-display);
+  color: var(--text);
+}
+.brand {
+  min-height: 44px;
+}
+.brand img {
+  display: block;
+  width: 144px;
+  height: 52px;
+}
+.site-header nav a {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.auth-panel,
+.auth-panel button,
+.screen-heading > p,
+.hero-stage-copy > p,
+.collection-card .card-rules {
+  font-size: 16px;
+}
+.hero-detail,
+.collection-card,
+.hand-card {
+  --muted: var(--campaign-slate);
+}
+.hero-powers,
+.hero-detail .art-fallback {
+  --muted: var(--campaign-muted);
+  --primary: var(--campaign-acid);
+  --text: var(--campaign-paper);
+}
+.hero-stage-main::before,
+.evil .hero-stage-main::before {
+  background: var(--campaign-lilac);
+  opacity: 1;
+}
+.power-list button span:not(.power-art) {
+  font-size: 14px;
+}
+.hero-target strong span {
+  font-family: var(--campaign-display);
+}
+.board {
+  background:
+    linear-gradient(
+      color-mix(in srgb, var(--campaign-ink) 34%, transparent),
+      color-mix(in srgb, var(--campaign-ink) 67%, transparent)
+    ),
+    url("/assets/rivals-v2/board/scene-wide.webp") center / cover;
+}
+.match-dialog {
+  box-shadow: 12px 12px 0
+    color-mix(in srgb, var(--campaign-ink) 80%, transparent);
+}
+.collection-card .card-stat-plate,
+.hero-detail .inspect-copy,
+.hand-card {
+  overflow-wrap: anywhere;
+}
+@media (min-width: 1024px) and (min-height: 640px) {
+  .in-match .brand img {
+    width: 110px;
+    height: 40px;
+  }
+}

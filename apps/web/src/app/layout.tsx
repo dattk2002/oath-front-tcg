@@ -8,6 +8,7 @@ import "../styles/deck.css";
 import "../styles/assets.css";
 import "../styles/rivals.css";
 import "../styles/campaign.css";
+import "../styles/game-theme.css";
 export const metadata: Metadata = {
   title: "OathFront · The Fivefold",
   description:

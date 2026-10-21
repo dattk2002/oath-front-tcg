@@ -6,18 +6,13 @@ export const routes = {
 };
 export function Brand() {
   return (
-    <Link className="brand" href={routes.home}>
-      <span className="brand-mark" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
-      </span>
-      <span>
-        OATHFRONT <small>THE FIVEFOLD</small>
-        <span className="sr-only"> · Home</span>
-      </span>
+    <Link className="brand" href={routes.home} aria-label="OathFront · Home">
+      <img
+        src="/assets/pen-v1/logo-light.svg"
+        alt="OathFront"
+        width="144"
+        height="52"
+      />
     </Link>
   );
 }
