@@ -1,4 +1,18 @@
-# Motion và renderer — Task 10
+# Fivefold motion — current presentation (2026-10-21)
+
+The Rivals redesign adds an owned GSAP DOM motion hook for the home assembly (480ms), hero art/name (300ms, powers staggered by 25ms), panels/dialogs (240ms), and phase acknowledgement (180ms). Selection and controls remain immediate. Hero reveals wait for image decode; a changed selection, motion preference, hidden document or unmount cancels the old image listeners and timeline. Hidden home views settle and remove parallax listeners; fine-pointer parallax uses fixed reusable tweens with at most 5px foreground movement. OS and game reduction both restore static content.
+
+Native dialog open, focus, Escape, close and focus restoration retain their existing semantics. Dismissal immediately kills/reverts the entrance; there is no delayed close or duplicate exit dialog. Hand feedback keeps one reversible GSAP context/tween per live card, combines focus and hover, and resets on OS reduction or document hide. The existing game-setting scene teardown also reverts feedback.
+
+Pixi renders seven distinct bounded silhouettes: directional kinetic wedge/speed lines, faceted shield, curved growth leaves/seed, triangular prism shards/rays, tapered ember fragments, broken ink seal/tethers, and paired veil crescents. `effectPalette` mirrors the named `--fx-*` presentation tokens. Immutable content-family mappings are unchanged. Draw/deploy use angular card traces, move uses an afterimage, attack uses local anticipation, damage adds a local burst and outlined number, death adds four bounded fragments, and signature powers frame the hero portrait. Effects use the actual portrait/scene-art/slot anchors, with one cached geometry resolution per selector per draw. Numbers are bounded per active packet and disposed on effect clear or scene teardown. No idle effect ticker or particle loop was added; low-quality renderer allocation remains in force.
+
+`createEventTimeline`, `eventDuration`, `BattleScene.present`, controller cursors and transport boundaries are preserved. Cue progress is linear so travel arrival, local impact and numbers share the existing damage commit at 40% of the event. EVIL anticipation still starts first; GOOD starts 80ms later. All event duration budgets remain unchanged, including the 550ms signature. Reduced effects have a static footprint and opacity acknowledgement, without travel, parallax, zoom or jitter. Pause/hidden suspension, reconnect/fast-forward and >2s backlog handling remain owned by the existing controller.
+
+Focused evidence covers the 40% beat, simultaneous HP/order, normal/reduced state equivalence, pause/dispose/backlog/transport isolation, renderer and number resource cleanup, seven reduced geometry bounds, real Chromium/WebGL effects, rapid hero selection, delayed first-load art, native dismissal, hover/focus reduction and synthetic hidden-document interruption. The intermediate signature and damage screenshots are captured through the real visibility-pause path, not by extending event clocks. Full production build/end-to-end and physical/human acceptance remain separate gates; this work makes no physical frame-time claim.
+
+---
+
+# Historical motion implementation — Task 10
 
 Task 10 tiếp tục từ checkpoint WIP `683a533`, với base review `00fad0e` và commit triển khai `1fc53ca`. Gate production và [review độc lập](evidence/task10/review.md) đã qua. Milestone M3 còn Task 11.
 

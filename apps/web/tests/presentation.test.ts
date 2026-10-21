@@ -320,9 +320,14 @@ vi.mock("pixi.js", () => {
       this.release();
     }
   }
-  return { Application, Graphics, Rectangle: class {} };
+  class Text {
+    destroy = tracked();
+    anchor = { set() {} };
+    position = { set() {} };
+  }
+  return { Application, Graphics, Text, Rectangle: class {} };
 });
-function resourceEnvironment() {
+function resourceEnvironment(withHeroes = false) {
   resources.created.clear();
   resources.disposed.clear();
   resources.gate = null;
@@ -343,7 +348,17 @@ function resourceEnvironment() {
   vi.stubGlobal("MutationObserver", Observer);
   vi.stubGlobal("window", { devicePixelRatio: 1 });
   const root = {
-    querySelector: () => null,
+    querySelector: () =>
+      withHeroes
+        ? {
+            getBoundingClientRect: () => ({
+              x: 40,
+              y: 40,
+              width: 80,
+              height: 80,
+            }),
+          }
+        : null,
     getBoundingClientRect: () => ({ width: 800, height: 600 }),
   };
   return {
@@ -531,3 +546,34 @@ it.each(["COMPLETED", "ABANDONED"] as const)(
     expect(resources.dims.at(-1)).toBe(0.22);
   },
 );
+
+it("damage labels are bounded per packet and released on fast-forward cleanup and disposal", async () => {
+  const canvas = resourceEnvironment(true);
+  const { createBattleScene } =
+    await import("../src/features/match/rendering/scene.js");
+  const scene = createBattleScene(canvas, { kind: "PLACEHOLDER" });
+  scene.applyView(response().view);
+  await scene.ready;
+  const before = resources.created.size;
+  scene.present(batch, {
+    progress: 0.5,
+    alpha: 1,
+    evil: 0,
+    good: 0,
+    reduced: false,
+  });
+  scene.present(batch, {
+    progress: 0.6,
+    alpha: 1,
+    evil: 0,
+    good: 0,
+    reduced: false,
+  });
+  expect(resources.created.size - before).toBe(2);
+  const disposed = resources.disposed.size;
+  scene.clearEffects();
+  expect(resources.disposed.size - disposed).toBe(2);
+  scene.dispose();
+  expect(resources.disposed.size).toBe(resources.created.size);
+  vi.unstubAllGlobals();
+});

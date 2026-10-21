@@ -42,3 +42,27 @@ it("maps public definition cues into seven reusable distinct effect families", (
     ),
   ).toBe("ember");
 });
+
+it("reduced effects retain a fixed local footprint throughout the cue", async () => {
+  const { Graphics } = await import("pixi.js");
+  const { drawEffect } = await import("../src/features/match/rendering/vfx");
+  for (const family of Object.keys(
+    effectPalette,
+  ) as (keyof typeof effectPalette)[]) {
+    const graphic = new Graphics();
+    drawEffect(graphic, family, 100, 100, 0, 1, true, 44);
+    const start = graphic.getBounds();
+    graphic.clear();
+    drawEffect(graphic, family, 100, 100, 0.95, 1, true, 44);
+    const end = graphic.getBounds();
+    expect([end.x, end.y, end.width, end.height]).toEqual([
+      start.x,
+      start.y,
+      start.width,
+      start.height,
+    ]);
+    expect(end.width).toBeLessThan(112);
+    expect(end.height).toBeLessThan(112);
+    graphic.destroy();
+  }
+});

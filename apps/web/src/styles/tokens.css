@@ -16,6 +16,13 @@
   --ink: #101218;
   --good-ink: #165f62;
   --evil-ink: #8b392b;
+  --fx-kinetic: #ffe34d;
+  --fx-shield: #80e3e0;
+  --fx-growth: #b6ee92;
+  --fx-prism: #b2d9ff;
+  --fx-ember: #ff957b;
+  --fx-ink: #d2b6ff;
+  --fx-veil: #f0efe8;
   --display: "Barlow Condensed", "Noto Sans", sans-serif;
   font-family: "Noto Sans", sans-serif;
   font-size: 16px;

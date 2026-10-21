@@ -215,16 +215,99 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
     },
   );
   const renderer = await enter(page, initial.view.matchId);
+  const handCard = page.locator(".hand-card").first();
+  await handCard.focus();
+  await expect
+    .poll(() =>
+      handCard.evaluate(
+        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
+      ),
+    )
+    .toBeLessThan(-5);
+  await page.evaluate(() => {
+    Object.defineProperty(document, "hidden", {
+      configurable: true,
+      value: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect
+    .poll(() =>
+      handCard.evaluate(
+        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
+      ),
+    )
+    .toBe(0);
+  await page.evaluate(() => {
+    Object.defineProperty(document, "hidden", {
+      configurable: true,
+      value: false,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await page
+    .getByRole("heading", { name: "OathFront match" })
+    .evaluate((el) => (el as HTMLElement).focus());
+  await handCard.dispatchEvent("focusin");
+  await expect
+    .poll(() =>
+      handCard.evaluate(
+        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
+      ),
+    )
+    .toBeLessThan(-5);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect
+    .poll(() =>
+      handCard.evaluate(
+        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
+      ),
+    )
+    .toBe(0);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
   const before = await page
     .locator("canvas")
     .screenshot({ path: `${evidence}/canvas-before.png` });
+  // Freeze a real intermediate frame through the existing visibility pause path.
+  await page.evaluate(() => {
+    const layer = document.querySelector("[data-presentation]")!;
+    const observer = new MutationObserver(() => {
+      if (layer.getAttribute("data-presentation") !== "playing") return;
+      observer.disconnect();
+      let frames = 0;
+      function hold() {
+        if (++frames < 6) {
+          requestAnimationFrame(hold);
+          return;
+        }
+        Object.defineProperty(document, "hidden", {
+          configurable: true,
+          value: true,
+        });
+        document.dispatchEvent(new Event("visibilitychange"));
+      }
+      requestAnimationFrame(hold);
+    });
+    observer.observe(layer, {
+      attributes: true,
+      attributeFilter: ["data-presentation"],
+    });
+  });
   await requestPass(page);
+  await expect.poll(() => page.evaluate(() => document.hidden)).toBe(true);
   await expect(page.locator('[data-presentation="playing"]')).toBeVisible();
   const during = await page
     .locator("canvas")
     .screenshot({ path: `${evidence}/canvas-signature.png` });
   expect(during.equals(before)).toBe(false);
   await page.screenshot({ path: `${evidence}/signature.png`, fullPage: true });
+  await page.evaluate(() => {
+    Object.defineProperty(document, "hidden", {
+      configurable: true,
+      value: false,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
   await page.getByRole("link", { name: /OathFront/i }).click();
   await enter(page, initial.view.matchId);
   await requestPass(page);
@@ -405,7 +488,7 @@ for (const reduced of [false, true])
     await page.setViewportSize({ width: 1440, height: 900 });
     const durations: number[] = [];
     // Read the real semantic text each animation frame, so a one-sided HP commit is observable.
-    await page.evaluate(() => {
+    await page.evaluate((holdImpact) => {
       const samples: string[][] = [];
       const win = window as Window & {
         motionSamples?: string[][];
@@ -422,10 +505,21 @@ for (const reduced of [false, true])
             (el) => el.textContent ?? "",
           ),
         );
+        if (
+          holdImpact &&
+          samples.at(-1)?.some((value) => value.includes("4 HP"))
+        ) {
+          holdImpact = false;
+          Object.defineProperty(document, "hidden", {
+            configurable: true,
+            value: true,
+          });
+          document.dispatchEvent(new Event("visibilitychange"));
+        }
         if (running) requestAnimationFrame(sample);
       }
       sample();
-    });
+    }, !reduced);
     for (let lane = 1; lane <= 5; lane++) {
       const start = Date.now();
       await requestPass(page);
@@ -435,6 +529,22 @@ for (const reduced of [false, true])
       await expect(
         page.locator(`.lane:nth-child(${lane}) .unit-stats`).last(),
       ).toContainText("4 HP");
+      if (lane === 1 && !reduced) {
+        await expect
+          .poll(() => page.evaluate(() => document.hidden))
+          .toBe(true);
+        await page.screenshot({
+          path: `${evidence}/combat-impact-intermediate.png`,
+          fullPage: true,
+        });
+        await page.evaluate(() => {
+          Object.defineProperty(document, "hidden", {
+            configurable: true,
+            value: false,
+          });
+          document.dispatchEvent(new Event("visibilitychange"));
+        });
+      }
       await expect(page.locator('[data-presentation="idle"]')).toBeVisible();
       durations.push(Date.now() - start);
     }

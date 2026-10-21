@@ -1,4 +1,5 @@
 import { gsap } from "gsap";
+import { observeReducedMotion } from "./reduced-motion";
 import type { VisibleEvent } from "@oathfront/contracts";
 import type { BattleScene, Cue } from "../rendering/scene";
 export interface EventContext {
@@ -67,14 +68,18 @@ export function createEventTimeline(
 ) {
   const duration = eventDuration(event, reduced, context);
   const cue: Cue = { progress: 0, alpha: 1, evil: 0, good: 0, reduced };
-  const timeline = gsap.timeline({ paused: true, onComplete: done });
+  const timeline = gsap.timeline({
+    paused: true,
+    onComplete: done,
+    onUpdate: () => scene.present(event, cue),
+  });
   timeline.to(
     cue,
     {
       progress: 1,
       duration,
-      ease: "power1.inOut",
-      onUpdate: () => scene.present(event, cue),
+      // Linear progress shares the damage commit clock; individual geometry eases locally.
+      ease: "none",
     },
     0,
   );
@@ -98,7 +103,12 @@ export function bindCardFeedback(root: HTMLElement, reduced: () => boolean) {
   // in GSAP's parent context until scene teardown.
   const cards = new Map<
     HTMLElement,
-    { context: gsap.Context; tween: gsap.core.Tween }
+    {
+      context: gsap.Context;
+      tween: gsap.core.Tween;
+      hovered: boolean;
+      focused: boolean;
+    }
   >();
   function animate(event: Event, lifted: boolean) {
     if (!(event.target instanceof Element)) return;
@@ -115,19 +125,32 @@ export function bindCardFeedback(root: HTMLElement, reduced: () => boolean) {
       let tween!: gsap.core.Tween;
       const context = gsap.context(() => {
         tween = gsap.to(card, {
-          y: -6,
+          y: -7,
+          rotation: -1.2,
           duration: 0.12,
           ease: "power2.out",
           paused: true,
         });
       }, root);
-      owner = { context, tween };
+      owner = { context, tween, hovered: false, focused: false };
       cards.set(card, owner);
     }
-    if (reduced()) owner.tween.pause(0);
-    else if (lifted) owner.tween.play();
+    if (event.type.startsWith("focus")) owner.focused = lifted;
+    else owner.hovered = lifted;
+    if (reduced() || document.hidden) owner.tween.pause(0);
+    else if (owner.hovered || owner.focused) owner.tween.play();
     else owner.tween.reverse();
   }
+  const reset = () => {
+    cards.forEach((owner) => {
+      owner.tween.pause(0);
+    });
+  };
+  const os = observeReducedMotion(reset);
+  const hidden = () => {
+    if (document.hidden) reset();
+  };
+  document.addEventListener("visibilitychange", hidden);
   const enter = (event: Event) => animate(event, true);
   const leave = (event: Event) => animate(event, false);
   const observer = new MutationObserver(() => {
@@ -144,6 +167,8 @@ export function bindCardFeedback(root: HTMLElement, reduced: () => boolean) {
   root.addEventListener("focusout", leave);
   return () => {
     observer.disconnect();
+    os.dispose();
+    document.removeEventListener("visibilitychange", hidden);
     root.removeEventListener("pointerover", enter);
     root.removeEventListener("focusin", enter);
     root.removeEventListener("pointerout", leave);

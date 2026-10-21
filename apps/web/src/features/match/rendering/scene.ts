@@ -1,4 +1,4 @@
-import type { Application, Graphics, Sprite } from "pixi.js";
+import type { Application, Graphics, Sprite, Text } from "pixi.js";
 import type { EntityRef, PlayerView, VisibleEvent } from "@oathfront/contracts";
 import {
   createPlaceholderTextures,
@@ -6,7 +6,7 @@ import {
   type BattleAssets,
 } from "./assets";
 import { createUnitSprite } from "./sprites";
-import { drawEffect, effectFamily } from "./vfx";
+import { drawCardTrace, drawEffect, effectFamily, effectPalette } from "./vfx";
 export interface Cue {
   progress: number;
   alpha: number;
@@ -117,32 +117,52 @@ export function createBattleScene(
   let view: PlayerView | null = null,
     disposed = false,
     paused = false;
+  let makeNumber: ((value: string) => Text) | undefined;
+  const numbers = new Map<string, Text>();
+  const clearNumbers = () => {
+    numbers.forEach((label) => label.destroy());
+    numbers.clear();
+  };
   let current: { event: VisibleEvent; cue: Cue } | null = null;
   const listeners = new Set<(view: PlayerView) => void>(),
     sprites = new Map<string, Sprite>();
   let resize: ResizeObserver | undefined,
     mutation: MutationObserver | undefined;
+  let rootBounds: DOMRect;
+  const boxes = new Map<
+    string,
+    { x: number; y: number; w: number; h: number } | null
+  >();
   const box = (selector: string) => {
+    if (boxes.has(selector)) return boxes.get(selector)!;
     const el = root.querySelector<HTMLElement>(selector);
-    if (!el) return null;
+    if (!el) {
+      boxes.set(selector, null);
+      return null;
+    }
     const r = el.getBoundingClientRect(),
-      base = root.getBoundingClientRect();
-    return {
+      base = rootBounds;
+    const result = {
       x: r.x - base.x + r.width / 2,
       y: r.y - base.y + r.height / 2,
       w: r.width,
       h: r.height,
     };
+    boxes.set(selector, result);
+    return result;
   };
   function entity(ref: EntityRef | null) {
     if (!ref) return null;
     return ref.kind === "HERO"
-      ? box(`[data-hero-side="${ref.side}"] .hero-target`)
+      ? (box(`[data-hero-side="${ref.side}"] .hero-hud-art`) ??
+          box(`[data-hero-side="${ref.side}"] .hero-target`))
       : box(`[data-unit-id="${CSS.escape(ref.instanceId)}"] .scene-art`);
   }
   function draw() {
     if (!app || !fx || !terrain || disposed) return;
     const bounds = root.getBoundingClientRect();
+    rootBounds = bounds;
+    boxes.clear();
     if (
       bounds.width > 0 &&
       bounds.height > 0 &&
@@ -182,42 +202,96 @@ export function createBattleScene(
     if (current) {
       const { event, cue } = current;
       const strength = cue.alpha;
-      const ring = (b: ReturnType<typeof box>) => {
+      const family = effectFamily(event, view);
+      const color = effectPalette[family];
+      const ring = (b: ReturnType<typeof box>, progress = cue.progress) => {
         if (b)
           drawEffect(
             fx!,
-            effectFamily(event, view),
+            family,
             b.x,
             b.y,
-            cue.progress,
+            progress,
             strength,
             cue.reduced,
+            Math.min(b.w, b.h) * 0.55,
           );
       };
-      const link = (source: EntityRef | null, target: EntityRef) => {
+      const link = (
+        source: EntityRef | null,
+        target: EntityRef,
+        damage = false,
+      ) => {
         const from = entity(source),
           to = entity(target);
-        if (from && to && !cue.reduced)
+        const p = damage ? Math.min(1, cue.progress / 0.4) : cue.progress;
+        if (from && to && !cue.reduced) {
+          const x = from.x + (to.x - from.x) * p,
+            y = from.y + (to.y - from.y) * p;
+          const tail = Math.max(0, p - 0.28);
           fx!
-            .moveTo(from.x, from.y)
-            .lineTo(
-              from.x + (to.x - from.x) * cue.progress,
-              from.y + (to.y - from.y) * cue.progress,
+            .moveTo(
+              from.x + (to.x - from.x) * tail,
+              from.y + (to.y - from.y) * tail,
             )
-            .stroke({ color: 0xf4cb76, width: 2, alpha: strength });
-        ring(to);
+            .lineTo(x, y)
+            .stroke({ color, width: 5, alpha: strength });
+          fx!
+            .moveTo(
+              from.x + (to.x - from.x) * tail + 5,
+              from.y + (to.y - from.y) * tail,
+            )
+            .lineTo(x + 5, y)
+            .stroke({
+              color: effectPalette.veil,
+              width: 1,
+              alpha: strength * 0.7,
+            });
+        }
+        if (!damage || cue.progress >= 0.4)
+          ring(to, damage ? (cue.progress - 0.4) / 0.6 : cue.progress);
       };
       if (event.kind === "AttackDeclared")
         for (const attack of event.payload.attacks) {
           const sprite = sprites.get(attack.sourceUnitId);
           const b = entity({ kind: "UNIT", instanceId: attack.sourceUnitId });
           const wind = attack.side === "EVIL" ? cue.evil : cue.good;
-          if (sprite && b && !cue.reduced)
+          if (sprite && b && !cue.reduced) {
             sprite.y += (view?.self.side === attack.side ? -1 : 1) * wind * 18;
+            if (wind > 0)
+              drawEffect(
+                fx,
+                "kinetic",
+                b.x,
+                b.y,
+                wind,
+                strength * wind,
+                false,
+                26,
+              );
+          }
         }
       else if (event.kind === "DamageBatchResolved")
-        for (const packet of event.payload.packets)
-          link(packet.source, packet.target);
+        for (const [index, packet] of event.payload.packets.entries()) {
+          link(packet.source, packet.target, true);
+          const to = entity(packet.target);
+          if (to && cue.progress >= 0.4 && makeNumber) {
+            const key = `${event.sequence}:${index}`;
+            let label = numbers.get(key);
+            if (!label) {
+              label = makeNumber(
+                packet.blocked ? "BLOCK" : `−${packet.finalDamage}`,
+              );
+              numbers.set(key, label);
+              app.stage.addChild(label);
+            }
+            label.position.set(
+              to.x,
+              to.y - (cue.reduced ? 0 : (cue.progress - 0.4) * 12),
+            );
+            label.alpha = strength;
+          }
+        }
       else if (event.kind === "PowerUsed" || event.kind === "CardPlayed") {
         ring(entity({ kind: "HERO", side: event.payload.side }));
         if (
@@ -226,19 +300,14 @@ export function createBattleScene(
           !cue.reduced
         ) {
           const b = entity({ kind: "HERO", side: event.payload.side });
-          if (b)
-            fx.poly([
-              b.x,
-              b.y - 20,
-              b.x + 16,
-              b.y,
-              b.x,
-              b.y + 20,
-              b.x - 16,
-              b.y,
-              b.x,
-              b.y - 20,
-            ]).stroke({ color: 0xf4cb76, width: 3, alpha: strength });
+          if (b) {
+            const spread = Math.min(32, b.w / 2) + cue.progress * 3;
+            for (const side of [-1, 1])
+              fx.moveTo(b.x + side * spread, b.y - 36)
+                .lineTo(b.x + side * (spread + 5), b.y - 20)
+                .lineTo(b.x + side * spread, b.y + 36)
+                .stroke({ color, width: 4, alpha: strength });
+          }
         }
         const t = event.payload.target;
         if (t.kind === "UNIT" || t.kind === "HERO")
@@ -259,14 +328,65 @@ export function createBattleScene(
           const p = cue.reduced ? 1 : cue.progress,
             x = (from?.x ?? to.x) + (to.x - (from?.x ?? to.x)) * p,
             y = (from?.y ?? to.y) + (to.y - (from?.y ?? to.y)) * p;
-          fx.roundRect(x - 12, y - 18, 24, 36, 4).fill({
-            color: u.owner === "GOOD" ? 0x76d9c4 : 0xffb078,
-            alpha: strength,
-          });
+          if (cue.reduced) ring(to);
+          else {
+            drawCardTrace(fx, x, y, strength, color, Math.min(28, to.w * 0.22));
+            if (p > 0.65) ring(to, (p - 0.65) / 0.35);
+          }
         }
       } else if (event.kind === "UnitDestroyed") {
         const sprite = sprites.get(event.payload.instanceId);
         if (sprite) sprite.alpha = 1 - cue.progress;
+        const b = entity({
+          kind: "UNIT",
+          instanceId: event.payload.instanceId,
+        });
+        if (b) {
+          if (cue.reduced) ring(b);
+          else
+            for (const [dx, dy] of [
+              [-1, -1],
+              [1, -0.6],
+              [-0.7, 0.8],
+              [0.9, 1],
+            ]) {
+              const d = 12 + cue.progress * 22,
+                x = b.x + dx! * d,
+                y = b.y + dy! * d;
+              fx.poly([x - 6, y - 9, x + 8, y - 2, x - 2, y + 8]).fill({
+                color,
+                alpha: strength * 0.8,
+              });
+            }
+        }
+      } else if (event.kind === "UnitMoved") {
+        const from = entity({
+          kind: "UNIT",
+          instanceId: event.payload.instanceId,
+        });
+        const unit = view?.board
+          .flatMap((lane) => [lane.good, lane.evil])
+          .find((unit) => unit?.instanceId === event.payload.instanceId);
+        const to = unit
+          ? box(
+              `[data-slot-side="${unit.owner}"][data-slot-lane="${event.payload.toLane}"]`,
+            )
+          : null;
+        const sprite = sprites.get(event.payload.instanceId);
+        if (from && to && sprite && !cue.reduced) {
+          sprite.x = from.x + (to.x - from.x) * cue.progress;
+          sprite.y += (to.y - from.y) * cue.progress;
+          drawEffect(
+            fx,
+            "veil",
+            sprite.x,
+            sprite.y - from.h / 2,
+            cue.progress,
+            strength,
+            false,
+            28,
+          );
+        } else ring(to);
       } else if (event.kind === "LocationRevealed")
         ring(box(`[data-terrain-lane="${event.payload.laneId}"]`));
       else if (event.kind === "BlockOccurred" || event.kind === "HeroHealed")
@@ -287,14 +407,12 @@ export function createBattleScene(
           const p = cue.reduced ? 1 : cue.progress,
             x = from.x + (to.x - from.x) * p,
             y = from.y + (to.y - from.y) * p;
-          fx.roundRect(x - 10, y - 15, 20, 30, 4)
-            .fill({ color: 0x283e49, alpha: strength })
-            .stroke({ color: 0xf4cb76, width: 2, alpha: strength });
+          if (cue.reduced) ring(to);
+          else drawCardTrace(fx, x, y, strength, color);
         }
       } else if (
         event.kind === "StatsChanged" ||
-        event.kind === "StatusChanged" ||
-        event.kind === "UnitMoved"
+        event.kind === "StatusChanged"
       )
         ring(entity({ kind: "UNIT", instanceId: event.payload.instanceId }));
       else if (event.kind === "MatchEnded")
@@ -337,6 +455,7 @@ export function createBattleScene(
   function release() {
     resize?.disconnect();
     mutation?.disconnect();
+    clearNumbers();
     sprites.forEach((sprite) => sprite.destroy());
     sprites.clear();
     pool?.dispose();
@@ -351,7 +470,21 @@ export function createBattleScene(
   }
   const ready = (async () => {
     await import("pixi.js/unsafe-eval");
-    const { Application, Graphics } = await import("pixi.js");
+    const { Application, Graphics, Text } = await import("pixi.js");
+    makeNumber = (text) => {
+      const label = new Text({
+        text,
+        style: {
+          fontFamily: "Barlow Condensed, sans-serif",
+          fontSize: 30,
+          fontWeight: "800",
+          fill: 0xf0efe8,
+          stroke: { color: 0x101218, width: 5 },
+        },
+      });
+      label.anchor.set(0.5);
+      return label;
+    };
     if (disposed) return;
     const candidate = new Application();
     try {
@@ -419,10 +552,12 @@ export function createBattleScene(
     },
     present(event, cue) {
       if (disposed || paused) return;
+      if (current?.event.sequence !== event.sequence) clearNumbers();
       current = { event, cue: { ...cue } };
       draw();
     },
     clearEffects() {
+      clearNumbers();
       current = null;
       draw();
     },
