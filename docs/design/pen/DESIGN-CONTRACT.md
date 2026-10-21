@@ -61,3 +61,11 @@ Physical-device, assistive-technology, performance, balance and human-playtest h
 The [single-file prompt library](OATHFRONT-PEN-PROMPTS.md) and [original full brief](OATHFRONT-PEN-PROMPT.md) remain historical design-authoring references. Their earlier pending-design wording is superseded by this contract and the approved specification.
 
 Implementation and verification evidence: [Pen implementation report](../../implementation/pen-design.md).
+
+## Hero expansion design addendum
+
+The [fourteen-hero design collection](../heroes-expansion/README.md) adds seven proposed Dawnward and seven proposed Ashen Court identities, each with original full-body artwork and a four-power design. See the [gallery](../heroes-expansion/gallery.html), [design manifest](../heroes-expansion/roster.json) and [source asset manifest](../../../assets/source/heroes-expansion-v1/manifest.json).
+
+This extension is **design-only, not playable**. The current runtime remains six heroes; twenty is the proposed total. Playable integration and whether to add new cards are pending the existing scope answers. Draft IDs must not be treated as current API IDs. All fourteen Pen node bindings remain null because the frozen source contains no frames for them. Existing six-profile templates provide a derived design basis only.
+
+The extension must not alter source identity, existing runtime asset groups, core_v1, active matches or the implemented-scope readiness status. A future editable Pen revision must supply actual frames before bindings are populated. A playable version must separately cover content versioning, persistence compatibility, power semantics, decks, bot decisions, UI mapping and balance validation.

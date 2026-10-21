@@ -1,0 +1,388 @@
+{
+  "version": 1,
+  "pack": "heroes_expansion_v1_design",
+  "status": "design_only_not_runtime",
+  "createdAt": "2026-10-21T17:41:10.288260+00:00",
+  "provenance": "Original images generated with the built-in image_gen tool for OathFront. No Marvel assets imported. Final generated PNG bytes preserved.",
+  "promptManifest": "docs/design/heroes-expansion/prompts.json",
+  "assets": [
+    {
+      "id": "solenne",
+      "path": "assets/source/heroes-expansion-v1/heroes/solenne.png",
+      "sha256": "cef23585f42646314d4ff3dc2d0e009da831903cede748a12a45c0ee3ab89180",
+      "bytes": 2261870,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.5868,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        74,
+        36,
+        1007,
+        1500
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-f4b1669b-8611-4443-827d-81da02e74c78.png",
+      "promptId": "solenne",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "cairn",
+      "path": "assets/source/heroes-expansion-v1/heroes/cairn.png",
+      "sha256": "dd28731a39e485d5f292e5cebc603c37ea263eb82273e792dfa55dc3a65df1f1",
+      "bytes": 2742669,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.3881,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        13,
+        75,
+        1017,
+        1460
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-7bc8c344-3a7d-4afb-a218-cdb0960920a1.png",
+      "promptId": "cairn",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "zephyr",
+      "path": "assets/source/heroes-expansion-v1/heroes/zephyr.png",
+      "sha256": "6e56373fb9b4c9d6b668dff88c0c9de6feaf972faa727bd5467284bf81bb146a",
+      "bytes": 2259588,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.5337,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        26,
+        49,
+        1001,
+        1499
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-e28aceff-41ca-4ba4-bacd-d1cc24963449.png",
+      "promptId": "zephyr",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "meridian",
+      "path": "assets/source/heroes-expansion-v1/heroes/meridian.png",
+      "sha256": "e6a3439e5469fe422ba02a41d9736ca2913ace7979dfe8fa1d1acae34851a7d5",
+      "bytes": 2253516,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.555,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        115,
+        17,
+        915,
+        1516
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-3ee95cfd-af3c-4e3e-bce3-d11ea632bb4b.png",
+      "promptId": "meridian",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "mossweld",
+      "path": "assets/source/heroes-expansion-v1/heroes/mossweld.png",
+      "sha256": "c2364d0f96b5815514bd6c1ae30085bd99edbfa7f314dba5b93d94aa4a051cda",
+      "bytes": 2324536,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.5669,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        123,
+        15,
+        989,
+        1503
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-b3815f04-94cb-433e-8da8-15ac835aa54c.png",
+      "promptId": "mossweld",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "halcyon",
+      "path": "assets/source/heroes-expansion-v1/heroes/halcyon.png",
+      "sha256": "a4a27054470acd1a76ef529b24dd733519a6f7fd4c56a119311c1bf9ac0f9572",
+      "bytes": 2429309,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.472,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        41,
+        14,
+        980,
+        1524
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-eae55eb6-0f52-47c0-b2bb-6bb3814a2be1.png",
+      "promptId": "halcyon",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "rowan",
+      "path": "assets/source/heroes-expansion-v1/heroes/rowan.png",
+      "sha256": "23cb4a6f069b2e977fd4d05a084609017583d3294b53b3b84e03faa98573e846",
+      "bytes": 2473406,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.543,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        129,
+        13,
+        970,
+        1515
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-8b7fd199-734e-4887-9196-c0ad6e72e427.png",
+      "promptId": "rowan",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "rook",
+      "path": "assets/source/heroes-expansion-v1/heroes/rook.png",
+      "sha256": "4484d18544ef28edd908b089378950e666866dad47d62fa2386ff03b408ddead",
+      "bytes": 2334017,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.5746,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        140,
+        19,
+        1006,
+        1505
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-c5fb8f22-b51d-41cb-afc0-c6ad2f49905d.png",
+      "promptId": "rook",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "nyxara",
+      "path": "assets/source/heroes-expansion-v1/heroes/nyxara.png",
+      "sha256": "3644ceb14dce458b23bb56045b28bfca59974f4b0907a319b8728f30b31368c1",
+      "bytes": 2414290,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.5327,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        69,
+        14,
+        982,
+        1512
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-5d9abd61-958a-4e72-a63a-47c62ef9658a.png",
+      "promptId": "nyxara",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "brimstone",
+      "path": "assets/source/heroes-expansion-v1/heroes/brimstone.png",
+      "sha256": "15134681b0f5761af82b6d5c3a1d26d9187d86aa70c44d7111123daf2db7c495",
+      "bytes": 2715061,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.4475,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        30,
+        61,
+        1005,
+        1451
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-dcc15823-33d6-4601-a01f-60cc6b4ed528.png",
+      "promptId": "brimstone",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "sable",
+      "path": "assets/source/heroes-expansion-v1/heroes/sable.png",
+      "sha256": "c9aeea444b425a94f66994c1d376bd0bd06ea8cf16eb3e924de77620ac1d12a1",
+      "bytes": 2186834,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.5311,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        83,
+        19,
+        921,
+        1523
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-60c6aa85-c7d3-4890-ad85-95d3953fd53e.png",
+      "promptId": "sable",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "vanta",
+      "path": "assets/source/heroes-expansion-v1/heroes/vanta.png",
+      "sha256": "e08ed4bfb2a7bf965829a02400136275ec654eb3a66aca8bc52fb2be4efe5726",
+      "bytes": 2014561,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.6789,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        47,
+        12,
+        1011,
+        1507
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-a9f8b2b6-6a72-4790-ad9a-d6f95ab1a2b3.png",
+      "promptId": "vanta",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "gravemarch",
+      "path": "assets/source/heroes-expansion-v1/heroes/gravemarch.png",
+      "sha256": "f3106b70d56372779cddeeb9460b0aa0006263de43782f11f18a7277c3be5e77",
+      "bytes": 2787474,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.4105,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        21,
+        16,
+        996,
+        1516
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-f193b3ba-9b0e-436f-85f4-4b4ce787d8d8.png",
+      "promptId": "gravemarch",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    },
+    {
+      "id": "scoria",
+      "path": "assets/source/heroes-expansion-v1/heroes/scoria.png",
+      "sha256": "16fc0cddca3d13a3b9c634973842cebf510924c336a8dd19bd63710abbf569ee",
+      "bytes": 2373537,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixelFraction": 0.5399,
+      "solidAlphaThreshold": 192,
+      "solidBounds": [
+        62,
+        19,
+        972,
+        1520
+      ],
+      "solidEdgePixelCount": 0,
+      "generator": "built-in image_gen",
+      "generationFile": "exec-2e637612-cac6-4aab-a56f-6721a0593692.png",
+      "promptId": "scoria",
+      "edits": [],
+      "review": "Full figure and equipment inspected; use padded contain framing. Requested 8% source margin was not consistently achieved; solid pixels remain inside all four edges."
+    }
+  ]
+}

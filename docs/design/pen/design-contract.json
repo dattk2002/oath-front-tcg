@@ -1898,5 +1898,38 @@
       "apps/web/src/styles/campaign.css",
       "apps/web/src/styles/game-theme.css"
     ]
-  }
+  },
+  "designExtensions": [
+    {
+      "id": "heroes_expansion_v1_design",
+      "status": "design_only_not_playable",
+      "specPath": "docs/superpowers/specs/2026-10-22-hero-expansion-design.md",
+      "manifestPath": "docs/design/heroes-expansion/roster.json",
+      "sourceAssetManifestPath": "assets/source/heroes-expansion-v1/manifest.json",
+      "guidePath": "docs/design/heroes-expansion/README.md",
+      "galleryPath": "docs/design/heroes-expansion/gallery.html",
+      "currentRuntimeHeroCount": 6,
+      "additionalDesignCount": 14,
+      "proposedTotalHeroCount": 20,
+      "playableIntegration": "pending_user_scope_answer",
+      "completePenFrameCoverage": false,
+      "designBasis": "Derived proposal based on existing campaign hero list and six profile pairs. Frozen source has no frames for these fourteen heroes. No runtime asset group or API identifiers added.",
+      "penNodesByDraftHeroId": {
+        "H_G_SOL": null,
+        "H_G_CAI": null,
+        "H_G_ZEP": null,
+        "H_G_MER": null,
+        "H_G_MOS": null,
+        "H_G_HAL": null,
+        "H_G_ROW": null,
+        "H_E_ROO": null,
+        "H_E_NYX": null,
+        "H_E_BRI": null,
+        "H_E_SAB": null,
+        "H_E_VAN": null,
+        "H_E_GRA": null,
+        "H_E_SCO": null
+      }
+    }
+  ]
 }
