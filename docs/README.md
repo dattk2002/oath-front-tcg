@@ -28,6 +28,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 ## UI, motion và mockup
 
 - [Rivals redesign đang chạy](implementation/rivals-redesign.md), [quy tắc trạng thái/QA hiện tại](implementation/rivals-redesign-qa.md) và [bằng chứng theo task](implementation/evidence/rivals-redesign/README.md): token, English UI, 6 hero, 60 card, GSAP/Pixi và ranh giới nghiệm thu.
+- [Prompt tiếng Anh cho Pen.dev](design/pen/OATHFRONT-PEN-PROMPT.md), [quy trình Pen ↔ Codex](design/pen/DESIGN-CONTRACT.md) và [contract đang chờ design](design/pen/design-contract.json): chưa có file `.pen`; source/hash/node ID vẫn chưa được xác định.
 - [UI, animation, accessibility và performance budgets](UI-MOTION.md).
 - [Màn chọn hero, deck builder, block response và kết quả](SCREENS.md).
 - [Battle desktop](design/battle-desktop.png), [battle tablet](design/battle-tablet.png), [cấu trúc card](design/card-anatomy.png).

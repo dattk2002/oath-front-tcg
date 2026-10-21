@@ -1,12 +1,12 @@
 # Rivals redesign evidence
 
-This 2026-10-21 archive follows the current [implementation](../../rivals-redesign.md), [QA/state contract](../../rivals-redesign-qa.md), [English ID catalog](../../../PRESENTATION-EN.md) and approved [spec](../../../superpowers/specs/2026-10-21-oathfront-rivals-redesign.md). It retains useful evidence from Tasks 1–5 without rewriting historical source/parity records. The original user reference Markdown in `docs/reference/` is unchanged.
+This 2026-10-21 archive follows the current [implementation](../../rivals-redesign.md), [QA/state contract](../../rivals-redesign-qa.md), [English ID catalog](../../../PRESENTATION-EN.md) and approved [spec](../../../superpowers/specs/2026-10-21-oathfront-rivals-redesign.md). It retains useful evidence from Tasks 1–6 without rewriting historical source/parity records. The original user reference Markdown in `docs/reference/` is unchanged.
 
 ## Review and decisions
 
-- [Task reports and reviews](reports/) cover English ID presentation, six heroes/theme, all sixty original card illustrations, GSAP/Pixi choreography, and integrated verification. Task 1 includes its scoped rereview. [Task 5 report](reports/task-5-report.md) has exact gate commands, original failures and covering runs.
+- [Task reports and reviews](reports/) cover English ID presentation, six heroes/theme, all sixty original card illustrations, GSAP/Pixi choreography, and integrated verification. Task 1 includes its scoped rereview. [Task 5 report](reports/task-5-report.md) has exact gate commands, original failures and covering runs. [Task 5 review](reports/task-5-review.md) is retained verbatim; its minor protected-port naming correction is applied in the current implementation document.
 - [Every current SDD `Ruling:` line](rulings.md) is copied verbatim with its stated cost. The first decision to retain old card paintings was **superseded** when the user approved new art for all 60 cards; the line remains for provenance.
-- The controller handles Task 6 Pen handoff, whole-change review and the final authorized push/automatic CI after this task. This archive is not production approval.
+- [Task 6 report](reports/task-6-report.md) records the [ready-to-paste Pen prompt](../../../design/pen/OATHFRONT-PEN-PROMPT.md) and [pending Pen ↔ Codex contract](../../../design/pen/DESIGN-CONTRACT.md). No actual design file or resolved Pen node mappings exist yet. The controller handles whole-change review and the final authorized push/automatic CI. This archive is not production approval.
 
 ## Selected visual and browser evidence
 

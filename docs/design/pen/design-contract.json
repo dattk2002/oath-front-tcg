@@ -1,0 +1,870 @@
+{
+  "contractVersion": 1,
+  "status": "awaiting_design",
+  "implementationReady": false,
+  "description": "Repository-side requirements only. Logical IDs are not Pen node IDs; no design has been supplied or approved.",
+  "requestedDesignDestination": "docs/design/pen/oathfront-rivals.pen",
+  "source": {
+    "path": null,
+    "sha256": null,
+    "revision": null,
+    "schemaVersion": null,
+    "documentId": null,
+    "inspectedAt": null
+  },
+  "repository": {
+    "baselineCommit": "8ada783171cd3db642a0c106b1c12430102df28f",
+    "inputs": [
+      {
+        "path": "apps/web/src/styles/tokens.css",
+        "sha256": "64e4030f33ecc880a4e121393b36448bbc35ba0531f0879a10a82d368772172c"
+      },
+      {
+        "path": "apps/web/src/styles/rivals.css",
+        "sha256": "e614ad0640e4af762dee5290a79d190a2505c7b6bc19bdf40376d99087051fb2"
+      },
+      {
+        "path": "apps/web/src/content/english-content.ts",
+        "sha256": "7d1a54cc218f454819a2134627923927df5d4a615159fd10809278da779bc302"
+      },
+      {
+        "path": "apps/web/src/features/motion/use-ui-motion.ts",
+        "sha256": "0e1ce2f82b70f4ac86b3d15740801f91947a72315e773e62846c60c944fe36cd"
+      },
+      {
+        "path": "apps/web/src/features/match/motion/event-timeline.ts",
+        "sha256": "1a0d244f0f5e27612439e8ccdaade1b1492ae7d7c7d0f12a5f9b139b87845dfb"
+      },
+      {
+        "path": "apps/web/public/assets/rivals-v2/manifest.json",
+        "sha256": "b7fb5998295bfd57b0839410cf4ef9be59d3799224d80175e028486bd12df2e4"
+      },
+      {
+        "path": "apps/web/public/assets/fivefold-cards-v3/manifest.json",
+        "sha256": "336f4509723cb4be976070fac309e2435861ed996c4cdf0f3fc5f53442c06f6d"
+      },
+      {
+        "path": "docs/implementation/rivals-redesign-qa.md",
+        "sha256": "385369444ee4b79f37de9eaa60a0a75a8bf06781b730898361e8ef2374bcd38a"
+      }
+    ]
+  },
+  "authority": {
+    "designOwns": [
+      "layout",
+      "visual_hierarchy",
+      "semantic_token_proposals",
+      "asset_framing",
+      "component_variants",
+      "accessible_state_presentation",
+      "GSAP_cue_intent"
+    ],
+    "runtimeOwns": [
+      "phase_and_turn_order",
+      "legal_actions_and_targets",
+      "numbers_costs_stats",
+      "bot_rules",
+      "hidden_information",
+      "immutable_content_IDs_and_hashes",
+      "saved_checkpoints",
+      "command_receipts_and_revisions",
+      "authoritative_damage_events"
+    ],
+    "protectedRepoPaths": [
+      "packages/game-content/src",
+      "packages/game-engine/src",
+      "packages/bot/src",
+      "packages/contracts/schema/api-v1.schema.json",
+      "apps/web/src/features/match/intent-controller.ts",
+      "apps/web/src/features/match/motion/presentation-controller.ts"
+    ],
+    "immutableVersions": [
+      "core_v1",
+      "locations_v1",
+      "tutorial_v1"
+    ],
+    "englishCatalogPath": "apps/web/src/content/english-content.ts",
+    "rules": "Design conflicts must be recorded and resolved against runtime authority before implementation. User-entered names must remain unchanged."
+  },
+  "globalStates": [
+    "default",
+    "hover",
+    "focus-visible",
+    "active",
+    "selected",
+    "disabled",
+    "loading",
+    "error",
+    "empty",
+    "recovery"
+  ],
+  "globalInteractionRequirements": [
+    "keyboard_pointer_touch_parity",
+    "native_radio_arrows",
+    "44px_targets_8px_gaps",
+    "independent_secondary_controls",
+    "visible_unclipped_focus",
+    "modal_focus_and_immediate_dismissal",
+    "full_rules_inspection",
+    "explicit_retry_no_command_replay",
+    "missing_art_named_fallback",
+    "long_user_content_preserved"
+  ],
+  "responsive": [
+    {
+      "logicalId": "mobile",
+      "widthCssPx": 375,
+      "heightCssPx": null,
+      "requirement": "Reflow app screens; preserve English small-screen battle fallback. No new full portrait board.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "compact",
+      "widthCssPx": 1024,
+      "heightCssPx": 640,
+      "requirement": "All five lanes, hand and End phase available; secondary inspect art may collapse.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "desktop",
+      "widthCssPx": 1440,
+      "heightCssPx": 900,
+      "requirement": "Readable board, hand art/stats and inspect; desktop unit art 88x88.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "reflow",
+      "zoomPercent": 200,
+      "requirement": "Reading, focus and actions remain reachable without clipping.",
+      "penNodeId": null
+    }
+  ],
+  "tokenMappings": [
+    {
+      "cssToken": "--bg",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#090b10",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--surface",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#151820",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--raised",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#222733",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--text",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#f8f8f2",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--muted",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#bcc2ce",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--good",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#80e3e0",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--evil",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#ff957b",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--primary",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#ffe34d",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--error",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#ffb4ab",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--border",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#7d8798",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--radius",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "2px",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--control-radius",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "2px",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--paper",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#f0efe8",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--ink",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#101218",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--good-ink",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#165f62",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--evil-ink",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#8b392b",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--fx-kinetic",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#ffe34d",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--fx-shield",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#80e3e0",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--fx-growth",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#b6ee92",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--fx-prism",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#b2d9ff",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--fx-ember",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#ff957b",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--fx-ink",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#d2b6ff",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--fx-veil",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "#f0efe8",
+      "penVariableName": null,
+      "penThemeValues": null
+    },
+    {
+      "cssToken": "--display",
+      "repoPath": "apps/web/src/styles/tokens.css",
+      "currentValue": "\"Barlow Condensed\", \"Noto Sans\", sans-serif",
+      "penVariableName": null,
+      "penThemeValues": null
+    }
+  ],
+  "proposedScaleMappings": {
+    "note": "Approved type/spacing guidance lacks equivalent named CSS variables today; actual Pen variable names and any CSS additions require later review.",
+    "spacingCssPx": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "bodySizeLineHeightCssPx": [
+      16,
+      24
+    ],
+    "secondarySizeLineHeightCssPx": [
+      14,
+      20
+    ],
+    "compactMinimumSizeLineHeightCssPx": [
+      12,
+      16
+    ],
+    "penVariableNames": null
+  },
+  "assetGroups": [
+    {
+      "version": "rivals-v2",
+      "runtimeManifestPath": "apps/web/public/assets/rivals-v2/manifest.json",
+      "sourceManifestPath": "assets/source/rivals-v2/manifest.json",
+      "expectedCount": 7,
+      "penNodesByContentId": {
+        "H_G_BV": null,
+        "H_G_BP": null,
+        "H_G_VP": null,
+        "H_E_FX": null,
+        "H_E_FS": null,
+        "H_E_XS": null,
+        "board": null
+      },
+      "penImageReferences": null
+    },
+    {
+      "version": "fivefold-cards-v3",
+      "runtimeManifestPath": "apps/web/public/assets/fivefold-cards-v3/manifest.json",
+      "sourceManifestPath": "assets/source/fivefold-cards-v3/manifest.json",
+      "expectedCount": 60,
+      "penNodesByContentId": {
+        "GC01": null,
+        "GC02": null,
+        "GC03": null,
+        "GC04": null,
+        "GC05": null,
+        "GC06": null,
+        "B01": null,
+        "B02": null,
+        "B03": null,
+        "B04": null,
+        "B05": null,
+        "B06": null,
+        "B07": null,
+        "B08": null,
+        "V01": null,
+        "V02": null,
+        "V03": null,
+        "V04": null,
+        "V05": null,
+        "V06": null,
+        "V07": null,
+        "V08": null,
+        "P01": null,
+        "P02": null,
+        "P03": null,
+        "P04": null,
+        "P05": null,
+        "P06": null,
+        "P07": null,
+        "P08": null,
+        "EC01": null,
+        "EC02": null,
+        "EC03": null,
+        "EC04": null,
+        "EC05": null,
+        "EC06": null,
+        "F01": null,
+        "F02": null,
+        "F03": null,
+        "F04": null,
+        "F05": null,
+        "F06": null,
+        "F07": null,
+        "F08": null,
+        "X01": null,
+        "X02": null,
+        "X03": null,
+        "X04": null,
+        "X05": null,
+        "X06": null,
+        "X07": null,
+        "X08": null,
+        "S01": null,
+        "S02": null,
+        "S03": null,
+        "S04": null,
+        "S05": null,
+        "S06": null,
+        "S07": null,
+        "S08": null
+      },
+      "penImageReferences": null
+    }
+  ],
+  "assetResolverPath": "apps/web/src/features/match/rendering/asset-manifest.ts",
+  "assetRules": [
+    "All six heroes plus shared board in rivals-v2; all sixty distinct cards in fivefold-cards-v3.",
+    "Use manifests for stable ID/artKey/variant URLs; public URLs resolve under apps/web/public.",
+    "Keep core power/token fallback and all eight terrain strips; no hidden-information-dependent preload.",
+    "Preserve source masters/prompts/provenance; no rasterized UI text."
+  ],
+  "surfaceMappings": [
+    {
+      "logicalId": "shell_home",
+      "repoPaths": [
+        "apps/web/src/app/App.tsx",
+        "apps/web/src/app/layout.tsx"
+      ],
+      "requiredStates": [
+        "guest",
+        "account",
+        "loading",
+        "error_retry",
+        "play_now",
+        "continue_match"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "home"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "hero_roster",
+      "repoPaths": [
+        "apps/web/src/features/hero/HeroSelect.tsx",
+        "apps/web/src/features/hero/HeroInspect.tsx"
+      ],
+      "requiredStates": [
+        "six_hero_selections",
+        "four_powers",
+        "power_inspect",
+        "art_missing_retry",
+        "rapid_selection"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "hero"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "decks_collection",
+      "repoPaths": [
+        "apps/web/src/features/deck/DeckScreen.tsx",
+        "apps/web/src/features/deck/DeckList.tsx",
+        "apps/web/src/features/deck/DeckBuilder.tsx",
+        "apps/web/src/features/deck/CardCollection.tsx",
+        "apps/web/src/features/deck/ManaCurve.tsx"
+      ],
+      "requiredStates": [
+        "preset",
+        "custom",
+        "create_edit_review",
+        "filter_empty",
+        "underfilled_invalid",
+        "full_30",
+        "maximum_two_copies",
+        "save_pending",
+        "uncertain_retry",
+        "long_names"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "setup",
+      "repoPaths": [
+        "apps/web/src/features/setup/PresetSetup.tsx"
+      ],
+      "requiredStates": [
+        "opponent_difficulty",
+        "source_deck",
+        "invalid",
+        "create_pending",
+        "committed_reload",
+        "failure_retry"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "mulligan",
+      "repoPaths": [
+        "apps/web/src/features/match/MatchScreen.tsx",
+        "apps/web/src/features/match/Hand.tsx"
+      ],
+      "requiredStates": [
+        "four_cards",
+        "none_some_all_selected",
+        "pending",
+        "failure_retry"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "card_feedback"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "battle",
+      "repoPaths": [
+        "apps/web/src/features/match/MatchScreen.tsx",
+        "apps/web/src/features/match/MatchShell.tsx",
+        "apps/web/src/features/match/Board.tsx",
+        "apps/web/src/features/match/HeroPanel.tsx",
+        "apps/web/src/features/match/Hand.tsx",
+        "apps/web/src/features/match/PhaseControl.tsx",
+        "apps/web/src/features/match/BattleScene.tsx"
+      ],
+      "requiredStates": [
+        "both_factions",
+        "five_ordered_lanes",
+        "empty_occupied",
+        "legal_illegal_targets",
+        "unit_trick_power",
+        "affordable_unaffordable",
+        "statuses",
+        "hidden_revealed_locations",
+        "phase_turn",
+        "end_phase",
+        "mobile_fallback"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "phase",
+        "card_feedback",
+        "battle_events"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "inspect_log",
+      "repoPaths": [
+        "apps/web/src/features/match/InspectPanel.tsx",
+        "apps/web/src/features/match/BattleLog.tsx",
+        "apps/web/src/features/match/ArtImage.tsx"
+      ],
+      "requiredStates": [
+        "full_names_rules",
+        "grouped_events",
+        "pagination",
+        "empty",
+        "loading",
+        "error_retry",
+        "missing_art_retry"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "block_response",
+      "repoPaths": [
+        "apps/web/src/features/match/BlockResponse.tsx"
+      ],
+      "requiredStates": [
+        "offered_power",
+        "free_signature",
+        "use_now_keep_later",
+        "targeting",
+        "unavailable_target",
+        "pending"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel",
+        "battle_events"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "pause_recovery",
+      "repoPaths": [
+        "apps/web/src/features/match/PauseDialog.tsx",
+        "apps/web/src/features/match/RecoveryControls.tsx",
+        "apps/web/src/features/auth/SessionRecovery.tsx"
+      ],
+      "requiredStates": [
+        "paused_resume",
+        "offline_reconnect",
+        "snapshot_failure",
+        "stale_revision",
+        "uncertain_command_retry",
+        "session_renewal",
+        "storage_unavailable",
+        "atlas_retry"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "results_history",
+      "repoPaths": [
+        "apps/web/src/features/match/ResultDialog.tsx",
+        "apps/web/src/features/history/HistoryScreen.tsx"
+      ],
+      "requiredStates": [
+        "win_loss_draw",
+        "review_rematch",
+        "history_detail",
+        "empty",
+        "loading",
+        "error_retry",
+        "long_names"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel",
+        "battle_events"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "settings_tutorial",
+      "repoPaths": [
+        "apps/web/src/features/settings/SettingsDialog.tsx",
+        "apps/web/src/features/tutorial/TutorialOverlay.tsx",
+        "apps/web/src/features/tutorial/tutorial-controller.tsx"
+      ],
+      "requiredStates": [
+        "audio",
+        "reduced_motion",
+        "low_vfx",
+        "both_faction_tutorials",
+        "both_power_branches",
+        "step_skip_end",
+        "inspect",
+        "pause_reload_recovery",
+        "completion"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    },
+    {
+      "logicalId": "auth",
+      "repoPaths": [
+        "apps/web/src/features/auth/AuthPanel.tsx",
+        "apps/web/src/features/auth/MergeConflictDialog.tsx",
+        "apps/web/src/features/auth/SessionRecovery.tsx"
+      ],
+      "requiredStates": [
+        "guest",
+        "provider_sign_in",
+        "claim",
+        "merge_conflict",
+        "expired_session",
+        "logout",
+        "provider_failure_retry"
+      ],
+      "responsiveVariants": [
+        "mobile",
+        "compact",
+        "desktop",
+        "reflow"
+      ],
+      "motionCueIds": [
+        "panel"
+      ],
+      "penNodeId": null,
+      "penComponentId": null,
+      "penStateNodes": null,
+      "penResponsiveNodes": null
+    }
+  ],
+  "motionMappings": [
+    {
+      "logicalId": "home",
+      "repoPath": "apps/web/src/features/motion/use-ui-motion.ts",
+      "cue": "home",
+      "durationMs": 480,
+      "requirement": "Decoded presentation, readable controls, fine-pointer parallax only while visible and motion allowed.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "hero",
+      "repoPath": "apps/web/src/features/motion/use-ui-motion.ts",
+      "cue": "hero",
+      "durationMs": 300,
+      "staggerMs": 25,
+      "requirement": "Art decodes first; selection/name immediate; cancel prior owner.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "panel",
+      "repoPath": "apps/web/src/features/motion/use-ui-motion.ts",
+      "cue": "panel",
+      "durationMs": 240,
+      "requirement": "Native dialog close/focus return immediate; never wait for exit choreography.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "phase",
+      "repoPath": "apps/web/src/features/motion/use-ui-motion.ts",
+      "cue": "phase",
+      "durationMs": 180,
+      "requirement": "Readable phase change without owning game state.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "card_feedback",
+      "repoPath": "apps/web/src/features/match/motion/event-timeline.ts",
+      "cue": "bindCardFeedback",
+      "durationMs": 120,
+      "requirement": "Reversible hover/focus feedback; no hover-only essential information.",
+      "penNodeId": null
+    },
+    {
+      "logicalId": "battle_events",
+      "repoPath": "apps/web/src/features/match/motion/event-timeline.ts",
+      "cue": "eventDuration / createEventTimeline",
+      "signatureMs": 550,
+      "signatureCeilingMs": 900,
+      "evilBeforeGoodMs": 80,
+      "damageCommitFraction": 0.4,
+      "requirement": "Read per-event and reduced budgets from code. GSAP/Pixi cue only; preserve shared presentation commit and authoritative event order.",
+      "penNodeId": null
+    }
+  ],
+  "motionRules": [
+    "OS and in-game reduced motion preserve static or short-fade information and every action.",
+    "GSAP owns choreography; scoped cleanup on unmount/interruption; no CSS keyframes/timer choreography.",
+    "Pause/hidden/reconnect fast-forward backlog over two seconds; no cosmetic callback submits commands.",
+    "Seven bounded VFX families and low-VFX mode remain supported."
+  ],
+  "conflictReview": {
+    "status": "not_performed_no_design",
+    "conflicts": null
+  },
+  "validation": {
+    "designSchema": "not_run_no_design",
+    "nodeReferences": "not_run_no_design",
+    "designVisualReview": "not_run_no_design",
+    "designAccessibilityReview": "not_run_no_design",
+    "implementationVerification": "not_run_no_design",
+    "evidencePaths": []
+  }
+}
