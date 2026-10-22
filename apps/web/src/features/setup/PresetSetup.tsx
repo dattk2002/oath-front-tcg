@@ -1,3 +1,5 @@
+import { useVersionedCatalog } from "../content/use-versioned-catalog";
+import { systemStrategy, SystemBadges } from "../content/ContentBadges";
 import {
   contentName,
   heroTitle,
@@ -6,7 +8,7 @@ import {
 } from "../../content/english-content";
 import { usePrivateStorage } from "../auth/private-storage";
 import ArtImage from "../match/ArtImage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type {
   CommandResponse,
   CreateMatchRequest,
@@ -51,7 +53,7 @@ const strategies: Record<HeroId, string> = {
   H_E_FS: "Attack quickly and create piercing strikes.",
   H_E_XS: "Reposition, Poison and maintain card advantage.",
 };
-export default function PresetSetup({
+function PresetSetupRuntime({
   catalog,
   api,
   onCreated,
@@ -280,7 +282,7 @@ export default function PresetSetup({
           <aside className={`hero-detail panel ${hero.faction.toLowerCase()}`}>
             <p className="eyebrow">{heroTitle(hero.id)}</p>
             <h2>{contentName(hero.id)}</h2>
-            <p>{strategies[hero.id]}</p>
+            <p>{systemStrategy(hero) || strategies[hero.id]}</p>
             <h3>Four powers</h3>
             <ul className="power-list">
               {hero.powerIds.map((id) => {
@@ -308,11 +310,11 @@ export default function PresetSetup({
               name: preset.name,
             })}
           </h2>
-          <p>{strategies[hero.id]}</p>
+          <p>{systemStrategy(hero) || strategies[hero.id]}</p>
           <strong className="deck-count">30 / 30 cards</strong>
           <p className="muted">
             Maximum two copies per card ·{" "}
-            {hero.classes.map((id) => classLabel[id]).join(" + ")}
+            <SystemBadges systems={hero.classes} />
           </p>
           <details>
             <summary>15 card types</summary>
@@ -439,4 +441,62 @@ export default function PresetSetup({
       </div>
     </section>
   );
+}
+
+export default function PresetSetup(
+  props: React.ComponentProps<typeof PresetSetupRuntime>,
+) {
+  const source = props.selectedSource;
+  const sourceKey =
+    source?.kind === "SAVED" ? `${source.deckId}:${source.deckRevision}` : "";
+  const [saved, setSaved] = useState<{ key: string; version: string } | null>(
+    null,
+  );
+  const [error, setError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    if (source?.kind !== "SAVED" || props.initialRequest) return;
+    let active = true;
+    setError(false);
+    void props.api.deck(source.deckId, source.deckRevision).then(
+      (deck) => {
+        if (active) setSaved({ key: sourceKey, version: deck.contentVersion });
+      },
+      () => {
+        if (active) setError(true);
+      },
+    );
+    return () => {
+      active = false;
+    };
+  }, [props.api, sourceKey, props.initialRequest, attempt]);
+  const pendingVersion =
+    props.initialRequest?.mode === "SKIRMISH"
+      ? props.initialRequest.expectedContentVersion
+      : undefined;
+  const version =
+    pendingVersion ??
+    (sourceKey
+      ? saved?.key === sourceKey
+        ? saved.version
+        : undefined
+      : props.catalog.version);
+  const bound = useVersionedCatalog(props.api, version, props.catalog);
+  if (error || bound.failed)
+    return (
+      <section className="status-panel panel">
+        <h1>Deck rules unavailable</h1>
+        <p>Your original selection is preserved.</p>
+        <button
+          onClick={() => {
+            setAttempt((n) => n + 1);
+            bound.retry();
+          }}
+        >
+          Retry original deck
+        </button>
+      </section>
+    );
+  if (!bound.catalog) return <p role="status">Loading original deck rules…</p>;
+  return <PresetSetupRuntime {...props} catalog={bound.catalog} />;
 }

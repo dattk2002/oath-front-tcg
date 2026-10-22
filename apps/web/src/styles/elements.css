@@ -1,0 +1,195 @@
+:root {
+  --rarity-u: #cbd5e1;
+  --rarity-r: #f4d06f;
+  --rarity-sr: #c5a1ff;
+  --rarity-sl: #e7ddff;
+  --rarity-e: #ff9875;
+  --rarity-spectrum: linear-gradient(
+    115deg,
+    #ff9875,
+    #ffe34d,
+    #80e3e0,
+    #b2d9ff,
+    #c5a1ff,
+    #ff9875
+  );
+}
+.system-badges,
+.card-affinities {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.system-badge,
+.rarity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 26px;
+  padding: 2px 7px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+}
+.system-badge img,
+.rarity-badge img {
+  flex: 0 0 auto;
+}
+[data-rarity="U"] {
+  --rarity: var(--rarity-u);
+}
+[data-rarity="R"] {
+  --rarity: var(--rarity-r);
+}
+[data-rarity="SR"] {
+  --rarity: var(--rarity-sr);
+}
+[data-rarity="SL"] {
+  --rarity: var(--rarity-sl);
+}
+[data-rarity="E"] {
+  --rarity: var(--rarity-e);
+}
+.rarity-badge {
+  color: var(--rarity);
+  border-color: var(--rarity);
+}
+.collection-card[data-rarity],
+.hand-card[data-rarity],
+.builder-rows li[data-rarity] {
+  border-bottom: 4px solid var(--rarity);
+}
+.collection-card[data-rarity="R"] {
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+}
+.collection-card[data-rarity="SR"] {
+  box-shadow:
+    inset 3px 0 var(--rarity),
+    inset -3px 0 var(--rarity);
+}
+.collection-card[data-rarity="SL"],
+.hand-card[data-rarity="SL"] {
+  border-image: var(--rarity-spectrum) 1;
+}
+.collection-card[data-rarity="E"] {
+  border-left: 3px solid var(--rarity-e);
+}
+.collection-card .card-affinities {
+  margin-top: 8px;
+}
+.collection-card .card-title {
+  padding-right: 30px;
+}
+.collection-card .owned-count {
+  margin: 6px 0;
+  font-size: 14px;
+}
+.collection-card[data-owned="0"] .card-art {
+  filter: saturate(0.5);
+}
+.collection-card[data-owned="0"] .card-title {
+  color: var(--text);
+}
+/* Metadata is a full-width row, including in compact grid hands. */
+.hand-card {
+  position: relative;
+}
+.hand-card .hand-meta {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 3px;
+  align-items: center;
+  max-width: 100%;
+  min-width: 0;
+}
+.hand-meta .system-badge,
+.hand-meta .rarity-badge {
+  font-size: 12px;
+  line-height: 18px;
+  min-height: 20px;
+  padding: 0 3px;
+}
+.hand-meta .system-badge img,
+.hand-meta .rarity-badge img {
+  width: 12px;
+  height: 12px;
+}
+.hand-meta .system-badge {
+  min-width: 0;
+}
+.hand-meta .rarity-badge {
+  flex-shrink: 0;
+}
+@media (min-width: 1024px) and (min-height: 640px) {
+  .hand .hand-card[data-rarity] {
+    grid-template-rows: 32px 22px 24px;
+    height: 112px;
+  }
+  .hand .hand-card[data-rarity] .hand-art {
+    display: none;
+  }
+  .hand .hand-card[data-rarity] .card-summary {
+    grid-row: 3;
+  }
+  .hand .hand-card[data-rarity] .card-kind {
+    display: none;
+  }
+}
+@media (min-width: 1280px) and (min-height: 850px) {
+  .hand .hand-card[data-rarity] {
+    grid-template-rows: 36px 40px 22px 20px;
+    height: 156px;
+  }
+  .hand .hand-card[data-rarity] .hand-art {
+    display: block;
+  }
+  .hand .hand-card[data-rarity] .card-summary {
+    grid-row: 4;
+  }
+}
+.deck-law {
+  padding: 12px;
+  background: var(--surface);
+  border-left: 3px solid var(--primary);
+}
+.deck-law p {
+  margin: 4px 0;
+}
+.collection-filters {
+  flex-wrap: wrap;
+}
+.collection-filters > label {
+  min-width: 110px;
+}
+.builder-rows .rarity-badge {
+  margin: 3px 0;
+}
+.inspect-panel .card-affinities {
+  margin-bottom: 10px;
+}
+@media (max-width: 600px) {
+  .system-badges {
+    gap: 4px;
+  }
+  .hero-tile .system-badge {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+  .hero-tile .system-badge img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.collection-card[data-rarity] {
+  border-top: 4px solid var(--rarity);
+}
+.deck-footer button.primary {
+  color: var(--campaign-ink);
+}

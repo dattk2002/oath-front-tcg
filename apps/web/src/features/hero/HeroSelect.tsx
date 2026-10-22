@@ -1,9 +1,9 @@
+import { SystemBadges } from "../content/ContentBadges";
 import { contentName } from "../../content/english-content";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { HeroId, PublicCatalog } from "@oathfront/contracts/browser";
 import { useUiMotion } from "../motion/use-ui-motion";
-import { classLabel } from "../match/labels";
 import HeroInspect from "./HeroInspect";
 import ArtImage from "../match/ArtImage";
 export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
@@ -60,7 +60,9 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
                 />
               </span>
               <strong>{contentName(h.id)}</strong>
-              <span>{h.classes.map((c) => classLabel[c]).join(" · ")}</span>
+              <span>
+                <SystemBadges systems={h.classes} />
+              </span>
               <span className="roster-faction">
                 {h.faction === "GOOD" ? "Dawnward" : "Ashen Court"}
               </span>

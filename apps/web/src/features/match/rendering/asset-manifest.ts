@@ -1,8 +1,12 @@
+import heroRevision from "../../../../public/assets/heroes-v5/manifest.json" with { type: "json" };
+import eventPresentation from "../../../../public/assets/event-cards-v1/manifest.json" with { type: "json" };
 import heroPresentation from "../../../../public/assets/heroes-v4/manifest.json" with { type: "json" };
 import manifest from "../../../../public/assets/core-v1/manifest.json" with { type: "json" };
 
 import presentation from "../../../../public/assets/rivals-v2/manifest.json" with { type: "json" };
 import cardPresentation from "../../../../public/assets/fivefold-cards-v3/manifest.json" with { type: "json" };
+
+const heroAssets = [...heroRevision.assets, ...heroPresentation.assets];
 
 export type AssetQuality = "low" | "high";
 export interface ArtReference {
@@ -15,9 +19,19 @@ export function resolveArt(
   fallbackLabel: string,
   variant = "thumb",
 ): ArtReference {
+  const systemPower =
+    /^powers\/p_(grove|terra|tide|tempest|solar|forge|arcane|umbral)[12]\.webp$/.exec(
+      artKey,
+    );
+  if (systemPower)
+    return {
+      src: `/assets/elements-v1/systems/${systemPower[1]}.svg`,
+      fallbackLabel,
+      artKey,
+    };
   const core = manifest.assets.find((a) => a.artKey === artKey);
   const signatureHero = artKey.startsWith("powers/s_")
-    ? heroPresentation.assets.find(
+    ? heroAssets.find(
         (a) =>
           a.id.toLowerCase() ===
           artKey
@@ -27,8 +41,9 @@ export function resolveArt(
       )
     : undefined;
   const override =
-    heroPresentation.assets.find((a) => a.artKey === artKey) ??
+    heroAssets.find((a) => a.artKey === artKey) ??
     signatureHero ??
+    eventPresentation.assets.find((a) => a.artKey === artKey) ??
     cardPresentation.assets.find((a) => a.artKey === artKey) ??
     presentation.assets.find((a) => a.artKey === artKey);
   const asset = { ...core, ...override };
@@ -43,13 +58,15 @@ export function artById(
   id: string,
 ): Record<string, string | undefined> | undefined {
   const core = manifest.assets.find((a) => a.id === id);
-  const hero = heroPresentation.assets.find((a) => a.id === id);
-  return core || hero
+  const hero = heroAssets.find((a) => a.id === id);
+  const event = eventPresentation.assets.find((a) => a.id === id);
+  return core || hero || event
     ? {
         ...core,
         ...presentation.assets.find((a) => a.id === id),
         ...cardPresentation.assets.find((a) => a.id === id),
         ...hero,
+        ...event,
       }
     : undefined;
 }
@@ -58,14 +75,16 @@ export function battleAssetRequests(
   quality: AssetQuality,
 ): string[] {
   if (
-    ![manifest.catalogVersion, heroPresentation.catalogVersion].includes(
-      catalogVersion,
-    )
+    ![
+      manifest.catalogVersion,
+      heroPresentation.catalogVersion,
+      "elements_v1",
+    ].includes(catalogVersion)
   )
     throw Error("Unsupported art catalog");
   // No PlayerView, lane assignment, seed or unrevealed definition is accepted here.
   return [
-    ...cardPresentation.atlases
+    ...[...cardPresentation.atlases, ...eventPresentation.atlases]
       .filter((a) => a.quality === quality)
       .map((a) => a.url),
     ...manifest.assets.filter((a) => a.kind === "terrain").map((a) => a.strip!),
@@ -78,7 +97,17 @@ export interface AssetBundle {
   kind: "ILLUSTRATED";
   quality: AssetQuality;
   images: Map<string, HTMLImageElement>;
-  atlases: typeof cardPresentation.atlases;
+  atlases: {
+    url: string;
+    quality: string;
+    width: number;
+    height: number;
+    bytes: number;
+    frames: Record<
+      string,
+      { x: number; y: number; width: number; height: number }
+    >;
+  }[];
   dispose(): void;
 }
 export async function loadBattleAssets(
@@ -120,7 +149,9 @@ export async function loadBattleAssets(
     kind: "ILLUSTRATED",
     quality,
     images,
-    atlases: cardPresentation.atlases.filter((a) => a.quality === quality),
+    atlases: [...cardPresentation.atlases, ...eventPresentation.atlases].filter(
+      (a) => a.quality === quality,
+    ),
     dispose: () => images.clear(),
   };
 }

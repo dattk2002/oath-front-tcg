@@ -46,14 +46,14 @@ describe("playable twenty-hero presentation", () => {
   it("resolves every hero portrait and signature to the new art pack", () => {
     for (const hero of currentCatalog.heroes) {
       const art = artById(hero.id);
-      expect(art?.thumb).toContain("/heroes-v4/");
+      expect(art?.thumb).toMatch(/\/heroes-v[45]\//);
       for (const variant of ["thumb", "hud", "inspect", "bust"]) {
         const src = resolveArt(
           hero.portraitKey,
           contentName(hero.id),
           variant,
         ).src;
-        expect(src).toContain("/heroes-v4/");
+        expect(src).toMatch(/\/heroes-v[45]\//);
         expect(existsSync(runtime(src))).toBe(true);
       }
       const power = currentCatalog.powers.find(

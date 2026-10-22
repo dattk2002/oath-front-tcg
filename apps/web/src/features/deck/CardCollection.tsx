@@ -1,3 +1,4 @@
+import { RarityBadge, SystemBadge } from "../content/ContentBadges";
 import { contentName, contentText } from "../../content/english-content";
 import { useState } from "react";
 import type {
@@ -13,11 +14,13 @@ export function QuantityControls({
   card,
   quantity,
   total,
+  owned = 2,
   onChange,
 }: {
   card: CardDefinitionView;
   quantity: number;
   total: number;
+  owned?: number;
   onChange: (id: CardDefinitionView["id"], delta: number) => void;
 }) {
   return (
@@ -32,17 +35,19 @@ export function QuantityControls({
       <span aria-label={`${quantity} of 2 copies`}>{quantity}/2</span>
       <button
         aria-label={`Add ${contentName(card.id)}`}
-        disabled={quantity >= 2 || total >= 30}
+        disabled={quantity >= owned || quantity >= 2 || total >= 30}
         onClick={() => onChange(card.id, 1)}
       >
         +
       </button>
       <small>
-        {quantity >= 2
-          ? "Maximum 2 copies"
-          : total >= 30
-            ? "Your deck already has 30 cards"
-            : ""}
+        {quantity >= owned && owned < 2
+          ? "Earn this card in Weekly Events"
+          : quantity >= 2
+            ? "Maximum 2 copies"
+            : total >= 30
+              ? "Your deck already has 30 cards"
+              : ""}
       </small>
     </div>
   );
@@ -53,18 +58,27 @@ export default function CardCollection({
   entries,
   onChange,
   onInspect,
+  owned,
 }: {
   catalog: PublicCatalog;
   hero: HeroDefinitionView;
   entries: DeckEntry[];
   onChange: (id: CardDefinitionView["id"], delta: number) => void;
   onInspect: (c: CardDefinitionView) => void;
+  owned: (c: CardDefinitionView) => number;
 }) {
   const [search, setSearch] = useState(""),
     [classId, setClass] = useState("ALL"),
     [type, setType] = useState("ALL"),
-    [cost, setCost] = useState("ALL");
-  const cards = filterCards(catalog, hero, { search, classId, type, cost });
+    [cost, setCost] = useState("ALL"),
+    [rarity, setRarity] = useState("ALL");
+  const cards = filterCards(catalog, hero, {
+    search,
+    classId,
+    type,
+    cost,
+    rarity,
+  });
   const total = entries.reduce((n, e) => n + e.quantity, 0);
   return (
     <section className="collection" aria-label="Collection">
@@ -74,15 +88,17 @@ export default function CardCollection({
           <input value={search} onChange={(e) => setSearch(e.target.value)} />
         </label>
         <label>
-          Class
+          {catalog.version === "elements_v1" ? "System" : "Class"}
           <select value={classId} onChange={(e) => setClass(e.target.value)}>
-            <option value="ALL">All classes</option>
+            <option value="ALL">All systems / classes</option>
             {hero.classes.map((c) => (
               <option key={c} value={c}>
                 {classLabel[c]}
               </option>
             ))}
-            <option value="COMMON">Common</option>
+            <option value="COMMON">
+              {catalog.version === "elements_v1" ? "Neutral" : "Common"}
+            </option>
           </select>
         </label>
         <label>
@@ -104,12 +120,27 @@ export default function CardCollection({
             ))}
           </select>
         </label>
+        {catalog.version === "elements_v1" && (
+          <label>
+            Rarity
+            <select value={rarity} onChange={(e) => setRarity(e.target.value)}>
+              <option value="ALL">All rarities</option>
+              {["U", "R", "SR", "SL", "E"].map((code) => (
+                <option key={code} value={code}>
+                  {code}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
       </div>
       <p role="status">{cards.length} matching cards</p>
       <div className="collection-grid">
         {cards.map((c) => (
           <article
             className={`collection-card panel ${c.faction.toLowerCase()}`}
+            data-rarity={c.rarity}
+            data-owned={owned(c)}
             key={c.id}
             onClick={() => onInspect(c)}
           >
@@ -131,9 +162,17 @@ export default function CardCollection({
                 ? `${c.printed.attack} ATK · ${c.printed.hp} HP`
                 : "Trick"}
             </p>
+            <div className="card-affinities">
+              <RarityBadge rarity={c.rarity} />
+              <SystemBadge system={c.classId} />
+            </div>
+            {c.rarity === "E" && (
+              <p className="owned-count">Owned {owned(c)}/2 · Event tickets</p>
+            )}
             <p className="card-rules">{contentText(c.id)}</p>
             <QuantityControls
               card={c}
+              owned={owned(c)}
               quantity={entries.find((e) => e.cardId === c.id)?.quantity ?? 0}
               total={total}
               onChange={onChange}
@@ -142,7 +181,20 @@ export default function CardCollection({
         ))}
       </div>
       {!cards.length && (
-        <p>No matching cards. Change your filters or search.</p>
+        <div>
+          <p>No matching cards.</p>
+          <button
+            onClick={() => {
+              setSearch("");
+              setClass("ALL");
+              setType("ALL");
+              setCost("ALL");
+              setRarity("ALL");
+            }}
+          >
+            Reset filters
+          </button>
+        </div>
       )}
     </section>
   );

@@ -1,3 +1,4 @@
+import { RarityBadge, SystemBadge } from "../content/ContentBadges";
 import { contentName, contentText } from "../../content/english-content";
 import { useRef } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
@@ -56,6 +57,7 @@ export default function Hand({
               <button
                 key={card.instanceId}
                 className={`hand-card ${def.faction.toLowerCase()}`}
+                data-rarity={def.rarity}
                 data-card-id={card.instanceId}
                 data-tutorial-focus={view.tutorial?.focusTargets.some(
                   (t) => t.kind === "CARD" && t.instanceId === card.instanceId,
@@ -127,6 +129,12 @@ export default function Hand({
                     retry={false}
                   />
                 </span>
+                {catalog.version === "elements_v1" && (
+                  <span className="hand-meta">
+                    <SystemBadge system={def.classId} />
+                    <RarityBadge rarity={def.rarity} />
+                  </span>
+                )}
                 <span className="card-kind">
                   {def.type === "UNIT" ? "Unit" : "Trick"}
                 </span>

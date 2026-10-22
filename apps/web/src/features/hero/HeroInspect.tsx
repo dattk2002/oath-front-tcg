@@ -1,3 +1,4 @@
+import { SystemBadges, systemStrategy } from "../content/ContentBadges";
 import {
   contentName,
   heroTitle,
@@ -9,7 +10,6 @@ import type {
   PublicCatalog,
   PowerDefinitionView,
 } from "@oathfront/contracts/browser";
-import { classLabel } from "../match/labels";
 import ArtImage from "../match/ArtImage";
 export const strategies: Record<string, string> = {
   H_G_SOL:
@@ -108,6 +108,20 @@ const weaknesses: Record<string, string> = {
   H_E_FS: "Keep pressure when your units are blocked.",
   H_E_XS: "Needs time to sustain Poison and card advantage.",
 };
+const elementsWeaknesses: Record<string, string> = {
+  H_G_BV:
+    "Limited direct hero damage; removal can undo investment in a single defender.",
+  H_G_BP:
+    "Repairs need surviving units; wide pressure can outpace a single combat boost.",
+  H_G_VP:
+    "Movement needs empty lanes; healing alone cannot remove an opposing threat.",
+  H_E_FX:
+    "Shield and Armor protect survivors, but direct destruction bypasses them.",
+  H_E_FS:
+    "Full boards restrict movement; durable blockers can slow the attack plan.",
+  H_E_XS:
+    "Poison needs time, and card draw does not immediately contest the board.",
+};
 export default function HeroInspect({
   hero,
   catalog,
@@ -130,13 +144,17 @@ export default function HeroInspect({
           <h2 data-hero-name>{contentName(hero.id)}</h2>
           <p className="hero-title">{heroTitle(hero.id)}</p>
           <p className="hero-classes">
-            {hero.classes.map((c) => classLabel[c]).join(" / ")}
+            <SystemBadges systems={hero.classes} />
           </p>
-          <p>{strategies[hero.id]}</p>
+          <p>{systemStrategy(hero) || strategies[hero.id]}</p>
           <p className="hero-health">
             <strong>20</strong> starting HP
           </p>
-          <p className="muted">{weaknesses[hero.id]}</p>
+          <p className="muted">
+            {catalog.version === "elements_v1"
+              ? (elementsWeaknesses[hero.id] ?? weaknesses[hero.id])
+              : weaknesses[hero.id]}
+          </p>
         </div>
         <div className="hero-bust" data-hero-art>
           <ArtImage

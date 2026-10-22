@@ -1,3 +1,4 @@
+import elements from "./elements-presentation.json" with { type: "json" };
 /** English presentation only. Never rewrite versioned content, wire objects or saved user text. */
 export type EnglishContentEntry = Readonly<{
   name: string;
@@ -8,6 +9,7 @@ export const englishContent: Readonly<Record<string, EnglishContentEntry>> =
   Object.freeze(
     Object.fromEntries(
       Object.entries({
+        ...elements.english,
         H_G_SOL: {
           name: "Solenne",
           title: "The Sunforged Envoy",
@@ -21,7 +23,7 @@ export const englishContent: Readonly<Record<string, EnglishContentEntry>> =
         },
         H_G_CAI: {
           name: "Cairn",
-          title: "The Keystone Guardian",
+          title: "The Gravity Sentinel",
         },
         S_G_CAI: {
           name: "Keystone Covenant",
@@ -76,7 +78,7 @@ export const englishContent: Readonly<Record<string, EnglishContentEntry>> =
         },
         H_G_ROW: {
           name: "Rowan",
-          title: "The Grove Nomad",
+          title: "The Tidal Wanderer",
         },
         S_G_ROW: {
           name: "Hearthroot",
@@ -164,7 +166,7 @@ export const englishContent: Readonly<Record<string, EnglishContentEntry>> =
         },
         H_G_BV: {
           name: "Briar",
-          title: "The Living Bastion",
+          title: "The Rootbound Warden",
         },
         H_G_BP: {
           name: "Aster",
@@ -582,5 +584,9 @@ export function deckDisplayName(
     | Readonly<{ kind: "PRESET"; presetId: string; name: string }>
     | Readonly<{ kind: "SAVED"; name: string }>,
 ): string {
-  return source.kind === "PRESET" ? contentName(source.presetId) : source.name;
+  return source.kind === "PRESET"
+    ? source.name.endsWith("'s Oath")
+      ? source.name
+      : contentName(source.presetId)
+    : source.name;
 }

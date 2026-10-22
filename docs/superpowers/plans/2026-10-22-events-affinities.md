@@ -99,9 +99,9 @@
 
 **Files:** webEnglish/presentationmodel, HeroSelect/HeroInspect/profile, cardcollection/deckrows/hand/inspect, artmanifest; version-awarematchcatalogfetch; ownedcollectionqueries; styles andfocusedtests.
 **Interfaces:** newpubliccurrentmetadata; `catalog(version)` andcacheboundview.versions.content; cardraritybadge, systememblem, ownedquantity0/1/2. Legacycurrentmatch showslegacyclass/power context.
-- [ ] RED:20newprofilesexactsystem/powers; legacyinspectoldpowers; neutral/mintwo-systemvalidation; ownedE0/1/2quantities; oldsaveddeckreviewpreserveshistory; pendinglegacyrequestexactretry.
-- [ ] Addaccessibleemblems/rarityframes/filterstates andrealownershipfeedback. Keepindependentquantitycontrolsandnamedinspectlinks. Migrateonlyexplicitreviewcopy; failedsavepreservesdraft. Do nothardcodecurrentcatalogintoactiveoldmatch.
-- [ ] GREEN: frontendtests+APIflow and375/1024/1440browserchecks, keyboard/assetfailure/reducedmotion. Commit.
+- [x] RED:20newprofilesexactsystem/powers; legacyinspectoldpowers; neutral/mintwo-systemvalidation; ownedE0/1/2quantities; oldsaveddeckreviewpreserveshistory; pendinglegacyrequestexactretry.
+- [x] Addaccessibleemblems/rarityframes/filterstates andrealownershipfeedback. Keepindependentquantitycontrolsandnamedinspectlinks. Migrateonlyexplicitreviewcopy; failedsavepreservesdraft. Do nothardcodecurrentcatalogintoactiveoldmatch.
+- [x] GREEN: frontendtests+APIflow and375/1024/1440browserchecks, keyboard/assetfailure/reducedmotion. Commit.
 
 ### Task 9: Cinematic Features and decorated battlefields
 

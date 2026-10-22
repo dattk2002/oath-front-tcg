@@ -13,20 +13,32 @@ export const normalize = (text: string) =>
     .replace(/Đ/g, "D")
     .toLowerCase();
 export function filterCards(
-  catalog: { cards: readonly PublicCatalog["cards"][number][] },
+  catalog: {
+    version?: string;
+    cards: readonly PublicCatalog["cards"][number][];
+  },
   hero: HeroDefinitionView,
-  filter: { search: string; classId: string; type: string; cost: string },
+  filter: {
+    search: string;
+    classId: string;
+    type: string;
+    cost: string;
+    rarity?: string;
+  },
 ) {
   return catalog.cards
     .filter(
       (c) =>
-        c.faction === hero.faction &&
+        (catalog.version === "elements_v1" || c.faction === hero.faction) &&
         (c.classId === null || hero.classes.includes(c.classId)) &&
         (filter.classId === "ALL" ||
           (filter.classId === "COMMON"
             ? c.classId === null
             : c.classId === filter.classId)) &&
         (filter.type === "ALL" || c.type === filter.type) &&
+        (!filter.rarity ||
+          filter.rarity === "ALL" ||
+          c.rarity === filter.rarity) &&
         (filter.cost === "ALL" ||
           (filter.cost === "6"
             ? c.cost >= 6
@@ -75,12 +87,13 @@ export function changeQuantity(
   entries: DeckEntry[],
   cardId: DeckEntry["cardId"],
   delta: number,
+  owned = 2,
 ): DeckEntry[] {
   const old = entries.find((e) => e.cardId === cardId)?.quantity ?? 0;
   const quantity = old + delta;
   if (
     quantity < 0 ||
-    quantity > 2 ||
+    (delta > 0 && quantity > Math.min(2, owned)) ||
     (delta > 0 && entries.reduce((n, e) => n + e.quantity, 0) >= 30)
   )
     return entries;

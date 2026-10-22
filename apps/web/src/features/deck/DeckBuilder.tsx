@@ -1,3 +1,10 @@
+import {
+  RarityBadge,
+  SystemBadge,
+  SystemBadges,
+} from "../content/ContentBadges";
+import { useCollection } from "../content/use-collection";
+import { useVersionedCatalog } from "../content/use-versioned-catalog";
 import { contentName, contentText } from "../../content/english-content";
 import { usePrivateStorage } from "../auth/private-storage";
 import ArtImage from "../match/ArtImage";
@@ -64,7 +71,7 @@ function Modal({
   );
 }
 export default function DeckBuilder({
-  catalog,
+  catalog: currentCatalog,
   api,
   initial,
   saved,
@@ -89,12 +96,13 @@ export default function DeckBuilder({
       { mode: "SKIRMISH" }
     > | null>(null);
   const [deck, setDeck] = useState<DeckInput>(
-      review ? { ...initial, contentVersion: catalog.version } : initial,
+      review ? { ...initial, contentVersion: currentCatalog.version } : initial,
     ),
     [base, setBase] = useState(saved),
     [baseline, setBaseline] = useState(JSON.stringify(initial)),
     [ready, setReady] = useState(false),
     [busy, setBusy] = useState(false),
+    [reviewPending, setReviewPending] = useState(false),
     [message, setMessage] = useState(""),
     [inspect, setInspect] = useState<CardDefinitionView | null>(null),
     [deckOpen, setDeckOpen] = useState(false),
@@ -102,6 +110,19 @@ export default function DeckBuilder({
     [leave, setLeave] = useState<string | null>(null),
     [nameError, setNameError] = useState(false),
     [conflict, setConflict] = useState<string | null>(null);
+  const bound = useVersionedCatalog(
+    api,
+    review ? currentCatalog.version : deck.contentVersion,
+    currentCatalog,
+  );
+  const catalog = bound.catalog ?? currentCatalog;
+  const inventory = useCollection(api, catalog.version === "elements_v1");
+  const ownedValid =
+    catalog.version !== "elements_v1" ||
+    deck.entries.every((e) => {
+      const card = catalog.cards.find((c) => c.id === e.cardId);
+      return !!card && e.quantity <= inventory.owned(card);
+    });
   const initialKey = draftLocation(
     initial.heroId,
     saved ?? null,
@@ -243,7 +264,12 @@ export default function DeckBuilder({
     if (busy || pending.current || createPending.current) return;
     setDeck((old) => ({
       ...old,
-      entries: changeQuantity(old.entries, id, delta),
+      entries: changeQuantity(
+        old.entries,
+        id,
+        delta,
+        inventory.owned(catalog.cards.find((c) => c.id === id)!),
+      ),
     }));
   }
   useEffect(() => {
@@ -296,6 +322,12 @@ export default function DeckBuilder({
     navigate = false,
   ): Promise<DeckDTO | null> {
     if (lock.current) return null;
+    if (!pending.current && !ownedValid) {
+      setMessage(
+        "This deck uses Event copies you do not own. Your draft is preserved.",
+      );
+      return null;
+    }
     if (!nameValid) {
       setNameError(true);
       requestAnimationFrame(() =>
@@ -353,7 +385,7 @@ export default function DeckBuilder({
       ) {
         pending.current = null;
         setMessage(
-          "The deck could not be saved. Check its name, copy counts and classes; your draft is preserved.",
+          "The deck could not be saved. Check its name, copy counts and systems; your draft is preserved.",
         );
       } else
         setMessage(
@@ -376,7 +408,13 @@ export default function DeckBuilder({
     }
   }
   async function acceptReview() {
-    if (!review || lock.current || !validation.playable || !nameValid) return;
+    if (
+      !review ||
+      lock.current ||
+      (!createPending.current &&
+        (!validation.playable || !nameValid || !ownedValid))
+    )
+      return;
     let source = review.config.deck;
     if (
       !createPending.current &&
@@ -402,6 +440,7 @@ export default function DeckBuilder({
       expectedContentVersion: catalog.version,
     };
     createPending.current = body;
+    setReviewPending(true);
     let durable = true;
     try {
       storage.setItem(
@@ -432,6 +471,7 @@ export default function DeckBuilder({
         error.status < 500
       ) {
         createPending.current = null;
+        setReviewPending(false);
         setMessage("The request was rejected. Check the deck source.");
       } else
         setMessage(
@@ -453,12 +493,34 @@ export default function DeckBuilder({
         body.mode === "SKIRMISH" &&
         body.opponentHeroId === review.config.opponentHeroId &&
         body.difficulty === review.config.difficulty
-      )
+      ) {
         createPending.current = body;
+        setReviewPending(true);
+        setMessage(
+          "A previous match request is unconfirmed. Retry keeps its original deck and rules.",
+        );
+      }
     } catch {
       /* Memory retries. */
     }
   }, [review]);
+  if (!bound.catalog)
+    return (
+      <section className="status-panel panel">
+        <h1>Loading deck rules</h1>
+        {bound.failed ? (
+          <>
+            <p role="alert">
+              The original catalog could not be loaded. Your deck has not
+              changed.
+            </p>
+            <button onClick={bound.retry}>Retry deck rules</button>
+          </>
+        ) : (
+          <p role="status">Restoring {deck.contentVersion}…</p>
+        )}
+      </section>
+    );
   const rows = deck.entries
     .map((e) => ({
       entry: e,
@@ -478,9 +540,60 @@ export default function DeckBuilder({
     <aside className="panel deck-panel" aria-label="Deck list">
       <h2 className="deck-summary-count">Deck · {validation.totalCards}/30</h2>
       <ManaCurve catalog={catalog} entries={deck.entries} />
+      {catalog.version === "elements_v1" && (
+        <div className="deck-law">
+          <SystemBadges systems={hero.classes} />
+          <p>30 cards · Max 2 copies · Max 12 Neutral</p>
+          {hero.classes.map((system) => (
+            <p key={system}>
+              {classLabel[system]}:{" "}
+              {deck.entries.reduce(
+                (sum, e) =>
+                  sum +
+                  (catalog.cards.find((c) => c.id === e.cardId)?.classId ===
+                  system
+                    ? e.quantity
+                    : 0),
+                0,
+              )}{" "}
+              / minimum 6
+            </p>
+          ))}
+          <p>
+            Neutral:{" "}
+            {deck.entries.reduce(
+              (sum, e) =>
+                sum +
+                (catalog.cards.find((c) => c.id === e.cardId)?.classId === null
+                  ? e.quantity
+                  : 0),
+              0,
+            )}{" "}
+            / maximum 12
+          </p>
+        </div>
+      )}
+      {catalog.version !== "elements_v1" && (
+        <p>Legacy rules · {catalog.version}. Editing keeps this version.</p>
+      )}
+      {inventory.error && (
+        <p role="alert">
+          Collection could not be refreshed.{" "}
+          <button onClick={inventory.retry}>Retry collection</button>
+        </p>
+      )}
+      {!ownedValid && (
+        <p role="status">
+          Some Event copies are not owned or collection data is still loading.
+        </p>
+      )}
       <ul className="builder-rows">
         {rows.map(({ entry, card }) => (
-          <li key={entry.cardId} onClick={() => card && setInspect(card)}>
+          <li
+            key={entry.cardId}
+            data-rarity={card?.rarity}
+            onClick={() => card && setInspect(card)}
+          >
             {card ? (
               <>
                 <button
@@ -492,7 +605,9 @@ export default function DeckBuilder({
                 >
                   {card.cost} · {contentName(card.id)}
                 </button>
+                <RarityBadge rarity={card.rarity} />
                 <QuantityControls
+                  owned={inventory.owned(card)}
                   card={card}
                   quantity={entry.quantity}
                   total={validation.totalCards}
@@ -592,6 +707,7 @@ export default function DeckBuilder({
             entries={deck.entries}
             onChange={change}
             onInspect={setInspect}
+            owned={inventory.owned}
           />
           <div className="desktop-deck-panel">{deckPanel}</div>
         </div>
@@ -610,7 +726,9 @@ export default function DeckBuilder({
             : message || (dirty ? "Local draft · Unsaved" : "Saved")}
         </p>
         <button
-          disabled={busy || !!createPending.current}
+          disabled={
+            busy || !!createPending.current || (!pending.current && !ownedValid)
+          }
           onClick={() => void save(false, true)}
         >
           Save deck
@@ -618,7 +736,11 @@ export default function DeckBuilder({
         {review ? (
           <button
             className="primary"
-            disabled={busy || !validation.playable || !nameValid}
+            disabled={
+              busy ||
+              (!reviewPending &&
+                (!validation.playable || !nameValid || !ownedValid))
+            }
             onClick={() => void acceptReview()}
           >
             Accept and create match
@@ -626,7 +748,7 @@ export default function DeckBuilder({
         ) : (
           <button
             className="primary"
-            disabled={busy || !validation.playable || !nameValid}
+            disabled={busy || !validation.playable || !nameValid || !ownedValid}
             onClick={async () => {
               const result = dirty || !base ? await save() : base;
               if (result) onContinue(result);
@@ -660,6 +782,10 @@ export default function DeckBuilder({
               variant="inspect"
             />
           </div>
+          <div className="card-affinities">
+            <RarityBadge rarity={inspect.rarity} full />
+            <SystemBadge system={inspect.classId} />
+          </div>
           <p>{contentText(inspect.id)}</p>
           <div className="keyword-help">
             {inspect.keywords.map((k) => (
@@ -671,6 +797,7 @@ export default function DeckBuilder({
           </div>
           <QuantityControls
             card={inspect}
+            owned={inventory.owned(inspect)}
             quantity={
               deck.entries.find((e) => e.cardId === inspect.id)?.quantity ?? 0
             }

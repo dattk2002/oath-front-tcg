@@ -21,6 +21,14 @@ export const phaseLabel: Record<Phase, string> = {
   GAME_OVER: "Match ended",
 };
 export const classLabel: Record<ClassId, string> = {
+  GROVE: "Grove",
+  TERRA: "Terra",
+  TIDE: "Tide",
+  TEMPEST: "Tempest",
+  SOLAR: "Solar",
+  FORGE: "Forge",
+  ARCANE: "Arcane",
+  UMBRAL: "Umbral",
   BASTION: "Bastion",
   VERDANT: "Verdant",
   PRISM: "Prism",

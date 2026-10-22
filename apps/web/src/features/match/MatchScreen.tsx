@@ -1,3 +1,4 @@
+import { useVersionedCatalog } from "../content/use-versioned-catalog";
 import { contentName, contentText } from "../../content/english-content";
 import TutorialOverlay from "../tutorial/TutorialOverlay";
 import ArtImage from "./ArtImage";
@@ -41,6 +42,11 @@ export default function MatchScreen({
   matchId: string;
 }) {
   const { initial, failed, expired, retry } = useLoadedMatch(api, matchId);
+  const bound = useVersionedCatalog(
+    api,
+    initial?.view.versions.content,
+    catalog,
+  );
   if (expired)
     return (
       <ResultDetail
@@ -58,14 +64,27 @@ export default function MatchScreen({
         <button onClick={retry}>Retry match</button>
       </section>
     );
-  if (!initial)
+  if (bound.failed)
+    return (
+      <section className="status-panel panel">
+        <h1>Match rules unavailable</h1>
+        <p>The original match catalog could not be loaded.</p>
+        <button onClick={bound.retry}>Retry match rules</button>
+      </section>
+    );
+  if (!initial || !bound.catalog)
     return (
       <p className="loading" role="status">
         Loading battlefield…
       </p>
     );
   return (
-    <MatchRuntime key={matchId} initial={initial} api={api} catalog={catalog} />
+    <MatchRuntime
+      key={matchId}
+      initial={initial}
+      api={api}
+      catalog={bound.catalog}
+    />
   );
 }
 function MatchRuntime({

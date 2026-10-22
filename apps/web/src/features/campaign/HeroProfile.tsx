@@ -1,4 +1,5 @@
 "use client";
+import { SystemBadges, systemStrategy } from "../content/ContentBadges";
 import Link from "next/link";
 import {
   contentName,
@@ -7,7 +8,6 @@ import {
 } from "../../content/english-content";
 import { CampaignArtwork } from "./CampaignArtwork";
 import {
-  classNames,
   factionName,
   heroEnvironment,
   heroPortrait,
@@ -39,11 +39,10 @@ export function HeroProfile({
           </p>
           <h1>{contentName(hero.id)}</h1>
           <h2>{heroTitle(hero.id)}</h2>
-          <p className="campaign-profile-classes">{classNames(hero)}</p>
-          <p className="campaign-profile-description">
-            Explore four powers, then choose a deck and take your place in the
-            Fivefold.
+          <p className="campaign-profile-classes">
+            <SystemBadges systems={hero.classes} />
           </p>
+          <p className="campaign-profile-description">{systemStrategy(hero)}</p>
         </div>
         <div className="campaign-profile-art">
           <CampaignArtwork

@@ -1,4 +1,5 @@
-import { contentName } from "../../content/english-content";
+import { systemStrategy } from "../content/ContentBadges";
+import { contentName, deckDisplayName } from "../../content/english-content";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type {
@@ -9,7 +10,7 @@ import type {
 } from "@oathfront/contracts/browser";
 import type { ApiClient } from "../match/api-client";
 import ManaCurve from "./ManaCurve";
-import { strategies, presetNames } from "../hero/HeroInspect";
+import { strategies } from "../hero/HeroInspect";
 type Source = Extract<CreateMatchRequest, { mode: "SKIRMISH" }>["deck"];
 export default function DeckList({
   catalog,
@@ -81,9 +82,13 @@ export default function DeckList({
             setPreview(preset.presetId);
           }}
         >
-          {presetNames[preset.presetId]}
+          {deckDisplayName({
+            kind: "PRESET",
+            presetId: preset.presetId,
+            name: preset.name,
+          })}
         </button>
-        <p>{strategies[heroId]}</p>
+        <p>{systemStrategy(hero) || strategies[heroId]}</p>
         <ManaCurve entries={preset.entries} catalog={catalog} />
         <div className="button-row" onClick={(e) => e.stopPropagation()}>
           <button
@@ -170,7 +175,11 @@ export default function DeckList({
         <section className="panel deck-preview" aria-label="Deck preview">
           <h2>
             {preview === preset.presetId
-              ? presetNames[preset.presetId]
+              ? deckDisplayName({
+                  kind: "PRESET",
+                  presetId: preset.presetId,
+                  name: preset.name,
+                })
               : items.find((d) => d.id === preview)?.name}
           </h2>
           <ul>

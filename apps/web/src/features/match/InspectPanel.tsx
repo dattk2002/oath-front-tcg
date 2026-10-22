@@ -1,3 +1,4 @@
+import { RarityBadge, SystemBadge } from "../content/ContentBadges";
 import { contentName, contentText } from "../../content/english-content";
 import type {
   PlayerAction,
@@ -55,6 +56,12 @@ export default function InspectPanel({
                 ? "Power · 1 energy"
                 : "Summoned unit"}
           </p>
+          {"cost" in def && (
+            <div className="card-affinities">
+              <RarityBadge rarity={def.rarity} full />
+              <SystemBadge system={def.classId} />
+            </div>
+          )}
           <div className="inspect-art">
             <ArtImage
               artKey={def.artKey}

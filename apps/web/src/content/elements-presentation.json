@@ -1,0 +1,329 @@
+{
+  "version": "elements_v1",
+  "systems": [
+    {
+      "id": "GROVE",
+      "name": "Grove",
+      "theme": "Growth, healing and replacement units",
+      "symbol": "leaf"
+    },
+    {
+      "id": "TERRA",
+      "name": "Terra",
+      "theme": "Armor, Shield and lasting defense",
+      "symbol": "mountain"
+    },
+    {
+      "id": "TIDE",
+      "name": "Tide",
+      "theme": "Repositioning, protection and recovery",
+      "symbol": "wave"
+    },
+    {
+      "id": "TEMPEST",
+      "name": "Tempest",
+      "theme": "Movement, tempo and attack pressure",
+      "symbol": "bolt"
+    },
+    {
+      "id": "SOLAR",
+      "name": "Solar",
+      "theme": "Radiance, heat and direct damage",
+      "symbol": "sun"
+    },
+    {
+      "id": "FORGE",
+      "name": "Forge",
+      "theme": "Constructs, repairs and resilience",
+      "symbol": "anvil"
+    },
+    {
+      "id": "ARCANE",
+      "name": "Arcane",
+      "theme": "Draw, timing and spell control",
+      "symbol": "orbit"
+    },
+    {
+      "id": "UMBRAL",
+      "name": "Umbral",
+      "theme": "Poison, weakening and attrition",
+      "symbol": "eclipse"
+    }
+  ],
+  "heroes": [
+    {
+      "id": "H_G_BV",
+      "art": "briar",
+      "faction": "GOOD",
+      "classes": ["GROVE", "TERRA"],
+      "powerIds": ["P_GROVE1", "P_GROVE2", "P_TERRA1", "S_G_BV"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_BP",
+      "art": "aster",
+      "faction": "GOOD",
+      "classes": ["FORGE", "SOLAR"],
+      "powerIds": ["P_FORGE1", "P_FORGE2", "P_SOLAR1", "S_G_BP"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_VP",
+      "art": "lumen",
+      "faction": "GOOD",
+      "classes": ["TEMPEST", "SOLAR"],
+      "powerIds": ["P_TEMPEST1", "P_TEMPEST2", "P_SOLAR1", "S_G_VP"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_FX",
+      "art": "cinder",
+      "faction": "EVIL",
+      "classes": ["FORGE", "TERRA"],
+      "powerIds": ["P_FORGE1", "P_FORGE2", "P_TERRA1", "S_E_FX"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_FS",
+      "art": "vesper",
+      "faction": "EVIL",
+      "classes": ["TEMPEST", "UMBRAL"],
+      "powerIds": ["P_TEMPEST1", "P_TEMPEST2", "P_UMBRAL1", "S_E_FS"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_XS",
+      "art": "morrow",
+      "faction": "EVIL",
+      "classes": ["ARCANE", "UMBRAL"],
+      "powerIds": ["P_ARCANE1", "P_ARCANE2", "P_UMBRAL1", "S_E_XS"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_SOL",
+      "art": "solenne",
+      "faction": "GOOD",
+      "classes": ["SOLAR", "TERRA"],
+      "powerIds": ["P_SOLAR1", "P_SOLAR2", "P_TERRA1", "S_G_SOL"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_CAI",
+      "art": "cairn",
+      "faction": "GOOD",
+      "classes": ["TERRA", "ARCANE"],
+      "powerIds": ["P_TERRA1", "P_TERRA2", "P_ARCANE1", "S_G_CAI"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_ZEP",
+      "art": "zephyr",
+      "faction": "GOOD",
+      "classes": ["TEMPEST", "TIDE"],
+      "powerIds": ["P_TEMPEST1", "P_TEMPEST2", "P_TIDE1", "S_G_ZEP"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_MER",
+      "art": "meridian",
+      "faction": "GOOD",
+      "classes": ["ARCANE", "SOLAR"],
+      "powerIds": ["P_ARCANE1", "P_ARCANE2", "P_SOLAR1", "S_G_MER"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_MOS",
+      "art": "mossweld",
+      "faction": "GOOD",
+      "classes": ["FORGE", "GROVE"],
+      "powerIds": ["P_FORGE1", "P_FORGE2", "P_GROVE1", "S_G_MOS"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_HAL",
+      "art": "halcyon",
+      "faction": "GOOD",
+      "classes": ["TEMPEST", "GROVE"],
+      "powerIds": ["P_TEMPEST1", "P_TEMPEST2", "P_GROVE1", "S_G_HAL"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_G_ROW",
+      "art": "rowan",
+      "faction": "GOOD",
+      "classes": ["GROVE", "TIDE"],
+      "powerIds": ["P_GROVE1", "P_GROVE2", "P_TIDE1", "S_G_ROW"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_ROO",
+      "art": "rook",
+      "faction": "EVIL",
+      "classes": ["FORGE", "TEMPEST"],
+      "powerIds": ["P_FORGE1", "P_FORGE2", "P_TEMPEST1", "S_E_ROO"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_NYX",
+      "art": "nyxara",
+      "faction": "EVIL",
+      "classes": ["UMBRAL", "GROVE"],
+      "powerIds": ["P_UMBRAL1", "P_UMBRAL2", "P_GROVE1", "S_E_NYX"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_BRI",
+      "art": "brimstone",
+      "faction": "EVIL",
+      "classes": ["SOLAR", "UMBRAL"],
+      "powerIds": ["P_SOLAR1", "P_SOLAR2", "P_UMBRAL1", "S_E_BRI"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_SAB",
+      "art": "sable",
+      "faction": "EVIL",
+      "classes": ["TERRA", "UMBRAL"],
+      "powerIds": ["P_TERRA1", "P_TERRA2", "P_UMBRAL1", "S_E_SAB"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_VAN",
+      "art": "vanta",
+      "faction": "EVIL",
+      "classes": ["TIDE", "UMBRAL"],
+      "powerIds": ["P_TIDE1", "P_TIDE2", "P_UMBRAL1", "S_E_VAN"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_GRA",
+      "art": "gravemarch",
+      "faction": "EVIL",
+      "classes": ["FORGE", "UMBRAL"],
+      "powerIds": ["P_FORGE1", "P_FORGE2", "P_UMBRAL1", "S_E_GRA"],
+      "maxHp": 20
+    },
+    {
+      "id": "H_E_SCO",
+      "art": "scoria",
+      "faction": "EVIL",
+      "classes": ["SOLAR", "TIDE"],
+      "powerIds": ["P_SOLAR1", "P_SOLAR2", "P_TIDE1", "S_E_SCO"],
+      "maxHp": 20
+    }
+  ],
+  "english": {
+    "E01": {
+      "name": "Oathglass Sentinel",
+      "text": "Shield. When destroyed: heal your hero 2."
+    },
+    "E02": {
+      "name": "Moonpetal Keeper",
+      "text": "On play: heal your hero 2. End turn: heal this unit 1."
+    },
+    "E03": {
+      "name": "Sunflare Lynx",
+      "text": "On play: deal 1 to the enemy unit here. When destroyed: deal 1 to the enemy hero."
+    },
+    "E04": {
+      "name": "Veilfin Stalker",
+      "text": "Before combat here, once per turn: gain +1 ATK this turn. When destroyed: poison the enemy unit here."
+    },
+    "E05": {
+      "name": "Cobalt Repairbot",
+      "text": "End turn: heal this unit 1."
+    },
+    "E06": {
+      "name": "Rimewake Courier",
+      "text": "On play: stun the enemy unit here this turn. Heal your hero 1."
+    },
+    "E07": {
+      "name": "Stormcrest Glider",
+      "text": "Pierce. On play: gain +1 ATK this turn."
+    },
+    "E08": {
+      "name": "Chronicle Wisp",
+      "text": "On play: draw 1. When destroyed: draw 1."
+    },
+    "E09": {
+      "name": "Reedheart Guardian",
+      "text": "On play: heal your hero 1. When destroyed: summon a Seedling here if empty."
+    },
+    "E10": {
+      "name": "Cragbound Ram",
+      "text": "Armor. When damaged, once per turn while alive: gain +1 ATK this turn."
+    },
+    "E11": {
+      "name": "Dawncomet Phoenix",
+      "text": "Pierce. When destroyed: heal your hero 3."
+    },
+    "E12": {
+      "name": "Hollowmask Oracle",
+      "text": "On play: poison the enemy unit here. When destroyed: draw 1."
+    },
+    "P_GROVE1": {
+      "name": "Verdant Pulse",
+      "text": "Heal your hero 3 and all allied units 1."
+    },
+    "P_GROVE2": {
+      "name": "Rootguard",
+      "text": "Give an allied unit +0/+2 permanently. Draw 1."
+    },
+    "P_TERRA1": {
+      "name": "Oathshield",
+      "text": "Give an allied unit Shield. Draw 1."
+    },
+    "P_TERRA2": {
+      "name": "Stone Skin",
+      "text": "Give an allied unit Armor and +0/+1 permanently."
+    },
+    "P_TIDE1": {
+      "name": "Undertow",
+      "text": "Move an enemy unit to an empty lane on its side."
+    },
+    "P_TIDE2": {
+      "name": "Stillwater",
+      "text": "Stun an enemy unit this turn. Heal your hero 1."
+    },
+    "P_TEMPEST1": {
+      "name": "Slipstream",
+      "text": "Move an allied unit to an empty allied lane. Give it +2 ATK this turn."
+    },
+    "P_TEMPEST2": {
+      "name": "Stormspark",
+      "text": "Deal 2 damage to an enemy unit or hero."
+    },
+    "P_SOLAR1": {
+      "name": "Radiant Surge",
+      "text": "Give an allied unit +2 ATK this turn. Draw 1."
+    },
+    "P_SOLAR2": {
+      "name": "Sunwell",
+      "text": "Heal your hero 4."
+    },
+    "P_FORGE1": {
+      "name": "Field Repair",
+      "text": "Heal an allied unit 4. Draw 1."
+    },
+    "P_FORGE2": {
+      "name": "Overclock",
+      "text": "Give an allied unit +1/+1 permanently."
+    },
+    "P_ARCANE1": {
+      "name": "Second Sight",
+      "text": "Draw 2."
+    },
+    "P_ARCANE2": {
+      "name": "Suspension",
+      "text": "Stun an enemy unit this turn. Draw 1."
+    },
+    "P_UMBRAL1": {
+      "name": "Venom Thread",
+      "text": "Poison an enemy unit."
+    },
+    "P_UMBRAL2": {
+      "name": "Fading Hex",
+      "text": "Give an enemy unit -2 ATK this turn. Draw 1."
+    }
+  }
+}

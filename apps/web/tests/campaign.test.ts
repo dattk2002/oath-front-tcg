@@ -3,7 +3,7 @@ import {
   gameEntryDestination,
   publicHero,
 } from "../src/features/campaign/model";
-import { heroes } from "../../../packages/game-content/src/core/heroes";
+import { currentCatalog } from "../../../packages/game-content/src/index";
 
 describe("campaign game entry", () => {
   it("resumes an active match even when a different hero profile is selected", () => {
@@ -22,7 +22,7 @@ describe("campaign game entry", () => {
     );
   });
   it("publishes each actual hero's exact classes, HP and four powers", () => {
-    for (const hero of heroes) {
+    for (const hero of currentCatalog.heroes) {
       expect(publicHero(hero.id)).toMatchObject({
         id: hero.id,
         faction: hero.faction,
