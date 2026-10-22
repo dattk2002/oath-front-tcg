@@ -1,0 +1,37 @@
+{
+  "version": "world-v1",
+  "requests": [
+    {
+      "key": "moonroot-conservatory",
+      "name": "Moonroot Conservatory",
+      "source": "moonroot-conservatory.png",
+      "prompt": "Use case: stylized-concept. Original OathFront tactical card game battlefield environment backdrop, wide 16:9. Elevated near-top-down camera, symmetrical readable central rectangular platform occupying the middle 76 percent width and 70 percent height. Rich decorative world architecture only at corners and outer rim, generous uncluttered dark low-contrast central surface to overlay five vertical gameplay lanes and cards later. Premium hand-painted stylized 3D fantasy game environment, faceted materials and cinematic indirect light. No cards, no characters, no text, no logos, no UI borders/buttons, no drawn lane grid, no labels, no watermarks. Opaque background. Theme: Ancient glass-roof conservatory at moonrise, jade foliage, curling roots, turquoise lantern pods and soft moon flowers around the outside edge; worn dark mossy stone platform in the middle. Calm deep emerald and slate palette.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    },
+    {
+      "key": "cinder-foundry",
+      "name": "Cinder Foundry",
+      "source": "cinder-foundry.png",
+      "prompt": "Use case: stylized-concept. Original OathFront tactical card game battlefield environment backdrop, wide 16:9. Elevated near-top-down camera, symmetrical readable central rectangular platform occupying the middle 76 percent width and 70 percent height. Rich decorative world architecture only at corners and outer rim, generous uncluttered dark low-contrast central surface to overlay five vertical gameplay lanes and cards later. Premium hand-painted stylized 3D fantasy game environment, faceted materials and cinematic indirect light. No cards, no characters, no text, no logos, no UI borders/buttons, no drawn lane grid, no labels, no watermarks. Opaque background. Theme: Grand industrial volcanic forge, molten orange channels behind raised basalt walls at the outside edge, huge black iron pipes and copper machinery in the corners. Central platform is cool matte charcoal steel, subtle seams, no hot lava across the play space.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    },
+    {
+      "key": "glasswater-sanctum",
+      "name": "Glasswater Sanctum",
+      "source": "glasswater-sanctum.png",
+      "prompt": "Use case: stylized-concept. Original OathFront tactical card game battlefield environment backdrop, wide 16:9. Elevated near-top-down camera, symmetrical readable central rectangular platform occupying the middle 76 percent width and 70 percent height. Rich decorative world architecture only at corners and outer rim, generous uncluttered dark low-contrast central surface to overlay five vertical gameplay lanes and cards later. Premium hand-painted stylized 3D fantasy game environment, faceted materials and cinematic indirect light. No cards, no characters, no text, no logos, no UI borders/buttons, no drawn lane grid, no labels, no watermarks. Opaque background. Theme: Elegant flooded sanctuary, pale pearl columns at the corners, turquoise water and glass coral beyond the outer rim, curved bronze trim. Middle is quiet dark blue-gray wet stone, soft faint reflected light, no waves or objects across the play space.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    },
+    {
+      "key": "astral-causeway",
+      "name": "Astral Causeway",
+      "source": "astral-causeway.png",
+      "prompt": "Use case: stylized-concept. Original OathFront tactical card game battlefield environment backdrop, wide 16:9. Elevated near-top-down camera, symmetrical readable central rectangular platform occupying the middle 76 percent width and 70 percent height. Rich decorative world architecture only at corners and outer rim, generous uncluttered dark low-contrast central surface to overlay five vertical gameplay lanes and cards later. Premium hand-painted stylized 3D fantasy game environment, faceted materials and cinematic indirect light. No cards, no characters, no text, no logos, no UI borders/buttons, no drawn lane grid, no labels, no watermarks. Opaque background. Theme: Suspended ancient observatory causeway over a deep indigo star void, small orbiting brass instruments and violet crystals in the outside corners, broken ivory outer arches. Middle is muted midnight slate with very subtle astronomical engraving, no bright central portal.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    }
+  ]
+}

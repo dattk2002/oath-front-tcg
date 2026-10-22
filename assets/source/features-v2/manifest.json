@@ -1,0 +1,138 @@
+{
+  "version": "features-v2",
+  "tool": "built-in image_gen",
+  "promptPath": "assets/source/features-v2/generation.json",
+  "sources": [
+    {
+      "path": "assets/source/features-v2/collectible-cards.png",
+      "bytes": 2754578,
+      "sha256": "cd0f3db547dcaaf8d3073f2caf8f6bf0c0ad9f2fd578a4b3ca4b7c87143cf211",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "path": "assets/source/features-v2/five-lane-tactics.png",
+      "bytes": 3045099,
+      "sha256": "94f7e5600afb4e4200733eae9cfb2de390a2d4b26bf532f6783676e7ad6ef78e",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "path": "assets/source/features-v2/two-system-heroes.png",
+      "bytes": 2990028,
+      "sha256": "b3a1767b3130a724b5901e0e6bd2eae6844f5a8f10d3b303d4e21b0265c5e1da",
+      "width": 1672,
+      "height": 940,
+      "alpha": false
+    },
+    {
+      "path": "assets/source/features-v2/weekly-expeditions.png",
+      "bytes": 2821891,
+      "sha256": "c6ab970704c1d9719db75747ff8f8d90f3474cbad41c7899c1befd57ce992767",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    }
+  ],
+  "exports": [
+    {
+      "path": "apps/web/public/assets/features-v2/five-lane-tactics-wide.webp",
+      "bytes": 466126,
+      "sha256": "2a126d64ef7ab57a15a3539f3e9e532ef7b0fdc63b3cb8dc0101a711a5b2c580",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/five-lane-tactics-medium.webp",
+      "bytes": 243640,
+      "sha256": "a77f3af6564969996237cadcfd1fe295d81da611dcac731e3c0644bcd540bdf5",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/five-lane-tactics-small.webp",
+      "bytes": 115038,
+      "sha256": "d063e5e0823a975061e58d805142b53c40ba784cf88850520cbfc9904d61d2d7",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/two-system-heroes-wide.webp",
+      "bytes": 412098,
+      "sha256": "b979254bce32e96c0a9ed1c9611bbb8261a70c57b7c128dc03a753fd38efdd92",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/two-system-heroes-medium.webp",
+      "bytes": 219668,
+      "sha256": "de8249d53b2c552801198fbb943206c91b8513c1cfcd185feb252f277bbbdd89",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/two-system-heroes-small.webp",
+      "bytes": 103812,
+      "sha256": "b7fb6222c75c137e04cc3f1f7ce695321c176f17de2186e724f97a9f50a65c54",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/collectible-cards-wide.webp",
+      "bytes": 362626,
+      "sha256": "6295d05d430763054845d9cd16d711da88dcac5071ebc4a3ffe8add9ae27bfc9",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/collectible-cards-medium.webp",
+      "bytes": 196468,
+      "sha256": "c1911de0c888fbb92218f0afd3ab3fcdb9780f61e32daf0f3ae28d629f9c0a8e",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/collectible-cards-small.webp",
+      "bytes": 98244,
+      "sha256": "8124a00ecca1032c1c35fed5f1b84c4804697c9401abeb872f45c3bff9f168a1",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/weekly-expeditions-wide.webp",
+      "bytes": 373802,
+      "sha256": "e716529a3ab275cc028a778f7315ec550b0a00264c497804c77e6c7cdcd6baba",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/weekly-expeditions-medium.webp",
+      "bytes": 196286,
+      "sha256": "714f5495ed5f7bf277d3572eefb50c1de7c39172a7315f1cd14a7182918de06c",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/features-v2/weekly-expeditions-small.webp",
+      "bytes": 94060,
+      "sha256": "976f47cd9dd9e86f685c6532f74d1a4e10540ab7429678c974304528d9bf8c2f",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    }
+  ],
+  "license": "assets/source/LICENSE.md"
+}

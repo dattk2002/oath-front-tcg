@@ -1,0 +1,506 @@
+{
+  "version": "event-cards-v1",
+  "catalogVersion": "elements_v1",
+  "assets": [
+    {
+      "id": "E01",
+      "kind": "card",
+      "artKey": "cards/e01.webp",
+      "thumb": "/assets/event-cards-v1/cards/e01-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e01-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e01-cutout.webp"
+    },
+    {
+      "id": "E02",
+      "kind": "card",
+      "artKey": "cards/e02.webp",
+      "thumb": "/assets/event-cards-v1/cards/e02-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e02-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e02-cutout.webp"
+    },
+    {
+      "id": "E03",
+      "kind": "card",
+      "artKey": "cards/e03.webp",
+      "thumb": "/assets/event-cards-v1/cards/e03-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e03-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e03-cutout.webp"
+    },
+    {
+      "id": "E04",
+      "kind": "card",
+      "artKey": "cards/e04.webp",
+      "thumb": "/assets/event-cards-v1/cards/e04-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e04-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e04-cutout.webp"
+    },
+    {
+      "id": "E05",
+      "kind": "card",
+      "artKey": "cards/e05.webp",
+      "thumb": "/assets/event-cards-v1/cards/e05-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e05-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e05-cutout.webp"
+    },
+    {
+      "id": "E06",
+      "kind": "card",
+      "artKey": "cards/e06.webp",
+      "thumb": "/assets/event-cards-v1/cards/e06-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e06-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e06-cutout.webp"
+    },
+    {
+      "id": "E07",
+      "kind": "card",
+      "artKey": "cards/e07.webp",
+      "thumb": "/assets/event-cards-v1/cards/e07-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e07-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e07-cutout.webp"
+    },
+    {
+      "id": "E08",
+      "kind": "card",
+      "artKey": "cards/e08.webp",
+      "thumb": "/assets/event-cards-v1/cards/e08-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e08-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e08-cutout.webp"
+    },
+    {
+      "id": "E09",
+      "kind": "card",
+      "artKey": "cards/e09.webp",
+      "thumb": "/assets/event-cards-v1/cards/e09-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e09-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e09-cutout.webp"
+    },
+    {
+      "id": "E10",
+      "kind": "card",
+      "artKey": "cards/e10.webp",
+      "thumb": "/assets/event-cards-v1/cards/e10-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e10-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e10-cutout.webp"
+    },
+    {
+      "id": "E11",
+      "kind": "card",
+      "artKey": "cards/e11.webp",
+      "thumb": "/assets/event-cards-v1/cards/e11-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e11-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e11-cutout.webp"
+    },
+    {
+      "id": "E12",
+      "kind": "card",
+      "artKey": "cards/e12.webp",
+      "thumb": "/assets/event-cards-v1/cards/e12-thumb.webp",
+      "inspect": "/assets/event-cards-v1/cards/e12-inspect.webp",
+      "cutout": "/assets/event-cards-v1/cards/e12-cutout.webp"
+    }
+  ],
+  "atlases": [
+    {
+      "url": "/assets/event-cards-v1/atlases/cutouts-low.webp",
+      "quality": "low",
+      "width": 1056,
+      "height": 528,
+      "bytes": 288062,
+      "frames": {
+        "H_G_BV": {
+          "x": 2,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_BP": {
+          "x": 134,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_VP": {
+          "x": 266,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_FX": {
+          "x": 398,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_FS": {
+          "x": 530,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_XS": {
+          "x": 662,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_SOL": {
+          "x": 794,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_CAI": {
+          "x": 926,
+          "y": 2,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_ZEP": {
+          "x": 2,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_MER": {
+          "x": 134,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_MOS": {
+          "x": 266,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_HAL": {
+          "x": 398,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_G_ROW": {
+          "x": 530,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_ROO": {
+          "x": 662,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_NYX": {
+          "x": 794,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_BRI": {
+          "x": 926,
+          "y": 134,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_SAB": {
+          "x": 2,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_VAN": {
+          "x": 134,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_GRA": {
+          "x": 266,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "H_E_SCO": {
+          "x": 398,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "E01": {
+          "x": 530,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "E02": {
+          "x": 662,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "E03": {
+          "x": 794,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "E04": {
+          "x": 926,
+          "y": 266,
+          "width": 128,
+          "height": 128
+        },
+        "E05": {
+          "x": 2,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "E06": {
+          "x": 134,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "E07": {
+          "x": 266,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "E08": {
+          "x": 398,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "E09": {
+          "x": 530,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "E10": {
+          "x": 662,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "E11": {
+          "x": 794,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        },
+        "E12": {
+          "x": 926,
+          "y": 398,
+          "width": 128,
+          "height": 128
+        }
+      }
+    },
+    {
+      "url": "/assets/event-cards-v1/atlases/cutouts-high.webp",
+      "quality": "high",
+      "width": 2080,
+      "height": 1040,
+      "bytes": 812336,
+      "frames": {
+        "H_G_BV": {
+          "x": 2,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_BP": {
+          "x": 262,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_VP": {
+          "x": 522,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_FX": {
+          "x": 782,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_FS": {
+          "x": 1042,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_XS": {
+          "x": 1302,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_SOL": {
+          "x": 1562,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_CAI": {
+          "x": 1822,
+          "y": 2,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_ZEP": {
+          "x": 2,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_MER": {
+          "x": 262,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_MOS": {
+          "x": 522,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_HAL": {
+          "x": 782,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_G_ROW": {
+          "x": 1042,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_ROO": {
+          "x": 1302,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_NYX": {
+          "x": 1562,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_BRI": {
+          "x": 1822,
+          "y": 262,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_SAB": {
+          "x": 2,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_VAN": {
+          "x": 262,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_GRA": {
+          "x": 522,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "H_E_SCO": {
+          "x": 782,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "E01": {
+          "x": 1042,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "E02": {
+          "x": 1302,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "E03": {
+          "x": 1562,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "E04": {
+          "x": 1822,
+          "y": 522,
+          "width": 256,
+          "height": 256
+        },
+        "E05": {
+          "x": 2,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "E06": {
+          "x": 262,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "E07": {
+          "x": 522,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "E08": {
+          "x": 782,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "E09": {
+          "x": 1042,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "E10": {
+          "x": 1302,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "E11": {
+          "x": 1562,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        },
+        "E12": {
+          "x": 1822,
+          "y": 782,
+          "width": 256,
+          "height": 256
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: compositing. Edit target is Image 1, the approved OathFront ensemble banner. Preserve its 16:9 composition, ivory negative space on left, eight heroes, diagonal motion, angular painted comic shading, yellow slash fragments, energy trails, and all six unchanged hero identities and poses. Supporting identity references: Image 2 is redesigned Briar, Image 3 redesigned Rowan. Change ONLY the lower-center shield knight Briar to the dark oak/copper shield and warm brown armor in Image 2, preserving his human face and lunging pose. Change ONLY the bottom-left staff wielder Rowan to the blue amphibious skin, fin crest, gills, webbed hand/feet, rust sash and teal cloth in Image 3, keeping his staff sweep and crouched attack pose. Clearly match their new identities; Rowan must have no human beard or brown skin. Other heroes and layout stay intact. No text, logos, watermark, border or UI. High-quality original game marketing banner, opaque full background.",
+  "source": "ensemble.png"
+}

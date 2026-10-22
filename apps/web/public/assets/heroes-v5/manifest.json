@@ -1,0 +1,126 @@
+{
+  "version": "heroes-v5",
+  "catalogVersion": "elements_v1",
+  "assets": [
+    {
+      "id": "H_G_BV",
+      "kind": "hero",
+      "artKey": "heroes/h_g_bv/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/briar/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/briar/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/briar/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/briar/bust.webp",
+      "faceCrop": [
+        348,
+        -15,
+        717,
+        353
+      ]
+    },
+    {
+      "id": "H_G_CAI",
+      "kind": "hero",
+      "artKey": "heroes/h_g_cai/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/cairn/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/cairn/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/cairn/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/cairn/bust.webp",
+      "faceCrop": [
+        256,
+        77,
+        625,
+        445
+      ]
+    },
+    {
+      "id": "H_G_ROW",
+      "kind": "hero",
+      "artKey": "heroes/h_g_row/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/rowan/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/rowan/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/rowan/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/rowan/bust.webp",
+      "faceCrop": [
+        461,
+        159,
+        850,
+        548
+      ]
+    },
+    {
+      "id": "H_G_SOL",
+      "kind": "hero",
+      "artKey": "heroes/h_g_sol/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/solenne/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/solenne/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/solenne/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/solenne/bust.webp",
+      "faceCrop": [
+        430,
+        72,
+        778,
+        420
+      ]
+    },
+    {
+      "id": "H_G_MER",
+      "kind": "hero",
+      "artKey": "heroes/h_g_mer/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/meridian/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/meridian/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/meridian/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/meridian/bust.webp",
+      "faceCrop": [
+        389,
+        20,
+        778,
+        410
+      ]
+    },
+    {
+      "id": "H_G_HAL",
+      "kind": "hero",
+      "artKey": "heroes/h_g_hal/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/halcyon/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/halcyon/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/halcyon/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/halcyon/bust.webp",
+      "faceCrop": [
+        379,
+        15,
+        870,
+        507
+      ]
+    },
+    {
+      "id": "H_E_SAB",
+      "kind": "hero",
+      "artKey": "heroes/h_e_sab/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/sable/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/sable/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/sable/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/sable/bust.webp",
+      "faceCrop": [
+        338,
+        -10,
+        727,
+        379
+      ]
+    },
+    {
+      "id": "H_E_BRI",
+      "kind": "hero",
+      "artKey": "heroes/h_e_bri/portrait.webp",
+      "thumb": "/assets/heroes-v5/heroes/brimstone/thumb.webp",
+      "hud": "/assets/heroes-v5/heroes/brimstone/hud.webp",
+      "inspect": "/assets/heroes-v5/heroes/brimstone/inspect.webp",
+      "bust": "/assets/heroes-v5/heroes/brimstone/bust.webp",
+      "faceCrop": [
+        532,
+        338,
+        1024,
+        829
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": "home-v3",
+  "tool": "built-in image_gen",
+  "promptPath": "assets/source/home-v3/generation.json",
+  "sources": [
+    {
+      "path": "assets/source/home-v3/ensemble.png",
+      "bytes": 3080278,
+      "sha256": "68982e30ca8d5da0c4150c85f1a2925c4e497e9e06eb6171677026af0373951c",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    }
+  ],
+  "exports": [
+    {
+      "path": "apps/web/public/assets/home-v3/ensemble-wide.webp",
+      "bytes": 416124,
+      "sha256": "b8afa70cc97cdee1fef757e4654e3f330fe28ff40a1bdf2de3651a5bacbd056b",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/home-v3/ensemble-medium.webp",
+      "bytes": 222408,
+      "sha256": "29929b680083bde61e4e5e91b83f63e753414ceaac3ee35be2a318ff0357537d",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/home-v3/ensemble-small.webp",
+      "bytes": 106016,
+      "sha256": "797ef751495d8701bf1b42898072f027c0df1e097ef7e74ad0a624f201efddf3",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    }
+  ],
+  "license": "assets/source/LICENSE.md"
+}

@@ -1,0 +1,113 @@
+{
+  "version": "event-cards-v1",
+  "requests": [
+    {
+      "id": "E01",
+      "key": "e01",
+      "name": "Oathglass Sentinel",
+      "source": "e01.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Oathglass Sentinel. A compact squat six-legged glass-and-basalt guardian with a broad translucent amber oathglass shield grown across its back, stone mask face and cobalt eyes. Defensive crouch, faceted mineral plating, no foliage, strong clear silhouette.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E02",
+      "key": "e02",
+      "name": "Moonpetal Keeper",
+      "source": "e02.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Moonpetal Keeper. A tiny luminous moth-fairy gardener with a bulb-like lavender body, four delicate moonpetal wings, expressive dark eyes and a small curved watering vessel glowing mint. Hovers in a tender curved pose; pearl petals, not a humanoid armored knight.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E03",
+      "key": "e03",
+      "name": "Sunflare Lynx",
+      "source": "e03.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Sunflare Lynx. An athletic golden lynx leaping sideways with huge tufted ears, white-hot sun markings and a short flaming tail. Four anatomically clear feline legs, amber eyes, radiant copper fur planes, heroic compact sunbeast.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E04",
+      "key": "e04",
+      "name": "Veilfin Stalker",
+      "source": "e04.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Veilfin Stalker. A sleek eel-like shadow amphibian predator coiled in an S shape, four short webbed limbs, a wide violet dorsal veil, blackglass scales and poisonous jade fangs. Long tapered body and alert angular face, no humanoid clothes.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E05",
+      "key": "e05",
+      "name": "Cobalt Repairbot",
+      "source": "e05.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Cobalt Repairbot. A charming small cobalt-blue maintenance robot with a spherical brass belly, one large optical lens, two short tread feet, one articulated wrench arm and one precise repair claw. Chunky readable toy-like industrial proportions, restrained amber energy.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E06",
+      "key": "e06",
+      "name": "Rimewake Courier",
+      "source": "e06.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Rimewake Courier. A young nonhuman otter courier skating forward on ice, silver blue fur, teal scarf, pearl satchel and a crystalline message capsule held high. Long rudder tail, small bronze goggles, visible clever face, lively diagonal run.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E07",
+      "key": "e07",
+      "name": "Stormcrest Glider",
+      "source": "e07.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Stormcrest Glider. A broad-winged electric manta ray with an angular silver-blue crest, violet underside, pointed wing tips and trailing storm streamers. One centered alert face, no rider; soaring banked pose, cobalt lightning accents.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E08",
+      "key": "e08",
+      "name": "Chronicle Wisp",
+      "source": "e08.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Chronicle Wisp. A sentient floating hourglass spirit: two antique brass rings framing an expressive small indigo star face, translucent lavender vapor body and orbiting miniature blank pages. One curled spectral hand holds a quill. Compact crescent-shaped silhouette, no text on pages.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E09",
+      "key": "e09",
+      "name": "Reedheart Guardian",
+      "source": "e09.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Reedheart Guardian. A tall slender living reed heron automaton, woven rush body, seed-pod chest, curved wooden beak, two very long reed legs and broad papyrus leaf wings. Warm bark and fresh jade shoots, gently protective wide-wing gesture.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E10",
+      "key": "e10",
+      "name": "Cragbound Ram",
+      "source": "e10.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Cragbound Ram. A massive low charging mountain ram made of charcoal slate and amber quartz, huge spiraling stone horns and four sturdy hooves. Head lowered, mineral dust sparse, geological plates with copper veins, no metal machinery.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E11",
+      "key": "e11",
+      "name": "Dawncomet Phoenix",
+      "source": "e11.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Dawncomet Phoenix. A magnificent scarlet-and-gold phoenix rising with two open wings and a long comet tail, ivory beak and sharp bright face. Sculptural feather planes, magenta shadows, solar orange highlights, confident ascending S silhouette.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "E12",
+      "key": "e12",
+      "name": "Hollowmask Oracle",
+      "source": "e12.png",
+      "prompt": "Use case: stylized-concept. Create one original OathFront collectible unit illustration. Premium stylized 3D-comic game art, sharp faceted hand-painted planes, rich material highlights, graphic shadows, confident expressive anatomy and distinctive silhouette, consistent with angular superhero team game artwork. Full body centered in a square composition with all equipment/limbs visible and 8 percent clear margin. Genuine transparent background. No floor or vignette, no scenery, no text, no logo, no frame, no card statistics, no sheet or multiple views. At 128px the subject must be readable. Original design, no existing franchise character. Subject: Hollowmask Oracle. A small eerie floating hollow theatrical mask above a cloak made of folded black paper ribbons, two thin spectral arms holding a dark pearl, red-orange inner glow and violet edged folds. Compact triangular body, clearly empty behind the ivory mask, no human hair.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    }
+  ]
+}

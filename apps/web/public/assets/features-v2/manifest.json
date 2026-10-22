@@ -1,0 +1,29 @@
+{
+  "version": "features-v2",
+  "assets": [
+    {
+      "key": "five-lane-tactics",
+      "wide": "/assets/features-v2/five-lane-tactics-wide.webp",
+      "medium": "/assets/features-v2/five-lane-tactics-medium.webp",
+      "small": "/assets/features-v2/five-lane-tactics-small.webp"
+    },
+    {
+      "key": "two-system-heroes",
+      "wide": "/assets/features-v2/two-system-heroes-wide.webp",
+      "medium": "/assets/features-v2/two-system-heroes-medium.webp",
+      "small": "/assets/features-v2/two-system-heroes-small.webp"
+    },
+    {
+      "key": "collectible-cards",
+      "wide": "/assets/features-v2/collectible-cards-wide.webp",
+      "medium": "/assets/features-v2/collectible-cards-medium.webp",
+      "small": "/assets/features-v2/collectible-cards-small.webp"
+    },
+    {
+      "key": "weekly-expeditions",
+      "wide": "/assets/features-v2/weekly-expeditions-wide.webp",
+      "medium": "/assets/features-v2/weekly-expeditions-medium.webp",
+      "small": "/assets/features-v2/weekly-expeditions-small.webp"
+    }
+  ]
+}

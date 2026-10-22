@@ -1,0 +1,50 @@
+{
+  "version": "features-v2",
+  "requests": [
+    {
+      "key": "five-lane-tactics",
+      "source": "five-lane-tactics.png",
+      "inputs": [
+        "assets/source/heroes-v5/briar.png",
+        "assets/source/heroes-v5/brimstone.png"
+      ],
+      "prompt": "Use case: compositing. Create a new 16:9 cinematic OathFront Features page campaign banner using the supplied character images as identity references, not as layout constraints. Premium angular hand-painted 3D-comic videogame concept illustration, sculptural materials, bold dark shadow planes and crisp luminous accents. Full environmental scene with the main action in the right 60 percent, left 35 percent restrained dark atmospheric negative space for HTML headline overlay. Preserve the reference characters' anatomy, face, colors and equipment in new appropriate action poses. No text, logo, watermark, border, button or baked-in UI. Original OathFront universe. Scene: Briar and Brimstone confront across five parallel suspended stone bridges, a sweeping low cinematic view through a shattered monumental arena. Briar defends on the right foreground, the quadrupedal molten beast distant across the gulf. Diagonal energy trails suggest ordered tactical lanes, dramatic depth. No grid or numbers.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    },
+    {
+      "key": "two-system-heroes",
+      "source": "two-system-heroes.png",
+      "inputs": [
+        "assets/source/heroes-v5/briar.png",
+        "assets/source/heroes-v5/cairn.png"
+      ],
+      "prompt": "Use case: compositing. Create a new 16:9 cinematic OathFront Features page campaign banner using the supplied character images as identity references, not as layout constraints. Premium angular hand-painted 3D-comic videogame concept illustration, sculptural materials, bold dark shadow planes and crisp luminous accents. Full environmental scene with the main action in the right 60 percent, left 35 percent restrained dark atmospheric negative space for HTML headline overlay. Preserve the reference characters' anatomy, face, colors and equipment in new appropriate action poses. No text, logo, watermark, border, button or baked-in UI. Original OathFront universe. Scene: Briar and Cairn stand back-to-back on the right half, heroically framed by a giant carved root arch and levitating cobalt mineral fragments. Briar is a human dark-oak shield knight; Cairn is a floating separated limestone guardian with no legs. Root-green and cobalt power streams meet behind them, expressing complementary affinities. Preserve both supplied identities.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    },
+    {
+      "key": "collectible-cards",
+      "source": "collectible-cards.png",
+      "inputs": [
+        "assets/source/event-cards-v1/e03.png",
+        "assets/source/event-cards-v1/e08.png",
+        "assets/source/event-cards-v1/e05.png"
+      ],
+      "prompt": "Use case: compositing. Create a new 16:9 cinematic OathFront Features page campaign banner using the supplied character images as identity references, not as layout constraints. Premium angular hand-painted 3D-comic videogame concept illustration, sculptural materials, bold dark shadow planes and crisp luminous accents. Full environmental scene with the main action in the right 60 percent, left 35 percent restrained dark atmospheric negative space for HTML headline overlay. Preserve the reference characters' anatomy, face, colors and equipment in new appropriate action poses. No text, logo, watermark, border, button or baked-in UI. Original OathFront universe. Scene: A cinematic portal-gallery of original collectible creatures, the golden Sunflare Lynx in a dynamic leap on the right foreground, floating hourglass Chronicle Wisp above and cobalt Repairbot below; faceted glass and a few blank abstract card-shaped slabs in the background. Creature faces and forms are clear, no printed card UI.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    },
+    {
+      "key": "weekly-expeditions",
+      "source": "weekly-expeditions.png",
+      "inputs": [
+        "assets/source/event-cards-v1/e01.png",
+        "assets/source/event-cards-v1/e02.png"
+      ],
+      "prompt": "Use case: compositing. Create a new 16:9 cinematic OathFront Features page campaign banner using the supplied character images as identity references, not as layout constraints. Premium angular hand-painted 3D-comic videogame concept illustration, sculptural materials, bold dark shadow planes and crisp luminous accents. Full environmental scene with the main action in the right 60 percent, left 35 percent restrained dark atmospheric negative space for HTML headline overlay. Preserve the reference characters' anatomy, face, colors and equipment in new appropriate action poses. No text, logo, watermark, border, button or baked-in UI. Original OathFront universe. Scene: An adventurous journey through a giant moonlit conservatory gate toward an amber observatory. The six-legged Oathglass Sentinel stands protectively on the right foreground while the tiny Moonpetal Keeper hovers beside it. Curving luminous path and seven subtle unmarked stone arches receding into the landscape, feeling of exploration and collection.",
+      "tool": "built-in image_gen",
+      "transparentBackground": false
+    }
+  ]
+}

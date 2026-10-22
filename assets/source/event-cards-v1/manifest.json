@@ -1,0 +1,410 @@
+{
+  "version": "event-cards-v1",
+  "tool": "built-in image_gen",
+  "promptPath": "assets/source/event-cards-v1/generation.json",
+  "sources": [
+    {
+      "path": "assets/source/event-cards-v1/e01.png",
+      "bytes": 2104172,
+      "sha256": "cb5cbdbb50703facf276bbe7b6a45ef0b37b646337178d52e12b5a1016515358",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e02.png",
+      "bytes": 1691842,
+      "sha256": "41839bd64f356a30c0693bc69da49cafda0d864c815b60b3008bdfbdf80184a8",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e03.png",
+      "bytes": 1569700,
+      "sha256": "3e5737d01cb363f80f33ffaafa3f1c742cd7a71002886c92d4d7164f5acaea05",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e04.png",
+      "bytes": 1905666,
+      "sha256": "ab2fedf17e4227b5b38c7841cbef525e3ff9b18cdaca00bec2c4f79e3389aa95",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e05.png",
+      "bytes": 1727956,
+      "sha256": "d4e43b3178c0660d8c3f9195c1ab9e0e84f463a927f727689c6d309106d2b17d",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e06.png",
+      "bytes": 1595071,
+      "sha256": "5cc831bf47f82dc315faa35acbd0e1ed09a8e200049e4e0538b83a7fc8e5dbb2",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e07.png",
+      "bytes": 1342324,
+      "sha256": "9a217febc44c61b4664ad4511a82ec417d2d8a2f1a2392c2c6a356bc634c7728",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e08.png",
+      "bytes": 1520504,
+      "sha256": "7cbb1d7ec4e57d0f8d10e99b9414d09b790a969fe3485c0f913b8a806470a830",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e09.png",
+      "bytes": 1600520,
+      "sha256": "f52231fdd0a5f8e2e4fb3158aeea0caa8359eafafc7055f5f9eec7060d27b2d6",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e10.png",
+      "bytes": 2242959,
+      "sha256": "313662316c8ad376bb23eb12779de09fdf52dc9ff824053f8bec579854352f43",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e11.png",
+      "bytes": 1950936,
+      "sha256": "bf22b67db8a4bc656ce5f709b4ed28e9103003d683c492223a344e725ebf04d5",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/event-cards-v1/e12.png",
+      "bytes": 1224975,
+      "sha256": "06e0a062e405767649812e5003a20a91835f76d81db4f71bb444ce25c634361e",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true
+    }
+  ],
+  "exports": [
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e01-thumb.webp",
+      "bytes": 26928,
+      "sha256": "c01794704cca8fbc7f7a9374d7fd5e6f7b5697c5cf2bcbea877a7d350da075cf",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e01-inspect.webp",
+      "bytes": 119578,
+      "sha256": "e1ff755f3dbf6c18392484892ce3d407f740c063e39437eb6a9d55c7f7cc6fa7",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e01-cutout.webp",
+      "bytes": 50214,
+      "sha256": "1af0cbccdc5fe3b6446f961ad1e13cbf93290f86dc6d2a128768d605fdda8e07",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e02-thumb.webp",
+      "bytes": 25248,
+      "sha256": "4f2ab8b452175014f78b1b7f736b0feaf807cf7412f08f677b24ffde8cc053c5",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e02-inspect.webp",
+      "bytes": 103660,
+      "sha256": "58aefb11ce7bdffaec09d4048aa1609c9ea63099a5e94646710d69b6afd29260",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e02-cutout.webp",
+      "bytes": 46384,
+      "sha256": "67b31d5d4b6c10778338059c863f87ad17d8daf556d30429baeab7dbc8cd4487",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e03-thumb.webp",
+      "bytes": 25164,
+      "sha256": "2c53d9c9d278790008f045be46884f9ed5b0102790ebeef4d06ea6db21f0a2f5",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e03-inspect.webp",
+      "bytes": 107174,
+      "sha256": "b81abb674382e8c19ac2e84e995437121ecb15ba6d118186db7c45e562f2d42d",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e03-cutout.webp",
+      "bytes": 47482,
+      "sha256": "7984c331a905e6ff6f51fe5d9f8e6243c5cabd51f51f0b6ca2c1e79bd4f6fb50",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e04-thumb.webp",
+      "bytes": 27626,
+      "sha256": "e28704523bcff5325064882e9eae2892f2ceb26f1bf619cd215c01e482975bed",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e04-inspect.webp",
+      "bytes": 120170,
+      "sha256": "f37253f76652675c7f1bcae9794f83a287d9e64c4593bc70263ddf97bad24d38",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e04-cutout.webp",
+      "bytes": 52722,
+      "sha256": "0adf600860411aabad5c542b24696fb8206548c82adce06c77e71e5712c8d75e",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e05-thumb.webp",
+      "bytes": 23206,
+      "sha256": "79a3519ea9a4ea8fd251073424109e331725469b8f48550d66345555a6c1a0d0",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e05-inspect.webp",
+      "bytes": 91772,
+      "sha256": "d4cc0fd2872f131012c6dd7f1ce5af4c865e0b5c3099068e6c010654ce71b9b1",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e05-cutout.webp",
+      "bytes": 42118,
+      "sha256": "9e8ae0dd6a7c9c2cfe368c7eda44e891899372f1db8bcfd077d1eac3452807ff",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e06-thumb.webp",
+      "bytes": 25510,
+      "sha256": "28c927f20c35cca999bc49a4991059ab584226cf338e92f13d6e27127a949bd5",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e06-inspect.webp",
+      "bytes": 106936,
+      "sha256": "f9df3ea06cccb3415e2c3b097fda057cc3d1f217ddd3c08fde15e065bb70f220",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e06-cutout.webp",
+      "bytes": 47568,
+      "sha256": "05e671f304b4ac5570138d61d1b5c85974c350e05e0c5a3aa541689555466be3",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e07-thumb.webp",
+      "bytes": 26044,
+      "sha256": "73b14ef939c367c452890d77fcf849b99530d4526f836b9729e96fafd6a8cbb1",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e07-inspect.webp",
+      "bytes": 101858,
+      "sha256": "d22f12a46ebd19572e9d835d175c509c96723323cf47d252e8eed54002d127d4",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e07-cutout.webp",
+      "bytes": 47090,
+      "sha256": "8757224bc55ffa7a17178d73d90127bd1d94490983d0f20a234632457fe77458",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e08-thumb.webp",
+      "bytes": 28694,
+      "sha256": "6294649efafb4f8f757603b3f967584fc15f3235d29ceebaa31815a8291651a3",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e08-inspect.webp",
+      "bytes": 120460,
+      "sha256": "d64f2069206df63baacbfacf012bbebac461e1c9676eef56fef18a99746f9986",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e08-cutout.webp",
+      "bytes": 53668,
+      "sha256": "15045def1faccc1a173b995aafba400cffb7419ba9ac8efc85953cf43804595b",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e09-thumb.webp",
+      "bytes": 27506,
+      "sha256": "f8e7b75633202a30b8c163b690aaec6bd118e255a500f04aec7061ccfc6b6489",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e09-inspect.webp",
+      "bytes": 115546,
+      "sha256": "696c7e08edd3712a4822e5b5cdd4241dfd2e111ff5b06e5c68e39c19a8f6de42",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e09-cutout.webp",
+      "bytes": 51418,
+      "sha256": "031e883b8fae0c759fba6b697207d000504a58aa33fff47b759187f49f7fdbad",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e10-thumb.webp",
+      "bytes": 27118,
+      "sha256": "96aebd27b3b048e996d3023721ffc9fa74eaddc9ca6768239cf24155ec3563f2",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e10-inspect.webp",
+      "bytes": 121406,
+      "sha256": "23b13ec0273505849baca2ed5944986d7e4fd9edfdb75a1568441212bf6c0f6b",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e10-cutout.webp",
+      "bytes": 51880,
+      "sha256": "c8a3e73d5762821ba46cc9e7a0250fd655f4299e93513c33ce00eb8165a8a3a9",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e11-thumb.webp",
+      "bytes": 37322,
+      "sha256": "9436a7a71bcb980b274c3ca33d958f03c44caea7e9c6709966b0b84814a04b65",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e11-inspect.webp",
+      "bytes": 156708,
+      "sha256": "18a5d1d8a6f7f08c168f53b5b4d2952b65c113ca5cc62a2a5e2dce2aabcb4259",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e11-cutout.webp",
+      "bytes": 70970,
+      "sha256": "1327a190ab49cc1e52bd55a1809e380e05c97a9ff960148c28b8650e34e65174",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e12-thumb.webp",
+      "bytes": 18598,
+      "sha256": "d2c2287424f34a55c466a9fb56260732344dbbfd40922de005bdbda1c9df07dd",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e12-inspect.webp",
+      "bytes": 67162,
+      "sha256": "f87d0c4ec20c6fabdef62cb0603977fb342cdd71a1c29d39759bc0171b15c78e",
+      "width": 640,
+      "height": 640,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/cards/e12-cutout.webp",
+      "bytes": 32498,
+      "sha256": "72a6a95a7a284eafb8a8f1e5b5a0136176fff65a3392835a9ec9af3c540d9483",
+      "width": 384,
+      "height": 384,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/atlases/cutouts-low.webp",
+      "bytes": 288062,
+      "sha256": "36d8071499c9c279d57dbb0bbc02949729a72b59a76fdc91999398f8173ef1f9",
+      "width": 1056,
+      "height": 528,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/event-cards-v1/atlases/cutouts-high.webp",
+      "bytes": 812336,
+      "sha256": "c274b6db5b2246bd170aa8e2cd77aee80227aee5d0d671bbde09ecbe150a4e54",
+      "width": 2080,
+      "height": 1040,
+      "alpha": true
+    }
+  ],
+  "license": "assets/source/LICENSE.md"
+}

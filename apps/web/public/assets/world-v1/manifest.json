@@ -1,0 +1,29 @@
+{
+  "version": "world-v1",
+  "assets": [
+    {
+      "key": "moonroot-conservatory",
+      "wide": "/assets/world-v1/moonroot-conservatory-wide.webp",
+      "medium": "/assets/world-v1/moonroot-conservatory-medium.webp",
+      "small": "/assets/world-v1/moonroot-conservatory-small.webp"
+    },
+    {
+      "key": "cinder-foundry",
+      "wide": "/assets/world-v1/cinder-foundry-wide.webp",
+      "medium": "/assets/world-v1/cinder-foundry-medium.webp",
+      "small": "/assets/world-v1/cinder-foundry-small.webp"
+    },
+    {
+      "key": "glasswater-sanctum",
+      "wide": "/assets/world-v1/glasswater-sanctum-wide.webp",
+      "medium": "/assets/world-v1/glasswater-sanctum-medium.webp",
+      "small": "/assets/world-v1/glasswater-sanctum-small.webp"
+    },
+    {
+      "key": "astral-causeway",
+      "wide": "/assets/world-v1/astral-causeway-wide.webp",
+      "medium": "/assets/world-v1/astral-causeway-medium.webp",
+      "small": "/assets/world-v1/astral-causeway-small.webp"
+    }
+  ]
+}

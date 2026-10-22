@@ -1968,5 +1968,47 @@
       ],
       "compatibility": "core_v1, locations_v1, tutorial_v1 and old saved revisions/checkpoints/receipts remain unchanged. Uncertain create/rematch requests retry their exact original ID and content version."
     }
-  ]
+  ],
+  "elementsExtension": {
+    "status": "assets_and_spec_approved_implementation_pending",
+    "authorization": "2026-10-22 user-approved elements, rarity, whole-roster redesign audit, real news and weekly events; local and Neon development only",
+    "contractPath": "docs/design/elements-visual-contract.md",
+    "heroAuditPath": "docs/design/hero-distinction-audit.md",
+    "sourcePenUnchanged": true,
+    "surfaces": [
+      {
+        "logicalId": "elements_system_badges",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "collectible_rarity",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "weekly_event_progress",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "daily_challenge_rail",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "cinematic_features",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "decorated_battlefields",
+        "penNodeId": null
+      }
+    ],
+    "assetVersions": [
+      "heroes-v5",
+      "home-v3",
+      "event-cards-v1",
+      "world-v1",
+      "features-v2",
+      "elements-v1"
+    ],
+    "legacyGameplay": "Version-bound classes and powers must remain intact for core_v1 and heroes_v1 matches/decks."
+  }
 }

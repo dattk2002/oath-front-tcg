@@ -89,9 +89,9 @@
 
 **Files:** docs/design/hero-distinction-audit.md; assets/source/heroes-v5,world-v1,features-v2,event-cards-v1; publicderivatives/manifests; sourceprompts; exporttools; docs/design/elements-visual-contract.md.
 **Interfaces:** overridesbyheroID, Ecard artKeys, fourarenaKeys, fourfeature banners, eight systemSVGsymbols and5raritytokens. Pencontractnewextensionsnullbindings.
-- [ ] Auditall20nearestneighbors on6axes; recordkeep/redraw andredraweveryfailure. Generate/inspectusingimagegen. UpdateHomeensemblechangedfeaturedheroeswhilepreservingcomposition. Generate12distinctEunits,4arenas,4featurepanels; respectalphaandreadablecentralboardspace.
-- [ ] Exportbounds/facecrops/WebPvariants viaexistingpipeline; validatepath/hash/dimensions/alpha/bytebudgets andvisuallyinspectmontage,Hudcrops andarenaoverlays. No newrasterUItext.
-- [ ] Produce exact visual/interactionstatecontract, semantictokens, loading/error/locked/cooldown/reducedmotion treatment. UIreviewmustpreservePentype/brand. Commitassets/docsaudits.
+- [x] Auditall20nearestneighbors on6axes; recordkeep/redraw andredraweveryfailure. Generate/inspectusingimagegen. UpdateHomeensemblechangedfeaturedheroeswhilepreservingcomposition. Generate12distinctEunits,4arenas,4featurepanels; respectalphaandreadablecentralboardspace.
+- [x] Exportbounds/facecrops/WebPvariants viaexistingpipeline; validatepath/hash/dimensions/alpha/bytebudgets andvisuallyinspectmontage,Hudcrops andarenaoverlays. No newrasterUItext.
+- [x] Produce exact visual/interactionstatecontract, semantictokens, loading/error/locked/cooldown/reducedmotion treatment. UIreviewmustpreservePentype/brand. Commitassets/docsaudits.
 
 ## M5 — Product integration
 

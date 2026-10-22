@@ -1,0 +1,77 @@
+{
+  "version": "heroes-v5",
+  "requests": [
+    {
+      "id": "H_G_BV",
+      "key": "briar",
+      "source": "briar.png",
+      "input": "assets/source/heroes-v4/briar.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Briar, adult dark-skinned human male with short black twists and a resolute exposed face. A grounded living-oak shield knight, broad compact defensive silhouette, one bent knee bracing behind an enormous asymmetric carved-oak forearm shield. Armor is warm dark oak lamellae with aged copper/bronze joints, restrained moss-green cloth and small living roots; reduce ivory plate dominance. Thick rounded timber shield ribs, earth-root motif, a practical short shoulder mantle rather than flowing leaf wings. His free hand presses a root-wrapped blade downward beside the shield. Strong three-quarter view and protective body lean. Human hands/legs and human face must be unmistakable. Not a stone golem, no staff, no amphibious features.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "H_G_CAI",
+      "key": "cairn",
+      "source": "cairn.png",
+      "input": "assets/source/heroes-v4/cairn.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Cairn, a nonhuman gravity sentinel. Replace the biped leaf-covered golem entirely with separated levitating limestone segments: a compact angular stone mask head, massive detached arch-like shoulders, two floating articulated stone fists and a hollow circular gravity core. The lower body ends in suspended tapered stones, NO legs or feet. Clean cobalt-blue mineral seams and tiny brass orbit splinters, dry pale limestone and dark basalt inner faces. Large deliberate negative gaps between body segments, a calm imposing hovering gesture with one palm raised. Clearly sculpted mask with blue eyes for HUD crops, no human hair, no foliage, no wood armor, no bell cage or manufactured furnace plates.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "H_G_ROW",
+      "key": "rowan",
+      "source": "rowan.png",
+      "input": "assets/source/heroes-v4/rowan.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Rowan, an original lean amphibious tidal wanderer with blue/cobalt skin, visible neck gill fins, a swept fin crest, webbed three-jointed hands and feet and an alert nonhuman face. No human brown skin, beard, dreadlocks or leaf armor. Asymmetric low crouch, long tidal staff angled across the body with a pearl-glass seed chamber at its tip, curved seafoam water blades and a few living reed sprouts. Small rust-orange sash, weathered shell/bronze fittings and fitted deep teal travel cloth; limbs and gill anatomy remain exposed and clear. Grove plus Tide expressed through reeds and water, not a green armored knight. Full face visible in three-quarter view, anatomical coherence and elegant athletic movement.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "H_G_SOL",
+      "key": "solenne",
+      "source": "solenne.png",
+      "input": "assets/source/heroes-v4/solenne.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Solenne, adult athletic bronze-skinned human woman with short cropped dark hair and a focused exposed face. Replace the floating white-braided cape silhouette with a grounded sun-forged champion: sturdy bronze and terracotta angular plate armor, navy joints, compact radiating solar vanes behind one shoulder, a tall spear planted at an angle and a broad gold ward shield carried forward. Low center of gravity, both boots grounded, strong asymmetric guard stance. Hard sculptural metal surfaces and a short practical tabard, no trailing white cape ribbons and no long pale braids. Solar plus Terra identity, original costume and emblem-free shield.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "H_G_MER",
+      "key": "meridian",
+      "source": "meridian.png",
+      "input": "assets/source/heroes-v4/meridian.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Meridian, an older broad-bodied dark-skinned woman archivist with a short silver bun, round brass spectacles and an intelligent warm stern face. Replace the slim floating-robed mage with a seated levitating brass armillary cradle: a thick circular mechanical frame behind her shoulders, visible articulated supports and small orbital sun discs. Practical caramel/navy waistcoat and cropped scholarly coat, a substantial mechanical brass left arm holding a luminous folio, right hand adjusting a physical sun-clock. Full seated body and both boots visible, compact round silhouette; confident settled posture, not flying with robe tails. Arcane/Solar scholar engineering, no polygonal portals, no white braids, no copied logos.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "H_G_HAL",
+      "key": "halcyon",
+      "source": "halcyon.png",
+      "input": "assets/source/heroes-v4/halcyon.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Halcyon, an unmistakably nonhuman heron-like avian sky conductor. Long elegant beak, alert pale-cyan bird eyes, indigo and pale mint feather crest, feathered wing-forearms with articulated grasping tips and visible taloned feet. No human face, human hair or white braids. Tall balanced one-leg conductor stance, one wing-arm sweeping outward and the other holding a slender wind baton; a fan of living green/blue feathers creates a clear broad upper silhouette. Minimal fitted indigo/copper ceremonial harness, natural feathers dominate, small controlled wind arcs. Tempest plus Grove; character is a bird-person, not a woman in a feather cape.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "H_E_SAB",
+      "key": "sable",
+      "source": "sable.png",
+      "input": "assets/source/heroes-v4/sable.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Sable, an original nonhuman mantis magistrate. Ivory porcelain-like chitin, narrow triangular mantis head with amber eyes and delicate short antennae, tall black/ivory angular exoskeleton body, FOUR deliberate articulated arms and TWO legs. Formal upright judicial stance. Two hands hold an unequal brass verdict scale horizontally; other hands control weighted basalt seals at waist level. Austere short segmented black judicial coat with stone lapels, tiny plum inner highlights. No human skin, silver hair, mage staff, portal panels or floating cape strips. Terra/Umbral authority, insect anatomy instantly readable, ominous composed expression, face and all six limbs coherent and unobscured.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    },
+    {
+      "id": "H_E_BRI",
+      "key": "brimstone",
+      "source": "brimstone.png",
+      "input": "assets/source/heroes-v4/brimstone.png",
+      "prompt": "Use case: stylized-concept. Asset type: original OathFront hero full-body transparent character illustration for a premium browser card game. Style: energetic angular superhero-team-game art direction, sculptural stylized anatomy, faceted hand-painted material highlights, graphic dark shadow planes and precise expressive features, polished 3D-comic illustration consistent with the supplied existing OathFront source. Character identity is original OathFront, not an existing franchise character. Vertical 2:3 framing, entire character and equipment visible with a small transparent margin. Preserve genuine transparent alpha; no background, floor rectangle, frame, text, logo, watermark or multiple views. Make silhouette and face readable at thumbnail scale. The input is the old design to replace; keep the rendering quality/universe, redesign the form as specified. Brimstone, a massive original QUADRUPEDAL volcanic beast, completely replacing the armored human-shaped brawler. Broad low obsidian body, oversized organic forelegs, smaller powerful hindlegs, heavy horned basalt head with an open incandescent molten jaw and expressive ember eyes. Natural rock plates with lava fissures, three volcanic chimney vents along the back, ember-red glow with deep plum shadows. A forward roaring prowl on all four legs, huge diagonal head/shoulder mass and a short heavy tail; no trousers, gauntlets, forged armor, mechanical joints or humanoid stance. Solar/Umbral infernal creature, clear silhouette distinct from a floating limestone sentinel and an upright bell-cage machine. Sparse embers only, no opaque fire-cloud background.",
+      "tool": "built-in image_gen",
+      "transparentBackground": true
+    }
+  ]
+}

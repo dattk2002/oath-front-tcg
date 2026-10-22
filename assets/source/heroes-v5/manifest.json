@@ -1,0 +1,330 @@
+{
+  "version": "heroes-v5",
+  "tool": "built-in image_gen",
+  "promptPath": "assets/source/heroes-v5/generation.json",
+  "sources": [
+    {
+      "path": "assets/source/heroes-v5/briar.png",
+      "bytes": 3049970,
+      "sha256": "903ea1cea34cbd5a04830f10cc6832be8a9ba18ac5944c675b6b9fef5bcd81b8",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/heroes-v5/brimstone.png",
+      "bytes": 2799300,
+      "sha256": "f88f518fc1954daec36b00dd0c83a3844d66bb8e9c52e392f44eb767a4e7c0a1",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/heroes-v5/cairn.png",
+      "bytes": 2659936,
+      "sha256": "b488e1e8a7fc8ffa6cb99502b29a605f474e689aa04e487513d03ed779b59fb9",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/heroes-v5/halcyon.png",
+      "bytes": 2681004,
+      "sha256": "b3d1ef9192c77d4f40570a3d57b6d38cb343cbb04948af63cb3faa747bed0cf3",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/heroes-v5/meridian.png",
+      "bytes": 2663686,
+      "sha256": "d0f1d6c76466db54c2ec2d469c9306099bf9b183b5415002cbccd4ef675934d6",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/heroes-v5/rowan.png",
+      "bytes": 3031812,
+      "sha256": "1a1f16cc098ab238a3d3086978f3c11ba07fbaaa66e84c87f22a65a4346bbcd2",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/heroes-v5/sable.png",
+      "bytes": 2238498,
+      "sha256": "703d30abb0ef2624c5e0196bf63bb5f6709ab1aeb3cf62b973f06f733815ff63",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    },
+    {
+      "path": "assets/source/heroes-v5/solenne.png",
+      "bytes": 2566497,
+      "sha256": "db65b50da2a1a08c86dce78e9b0e4cb54af2468ce99cc3d0466241abcf765e48",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true
+    }
+  ],
+  "exports": [
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/briar/thumb.webp",
+      "bytes": 33970,
+      "sha256": "b16572393c63c32579f02fd93a95bb6588a860d7ed7175be7823e578571c080d",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/briar/hud.webp",
+      "bytes": 8692,
+      "sha256": "406796d0fba96d0c992a118f2343958ac0342989e6821961ea2444fe295a6d17",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/briar/inspect.webp",
+      "bytes": 111064,
+      "sha256": "e2d04e6f62570519264a3f37aebb55a186f5af73a53ff0aa97c61b00fffe9602",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/briar/bust.webp",
+      "bytes": 213680,
+      "sha256": "295703fc34ce121ba0a0f93865040b7296192a294b407eb4a00650b06941d748",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/cairn/thumb.webp",
+      "bytes": 48742,
+      "sha256": "0fa0626ea944ba92c779eab5c1b8a2e6744ce27d56b064b1d26acdfe2923636c",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/cairn/hud.webp",
+      "bytes": 14346,
+      "sha256": "78b160962b6aba22137a55a55bf377b8660c6f2f1ec59fec588edfa4201c4b88",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/cairn/inspect.webp",
+      "bytes": 150298,
+      "sha256": "9afb8fb503abc4750eba82bd350a2db66fdbbd35f07d4a1d13a9828be5628f3e",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/cairn/bust.webp",
+      "bytes": 216780,
+      "sha256": "55eebc7c5ff8389ae978b4f8ffe4917c03732c8145ef6007edcdacbf008b1ffa",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/rowan/thumb.webp",
+      "bytes": 43880,
+      "sha256": "c22eb7e9080616b0da3c149d0daf2d69c1a746359ec333b0c3abb20655ae58d0",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/rowan/hud.webp",
+      "bytes": 11232,
+      "sha256": "652130148db02d3042a8679edd8c1cebf2d559ae45c5ff32b8285260c7bc6e4d",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/rowan/inspect.webp",
+      "bytes": 137426,
+      "sha256": "d72236c77bfb02456307e1b66024403c252ad0cfc74eee1402315bb404024e77",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/rowan/bust.webp",
+      "bytes": 280922,
+      "sha256": "59a64e3b722cfbf983da67f3fb782dc65515560725e44479de06a9a4023badb4",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/solenne/thumb.webp",
+      "bytes": 35662,
+      "sha256": "8ee5fa6eb859bcf35f5128d2da1f58a25ad8da265bae2ede84ab075a5aaa590d",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/solenne/hud.webp",
+      "bytes": 7726,
+      "sha256": "6883a3417d1182d10b9fc282f039d84e1efde6c6b2155f555e3f11c9a7a3b1bc",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/solenne/inspect.webp",
+      "bytes": 106232,
+      "sha256": "53ccde616b569ead9aa165b4e0c08202662b0622ea52da85918472a5f4800ca0",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/solenne/bust.webp",
+      "bytes": 180684,
+      "sha256": "2a4e217734761c2fee67620fc852822bf328064b7f6faf26fde0be529f459bd0",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/meridian/thumb.webp",
+      "bytes": 40844,
+      "sha256": "af8320390ff9f2810b59765cf27a4943f35727459124d0251d4972ee66e9d26e",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/meridian/hud.webp",
+      "bytes": 12864,
+      "sha256": "6e5ee726758530aba303e1e66e56a93a6483caa8cb5f6789dedf1ca004c6421a",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/meridian/inspect.webp",
+      "bytes": 126504,
+      "sha256": "c9c03909d7f6d6ba38c438d590e99910191ed57a456dd1212de5435766c24a76",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/meridian/bust.webp",
+      "bytes": 206268,
+      "sha256": "a412a1a0a673c522fb98f8add6a47ed8b0fdf5d75670b7f87c3f121501f55278",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/halcyon/thumb.webp",
+      "bytes": 42212,
+      "sha256": "8e12eb26d5ab7c365021cda26d611d14b02f6d0781ee0136e32568049ef1f795",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/halcyon/hud.webp",
+      "bytes": 10208,
+      "sha256": "25cf202113f2d1a53bb4321503a6e52ac959a7abc7343dc2eb219560081b4015",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/halcyon/inspect.webp",
+      "bytes": 126948,
+      "sha256": "2096e2d48184a0adcfde67d46d0111715bf1ca5138c12f8d20ad71f841404eed",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/halcyon/bust.webp",
+      "bytes": 250874,
+      "sha256": "e16433fb8faa05c803a06026ea5302f450beb3d15c7b9f8c0f99e7bf7c3b196c",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/sable/thumb.webp",
+      "bytes": 32342,
+      "sha256": "c1d026d5dadc5a2ce67ba6bb9fc3348bcdd233cf67eca43b3df86b18cce0fe5f",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/sable/hud.webp",
+      "bytes": 7910,
+      "sha256": "d871abb95ec6466d28c662ec0848bf14c12b27c8264bc5c02cf232ead3fb7d5e",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/sable/inspect.webp",
+      "bytes": 92922,
+      "sha256": "b164c58ff69e3205526fa99a4e469f5986c6460c3e8ab9d663113f6170e5253d",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/sable/bust.webp",
+      "bytes": 153396,
+      "sha256": "a5f333200bff4a0a21173226be01dd123b7b40a2196d7096394dce1de386cb73",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/brimstone/thumb.webp",
+      "bytes": 29784,
+      "sha256": "5aceb8336031b8d04381ffcef262e87b17ba760f420ef15354d43e0a8d384894",
+      "width": 256,
+      "height": 256,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/brimstone/hud.webp",
+      "bytes": 11888,
+      "sha256": "ece0c9f6437d258573efd95bbc4bb9de66c6c47eddb519b44c26c18941484504",
+      "width": 128,
+      "height": 128,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/brimstone/inspect.webp",
+      "bytes": 103634,
+      "sha256": "5bc26192fa0645135d371cd3892e066e4c509cf3fa884c36391667ec4cd06e24",
+      "width": 512,
+      "height": 512,
+      "alpha": true
+    },
+    {
+      "path": "apps/web/public/assets/heroes-v5/heroes/brimstone/bust.webp",
+      "bytes": 214794,
+      "sha256": "71c171f919db5604f6211f2eca3faf7a7fe19ddaebb3e8eef5529eb3e1714bb4",
+      "width": 640,
+      "height": 960,
+      "alpha": true
+    }
+  ],
+  "license": "assets/source/LICENSE.md"
+}

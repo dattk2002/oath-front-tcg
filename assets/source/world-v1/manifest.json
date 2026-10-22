@@ -1,0 +1,138 @@
+{
+  "version": "world-v1",
+  "tool": "built-in image_gen",
+  "promptPath": "assets/source/world-v1/generation.json",
+  "sources": [
+    {
+      "path": "assets/source/world-v1/astral-causeway.png",
+      "bytes": 2899692,
+      "sha256": "2cada6c94343339b6c7a102e6400a89b22f7f51f8d2ad8e52a3f42e91d7cc8b7",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "path": "assets/source/world-v1/cinder-foundry.png",
+      "bytes": 2566428,
+      "sha256": "e6eabcef042fc2183a57a912761768e9adacc605520897445bec7480e085d901",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "path": "assets/source/world-v1/glasswater-sanctum.png",
+      "bytes": 3088919,
+      "sha256": "cba65b569605be39756ea3cd87ba101e4cfd8c56ec06a086f5fd174ba7ca6117",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    },
+    {
+      "path": "assets/source/world-v1/moonroot-conservatory.png",
+      "bytes": 2991183,
+      "sha256": "e34ad2dfb63638cc437ceef3c0b820b39820b41933c160e329b338210ed25e6a",
+      "width": 1672,
+      "height": 941,
+      "alpha": false
+    }
+  ],
+  "exports": [
+    {
+      "path": "apps/web/public/assets/world-v1/moonroot-conservatory-wide.webp",
+      "bytes": 376924,
+      "sha256": "5bbe44eb54c81e1cff1c6df7f2567d9e84ad79d9cb499af71b4880a34e7104b7",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/moonroot-conservatory-medium.webp",
+      "bytes": 199996,
+      "sha256": "cf7c10d03801990fc32b8011e7091cab8d4c779e9d8ca198ce8ed0415671e59d",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/moonroot-conservatory-small.webp",
+      "bytes": 93578,
+      "sha256": "2941893555a55cf1a1f6b4eb87c3fbaf3d306180461261d192787fd82e8f207d",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/cinder-foundry-wide.webp",
+      "bytes": 297942,
+      "sha256": "be23516f2304c234a2ee8325ebd0778d8ce90c93a04cab87f4550f3f3eac5a2b",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/cinder-foundry-medium.webp",
+      "bytes": 161824,
+      "sha256": "dab9966002839aa69cc3099634bc0a4de83e10fc517164ad6fe4f658d11d000a",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/cinder-foundry-small.webp",
+      "bytes": 78508,
+      "sha256": "373e91a3bd4105724118060109d48b365f6737966d97cc9e4a3ce7b5b464c430",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/glasswater-sanctum-wide.webp",
+      "bytes": 404676,
+      "sha256": "279569f514161240b2ae27bf68e18fc02a1e98d9822c9b10e6e33e3e86667761",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/glasswater-sanctum-medium.webp",
+      "bytes": 206242,
+      "sha256": "4b0c2be5584de030b547a2c268b64f71fcc9dcbdf4af72e6268e98a6d07f4363",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/glasswater-sanctum-small.webp",
+      "bytes": 93662,
+      "sha256": "cd93358f778d338ad5adaef1ab18c7e0ec23f2fe7932ef29b20e9f2414a6b174",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/astral-causeway-wide.webp",
+      "bytes": 341272,
+      "sha256": "fcdb854b267a635d2cb5465e37270cf4002b616df394f1bc5592045bc441aaae",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/astral-causeway-medium.webp",
+      "bytes": 175284,
+      "sha256": "29d4901859e4fb610290b686aeb87a4614e412da83eb8d8f718cc635d7c88aa0",
+      "width": 1200,
+      "height": 675,
+      "alpha": false
+    },
+    {
+      "path": "apps/web/public/assets/world-v1/astral-causeway-small.webp",
+      "bytes": 80478,
+      "sha256": "7b4c03c3743b8c4552991b2d4c71c13c984d8f701c06c9c89e6537bd64ab3cff",
+      "width": 768,
+      "height": 432,
+      "alpha": false
+    }
+  ],
+  "license": "assets/source/LICENSE.md"
+}
