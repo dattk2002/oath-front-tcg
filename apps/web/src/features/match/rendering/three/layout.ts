@@ -27,13 +27,58 @@ export function createCamera(width: number, height: number) {
     0.1,
     140,
   );
-  // Fit the table horizontally on portrait screens without changing lane geometry.
-  const scale = Math.max(1, 1.72 / camera.aspect);
-  camera.position.set(0, 14 * scale, 12.6 * scale);
+  const portrait = width <= 700 && camera.aspect < 1.4;
+  if (portrait) {
+    // A steeper view uses the phone's width for cards instead of distant scenery.
+    camera.position.set(0, 21.25 / camera.aspect, 6.95 / camera.aspect);
+  } else {
+    const compact = width <= 1100 && height <= 400;
+    const scale = Math.max(1, 1.72 / camera.aspect);
+    camera.position.set(
+      0,
+      (compact ? 12.3 : 14) * scale,
+      (compact ? 9.7 : 12.6) * scale,
+    );
+  }
   camera.lookAt(0, 0, 0);
   camera.updateProjectionMatrix();
   camera.updateMatrixWorld();
+  fitCardEnvelope(camera, width, height);
   return camera;
+}
+
+/** Fit only the playable cards (including hover lift); outer architecture may crop. */
+function fitCardEnvelope(
+  camera: PerspectiveCamera,
+  width: number,
+  height: number,
+) {
+  const padding = Math.min(6, width * 0.012, height * 0.02);
+  const horizontal = 1 - (2 * padding) / Math.max(1, width);
+  const vertical = 1 - (2 * padding) / Math.max(1, height);
+  let excess = 1;
+  for (const lane of [1, 5])
+    for (const side of ["GOOD", "EVIL"] as const) {
+      const anchor = cardAnchor(lane, side, "GOOD");
+      for (const x of [-CARD_WIDTH / 2, CARD_WIDTH / 2])
+        for (const z of [-CARD_DEPTH / 2, CARD_DEPTH / 2])
+          for (const lift of [0.041, 0.441]) {
+            const corner = new Vector3(
+              anchor.x + x,
+              anchor.y + lift,
+              anchor.z + z,
+            ).project(camera);
+            excess = Math.max(
+              excess,
+              Math.abs(corner.x) / horizontal,
+              Math.abs(corner.y) / vertical,
+            );
+          }
+    }
+  if (excess > 1) {
+    camera.zoom /= excess;
+    camera.updateProjectionMatrix();
+  }
 }
 export function cinematicPose(
   progress: number,
@@ -120,16 +165,27 @@ export function cameraForCue(
     p < 0.7
       ? Math.sin(p * 95) * Math.sin(((p - 0.36) / 0.34) * Math.PI) * 0.11
       : 0;
-  camera.position.add(
-    new Vector3(
-      pose.x * amplitude + shake,
-      pose.y * amplitude,
-      pose.z * amplitude,
-    ),
-  );
-  camera.zoom = 1 + (pose.zoom - 1) * amplitude;
-  camera.lookAt(pose.x * 0.35 * amplitude, 0, 0);
+  const portrait = width <= 700 && camera.aspect < 1.4;
+  if (portrait) {
+    // Keep the strong zoom while orbiting around the center: a forward dolly
+    // would consume the narrow screen's remaining edge clearance.
+    const x = pose.x * amplitude * 0.3 + shake;
+    camera.position.x = x;
+    camera.position.z = Math.sqrt(Math.max(0, camera.position.z ** 2 - x ** 2));
+    camera.lookAt(0, 0, 0);
+  } else {
+    camera.position.add(
+      new Vector3(
+        pose.x * amplitude + shake,
+        pose.y * amplitude,
+        pose.z * amplitude,
+      ),
+    );
+    camera.lookAt(pose.x * 0.35 * amplitude, 0, 0);
+  }
+  camera.zoom *= 1 + (pose.zoom - 1) * amplitude;
   camera.updateProjectionMatrix();
   camera.updateMatrixWorld();
+  fitCardEnvelope(camera, width, height);
   return camera;
 }

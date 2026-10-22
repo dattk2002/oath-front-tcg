@@ -8,12 +8,33 @@ import type {
   VisibleEvent,
 } from "../../packages/contracts/src/index.js";
 import type { BattleScene } from "../../apps/web/src/features/match/rendering/scene-state.js";
-import type { PresentationController } from "../../apps/web/src/features/match/motion/presentation-controller.js";
+// Browser harness boundary: runtime functions are bundled below, while the
+// NodeNext test project must not traverse the web project's bundler-only imports.
+type PresentationController = {
+  pause(): void;
+  fastForward(view: PlayerView): void;
+  dispose(): void;
+};
 
 type Harness = Window & {
   arenaModule: {
-    createThreeBattleScene: typeof import("../../apps/web/src/features/match/rendering/three/scene.js").createThreeBattleScene;
-    createPresentationController: typeof import("../../apps/web/src/features/match/motion/presentation-controller.js").createPresentationController;
+    createThreeBattleScene(
+      canvas: HTMLCanvasElement,
+      catalog: PublicCatalog,
+      options: {
+        quality: "low" | "high";
+        reducedMotion: () => boolean;
+        arenaKey: string;
+      },
+    ): BattleScene;
+    createPresentationController(
+      scene: BattleScene,
+      options: {
+        reducedMotion: () => boolean;
+        getLatestView: () => PlayerView;
+        onCursor: () => void;
+      },
+    ): PresentationController;
   };
   arenaRun: {
     scene: BattleScene;
@@ -74,7 +95,7 @@ test("paused fast-forward renders the settled current view and newly mounted tar
   const initial = response().view;
   initial.board[0]!.good = unit("unit-a", 1);
   await page.evaluate(async (view) => {
-    const w = window as Harness;
+    const w = window as unknown as Harness;
     const scene = w.arenaModule.createThreeBattleScene(
       document.querySelector("canvas")!,
       { cards: [], tokens: [] } as unknown as PublicCatalog,
@@ -109,7 +130,7 @@ test("paused fast-forward renders the settled current view and newly mounted tar
         y: el.style.getPropertyValue("--project-y"),
         stats: el.textContent,
       })),
-      presented: (window as Harness).arenaRun.scene
+      presented: (window as unknown as Harness).arenaRun.scene
         .getView()
         ?.board.flatMap((l) => [l.good, l.evil])
         .filter(Boolean)
@@ -121,7 +142,8 @@ test("paused fast-forward renders the settled current view and newly mounted tar
     }));
   const base = await snapshot();
   await page.evaluate(
-    ({ event, cue }) => (window as Harness).arenaRun.scene.present(event, cue),
+    ({ event, cue }) =>
+      (window as unknown as Harness).arenaRun.scene.present(event, cue),
     { event: signature, cue },
   );
   expect((await snapshot()).camera).not.toBe(base.camera);
@@ -133,7 +155,7 @@ test("paused fast-forward renders the settled current view and newly mounted tar
   };
   latest.board[4]!.good = unit("unit-b", 5);
   await page.evaluate((view) => {
-    const run = (window as Harness).arenaRun;
+    const run = (window as unknown as Harness).arenaRun;
     run.controller.pause();
     run.latest = view;
     run.controller.fastForward(view);
@@ -159,12 +181,15 @@ test("paused fast-forward renders the settled current view and newly mounted tar
     parseFloat(settled.targets[0]!.x),
   );
   await page.evaluate(
-    ({ event, cue }) => (window as Harness).arenaRun.scene.present(event, cue),
+    ({ event, cue }) =>
+      (window as unknown as Harness).arenaRun.scene.present(event, cue),
     { event: signature, cue },
   );
   await page.waitForTimeout(60);
   expect(await snapshot()).toEqual(settled);
-  await page.evaluate(() => (window as Harness).arenaRun.controller.dispose());
+  await page.evaluate(() =>
+    (window as unknown as Harness).arenaRun.controller.dispose(),
+  );
   await expect(page.locator("[data-battle-root]")).not.toHaveAttribute(
     "data-arena-3d",
     "ready",

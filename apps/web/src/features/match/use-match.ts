@@ -69,7 +69,6 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
   );
   const view = snapshot.authoritativeView;
   const [online, setOnline] = useState(true),
-    [large, setLarge] = useState(false),
     [recovering, setRecovering] = useState(false),
     [recoveryFailed, setRecoveryFailed] = useState(false),
     [recoveryAttempt, setRecoveryAttempt] = useState(0);
@@ -91,14 +90,8 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     [store, api, initial.view.matchId, storage],
   );
   useEffect(() => {
-    const media = window.matchMedia(
-      "(min-width: 1024px) and (min-height: 640px)",
-    );
-    const resize = () => setLarge(media.matches);
     const connectivity = () => setOnline(navigator.onLine);
-    resize();
     connectivity();
-    media.addEventListener("change", resize);
     window.addEventListener("online", connectivity);
     window.addEventListener("offline", connectivity);
     const key = `oathfront.command.${initial.view.matchId}`;
@@ -110,7 +103,6 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
       /* Ignore damaged local command data. */
     }
     return () => {
-      media.removeEventListener("change", resize);
       window.removeEventListener("online", connectivity);
       window.removeEventListener("offline", connectivity);
     };
@@ -221,7 +213,6 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
       !snapshot.needsAdvance ||
       snapshot.pendingCommand ||
       !online ||
-      !large ||
       view.lifecycle !== "ACTIVE"
     )
       return;
@@ -242,16 +233,11 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     snapshot.pendingCommand,
     snapshot.revision,
     online,
-    large,
     view.lifecycle,
     controller,
   ]);
   const disabled =
-    !!snapshot.pendingCommand ||
-    !online ||
-    !large ||
-    recovering ||
-    recoveryFailed;
+    !!snapshot.pendingCommand || !online || recovering || recoveryFailed;
   return {
     store,
     snapshot,

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import CardVisual from "../content/CardVisual";
 import { RarityBadge, SystemBadge } from "../content/ContentBadges";
 import { contentName, contentText } from "../../content/english-content";
@@ -35,6 +36,7 @@ export default function InspectPanel({
   onCancel: () => void;
   onConfirm: (action: PlayerAction) => void;
 }) {
+  const [expanded, setExpanded] = useState(true);
   const selected = [...view.self.hand, ...view.self.reserve].find(
     (item) => item.instanceId === selectedId,
   );
@@ -43,116 +45,132 @@ export default function InspectPanel({
     (item) => item.id === definitionId,
   );
   const preview = action ? previewPublicAction(view, action) : null;
+  if (!def) return null;
   return (
-    <aside className="inspect panel" aria-label="Selection details">
-      <h2>
-        {def ? contentName(def.id) : "Read the board, choose your moment"}
-      </h2>
-      {def ? (
-        <>
-          <p className="eyebrow">
-            {"cost" in def
-              ? `${def.cost} energy`
-              : "normalCost" in (selected ?? {})
-                ? "Power · 1 energy"
-                : "Summoned unit"}
-          </p>
-          {"cost" in def && (
-            <div className="card-affinities">
-              <RarityBadge rarity={def.rarity} full />
-              <SystemBadge system={def.classId} />
-            </div>
-          )}
-          {"cost" in def || "printed" in def ? (
-            <div className="inspect-art inspect-card-face">
-              <CardVisual definition={def} surface="inspect" artRetry />
-            </div>
-          ) : (
-            <>
-              <div className="inspect-art">
-                <ArtImage
-                  artKey={def.artKey}
-                  name={contentName(def.id)}
-                  variant="inspect"
-                />
-              </div>
-              <p>{contentText(def.id)}</p>
-            </>
-          )}
-          {"keywords" in def && (
-            <p>{def.keywords.map((key) => keywordLabel[key]).join(" · ")}</p>
-          )}
-          {unit && (
-            <>
-              <p>
-                Printed stats: {unit.printed.attack} ATK / {unit.printed.hp} HP
-              </p>
-              <p>
-                Current: {unit.current.attack} ATK / {unit.current.hp} HP
-              </p>
-              <p>{unitStatuses(unit).join(" · ")}</p>
-              {unit.modifiers.length > 0 && (
-                <details>
-                  <summary>Sources of stat changes</summary>
-                  <ul>
-                    {unit.modifiers.map((modifier, index) => (
-                      <li key={index}>
-                        {modifier.attackDelta >= 0 ? "+" : ""}
-                        {modifier.attackDelta} ATK /{" "}
-                        {modifier.healthDelta >= 0 ? "+" : ""}
-                        {modifier.healthDelta} HP ·{" "}
-                        {modifier.duration === "TURN_END"
-                          ? "Until turn end"
-                          : "Permanent"}{" "}
-                        · {modifier.sourceDefinitionId}
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              )}
-            </>
-          )}
-        </>
-      ) : (
-        <p className="muted">
-          Select a card to read its full effects. Select a unit on the board to
-          read its stats and statuses.
-        </p>
-      )}
-      {preview && preview.forecast !== "NONE" ? (
-        <section className="forecast" aria-label="Public forecast">
-          <h3>Forecast for the current board</h3>
-          <p>
-            {action?.kind === "PLAY_UNIT" ? `Lane ${action.laneId} · ` : ""}
-            Costs {preview.energySpent} energy
-          </p>
-          <p>
-            Enemy hero damage: {preview.enemyHeroDamage}
-            <br />
-            Your hero damage: {preview.ownHeroDamage}
-          </p>
-          {preview.uncertainty && (
-            <p className="notice">
-              Uncertain:{" "}
-              {preview.unknowns.map((key) => unknownLabel[key]).join("; ")}.
-            </p>
-          )}
-        </section>
-      ) : (
-        selected && (
-          <p className="muted">
-            Select or hover a legal target to see a forecast.
-          </p>
-        )
-      )}
-      {action && "target" in action && action.target.kind === "NONE" && (
-        <button className="primary" onClick={() => onConfirm(action)}>
-          Confirm card use
+    <aside
+      className="inspect panel"
+      aria-label="Selection details"
+      data-expanded={expanded}
+    >
+      <div className="inspect-toolbar">
+        <button aria-expanded={expanded} onClick={() => setExpanded(!expanded)}>
+          {expanded ? "Hide details" : "Show details"}
         </button>
-      )}
-      {(selected || unit) && (
-        <button onClick={onCancel}>Cancel selection · Esc</button>
-      )}
+        <button onClick={onCancel} aria-label="Cancel selection">
+          Close
+        </button>
+      </div>
+      <div className="inspect-content" hidden={!expanded}>
+        <h2>
+          {def ? contentName(def.id) : "Read the board, choose your moment"}
+        </h2>
+        {def ? (
+          <>
+            <p className="eyebrow">
+              {"cost" in def
+                ? `${def.cost} energy`
+                : "normalCost" in (selected ?? {})
+                  ? "Power · 1 energy"
+                  : "Summoned unit"}
+            </p>
+            {"cost" in def && (
+              <div className="card-affinities">
+                <RarityBadge rarity={def.rarity} full />
+                <SystemBadge system={def.classId} />
+              </div>
+            )}
+            {"cost" in def || "printed" in def ? (
+              <div className="inspect-art inspect-card-face">
+                <CardVisual definition={def} surface="inspect" artRetry />
+              </div>
+            ) : (
+              <>
+                <div className="inspect-art">
+                  <ArtImage
+                    artKey={def.artKey}
+                    name={contentName(def.id)}
+                    variant="inspect"
+                  />
+                </div>
+                <p>{contentText(def.id)}</p>
+              </>
+            )}
+            {"keywords" in def && (
+              <p>{def.keywords.map((key) => keywordLabel[key]).join(" · ")}</p>
+            )}
+            {unit && (
+              <>
+                <p>
+                  Printed stats: {unit.printed.attack} ATK / {unit.printed.hp}{" "}
+                  HP
+                </p>
+                <p>
+                  Current: {unit.current.attack} ATK / {unit.current.hp} HP
+                </p>
+                <p>{unitStatuses(unit).join(" · ")}</p>
+                {unit.modifiers.length > 0 && (
+                  <details>
+                    <summary>Sources of stat changes</summary>
+                    <ul>
+                      {unit.modifiers.map((modifier, index) => (
+                        <li key={index}>
+                          {modifier.attackDelta >= 0 ? "+" : ""}
+                          {modifier.attackDelta} ATK /{" "}
+                          {modifier.healthDelta >= 0 ? "+" : ""}
+                          {modifier.healthDelta} HP ·{" "}
+                          {modifier.duration === "TURN_END"
+                            ? "Until turn end"
+                            : "Permanent"}{" "}
+                          · {modifier.sourceDefinitionId}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
+              </>
+            )}
+          </>
+        ) : (
+          <p className="muted">
+            Select a card to read its full effects. Select a unit on the board
+            to read its stats and statuses.
+          </p>
+        )}
+        {preview && preview.forecast !== "NONE" ? (
+          <section className="forecast" aria-label="Public forecast">
+            <h3>Forecast for the current board</h3>
+            <p>
+              {action?.kind === "PLAY_UNIT" ? `Lane ${action.laneId} · ` : ""}
+              Costs {preview.energySpent} energy
+            </p>
+            <p>
+              Enemy hero damage: {preview.enemyHeroDamage}
+              <br />
+              Your hero damage: {preview.ownHeroDamage}
+            </p>
+            {preview.uncertainty && (
+              <p className="notice">
+                Uncertain:{" "}
+                {preview.unknowns.map((key) => unknownLabel[key]).join("; ")}.
+              </p>
+            )}
+          </section>
+        ) : (
+          selected && (
+            <p className="muted">
+              Select or hover a legal target to see a forecast.
+            </p>
+          )
+        )}
+        {action && "target" in action && action.target.kind === "NONE" && (
+          <button className="primary" onClick={() => onConfirm(action)}>
+            Confirm card use
+          </button>
+        )}
+        {(selected || unit) && (
+          <button onClick={onCancel}>Cancel selection · Esc</button>
+        )}
+      </div>
     </aside>
   );
 }

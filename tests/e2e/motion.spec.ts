@@ -294,26 +294,27 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
   // Freeze a real intermediate frame through the existing visibility pause path.
   await page.evaluate(() => {
     const layer = document.querySelector("[data-presentation]")!;
+    const canvas = document.querySelector<HTMLCanvasElement>(
+      "canvas.battle-canvas",
+    )!;
+    const baseCamera = canvas.dataset.camera;
     const observer = new MutationObserver(() => {
-      if (layer.getAttribute("data-presentation") !== "playing") return;
+      if (
+        layer.getAttribute("data-presentation") !== "playing" ||
+        canvas.dataset.camera === baseCamera
+      )
+        return;
       observer.disconnect();
-      let frames = 0;
-      function hold() {
-        if (++frames < 6) {
-          requestAnimationFrame(hold);
-          return;
-        }
-        Object.defineProperty(document, "hidden", {
-          configurable: true,
-          value: true,
-        });
-        document.dispatchEvent(new Event("visibilitychange"));
-      }
-      requestAnimationFrame(hold);
+      Object.defineProperty(document, "hidden", {
+        configurable: true,
+        value: true,
+      });
+      document.dispatchEvent(new Event("visibilitychange"));
     });
-    observer.observe(layer, {
+    // Observe an actual cinematic pose; elapsed GSAP time is not a fixed RAF count.
+    observer.observe(canvas, {
       attributes: true,
-      attributeFilter: ["data-presentation"],
+      attributeFilter: ["data-camera"],
     });
   });
   await requestPass(page);
@@ -376,7 +377,7 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
     JSON.stringify(
       {
         renderer,
-        pixi: "8.22.0",
+        three: "0.186.1",
         commands,
         pixelsDiffer: !during.equals(before),
         errors,
@@ -499,15 +500,30 @@ for (const reduced of [false, true])
     );
     const renderer = await enter(page, initial.view.matchId);
     await page.setViewportSize({ width: 1280, height: 720 });
-    expect(
-      await page.locator(".unit-stats").evaluateAll((elements) =>
-        elements.every((el) => {
-          const r = el.getBoundingClientRect(),
-            parent = el.closest("button")!.getBoundingClientRect();
-          return r.left >= parent.left && r.right <= parent.right;
+    await expect
+      .poll(() =>
+        page.locator(".board-unit .unit-stats").evaluateAll((elements) => {
+          const rows = [true, false].map((own) =>
+            elements.filter(
+              (el) =>
+                el.closest("button")?.getAttribute("data-own-unit") ===
+                String(own),
+            ),
+          );
+          return rows.every((row) =>
+            row.every((el, index) => {
+              const bounds = el.getBoundingClientRect();
+              const next = row[index + 1]?.getBoundingClientRect();
+              return (
+                bounds.left >= 0 &&
+                bounds.right <= innerWidth &&
+                (!next || bounds.right + 2 <= next.left)
+              );
+            }),
+          );
         }),
-      ),
-    ).toBe(true);
+      )
+      .toBe(true);
     await page.setViewportSize({ width: 1440, height: 900 });
     const durations: number[] = [];
     // Read the real semantic text each animation frame, so a one-sided HP commit is observable.
@@ -582,7 +598,9 @@ for (const reduced of [false, true])
     for (const frame of samples)
       for (let lane = 0; lane < 5; lane++)
         expect(frame[lane * 2]).toBe(frame[lane * 2 + 1]);
-    await expect(page.locator(".battle-log li")).toHaveCount(10);
+    await expect(page.locator('[aria-label="Match events"] li')).toHaveCount(
+      10,
+    );
     expect(commands).toBe(5);
     expect(errors).toEqual([]);
     await page.screenshot({
@@ -657,7 +675,9 @@ test("failed renderer keeps the latest semantic board and retries with one canva
   await expect(
     page.getByRole("region", { name: /Opponent hero/ }),
   ).toContainText("9");
-  expect(errors).toEqual([]);
+  expect(errors).toEqual([
+    "THREE.WebGLRenderer: Expected transient WebGL initialization failure",
+  ]);
 });
 
 test("used effect families render through the strict-CSP WebGL path", async ({
@@ -854,7 +874,9 @@ test("used effect families render through the strict-CSP WebGL path", async ({
   await enter(page, initial.view.matchId);
   for (let i = 0; i < events.length; i++) {
     await requestPass(page);
-    await expect(page.locator(".battle-log li")).toHaveCount(i + 1);
+    await expect(page.locator('[aria-label="Match events"] li')).toHaveCount(
+      i + 1,
+    );
     await expect(page.locator('[data-presentation="idle"]')).toBeVisible();
   }
   expect(errors).toEqual([]);

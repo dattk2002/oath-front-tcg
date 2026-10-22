@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ArenaDecor } from "./ArenaDecor";
 import { arenaForView } from "./rendering/arena";
 import { contentName, contentText } from "../../content/english-content";
@@ -45,7 +46,7 @@ export default function Board({
   onInspect: (unit: UnitView) => void;
   onPreview: (action: PlayerAction | null) => void;
 }) {
-  const arena = arenaForView(view);
+  const [arena] = useState(() => arenaForView(view));
   const enemy = view.self.side === "GOOD" ? "EVIL" : "GOOD";
   const legalAction = (target: Target) =>
     disabled
@@ -74,6 +75,8 @@ export default function Board({
       <button
         className={`board-unit ${unit.owner.toLowerCase()}`}
         data-own-unit={own}
+        data-slot-side={unit.owner}
+        data-slot-lane={laneId}
         data-unit-id={unit.instanceId}
         data-target={JSON.stringify(target)}
         data-legal-target={!!action}
@@ -154,7 +157,11 @@ export default function Board({
               <div className="terrain" data-terrain-lane={lane.laneId}>
                 {lane.location.state === "HIDDEN" ? (
                   <>
-                    <strong>? · Hidden location</strong>
+                    <strong
+                      aria-label={`Lane ${lane.laneId}, hidden location, reveals on turn ${lane.location.revealTurn}`}
+                    >
+                      ? · {lane.laneId}
+                    </strong>
                     <span>Reveals on turn {lane.location.revealTurn}</span>
                   </>
                 ) : location ? (
@@ -172,7 +179,11 @@ export default function Board({
                   </details>
                 ) : (
                   <>
-                    <strong>Normal lane</strong>
+                    <strong
+                      aria-label={`Lane ${lane.laneId}, normal lane, no effects`}
+                    >
+                      Lane {lane.laneId}
+                    </strong>
                     <span>No effects</span>
                   </>
                 )}

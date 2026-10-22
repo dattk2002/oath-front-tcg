@@ -184,7 +184,11 @@ it("keeps amplified signature, attack and damage cameras inside playable bounds 
     [1440, 650],
     [1280, 500],
     [844, 300],
+    [844, 270],
+    [375, 540],
     [375, 450],
+    [375, 320],
+    [430, 550],
   ]) {
     const base = createCamera(width!, height!);
     for (const event of events)
@@ -241,5 +245,45 @@ it("keeps amplified signature, attack and damage cameras inside playable bounds 
             );
           }
         }
+  }
+});
+
+it("uses phone stage width for readable card hit areas without changing the desktop camera", () => {
+  const desktop = createCamera(1440, 679);
+  expect(desktop.position.toArray()).toEqual([0, 14, 12.6]);
+  for (const [width, height] of [
+    [375, 540],
+    [375, 450],
+    [844, 270],
+  ]) {
+    const camera = createCamera(width!, height!);
+    for (const side of ["GOOD", "EVIL"] as const)
+      for (const lane of [1, 2, 3, 4, 5]) {
+        const anchor = cardAnchor(lane, side, "GOOD");
+        const rest = projectTile(
+          anchor,
+          CARD_WIDTH,
+          CARD_DEPTH,
+          camera,
+          width!,
+          height!,
+        );
+        const lift = projectTile(
+          anchor.clone().add(new THREE.Vector3(0, 0.4, 0)),
+          CARD_WIDTH,
+          CARD_DEPTH,
+          camera,
+          width!,
+          height!,
+        );
+        expect(
+          Math.max(rest.x + rest.width, lift.x + lift.width) -
+            Math.min(rest.x, lift.x),
+        ).toBeGreaterThanOrEqual(44);
+        expect(
+          Math.max(rest.y + rest.height, lift.y + lift.height) -
+            Math.min(rest.y, lift.y),
+        ).toBeGreaterThanOrEqual(44);
+      }
   }
 });

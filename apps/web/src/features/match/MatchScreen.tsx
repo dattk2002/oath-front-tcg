@@ -163,7 +163,7 @@ function MatchRuntime({
       recovering={recovering}
       onRecover={recover}
     >
-      <div className="gameplay" data-battle-root>
+      <div className="gameplay arena-stage" data-battle-root>
         <HeroPanel
           hero={view.players[enemy]}
           side={enemy}
@@ -186,8 +186,12 @@ function MatchRuntime({
         />
         <div
           className={`battle-layout ${view.blockResponse?.visibility === "OWN" ? "responding" : ""}`}
+          data-block-targeting={
+            view.blockResponse?.visibility === "OWN" &&
+            snapshot.selection?.instanceId ===
+              view.blockResponse.powerInstanceId
+          }
         >
-          <BattleLog snapshot={snapshot} />
           <div className="battle-center">
             <Board
               view={view}
