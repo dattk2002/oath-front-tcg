@@ -24,6 +24,11 @@ await build({
   entryPoints: ["apps/api/src/app.ts"],
   outfile: "apps/api/dist/app.mjs",
 });
+await build({
+  ...common,
+  entryPoints: ["apps/api/src/hosted.ts"],
+  outfile: "apps/api/dist/hosted.mjs",
+});
 
 await build({
   ...common,

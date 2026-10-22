@@ -1,9 +1,9 @@
-// Recognized Vercel Fastify entrypoint. Its adapter intercepts listen(), so use its Node handler contract.
+// Bundle workspace packages before Vercel traces the Node handler.
 import "fastify";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { waitUntil, attachDatabasePool } from "@vercel/functions";
 import { createPool } from "@oathfront/db";
-import { buildApp } from "./src/app.js";
+import { buildApp } from "./app.js";
 export const config = { maxDuration: 30 };
 let app: ReturnType<typeof buildApp> | undefined;
 function application() {
