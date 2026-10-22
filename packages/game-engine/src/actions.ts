@@ -1,4 +1,9 @@
-import { matchCatalog } from "./catalog.js";
+import {
+  matchCatalog,
+  canUseCard,
+  canUsePower,
+  powerPhase,
+} from "./catalog.js";
 import { canonicalJson } from "./hash.js";
 import {
   tutorialAllowed,
@@ -9,7 +14,6 @@ import {
 } from "./tutorial.js";
 import type { PlayerAction, Target } from "@oathfront/contracts";
 import { validateWire } from "@oathfront/contracts";
-import { coreCatalog } from "@oathfront/game-content";
 import type {
   MatchState,
   PlayerId,
@@ -60,8 +64,10 @@ function phaseLegalActions(state: MatchState, actor: PlayerId): PlayerAction[] {
   const actions: PlayerAction[] = [{ kind: "PASS_PHASE" }],
     player = state.players[actor];
   for (const card of player.hand) {
-    const def = coreCatalog.cards.find((c) => c.id === card.definitionId);
-    if (!def || def.faction !== actor) continue;
+    const def = matchCatalog(state).cards.find(
+      (c) => c.id === card.definitionId,
+    );
+    if (!def || !canUseCard(state, actor, def)) continue;
     if (def.type === "UNIT" && state.phase !== "EVIL_TRICKS")
       for (const lane of state.board) {
         if (
@@ -91,7 +97,11 @@ function phaseLegalActions(state: MatchState, actor: PlayerId): PlayerAction[] {
       const def = matchCatalog(state).powers.find(
         (p) => p.id === power.definitionId,
       );
-      if (def?.faction === actor && def.validPhase === state.phase)
+      if (
+        def &&
+        canUsePower(state, actor, def) &&
+        powerPhase(def, actor) === state.phase
+      )
         for (const target of legalTargets(state, actor, def.targeting))
           actions.push({
             kind: "USE_POWER",
@@ -148,8 +158,8 @@ function applyCoreAction(
   if (action.kind === "PLAY_UNIT" || action.kind === "PLAY_TRICK") {
     const player = state.players[actor],
       card = player.hand.find((c) => c.instanceId === action.cardInstanceId),
-      def = coreCatalog.cards.find((c) => c.id === card?.definitionId);
-    if (!card || !def || def.faction !== actor)
+      def = matchCatalog(state).cards.find((c) => c.id === card?.definitionId);
+    if (!card || !def || !canUseCard(state, actor, def))
       return error("CARD_UNAVAILABLE");
     if (
       (action.kind === "PLAY_UNIT" &&
@@ -271,9 +281,9 @@ function applyCoreAction(
       def = matchCatalog(state).powers.find(
         (p) => p.id === power?.definitionId,
       );
-    if (!power || !def || def.faction !== actor)
+    if (!power || !def || !canUsePower(state, actor, def))
       return error("POWER_UNAVAILABLE");
-    if (def.validPhase !== state.phase) return error("WRONG_PHASE");
+    if (powerPhase(def, actor) !== state.phase) return error("WRONG_PHASE");
     if (
       !legalTargets(state, actor, def.targeting).some((t) =>
         targetEqual(t, action.target),

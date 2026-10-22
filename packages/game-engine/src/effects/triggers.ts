@@ -1,5 +1,5 @@
+import { matchCatalog } from "../catalog.js";
 import type { Ability, Hook } from "@oathfront/contracts";
-import { coreCatalog } from "@oathfront/game-content";
 import type { MatchState, UnitState } from "../model.js";
 import type { RootResolution } from "./resolve.js";
 import { drainTriggersOnDraft } from "./resolve.js";
@@ -22,8 +22,8 @@ export function enqueueHooksOnDraft(
 ): void {
   const jobs = sources.flatMap((source) =>
     (
-      coreCatalog.cards.find((c) => c.id === source.definitionId)?.abilities ??
-      []
+      matchCatalog(state).cards.find((c) => c.id === source.definitionId)
+        ?.abilities ?? []
     )
       .filter((a) => a.hook === hook)
       .map((ability) => ({

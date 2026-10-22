@@ -1,3 +1,4 @@
+import { matchCatalog } from "./catalog.js";
 import type {
   PlayerView,
   UnitView,
@@ -67,7 +68,7 @@ export function createPublicResolution(
         (a.owner === "EVIL" ? 0 : 1) - (b.owner === "EVIL" ? 0 : 1),
     )) {
       const abilities =
-        coreCatalog.cards.find((c) => c.id === source.definitionId)
+        matchCatalog(view).cards.find((c) => c.id === source.definitionId)
           ?.abilities ?? [];
       for (const ability of [...abilities]
         .filter((a) => a.hook === hook)

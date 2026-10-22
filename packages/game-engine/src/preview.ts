@@ -6,7 +6,6 @@ import type {
   HeroView,
   EntityRef,
 } from "@oathfront/contracts";
-import { coreCatalog } from "@oathfront/game-content";
 import { opposite, slot, targetEqual } from "./targets.js";
 import { attackValue } from "./rule-math.js";
 import { createPublicResolution } from "./preview-resolution.js";
@@ -96,7 +95,7 @@ export function previewPublicAction(
     const card = view.self.hand.find(
       (c) => c.instanceId === action.cardInstanceId,
     )!;
-    const def = coreCatalog.cards.find((c) => c.id === card.definitionId)!;
+    const def = matchCatalog(view).cards.find((c) => c.id === card.definitionId)!;
     result.energySpent =
       def.cost +
       (action.kind === "PLAY_UNIT" &&

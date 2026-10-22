@@ -1,5 +1,5 @@
+import { matchCatalog } from "./catalog.js";
 import type { EntityRef, VisibleEvent } from "@oathfront/contracts";
-import { coreCatalog } from "@oathfront/game-content";
 import type { LaneId, MatchState } from "./model.js";
 import { regularAttackValue } from "./modifiers.js";
 import { orderedUnits, opposite, slot } from "./targets.js";
@@ -32,7 +32,7 @@ export function beforeCombatOnDraft(
   }
   const pending = continuation.beforeCombatJobs.shift();
   if (pending) {
-    const ability = coreCatalog.cards
+    const ability = matchCatalog(state).cards
       .find((c) => c.id === pending.source.definitionId)
       ?.abilities.find(
         (a) => a.id === pending.abilityId && a.hook === "BEFORE_COMBAT_HERE",

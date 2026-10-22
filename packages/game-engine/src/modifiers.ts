@@ -1,3 +1,4 @@
+import { matchCatalog } from "./catalog.js";
 import type { Duration, ModifierView, Statuses } from "@oathfront/contracts";
 import { coreCatalog } from "@oathfront/game-content";
 import type { MatchState, GameEvent, UnitState } from "./model.js";
@@ -123,17 +124,17 @@ export function expireModifiersOnDraft(
     unit.statuses.exhausted = false;
     // Pierce can be innate or granted permanently; unlike shield it is never consumed.
     const permanentPierce = unit.modifiers.some((m) => m.trait === "PIERCE");
-    unit.statuses.pierce = permanentPierce || innatePierce(unit);
+    unit.statuses.pierce = permanentPierce || innatePierce(state, unit);
     if (JSON.stringify(before) !== JSON.stringify(unit.current))
       emitStats(state, events, unit, before);
     emitStatus(state, events, unit, statuses);
   }
 }
-function innatePierce(unit: UnitState): boolean {
+function innatePierce(state: MatchState, unit: UnitState): boolean {
   const keywords: readonly string[] =
     (unit.isToken
       ? coreCatalog.tokens.find((t) => t.id === unit.definitionId)
-      : coreCatalog.cards.find((c) => c.id === unit.definitionId)
+      : matchCatalog(state).cards.find((c) => c.id === unit.definitionId)
     )?.keywords ?? [];
   return keywords.includes("PIERCE");
 }

@@ -1,0 +1,1508 @@
+{
+  "catalog": "elements_v1",
+  "catalogHash": "5093e791d86348765999c729247b10680cf392f1894869ba047617fa18bd832f",
+  "count": 100,
+  "faults": 0,
+  "results": [
+    {
+      "ordinal": 0,
+      "good": "H_G_BV",
+      "evil": "H_E_FX",
+      "seed": "975338680375c8010cdd0a60e195c4554ad8b8f7d101c7f09822b31333bfd4cd",
+      "turns": 20,
+      "steps": 194,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "f319ca44fff79900a27ced21966e0aa9db3391fad7d90492a9b1b7b65a476b02"
+    },
+    {
+      "ordinal": 1,
+      "good": "H_G_BP",
+      "evil": "H_E_FS",
+      "seed": "20857f87c51d406444ef60a8ac0da4494a066fa8ce030ca4fdcc52a33809bf3e",
+      "turns": 9,
+      "steps": 96,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "650b5bd66fbffaf319afab8bcb2dfb1cae77f360a9c3fd83b46801d9590b7cc3"
+    },
+    {
+      "ordinal": 2,
+      "good": "H_G_VP",
+      "evil": "H_E_XS",
+      "seed": "86f6ffb4691d8e445f68ca270b7856d4546db4c98a539384df11f588cc7c2d82",
+      "turns": 11,
+      "steps": 111,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "cdb269e770f7145d37d56498ef3846af10fc2b33401c679230026b8ebb3ef96e"
+    },
+    {
+      "ordinal": 3,
+      "good": "H_G_SOL",
+      "evil": "H_E_ROO",
+      "seed": "e4524acec54f5a43ed3fad347f6b9d83c5e43241fa5569e29c75897532b496a7",
+      "turns": 7,
+      "steps": 74,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "f08c97079c915c7a6229c3c8e5e5d09fd74bd85fc50d876e09990b655eb1850c"
+    },
+    {
+      "ordinal": 4,
+      "good": "H_G_CAI",
+      "evil": "H_E_NYX",
+      "seed": "dbaf60776064883fda4c8bfe5e16932d5fbdcd273924abc78b25894a3de06de4",
+      "turns": 17,
+      "steps": 167,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "c26e3b6aa73dea2a6942b02c454dbebb89e233578eb6507c0072e4cb9385cc8a"
+    },
+    {
+      "ordinal": 5,
+      "good": "H_G_ZEP",
+      "evil": "H_E_BRI",
+      "seed": "60667f6dabdc15512fd39d9b394e0f62df4dbda9fefbb66a03a78904ec0e60ea",
+      "turns": 11,
+      "steps": 108,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "8d5bf80bbed19f0ab90042d5c8838f98da4d5b36fc0543ea7745ccd375761ff4"
+    },
+    {
+      "ordinal": 6,
+      "good": "H_G_MER",
+      "evil": "H_E_SAB",
+      "seed": "3ce0a257feb8c66052125c5a3daa22103767ef327ff44b7b6a364fbfbe21b458",
+      "turns": 17,
+      "steps": 170,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "7022a2a798cd39be73dad1f01ea5cc274bf39cc4d8e927401e808a8e9e2680e8"
+    },
+    {
+      "ordinal": 7,
+      "good": "H_G_MOS",
+      "evil": "H_E_VAN",
+      "seed": "41a68edae837fc517d74d6b16d00b29a50ab4627ff46442e02136f9b37567c83",
+      "turns": 10,
+      "steps": 105,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "7fd6dbaab5db191b2b3878673568a35d997a21ca18174b5d4e6f5aa5a50fe527"
+    },
+    {
+      "ordinal": 8,
+      "good": "H_G_HAL",
+      "evil": "H_E_GRA",
+      "seed": "6c3ff3343da84e1bc70c42cfeedbcb7a43042e5152482c1dfb362a7636bf6007",
+      "turns": 7,
+      "steps": 72,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "14181041e63d1773d3f8394db4b7f61d3029befe42f611e910e66d4627665fc5"
+    },
+    {
+      "ordinal": 9,
+      "good": "H_G_ROW",
+      "evil": "H_E_SCO",
+      "seed": "a1f955f5694aeb7c200085e2c96e06638c27cce1618a559ba40b3f329e7412b6",
+      "turns": 11,
+      "steps": 116,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "07969471dc7b76dff0d63abd4d134b66ef23ae0045efd69bc46655445f7d28db"
+    },
+    {
+      "ordinal": 10,
+      "good": "H_G_BV",
+      "evil": "H_E_FS",
+      "seed": "ced2fb9a9ae43ecb3d33ddcb8181a146437c9790b31e44bf1698d4e344253906",
+      "turns": 9,
+      "steps": 91,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "06faaf2f0ef9d1f41e27c52daf90224f74f86a34d7318b263aae0e0178d74ad6"
+    },
+    {
+      "ordinal": 11,
+      "good": "H_G_BP",
+      "evil": "H_E_XS",
+      "seed": "bf58faacdadd7aa9221953bbf93655433b8dabde564391131624c6313d068c8e",
+      "turns": 11,
+      "steps": 117,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "d6b8d1943570d06deb6c226dc739334f10aad96d9061982ff32f6898bad8fca1"
+    },
+    {
+      "ordinal": 12,
+      "good": "H_G_VP",
+      "evil": "H_E_ROO",
+      "seed": "811a915b5f644b01bb7a16b432800f37afd77e49bef98a4f9e5dbc7d26469769",
+      "turns": 11,
+      "steps": 111,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "68baf172c5dc445a09651ec0c466d7d3f347c8acf5265709321e700fc71821f3"
+    },
+    {
+      "ordinal": 13,
+      "good": "H_G_SOL",
+      "evil": "H_E_NYX",
+      "seed": "c6f16bb70a0ee569230e8453fba70f31247adffc58dd9be78a7d46a37f9f3a73",
+      "turns": 15,
+      "steps": 139,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "915db0d381707786f834ba8ea3dbdb558e71d1f3114346b145f3441bdf085f51"
+    },
+    {
+      "ordinal": 14,
+      "good": "H_G_CAI",
+      "evil": "H_E_BRI",
+      "seed": "d46c14e98e87ae357c3dfdeaeab06905284513f4759431ba1f58a6e0ba2a6fcb",
+      "turns": 12,
+      "steps": 123,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "6d8753a258ad7b6a06f6ff736e053f2bc70f7194da0e6c9fa955993e524402db"
+    },
+    {
+      "ordinal": 15,
+      "good": "H_G_ZEP",
+      "evil": "H_E_SAB",
+      "seed": "14370633cc72ef4486211d2e5e0ed77d9163f030604694db41628da92387ec47",
+      "turns": 10,
+      "steps": 105,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "4e234a9aa5e439058624bb03402d9b8f98c2d272372779315192ee0cae183383"
+    },
+    {
+      "ordinal": 16,
+      "good": "H_G_MER",
+      "evil": "H_E_VAN",
+      "seed": "2b32592062b33d4dcdf59c9b6fbaf20c3a8c59fc9d37d0ac8acfcf869c108a87",
+      "turns": 9,
+      "steps": 91,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "0545b89fb0889f5c7ad8acce41f1a9dafe9ea4c6ba0f6898ba0c81688cbb68c5"
+    },
+    {
+      "ordinal": 17,
+      "good": "H_G_MOS",
+      "evil": "H_E_GRA",
+      "seed": "5be85009132336f52e7feb8937c319eed3d5ba7cd4fd0899b764bcc1ccd91f2a",
+      "turns": 15,
+      "steps": 154,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "502e4128207bcde6a1e265ee738d7fc145e11c9184026efb84d825699de80f5f"
+    },
+    {
+      "ordinal": 18,
+      "good": "H_G_HAL",
+      "evil": "H_E_SCO",
+      "seed": "09cd610c053b7904a36fe3b07ecf7d465598a2f9fa394a64e0263f1906e47a41",
+      "turns": 9,
+      "steps": 89,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "56daf00c82b140090d32471914dd77dc9436d3825baf4e7abbeaed9122b9334f"
+    },
+    {
+      "ordinal": 19,
+      "good": "H_G_ROW",
+      "evil": "H_E_FX",
+      "seed": "ba66c2fb7ff14dcdbd23367700aca8ce77141a49b928eb19b54a10896c2829e4",
+      "turns": 10,
+      "steps": 103,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "1c4473480abb3c463c97989c28f589ded5a6b829afbb7da482a3d82c42c666a1"
+    },
+    {
+      "ordinal": 20,
+      "good": "H_G_BV",
+      "evil": "H_E_XS",
+      "seed": "3b523d2020e515ff19d0ae91d407ae93f76846f8dd67a0d451f6a3d971356502",
+      "turns": 12,
+      "steps": 125,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "01f687c29cfa68a64880851d9c43676496246bfa108225d0daadd53cb9d124af"
+    },
+    {
+      "ordinal": 21,
+      "good": "H_G_BP",
+      "evil": "H_E_ROO",
+      "seed": "364afa9fdf7e8225002b07d859b5489dafece9ea43379fb9b94a5e0bdcd0b6b2",
+      "turns": 10,
+      "steps": 107,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "693a039ba01337b24941ea177214b675db7ff3851ca48aede5f80c84d1e348ba"
+    },
+    {
+      "ordinal": 22,
+      "good": "H_G_VP",
+      "evil": "H_E_NYX",
+      "seed": "3c3c89be2787579a6b3633eaac5307dfa5dc08e5d352ba0196e1dc30c6f80126",
+      "turns": 9,
+      "steps": 97,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "86f914a26248c9e594af38a3e3efeef7ada33f68fd67d56888b17d2ed9c7f906"
+    },
+    {
+      "ordinal": 23,
+      "good": "H_G_SOL",
+      "evil": "H_E_BRI",
+      "seed": "7c68a6bf9d9a436d9b7534364715499a89dfdb091aa589331041708cb5fb8437",
+      "turns": 14,
+      "steps": 142,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "25254bfbb9001380f8e1c3de26495bb95450755f44bbe7ad17cdce3c5f7a8022"
+    },
+    {
+      "ordinal": 24,
+      "good": "H_G_CAI",
+      "evil": "H_E_SAB",
+      "seed": "2c93abb2d526b1b08d09f92fd543c7a63a152ec4da308d523a57aa7159cf2f64",
+      "turns": 16,
+      "steps": 156,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "1d37eaa78b7e4de3fd3a503f33f1c4a7d4583cf7c0559cb54cf4291b4ef22f2c"
+    },
+    {
+      "ordinal": 25,
+      "good": "H_G_ZEP",
+      "evil": "H_E_VAN",
+      "seed": "fb29ad87de16e87af9ad0764907a7cf22aee6b535f018cd12cbfc6ea9f93a8df",
+      "turns": 11,
+      "steps": 113,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "416a2ce7389977bd0c888070b7bd80ed086a175ccb668d539205840d0dfabed8"
+    },
+    {
+      "ordinal": 26,
+      "good": "H_G_MER",
+      "evil": "H_E_GRA",
+      "seed": "0876faafd7eb2fa75416504198f87a77d28ad7c2c7e71865bb52049cde29d18a",
+      "turns": 11,
+      "steps": 113,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "66091c7b9c04f5c1f41040ec932c2971a83bb43c8e77431f148ebb12cd5833ca"
+    },
+    {
+      "ordinal": 27,
+      "good": "H_G_MOS",
+      "evil": "H_E_SCO",
+      "seed": "5f28287490bf7e35c952b8467f577f01eb569c5196a76f5aec05e056cda7a468",
+      "turns": 12,
+      "steps": 128,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "a9021525f3c9b5ceac5446bb535fffdd7ed57a1a4c1979c54f9332445ca58d2b"
+    },
+    {
+      "ordinal": 28,
+      "good": "H_G_HAL",
+      "evil": "H_E_FX",
+      "seed": "3f18acca411ba8761026c0aa635bd4ee3899639fc49478e98c87169f665cee5b",
+      "turns": 9,
+      "steps": 86,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "8efffd482255b456bd502a59fa1102b7e400144a08da7538ce9fd6513314fcc7"
+    },
+    {
+      "ordinal": 29,
+      "good": "H_G_ROW",
+      "evil": "H_E_FS",
+      "seed": "406dd64bfc6bb33db1fa663e1596c0d968fbf306192bfb26ed75478214aa5c7a",
+      "turns": 9,
+      "steps": 98,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "9cad533b4cd1a45fa6bd341825764c0e95f2caeb0c05d8a27fe2495c0000b0ec"
+    },
+    {
+      "ordinal": 30,
+      "good": "H_G_BV",
+      "evil": "H_E_ROO",
+      "seed": "d3a96d7cc5892d1b2108ce01c826f76e43e701fa1a7bd7d84ad80f5864edf72e",
+      "turns": 11,
+      "steps": 113,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "18327e9a0613e956c0e22913fac14095e84f41b64a27c60306a5f6a46ae61162"
+    },
+    {
+      "ordinal": 31,
+      "good": "H_G_BP",
+      "evil": "H_E_NYX",
+      "seed": "aa8a4c0f606e8bf858634830811a716dfcda8b51c9ae0e49c14787a24bd39e53",
+      "turns": 9,
+      "steps": 93,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "fa534d7430718776dc612b0d2fc824b3aa4a7e5dd4614d491d430fc50ec80eb1"
+    },
+    {
+      "ordinal": 32,
+      "good": "H_G_VP",
+      "evil": "H_E_BRI",
+      "seed": "c6d63a9cb8a2d9fa2cb1a9edcf6ed0cabbde0ecfd004fe8852af15fa4b123f48",
+      "turns": 6,
+      "steps": 62,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "3adfa1fd0fef4585f44affc3eef430f5b3ba577e516e3e4d125c970f014dde37"
+    },
+    {
+      "ordinal": 33,
+      "good": "H_G_SOL",
+      "evil": "H_E_SAB",
+      "seed": "f18c2009c17b68a154b7d20c3f0922912912ba57f687c7c9f5dfe6d4e7f9044a",
+      "turns": 16,
+      "steps": 156,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "442633166a15a198b44acb7beec11e8ebc306ad130e35c1f72f6370fbee99f03"
+    },
+    {
+      "ordinal": 34,
+      "good": "H_G_CAI",
+      "evil": "H_E_VAN",
+      "seed": "757f0b9fc893a816ff4fb63389c8fc6bc7eca970408477983b4d95f50ae7d5d0",
+      "turns": 11,
+      "steps": 112,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "0acb847873834094a32b97b995768f47c30db86a2becc6093c15cdd7dc154ef3"
+    },
+    {
+      "ordinal": 35,
+      "good": "H_G_ZEP",
+      "evil": "H_E_GRA",
+      "seed": "4e21dbe124e83262b6da70d319833caf49473463940ef12955d0c681d28d740e",
+      "turns": 11,
+      "steps": 115,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "ef7f4f038a2b8bb16d76ff63a7e64ee9d0f54570ebd9d86320115989fb4255cb"
+    },
+    {
+      "ordinal": 36,
+      "good": "H_G_MER",
+      "evil": "H_E_SCO",
+      "seed": "58b35bdf99d8f78635233f90946854308e4a4e5219c31218c36db98140884b7e",
+      "turns": 12,
+      "steps": 126,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "f719858f214948ebf5cf01856c9e7ff73b1c4d08ef57f370356ee40f1ddb0940"
+    },
+    {
+      "ordinal": 37,
+      "good": "H_G_MOS",
+      "evil": "H_E_FX",
+      "seed": "1011dfc2bfc5d93f0769d2aa761db8b995d6553cb1d60811c8028e2607108d8a",
+      "turns": 16,
+      "steps": 161,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "d0c00c8fc6432518de3d841abe55beb1855b94cfe0c29b911ae18878044a8d16"
+    },
+    {
+      "ordinal": 38,
+      "good": "H_G_HAL",
+      "evil": "H_E_FS",
+      "seed": "dcc1ca64d063052c07fe06902b8e50c17e052382a0538dd2e97724e6c84fc0e8",
+      "turns": 9,
+      "steps": 91,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "8a245b208aa7ffabde65a0e66444ac4ec1bb015434a1cdcc020e37626fbf2f5d"
+    },
+    {
+      "ordinal": 39,
+      "good": "H_G_ROW",
+      "evil": "H_E_XS",
+      "seed": "cfe630ce1c5ed5535c7858d0ea94669f048ebe3ae9514baada92d7f24e1f9623",
+      "turns": 20,
+      "steps": 196,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "e593063ae7ce3b9e7230b24f663a83d22bf8473ad2eb3d940f116a5f4b6ad6e5"
+    },
+    {
+      "ordinal": 40,
+      "good": "H_G_BV",
+      "evil": "H_E_NYX",
+      "seed": "c70849fbbe60f29cb357ee7e512a74551e89f3268c4a1484d05fc535a5f17c25",
+      "turns": 19,
+      "steps": 185,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "5ad93a8de8f44e3c99b245aa194475ec0f8d47b5bbf1094512731e24045ee0e6"
+    },
+    {
+      "ordinal": 41,
+      "good": "H_G_BP",
+      "evil": "H_E_BRI",
+      "seed": "216ccd8211a2d47a79125b4f106913b7e23241b6ea942c624b64f58487a41abf",
+      "turns": 8,
+      "steps": 82,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "a6da20eab16da12cb8de38f090f9f58d7ad610ab1753f459bce4f2412982eab9"
+    },
+    {
+      "ordinal": 42,
+      "good": "H_G_VP",
+      "evil": "H_E_SAB",
+      "seed": "90a1d01d20240a078255987f7dd4485fc2743e293436c7f23566960dc4a6b977",
+      "turns": 8,
+      "steps": 87,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "ac1bbbb0a10cae886e428f5ee480aba192f2b7dc1c45b7f8450e27c3778da4ad"
+    },
+    {
+      "ordinal": 43,
+      "good": "H_G_SOL",
+      "evil": "H_E_VAN",
+      "seed": "71ece5724a45be233110d60fa052ee27a3550b5a7068398498bffd09c9f67c6c",
+      "turns": 8,
+      "steps": 83,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "24a476497d8059cb62aef94abe9e8e805b5fa8cdfaaf5756545ca9ebc38169ca"
+    },
+    {
+      "ordinal": 44,
+      "good": "H_G_CAI",
+      "evil": "H_E_GRA",
+      "seed": "31f5ddd1e7a8fd6957174e8ffc524c1f09c2dede416111dd9578bb449cb663ef",
+      "turns": 12,
+      "steps": 123,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "c3c3f042a30511983e7377f0320c45ad54b1437d38bc3d6f09cedda1e6bc408e"
+    },
+    {
+      "ordinal": 45,
+      "good": "H_G_ZEP",
+      "evil": "H_E_SCO",
+      "seed": "b87b4349d87d6954e00508a22df611dd87f7fb0a1602d950dba684bebf14a3f8",
+      "turns": 8,
+      "steps": 82,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "204ab68cd6e7abdf68da43cc5da7bad835aa7e75c78e67790964552b304098a4"
+    },
+    {
+      "ordinal": 46,
+      "good": "H_G_MER",
+      "evil": "H_E_FX",
+      "seed": "06b3810658a8263b1724619f2f2e3920304848db7f48e6985aeb149210956689",
+      "turns": 10,
+      "steps": 101,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "28e1df8c729ed44542007fe9993406a5750290e0c566f1c546090875999919e4"
+    },
+    {
+      "ordinal": 47,
+      "good": "H_G_MOS",
+      "evil": "H_E_FS",
+      "seed": "9153dba61ddecbe15d5f927081cab24af325d0ef6e1198575e762e2dd3e1a518",
+      "turns": 10,
+      "steps": 102,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "18bd306ee0ff95fc1fc61ee42876fc79b2808d810377771fccbfe21160efbcff"
+    },
+    {
+      "ordinal": 48,
+      "good": "H_G_HAL",
+      "evil": "H_E_XS",
+      "seed": "fb7b6f0bdb3e2a0b47a8bf140238647c2763d9478fd272f1e47a04bbb4318e59",
+      "turns": 10,
+      "steps": 105,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "6a8f4f564ea49abaa9b63ceffdfe2d8085b0aeb41282c3f317e74f9b4f3d4a09"
+    },
+    {
+      "ordinal": 49,
+      "good": "H_G_ROW",
+      "evil": "H_E_ROO",
+      "seed": "9bc6a44ee3412d6e3a1b911584f4cd0d4e3c081d43f81f733e1d83394a409696",
+      "turns": 12,
+      "steps": 119,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "fbdfa5e157b19cbeee2050eabf63a5c97fef3b1fcc0a83742353040eb13299ca"
+    },
+    {
+      "ordinal": 50,
+      "good": "H_G_BV",
+      "evil": "H_E_BRI",
+      "seed": "9437f6d168f66fb768f85b0a8418c11279511841d844a77f9cff60682eed0815",
+      "turns": 13,
+      "steps": 129,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "516c1bff18012bbf7fa56debab4ed9893677cdf48852e026f0cac4638e637df9"
+    },
+    {
+      "ordinal": 51,
+      "good": "H_G_BP",
+      "evil": "H_E_SAB",
+      "seed": "93fb0ddd6f186c2fb5ecc57a337162c6226eabc2463ab9cff64acd0fb376ae69",
+      "turns": 13,
+      "steps": 130,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "67d4e1b494501ca6796402ebcdf4db657e3663dfa4e1396e15210b9287eb72ce"
+    },
+    {
+      "ordinal": 52,
+      "good": "H_G_VP",
+      "evil": "H_E_VAN",
+      "seed": "e25235b69f01af240a59ce79712bd0eb79134abe20c127bf5196d0195982129a",
+      "turns": 10,
+      "steps": 102,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "d8653d1970bd2987eab42426413b5665d86cfa7dc61842a3dde51c87253b3e8b"
+    },
+    {
+      "ordinal": 53,
+      "good": "H_G_SOL",
+      "evil": "H_E_GRA",
+      "seed": "e02b2fa63d1d7ea48e53818ee357e1c8233d0d1060200ab84aa64d51dd96c64f",
+      "turns": 9,
+      "steps": 92,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "ab7ebf8cb0ab6db579fbb5c2811a587c44862d90cd2ea8c49ff6a8336a3c3d96"
+    },
+    {
+      "ordinal": 54,
+      "good": "H_G_CAI",
+      "evil": "H_E_SCO",
+      "seed": "7ac31d814a0ef4b4f71530f565a2132a33bf9b5b5eea8f15e42c9d33069469fc",
+      "turns": 11,
+      "steps": 113,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "8d298ed95e91850a6b98db6bd4cf889081a8f49a762e63487f34173ffe592d9a"
+    },
+    {
+      "ordinal": 55,
+      "good": "H_G_ZEP",
+      "evil": "H_E_FX",
+      "seed": "2ab80802a574886aa9623385afb3c0164772b934ce2b5df8f2a2b7c3a8f3d76c",
+      "turns": 8,
+      "steps": 82,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "4c5b115c64bbf1e472c5b13e47d3b4e8ff0eb986f70c67abcd5db85449142a94"
+    },
+    {
+      "ordinal": 56,
+      "good": "H_G_MER",
+      "evil": "H_E_FS",
+      "seed": "3c3334f4904c1be8b15da5c342533ff50a2e34140cd0410b36b0032cdb29b047",
+      "turns": 7,
+      "steps": 71,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "65f4cbd875a13e0bc45a93e66b0df9afd22c11a0a90803843b5dc3170ea95896"
+    },
+    {
+      "ordinal": 57,
+      "good": "H_G_MOS",
+      "evil": "H_E_XS",
+      "seed": "9ba26ebedd6d247dd07eea2451b9f27276d407b64826423eac4d37563d44cb15",
+      "turns": 18,
+      "steps": 178,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "5bf4084f076af32a01a30918acdeac1ec294b7ef549c31b4ac0534ff1e84d3cd"
+    },
+    {
+      "ordinal": 58,
+      "good": "H_G_HAL",
+      "evil": "H_E_ROO",
+      "seed": "cc476705a0f401dacab517dea82e3c32b4fdfe4ed5352c7a7d1f4f28fb0d1332",
+      "turns": 9,
+      "steps": 92,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "be57d36b53df91c71797d670cbb0ebd8502415312ff85c090c550ddf202865cc"
+    },
+    {
+      "ordinal": 59,
+      "good": "H_G_ROW",
+      "evil": "H_E_NYX",
+      "seed": "65e43b59508dcd3472dfb4536a0131e31c166a98bbc4b118f1b11134e668e7e4",
+      "turns": 8,
+      "steps": 85,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "16ac9f2a3d8a7ed5821865e7c486f8776b476984a49d4e9d0290d3891a5b754b"
+    },
+    {
+      "ordinal": 60,
+      "good": "H_G_BV",
+      "evil": "H_E_SAB",
+      "seed": "134d0b42a6e819ceaf37b8596ed0f6c4d5b16c10d9986bbf24e325364a31758f",
+      "turns": 20,
+      "steps": 200,
+      "outcome": {
+        "result": "DRAW",
+        "winner": null,
+        "reason": "TURN_LIMIT"
+      },
+      "fault": null,
+      "finalHash": "b0a1d70f70b8a2e8098ab518a9279daa52de238464b4f7e1d94f494a5c169c49"
+    },
+    {
+      "ordinal": 61,
+      "good": "H_G_BP",
+      "evil": "H_E_VAN",
+      "seed": "cbc59ea7127aa2279774129a563d4349b530793646b5e5698a6237c1648a5d12",
+      "turns": 9,
+      "steps": 90,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "29b42ceb4a3ed3f7c82cf9305e3bc179a5d176c1b43998020b56afdca18033ee"
+    },
+    {
+      "ordinal": 62,
+      "good": "H_G_VP",
+      "evil": "H_E_GRA",
+      "seed": "a847d95ce25285193c16f806e65045b106841ff426898bf38578b4bf63f558d5",
+      "turns": 9,
+      "steps": 92,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "911f0d272fec647d7a7e45cc1e0d43a934e4d97d13014e8da6e9edb41e6c2609"
+    },
+    {
+      "ordinal": 63,
+      "good": "H_G_SOL",
+      "evil": "H_E_SCO",
+      "seed": "fb87e974fd376def5a849a6e4a75deb24063ceb3795e94902fe99d31edf8b97d",
+      "turns": 18,
+      "steps": 176,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "15239c5bee978a0b64b3febbe3fb5d6ae2f2d40401b66ebd3857a3624d74f812"
+    },
+    {
+      "ordinal": 64,
+      "good": "H_G_CAI",
+      "evil": "H_E_FX",
+      "seed": "8ba02194ba182de11921aabe58f93dfb7a88709856b5887b41c8fc8f4dcb1f13",
+      "turns": 13,
+      "steps": 129,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "9e10171b924289a14db439ae1506d93d9ed67747a82933604a8fe6e67a83fbef"
+    },
+    {
+      "ordinal": 65,
+      "good": "H_G_ZEP",
+      "evil": "H_E_FS",
+      "seed": "8459d083df0d1e935adc85a2777fce5eca575a6b01b3c6fb77978b8ef8f7a2ff",
+      "turns": 9,
+      "steps": 91,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "54673f6cbce285ef7289c5f0d500fdfe2b8027f9b540d0bae2afb85cd621c803"
+    },
+    {
+      "ordinal": 66,
+      "good": "H_G_MER",
+      "evil": "H_E_XS",
+      "seed": "2f464d6504a93e648901226a6067d3970f88ba80d3c081d22ba3b13a7ee70925",
+      "turns": 11,
+      "steps": 117,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "b956f45c0fb7b0425bcdb81fd1755642106caf3b66721b8ecd3714954995aca5"
+    },
+    {
+      "ordinal": 67,
+      "good": "H_G_MOS",
+      "evil": "H_E_ROO",
+      "seed": "83d592bf484902226eb925adac4d07cf2a56efe695827da62c9dff2fbedda816",
+      "turns": 11,
+      "steps": 113,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "90ef5036d9867a6bacbedebe9fe9b7eed95cb7aed9021c055cbd3bd29f80ddef"
+    },
+    {
+      "ordinal": 68,
+      "good": "H_G_HAL",
+      "evil": "H_E_NYX",
+      "seed": "0cb2eb392820f76ed28aae3a040a54e08df9a4256157d6c9d2b238d02699b108",
+      "turns": 11,
+      "steps": 115,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "d9f82eeb87bd673d505a0d5adce7bfb0d933f0a2228e501f962f4f35cec2eb50"
+    },
+    {
+      "ordinal": 69,
+      "good": "H_G_ROW",
+      "evil": "H_E_BRI",
+      "seed": "c3481dd11e75971884986cec81d6c73fe52298ec5ad884a5049ff301eeb0b59d",
+      "turns": 20,
+      "steps": 197,
+      "outcome": {
+        "result": "DRAW",
+        "winner": null,
+        "reason": "TURN_LIMIT"
+      },
+      "fault": null,
+      "finalHash": "92553013570ecffe9a355c09d3d5bc92c05f5741c05a28cd2be27b39bdd5f673"
+    },
+    {
+      "ordinal": 70,
+      "good": "H_G_BV",
+      "evil": "H_E_VAN",
+      "seed": "2c613dada8312bc0ee55dcb8fc931725294e9a0e509a4bf7b9f5b58540c706ca",
+      "turns": 11,
+      "steps": 109,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "e2261fb78c5cc6d28dcf4d12002208b767d4d37e534f24f5aae5b2c95d8b13f1"
+    },
+    {
+      "ordinal": 71,
+      "good": "H_G_BP",
+      "evil": "H_E_GRA",
+      "seed": "4bd1b169c8cc4c81b2a81d865b732a198eccd45359cf81061538705b236c6881",
+      "turns": 20,
+      "steps": 201,
+      "outcome": {
+        "result": "DRAW",
+        "winner": null,
+        "reason": "TURN_LIMIT"
+      },
+      "fault": null,
+      "finalHash": "74417430243c22c56ad5bd86961f0a7189cffb2095708605014c2c88ff1bd319"
+    },
+    {
+      "ordinal": 72,
+      "good": "H_G_VP",
+      "evil": "H_E_SCO",
+      "seed": "9b92b75e7aa82d16afa7f90570e7a62ff011c90efe6ed3286d5b37f5bc227647",
+      "turns": 12,
+      "steps": 123,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "ffd8ea5fd5bb47863f3bd98f3ccdea1b6fb2a6bb5982ce4aeb049578e1039d7e"
+    },
+    {
+      "ordinal": 73,
+      "good": "H_G_SOL",
+      "evil": "H_E_FX",
+      "seed": "5ea9753168287c28c79617677a4543d9f10842a547622b80cf679b9c18e773c8",
+      "turns": 16,
+      "steps": 160,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "decb3f7b03d13985c366e8f12db8f7477f71ba962a81f488edca696aabbd4dcd"
+    },
+    {
+      "ordinal": 74,
+      "good": "H_G_CAI",
+      "evil": "H_E_FS",
+      "seed": "1bbfb8b836b5d19fb79449430f7e9ccf6de9ec54b8cc2c4b241db9b17c68c1c0",
+      "turns": 9,
+      "steps": 95,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "73f3fc8b752e8fe99554b38a138ed5a3bf95b2aac0305a0cfd956463f5d26764"
+    },
+    {
+      "ordinal": 75,
+      "good": "H_G_ZEP",
+      "evil": "H_E_XS",
+      "seed": "b5767c0771e42a5bbff841b7a780af2f7d703b9da8d8fcdee9a4bcbd8568bc96",
+      "turns": 15,
+      "steps": 151,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "08054527e7a27233fbe133a5692c3d9ef232d4787d5a5b967420f946ff27f7c3"
+    },
+    {
+      "ordinal": 76,
+      "good": "H_G_MER",
+      "evil": "H_E_ROO",
+      "seed": "8ee97ecb56c8e2754171bbb85f853a27d47b30abcf213f3819e4996ce2340499",
+      "turns": 7,
+      "steps": 71,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "3ab201f446330158f91ae27d6a11c64c5c4c69d1e3305291d467eb1d13d7e8c9"
+    },
+    {
+      "ordinal": 77,
+      "good": "H_G_MOS",
+      "evil": "H_E_NYX",
+      "seed": "0be2d74761492d60d81892cf5b16731cd36f9dbd91ae0ecb5ca1e99b2d3510b3",
+      "turns": 9,
+      "steps": 96,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "2a467152a492397f1c8cd7de26d6a4a3698604092b41adecd01c70c27ef8f5d3"
+    },
+    {
+      "ordinal": 78,
+      "good": "H_G_HAL",
+      "evil": "H_E_BRI",
+      "seed": "601648ebd4eaa20584d944203941e7ba09501f4c3929e35af2b9075c3b05b30d",
+      "turns": 7,
+      "steps": 72,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "212f7719e3ffeaf7c5e0219468e4f2f54a57292a1bd27f515dc17edfdf51ca58"
+    },
+    {
+      "ordinal": 79,
+      "good": "H_G_ROW",
+      "evil": "H_E_SAB",
+      "seed": "bd154cd0b866f68e70a05158299bd1d0471cba0c2b9e585f742637b26b3c1360",
+      "turns": 18,
+      "steps": 174,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "3051b66c4bb3529ac0aeee50f2cfad81241b9e45d9a88a2a0ceedf2ed5814f73"
+    },
+    {
+      "ordinal": 80,
+      "good": "H_G_BV",
+      "evil": "H_E_GRA",
+      "seed": "9c541ea1c62491a86bc46e3ce4c1db465b910512ef7a469dc69b37c3d49462a2",
+      "turns": 10,
+      "steps": 103,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "a615deeed76902e12bc8e5e7307cd8ef9c7a915703587c22172c7b29898e3198"
+    },
+    {
+      "ordinal": 81,
+      "good": "H_G_BP",
+      "evil": "H_E_SCO",
+      "seed": "c956a25b997746921c0243d19ed13ca419b974c91fc9a18a6dda2b031351a323",
+      "turns": 13,
+      "steps": 129,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "9e6632a4eef9c6c9fccaf888bfb3d45322121c8a5ec9c857a1bd5a6c8b2a12b7"
+    },
+    {
+      "ordinal": 82,
+      "good": "H_G_VP",
+      "evil": "H_E_FX",
+      "seed": "84131a6025afc0265e443b6a4ef0f5255ab75c017e7662c19966bcd6129286bc",
+      "turns": 10,
+      "steps": 104,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "4fde524033c96bddb7b85c54eb58f978fff4341a3543fdeb871c6a8dffc91096"
+    },
+    {
+      "ordinal": 83,
+      "good": "H_G_SOL",
+      "evil": "H_E_FS",
+      "seed": "93cec18d0215c86c0de7f118ee626d0fee8e3ebb1ef75154cc926c9a82c82bff",
+      "turns": 8,
+      "steps": 79,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "e365efeca916660fe68dbb057ec6f8bd7fffaa16c979759a43054795249474aa"
+    },
+    {
+      "ordinal": 84,
+      "good": "H_G_CAI",
+      "evil": "H_E_XS",
+      "seed": "d8b1a1c2f04296d61bed56811a44bd6242236428a9ad03b2c9bfb0f66ebceab2",
+      "turns": 18,
+      "steps": 180,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "666ed30a049d7db49d48c5a984c8d5bd4492587299b4efd76f5123a548728938"
+    },
+    {
+      "ordinal": 85,
+      "good": "H_G_ZEP",
+      "evil": "H_E_ROO",
+      "seed": "bcb2a966947aa29a54175d0d570153887037f6a90e20aa72f9d127c57c0c931d",
+      "turns": 8,
+      "steps": 79,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "6fa6baf5d874a297f931b2b1ffb8beeb45d85e1c8671cd2f5e3f57d1c66609f0"
+    },
+    {
+      "ordinal": 86,
+      "good": "H_G_MER",
+      "evil": "H_E_NYX",
+      "seed": "909eb8b826a1dab7f2e1cc3a94eacba903a836eac9a7113045e80d53544a3e14",
+      "turns": 11,
+      "steps": 111,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "f5042908d36543b85561870610db182935951ec5751f5f0fcebe9dda83f7073e"
+    },
+    {
+      "ordinal": 87,
+      "good": "H_G_MOS",
+      "evil": "H_E_BRI",
+      "seed": "3c523f994388cb17422f2b099b8a1d0aea1367916b7087feb476ac55e2ae31ee",
+      "turns": 12,
+      "steps": 124,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "85b4628357008e3dabb63cf0efb7230058597d25ecb6b06c592876d0f77ccb48"
+    },
+    {
+      "ordinal": 88,
+      "good": "H_G_HAL",
+      "evil": "H_E_SAB",
+      "seed": "21cdaeb706e42edfa401a9f8e58ad0fd072f9da86fa6c45d82ac5fc69a2ceec0",
+      "turns": 10,
+      "steps": 98,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "f707aa914586af910640f8a964f53c524258bb670c476befb592c30edd2e95b9"
+    },
+    {
+      "ordinal": 89,
+      "good": "H_G_ROW",
+      "evil": "H_E_VAN",
+      "seed": "2fa05785364b043031582c8cd0b2c6be09f61a4eacb905726a43cfc2f62afbc3",
+      "turns": 17,
+      "steps": 166,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "adfcb2f0c4e46c32ba055a90a2dbf6ed84b6fda14af4352778d1557a9769a24c"
+    },
+    {
+      "ordinal": 90,
+      "good": "H_G_BV",
+      "evil": "H_E_SCO",
+      "seed": "fc3b3824c56886901d95ceaffe2063e38dae024178dffa81eaf906c8f5a687b9",
+      "turns": 11,
+      "steps": 114,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "15adcbc0dd852832b9acd3b5c720be76b8ce3ad39d53f67747b8ba5c67fe4e08"
+    },
+    {
+      "ordinal": 91,
+      "good": "H_G_BP",
+      "evil": "H_E_FX",
+      "seed": "a80f60cf9ea060714d0376b0e09d070a2dec6348b1a3c75a0bf532c378e38000",
+      "turns": 9,
+      "steps": 94,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "84b1433f6c945489083f1c21c87b7fba736141342bb7a3d8f09287a87836a2ba"
+    },
+    {
+      "ordinal": 92,
+      "good": "H_G_VP",
+      "evil": "H_E_FS",
+      "seed": "75c7a493f518f8d6cf6c1afd18ae501da0e6dfc9374943470cf0cfbe8c52cb69",
+      "turns": 10,
+      "steps": 94,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "fcb1fb78e0cbd5e09f99fa2481bfc3ded9eaf66660a085707ee5b0d066474475"
+    },
+    {
+      "ordinal": 93,
+      "good": "H_G_SOL",
+      "evil": "H_E_XS",
+      "seed": "1257807904344cd86fbd6d7d9d4b43e3f35acb2746b091dfcc93bb9d9e1197cd",
+      "turns": 9,
+      "steps": 100,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "7e98feb556681bf1c6624d8938bef56a19aa3cdbeb74e1d2d8e99a2d36e3426b"
+    },
+    {
+      "ordinal": 94,
+      "good": "H_G_CAI",
+      "evil": "H_E_ROO",
+      "seed": "bacd7bbf6ba7d62aa285676b091a20b25ad0dcf6d100f70ad1018c4e60334c9f",
+      "turns": 15,
+      "steps": 144,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "e25046f37a217b4c786189261f4b30d439d00dcc5eb3f0f34f8e06f87fc7a5fd"
+    },
+    {
+      "ordinal": 95,
+      "good": "H_G_ZEP",
+      "evil": "H_E_NYX",
+      "seed": "8109ffa54da9ca5fe051300e4c2c19f6cfab88453bbbfe2ef1f2a842ccfce3e8",
+      "turns": 8,
+      "steps": 82,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "32b3f851e07162aba03c684b9d668db6170de2cf435414ffaaede982d7c3453e"
+    },
+    {
+      "ordinal": 96,
+      "good": "H_G_MER",
+      "evil": "H_E_BRI",
+      "seed": "9144e35e1651abd239adc8f75b84c842621d9d8853265bae902ef977a76bccc9",
+      "turns": 16,
+      "steps": 153,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "876af229bd7dbeaf3ad6c4d8ad5a4e64f528519ddb97db560669d0b2e4654d8f"
+    },
+    {
+      "ordinal": 97,
+      "good": "H_G_MOS",
+      "evil": "H_E_SAB",
+      "seed": "3892f63a222d49ba98130a7a09e7ba99d2c7e848b076b38ebe3eb1bba23a4684",
+      "turns": 20,
+      "steps": 201,
+      "outcome": {
+        "result": "DRAW",
+        "winner": null,
+        "reason": "TURN_LIMIT"
+      },
+      "fault": null,
+      "finalHash": "dac84298226ac7b250dfb4cdb6dc0fa77923f02b5df7f1e5432e7b7f4cd13507"
+    },
+    {
+      "ordinal": 98,
+      "good": "H_G_HAL",
+      "evil": "H_E_VAN",
+      "seed": "817fc7ee17029f2e206b93fb9e3bf04cf99f01284db1a8fb555e8cafdd0b9754",
+      "turns": 10,
+      "steps": 97,
+      "outcome": {
+        "result": "WIN",
+        "winner": "GOOD",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "7c87a38b66a4bdfaf6a64caf877a9ba2719f1e8b3ac535289863272519e3a264"
+    },
+    {
+      "ordinal": 99,
+      "good": "H_G_ROW",
+      "evil": "H_E_GRA",
+      "seed": "f5f28a307e50a0e974fee373bb1978aafb4781dd63bf8241122c60d9bda10768",
+      "turns": 11,
+      "steps": 111,
+      "outcome": {
+        "result": "LOSS",
+        "winner": "EVIL",
+        "reason": "HERO_DEFEATED"
+      },
+      "fault": null,
+      "finalHash": "58caa49a19671602959f1d7d83edb02539d07880b321ef6b6e27205c88d4615d"
+    }
+  ]
+}

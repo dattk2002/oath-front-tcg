@@ -1,4 +1,4 @@
-import { matchCatalog } from "./catalog.js";
+import { matchCatalog, canUsePower } from "./catalog.js";
 import type { PlayerAction } from "@oathfront/contracts";
 import type {
   ActionError,
@@ -99,7 +99,7 @@ export function legalBlockActions(
     (p) => p.id === power?.definitionId,
   );
   const actions: PlayerAction[] = [{ kind: "KEEP_BLOCK_POWER" }];
-  if (definition?.faction === actor)
+  if (definition && canUsePower(state, actor, definition))
     for (const target of legalTargets(state, actor, definition.targeting))
       actions.push({
         kind: "USE_BLOCK_POWER",
@@ -134,7 +134,7 @@ export function applyBlockAction(
       action.powerInstanceId !== response.powerInstanceId ||
       !power ||
       !definition ||
-      definition.faction !== actor
+      !canUsePower(state, actor, definition)
     )
       return error("POWER_UNAVAILABLE");
     if (

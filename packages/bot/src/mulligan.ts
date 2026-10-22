@@ -1,5 +1,5 @@
 import type { PlayerView, PlayerAction } from "@oathfront/contracts";
-import { coreCatalog } from "@oathfront/game-content";
+import { catalogForVersion } from "@oathfront/game-content";
 export function chooseMulligan(
   view: PlayerView,
   legal: readonly PlayerAction[],
@@ -7,7 +7,9 @@ export function chooseMulligan(
   const cards = view.self.hand
     .map((card) => ({
       card,
-      definition: coreCatalog.cards.find((d) => d.id === card.definitionId)!,
+      definition: catalogForVersion(view.versions.content)!.cards.find(
+        (d) => d.id === card.definitionId,
+      )!,
     }))
     .sort(
       (a, b) =>

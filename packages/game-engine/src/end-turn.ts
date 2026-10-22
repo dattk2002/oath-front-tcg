@@ -1,4 +1,4 @@
-import { coreCatalog } from "@oathfront/game-content";
+import { matchCatalog } from "./catalog.js";
 import type { MatchState } from "./model.js";
 import type { RootResolution } from "./effects/resolve.js";
 import { drawOnDraft, drainTriggersOnDraft } from "./effects/resolve.js";
@@ -45,7 +45,7 @@ export function endTurnOnDraft(state: MatchState, root: RootResolution): void {
   if (cursor.stage === "HOOKS") {
     const job = cursor.jobs.shift();
     if (job) {
-      const ability = coreCatalog.cards
+      const ability = matchCatalog(state).cards
         .find((c) => c.id === job.source.definitionId)
         ?.abilities.find((a) => a.id === job.abilityId);
       if (!ability) throw new RangeError("Unknown end-turn hook");
