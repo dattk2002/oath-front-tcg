@@ -1,0 +1,37 @@
+{
+  "id": "P03",
+  "name": "Crystal Knight",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:22:49.446156+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/P03.png",
+  "inputReferenceSha256": "cb738107f436218b74cad4b79ec61af4c2edd1103e4a6c372095d1aff013d2f3",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-8a73-7e03-a29e-25bc9525451d/exec-87852132-01a7-4ef3-9c14-1dc8b111007f.png",
+  "master": "assets/source/card-scenes-v1/masters/P03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/P03.txt",
+  "promptSha256": "900385965500f68551e8e17437b37d9895f3a598f469caa8a008cc24b8764fd4",
+  "transparent_background": false,
+  "sha256": "2357c025e9df538b5729b35ce909ac5eaf120ceebfaec23d46449cb9edb3736e",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves female face, short cobalt hair, ivory and cyan crystal plate, gold trim, broad cyan shield and short angular blade.",
+    "scene": "Shield repels stone fragments on mine bridge; foreground ore and rails, receding cavern walkways, furnace and crystals establish substantial depth and integrated lighting.",
+    "composition": "Face and shield crown upper third; protective stance grounds character. Right boot approaches edge and partial shield edge extends beyond frame.",
+    "constraints": "Opaque illustration; no text, frame, UI, logo or watermark seen.",
+    "caveats": [
+      "Outer right shield edge and boot approach the border; focal identity and protective action remain clear."
+    ],
+    "verdict": "Suitable scene master."
+  }
+}

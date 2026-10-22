@@ -1,0 +1,37 @@
+{
+  "id": "X02",
+  "name": "Seal Scribe",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:21:30.431497+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/X02.png",
+  "inputReferenceSha256": "5029f2862a647ede45f5b9d3c2b79e912d29f9bade1719b16da0c76c61ed207b",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-c276-7951-a0c1-031b80031505/exec-2b055718-a05d-4042-854b-109bdd950bcc.png",
+  "master": "assets/source/card-scenes-v1/masters/X02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/X02.txt",
+  "promptSha256": "0d3ae2354315807d63865cbb4c82e9c98b18faf4368c42fca5e9bf4c8bc1af19",
+  "transparent_background": false,
+  "sha256": "be68be913477b5fd60c325700102fea76dea90e9890a6aff749f87e996bc3271",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Dark skin, topknot, charcoal-crimson coat, crystal pauldrons, stylus and blank plates preserved.",
+    "scene": "Layered assay workshop with foreground vessels and basin, distant sunset windows and copper stills. Violet poison filament integrates staff and basin.",
+    "composition": "Full-bleed 3:4; face and defining gear in upper 65%; integrated scene depth.",
+    "constraints": "No lettering, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "Lower boots partly occluded by workbench, natural scene framing."
+    ],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

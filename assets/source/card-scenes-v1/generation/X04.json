@@ -1,0 +1,37 @@
+{
+  "id": "X04",
+  "name": "Ash Reaper",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:23:49.144201+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/X04.png",
+  "inputReferenceSha256": "8904265ad45dcb996486296a2a5cd9ae6df1f35e0e05173cb3d8362588057329",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-c276-7951-a0c1-031b80031505/exec-8c686973-6464-4d3d-8bc2-9073186ecd63.png",
+  "master": "assets/source/card-scenes-v1/masters/X04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/X04.txt",
+  "promptSha256": "7a32a91be2b6d48b855be6e7599a15754421ba11675a2e82eb5f3f1e5ed63bc6",
+  "transparent_background": false,
+  "sha256": "30097551854841b7ae81522c45a4f071988c52f62750b36f4df381edce9d440c",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Ivory avian mask, ribbed armor, torn crimson-violet cloak, violet crescent staff and ember cage retained.",
+    "scene": "Burned orchard foreground and terraces recede toward isolated ruined tower. Cage light and hovering shadow integrate spectral subject.",
+    "composition": "Full-bleed 3:4; face and central defining gear in upper 65%; three-plane depth.",
+    "constraints": "No lettering, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "Scythe crescent descends into lower scene, while mask and ember cage remain high for focal crop."
+    ],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

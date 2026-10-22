@@ -4,6 +4,7 @@ import { mkdir } from "node:fs/promises";
 import { randomBytes, randomUUID } from "node:crypto";
 import { testOrigin } from "./test-origin.js";
 import { cardFixture } from "./recovery-fixtures.js";
+import { coreCatalog } from "../../packages/game-content/src/catalog.js";
 
 const evidence = evidencePath(
   "cards",
@@ -81,7 +82,13 @@ test("all sixty new card images load through the actual hero collections", async
           src: image.getAttribute("src"),
         })),
       )) {
-      expect(image.src).toMatch(/^\/assets\/fivefold-cards-v3\/cards\//);
+      const card = coreCatalog.cards.find(
+        (definition) => definition.artKey === image.key,
+      );
+      expect(card).toBeDefined();
+      expect(image.src).toBe(
+        `/assets/${card!.type === "TRICK" ? "fivefold-cards-v3" : "card-scenes-v1"}/cards/${card!.id.toLowerCase()}-thumb.webp`,
+      );
       loaded.add(image.key!);
     }
   }
@@ -119,7 +126,7 @@ test("a missing new card image keeps its name and retry does not open card detai
   expect(guest.status()).toBe(201);
   let fail = true;
   await page.route(
-    "**/assets/fivefold-cards-v3/cards/gc01-thumb.webp",
+    "**/assets/card-scenes-v1/cards/gc01-thumb.webp",
     async (route) => {
       if (fail)
         await route.fulfill({ status: 404, body: "intentional art failure" });

@@ -1,0 +1,37 @@
+{
+  "id": "F04",
+  "name": "Furnace Beast",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:22:00.227648+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/F04.png",
+  "inputReferenceSha256": "2911d1f36b28baa6eae49c643ffbd8190888ffc811efae752fd728e8dc7c3b31",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-a62e-7930-ba94-0f8d9001bd67/exec-2f67b885-e26d-4503-b0ed-14072d9a7766.png",
+  "master": "assets/source/card-scenes-v1/masters/F04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/F04.txt",
+  "promptSha256": "175386489cc6081e27375ccef7b6dbb8eda1ddf9951c4e4838274da63dc83d0c",
+  "transparent_background": false,
+  "sha256": "9a32e534cd61ee19f833c049be8d6b90643faae169147e1dc1fcc67d58c96fc3",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Low mechanical quadruped, copper tusks, heat fins, black iron plates and molten channels preserved.",
+    "scene": "Bent barricade debris communicates Pierce; long industrial causeway and foundry walls establish depth.",
+    "composition": "Wedge head and tusks upper middle, charging body grounded by rubble.",
+    "constraints": "No baked text, card frame, stats, UI, logo, watermark or transparency seen.",
+    "caveats": [
+      "Some legs naturally occluded by charging body and debris."
+    ],
+    "verdict": "Suitable for card-facing scene art."
+  }
+}

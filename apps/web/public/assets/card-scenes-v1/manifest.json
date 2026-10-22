@@ -1,0 +1,327 @@
+{
+  "version": "card-scenes-v1",
+  "catalogVersion": "elements_v1",
+  "complete": true,
+  "expectedScenes": 53,
+  "missingSceneIds": [],
+  "assets": [
+    {
+      "id": "GC01",
+      "artKey": "cards/gc01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/gc01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/gc01-inspect.webp"
+    },
+    {
+      "id": "GC02",
+      "artKey": "cards/gc02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/gc02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/gc02-inspect.webp"
+    },
+    {
+      "id": "GC03",
+      "artKey": "cards/gc03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/gc03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/gc03-inspect.webp"
+    },
+    {
+      "id": "GC04",
+      "artKey": "cards/gc04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/gc04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/gc04-inspect.webp"
+    },
+    {
+      "id": "B01",
+      "artKey": "cards/b01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/b01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/b01-inspect.webp"
+    },
+    {
+      "id": "B02",
+      "artKey": "cards/b02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/b02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/b02-inspect.webp"
+    },
+    {
+      "id": "B03",
+      "artKey": "cards/b03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/b03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/b03-inspect.webp"
+    },
+    {
+      "id": "B04",
+      "artKey": "cards/b04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/b04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/b04-inspect.webp"
+    },
+    {
+      "id": "B05",
+      "artKey": "cards/b05.webp",
+      "thumb": "/assets/card-scenes-v1/cards/b05-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/b05-inspect.webp"
+    },
+    {
+      "id": "V01",
+      "artKey": "cards/v01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/v01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/v01-inspect.webp"
+    },
+    {
+      "id": "V02",
+      "artKey": "cards/v02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/v02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/v02-inspect.webp"
+    },
+    {
+      "id": "V03",
+      "artKey": "cards/v03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/v03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/v03-inspect.webp"
+    },
+    {
+      "id": "V04",
+      "artKey": "cards/v04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/v04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/v04-inspect.webp"
+    },
+    {
+      "id": "V05",
+      "artKey": "cards/v05.webp",
+      "thumb": "/assets/card-scenes-v1/cards/v05-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/v05-inspect.webp"
+    },
+    {
+      "id": "P01",
+      "artKey": "cards/p01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/p01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/p01-inspect.webp"
+    },
+    {
+      "id": "P02",
+      "artKey": "cards/p02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/p02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/p02-inspect.webp"
+    },
+    {
+      "id": "P03",
+      "artKey": "cards/p03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/p03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/p03-inspect.webp"
+    },
+    {
+      "id": "P04",
+      "artKey": "cards/p04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/p04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/p04-inspect.webp"
+    },
+    {
+      "id": "P05",
+      "artKey": "cards/p05.webp",
+      "thumb": "/assets/card-scenes-v1/cards/p05-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/p05-inspect.webp"
+    },
+    {
+      "id": "EC01",
+      "artKey": "cards/ec01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/ec01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/ec01-inspect.webp"
+    },
+    {
+      "id": "EC02",
+      "artKey": "cards/ec02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/ec02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/ec02-inspect.webp"
+    },
+    {
+      "id": "EC03",
+      "artKey": "cards/ec03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/ec03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/ec03-inspect.webp"
+    },
+    {
+      "id": "EC04",
+      "artKey": "cards/ec04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/ec04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/ec04-inspect.webp"
+    },
+    {
+      "id": "F01",
+      "artKey": "cards/f01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/f01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/f01-inspect.webp"
+    },
+    {
+      "id": "F02",
+      "artKey": "cards/f02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/f02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/f02-inspect.webp"
+    },
+    {
+      "id": "F03",
+      "artKey": "cards/f03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/f03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/f03-inspect.webp"
+    },
+    {
+      "id": "F04",
+      "artKey": "cards/f04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/f04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/f04-inspect.webp"
+    },
+    {
+      "id": "F05",
+      "artKey": "cards/f05.webp",
+      "thumb": "/assets/card-scenes-v1/cards/f05-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/f05-inspect.webp"
+    },
+    {
+      "id": "X01",
+      "artKey": "cards/x01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/x01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/x01-inspect.webp"
+    },
+    {
+      "id": "X02",
+      "artKey": "cards/x02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/x02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/x02-inspect.webp"
+    },
+    {
+      "id": "X03",
+      "artKey": "cards/x03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/x03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/x03-inspect.webp"
+    },
+    {
+      "id": "X04",
+      "artKey": "cards/x04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/x04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/x04-inspect.webp"
+    },
+    {
+      "id": "X05",
+      "artKey": "cards/x05.webp",
+      "thumb": "/assets/card-scenes-v1/cards/x05-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/x05-inspect.webp"
+    },
+    {
+      "id": "S01",
+      "artKey": "cards/s01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/s01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/s01-inspect.webp"
+    },
+    {
+      "id": "S02",
+      "artKey": "cards/s02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/s02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/s02-inspect.webp"
+    },
+    {
+      "id": "S03",
+      "artKey": "cards/s03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/s03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/s03-inspect.webp"
+    },
+    {
+      "id": "S04",
+      "artKey": "cards/s04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/s04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/s04-inspect.webp"
+    },
+    {
+      "id": "S05",
+      "artKey": "cards/s05.webp",
+      "thumb": "/assets/card-scenes-v1/cards/s05-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/s05-inspect.webp"
+    },
+    {
+      "id": "E01",
+      "artKey": "cards/e01.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e01-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e01-inspect.webp"
+    },
+    {
+      "id": "E02",
+      "artKey": "cards/e02.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e02-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e02-inspect.webp"
+    },
+    {
+      "id": "E03",
+      "artKey": "cards/e03.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e03-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e03-inspect.webp"
+    },
+    {
+      "id": "E04",
+      "artKey": "cards/e04.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e04-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e04-inspect.webp"
+    },
+    {
+      "id": "E05",
+      "artKey": "cards/e05.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e05-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e05-inspect.webp"
+    },
+    {
+      "id": "E06",
+      "artKey": "cards/e06.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e06-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e06-inspect.webp"
+    },
+    {
+      "id": "E07",
+      "artKey": "cards/e07.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e07-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e07-inspect.webp"
+    },
+    {
+      "id": "E08",
+      "artKey": "cards/e08.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e08-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e08-inspect.webp"
+    },
+    {
+      "id": "E09",
+      "artKey": "cards/e09.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e09-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e09-inspect.webp"
+    },
+    {
+      "id": "E10",
+      "artKey": "cards/e10.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e10-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e10-inspect.webp"
+    },
+    {
+      "id": "E11",
+      "artKey": "cards/e11.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e11-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e11-inspect.webp"
+    },
+    {
+      "id": "E12",
+      "artKey": "cards/e12.webp",
+      "thumb": "/assets/card-scenes-v1/cards/e12-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/e12-inspect.webp"
+    },
+    {
+      "id": "TK_G_SEED",
+      "artKey": "cards/tk_g_seed.webp",
+      "thumb": "/assets/card-scenes-v1/cards/tk_g_seed-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/tk_g_seed-inspect.webp"
+    },
+    {
+      "id": "TK_G_LANTERN",
+      "artKey": "cards/tk_g_lantern.webp",
+      "thumb": "/assets/card-scenes-v1/cards/tk_g_lantern-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/tk_g_lantern-inspect.webp"
+    },
+    {
+      "id": "TK_E_CINDER",
+      "artKey": "cards/tk_e_cinder.webp",
+      "thumb": "/assets/card-scenes-v1/cards/tk_e_cinder-thumb.webp",
+      "inspect": "/assets/card-scenes-v1/cards/tk_e_cinder-inspect.webp"
+    }
+  ]
+}

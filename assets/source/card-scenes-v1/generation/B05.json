@@ -1,0 +1,35 @@
+{
+  "id": "B05",
+  "name": "Citadel Warden",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:22:50.689904+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/B05.png",
+  "inputReferenceSha256": "2f42a2ab1d4c72c712d59fcc97f3efbf9daaacc3a63d4b391acf2b56a52f0684",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-4ad1-7862-959a-9ff4a7118383/exec-b9e06b43-3f9e-4c61-b27a-5758b8926cb5.png",
+  "master": "assets/source/card-scenes-v1/masters/B05.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/B05.txt",
+  "promptSha256": "e1e0d96d14f841c51192492466f5fc721e0eafc84db8f60532fff5fc4cef67a9",
+  "transparent_background": false,
+  "sha256": "cb0a9993ae01bd559f007a6ff65d3f7e605bdff5914cebb3b5be9926e12aab38",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves sealed ivory helm and cyan visor, broad plate silhouette, jade tabard, huge stepped tower shield and cyan-core mace.",
+    "scene": "Snowy mountain citadel bridge with foreground parapet, grounded defender, receding fortress and peaks.",
+    "composition": "Helm and shield focal detail in upper portion; shield strongly readable and physically planted.",
+    "constraints": "Visually inspected with view_image: no text, frame, UI, logo or watermark seen; fully opaque output.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

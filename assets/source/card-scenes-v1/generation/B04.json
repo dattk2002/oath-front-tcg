@@ -1,0 +1,35 @@
+{
+  "id": "B04",
+  "name": "Bellguard",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:21:53.796615+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/B04.png",
+  "inputReferenceSha256": "4dbffd916d4bd89bb295502e87e66d62f265be6161dc56b480864316dae130d5",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-4ad1-7862-959a-9ff4a7118383/exec-3ba51619-faef-4d33-9069-5c2e9a294ed9.png",
+  "master": "assets/source/card-scenes-v1/masters/B04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/B04.txt",
+  "promptSha256": "7b1c0f2eac7ad1e5237f03ca3b0566ec0a910307c7de16b6bb1e2aa120fe3d3c",
+  "transparent_background": false,
+  "sha256": "fa36fd89265a6e7e5d1b1f1d10f9a623aa1406a86240eaa412d80d37575ba51b",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves gray-haired square-jawed adult face, ivory/brass plate, bell pauldron, jade scarf and chime polearm.",
+    "scene": "Rain-wet parapet, distant battlements and bell tower; glancing impact sparks and warm chime resonance tell endurance/healing story.",
+    "composition": "Face and identifiable bell equipment are high in frame with grounded boots and foreground wet stone.",
+    "constraints": "Visually inspected with view_image: no text, frame, UI, logo or watermark seen; fully opaque output.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

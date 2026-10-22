@@ -1,0 +1,35 @@
+{
+  "id": "E01",
+  "name": "Oathglass Sentinel",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:24:42.919474+00:00",
+  "inputReference": "assets/source/event-cards-v1/e01.png",
+  "inputReferenceSha256": "cb5cbdbb50703facf276bbe7b6a45ef0b37b646337178d52e12b5a1016515358",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-6bb4-7be1-baef-351a3de61a27/exec-d27f125f-940e-4d62-ac82-11a32e63ccaa.png",
+  "master": "assets/source/card-scenes-v1/masters/E01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E01.txt",
+  "promptSha256": "591bef220a8fc9884ee9770ba52f302f7324f4d8ae6df57e44f148daa7474ab3",
+  "transparent_background": false,
+  "sha256": "23e1ce9f292ea39d454e7c1384e472ce3ec7c0ac2d9f62b7831a046188124cd6",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Retains squat six-legged basalt guardian, broad faceted amber glass back shield, mineral mask and cobalt eyes; no foliage.",
+    "scene": "Basalt cavern causeway, foreground quartz, receding blue spring/waterfall; falling fragments hit shield and amber light refracts across wet ground.",
+    "composition": "Mask and shield upper 65 percent; all six stone legs read in supporting crouch.",
+    "constraints": "No text, writing-like runes, frames, UI, logos or watermarks seen. Fully opaque output.",
+    "caveats": [],
+    "verdict": "Suitable for card scene integration."
+  }
+}

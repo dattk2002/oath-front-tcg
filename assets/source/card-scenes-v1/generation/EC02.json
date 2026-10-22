@@ -1,0 +1,37 @@
+{
+  "id": "EC02",
+  "name": "Furnace Guard",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:25:25.344689+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/EC02.png",
+  "inputReferenceSha256": "4c41ead0b965c02ce293d37a4f520e957016d5b61abd3aa340b1ad88ecd048a8",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-4c75fda9-8a66-40e4-a33a-28c37a6fe4c9.png",
+  "master": "assets/source/card-scenes-v1/masters/EC02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/EC02.txt",
+  "promptSha256": "48a44d15a457b327e9864567d1043d183e5338ca2ebcf0525e3e19d78ebabcb4",
+  "transparent_background": false,
+  "sha256": "178a90f592ab99c46ecfae9605c5dc24b705a10eae974a6bee00380f236a1e3b",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Black undercut-haired powerful adult woman, heavy charcoal/copper armor, amber shoulder vents, crimson hip cloth and halberd preserved.",
+    "scene": "Foundry floor, brick furnace, gantries, pipes and high cool windows form coherent depth and warm/cool shared lighting.",
+    "composition": "Face, vent armor and halberd head upper65%; feet and weapon point firmly meet floor.",
+    "caveats": [
+      "Halberd tip approaches top margin; still complete in master."
+    ],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

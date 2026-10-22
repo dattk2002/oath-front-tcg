@@ -1,0 +1,37 @@
+{
+  "id": "F01",
+  "name": "Coal Beetle",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:19:50.872991+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/F01.png",
+  "inputReferenceSha256": "2081d274f19c8ab9a80a4f2d01fc008b1d3e0a766385009b45780cbb04153642",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-a62e-7930-ba94-0f8d9001bd67/exec-4483ac82-9102-4e6b-9948-8a52785da755.png",
+  "master": "assets/source/card-scenes-v1/masters/F01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/F01.txt",
+  "promptSha256": "416599b606bcd19da6f3625becc20894d3e7d03c5b9eaebbcbdcbcdc47de6a13",
+  "transparent_background": false,
+  "sha256": "1aa140dcfa2fe5c5ef5babf6a69846a7a896c311a1e6095996ec3d69b56c1b15",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Six-legged charcoal beetle, crimson wing covers, copper mandibles and amber abdomen preserved.",
+    "scene": "Broken slag sluice and rails frame grounded claws; receding foundry hoppers and dusk sky establish depth.",
+    "composition": "Full beetle form; focal head and mandibles upper half.",
+    "constraints": "No baked text, card frame, stats, UI, logo, watermark or transparency seen.",
+    "caveats": [
+      "High detail in slag and glowing abdomen; core silhouette remains clear."
+    ],
+    "verdict": "Suitable for card-facing scene art."
+  }
+}

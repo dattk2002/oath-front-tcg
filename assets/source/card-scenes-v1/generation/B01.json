@@ -1,0 +1,37 @@
+{
+  "id": "B01",
+  "name": "Shieldseed",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:11:44.051213+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/B01.png",
+  "inputReferenceSha256": "b6e1aa31697152449d92fe543bd3eaf466ad40f2c5a13afa1974553e3f931ea1",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f1-b389-7a00-ac84-a9ba37ad62c4/exec-4194610b-1f00-4e7c-a18b-e62a0dc36768.png",
+  "master": "assets/source/card-scenes-v1/masters/B01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/B01.txt",
+  "promptSha256": "814828cb3246557706a2418003952141e41fc912fcc8b8bca4c1e6aade57f4c9",
+  "transparent_background": false,
+  "sha256": "93b722dfa379b95cb357b05d0b9adafdb8344a1f61400889801e21447abeae9f",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves ivory and gold botanical armor, root limbs, golden seed face, jade leaf shield and squat protective silhouette.",
+    "scene": "Mossy rooted threshold, receding monumental arches and foreground roots form clear three-plane depth; sunlight and contact shadows integrate character.",
+    "composition": "Face and central shield detail are in upper 65 percent; 3:4 portrait full bleed; background remains readable around silhouette.",
+    "constraints": "No text, frame, UI, logo or watermark seen. Opaque output.",
+    "caveats": [
+      "Fine foliage detail is dense at full resolution; important forms remain broad and distinct for thumbnail cropping."
+    ],
+    "verdict": "Suitable proof for art direction."
+  }
+}

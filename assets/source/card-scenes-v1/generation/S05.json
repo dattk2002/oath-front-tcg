@@ -1,0 +1,37 @@
+{
+  "id": "S05",
+  "name": "Duskwing",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:31:41.536455+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/S05.png",
+  "inputReferenceSha256": "3ffdfced8ede68d842cd1850f3fa3d940243dd78062f8cb0b000ef39d8dc74ce",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-7cde3680-e287-4ab6-bbc0-abf337e94d6b.png",
+  "master": "assets/source/card-scenes-v1/masters/S05.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/S05.txt",
+  "promptSha256": "1b6785da6528c0e85ebf755feefd83681017573a841157a8d550c8bda9d34846",
+  "transparent_background": false,
+  "sha256": "d4757276674bb3757a0682fa1d2e39393973d9cd12047461e81d0ae0dbd285da",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Bat-moth anatomy, moth antennae, ivory skull mask, crimson translucent wing membranes and lavender-tipped talons retained.",
+    "scene": "Banking airborne lunge between volcanic pillars; foreground ledge and debris, middle-ground predator, distant sunset canyon establish depth.",
+    "composition": "3:4 full bleed; mask and upper talons in upper65 percent, dramatic diagonal; environment remains visible around body.",
+    "constraints": "No text, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "Outer upper-left wing extends beyond image edge; both wing structures remain strongly readable."
+    ],
+    "verdict": "Suitable individual scene master."
+  }
+}

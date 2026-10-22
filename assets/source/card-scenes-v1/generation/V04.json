@@ -1,0 +1,37 @@
+{
+  "id": "V04",
+  "name": "Lantern Tree",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:22:34.600822+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/V04.png",
+  "inputReferenceSha256": "6424ca4b2c9440f47ece5bd7b60aa4fc7d7343779420bbba3457493e84bec10c",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-6bb4-7be1-baef-351a3de61a27/exec-d0872966-58e3-4177-addf-2d2de1ea0d86.png",
+  "master": "assets/source/card-scenes-v1/masters/V04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/V04.txt",
+  "promptSha256": "d90487ecd99614ca390787370087b1def13d3eb781a101c7e561c733067ec41f",
+  "transparent_background": false,
+  "sha256": "fd0e6c0bd47abf9460f59809939a45612b1cd356c99fcce3f38dc81e3bfe3855",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Retains ivory twisted walking-tree roots, jade bonsai canopy, hanging golden seed lanterns and nonhuman hollow seed core.",
+    "scene": "Moonlit nursery forest, foreground fallen log/mushrooms and newly lit shoot; lantern bounce illuminates moss and root contacts.",
+    "composition": "Core/crown in upper 65 percent with strong tree silhouette; main lantern and seedling readable.",
+    "constraints": "No text, writing-like runes, frames, UI, logos or watermarks seen. Fully opaque output.",
+    "caveats": [
+      "Outermost left lantern edge meets canvas; main core and story remain readable."
+    ],
+    "verdict": "Suitable for card scene integration."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "E09",
+  "name": "Reedheart Guardian",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:33:40.685775+00:00",
+  "inputReference": "assets/source/event-cards-v1/e09.png",
+  "inputReferenceSha256": "f52231fdd0a5f8e2e4fb3158aeea0caa8359eafafc7055f5f9eec7060d27b2d6",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-63ea723a-ec12-491a-8743-499e0fba53b9.png",
+  "master": "assets/source/card-scenes-v1/masters/E09.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E09.txt",
+  "promptSha256": "5f55cc4e75604c7ecadf58274f2030935e086661e0de0f1a78449f73a537265f",
+  "transparent_background": false,
+  "sha256": "1797d61aae53a1453f9386e48e891c8bbc8a28aa7f0b7084ff1376da3bce0172",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Reed heron automaton, curved wooden beak, seed-pod green chest, long rush legs and jade papyrus leaf wings retained.",
+    "scene": "Sunrise reed marsh with willow banks; feet cause ripples and reflect in shallows; chest life magic reaches a seedling on foreground islet.",
+    "composition": "3:4 full bleed; face and chest in upper65 percent, elegant protective wing gesture, three depth planes.",
+    "constraints": "No text, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "Far-left leaf wing tip meets the canvas edge."
+    ],
+    "verdict": "Suitable individual scene master."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "GC02",
+  "name": "Leaf Knight",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:20:34.076210+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/GC02.png",
+  "inputReferenceSha256": "df6ebdd3157e0ea65bebd16e79161c35186f8a94825fedfdb79f6962ef18ae1c",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-1b955c3e-f23c-47aa-9ed1-9051bb84fdf4.png",
+  "master": "assets/source/card-scenes-v1/masters/GC02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/GC02.txt",
+  "promptSha256": "146fe9bf9fe902c30d69c1ad21fec02c95116187a3b0680cd3662afcd2418b1a",
+  "transparent_background": false,
+  "sha256": "ac465dcf77f42a4def07445821b2373a2340c0ebfe2876b8f23b067811767bbc",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Copper-haired adult male, lean silhouette, ivory leaf armor, jade shoulder plates, leaf sword and forearm guard preserved.",
+    "scene": "Dappled woodland trail with close ferns, mossy stones and distant watch arch; shared canopy lighting and foot contact.",
+    "composition": "Face, shoulder armor and sword focal area upper65%; complete silhouette and distant path visible.",
+    "caveats": [
+      "Figure is somewhat larger than nominal 65\u201370% target; clear environment surrounds it."
+    ],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

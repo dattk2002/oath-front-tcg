@@ -1,0 +1,37 @@
+{
+  "id": "P01",
+  "name": "Mirrorbird",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:20:23.375104+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/P01.png",
+  "inputReferenceSha256": "d045548f5c89f4dd5b7b3fee5e9e4254d2b18e7caf47f90453e1e7425143443b",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-8a73-7e03-a29e-25bc9525451d/exec-66e7ad81-d3d8-4fae-93d4-69415b32df0e.png",
+  "master": "assets/source/card-scenes-v1/masters/P01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/P01.txt",
+  "promptSha256": "9295dd89a6d266186f8c61b009853a7fb4778622b584eb9719acaa091b7184a1",
+  "transparent_background": false,
+  "sha256": "d1e6c97ca8b2227151b390636e502c85488abb3001ea7b1b02d63fed6ffa4db7",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves ivory and cyan mirrored feather plates, bronze-gold beak and talons, gold eye and avian construct silhouette.",
+    "scene": "Cliff perch, foreground grass, sea gorge and distant sea stacks establish integrated three-plane depth with warm dawn light and talon contact shadows.",
+    "composition": "Face upper half and character fills portrait; wings remain identifiable. Left outer feather tips and tail approach image border.",
+    "constraints": "Opaque illustration; no text, UI, frame, logo or watermark seen.",
+    "caveats": [
+      "Outermost upper-left wing and lower-left tail tips reach the canvas border; face and core silhouette remain clear."
+    ],
+    "verdict": "Suitable scene master."
+  }
+}

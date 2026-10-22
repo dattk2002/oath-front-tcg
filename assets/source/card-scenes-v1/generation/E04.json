@@ -1,0 +1,37 @@
+{
+  "id": "E04",
+  "name": "Veilfin Stalker",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:26:58.562296+00:00",
+  "inputReference": "assets/source/event-cards-v1/e04.png",
+  "inputReferenceSha256": "ab2fedf17e4227b5b38c7841cbef525e3ff9b18cdaca00bec2c4f79e3389aa95",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-8a73-7e03-a29e-25bc9525451d/exec-91ca24ad-ff02-419e-9dd1-6bac2ee6bb01.png",
+  "master": "assets/source/card-scenes-v1/masters/E04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E04.txt",
+  "promptSha256": "c683db8f44dce656ecb50a1e4441117a5457043f57903437230e8c45e200cf56",
+  "transparent_background": false,
+  "sha256": "093110e3ef10b9731777d7284b9525cc9cd24f3ad1fdfd4ad09bad12855b724c",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves S-curved amphibian body, blackglass scales, pale violet underside, broad torn violet veils, short webbed limbs, jade eyes and toxic fangs.",
+    "scene": "Wet mangrove root supports the coiled animal; foreground leaves and water, root middle ground, distant trunks and moonlit channel give clear depth and coherent reflections.",
+    "composition": "Head and dorsal veil upper half, sinuous tail leads through lower half, bright fangs and violet veil separate clearly from blue environment.",
+    "constraints": "Opaque illustration; no text, frame, UI, logo or watermark seen.",
+    "caveats": [
+      "One rear limb is occluded by the coil; three limbs are visible and species silhouette is retained."
+    ],
+    "verdict": "Suitable scene master."
+  }
+}

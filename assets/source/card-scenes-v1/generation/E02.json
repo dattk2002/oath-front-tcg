@@ -1,0 +1,37 @@
+{
+  "id": "E02",
+  "name": "Moonpetal Keeper",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:26:11.414923+00:00",
+  "inputReference": "assets/source/event-cards-v1/e02.png",
+  "inputReferenceSha256": "41839bd64f356a30c0693bc69da49cafda0d864c815b60b3008bdfbdf80184a8",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-6bb4-7be1-baef-351a3de61a27/exec-fd2baf4e-7c2d-4eb5-b997-33afd5e59d4a.png",
+  "master": "assets/source/card-scenes-v1/masters/E02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E02.txt",
+  "promptSha256": "6882886cc9d5b8c7705cc4d37cebe346a2a5deba22dfebe4031c7f37439ed2fe",
+  "transparent_background": false,
+  "sha256": "7fb8b8c3bf302570d7b3d1e2e59fc519d63cc7b844511f936adbebe64c1bae65",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Retains lavender bulb moth-fairy, large violet eyes, four pearly moonpetal wings, antennae and mint petal watering vessel.",
+    "scene": "Tiny-scale moonlit flower garden, foreground dew petals and sprout, receding arbor path; glowing restorative watering integrates the action.",
+    "composition": "Face/vessel upper 65 percent, wings and antennae intact, legible lavender/mint silhouette.",
+    "constraints": "No text, writing-like runes, frames, UI, logos or watermarks seen. Fully opaque output.",
+    "caveats": [
+      "Tiny scale is stylized; primary gardening story is unambiguous."
+    ],
+    "verdict": "Suitable for card scene integration."
+  }
+}

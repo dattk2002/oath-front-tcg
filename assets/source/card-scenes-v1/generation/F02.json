@@ -1,0 +1,37 @@
+{
+  "id": "F02",
+  "name": "Embersmith",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:20:33.025205+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/F02.png",
+  "inputReferenceSha256": "f4410be936ae5d9a78963ae468b49683c4352df7fad7d67af3308390ea5a9e61",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-a62e-7930-ba94-0f8d9001bd67/exec-d9b37a85-ff61-4265-ad4c-922678cf978c.png",
+  "master": "assets/source/card-scenes-v1/masters/F02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/F02.txt",
+  "promptSha256": "7e283991cbf1c715016539739919e7dd3c2a8860b0d9eb62b5614f3e04e3da4f",
+  "transparent_background": false,
+  "sha256": "2c548254011c13f9fd023fd7314d34c00161559250b4c8fb2a86db76de7bab08",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Copper-skinned muscular woman, short flame-red hair, iron armor, tongs with glowing coal and square hammer preserved.",
+    "scene": "Anvil foreground and deep timber/brick forge interior with blue skylight integrate warm forge lighting.",
+    "composition": "Face upper half and both working tools clearly visible.",
+    "constraints": "No baked text, card frame, stats, UI, logo, watermark or transparency seen.",
+    "caveats": [
+      "Lower body partially occluded by anvil as natural working-scene framing."
+    ],
+    "verdict": "Suitable for card-facing scene art."
+  }
+}

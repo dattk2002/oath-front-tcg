@@ -1,0 +1,35 @@
+{
+  "id": "B02",
+  "name": "Timber Gatekeeper",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:19:49.119982+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/B02.png",
+  "inputReferenceSha256": "3f275d5c13da5e3438050c2714dbbd9ffb2a06713d41a5f5f305846ad2c91afa",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-4ad1-7862-959a-9ff4a7118383/exec-2b28d1f4-b958-4d79-9f19-1e92d71ac327.png",
+  "master": "assets/source/card-scenes-v1/masters/B02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/B02.txt",
+  "promptSha256": "15bb91cd4dc2cb5f0533efe3c2979e18de5b42e66e3537af48233434319c1789",
+  "transparent_background": false,
+  "sha256": "223700250dc52c2f83c419324b33be4d98d7004b2822241ee173553d82d131ee",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves ivory petrified-wood armor, golden core and forked mask light, bronze hinges, jade channels, roots and gate forearms.",
+    "scene": "Wet woodland palisade, foreground broken timbers and puddles, receding forest causeway and watchtower integrate light and perspective.",
+    "composition": "Face/core and upper gate armor remain dominant; planted root feet ground the broad silhouette.",
+    "constraints": "Visually inspected with view_image: no text, frame, UI, logo or watermark seen; fully opaque output.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

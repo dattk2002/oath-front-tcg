@@ -1,0 +1,35 @@
+{
+  "id": "TK_G_SEED",
+  "name": "Lantern Sprout",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:23:30.685107+00:00",
+  "inputReference": "apps/web/public/assets/core-v1/cards/tk_g_seed-inspect.webp",
+  "inputReferenceSha256": "e52a9d20d998fc5eb2fad407cc934aa21f7870a89e8aa98628d3077f73313f19",
+  "inputReferenceDimensions": [
+    512,
+    512
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-4ad1-7862-959a-9ff4a7118383/exec-3b2a293d-52cd-4afa-8f0e-1949f334b212.png",
+  "master": "assets/source/card-scenes-v1/masters/TK_G_SEED.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/TK_G_SEED.txt",
+  "promptSha256": "8e8f860111be128a45e928fa53dc920af20a5a27b64f31b76dab7c876a158d3c",
+  "transparent_background": false,
+  "sha256": "489cf0c1944c3f721d7ae71fd4411ff10bc44da488785664ea0cc221b6613364",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves rounded golden seed body, amber eyes, happy mouth, jade cap/scarf/jewel, leaf mittens, head leaves and root feet.",
+    "scene": "Dewy stream garden has foreground pebbles and grasses, mossy middle-ground perch and receding stepping-stone stream.",
+    "composition": "Happy face and leaf crown high in frame; complete compact silhouette and root contact visible.",
+    "constraints": "Visually inspected with view_image: no text, frame, UI, logo or watermark seen; fully opaque output.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

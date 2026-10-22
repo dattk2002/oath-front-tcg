@@ -1,0 +1,38 @@
+{
+  "id": "E05",
+  "name": "Cobalt Repairbot",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:23:49.816204+00:00",
+  "inputReference": "assets/source/event-cards-v1/e05.png",
+  "inputReferenceSha256": "d4e43b3178c0660d8c3f9195c1ab9e0e84f463a927f727689c6d309106d2b17d",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-a62e-7930-ba94-0f8d9001bd67/exec-d0021e80-afbd-435c-a30d-574681e19968.png",
+  "master": "assets/source/card-scenes-v1/masters/E05.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E05.txt",
+  "promptSha256": "bcb18eb0430dfd46d2ac4d4bbe37497fe6bcfeb675ed0075cecb529c0262a4ca",
+  "transparent_background": false,
+  "sha256": "e00a4f5d41e2206d14545d5ab7a3a5a2ba4ebecffb427e6a1a51a6513f65935f",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Cobalt robot, circular amber lens, spherical brass belly, paired treads and two distinct tool arms preserved.",
+    "scene": "Self-welding action beside canal workshop communicates healing; foreground hardware, robot and distant canal create depth.",
+    "composition": "Lens upper half and self-repair action clear.",
+    "constraints": "No baked text, card frame, stats, UI, logo, watermark or transparency seen.",
+    "caveats": [
+      "A held welding tool supports the wrench action; original tool-arm identity remains visible."
+    ],
+    "verdict": "Suitable for card-facing scene art."
+  },
+  "referenceResolution": "Original PNG master resolved from assets/source/event-cards-v1/generation.json requests[].source; preferred to inventory derivative WebP."
+}

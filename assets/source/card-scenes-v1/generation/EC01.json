@@ -1,0 +1,35 @@
+{
+  "id": "EC01",
+  "name": "Ash Soldier",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:24:00.630259+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/EC01.png",
+  "inputReferenceSha256": "63cfca96a149964ee9d53eb6bd1a8d769d6b382e80ac1c8dadfe3f41c9b0cdff",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-1b2832b4-318c-4fb1-8ed7-db2de56916f7.png",
+  "master": "assets/source/card-scenes-v1/masters/EC01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/EC01.txt",
+  "promptSha256": "0651b14373af395b8c1dc4b8b6eb2d136461de93f3b4ab9332ae6a4da85a26d9",
+  "transparent_background": false,
+  "sha256": "2f58720af68532b45a66efef5944b11930acf9cc853d7bc404e081e9d10d93b5",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Shaved-haired muscular adult male in charcoal iron and crimson scarf; ember-edged short sword and battered rectangular armguard preserved.",
+    "scene": "Basalt fortress approach, volcanic ridge and broken paving create depth; sunset and sword light share grounded shadows.",
+    "composition": "Face and shield upper65%; sword and complete planted stance readable.",
+    "caveats": [],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

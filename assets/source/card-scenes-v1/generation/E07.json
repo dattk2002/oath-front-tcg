@@ -1,0 +1,37 @@
+{
+  "id": "E07",
+  "name": "Stormcrest Glider",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:25:44.900789+00:00",
+  "inputReference": "assets/source/event-cards-v1/e07.png",
+  "inputReferenceSha256": "9a217febc44c61b4664ad4511a82ec417d2d8a2f1a2392c2c6a356bc634c7728",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-c276-7951-a0c1-031b80031505/exec-7cbbeb96-6d9a-4f55-9f81-281684ec36ca.png",
+  "master": "assets/source/card-scenes-v1/masters/E07.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E07.txt",
+  "promptSha256": "4d712b47452705d998217eed44f34e39a7213d8d71989136db2a53f1fb036e45",
+  "transparent_background": false,
+  "sha256": "6bf87eb63c29f035a77c681deb387bb46b5329c268536db95bc4ec945ba5b198",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Electric manta identity, silver-cobalt crest and wings, violet underside, cyan face and forked streamers preserved.",
+    "scene": "Rain curtain and pressure arc over a deep storm coast with sea stacks and far beacon; spray and wet cliff reflections integrate ray.",
+    "composition": "Full-bleed 3:4; focal face and defining crest or upper brass ring in upper 65%; strong environmental depth.",
+    "constraints": "No lettering, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "One wing tip grazes top-left edge; face and crest remain safely within upper card crop."
+    ],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

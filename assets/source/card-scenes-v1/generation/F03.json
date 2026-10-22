@@ -1,0 +1,35 @@
+{
+  "id": "F03",
+  "name": "Ash Knight",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:21:11.233399+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/F03.png",
+  "inputReferenceSha256": "41ac2fecf1f764345b6bed65fcf4f4e4e1d50bda9391df38af8923c5e469d744",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-a62e-7930-ba94-0f8d9001bd67/exec-d1eb813e-b5d6-4ed8-99c5-5d56a29f7651.png",
+  "master": "assets/source/card-scenes-v1/masters/F03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/F03.txt",
+  "promptSha256": "f267e27e01c1617878b0c8d1f7d7cf9c7f1884e6ef883a374511ad0fc83a3ff9",
+  "transparent_background": false,
+  "sha256": "ca727a483c82868692b917571dd55d64ba9c33235b1ebfbabbc73946cab07034",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Swept charcoal helm, amber slit, layered crimson shoulders, torn cloak and ember greatsword preserved.",
+    "scene": "Cracked bridge in foreground, braced knight and ravine watchtowers form three-plane scene.",
+    "composition": "Face and sword hilt upper half; diagonal blade stays within canvas.",
+    "constraints": "No baked text, card frame, stats, UI, logo, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Suitable for card-facing scene art."
+  }
+}

@@ -6,8 +6,14 @@ import manifest from "../../../../public/assets/core-v1/manifest.json" with { ty
 
 import presentation from "../../../../public/assets/rivals-v2/manifest.json" with { type: "json" };
 import cardPresentation from "../../../../public/assets/fivefold-cards-v3/manifest.json" with { type: "json" };
+import cardScenes from "../../../../public/assets/card-scenes-v1/manifest.json" with { type: "json" };
 
 const heroAssets = [...heroRevision.assets, ...heroPresentation.assets];
+
+// This card-face layer must never replace an asset's cutout or battle variants.
+function sceneVariants(scene: { thumb: string; inspect: string } | undefined) {
+  return scene ? { thumb: scene.thumb, inspect: scene.inspect } : {};
+}
 
 export type AssetQuality = "low" | "high";
 export interface ArtReference {
@@ -56,7 +62,11 @@ export function resolveArt(
     eventPresentation.assets.find((a) => a.artKey === artKey) ??
     cardPresentation.assets.find((a) => a.artKey === artKey) ??
     presentation.assets.find((a) => a.artKey === artKey);
-  const asset = { ...core, ...override };
+  const asset = {
+    ...core,
+    ...override,
+    ...sceneVariants(cardScenes.assets.find((a) => a.artKey === artKey)),
+  };
   const variants: Record<string, string | undefined> = asset ?? {};
   return {
     src: variants[variant] ?? `/assets/core-v1/${artKey}`,
@@ -77,6 +87,7 @@ export function artById(
         ...cardPresentation.assets.find((a) => a.id === id),
         ...hero,
         ...event,
+        ...sceneVariants(cardScenes.assets.find((a) => a.id === id)),
       }
     : undefined;
 }

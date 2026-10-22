@@ -1,0 +1,37 @@
+{
+  "id": "X01",
+  "name": "Ink Beetle",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:20:09.389085+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/X01.png",
+  "inputReferenceSha256": "729264eab124756e7521710e51f7cad6c28b627bf70358583fb73b9514dbb648",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-c276-7951-a0c1-031b80031505/exec-2c97a60d-8fa2-449d-8276-b3dd163e15c5.png",
+  "master": "assets/source/card-scenes-v1/masters/X01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/X01.txt",
+  "promptSha256": "ba30c1bfec06105e79c95aeaf71d0cc412531d130c17a79a34c8ed775b71b2c6",
+  "transparent_background": false,
+  "sha256": "24269aa4814eb18e8fdc3f821e91f0dd5e65d2f643346e06f8a6b05cf189a164",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Obsidian insect, violet crystal shell, six legs, quill mandibles and ink droplet retained.",
+    "scene": "Wet shale foreground, grounded beetle, receding mill and bridge; violet poison trail reflects naturally in water.",
+    "composition": "3:4 portrait; shell and face within upper 65%; strong integrated depth.",
+    "constraints": "No lettering, UI, border or watermark seen; opaque RGB.",
+    "caveats": [
+      "Outer left leg approaches canvas edge; central identity and mandibles remain complete."
+    ],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "P04",
+  "name": "Timekeeper",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:24:03.131960+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/P04.png",
+  "inputReferenceSha256": "eb27c5eb5061c6eb2cdc0ea5551901ef3d91778bc23b8fe3d8cbbdbffa6a4613",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-8a73-7e03-a29e-25bc9525451d/exec-638fa49b-8459-4198-8769-eee091739e80.png",
+  "master": "assets/source/card-scenes-v1/masters/P04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/P04.txt",
+  "promptSha256": "068df1d55ef590f1553348cdb92003ecbc5d2c4aca023308c5ecd1a732e0c046",
+  "transparent_background": false,
+  "sha256": "b04ba1cf40b7c13c50f29d6541156f2390192004bce83e4192f99b19738be754",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves white braid, androgynous adult face, high ivory coat, turquoise mechanisms, black gloves and floating segmented golden hourglass.",
+    "scene": "Suspended rain and crystal fragments communicate stopped time; wet foreground platform, observatory armatures and distant mountains create depth with twilight and gold illumination.",
+    "composition": "Face, outstretched glove and hourglass in upper half; two boots ground the full character.",
+    "constraints": "Opaque illustration; no text, UI, frame, logo or watermark seen. Floor geometry is nonlinguistic.",
+    "caveats": [],
+    "verdict": "Suitable scene master."
+  }
+}

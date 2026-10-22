@@ -1,0 +1,37 @@
+{
+  "id": "V02",
+  "name": "Moss Stag",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:20:08.841082+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/V02.png",
+  "inputReferenceSha256": "1d9dcd50a903919f7e972d923927f3c227de83fd460256b56221e50bd712dadc",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-6bb4-7be1-baef-351a3de61a27/exec-3d7a16c1-0bee-46b6-856d-c51ca663be7b.png",
+  "master": "assets/source/card-scenes-v1/masters/V02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/V02.txt",
+  "promptSha256": "51e4d49f978859b08fe3d49f01ec8dffd11c0445d7a0f862e1c85a6b81a96c22",
+  "transparent_background": false,
+  "sha256": "e9026e103c2fc1a960412c01f777455cc29585da2384298088230aee64236426",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Retains powerful ivory deer, broad antlers, jade moss and turquoise leaf armor, golden seed lights and eyes; four clear legs.",
+    "scene": "Blue-hour stream has foreground rocks, hoof ripples/reflections and layered waterfall valley; golden restorative droplets connect creature and water.",
+    "composition": "Face and antlers high in portrait, strong broad deer silhouette with environmental space.",
+    "constraints": "No text, writing-like runes, frames, UI, logos or watermarks seen. Fully opaque output.",
+    "caveats": [
+      "Fine foliage is dense; primary silhouette remains clear."
+    ],
+    "verdict": "Suitable for card scene integration."
+  }
+}

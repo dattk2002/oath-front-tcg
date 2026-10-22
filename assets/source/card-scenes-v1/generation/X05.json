@@ -1,0 +1,35 @@
+{
+  "id": "X05",
+  "name": "Ink Magistrate",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:24:47.276496+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/X05.png",
+  "inputReferenceSha256": "99052ed2939a4ca0dbf86679bec2b88aae4187504cb0fe1db83af5d5c47439e4",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-c276-7951-a0c1-031b80031505/exec-01f67076-6921-4391-a8c7-3dd934903889.png",
+  "master": "assets/source/card-scenes-v1/masters/X05.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/X05.txt",
+  "promptSha256": "3e443b50db99cb9afb28d609ff48e63c7e431a98ca769a941da6ef0243354d5d",
+  "transparent_background": false,
+  "sha256": "8317452e10ca7132dc3c3df1366a312dbce2b3c70674c9ec0b90c0f4d6d3d4cb",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Severe pale face, swept silver-dark hair, angular collar, charcoal-crimson armor robes, blank geometric verdict plates and thin baton preserved.",
+    "scene": "Tribunal balcony and polished steps overlook deep sunset city. Controlled violet pulse communicates decree effect.",
+    "composition": "Full-bleed 3:4; face and central defining gear in upper 65%; three-plane depth.",
+    "constraints": "No lettering, frame, UI, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

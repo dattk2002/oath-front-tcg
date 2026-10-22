@@ -1,0 +1,37 @@
+{
+  "id": "B03",
+  "name": "Bronze Shieldsmith",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:20:54.675315+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/B03.png",
+  "inputReferenceSha256": "4728a3b242ffa2584d228d7a49ae5b2423f8437d22d759c48f96e20ac341c698",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-4ad1-7862-959a-9ff4a7118383/exec-bd6e4284-a2e4-4bd4-b671-b6cf2614249f.png",
+  "master": "assets/source/card-scenes-v1/masters/B03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/B03.txt",
+  "promptSha256": "ceb1594d262adc604378e9935d56cc24d2b1e7c62bace292505ca9bda4c2a98b",
+  "transparent_background": false,
+  "sha256": "b56af5c339e8ac54fcec1432fe11665643a74e895a23cc215878b5a2b50ab952",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves adult dark-skinned artisan face, auburn ponytail, ivory armor, jade apron, hammer and two bronze shields.",
+    "scene": "Open solar forge includes foreground anvil/tools, figure, and two receding terrace lanes with shield energy.",
+    "composition": "Face and both floating shields occupy upper portion; gesture and hammer strike communicate protective craft.",
+    "constraints": "Visually inspected with view_image: no text, frame, UI, logo or watermark seen; fully opaque output.",
+    "caveats": [
+      "Secondary decorative apron lines are geometric, not writing."
+    ],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

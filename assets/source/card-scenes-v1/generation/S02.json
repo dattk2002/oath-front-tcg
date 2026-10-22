@@ -1,0 +1,35 @@
+{
+  "id": "S02",
+  "name": "Mistcloak",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:23:09.992150+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/S02.png",
+  "inputReferenceSha256": "419aa9a507737ef7aed9599986bf9b53319240e053d95fac476f818f5d1ad663",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-5b92ec28-7c9c-426a-8943-44d07d5215f6.png",
+  "master": "assets/source/card-scenes-v1/masters/S02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/S02.txt",
+  "promptSha256": "ea8ed2eef2ba83e9c15cc42854b28f89f76e5be1dea7c9d31060b49105e8ed4b",
+  "transparent_background": false,
+  "sha256": "5d9e13dc8da262d9322cb8397432294801915069a950605acb888462131d3b11",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Recognizable silver-haired face, fitted charcoal armor, crimson-lined gray cloak, curved short blade and crescent mist shield retained.",
+    "scene": "Flooded harbor underpass, tidal stones and distant bridge form environmental depth; shield interacts with spray and boots contact wet rocks.",
+    "composition": "3:4 full bleed; face and signature barrier clear in upper65 percent.",
+    "constraints": "No text, frame, UI, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Suitable individual scene master."
+  }
+}

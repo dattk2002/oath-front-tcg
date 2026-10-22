@@ -1,0 +1,37 @@
+{
+  "id": "GC03",
+  "name": "Dawn Herald",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:21:49.510593+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/GC03.png",
+  "inputReferenceSha256": "cb87ef3295cc315b4d898dac49fcfc05b53701126000328ac1771b5d1e18ef31",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-1f6ca1fa-44cf-46ef-9fa8-6314c285f62a.png",
+  "master": "assets/source/card-scenes-v1/masters/GC03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/GC03.txt",
+  "promptSha256": "0e9f822d793790002addf6e2dd625db4985f15ef1ff9a38ee6b579a1bb2a2305",
+  "transparent_background": false,
+  "sha256": "311612fedcd923d1c46d25b8a0fce94b2c871e9c4b900d352592430bc03ecc85",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Cropped black-haired herald woman, ivory/teal/gold armor, split sun cape, brass horn and teal streamers preserved.",
+    "scene": "Signal terrace, distant fortified valley city and mountains establish depth; golden horn ribbon and sunrise integrate armor highlights.",
+    "composition": "Face and horn upper65%; grounded feet visible; environment reads around cape.",
+    "caveats": [
+      "Heroic character scale exceeds nominal target slightly; no identity or story defect observed."
+    ],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

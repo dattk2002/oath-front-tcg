@@ -1,0 +1,35 @@
+{
+  "id": "E12",
+  "name": "Hollowmask Oracle",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:38:00.372263+00:00",
+  "inputReference": "assets/source/event-cards-v1/e12.png",
+  "inputReferenceSha256": "06e0a062e405767649812e5003a20a91835f76d81db4f71bb444ce25c634361e",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-fe92c122-4069-4f59-807a-e58a7429c6e8.png",
+  "master": "assets/source/card-scenes-v1/masters/E12.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E12.txt",
+  "promptSha256": "2abb1e54e77d5a5e5297e8a1c3b56b568ba95572f789d601974c9342899d70ec",
+  "transparent_background": false,
+  "sha256": "1a8518552238f0ad5135ae6725d2019c3c25dff4c1d57f99ba6e6a8552a74cb4",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Hollow ivory mask, ember eyes/interior, angular black paper-ribbon cloak, thin pale spectral arms and single purple dark pearl retained.",
+    "scene": "Deserted tiered theater and cracked basin, poison-colored vapor, blank paper slips; shared violet ceiling light and inner orange glow.",
+    "composition": "3:4 full bleed; mask, arms and pearl in upper65 percent; clear hovering gap and three-plane architectural depth.",
+    "constraints": "No lettering on papers, text, frame, UI, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Suitable individual scene master."
+  }
+}

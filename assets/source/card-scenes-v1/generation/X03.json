@@ -1,0 +1,35 @@
+{
+  "id": "X03",
+  "name": "Vialbearer",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:22:30.549802+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/X03.png",
+  "inputReferenceSha256": "dfbf40411683c01d3b5add2bd6dc2f45e5e1a780e1cf9c5853b479635636090a",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-c276-7951-a0c1-031b80031505/exec-470645c7-2442-431d-b538-24682f37c030.png",
+  "master": "assets/source/card-scenes-v1/masters/X03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/X03.txt",
+  "promptSha256": "157cc9c30229c4bde560d3ea8e19569277307499e68ac4c2ce9849cafc02912a",
+  "transparent_background": false,
+  "sha256": "6ff956f1b039ab1ae52bd9ff6afc45bc676c28306aa9df4d5ecc4e8ead801aac",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Silver hair, mask, charcoal-crimson robes, glass harness, large angular vial and belt vessels preserved.",
+    "scene": "Foundry catwalk with impact sparks and violet energy; hot furnace depth and grounded stance.",
+    "composition": "Full-bleed 3:4; face and defining gear in upper 65%; integrated scene depth.",
+    "constraints": "No lettering, frame, UI, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

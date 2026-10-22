@@ -1,0 +1,37 @@
+{
+  "id": "P05",
+  "name": "Prism Drake",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:25:13.539019+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/P05.png",
+  "inputReferenceSha256": "8d8f023046e96de02a3c4e3731e4b99a1427649c83de259aba09fda0e68ca1d3",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-8a73-7e03-a29e-25bc9525451d/exec-cf02478d-fe94-416c-9a67-c7615c8401d4.png",
+  "master": "assets/source/card-scenes-v1/masters/P05.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/P05.txt",
+  "promptSha256": "27212bd90637145ea94a63bb506de8c261fb110147f0596578bfc8836ec57926",
+  "transparent_background": false,
+  "sha256": "d2511609011b81c95193d9b84692a5c8627bea75069c6b62e4e02209cce4f626",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves regal ivory dragon, cyan glass membranes and insets, gold prism horns, four clawed legs, two wings and long tapering tail.",
+    "scene": "Dragon drives across shattered alpine ridge; foreground mineral rock, midground planted claws, distant mountain peaks and waterfalls show depth and directional sunlight.",
+    "composition": "Face and crown upper third; claws form strong forward action and both wing membranes remain recognizable.",
+    "constraints": "Opaque illustration; no text, frame, UI, watermark or logo seen.",
+    "caveats": [
+      "Outer wing membranes crop at left and right borders; head, horns and core anatomy remain clear."
+    ],
+    "verdict": "Suitable scene master."
+  }
+}

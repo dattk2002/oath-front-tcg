@@ -1,0 +1,37 @@
+{
+  "id": "S01",
+  "name": "Night Raven",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:21:40.727493+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/S01.png",
+  "inputReferenceSha256": "1ed0019a1352a43595aebd28ba8b649cb0a7a796b745723e309ce7b461aa705a",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-96099513-10d4-49b9-b940-f4a1af9e62ec.png",
+  "master": "assets/source/card-scenes-v1/masters/S01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/S01.txt",
+  "promptSha256": "8ea2428f7ff3454d90e1a8faf55f3446a1331d7ef3433ee0badd37d8db1ee3bd",
+  "transparent_background": false,
+  "sha256": "80d095422c69ce70bbeac41fbb5b0e99d7936d2bf658f122dbcd284bcf56f729",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Charcoal blade-feather raven with crimson accents, lavender eye, black beak and talons retained.",
+    "scene": "Rain-soaked battlement and distant river city form three depth planes, wet reflections and claw contact ground bird.",
+    "composition": "Full-bleed 3:4 portrait; face in upper65 percent; strong broad silhouette.",
+    "constraints": "No text, frame, interface, watermark or transparency seen.",
+    "caveats": [
+      "Outer left feather tips meet the image edge; central identity and both wings remain readable."
+    ],
+    "verdict": "Suitable individual scene master."
+  }
+}

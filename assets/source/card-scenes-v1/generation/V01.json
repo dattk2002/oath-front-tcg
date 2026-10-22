@@ -1,0 +1,35 @@
+{
+  "id": "V01",
+  "name": "Seed Tender",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:19:07.866773+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/V01.png",
+  "inputReferenceSha256": "013b36ffaeee62ac583ccd6802b3d574639061d07ef8d2f5301c137cf953ac13",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-6bb4-7be1-baef-351a3de61a27/exec-f18aa2f0-5633-4187-882b-ce2b030a63b4.png",
+  "master": "assets/source/card-scenes-v1/masters/V01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/V01.txt",
+  "promptSha256": "562a8c43c2a4c16687167152c24a4212d617114d4436fba1bd1d1d40f12e07a2",
+  "transparent_background": false,
+  "sha256": "225f185a6eff326b15ed147e78c4fb9704d199bcc00ba1e16f79cb5dc8076ae6",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Retains brown-skinned adult mage, tied curls, ivory/jade botanical outfit, bronze canister, glowing seed and root magic.",
+    "scene": "Dawn terraced nursery, foreground planting soil and dew leaves, distant glasshouse; kneeling contact and seed bounce integrate the character.",
+    "composition": "Face and radiant seed read clearly in upper 65 percent; main subject roughly 65\u201370 percent.",
+    "constraints": "No text, writing-like runes, frames, UI, logos or watermarks seen. Fully opaque output.",
+    "caveats": [],
+    "verdict": "Suitable for card scene integration."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "E06",
+  "name": "Rimewake Courier",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:24:45.353486+00:00",
+  "inputReference": "assets/source/event-cards-v1/e06.png",
+  "inputReferenceSha256": "5cc831bf47f82dc315faa35acbd0e1ed09a8e200049e4e0538b83a7fc8e5dbb2",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-a62e-7930-ba94-0f8d9001bd67/exec-d415a151-20bd-4654-ab29-d75fa9338914.png",
+  "master": "assets/source/card-scenes-v1/masters/E06.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E06.txt",
+  "promptSha256": "04c3fbb59be6dde6c4ff56bcede5b9adfe091b1d1e9d09dac9045575453ed29d",
+  "transparent_background": false,
+  "sha256": "3a4d09efc0c501bb90e3d1b589c8762003ff77d805398513fd7253df9984fb0d",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Silver-blue otter, clever white-muzzled face, bronze goggles, teal scarf, pearl satchel, rudder tail and raised crystal preserved.",
+    "scene": "Icy reed foreground, frozen mooring chain and courier wake lead to a snowy harbor at dawn.",
+    "composition": "Face and message capsule upper half, skates contact ice with reflection.",
+    "constraints": "No baked text, card frame, stats, UI, logo, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Suitable for card-facing scene art."
+  },
+  "referenceResolution": "Original PNG master resolved from assets/source/event-cards-v1/generation.json requests[].source; preferred to inventory derivative WebP."
+}

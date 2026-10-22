@@ -1,0 +1,35 @@
+{
+  "id": "EC03",
+  "name": "Coal Courier",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:26:53.176135+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/EC03.png",
+  "inputReferenceSha256": "8210f228451e76f3911f8b0f564f96b893ee2ab48d62e87f76acebf96a10dcd1",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-d2d8ef90-763a-4505-a787-6cae62077fdd.png",
+  "master": "assets/source/card-scenes-v1/masters/EC03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/EC03.txt",
+  "promptSha256": "af55c32d1084912c75bf327dc56ecc81dfa962777d4eb6ffc8e040e817a1b571",
+  "transparent_background": false,
+  "sha256": "47c66860d742e2409cbeeb49f59a300f67a9773b3b42e93b5899404aca10ad54",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Silver-haired adult male runner with brow goggles, crimson split coat, charcoal light armor and paired coal canisters preserved.",
+    "scene": "Rain-dark elevated catwalk, pipes, rooftops and distant furnace city create depth; warm canisters/windows reflect on wet surface.",
+    "composition": "Face and canisters upper65%; dynamic sprint, contacting lead boot and full silhouette visible.",
+    "caveats": [],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

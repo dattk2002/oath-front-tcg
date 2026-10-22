@@ -1,0 +1,37 @@
+{
+  "id": "GC01",
+  "name": "Lanternkeeper",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:19:04.685756+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/GC01.png",
+  "inputReferenceSha256": "c1cfc3cfc7e974583f685ea0e6e9a29aa8f85b6936e67f8a7ef472bcaeb55001",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-101c9ade-d0ca-44ee-8446-ddcc29b8e4c5.png",
+  "master": "assets/source/card-scenes-v1/masters/GC01.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/GC01.txt",
+  "promptSha256": "72dac1793f4718b623f56a4d576c18c28a7bebc8e95994306dc7469c2ab43892",
+  "transparent_background": false,
+  "sha256": "2bb91a8b23e6b084539d8c69544e0186ba3a89b928b3661e1a2801efe29de073",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Adult braided female scout, ivory armor, jade coat, hooked brass staff and both gold lanterns preserved.",
+    "scene": "Wet stone forest bridge, river valley and timber watchhouses establish three-plane depth; blue ambient dawn and warm lantern reflections integrate subject.",
+    "composition": "Face and raised lantern focal points upper65%; full body and bridge contact visible. Character fills more than the nominal 65% target but environment remains clear.",
+    "caveats": [
+      "Teal streamer retains ornamental gold motifs from reference; no legible writing."
+    ],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

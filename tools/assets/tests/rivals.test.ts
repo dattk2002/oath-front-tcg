@@ -21,8 +21,8 @@ it("resolves all six hero identities to bounded versioned art while preserving c
     fallbackLabel: "Named fallback",
     artKey: "missing.webp",
   });
-  expect(resolveArt(coreCatalog.cards[0]!.artKey, "Card").src).toMatch(
-    /^\/assets\/fivefold-cards-v3\//,
+  expect(resolveArt(coreCatalog.cards[0]!.artKey, "Card").src).toBe(
+    "/assets/card-scenes-v1/cards/gc01-thumb.webp",
   );
 });
 it("uses the current unit atlas, board override and complete terrain pool", () => {

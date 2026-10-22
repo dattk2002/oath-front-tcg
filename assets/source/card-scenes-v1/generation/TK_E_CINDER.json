@@ -1,0 +1,37 @@
+{
+  "id": "TK_E_CINDER",
+  "name": "Cinder Imp",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:25:02.026571+00:00",
+  "inputReference": "apps/web/public/assets/core-v1/cards/tk_e_cinder-inspect.webp",
+  "inputReferenceSha256": "48121f39ba591c484b5fae65ea5a16d8ecf7089f300bcd5984a427045414577c",
+  "inputReferenceDimensions": [
+    512,
+    512
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-4ad1-7862-959a-9ff4a7118383/exec-730d2709-a147-44a4-9935-33a5b482e71e.png",
+  "master": "assets/source/card-scenes-v1/masters/TK_E_CINDER.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/TK_E_CINDER.txt",
+  "promptSha256": "4ff3bd079f5695e6e7aa851be324e502e1ad89669fd5795cbc261262fc0224d0",
+  "transparent_background": false,
+  "sha256": "fbedf60aec7d301ee781241e5a9d6f26fddf974a8ecce5ec3c2649d3c3bfdefe",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves charcoal fissured imp, bronze jagged mask, orange eyes, swept horns with rings, red scarf, neck ring and claw caps.",
+    "scene": "Volcanic foundry ravine includes foreground basalt perch, crouching imp, receding lava channel, smelting bridges and cliffs.",
+    "composition": "Mask and horns remain strong high-frame focal forms; crouched feet and hands retain recognizable imp gesture.",
+    "constraints": "Visually inspected with view_image: no text, frame, UI, logo or watermark seen; fully opaque output.",
+    "caveats": [
+      "Lava and orange fissures are visually energetic; cool purple sky and bronze mask preserve focal separation."
+    ],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

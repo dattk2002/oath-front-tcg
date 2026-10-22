@@ -1,0 +1,35 @@
+{
+  "id": "P02",
+  "name": "Pathlighter",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:21:41.858526+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/P02.png",
+  "inputReferenceSha256": "ee8b87c71d58c76f853f779c27397da61337607ba027006bd224ac8aefa6f275",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-8a73-7e03-a29e-25bc9525451d/exec-74ad8771-d363-43de-873f-8b255ff6bebd.png",
+  "master": "assets/source/card-scenes-v1/masters/P02.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/P02.txt",
+  "promptSha256": "63a04390955d5249b0b52e5b7ca4db418058b3d70c4312d21eb165671c1e69c2",
+  "transparent_background": false,
+  "sha256": "b3f9b0b565dd949d7d80c4ce26d345e30e7bb36161df18384ffcbf97af8643cb",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves adult tan male face, swept dark hair, ivory expedition armor, cyan scarf and gold geometric prism staff.",
+    "scene": "Wet stepped tidal causeway, foreground puddles and distant watchtower establish depth; crescent light reaches a distant threat and reflects in wet stone.",
+    "composition": "Face and staff head in upper half; character grounds through two boots and remains primary.",
+    "constraints": "Opaque illustration; no text, frame, UI, watermark or logo seen.",
+    "caveats": [],
+    "verdict": "Suitable scene master."
+  }
+}

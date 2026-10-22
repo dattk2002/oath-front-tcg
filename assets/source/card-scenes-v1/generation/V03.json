@@ -1,0 +1,37 @@
+{
+  "id": "V03",
+  "name": "Dew Gatherer",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:21:25.385471+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/V03.png",
+  "inputReferenceSha256": "27a9759d0063f1c699230e4cc1a35db2890da7c953aadc027c62fcddb507dd67",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-6bb4-7be1-baef-351a3de61a27/exec-52e75aa7-a788-4fbf-9d4c-d89b16115761.png",
+  "master": "assets/source/card-scenes-v1/masters/V03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/V03.txt",
+  "promptSha256": "52060d6d8ff38147e8be32600578a11d51bf207186eddb5b76441797da815a84",
+  "transparent_background": false,
+  "sha256": "c394fb2504f20585c018391f9df605ae02681076472fb309cac6a61f357d50f6",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Retains silver-black tied hair/white forelock, adult face, teal split cape, ivory/gold equipment and crescent dew vessel.",
+    "scene": "Sunrise tidal lily garden and aqueducts; grounded stepping stones and luminous reed-to-vessel dew create healing story.",
+    "composition": "Face/vessel in upper 65 percent, broad flowing cape; environmental three-plane depth.",
+    "constraints": "No text, writing-like runes, frames, UI, logos or watermarks seen. Fully opaque output.",
+    "caveats": [
+      "Cape tips intentionally reach image edges; face and vessel remain uncut."
+    ],
+    "verdict": "Suitable for card scene integration."
+  }
+}

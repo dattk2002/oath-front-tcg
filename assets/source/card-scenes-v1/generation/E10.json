@@ -1,0 +1,37 @@
+{
+  "id": "E10",
+  "name": "Cragbound Ram",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:34:59.167965+00:00",
+  "inputReference": "assets/source/event-cards-v1/e10.png",
+  "inputReferenceSha256": "313662316c8ad376bb23eb12779de09fdf52dc9ff824053f8bec579854352f43",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-fd20c3d6-5a68-4830-b41e-e1bc64a92aff.png",
+  "master": "assets/source/card-scenes-v1/masters/E10.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E10.txt",
+  "promptSha256": "617ac24c275649ca6a71ce3b4077264ced3377a850360b3a0db385e7bac82030",
+  "transparent_background": false,
+  "sha256": "0e58bfd05cf9762c8a623b258d755f2d56931be9509f0fda3fedfd37e02bda39",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Charcoal slate ram, amber quartz, broad spiral mineral horns, amber eyes and four-legged animal anatomy retained; no machinery.",
+    "scene": "Steep scree charge amid freshly displaced slate, clear hoove impacts and amber attack pulse; foreground rocks, ram and distant alpine ranges establish depth.",
+    "composition": "3:4 full bleed; head/horns in upper65 percent, readable powerful silhouette, coherent sunlit quartz and localized dust.",
+    "constraints": "No text, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "Rear hooves are partly occluded by body, scree and dust in the charging perspective."
+    ],
+    "verdict": "Suitable individual scene master."
+  }
+}

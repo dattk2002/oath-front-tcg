@@ -1,0 +1,35 @@
+{
+  "id": "TK_G_LANTERN",
+  "name": "Watch Lantern",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:24:16.892342+00:00",
+  "inputReference": "apps/web/public/assets/core-v1/cards/tk_g_lantern-inspect.webp",
+  "inputReferenceSha256": "fedc6cdead155d9639166d4f60db9ff966074cbd48733f51e1fe94be90d2f33c",
+  "inputReferenceDimensions": [
+    512,
+    512
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-4ad1-7862-959a-9ff4a7118383/exec-7fac6913-492d-4bf7-9eba-aed06132a343.png",
+  "master": "assets/source/card-scenes-v1/masters/TK_G_LANTERN.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/TK_G_LANTERN.txt",
+  "promptSha256": "98674c465741e0cbb1f9d1797943df29e682d8752da06785f3d49cd6a17be00e",
+  "transparent_background": false,
+  "sha256": "2fff8cf0ef13e14e1c84ba2cb9140c86625be4abe82ba6757e70572182bebe93",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Preserves faceless round glass lantern chamber, ivory/brass roof and fittings, handle ring, green jewels, teal ribbon and squat articulated limbs.",
+    "scene": "Twilight garden waystation with wet cobbles, foreground ivy, receding arch/path and restrained golden protective field.",
+    "composition": "Bright glass chamber and handle remain clear in upper portion with feet grounded on cobbles.",
+    "constraints": "Visually inspected with view_image: no text, frame, UI, logo or watermark seen; fully opaque output.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

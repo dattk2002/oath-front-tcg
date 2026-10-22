@@ -1,0 +1,37 @@
+{
+  "id": "S03",
+  "name": "Shadowbreaker",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:24:38.161827+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/S03.png",
+  "inputReferenceSha256": "fb7d0f4cf62f400445d8b1b095c2dce70f0c1e9cfcecf31c071c2a8ef1211e1c",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-e4eb43f5-ebdc-4fa6-a862-0570b1dc5895.png",
+  "master": "assets/source/card-scenes-v1/masters/S03.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/S03.txt",
+  "promptSha256": "d442a175d198a7402ff9eace8561127faafa6f1c2ceedf0306d806cb36cbb9ca",
+  "transparent_background": false,
+  "sha256": "b01821ab23f8e01d0ad6c2fee2c50222837ee9893fa65f17028f81145be6ed25",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Dark-skinned braided raider with crimson cape, charcoal light armor and paired crescent knuckles retained.",
+    "scene": "Lunging attack surge emerges from basalt tunnel into quarry terraces, with foreground shattered gravel, distant cranes and sunset.",
+    "composition": "3:4 full bleed; face and both crescent weapons in upper65 percent; planted forward boot and flying gravel integrate motion.",
+    "constraints": "No text, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "Outer left energy arc meets image edge; physical crescent knuckle remains readable."
+    ],
+    "verdict": "Suitable individual scene master."
+  }
+}

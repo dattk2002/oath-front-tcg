@@ -1,0 +1,35 @@
+{
+  "id": "E08",
+  "name": "Chronicle Wisp",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:26:27.329004+00:00",
+  "inputReference": "assets/source/event-cards-v1/e08.png",
+  "inputReferenceSha256": "7cbb1d7ec4e57d0f8d10e99b9414d09b790a969fe3485c0f913b8a806470a830",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-c276-7951-a0c1-031b80031505/exec-f48a5c44-6237-43d2-834a-811856a2c979.png",
+  "master": "assets/source/card-scenes-v1/masters/E08.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E08.txt",
+  "promptSha256": "1c1af0e2fe23667c653aa115c99f7c69836e2f01aec01d6383839210cac74ebd",
+  "transparent_background": false,
+  "sha256": "e52c5ab149ad6094786795407fc318a8b31bf98676b3180fca1fccda84d77636",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Brass hourglass rings, indigo star-face, lavender vapor, curled spectral hands, quill and orbiting blank pages retained.",
+    "scene": "Blank open book and wood desk in foreground, luminous hovering spirit in middle, archive shelves and stairs behind. Moonlight and warm desk bounce integrate subject.",
+    "composition": "Full-bleed 3:4; focal face and defining crest or upper brass ring in upper 65%; strong environmental depth.",
+    "constraints": "No lettering, frame, UI, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Pass: suitable individual scene master."
+  }
+}

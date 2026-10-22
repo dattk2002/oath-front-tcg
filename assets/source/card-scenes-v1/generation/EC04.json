@@ -1,0 +1,35 @@
+{
+  "id": "EC04",
+  "name": "Dusk Bellringer",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:33:07.462047+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/EC04.png",
+  "inputReferenceSha256": "f2504fc05c15055ff5ba29e27f2f0f432fefca2aa9b14be6707032c8c1e131eb",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-ea8edd9f-8804-40a5-8a81-b4082c1e4f88.png",
+  "master": "assets/source/card-scenes-v1/masters/EC04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/EC04.txt",
+  "promptSha256": "db6d9d088d63ef841894506a89a2820a8cb7ef4bf95ce7a11239040f6bc6a3e3",
+  "transparent_background": false,
+  "sha256": "350bd90e03cc51681108ee77d3de9e5e072d96c56bbac821aece61c2c00fad4d",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Pale dark-haired adult woman in charcoal ceremonial armor and plum/crimson cloak, hooked staff, cracked iron bell and small waist bells preserved.",
+    "scene": "Open mountain bell terrace, ruined balustrade, distant red citadel and violet dusk; warm ember arc and lavender smoke express damaging final warning.",
+    "composition": "Face and cracked bell upper65%; grounded stance and distant fortress visible.",
+    "caveats": [],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

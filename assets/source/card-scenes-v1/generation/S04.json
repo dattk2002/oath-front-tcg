@@ -1,0 +1,35 @@
+{
+  "id": "S04",
+  "name": "Nameless Watch",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:26:01.981618+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/S04.png",
+  "inputReferenceSha256": "fb635efb5a1f7e57d390b7514e4e35c81aa995915a8c48cb7f6e5b00490781a5",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-dd7705f9-ac55-4c25-ae19-49c88b7e8bef.png",
+  "master": "assets/source/card-scenes-v1/masters/S04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/S04.txt",
+  "promptSha256": "6b5a44b4da701ff68824e1f8733fb8d12371d89df38353e95a1e1d74671d783f",
+  "transparent_background": false,
+  "sha256": "58a727de1f0e11e2ea95d1fd252e51903307e47d8fdc0914e400e8ce79e33754",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Faceless charcoal heavy armored guard, thin lavender eye band, split crimson tabard and hooked poleaxe retained.",
+    "scene": "Sleet-covered fortress causeway, foreground icy stone and receding mountain gate; boots and poleaxe contact wet paving with reflections.",
+    "composition": "3:4 full bleed; helm and poleaxe head in upper65 percent; triangular stance distinct against gate.",
+    "constraints": "No text, frame, UI, watermark or transparency seen.",
+    "caveats": [],
+    "verdict": "Suitable individual scene master."
+  }
+}

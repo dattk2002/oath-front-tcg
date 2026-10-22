@@ -1,0 +1,37 @@
+{
+  "id": "E11",
+  "name": "Dawncomet Phoenix",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:36:39.214646+00:00",
+  "inputReference": "assets/source/event-cards-v1/e11.png",
+  "inputReferenceSha256": "bf22b67db8a4bc656ce5f709b4ed28e9103003d683c492223a344e725ebf04d5",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-e228-7ff3-a204-45cd423ae322/exec-774c3c79-966f-4a2a-a050-51048c39d7cc.png",
+  "master": "assets/source/card-scenes-v1/masters/E11.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/E11.txt",
+  "promptSha256": "d3a7aecc80e7ea3a5dc93e65a9c25298d31c44ac1696ad7ea6c3267e80ba98c9",
+  "transparent_background": false,
+  "sha256": "eefc36b91d337a055737647c0174a7bd9e61c1bb2a30559e5e11b2638b96f2d6",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Scarlet-and-gold phoenix with ivory beak, sharp golden eye, layered feathers, open wings and comet tail retained.",
+    "scene": "Sunrise sea-cliff ascent; ember-lit charred nest and new grass foreground, bird middle ground, ocean islands and clouds distant.",
+    "composition": "3:4 full bleed; face and wings in upper65 percent, S-shaped tail leads toward healing legacy at nest; clear aerial depth.",
+    "constraints": "No text, frame, UI, watermark or transparency seen.",
+    "caveats": [
+      "Upper-left outer wing feathers touch image edge."
+    ],
+    "verdict": "Suitable individual scene master."
+  }
+}

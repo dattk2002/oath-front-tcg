@@ -1,0 +1,35 @@
+{
+  "id": "GC04",
+  "name": "Garden Bell",
+  "version": "card-scenes-v1",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in edit",
+  "useCase": "identity-preserve",
+  "generatedAt": "2026-10-22T14:22:55.513928+00:00",
+  "inputReference": "assets/source/fivefold-cards-v3/masters/GC04.png",
+  "inputReferenceSha256": "d0e02b76fd16e1a3d1855ca44a6adb26d90dbd7ad865a3c9544868870262467a",
+  "inputReferenceDimensions": [
+    1254,
+    1254
+  ],
+  "generatedSource": "/home/bia/.codex/generated_images/01a163f9-267a-78d1-acde-04f393f9b350/exec-89933b0f-da0f-40f3-84b4-049d8c4e2897.png",
+  "master": "assets/source/card-scenes-v1/masters/GC04.png",
+  "prompt": "assets/source/card-scenes-v1/prompts/GC04.txt",
+  "promptSha256": "cbecdb0c4237d022e6c7de1ae1a5c3816a94d3ba06f768b6c2cd1d681dfab545",
+  "transparent_background": false,
+  "sha256": "34b4a5d90fed1aa74127416191f68d137c023f5ff731c554d0fa5c1cf9bfaf31",
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "modeOfImage": "RGB",
+  "alphaExtrema": null,
+  "qualityReview": {
+    "identity": "Broad bronze bell body, warm seed core, ivory root armor, turquoise vine limbs and four root feet preserved.",
+    "scene": "Terraced medicinal garden and greenhouse ruin with golden restorative ripple reaching wilted plants; foreground foliage and paving contact.",
+    "composition": "Bell and seed upper65%; root feet visible with clear foreground and architectural distance.",
+    "caveats": [],
+    "constraints": "No baked text, card frame, UI, logo, watermark or transparency observed.",
+    "verdict": "Suitable individual environmental scene; visually inspected."
+  }
+}

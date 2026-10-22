@@ -1,0 +1,755 @@
+{
+  "version": "card-scenes-v1",
+  "assets": [
+    {
+      "id": "GC01",
+      "artKey": "cards/gc01.webp",
+      "name": "Lanternkeeper",
+      "text": "No abilities.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/GC01.png"
+    },
+    {
+      "id": "GC02",
+      "artKey": "cards/gc02.webp",
+      "name": "Leaf Knight",
+      "text": "No abilities.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/GC02.png"
+    },
+    {
+      "id": "GC03",
+      "artKey": "cards/gc03.webp",
+      "name": "Dawn Herald",
+      "text": "On play: draw 1 card.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/GC03.png"
+    },
+    {
+      "id": "GC04",
+      "artKey": "cards/gc04.webp",
+      "name": "Garden Bell",
+      "text": "When destroyed: heal your hero for 2 HP.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/GC04.png"
+    },
+    {
+      "id": "GC05",
+      "artKey": "cards/gc05.webp",
+      "name": "Lantern Ray",
+      "text": "Deal 2 damage to an enemy unit.",
+      "type": "TRICK",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/GC05.png"
+    },
+    {
+      "id": "GC06",
+      "artKey": "cards/gc06.webp",
+      "name": "Pack Supplies",
+      "text": "Draw 2 cards.",
+      "type": "TRICK",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/GC06.png"
+    },
+    {
+      "id": "B01",
+      "artKey": "cards/b01.webp",
+      "name": "Shieldseed",
+      "text": "Shield.",
+      "type": "UNIT",
+      "system": "TERRA",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/B01.png"
+    },
+    {
+      "id": "B02",
+      "artKey": "cards/b02.webp",
+      "name": "Timber Gatekeeper",
+      "text": "Armor.",
+      "type": "UNIT",
+      "system": "TERRA",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/B02.png"
+    },
+    {
+      "id": "B03",
+      "artKey": "cards/b03.webp",
+      "name": "Bronze Shieldsmith",
+      "text": "On play: grant Shield to allied units in the two adjacent lanes.",
+      "type": "UNIT",
+      "system": "FORGE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/B03.png"
+    },
+    {
+      "id": "B04",
+      "artKey": "cards/b04.webp",
+      "name": "Bellguard",
+      "text": "When damaged, once per turn: heal your hero for 1 HP.",
+      "type": "UNIT",
+      "system": "FORGE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/B04.png"
+    },
+    {
+      "id": "B05",
+      "artKey": "cards/b05.webp",
+      "name": "Citadel Warden",
+      "text": "Armor.",
+      "type": "UNIT",
+      "system": "TERRA",
+      "rarity": "SL",
+      "reference": "assets/source/fivefold-cards-v3/masters/B05.png"
+    },
+    {
+      "id": "B06",
+      "artKey": "cards/b06.webp",
+      "name": "Raise Shields",
+      "text": "Grant Shield to an allied unit.",
+      "type": "TRICK",
+      "system": "TERRA",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/B06.png"
+    },
+    {
+      "id": "B07",
+      "artKey": "cards/b07.webp",
+      "name": "Reinforce",
+      "text": "An allied unit gains +0/+3 permanently.",
+      "type": "TRICK",
+      "system": "TERRA",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/B07.png"
+    },
+    {
+      "id": "B08",
+      "artKey": "cards/b08.webp",
+      "name": "Repel",
+      "text": "Deal 3 damage to an enemy unit. It has \u22121 ATK this turn.",
+      "type": "TRICK",
+      "system": "FORGE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/B08.png"
+    },
+    {
+      "id": "V01",
+      "artKey": "cards/v01.webp",
+      "name": "Seed Tender",
+      "text": "On play: heal your hero for 1 HP.",
+      "type": "UNIT",
+      "system": "GROVE",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/V01.png"
+    },
+    {
+      "id": "V02",
+      "artKey": "cards/v02.webp",
+      "name": "Moss Stag",
+      "text": "At turn end: heal this unit for 1 HP.",
+      "type": "UNIT",
+      "system": "GROVE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/V02.png"
+    },
+    {
+      "id": "V03",
+      "artKey": "cards/v03.webp",
+      "name": "Dew Gatherer",
+      "text": "On play: heal your hero for 2 HP.",
+      "type": "UNIT",
+      "system": "TIDE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/V03.png"
+    },
+    {
+      "id": "V04",
+      "artKey": "cards/v04.webp",
+      "name": "Lantern Tree",
+      "text": "When destroyed: summon a 1/1 Lantern Sprout here if your slot is empty.",
+      "type": "UNIT",
+      "system": "GROVE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/V04.png"
+    },
+    {
+      "id": "V05",
+      "artKey": "cards/v05.webp",
+      "name": "Elderwood Spirit",
+      "text": "At turn end: heal all allied units for 1 HP.",
+      "type": "UNIT",
+      "system": "GROVE",
+      "rarity": "SL",
+      "reference": "assets/source/fivefold-cards-v3/masters/V05.png"
+    },
+    {
+      "id": "V06",
+      "artKey": "cards/v06.webp",
+      "name": "New Growth",
+      "text": "An allied unit gains +1/+2 permanently.",
+      "type": "TRICK",
+      "system": "GROVE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/V06.png"
+    },
+    {
+      "id": "V07",
+      "artKey": "cards/v07.webp",
+      "name": "Springflow",
+      "text": "Heal your hero for 4 HP.",
+      "type": "TRICK",
+      "system": "TIDE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/V07.png"
+    },
+    {
+      "id": "V08",
+      "artKey": "cards/v08.webp",
+      "name": "Sow Lanterns",
+      "text": "Summon a 1/1 Lantern Sprout in an empty lane on your side.",
+      "type": "TRICK",
+      "system": "GROVE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/V08.png"
+    },
+    {
+      "id": "P01",
+      "artKey": "cards/p01.webp",
+      "name": "Mirrorbird",
+      "text": "No abilities.",
+      "type": "UNIT",
+      "system": "TEMPEST",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/P01.png"
+    },
+    {
+      "id": "P02",
+      "artKey": "cards/p02.webp",
+      "name": "Pathlighter",
+      "text": "On play: the enemy unit here has \u22121 ATK this turn.",
+      "type": "UNIT",
+      "system": "TIDE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/P02.png"
+    },
+    {
+      "id": "P03",
+      "artKey": "cards/p03.webp",
+      "name": "Crystal Knight",
+      "text": "Shield.",
+      "type": "UNIT",
+      "system": "FORGE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/P03.png"
+    },
+    {
+      "id": "P04",
+      "artKey": "cards/p04.webp",
+      "name": "Timekeeper",
+      "text": "On play: Stun the enemy unit here for this turn.",
+      "type": "UNIT",
+      "system": "ARCANE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/P04.png"
+    },
+    {
+      "id": "P05",
+      "artKey": "cards/p05.webp",
+      "name": "Prism Drake",
+      "text": "Pierce.",
+      "type": "UNIT",
+      "system": "TEMPEST",
+      "rarity": "SL",
+      "reference": "assets/source/fivefold-cards-v3/masters/P05.png"
+    },
+    {
+      "id": "P06",
+      "artKey": "cards/p06.webp",
+      "name": "Reroute",
+      "text": "Move an allied unit to an empty lane on your side.",
+      "type": "TRICK",
+      "system": "TEMPEST",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/P06.png"
+    },
+    {
+      "id": "P07",
+      "artKey": "cards/p07.webp",
+      "name": "Mirrorlock",
+      "text": "Stun an enemy unit for this turn.",
+      "type": "TRICK",
+      "system": "ARCANE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/P07.png"
+    },
+    {
+      "id": "P08",
+      "artKey": "cards/p08.webp",
+      "name": "Lightshard",
+      "text": "Deal 3 damage to an enemy unit. Draw 1 card.",
+      "type": "TRICK",
+      "system": "ARCANE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/P08.png"
+    },
+    {
+      "id": "EC01",
+      "artKey": "cards/ec01.webp",
+      "name": "Ash Soldier",
+      "text": "No abilities.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/EC01.png"
+    },
+    {
+      "id": "EC02",
+      "artKey": "cards/ec02.webp",
+      "name": "Furnace Guard",
+      "text": "No abilities.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/EC02.png"
+    },
+    {
+      "id": "EC03",
+      "artKey": "cards/ec03.webp",
+      "name": "Coal Courier",
+      "text": "On play: draw 1 card.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/EC03.png"
+    },
+    {
+      "id": "EC04",
+      "artKey": "cards/ec04.webp",
+      "name": "Dusk Bellringer",
+      "text": "When destroyed: deal 1 damage to the enemy hero.",
+      "type": "UNIT",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/EC04.png"
+    },
+    {
+      "id": "EC05",
+      "artKey": "cards/ec05.webp",
+      "name": "Coal Lance",
+      "text": "Deal 2 damage to an enemy unit.",
+      "type": "TRICK",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/EC05.png"
+    },
+    {
+      "id": "EC06",
+      "artKey": "cards/ec06.webp",
+      "name": "Night Intelligence",
+      "text": "Draw 2 cards.",
+      "type": "TRICK",
+      "system": null,
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/EC06.png"
+    },
+    {
+      "id": "F01",
+      "artKey": "cards/f01.webp",
+      "name": "Coal Beetle",
+      "text": "When destroyed: deal 1 damage to the enemy hero.",
+      "type": "UNIT",
+      "system": "SOLAR",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/F01.png"
+    },
+    {
+      "id": "F02",
+      "artKey": "cards/f02.webp",
+      "name": "Embersmith",
+      "text": "On play: deal 1 damage to the enemy unit here.",
+      "type": "UNIT",
+      "system": "SOLAR",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/F02.png"
+    },
+    {
+      "id": "F03",
+      "artKey": "cards/f03.webp",
+      "name": "Ash Knight",
+      "text": "Before combat here, once per turn: this unit gains +1 ATK this turn.",
+      "type": "UNIT",
+      "system": "SOLAR",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/F03.png"
+    },
+    {
+      "id": "F04",
+      "artKey": "cards/f04.webp",
+      "name": "Furnace Beast",
+      "text": "Pierce.",
+      "type": "UNIT",
+      "system": "FORGE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/F04.png"
+    },
+    {
+      "id": "F05",
+      "artKey": "cards/f05.webp",
+      "name": "Molten Colossus",
+      "text": "When destroyed: deal 2 damage to the enemy hero.",
+      "type": "UNIT",
+      "system": "SOLAR",
+      "rarity": "SL",
+      "reference": "assets/source/fivefold-cards-v3/masters/F05.png"
+    },
+    {
+      "id": "F06",
+      "artKey": "cards/f06.webp",
+      "name": "Coalshot",
+      "text": "Deal 3 damage to an enemy unit or the enemy hero.",
+      "type": "TRICK",
+      "system": "SOLAR",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/F06.png"
+    },
+    {
+      "id": "F07",
+      "artKey": "cards/f07.webp",
+      "name": "Heat Edge",
+      "text": "An allied unit gains +2 ATK this turn.",
+      "type": "TRICK",
+      "system": "TEMPEST",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/F07.png"
+    },
+    {
+      "id": "F08",
+      "artKey": "cards/f08.webp",
+      "name": "Cinderwave",
+      "text": "Deal 2 damage simultaneously to all enemy units.",
+      "type": "TRICK",
+      "system": "SOLAR",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/F08.png"
+    },
+    {
+      "id": "X01",
+      "artKey": "cards/x01.webp",
+      "name": "Ink Beetle",
+      "text": "When destroyed: Poison the enemy unit here.",
+      "type": "UNIT",
+      "system": "UMBRAL",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/X01.png"
+    },
+    {
+      "id": "X02",
+      "artKey": "cards/x02.webp",
+      "name": "Seal Scribe",
+      "text": "On play: Poison the enemy unit here.",
+      "type": "UNIT",
+      "system": "UMBRAL",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/X02.png"
+    },
+    {
+      "id": "X03",
+      "artKey": "cards/x03.webp",
+      "name": "Vialbearer",
+      "text": "When damaged, once per turn: this unit gains +1 ATK permanently.",
+      "type": "UNIT",
+      "system": "FORGE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/X03.png"
+    },
+    {
+      "id": "X04",
+      "artKey": "cards/x04.webp",
+      "name": "Ash Reaper",
+      "text": "When destroyed: summon a 2/1 Cinder Imp here if your slot is empty.",
+      "type": "UNIT",
+      "system": "ARCANE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/X04.png"
+    },
+    {
+      "id": "X05",
+      "artKey": "cards/x05.webp",
+      "name": "Ink Magistrate",
+      "text": "At turn end: deal 1 damage to the enemy hero.",
+      "type": "UNIT",
+      "system": "ARCANE",
+      "rarity": "SL",
+      "reference": "assets/source/fivefold-cards-v3/masters/X05.png"
+    },
+    {
+      "id": "X06",
+      "artKey": "cards/x06.webp",
+      "name": "Inkblot",
+      "text": "Poison an enemy unit.",
+      "type": "TRICK",
+      "system": "UMBRAL",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/X06.png"
+    },
+    {
+      "id": "X07",
+      "artKey": "cards/x07.webp",
+      "name": "Lesser Hex",
+      "text": "An enemy unit has \u22122 ATK this turn. Draw 1 card.",
+      "type": "TRICK",
+      "system": "UMBRAL",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/X07.png"
+    },
+    {
+      "id": "X08",
+      "artKey": "cards/x08.webp",
+      "name": "Siphon Warmth",
+      "text": "Deal 2 damage to an enemy unit. Heal your hero for 2 HP.",
+      "type": "TRICK",
+      "system": "UMBRAL",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/X08.png"
+    },
+    {
+      "id": "S01",
+      "artKey": "cards/s01.webp",
+      "name": "Night Raven",
+      "text": "No abilities.",
+      "type": "UNIT",
+      "system": "TEMPEST",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/S01.png"
+    },
+    {
+      "id": "S02",
+      "artKey": "cards/s02.webp",
+      "name": "Mistcloak",
+      "text": "Shield.",
+      "type": "UNIT",
+      "system": "TIDE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/S02.png"
+    },
+    {
+      "id": "S03",
+      "artKey": "cards/s03.webp",
+      "name": "Shadowbreaker",
+      "text": "On play: this unit gains +1 ATK this turn.",
+      "type": "UNIT",
+      "system": "UMBRAL",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/S03.png"
+    },
+    {
+      "id": "S04",
+      "artKey": "cards/s04.webp",
+      "name": "Nameless Watch",
+      "text": "Armor.",
+      "type": "UNIT",
+      "system": "TERRA",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/S04.png"
+    },
+    {
+      "id": "S05",
+      "artKey": "cards/s05.webp",
+      "name": "Duskwing",
+      "text": "Pierce.",
+      "type": "UNIT",
+      "system": "TEMPEST",
+      "rarity": "SL",
+      "reference": "assets/source/fivefold-cards-v3/masters/S05.png"
+    },
+    {
+      "id": "S06",
+      "artKey": "cards/s06.webp",
+      "name": "Smoke Tunnel",
+      "text": "Move an allied unit to an empty lane on your side.",
+      "type": "TRICK",
+      "system": "ARCANE",
+      "rarity": "U",
+      "reference": "assets/source/fivefold-cards-v3/masters/S06.png"
+    },
+    {
+      "id": "S07",
+      "artKey": "cards/s07.webp",
+      "name": "Misstep",
+      "text": "Move an enemy unit to an empty lane on its owner's side.",
+      "type": "TRICK",
+      "system": "TIDE",
+      "rarity": "R",
+      "reference": "assets/source/fivefold-cards-v3/masters/S07.png"
+    },
+    {
+      "id": "S08",
+      "artKey": "cards/s08.webp",
+      "name": "Veil of Cover",
+      "text": "Grant Shield to an allied unit. Draw 1 card.",
+      "type": "TRICK",
+      "system": "TIDE",
+      "rarity": "SR",
+      "reference": "assets/source/fivefold-cards-v3/masters/S08.png"
+    },
+    {
+      "id": "E01",
+      "artKey": "cards/e01.webp",
+      "name": "Oathglass Sentinel",
+      "text": "Shield. When destroyed: heal your hero 2.",
+      "type": "UNIT",
+      "system": "TERRA",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e01.png"
+    },
+    {
+      "id": "E02",
+      "artKey": "cards/e02.webp",
+      "name": "Moonpetal Keeper",
+      "text": "On play: heal your hero 2. End turn: heal this unit 1.",
+      "type": "UNIT",
+      "system": "GROVE",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e02.png"
+    },
+    {
+      "id": "E03",
+      "artKey": "cards/e03.webp",
+      "name": "Sunflare Lynx",
+      "text": "On play: deal 1 to the enemy unit here. When destroyed: deal 1 to the enemy hero.",
+      "type": "UNIT",
+      "system": "SOLAR",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e03.png"
+    },
+    {
+      "id": "E04",
+      "artKey": "cards/e04.webp",
+      "name": "Veilfin Stalker",
+      "text": "Before combat here, once per turn: gain +1 ATK this turn. When destroyed: poison the enemy unit here.",
+      "type": "UNIT",
+      "system": "UMBRAL",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e04.png"
+    },
+    {
+      "id": "E05",
+      "artKey": "cards/e05.webp",
+      "name": "Cobalt Repairbot",
+      "text": "End turn: heal this unit 1.",
+      "type": "UNIT",
+      "system": "FORGE",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e05.png"
+    },
+    {
+      "id": "E06",
+      "artKey": "cards/e06.webp",
+      "name": "Rimewake Courier",
+      "text": "On play: stun the enemy unit here this turn. Heal your hero 1.",
+      "type": "UNIT",
+      "system": "TIDE",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e06.png"
+    },
+    {
+      "id": "E07",
+      "artKey": "cards/e07.webp",
+      "name": "Stormcrest Glider",
+      "text": "Pierce. On play: gain +1 ATK this turn.",
+      "type": "UNIT",
+      "system": "TEMPEST",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e07.png"
+    },
+    {
+      "id": "E08",
+      "artKey": "cards/e08.webp",
+      "name": "Chronicle Wisp",
+      "text": "On play: draw 1. When destroyed: draw 1.",
+      "type": "UNIT",
+      "system": "ARCANE",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e08.png"
+    },
+    {
+      "id": "E09",
+      "artKey": "cards/e09.webp",
+      "name": "Reedheart Guardian",
+      "text": "On play: heal your hero 1. When destroyed: summon a Seedling here if empty.",
+      "type": "UNIT",
+      "system": "GROVE",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e09.png"
+    },
+    {
+      "id": "E10",
+      "artKey": "cards/e10.webp",
+      "name": "Cragbound Ram",
+      "text": "Armor. When damaged, once per turn while alive: gain +1 ATK this turn.",
+      "type": "UNIT",
+      "system": "TERRA",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e10.png"
+    },
+    {
+      "id": "E11",
+      "artKey": "cards/e11.webp",
+      "name": "Dawncomet Phoenix",
+      "text": "Pierce. When destroyed: heal your hero 3.",
+      "type": "UNIT",
+      "system": "SOLAR",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e11.png"
+    },
+    {
+      "id": "E12",
+      "artKey": "cards/e12.webp",
+      "name": "Hollowmask Oracle",
+      "text": "On play: poison the enemy unit here. When destroyed: draw 1.",
+      "type": "UNIT",
+      "system": "UMBRAL",
+      "rarity": "E",
+      "reference": "assets/source/event-cards-v1/e12.png"
+    },
+    {
+      "id": "TK_G_SEED",
+      "artKey": "cards/tk_g_seed.webp",
+      "name": "Lantern Sprout",
+      "text": "Summoned unit. No abilities.",
+      "type": "TOKEN",
+      "system": null,
+      "rarity": null,
+      "reference": "apps/web/public/assets/core-v1/cards/tk_g_seed-inspect.webp"
+    },
+    {
+      "id": "TK_G_LANTERN",
+      "artKey": "cards/tk_g_lantern.webp",
+      "name": "Watch Lantern",
+      "text": "Summoned unit. Shield. Tutorial only.",
+      "type": "TOKEN",
+      "system": null,
+      "rarity": null,
+      "reference": "apps/web/public/assets/core-v1/cards/tk_g_lantern-inspect.webp"
+    },
+    {
+      "id": "TK_E_CINDER",
+      "artKey": "cards/tk_e_cinder.webp",
+      "name": "Cinder Imp",
+      "text": "Summoned unit. No abilities.",
+      "type": "TOKEN",
+      "system": null,
+      "rarity": null,
+      "reference": "apps/web/public/assets/core-v1/cards/tk_e_cinder-inspect.webp"
+    }
+  ]
+}
