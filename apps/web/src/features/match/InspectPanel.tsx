@@ -1,3 +1,4 @@
+import CardVisual from "../content/CardVisual";
 import { RarityBadge, SystemBadge } from "../content/ContentBadges";
 import { contentName, contentText } from "../../content/english-content";
 import type {
@@ -62,18 +63,22 @@ export default function InspectPanel({
               <SystemBadge system={def.classId} />
             </div>
           )}
-          <div className="inspect-art">
-            <ArtImage
-              artKey={def.artKey}
-              name={contentName(def.id)}
-              variant="inspect"
-            />
-          </div>
-          <p>
-            {"exactTextVi" in def
-              ? contentText(def.id)
-              : "A unit summoned onto the board."}
-          </p>
+          {"cost" in def || "printed" in def ? (
+            <div className="inspect-art inspect-card-face">
+              <CardVisual definition={def} surface="inspect" artRetry />
+            </div>
+          ) : (
+            <>
+              <div className="inspect-art">
+                <ArtImage
+                  artKey={def.artKey}
+                  name={contentName(def.id)}
+                  variant="inspect"
+                />
+              </div>
+              <p>{contentText(def.id)}</p>
+            </>
+          )}
           {"keywords" in def && (
             <p>{def.keywords.map((key) => keywordLabel[key]).join(" · ")}</p>
           )}

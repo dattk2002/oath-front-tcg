@@ -50,60 +50,93 @@ for (const [width, height] of [
     await expect(
       page.getByRole("button", { name: "End phase", exact: true }),
     ).toBeInViewport({ ratio: 1 });
-    await fits(page, ".hero-panel,.lane,.hand-card,.phase-controls");
+    await fits(page, ".hero-panel,.lane,.hand,.phase-controls");
     await page.evaluate(() => document.fonts.ready);
-    // Parent rectangles alone miss text overflowing a fixed compact grid row.
-    const summaries = await page.locator(".hand-card").evaluateAll((nodes) =>
-      nodes.map((card) => {
-        const summary = card.querySelector<HTMLElement>(".card-summary")!;
-        const range = document.createRange();
-        range.selectNodeContents(summary);
-        const rect = (r: DOMRect) => ({
-          top: r.top,
-          bottom: r.bottom,
-          left: r.left,
-          right: r.right,
-        });
-        return {
-          text: summary.textContent,
-          card: rect(card.getBoundingClientRect()),
-          summary: rect(summary.getBoundingClientRect()),
-          lines: Array.from(range.getClientRects(), rect),
-        };
-      }),
-    );
+    const hand = page.locator(".hand");
+    const cards = hand.locator(".hand-card");
+    await expect(cards).toHaveCount(10);
+    const scrolling = await hand.evaluate((node) => ({
+      scrollWidth: node.scrollWidth,
+      clientWidth: node.clientWidth,
+    }));
+    expect(scrolling.scrollWidth).toBeGreaterThan(scrolling.clientWidth);
+
+    // Check visible metadata text, including nested stat labels, rather than
+    // the accessible-only rules or the retired compact summary row.
+    const summaries = await cards.evaluateAll((nodes) => {
+      const rect = (r: DOMRect) => ({
+        top: r.top,
+        bottom: r.bottom,
+        left: r.left,
+        right: r.right,
+        width: r.width,
+        height: r.height,
+      });
+      return nodes.map((card) => ({
+        card: rect(card.getBoundingClientRect()),
+        metadata: Array.from(
+          card.querySelectorAll<HTMLElement>(
+            ".card-face-title,.card-face-kind,.card-face-cost,.card-face-stat",
+          ),
+          (node) => {
+            const range = document.createRange();
+            range.selectNodeContents(node);
+            return {
+              part: node.className,
+              text: node.textContent,
+              bounds: rect(node.getBoundingClientRect()),
+              lines: Array.from(range.getClientRects(), rect),
+            };
+          },
+        ),
+      }));
+    });
     await writeFile(
       `${evidence}/hand-text-${width}-${height}.json`,
       JSON.stringify(summaries, null, 2),
     );
-    for (const { text, card, summary, lines } of summaries) {
-      expect(lines.length, text!).toBeGreaterThan(0);
-      for (const bounds of [summary, ...lines]) {
-        expect(bounds.top, text!).toBeGreaterThanOrEqual(card.top);
-        expect(bounds.bottom, text!).toBeLessThanOrEqual(card.bottom);
-        expect(bounds.left, text!).toBeGreaterThanOrEqual(card.left);
-        expect(bounds.right, text!).toBeLessThanOrEqual(card.right);
-        expect(bounds.bottom, text!).toBeLessThanOrEqual(height!);
-      }
-    }
-    const cards = await page.locator(".hand-card").evaluateAll((nodes) =>
-      nodes.map((n) => {
-        const r = n.getBoundingClientRect();
-        return {
-          left: r.left,
-          right: r.right,
-          width: r.width,
-          height: r.height,
-        };
-      }),
-    );
-    expect(cards).toHaveLength(10);
-    for (const [index, card] of cards.entries()) {
+    for (const [index, { card, metadata }] of summaries.entries()) {
       expect(card.width).toBeGreaterThanOrEqual(44);
       expect(card.height).toBeGreaterThanOrEqual(44);
       if (index > 0)
-        expect(card.left - cards[index - 1]!.right).toBeGreaterThanOrEqual(8);
+        expect(
+          card.left - summaries[index - 1]!.card.right,
+        ).toBeGreaterThanOrEqual(8);
+      expect(metadata.length).toBeGreaterThanOrEqual(3);
+      for (const { part, text, bounds: socket, lines } of metadata) {
+        expect(lines.length, text!).toBeGreaterThan(0);
+        // The energy socket deliberately protrudes above the physical card.
+        // Its text must fit that socket; other text stays within the card body.
+        const owner = part === "card-face-cost" ? socket : card;
+        for (const bounds of lines) {
+          expect(bounds.top, text!).toBeGreaterThanOrEqual(owner.top - 1);
+          expect(bounds.bottom, text!).toBeLessThanOrEqual(owner.bottom + 1);
+          expect(bounds.left, text!).toBeGreaterThanOrEqual(owner.left - 1);
+          expect(bounds.right, text!).toBeLessThanOrEqual(owner.right + 1);
+          expect(bounds.top, text!).toBeGreaterThanOrEqual(0);
+          expect(bounds.bottom, text!).toBeLessThanOrEqual(height!);
+        }
+      }
     }
+    // Ten readable faces intentionally exceed the hand's width. Native focus
+    // scrolling must reveal each complete card without scrolling the page sideways.
+    await cards.first().focus();
+    await page.keyboard.press("Home");
+    for (let index = 0; index < 10; index++) {
+      if (index > 0) await page.keyboard.press("ArrowRight");
+      await expect(cards.nth(index)).toBeFocused();
+      await expect(cards.nth(index)).toBeInViewport({ ratio: 1 });
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+    }
+    expect(await hand.evaluate((node) => node.scrollLeft)).toBeGreaterThan(0);
+    await page.keyboard.press("Home");
+    await expect(cards.first()).toBeFocused();
+    await expect(cards.first()).toBeInViewport({ ratio: 1 });
+    await fits(page, ".hand,.phase-controls");
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -113,7 +146,7 @@ for (const [width, height] of [
       path: `${evidence}/battle-${width}-${height}.png`,
     });
     // Long names may clamp in the hand, but pointer/keyboard selection must
-    // expose their full heading and rules; the trick's three-line cue must fit.
+    // expose their full heading and rules for both unit and trick anatomy.
     const inspect = page.getByRole("complementary", {
       name: "Selection details",
     });

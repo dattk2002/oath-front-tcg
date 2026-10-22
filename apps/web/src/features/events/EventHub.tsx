@@ -1,4 +1,5 @@
 "use client";
+import CardVisual from "../content/CardVisual";
 import SessionRecovery from "../auth/SessionRecovery";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -33,7 +34,16 @@ export interface EventSessionProps {
   ensureSession: () => Promise<SessionResponse>;
   onSignIn: () => void;
 }
-function EventCard({ event }: { event: EventSummary }) {
+function EventCard({
+  event,
+  catalog,
+}: {
+  event: EventSummary;
+  catalog: PublicCatalog | null;
+}) {
+  const card = event.revealed
+    ? catalog?.cards.find((c) => c.id === event.cardId)
+    : undefined;
   return (
     <Link
       className="weekly-card"
@@ -42,11 +52,15 @@ function EventCard({ event }: { event: EventSummary }) {
     >
       <div className="weekly-card-art">
         {event.revealed && event.cardId ? (
-          <CampaignArtwork
-            className="contain"
-            src={artById(event.cardId)!.inspect!}
-            alt=""
-          />
+          card ? (
+            <CardVisual definition={card} surface="preview" />
+          ) : (
+            <CampaignArtwork
+              className="contain"
+              src={artById(event.cardId)!.inspect!}
+              alt={contentName(event.cardId)}
+            />
+          )
         ) : (
           <div className="unrevealed-card" aria-hidden="true">
             <span>?</span>
@@ -100,14 +114,16 @@ export function EventHub(
   return props.slug ? (
     <WeeklyDetail key={props.slug} {...props} slug={props.slug} />
   ) : (
-    <EventIndex api={props.api} filter={props.filter} />
+    <EventIndex api={props.api} catalog={props.catalog} filter={props.filter} />
   );
 }
 function EventIndex({
   api,
+  catalog,
   filter,
 }: {
   api: ApiClient;
+  catalog: PublicCatalog | null;
   filter?: string | undefined;
 }) {
   const read = useLiveRead("weekly-events", () => api.weeklyEvents());
@@ -162,7 +178,7 @@ function EventIndex({
         ) : items.length ? (
           <div className="event-grid">
             {items.map((e) => (
-              <EventCard key={e.id} event={e} />
+              <EventCard key={e.id} event={e} catalog={catalog} />
             ))}
           </div>
         ) : (
@@ -310,21 +326,19 @@ function WeeklyDetail({
         <div className="spotlight-card" data-rarity="E">
           <RarityBadge rarity="E" full />
           {event.revealed && event.cardId ? (
-            <>
-              <CampaignArtwork
-                className="contain"
-                src={artById(event.cardId)!.inspect!}
-                alt={`${contentName(event.cardId)} event card`}
-                retry
-              />
-              <h2>{contentName(event.cardId)}</h2>
-              {card && (
-                <p className="event-card-stats">
-                  {card.cost} energy · {card.printed?.attack} ATK /{" "}
-                  {card.printed?.hp} HP
-                </p>
-              )}
-            </>
+            card ? (
+              <CardVisual definition={card} surface="inspect" artRetry />
+            ) : (
+              <>
+                <CampaignArtwork
+                  className="contain"
+                  src={artById(event.cardId)!.inspect!}
+                  alt={`${contentName(event.cardId)} event card`}
+                  retry
+                />
+                <h2>{contentName(event.cardId)}</h2>
+              </>
+            )
           ) : (
             <div className="unrevealed-card">
               <span aria-hidden="true">?</span>

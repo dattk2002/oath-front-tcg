@@ -123,10 +123,14 @@ export function bindCardFeedback(root: HTMLElement, reduced: () => boolean) {
     let owner = cards.get(card);
     if (!owner) {
       let tween!: gsap.core.Tween;
+      const art = card.querySelector<HTMLElement>(
+        ".card-visual .card-face-art .asset-image, .card-visual .card-face-art .art-fallback",
+      );
       const context = gsap.context(() => {
-        tween = gsap.to(card, {
-          y: -7,
+        tween = gsap.to(art ?? card, {
+          y: art ? 0 : -7,
           rotation: -1.2,
+          ...(art ? { scale: 1.06 } : {}),
           duration: 0.12,
           ease: "power2.out",
           paused: true,

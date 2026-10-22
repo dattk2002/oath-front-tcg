@@ -1,11 +1,10 @@
-import { RarityBadge, SystemBadge } from "../content/ContentBadges";
+import CardVisual from "../content/CardVisual";
 import { contentName, contentText } from "../../content/english-content";
 import { useRef } from "react";
 import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import { crossedDragThreshold, dropTarget } from "./drag";
 import type { IntentController } from "./intent-controller";
 import { groupArrows } from "./keyboard";
-import ArtImage from "./ArtImage";
 export default function Hand({
   view,
   catalog,
@@ -40,7 +39,17 @@ export default function Hand({
           <h2>{mulligan ? "Choose cards to replace" : "Hand"}</h2>
           <span>{view.self.hand.length} / 10 cards</span>
         </div>
-        <div className="hand" onKeyDown={groupArrows}>
+        <div
+          className="hand"
+          onKeyDown={(event) => {
+            groupArrows(event);
+            if (event.defaultPrevented) {
+              event.currentTarget
+                .querySelector<HTMLElement>(".hand-card:focus")
+                ?.scrollIntoView({ block: "nearest", inline: "nearest" });
+            }
+          }}
+        >
           {view.self.hand.map((card) => {
             const def = catalog.cards.find(
               (item) => item.id === card.definitionId,
@@ -77,7 +86,9 @@ export default function Hand({
                   else controller.selectCard(card.instanceId);
                 }}
                 onPointerDown={(event) => {
-                  if (disabled || mulligan) return;
+                  // Touch scrolls the hand natively; taps still use onClick.
+                  if (event.pointerType === "touch" || disabled || mulligan)
+                    return;
                   drag.current = {
                     id: card.instanceId,
                     x: event.clientX,
@@ -87,6 +98,7 @@ export default function Hand({
                   event.currentTarget.setPointerCapture(event.pointerId);
                 }}
                 onPointerMove={(event) => {
+                  if (event.pointerType === "touch") return;
                   const current = drag.current;
                   if (!current || current.id !== card.instanceId) return;
                   if (
@@ -98,6 +110,7 @@ export default function Hand({
                   }
                 }}
                 onPointerUp={(event) => {
+                  if (event.pointerType === "touch") return;
                   const current = drag.current;
                   drag.current = null;
                   if (!current?.active) return;
@@ -109,7 +122,8 @@ export default function Hand({
                   }
                   controller.cancelSelection();
                 }}
-                onPointerCancel={() => {
+                onPointerCancel={(event) => {
+                  if (event.pointerType === "touch") return;
                   drag.current = null;
                   controller.cancelSelection();
                 }}
@@ -117,32 +131,7 @@ export default function Hand({
                 <span className="sr-only">
                   {!mulligan && (playable ? "Playable." : "Details.")}
                 </span>
-                <span className="card-cost">
-                  {def.cost}
-                  <span className="sr-only"> energy</span>
-                </span>
-                <strong>{contentName(def.id)}</strong>
-                <span className="hand-art">
-                  <ArtImage
-                    artKey={def.artKey}
-                    name={contentName(def.id)}
-                    retry={false}
-                  />
-                </span>
-                {catalog.version === "elements_v1" && (
-                  <span className="hand-meta">
-                    <SystemBadge system={def.classId} />
-                    <RarityBadge rarity={def.rarity} />
-                  </span>
-                )}
-                <span className="card-kind">
-                  {def.type === "UNIT" ? "Unit" : "Trick"}
-                </span>
-                <span className="card-summary">
-                  {def.printed
-                    ? `${def.printed.attack} ATK / ${def.printed.hp} HP`
-                    : "Select to read effects"}
-                </span>
+                <CardVisual definition={def} surface="hand" />
                 {mulligan && <span>{selected ? "Replace" : "Keep"}</span>}
               </button>
             );

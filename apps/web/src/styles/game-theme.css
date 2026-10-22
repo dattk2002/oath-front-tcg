@@ -2,6 +2,7 @@
 @import "./features-arenas.css";
 @import "./events-news.css";
 @import "./lobby.css";
+@import "./cards.css";
 /* Approved inherited game skin. Arena dimensions remain owned by match.css. */
 body {
   --bg: var(--campaign-ink);

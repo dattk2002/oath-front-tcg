@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { CampaignArtwork } from "./CampaignArtwork";
 import { contentName, heroTitle } from "../../content/english-content";
+import CardVisual from "../content/CardVisual";
+import { useLiveRead } from "../content/use-live-read";
 import { HomeNews } from "./LiveNews";
 import type { ApiClient } from "../match/api-client";
 import { classNames, factionName, heroPortrait, publicHeroes } from "./model";
@@ -32,11 +34,7 @@ const phases = [
 const featured = ["H_G_BP", "H_G_MOS", "H_E_VAN"].map((id) =>
   publicHeroes.find((h) => h.id === id)!,
 );
-const showcase = [
-  { id: "GC01", cost: 1, role: "Unit", stats: "1 ATK / 2 HP" },
-  { id: "B03", cost: 3, role: "Unit", stats: "2 ATK / 3 HP" },
-  { id: "GC05", cost: 2, role: "Trick", stats: "Deal 2 damage" },
-];
+const showcaseIds = ["GC01", "B03", "GC05"];
 function PhaseGuide() {
   const [phase, setPhase] = useState(0);
   return (
@@ -138,6 +136,7 @@ export function CampaignHome({
   busy: boolean;
   resume: boolean;
 }) {
+  const showcase = useLiveRead("home-card-catalog", () => api.catalog());
   return (
     <div
       className="campaign-home home-expanded"
@@ -270,26 +269,23 @@ export function CampaignHome({
           </Link>
         </div>
         <div className="home-card-fan" aria-label="A sample of Dawnward cards">
-          {showcase.map((card) => (
-            <figure key={card.id} className="home-showcase-card">
-              <span
-                className="home-card-cost"
-                aria-label={`${card.cost} energy`}
-              >
-                {card.cost}
-              </span>
-              <CampaignArtwork
-                src={`/assets/fivefold-cards-v3/cards/${card.id.toLowerCase()}-inspect.webp`}
-                alt={`${contentName(card.id)} artwork`}
-                className="contain"
-              />
-              <figcaption>
-                <small>{card.role}</small>
-                <strong>{contentName(card.id)}</strong>
-                <span>{card.stats}</span>
-              </figcaption>
-            </figure>
-          ))}
+          {showcaseIds.map((id) => {
+            const card = showcase.data?.cards.find((c) => c.id === id);
+            return (
+              <figure key={id} className="home-showcase-card">
+                {card ? (
+                  <CardVisual definition={card} surface="showcase" />
+                ) : (
+                  <span className="card-showcase-placeholder">
+                    {contentName(id)}
+                    <small>
+                      {showcase.error ? "Artwork unavailable" : "Loading card…"}
+                    </small>
+                  </span>
+                )}
+              </figure>
+            );
+          })}
         </div>
       </section>
       <section

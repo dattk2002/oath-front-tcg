@@ -1,3 +1,4 @@
+import CardVisual from "../content/CardVisual";
 import { useRef } from "react";
 import Link from "next/link";
 import type { MatchSummary } from "@oathfront/contracts/browser";
@@ -21,6 +22,11 @@ export function RewardSummary({
     !!summary.challenge || !!summary.rewards,
   );
   useUiMotion(ref, "panel", summary.matchId, !!summary.rewards?.cards.length);
+  const catalog = useLiveRead(
+    "reward-card-catalog",
+    () => api.catalog(),
+    !!summary.rewards?.cards.length,
+  );
   const id = summary.challenge?.eventId ?? summary.rewards?.eventId;
   const event = events.data?.items.find((e) => e.id === id);
   if (!summary.challenge && !summary.rewards) return null;
@@ -38,19 +44,33 @@ export function RewardSummary({
               : "This match does not earn account rewards."}
         </p>
       )}
-      {summary.rewards?.cards.map((card) => (
-        <div key={card.cardId}>
-          <CampaignArtwork
-            className="contain"
-            src={artById(card.cardId)!.inspect!}
-            alt=""
-          />
-          <strong>
-            {contentName(card.cardId)} · {card.quantity} copy earned
-          </strong>
-          <p>Saved to your collection.</p>
-        </div>
-      ))}
+      {summary.rewards?.cards.map((card) => {
+        const definition = catalog.data?.cards.find(
+          (c) => c.id === card.cardId,
+        );
+        return (
+          <div className="earned-card" key={card.cardId}>
+            {definition ? (
+              <CardVisual
+                definition={definition}
+                surface="inspect"
+                quantity={card.quantity}
+                artRetry
+              />
+            ) : (
+              <CampaignArtwork
+                className="contain"
+                src={artById(card.cardId)!.inspect!}
+                alt=""
+              />
+            )}
+            <strong>
+              {contentName(card.cardId)} · {card.quantity} copy earned
+            </strong>
+            <p>Saved to your collection.</p>
+          </div>
+        );
+      })}
       {!!summary.rewards?.cosmetics.length && (
         <p>Season completion badge earned.</p>
       )}

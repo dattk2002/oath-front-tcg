@@ -5,9 +5,9 @@ import {
 } from "../content/ContentBadges";
 import { useCollection } from "../content/use-collection";
 import { useVersionedCatalog } from "../content/use-versioned-catalog";
-import { contentName, contentText } from "../../content/english-content";
+import { contentName } from "../../content/english-content";
 import { usePrivateStorage } from "../auth/private-storage";
-import ArtImage from "../match/ArtImage";
+import CardVisual from "../content/CardVisual";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -768,18 +768,17 @@ export default function DeckBuilder({
       )}
       {inspect && (
         <Modal title={contentName(inspect.id)} onClose={() => setInspect(null)}>
-          <div className="deck-inspect-art">
-            <ArtImage
-              artKey={inspect.artKey}
-              name={contentName(inspect.id)}
-              variant="inspect"
-            />
-          </div>
+          <CardVisual definition={inspect} surface="inspect" artRetry />
           <div className="card-affinities">
             <RarityBadge rarity={inspect.rarity} full />
             <SystemBadge system={inspect.classId} />
           </div>
-          <p>{contentText(inspect.id)}</p>
+          <p className="detail-kicker">
+            {inspect.cost} energy ·{" "}
+            {inspect.type === "UNIT"
+              ? `${inspect.printed.attack} ATK · ${inspect.printed.hp} HP`
+              : "Trick"}
+          </p>
           <div className="keyword-help">
             {inspect.keywords.map((k) => (
               <details key={k}>

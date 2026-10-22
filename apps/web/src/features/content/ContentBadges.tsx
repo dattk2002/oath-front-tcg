@@ -6,6 +6,7 @@ import type {
 import presentation from "../../content/elements-presentation.json" with { type: "json" };
 import rarityTokens from "../../../public/assets/elements-v1/tokens.json" with { type: "json" };
 import { classLabel } from "../match/labels";
+import { RaritySymbol } from "./RarityGem";
 
 export function SystemBadge({ system }: { system: ClassId | null }) {
   const definition = presentation.systems.find((s) => s.id === system);
@@ -50,7 +51,7 @@ export function RarityBadge({
       aria-label={`${token.name} rarity`}
       title={token.name}
     >
-      <img src={token.icon} width={18} height={18} alt="" />
+      <RaritySymbol rarity={rarity!} />
       {token.code}
       {full ? ` · ${token.name}` : ""}
     </span>

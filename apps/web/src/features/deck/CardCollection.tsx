@@ -1,5 +1,5 @@
-import { RarityBadge, SystemBadge } from "../content/ContentBadges";
-import { contentName, contentText } from "../../content/english-content";
+import CardVisual from "../content/CardVisual";
+import { contentName } from "../../content/english-content";
 import { useState } from "react";
 import type {
   CardDefinitionView,
@@ -9,7 +9,6 @@ import type {
 } from "@oathfront/contracts/browser";
 import { classLabel } from "../match/labels";
 import { filterCards } from "./model";
-import ArtImage from "../match/ArtImage";
 export function QuantityControls({
   card,
   quantity,
@@ -152,32 +151,25 @@ export default function CardCollection({
             key={c.id}
             onClick={() => onInspect(c)}
           >
-            <span className="card-cost">{c.cost}</span>
-            <button
-              className="card-title"
-              onClick={(e) => {
-                e.stopPropagation();
-                onInspect(c);
-              }}
-            >
-              {contentName(c.id)}
-            </button>
-            <span className={`card-art ${c.faction.toLowerCase()}`}>
-              <ArtImage artKey={c.artKey} name={contentName(c.id)} />
-            </span>
-            <p className="card-stat-plate">
-              {c.type === "UNIT"
-                ? `${c.printed.attack} ATK · ${c.printed.hp} HP`
-                : "Trick"}
-            </p>
-            <div className="card-affinities">
-              <RarityBadge rarity={c.rarity} />
-              <SystemBadge system={c.classId} />
-            </div>
+            <CardVisual
+              definition={c}
+              surface="collection"
+              artRetry
+              title={
+                <button
+                  className="card-title"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onInspect(c);
+                  }}
+                >
+                  {contentName(c.id)}
+                </button>
+              }
+            />
             {c.rarity === "E" && (
               <p className="owned-count">Owned {owned(c)}/2 · Event tickets</p>
             )}
-            <p className="card-rules">{contentText(c.id)}</p>
             <QuantityControls
               card={c}
               owned={owned(c)}

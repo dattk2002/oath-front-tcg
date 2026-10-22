@@ -298,12 +298,24 @@ test("account wins a real prepared battle, earns its card once and retains it af
     await expect(page).toHaveURL(/\/matches\//);
     const matchId = page.url().split("/").at(-1)!;
     await page.goto("/events/first-light-week-01");
-    await second
-      .getByRole("button", { name: "Play daily challenge", exact: true })
-      .click();
-    await expect(
-      second.getByRole("link", { name: "Resume active match", exact: true }),
-    ).toBeVisible();
+    const secondPlay = second.getByRole("button", {
+      name: "Play daily challenge",
+      exact: true,
+    });
+    const secondResume = second.getByRole("link", {
+      name: "Resume active match",
+      exact: true,
+    });
+    // A focus refresh may already have replaced the stale start control.
+    if (await secondPlay.isVisible()) {
+      try {
+        await secondPlay.click({ timeout: 5000 });
+      } catch (error) {
+        if (!(await secondResume.isVisible())) throw error;
+      }
+    }
+    await expect(secondResume).toBeVisible();
+    await expect(secondResume).toHaveAttribute("href", `/matches/${matchId}`);
     await second.close();
     expect(
       (

@@ -5,11 +5,12 @@ import type {
   DeckEntry,
   PublicCatalog,
 } from "@oathfront/contracts/browser";
-import { contentName, contentText } from "../../content/english-content";
+import { contentName } from "../../content/english-content";
 import { RarityBadge, SystemBadge } from "../content/ContentBadges";
 import DetailDialog from "../content/DetailDialog";
-import ArtImage from "../match/ArtImage";
-import { keywordLabel } from "../match/labels";
+import CardVisual from "../content/CardVisual";
+import { rarityLabel } from "../content/RarityGem";
+import { classLabel, keywordLabel } from "../match/labels";
 import { keywordCopy } from "../content/keyword-copy";
 
 export default function DeckPreview({
@@ -66,30 +67,13 @@ export default function DeckPreview({
               data-rarity={card.rarity}
               data-quantity={entry.quantity}
               onClick={() => setInspect(card)}
-              aria-label={`${contentName(card.id)}, ${card.cost} energy, ${entry.quantity} copies`}
+              aria-label={`${contentName(card.id)}, ${card.cost} energy, ${entry.quantity} copies. ${card.type === "UNIT" ? `Unit, ${card.printed.attack} attack, ${card.printed.hp} health` : "Trick"}. ${card.rarity ? `${rarityLabel(card.rarity)} rarity. ` : ""}${card.classId ? classLabel[card.classId] : "Neutral"} system.`}
             >
-              <span className="deck-card-art">
-                <ArtImage
-                  artKey={card.artKey}
-                  name={contentName(card.id)}
-                  retry={false}
-                />
-              </span>
-              <span className="deck-card-cost" aria-hidden="true">
-                {card.cost}
-              </span>
-              <span className="deck-card-quantity" aria-hidden="true">
-                ×{entry.quantity}
-              </span>
-              <strong>{contentName(card.id)}</strong>
-              <span className="deck-card-meta">
-                <RarityBadge rarity={card.rarity} />
-                <span>
-                  {card.type === "UNIT"
-                    ? `${card.printed.attack} / ${card.printed.hp}`
-                    : "Trick"}
-                </span>
-              </span>
+              <CardVisual
+                definition={card}
+                surface="preview"
+                quantity={entry.quantity}
+              />
             </button>
           );
         })}
@@ -105,13 +89,7 @@ export default function DeckPreview({
           label="Card details"
           onClose={() => setInspect(null)}
         >
-          <div className="preview-inspect-art">
-            <ArtImage
-              artKey={inspect.artKey}
-              name={contentName(inspect.id)}
-              variant="inspect"
-            />
-          </div>
+          <CardVisual definition={inspect} surface="inspect" artRetry />
           <div className="card-affinities">
             <RarityBadge rarity={inspect.rarity} full />
             <SystemBadge system={inspect.classId} />
@@ -122,7 +100,6 @@ export default function DeckPreview({
               ? `${inspect.printed.attack} ATK · ${inspect.printed.hp} HP`
               : "Trick"}
           </p>
-          <p>{contentText(inspect.id)}</p>
           {inspect.keywords.length > 0 && (
             <dl className="deck-keyword-list">
               {inspect.keywords.map((keyword) => (

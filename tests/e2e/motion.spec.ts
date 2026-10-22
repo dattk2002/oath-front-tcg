@@ -216,14 +216,17 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
   );
   const renderer = await enter(page, initial.view.matchId);
   const handCard = page.locator(".hand-card").first();
+  const handArt = handCard.locator(".card-face-art .asset-image");
+  await expect(handArt).toBeVisible();
   await handCard.focus();
   await expect
     .poll(() =>
-      handCard.evaluate(
-        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
-      ),
+      handArt.evaluate((el) => {
+        const matrix = new DOMMatrix(getComputedStyle(el).transform);
+        return Math.hypot(matrix.m11, matrix.m12);
+      }),
     )
-    .toBeLessThan(-5);
+    .toBeGreaterThan(1.04);
   await page.evaluate(() => {
     Object.defineProperty(document, "hidden", {
       configurable: true,
@@ -233,11 +236,12 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
   });
   await expect
     .poll(() =>
-      handCard.evaluate(
-        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
-      ),
+      handArt.evaluate((el) => {
+        const matrix = new DOMMatrix(getComputedStyle(el).transform);
+        return Math.hypot(matrix.m11, matrix.m12);
+      }),
     )
-    .toBe(0);
+    .toBeCloseTo(1, 3);
   await page.evaluate(() => {
     Object.defineProperty(document, "hidden", {
       configurable: true,
@@ -247,38 +251,43 @@ test("actual WebGL signature can be interrupted and remounted, then fast-forward
   });
   await expect
     .poll(() =>
-      handCard.evaluate(
-        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
-      ),
+      handArt.evaluate((el) => {
+        const matrix = new DOMMatrix(getComputedStyle(el).transform);
+        return Math.hypot(matrix.m11, matrix.m12);
+      }),
     )
-    .toBeLessThan(-5);
+    .toBeGreaterThan(1.04);
   await page
     .getByRole("heading", { name: "OathFront match" })
     .evaluate((el) => (el as HTMLElement).focus());
   await handCard.dispatchEvent("focusin");
   await expect
     .poll(() =>
-      handCard.evaluate(
-        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
-      ),
+      handArt.evaluate((el) => {
+        const matrix = new DOMMatrix(getComputedStyle(el).transform);
+        return Math.hypot(matrix.m11, matrix.m12);
+      }),
     )
-    .toBeLessThan(-5);
+    .toBeGreaterThan(1.04);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect
     .poll(() =>
-      handCard.evaluate(
-        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
-      ),
+      handArt.evaluate((el) => {
+        const matrix = new DOMMatrix(getComputedStyle(el).transform);
+        return Math.hypot(matrix.m11, matrix.m12);
+      }),
     )
-    .toBe(0);
+    .toBeCloseTo(1, 3);
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await expect
     .poll(() =>
-      handCard.evaluate(
-        (el) => new DOMMatrix(getComputedStyle(el).transform).m42,
-      ),
+      handArt.evaluate((el) => {
+        const matrix = new DOMMatrix(getComputedStyle(el).transform);
+        return Math.hypot(matrix.m11, matrix.m12);
+      }),
     )
-    .toBeLessThan(-5);
+    .toBeGreaterThan(1.04);
+  await expect(handCard).toHaveCSS("transform", "none");
   const before = await page
     .locator("canvas")
     .screenshot({ path: `${evidence}/canvas-before.png` });

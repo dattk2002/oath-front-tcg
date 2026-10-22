@@ -33,7 +33,7 @@ test("save a legal elements deck and enter a real match with rarity and system l
   await page.getByRole("button", { name: "Start match", exact: true }).click();
   await expect(page).toHaveURL(/\/matches\/[a-f0-9-]+$/);
   await expect(page.locator(".hand-card")).toHaveCount(4);
-  await expect(page.locator(".hand-card .rarity-badge")).toHaveCount(4);
+  await expect(page.locator(".hand-card .card-rarity-gem")).toHaveCount(4);
   await expect(page.locator(".hand-card .system-badge")).toHaveCount(4);
   await page
     .getByRole("button", { name: "Confirm mulligan", exact: true })
@@ -52,15 +52,19 @@ test("save a legal elements deck and enter a real match with rarity and system l
     const card = page.locator(".hand-card").first();
     const bounds = await card.boundingBox();
     for (const badge of await card
-      .locator(".rarity-badge, .system-badge")
+      .locator(".card-rarity-gem, .system-badge")
       .all()) {
       const box = await badge.boundingBox();
       expect(box!.x).toBeGreaterThanOrEqual(bounds!.x);
       expect(box!.x + box!.width).toBeLessThanOrEqual(
         bounds!.x + bounds!.width,
       );
+      // The gem hangs slightly over the bottom frame in its reserved socket.
+      const socketOverhang = await badge.evaluate((el) =>
+        el.classList.contains("card-rarity-gem") ? 4 : 0,
+      );
       expect(box!.y + box!.height).toBeLessThanOrEqual(
-        bounds!.y + bounds!.height,
+        bounds!.y + bounds!.height + socketOverhang,
       );
       expect(
         await badge.evaluate((el) => el.scrollWidth <= el.clientWidth),
@@ -211,7 +215,7 @@ test("new systems, rarity and owned copy controls remain legible at three sizes"
       fullPage: true,
     });
   }
-  await page.route("**/assets/event-cards-v1/cards/e01-thumb.webp", (route) =>
+  await page.route("**/assets/card-scenes-v1/cards/e01-thumb.webp", (route) =>
     route.abort(),
   );
   await page.reload();
@@ -219,7 +223,7 @@ test("new systems, rarity and owned copy controls remain legible at three sizes"
     .getByRole("combobox", { name: "Rarity", exact: true })
     .selectOption("E");
   await expect(sentinel.locator(".art-fallback")).toBeVisible();
-  await page.unroute("**/assets/event-cards-v1/cards/e01-thumb.webp");
+  await page.unroute("**/assets/card-scenes-v1/cards/e01-thumb.webp");
   await sentinel
     .getByRole("button", { name: "Retry art Oathglass Sentinel", exact: true })
     .click();
@@ -239,7 +243,7 @@ test("an active legacy match requests its own catalog and never receives rarity 
   await page.goto(`/matches/${old.id}`);
   await expect(page.locator(".hand-card").first()).toBeVisible();
   expect(versions).toContain("core_v1");
-  await expect(page.locator(".hand-card .rarity-badge")).toHaveCount(0);
+  await expect(page.locator(".hand-card .card-rarity-gem")).toHaveCount(0);
   await page.screenshot({
     path: `${evidence}/legacy-battle.png`,
     fullPage: true,

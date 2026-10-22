@@ -82,12 +82,18 @@ for (const input of ["pointer", "keyboard", "drag"] as const)
       await page.keyboard.press("Enter");
     } else if (input === "pointer") {
       await source.click();
-      await page
-        .getByRole("button", {
-          name: "Choose lane 2, legal target",
-          exact: true,
-        })
-        .click();
+      const lane = page.getByRole("button", {
+        name: "Choose lane 2, legal target",
+        exact: true,
+      });
+      const before = await lane.boundingBox();
+      await lane.hover();
+      const after = await lane.boundingBox();
+      expect(
+        after,
+        "Forecast must not move a lane target under the pointer",
+      ).toEqual(before);
+      await lane.click();
     } else {
       const box = await source.boundingBox();
       expect(box).not.toBeNull();
@@ -128,7 +134,10 @@ test("playable trick label and unit-to-hero focus forecast follow the resolved l
   await page.goto(`/matches/${id}`);
   const source = page.locator(`[data-card-id="${instanceId}"]`);
   await expect(source).toHaveAccessibleName(
-    "Playable. 2 energy Coalshot Select to read effects",
+    /Playable\..*2 energy.*Trick.*Coalshot.*Deal 3 damage to an enemy unit or the enemy hero\./,
+  );
+  await expect(source).not.toHaveAccessibleName(
+    /\b(?:ATK|HP|attack|health)\b/i,
   );
   await expect(source).toHaveAttribute("data-playable-unit", "false");
   await source.click();

@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import CardVisual from "../content/CardVisual";
+import { useLiveRead } from "../content/use-live-read";
+import { createApiClient } from "../match/api-client";
 import { CampaignArtwork } from "./CampaignArtwork";
 import { useReducedMotion } from "../motion/use-reduced-motion";
 import Link from "next/link";
@@ -40,7 +43,13 @@ const panels = [
 ];
 export function FeatureStage() {
   const [selected, setSelected] = useState(0);
+  const [api] = useState(() => createApiClient());
   const reduced = useReducedMotion();
+  const showcase = useLiveRead(
+    "feature-card-catalog",
+    () => api.catalog(),
+    selected === 2 || reduced,
+  );
   const root = useRef<HTMLElement>(null);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   useEffect(() => {
@@ -105,14 +114,42 @@ export function FeatureStage() {
             }
             hidden={!reduced && selected !== index}
           >
-            <CampaignArtwork
-              className="feature-stage-art"
-              src={`/assets/features-v2/${panel.key}-wide.webp`}
-              srcSet={`/assets/features-v2/${panel.key}-small.webp 768w, /assets/features-v2/${panel.key}-medium.webp 1200w, /assets/features-v2/${panel.key}-wide.webp 1920w`}
-              sizes="100vw"
-              alt=""
-              eager={index === selected}
-            />
+            {panel.key === "collectible-cards" ? (
+              <div
+                className="feature-stage-art feature-card-showcase"
+                aria-label="Current OathFront cards"
+              >
+                {["GC01", "B03", "GC05"].map((id) => {
+                  const card = showcase.data?.cards.find((c) => c.id === id);
+                  return (
+                    <span className="feature-showcase-card" key={id}>
+                      {card ? (
+                        <CardVisual
+                          definition={card}
+                          surface="showcase"
+                          eager={index === selected}
+                        />
+                      ) : (
+                        <span className="card-showcase-placeholder">
+                          {showcase.error
+                            ? "Cards unavailable"
+                            : "Loading cards…"}
+                        </span>
+                      )}
+                    </span>
+                  );
+                })}
+              </div>
+            ) : (
+              <CampaignArtwork
+                className="feature-stage-art"
+                src={`/assets/features-v2/${panel.key}-wide.webp`}
+                srcSet={`/assets/features-v2/${panel.key}-small.webp 768w, /assets/features-v2/${panel.key}-medium.webp 1200w, /assets/features-v2/${panel.key}-wide.webp 1920w`}
+                sizes="100vw"
+                alt=""
+                eager={index === selected}
+              />
+            )}
             <div className="feature-stage-copy">
               <p className="kicker">{panel.label}</p>
               <Heading id={`feature-title-${index}`}>{panel.title}</Heading>
