@@ -17,7 +17,14 @@ export function validateDeck(
   const issues: DeckIssue[] = [];
   const add = (code: DeckIssue["code"], cardId: string | null = null) =>
     issues.push({ code, cardId, messageKey: `deck.${code.toLowerCase()}` });
-  if (deck.contentVersion !== catalog.version) add("VERSION_UNSUPPORTED");
+  const compatibleLegacy =
+    deck.contentVersion === "core_v1" &&
+    catalog.version === "heroes_v1" &&
+    ["H_G_BV", "H_G_BP", "H_G_VP", "H_E_FX", "H_E_FS", "H_E_XS"].includes(
+      deck.heroId,
+    );
+  if (deck.contentVersion !== catalog.version && !compatibleLegacy)
+    add("VERSION_UNSUPPORTED");
   const hero = catalog.heroes.find((h) => h.id === deck.heroId);
   if (!hero) add("WRONG_FACTION");
   else if (!Array.isArray(hero.classes)) add("WRONG_CLASS");

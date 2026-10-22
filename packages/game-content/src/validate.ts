@@ -294,18 +294,18 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
       "tokens",
       "presets",
     ]) ||
-    catalog.version !== "core_v1" ||
+    !["core_v1", "heroes_v1"].includes(catalog.version) ||
     catalog.rulesVersion !== "rules_v1" ||
     catalog.locationVersion !== "locations_v1"
   )
     add("catalog", "INVALID_VERSION_OR_FIELDS");
   for (const [name, count] of [
     ["cards", 60],
-    ["powers", 18],
-    ["heroes", 6],
+    ["powers", catalog.version === "heroes_v1" ? 32 : 18],
+    ["heroes", catalog.version === "heroes_v1" ? 20 : 6],
     ["locations", 8],
     ["tokens", 3],
-    ["presets", 6],
+    ["presets", catalog.version === "heroes_v1" ? 20 : 6],
   ] as const) {
     const entries = catalog[name];
     if (entries.length !== count) add(name, "INVALID_COUNT");
@@ -388,7 +388,7 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
       );
     if (!validateWire("CardDefinitionView", view)) add(path, "INVALID_CARD");
     if (
-      card.contentVersion !== catalog.version ||
+      card.contentVersion !== "core_v1" ||
       !oneOf(card.vfxFamily, families) ||
       !oneOf(card.sfxFamily, families) ||
       !validTargeting(card.targeting)
@@ -466,7 +466,10 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
     )
       add(path, "INVALID_POWER");
     if (
-      power.contentVersion !== catalog.version ||
+      (power.contentVersion !== catalog.version &&
+        !(
+          catalog.version === "heroes_v1" && power.contentVersion === "core_v1"
+        )) ||
       !validTargeting(power.targeting) ||
       !oneOf(power.sfxFamily, families) ||
       !oneOf(power.vfxFamily, families) ||
@@ -561,7 +564,7 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
         without(token, ["type", "contentVersion"]),
       ) ||
       token.type !== "TOKEN" ||
-      token.contentVersion !== catalog.version ||
+      token.contentVersion !== "core_v1" ||
       token.tutorialOnly !== (token.id === "TK_G_LANTERN")
     )
       add(`tokens.${i}`, "INVALID_TOKEN");

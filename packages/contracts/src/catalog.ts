@@ -97,8 +97,9 @@ export type CardDefinition = WithAbilities<CardDefinitionView> & {
   sfxFamily: VfxFamily;
   vfxFamily: VfxFamily;
 };
+export type ContentVersion = "core_v1" | "heroes_v1";
 export type PowerDefinition = PowerDefinitionView & {
-  contentVersion: "core_v1";
+  contentVersion: ContentVersion;
   validPhase: "GOOD_PLAY" | "EVIL_TRICKS";
   effects: Effect[];
   targeting: Targeting;
@@ -128,7 +129,7 @@ export type TokenDefinition = TokenDefinitionView & {
   contentVersion: "core_v1";
 };
 export interface Catalog {
-  version: "core_v1";
+  version: ContentVersion;
   rulesVersion: "rules_v1";
   locationVersion: "locations_v1";
   cards: CardDefinition[];

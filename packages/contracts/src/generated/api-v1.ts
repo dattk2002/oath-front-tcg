@@ -99,7 +99,27 @@ export type CardId =
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "HeroId".
  */
-export type HeroId = "H_G_BV" | "H_G_BP" | "H_G_VP" | "H_E_FX" | "H_E_FS" | "H_E_XS";
+export type HeroId =
+  | "H_G_BV"
+  | "H_G_BP"
+  | "H_G_VP"
+  | "H_E_FX"
+  | "H_E_FS"
+  | "H_E_XS"
+  | "H_G_SOL"
+  | "H_G_CAI"
+  | "H_G_ZEP"
+  | "H_G_MER"
+  | "H_G_MOS"
+  | "H_G_HAL"
+  | "H_G_ROW"
+  | "H_E_ROO"
+  | "H_E_NYX"
+  | "H_E_BRI"
+  | "H_E_SAB"
+  | "H_E_VAN"
+  | "H_E_GRA"
+  | "H_E_SCO";
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "PowerId".
@@ -122,7 +142,21 @@ export type PowerId =
   | "S_G_VP"
   | "S_E_FX"
   | "S_E_FS"
-  | "S_E_XS";
+  | "S_E_XS"
+  | "S_G_SOL"
+  | "S_G_CAI"
+  | "S_G_ZEP"
+  | "S_G_MER"
+  | "S_G_MOS"
+  | "S_G_HAL"
+  | "S_G_ROW"
+  | "S_E_ROO"
+  | "S_E_NYX"
+  | "S_E_BRI"
+  | "S_E_SAB"
+  | "S_E_VAN"
+  | "S_E_GRA"
+  | "S_E_SCO";
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "TokenId".
@@ -723,7 +757,27 @@ export type VisibleEvent =
 export type DeckSource =
   | {
       kind: "PRESET";
-      presetId: "D_G_BV" | "D_G_BP" | "D_G_VP" | "D_E_FX" | "D_E_FS" | "D_E_XS";
+      presetId:
+        | "D_G_BV"
+        | "D_G_BP"
+        | "D_G_VP"
+        | "D_E_FX"
+        | "D_E_FS"
+        | "D_E_XS"
+        | "D_G_SOL"
+        | "D_G_CAI"
+        | "D_G_ZEP"
+        | "D_G_MER"
+        | "D_G_MOS"
+        | "D_G_HAL"
+        | "D_G_ROW"
+        | "D_E_ROO"
+        | "D_E_NYX"
+        | "D_E_BRI"
+        | "D_E_SAB"
+        | "D_E_VAN"
+        | "D_E_GRA"
+        | "D_E_SCO";
     }
   | {
       kind: "SAVED";
@@ -1398,7 +1452,27 @@ export interface DeckDTO {
  * via the `definition` "PresetDTO".
  */
 export interface PresetDTO {
-  presetId: "D_G_BV" | "D_G_BP" | "D_G_VP" | "D_E_FX" | "D_E_FS" | "D_E_XS";
+  presetId:
+    | "D_G_BV"
+    | "D_G_BP"
+    | "D_G_VP"
+    | "D_E_FX"
+    | "D_E_FS"
+    | "D_E_XS"
+    | "D_G_SOL"
+    | "D_G_CAI"
+    | "D_G_ZEP"
+    | "D_G_MER"
+    | "D_G_MOS"
+    | "D_G_HAL"
+    | "D_G_ROW"
+    | "D_E_ROO"
+    | "D_E_NYX"
+    | "D_E_BRI"
+    | "D_E_SAB"
+    | "D_E_VAN"
+    | "D_E_GRA"
+    | "D_E_SCO";
   heroId: HeroId;
   name: string;
   contentVersion: Version;
@@ -1644,12 +1718,8 @@ export interface TokenDefinitionView {
   tutorialOnly: boolean;
   artKey: ArtKey;
 }
-/**
- * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
- * via the `definition` "PublicCatalog".
- */
 export interface PublicCatalog {
-  version: Version;
+  version: "core_v1" | "heroes_v1";
   rulesVersion: Version;
   locationVersion: Version;
   sha256: string;
@@ -1722,7 +1792,7 @@ export interface PublicCatalog {
   ];
   /**
    * @minItems 6
-   * @maxItems 6
+   * @maxItems 20
    */
   heroes: [
     HeroDefinitionView,
@@ -1735,7 +1805,7 @@ export interface PublicCatalog {
   ];
   /**
    * @minItems 18
-   * @maxItems 18
+   * @maxItems 32
    */
   powers: [
     PowerDefinitionView,
@@ -1780,7 +1850,7 @@ export interface PublicCatalog {
   tokens: [TokenDefinitionView, TokenDefinitionView, TokenDefinitionView, ...TokenDefinitionView[]];
   /**
    * @minItems 6
-   * @maxItems 6
+   * @maxItems 20
    */
   presets: [PresetDTO, PresetDTO, PresetDTO, PresetDTO, PresetDTO, PresetDTO, ...PresetDTO[]];
 }

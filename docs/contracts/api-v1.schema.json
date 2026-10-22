@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Ngu Lo public API v1 — proposed specification, not runtime implementation",
+  "title": "Ngu Lo public API v1 \u2014 proposed specification, not runtime implementation",
   "definitions": {
     "Uuid": {
       "type": "string",
@@ -127,7 +127,21 @@
         "H_G_VP",
         "H_E_FX",
         "H_E_FS",
-        "H_E_XS"
+        "H_E_XS",
+        "H_G_SOL",
+        "H_G_CAI",
+        "H_G_ZEP",
+        "H_G_MER",
+        "H_G_MOS",
+        "H_G_HAL",
+        "H_G_ROW",
+        "H_E_ROO",
+        "H_E_NYX",
+        "H_E_BRI",
+        "H_E_SAB",
+        "H_E_VAN",
+        "H_E_GRA",
+        "H_E_SCO"
       ]
     },
     "PowerId": {
@@ -150,7 +164,21 @@
         "S_G_VP",
         "S_E_FX",
         "S_E_FS",
-        "S_E_XS"
+        "S_E_XS",
+        "S_G_SOL",
+        "S_G_CAI",
+        "S_G_ZEP",
+        "S_G_MER",
+        "S_G_MOS",
+        "S_G_HAL",
+        "S_G_ROW",
+        "S_E_ROO",
+        "S_E_NYX",
+        "S_E_BRI",
+        "S_E_SAB",
+        "S_E_VAN",
+        "S_E_GRA",
+        "S_E_SCO"
       ]
     },
     "TokenId": {
@@ -3605,7 +3633,21 @@
             "D_G_VP",
             "D_E_FX",
             "D_E_FS",
-            "D_E_XS"
+            "D_E_XS",
+            "D_G_SOL",
+            "D_G_CAI",
+            "D_G_ZEP",
+            "D_G_MER",
+            "D_G_MOS",
+            "D_G_HAL",
+            "D_G_ROW",
+            "D_E_ROO",
+            "D_E_NYX",
+            "D_E_BRI",
+            "D_E_SAB",
+            "D_E_VAN",
+            "D_E_GRA",
+            "D_E_SCO"
           ]
         },
         "heroId": {
@@ -3736,7 +3778,21 @@
                 "D_G_VP",
                 "D_E_FX",
                 "D_E_FS",
-                "D_E_XS"
+                "D_E_XS",
+                "D_G_SOL",
+                "D_G_CAI",
+                "D_G_ZEP",
+                "D_G_MER",
+                "D_G_MOS",
+                "D_G_HAL",
+                "D_G_ROW",
+                "D_E_ROO",
+                "D_E_NYX",
+                "D_E_BRI",
+                "D_E_SAB",
+                "D_E_VAN",
+                "D_E_GRA",
+                "D_E_SCO"
               ]
             }
           },
@@ -5524,7 +5580,10 @@
       "type": "object",
       "properties": {
         "version": {
-          "$ref": "#/definitions/Version"
+          "enum": [
+            "core_v1",
+            "heroes_v1"
+          ]
         },
         "rulesVersion": {
           "$ref": "#/definitions/Version"
@@ -5550,7 +5609,7 @@
             "$ref": "#/definitions/HeroDefinitionView"
           },
           "minItems": 6,
-          "maxItems": 6
+          "maxItems": 20
         },
         "powers": {
           "type": "array",
@@ -5558,7 +5617,7 @@
             "$ref": "#/definitions/PowerDefinitionView"
           },
           "minItems": 18,
-          "maxItems": 18
+          "maxItems": 32
         },
         "locations": {
           "type": "array",
@@ -5582,7 +5641,7 @@
             "$ref": "#/definitions/PresetDTO"
           },
           "minItems": 6,
-          "maxItems": 6
+          "maxItems": 20
         }
       },
       "required": [
@@ -5597,7 +5656,113 @@
         "tokens",
         "presets"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "version": {
+                "const": "core_v1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "heroes": {
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "properties": {
+                    "id": {
+                      "enum": [
+                        "H_G_BV",
+                        "H_G_BP",
+                        "H_G_VP",
+                        "H_E_FX",
+                        "H_E_FS",
+                        "H_E_XS"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "powers": {
+                "minItems": 18,
+                "maxItems": 18,
+                "items": {
+                  "properties": {
+                    "id": {
+                      "enum": [
+                        "P_B1",
+                        "P_B2",
+                        "P_V1",
+                        "P_V2",
+                        "P_P1",
+                        "P_P2",
+                        "P_F1",
+                        "P_F2",
+                        "P_X1",
+                        "P_X2",
+                        "P_S1",
+                        "P_S2",
+                        "S_G_BV",
+                        "S_G_BP",
+                        "S_G_VP",
+                        "S_E_FX",
+                        "S_E_FS",
+                        "S_E_XS"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "presets": {
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "properties": {
+                    "presetId": {
+                      "enum": [
+                        "D_G_BV",
+                        "D_G_BP",
+                        "D_G_VP",
+                        "D_E_FX",
+                        "D_E_FS",
+                        "D_E_XS"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "heroes": {
+                "minItems": 20,
+                "maxItems": 20,
+                "type": "array"
+              },
+              "powers": {
+                "minItems": 32,
+                "maxItems": 32,
+                "type": "array"
+              },
+              "presets": {
+                "minItems": 20,
+                "maxItems": 20,
+                "type": "array"
+              }
+            }
+          }
+        }
+      ]
     },
     "EmptyBody": {
       "type": "object",
