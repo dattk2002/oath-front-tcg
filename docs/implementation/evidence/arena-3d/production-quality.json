@@ -1,0 +1,19 @@
+{
+  "result": [
+    {
+      "quality": "low",
+      "width": 1280,
+      "cssWidth": 1280,
+      "arena": "moonroot-conservatory",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    },
+    {
+      "quality": "standard",
+      "width": 1920,
+      "cssWidth": 1280,
+      "arena": "moonroot-conservatory",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    }
+  ],
+  "errors": []
+}

@@ -2365,7 +2365,7 @@
     }
   },
   "arena3dExtension": {
-    "status": "implemented_locally_verified",
+    "status": "production_verified",
     "authorization": "User explicitly selected Master Duel battlefield reference with existing OathFront card design; true 3D environments, planar cards, strong cinematic camera, landscape-first mobile with usable portrait and low mode; Three.js/PixiJS permitted.",
     "contractPath": "docs/design/arena-3d-contract.md",
     "planPath": "docs/superpowers/plans/2026-10-22-arena-3d.md",
@@ -2386,12 +2386,13 @@
     "responsivePolicy": "Desktop1440x900/1280x720, phone landscape844x390 and playable portrait375x812; retain low quality and usable WebGL-failure semantic board.",
     "compatibility": "No API/DB/engine/catalog/auth/audio modifications. Public state and intent callbacks remain authoritative. New renderer supersedes flat battle presentation only.",
     "verification": {
-      "status": "local_passed_production_pending",
+      "status": "production_verified",
       "report": "docs/implementation/arena-3d.md",
-      "frontend": "116 frontend tests in27 files, full workspace typecheck and lint pass. Next production build and standalone packaging pass.",
-      "browser": "15 unique browser cases pass across final targeted runs: all4 arenas,4 viewports, exact pointer/keyboard/drag and phone actions, normal/reduced combat, paused fast-forward, signature/hidden/reconnect/remount, fallback/retry, block/pause and effect families.",
+      "frontend": "116 frontend tests in 27 files, full workspace typecheck and lint pass. Next production build and standalone packaging pass.",
+      "browser": "15 unique browser cases pass across final targeted runs: all 4 arenas, 4 viewports, exact pointer/keyboard/drag and phone actions, normal/reduced combat, paused fast-forward, signature/hidden/reconnect/remount, fallback/retry, block/pause and effect families.",
       "evidence": "docs/implementation/evidence/arena-3d",
-      "limits": "Chromium WebGL2; physical-device GPU/Safari and universal60fps not certified."
+      "limits": "Chromium WebGL2; physical-device GPU/Safari and universal 60 fps not certified.",
+      "production": "Vercel dpl_52dbvVM2zDSYJXzuDUS8cn7QgNWs READY at oathfront.vercel.app for Git 560cb1d367d1a8cde3a6eb432a0d017f7213e92e. Real production WebGL2 layout/inspection test passed; all 7 screenshots match local evidence byte-for-byte. Low/Standard single-canvas remount and DPR caps 1/1.5 passed; no page errors. Public DTO fixtures, no hosted DB writes."
     },
     "materials": {
       "runtimeDirectory": "apps/web/public/assets/arena-materials-v1",

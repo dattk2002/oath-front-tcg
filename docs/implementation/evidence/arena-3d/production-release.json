@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-23",
+  "url": "https://oathfront.vercel.app",
+  "deploymentId": "dpl_52dbvVM2zDSYJXzuDUS8cn7QgNWs",
+  "commit": "560cb1d367d1a8cde3a6eb432a0d017f7213e92e",
+  "status": "READY",
+  "checks": [
+    "Vercel Git build and alias verified",
+    "All four arenas, desktop/phone layouts and inspector stability passed in production Chromium WebGL2",
+    "Low/Standard remount uses one canvas, DPR caps 1/1.5 verified at deviceScaleFactor2",
+    "No page errors"
+  ],
+  "fixtureScope": "Production bundle/assets with intercepted public match/session DTOs; no hosted match or database writes",
+  "visuals": [
+    {
+      "path": "docs/implementation/evidence/arena-3d/moonroot-conservatory-1440x900.png",
+      "sha256": "e1115aa048004fd40e168e655605e1d7c76bc61f585e4c56e3236fda8be3e02a",
+      "matchesLocalEvidence": true
+    },
+    {
+      "path": "docs/implementation/evidence/arena-3d/moonroot-conservatory-1280x720.png",
+      "sha256": "9e76f490d702f3e4fbcaa75f33890082ab3652326fe724656e1cc14781c6e588",
+      "matchesLocalEvidence": true
+    },
+    {
+      "path": "docs/implementation/evidence/arena-3d/moonroot-conservatory-844x390.png",
+      "sha256": "c428f4552abdc5da91dd219e907b5c178861a4a2efc1cb4299e13677a0d4245a",
+      "matchesLocalEvidence": true
+    },
+    {
+      "path": "docs/implementation/evidence/arena-3d/moonroot-conservatory-375x812.png",
+      "sha256": "fbed771f7895805e5586a77865bcf01ec02990ee26779af4db14cc45d0d56cea",
+      "matchesLocalEvidence": true
+    },
+    {
+      "path": "docs/implementation/evidence/arena-3d/cinder-foundry-1440x900.png",
+      "sha256": "4b67ff8708957a1d275ee45be28a2c1bd501b57a3bb7b3e14d8e2042a514de99",
+      "matchesLocalEvidence": true
+    },
+    {
+      "path": "docs/implementation/evidence/arena-3d/glasswater-sanctum-1440x900.png",
+      "sha256": "ae5b2b5ca3605e1f7ea49ff6f67961de0a380c4385941362ec85c8e2f736314b",
+      "matchesLocalEvidence": true
+    },
+    {
+      "path": "docs/implementation/evidence/arena-3d/astral-causeway-1440x900.png",
+      "sha256": "4ebf39e512beaa9c2771e9a2a80669e64f60f4c32b9be26bc44ac42e98dd8825",
+      "matchesLocalEvidence": true
+    }
+  ]
+}
