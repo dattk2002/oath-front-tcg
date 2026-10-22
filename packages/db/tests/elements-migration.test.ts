@@ -22,6 +22,7 @@ it("installs from scratch and upgrades real legacy rows without rewriting deck o
   const journal = JSON.parse(
     await readFile(root + "packages/db/migrations/meta/_journal.json", "utf8"),
   );
+  const migrationCount = journal.entries.length;
   journal.entries = journal.entries.filter((e: { idx: number }) => e.idx < 3);
   await writeFile(join(folder, "meta/_journal.json"), JSON.stringify(journal));
   for (const entry of journal.entries)
@@ -90,7 +91,7 @@ it("installs from scratch and upgrades real legacy rows without rewriting deck o
           "SELECT count(*)::int AS n FROM drizzle.__drizzle_migrations",
         )
       ).rows[0].n,
-    ).toBe(5);
+    ).toBe(migrationCount);
   } finally {
     await db.end();
     await owner.query(`DROP DATABASE "${name}"`);

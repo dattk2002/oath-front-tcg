@@ -79,9 +79,9 @@
 
 **Files:** scripts/manage-live-content.mjs or equivalent TSCLI; public DBseedversion bundle; adminvalidation module; docs runbook; integrationtests.
 **Interfaces:** CLI `validate`, `dry-run`, `import`, `publish`, targetexplicitlocal/development, revision/checksum guards. Same normalized bundle used bybrowserfixtures.
-- [ ] RED: duplicateimportnoextraevents, scheduledpublication clock, changedlive definitionrejected, draftsrevisionallowed, restrictedruntimecannotpublish, outputredactssecrets.
-- [ ] Implement parameterizedtransactionalwrites through existingpg/Drizzle conventions. Seedisolatedtests, noappstartupautomaticeditorialoverwrite. Explain publication/calendar/cooldown/timezone operations androllbackbyfutureversion, no destructive reset.
-- [ ] GREEN: adminintegrationchecks anddry-runexistinginteractiveDB withoutmutationuntilM6. Commit.
+- [x] RED: duplicateimportnoextraevents, scheduledpublication clock, changedlive definitionrejected, draftsrevisionallowed, restrictedruntimecannotpublish, outputredactssecrets.
+- [x] Implement parameterizedtransactionalwrites through existingpg/Drizzle conventions. Seedisolatedtests, noappstartupautomaticeditorialoverwrite. Explain publication/calendar/cooldown/timezone operations androllbackbyfutureversion, no destructive reset.
+- [x] GREEN: adminintegrationchecks anddry-runexistinginteractiveDB withoutmutationuntilM6. Commit.
 
 ## M4 — Artwork and visual contracts
 

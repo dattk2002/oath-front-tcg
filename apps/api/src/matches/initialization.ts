@@ -26,7 +26,7 @@ export interface InitializationMetadata {
 }
 export const hashJson = (value: unknown) =>
   createHash("sha256").update(canonicalJson(value)).digest("hex");
-export async function registerRelease(pool: Pool) {
+export async function registerRelease(pool: Pool | PoolClient) {
   for (const catalog of supportedCatalogs) {
     const digest = hashJson(catalog);
     await pool.query(
