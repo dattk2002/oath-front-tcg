@@ -1,3 +1,4 @@
+import { selectLobbyHero } from "./lobby-controls.js";
 import { evidencePath } from "./evidence-path.js";
 import { testOrigin } from "./test-origin.js";
 import { test, expect, type Page } from "@playwright/test";
@@ -74,9 +75,9 @@ test("twenty heroes expose exact four powers and signature without early match c
     if (r.method() === "POST" && r.url().endsWith("/matches")) creates++;
   });
   await page.goto("/heroes");
-  await expect(page.getByRole("radio")).toHaveCount(20);
+  await expect(page.getByRole("radio")).toHaveCount(6);
   for (const hero of catalog.heroes) {
-    await page.locator(`input[type="radio"][value="${hero.id}"]`).check();
+    await selectLobbyHero(page, hero.id);
     const detail = page.getByRole("complementary", { name: "Hero details" });
     await expect(
       detail.getByRole("heading", { name: contentName(hero.id), exact: true }),
@@ -87,8 +88,9 @@ test("twenty heroes expose exact four powers and signature without early match c
         detail.getByRole("button", { name: new RegExp(contentName(power.id)) }),
       ).toBeVisible();
     }
-    await expect(detail.getByText("Signature", { exact: true })).toHaveCount(1);
+    await expect(detail.locator(".signature-power")).toHaveCount(1);
   }
+  await selectLobbyHero(page, "H_G_BV");
   await page.getByRole("radio").first().focus();
   await page.keyboard.press("ArrowRight");
   await expect(page.getByRole("radio").nth(1)).toBeChecked();
@@ -106,7 +108,7 @@ test("twenty heroes expose exact four powers and signature without early match c
     await page.setViewportSize({ width, height });
     await screenshot(page, `heroes-${name}`);
   }
-  await page.getByRole("button", { name: "Choose deck", exact: true }).click();
+  await page.getByRole("link", { name: "Browse decks", exact: true }).click();
   await expect(page.getByRole("link", { name: "Customize" })).toBeVisible();
   expect(creates).toBe(0);
 });
@@ -812,7 +814,7 @@ test("definitive create rejection then another hero posts the visibly selected p
     page.getByRole("heading", { name: "Choose your hero", exact: true }),
   ).toBeVisible();
   await page.getByRole("radio", { name: /Aster/ }).check();
-  await page.getByRole("button", { name: "Choose deck", exact: true }).click();
+  await page.getByRole("link", { name: "Browse decks", exact: true }).click();
   await page
     .getByRole("button", { name: "Use this deck", exact: true })
     .click();

@@ -98,6 +98,15 @@ export function useUiMotion(
               });
           }
         } else if (kind === "hero") {
+          const art = root.querySelector(".hero-bust");
+          if (art && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            moves.push({
+              x: gsap.quickTo(art, "x", { duration: 0.35, ease: "power2.out" }),
+              y: gsap.quickTo(art, "y", { duration: 0.35, ease: "power2.out" }),
+              depth: 6,
+            });
+          }
+
           revealArt = () => {
             const reveal = makeTimeline();
             reveal.fromTo(

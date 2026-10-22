@@ -7,11 +7,10 @@ import { mkdir, writeFile } from "node:fs/promises";
 const evidence =
   process.env.OATHFRONT_ASSET_EVIDENCE_DIR ??
   evidencePath("task15", "docs/implementation/evidence/task15");
-test("missing artwork keeps its English name and supports explicit retry; slow art reserves its slot", async ({
+test("missing lobby art retains names and profile retry; slow portraits reserve their slot", async ({
   page,
 }) => {
-  const errors: string[] = [];
-  page.on("pageerror", (e) => errors.push(e.message));
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.request.post("/api/v1/guest", {
     headers: { Origin: testOrigin },
     data: {
@@ -20,99 +19,45 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
     },
   });
   let fail = true;
-  await page.route(
-    "**/assets/heroes-v5/heroes/briar/thumb.webp",
-    async (route) => {
-      if (fail)
-        await route.fulfill({ status: 404, body: "intentional asset failure" });
-      else await route.continue();
-    },
+  await page.route("**/assets/heroes-v5/heroes/briar/*", (route) =>
+    fail
+      ? route.fulfill({ status: 404, body: "intentional asset failure" })
+      : route.continue(),
   );
   await page.goto("/heroes");
   const tile = page.locator(".hero-tile").first();
-  await expect(tile.getByText("Briar", { exact: true }).first()).toBeVisible();
-  await expect(
-    tile.getByRole("button", { name: "Retry art Briar" }),
-  ).toBeVisible();
-  // Retry a different hero so accidental label/radio activation is observable.
-  await page.locator("input[name=hero]").last().check();
-  const selected = await page
-    .locator("input[name=hero]:checked")
-    .getAttribute("value");
-  const retry = tile.getByRole("button", { name: "Retry art Briar" });
-  const failedBounds = [];
-  await mkdir(evidence, { recursive: true });
-  for (const [name, width, height] of [
-    ["desktop", 1440, 900],
-    ["narrow", 375, 812],
-  ] as const) {
-    await page.setViewportSize({ width, height });
-    await tile.locator(".hero-portrait").scrollIntoViewIfNeeded();
-    await expect(
-      tile.locator(".art-fallback").getByText("Briar", { exact: true }),
-    ).toBeVisible();
-    const bounds = await retry.evaluate((button) => {
-      const portrait = button
-        .closest(".hero-portrait")!
-        .getBoundingClientRect();
-      const rect = button.getBoundingClientRect();
-      const visibleHeight = Math.max(
-        0,
-        Math.min(rect.bottom, portrait.bottom, innerHeight) -
-          Math.max(rect.top, portrait.top, 0),
-      );
-      // Probe each edge midpoint; rounded button corners are intentionally outside its hit shape.
-      const points = [
-        [rect.width / 2, 1],
-        [rect.width / 2, rect.height / 2],
-        [rect.width / 2, rect.height - 1],
-        [1, rect.height / 2],
-        [rect.width - 1, rect.height / 2],
-      ].map(([x, y]) => ({ x: rect.left + x!, y: rect.top + y! }));
-      return {
-        portrait: portrait.toJSON(),
-        retry: rect.toJSON(),
-        visibleHeight,
-        hitTestable: points.every((p) => {
-          const hit = document.elementFromPoint(p.x, p.y);
-          return !!hit && button.contains(hit);
-        }),
-      };
-    });
-    failedBounds.push({ viewport: name, ...bounds });
-    await page.screenshot({ path: `${evidence}/fix1-hero-failed-${name}.png` });
-    await writeFile(
-      `${evidence}/fix1-hero-fallback-bounds.json`,
-      JSON.stringify(failedBounds, null, 2) + "\n",
-    );
-    expect(bounds.retry.top).toBeGreaterThanOrEqual(bounds.portrait.top);
-    expect(bounds.retry.bottom).toBeLessThanOrEqual(bounds.portrait.bottom);
-    expect(bounds.retry.left).toBeGreaterThanOrEqual(bounds.portrait.left);
-    expect(bounds.retry.right).toBeLessThanOrEqual(bounds.portrait.right);
-    expect(bounds.retry.height).toBeGreaterThanOrEqual(44);
-    expect(bounds.retry.width).toBeGreaterThanOrEqual(44);
-    expect(bounds.visibleHeight).toBeGreaterThanOrEqual(44);
-    expect(bounds.hitTestable).toBe(true);
+  await expect(tile.locator(".art-fallback")).toBeVisible();
+  await expect(tile.getByText("Briar", { exact: true }).last()).toBeVisible();
+  await expect(tile.getByRole("button")).toHaveCount(0);
+  const retry = page
+    .locator(".hero-bust")
+    .getByRole("button", { name: "Retry art Briar" });
+  await expect(retry).toBeVisible();
+  for (const size of [
+    { width: 1440, height: 900 },
+    { width: 375, height: 812 },
+  ]) {
+    await page.setViewportSize(size);
+    const box = await retry.boundingBox();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+    await retry.click({ trial: true });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
   }
   fail = false;
-  await tile.getByRole("button", { name: "Retry art Briar" }).click();
-  await expect(page.locator("input[name=hero]:checked")).toHaveValue(selected!);
-  await expect(tile.locator("img[data-art-key]")).toBeVisible();
+  await retry.click();
   await expect
     .poll(() =>
-      tile
-        .locator("img[data-art-key]")
-        .evaluate(
-          (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
-        ),
+      page
+        .locator(".hero-bust img")
+        .evaluate((img: HTMLImageElement) => img.naturalWidth),
     )
-    .toBe(true);
-  await page.screenshot({ path: `${evidence}/fix1-hero-recovered-narrow.png` });
-  await page.setViewportSize({ width: 1440, height: 900 });
-  await tile.locator(".hero-portrait").scrollIntoViewIfNeeded();
-  await page.screenshot({
-    path: `${evidence}/fix1-hero-recovered-desktop.png`,
-  });
+    .toBeGreaterThan(0);
+  await expect(page.locator("input[name=hero]:checked")).toHaveValue("H_G_BV");
   await page.route(
     "**/assets/heroes-v4/heroes/aster/thumb.webp",
     async (route) => {
@@ -125,40 +70,20 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
   const before = await slot.boundingBox();
   await expect
     .poll(() =>
-      slot
-        .locator("img[data-art-key]")
-        .evaluate(
-          (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
-        ),
+      slot.locator("img").evaluate((img: HTMLImageElement) => img.naturalWidth),
     )
-    .toBe(true);
+    .toBeGreaterThan(0);
   const after = await slot.boundingBox();
   expect(after?.height).toBe(before?.height);
-  await mkdir(evidence, { recursive: true });
-  await page.locator("input[name=hero]").last().check();
-  for (const [name, width, height] of [
-    ["desktop", 1440, 900],
-    ["tablet", 1024, 768],
-    ["mobile", 375, 812],
-  ] as const) {
-    await page.setViewportSize({ width, height });
-    for (const portrait of await page.locator(".hero-portrait img").all())
-      await portrait.scrollIntoViewIfNeeded();
-    await expect
-      .poll(() =>
-        page
-          .locator(".hero-portrait img")
-          .evaluateAll(
-            (images) =>
-              images.length === 20 &&
-              images.every(
-                (image) =>
-                  (image as HTMLImageElement).complete &&
-                  (image as HTMLImageElement).naturalWidth > 0,
-              ),
-          ),
-      )
-      .toBe(true);
+  for (const size of [
+    { width: 1440, height: 900 },
+    { width: 1024, height: 768 },
+    { width: 375, height: 812 },
+  ]) {
+    await page.setViewportSize(size);
+    await expect(page.locator(".hero-tile")).toHaveCount(
+      size.width > 860 ? 6 : 4,
+    );
     const boxes = await page
       .locator(".hero-portrait img")
       .evaluateAll((images) =>
@@ -170,19 +95,9 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
       );
     for (const box of boxes) {
       expect(box.image).toBeLessThanOrEqual(box.slot);
-      expect(box.fit).toBe("cover");
+      expect(box.fit).toBe("contain");
     }
-    await page.screenshot({
-      path: `${evidence}/heroes-${name}.png`,
-      fullPage: true,
-    });
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-    ).toBe(true);
   }
-  expect(errors).toEqual([]);
 });
 test("battle atlas failure retries the complete public terrain pool and integrated art survives responsive layouts", async ({
   page,

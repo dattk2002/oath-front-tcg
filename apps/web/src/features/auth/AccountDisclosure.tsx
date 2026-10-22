@@ -1,3 +1,4 @@
+import { useUiMotion } from "../motion/use-ui-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 /** Keep AuthPanel mounted so pending authentication and recovery still run. */
@@ -13,6 +14,7 @@ export default function AccountDisclosure({
   const root = useRef<HTMLDivElement>(null);
   const button = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLDivElement>(null);
+  useUiMotion(panel, "panel", open ? "open" : "closed", open);
   useEffect(() => {
     const element = panel.current;
     if (!element) return;

@@ -1374,3 +1374,49 @@ main[data-screen="setup"]:has(.hero-lobby) {
     padding-block: 4px;
   }
 }
+.hand-meta .system-badge {
+  gap: 3px;
+}
+.hand-meta .system-mark {
+  width: 12px;
+  height: 14px;
+  border-bottom-width: 1px;
+}
+.hero-lobby .hero-stage-main {
+  overflow: clip;
+}
+.curve-unavailable {
+  grid-column: 1 / -1;
+  color: var(--error);
+}
+@media (max-height: 639px) {
+  .hero-lobby,
+  .hero-lobby .hero-select-layout,
+  .hero-lobby .hero-detail {
+    height: auto;
+  }
+  .hero-lobby .hero-stage-main {
+    min-height: 360px;
+  }
+  .hero-lobby .hero-detail {
+    grid-template-rows: auto auto;
+  }
+}
+.account-popover {
+  max-height: calc(100dvh - 90px);
+  overflow: auto;
+}
+.hero-lobby .hero-bust .art-fallback {
+  pointer-events: auto;
+  min-height: 0;
+  padding: 12px;
+}
+@media (max-width: 860px) {
+  .hero-lobby .hero-tile .system-badge,
+  .hero-lobby .hero-tile .hero-selection-status,
+  .hero-lobby .hero-stage-copy .eyebrow,
+  .hero-lobby .power-list button .power-target,
+  .hero-lobby .hero-preset-note {
+    font-size: 12px;
+  }
+}

@@ -88,3 +88,7 @@ The eight redesigned heroes are Briar, Cairn, Rowan, Solenne, Meridian, Halcyon,
 - [ ] Reduced motion has no ambient/reveal animation; rapid navigation and hidden tabs leave no running timelines or console errors.
 - [ ] Daily win/loss/reload and guest/account transitions match server progress and ownership; future weekly cards are not leaked by UI projections.
 - [ ] Pen source and both legacy catalog hashes are unchanged. Browser evidence and implementation verification must be recorded before checking runtime acceptance boxes.
+
+## Lobby refinement · 22 October 2026
+
+The [lobby UI contract](lobby-ui-contract.md) supersedes inherited account-banner, hero-selector and deck-list composition. System badges now use framed insignia and visible names; compact roster tiles may use text-only 12px system labels. Power glyphs encode effects, with a distinct signature frame. Deck previews must expose actual artwork and quantities by default. Pen source and all gameplay metadata remain unchanged.

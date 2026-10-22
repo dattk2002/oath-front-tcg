@@ -86,7 +86,7 @@ test("Pen Home and profiles preserve guest entry and selected hero deck intent",
     .getByRole("button", { name: "Play now · Play vs bot", exact: true })
     .click();
   await expect(page).toHaveURL(/\/heroes$/);
-  await expect(page.locator('input[name="hero"]')).toHaveCount(20);
+  await expect(page.locator('input[name="hero"]')).toHaveCount(6);
   await page.goto("/explore/heroes/H_E_FS");
   await expect(
     page.getByRole("heading", { name: "Vesper", exact: true }),

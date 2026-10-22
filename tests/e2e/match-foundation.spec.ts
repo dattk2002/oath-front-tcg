@@ -55,7 +55,7 @@ for (const faction of ["GOOD", "EVIL"] as const) {
         exact: false,
       })
       .check();
-    await page.getByRole("button", { name: "Choose deck" }).click();
+    await page.getByRole("link", { name: "Browse decks" }).click();
     await expect(page.getByText("30/30 cards", { exact: true })).toBeVisible();
     await page.getByRole("button", { name: "Use this deck" }).click();
     await page.getByRole("button", { name: "Start match" }).click();
@@ -242,7 +242,7 @@ test("lost create response restores displayed choices on reload and retries iden
   await page.goto("/");
   await page.getByRole("button", { name: "Play vs bot" }).click();
   await page.getByRole("radio", { name: "Cinder", exact: false }).check();
-  await page.getByRole("button", { name: "Choose deck" }).click();
+  await page.getByRole("link", { name: "Browse decks" }).click();
   await page.getByRole("button", { name: "Use this deck" }).click();
   await page
     .getByRole("combobox", { name: /^Opponent hero/ })

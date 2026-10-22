@@ -132,7 +132,9 @@ export default function DeckList({
           </article>
           <div className="saved-decks-heading">
             <h2>My decks</h2>
-            <Link href={`/decks/new?hero=${heroId}`}>Create deck +</Link>
+            <Link href={`/decks/new?hero=${heroId}`}>
+              Create deck <span aria-hidden="true">+</span>
+            </Link>
           </div>
           <div className="saved-decks">
             {items

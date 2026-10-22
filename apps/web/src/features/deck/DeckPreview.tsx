@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCollectionMotion } from "../motion/use-collection-motion";
+import { useRef, useState } from "react";
 import type {
   CardDefinitionView,
   DeckEntry,
@@ -18,6 +19,11 @@ export default function DeckPreview({
   entries: DeckEntry[];
   catalog: PublicCatalog;
 }) {
+  const grid = useRef<HTMLDivElement>(null);
+  useCollectionMotion(
+    grid,
+    entries.map((e) => `${e.cardId}:${e.quantity}`).join(","),
+  );
   const [inspect, setInspect] = useState<CardDefinitionView | null>(null);
   const cards = new Map(catalog.cards.map((card) => [card.id, card]));
   const sorted = [...entries].sort(
@@ -38,7 +44,7 @@ export default function DeckPreview({
       <p className="deck-library-hint">
         Ordered by energy. Select a card for its full effect.
       </p>
-      <div className="deck-preview-grid">
+      <div className="deck-preview-grid" ref={grid}>
         {sorted.map((entry) => {
           const card = cards.get(entry.cardId);
           if (!card)

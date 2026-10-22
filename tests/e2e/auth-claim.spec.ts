@@ -1,3 +1,4 @@
+import { revealAccountControls } from "./lobby-controls.js";
 import { evidencePath } from "./evidence-path.js";
 import { testOrigin, testApiOrigin } from "./test-origin.js";
 import { test, expect } from "@playwright/test";
@@ -96,6 +97,7 @@ async function callback(
     );
   }, session);
   await page.reload();
+  await revealAccountControls(page);
   await expect(
     page.getByRole("button", { name: "Sign out", exact: true }),
   ).toBeVisible();
@@ -156,6 +158,8 @@ test("signed fixture identity claims guest through Next/API/DB, preserves draft,
   await page.route("**/api/auth/sign-out", (r) =>
     r.fulfill({ json: { success: true } }),
   );
+  if (await page.locator(".account-trigger").count())
+    await revealAccountControls(page);
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play vs bot" })).toBeVisible();
   await page.getByRole("button", { name: "Play vs bot" }).click();
@@ -653,6 +657,7 @@ test("review: history refreshes on an in-place claim into an existing account", 
   await page.reload();
   await expect(page.getByText("No matches yet.")).toBeVisible();
   release!();
+  await revealAccountControls(page);
   await expect(
     page.getByRole("button", { name: "Sign out", exact: true }),
   ).toBeVisible();
@@ -689,6 +694,8 @@ test("review: provider-only logout retry survives guest navigation without revok
         : { json: { success: true } },
     );
   });
+  if (await page.locator(".account-trigger").count())
+    await revealAccountControls(page);
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Retry Google sign-out", exact: true }),

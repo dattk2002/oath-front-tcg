@@ -1,3 +1,4 @@
+import { selectLobbyHero } from "./lobby-controls.js";
 import { evidencePath } from "./evidence-path.js";
 import { test, expect } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -65,13 +66,11 @@ test("Pen presentation keeps hero selection, deck, settings and battle readable 
     await capture(`home-${label}`);
     await page.getByRole("button", { name: "Play now · Play vs bot" }).click();
     await expect(page.locator("[data-hero-stage]")).toBeVisible();
-    await page.locator('input[name="hero"]').last().check();
+    await selectLobbyHero(page, "H_E_SCO");
     await expect(page.locator("[data-hero-name]")).toHaveText("Scoria");
-    await page.locator('input[name="hero"]').first().check();
+    await selectLobbyHero(page, "H_G_BV");
     await capture(`heroes-${label}`);
-    await page
-      .getByRole("button", { name: "Choose deck", exact: true })
-      .click();
+    await page.getByRole("link", { name: "Browse decks", exact: true }).click();
     await page.getByRole("link", { name: "Create deck", exact: true }).click();
     await expect(page.locator(".collection-card").first()).toBeVisible();
     const add = page

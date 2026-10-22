@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
   output: "standalone",
+  // The dev badge otherwise covers the lobby pagination on short screens.
+  devIndicators: false,
   // Separate lock/cache for a user-driven dev server alongside test dev servers.
   distDir:
     process.env.OATHFRONT_INTERACTIVE === "1"

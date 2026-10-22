@@ -10,6 +10,8 @@ export default function ManaCurve({
   compact?: boolean;
 }) {
   const s = deckStats(entries, catalog);
+  const total = entries.reduce((n, e) => n + e.quantity, 0);
+  const unavailable = total - s.total;
   const table = (
     <table className="curve-table">
       <caption>Cost by copy count</caption>
@@ -37,8 +39,8 @@ export default function ManaCurve({
       aria-label="Deck statistics"
     >
       <p>
-        <strong>{s.total}/30 cards</strong> · {s.units} Units / {s.tricks}{" "}
-        Tricks · Average {s.average}
+        <strong>{total}/30 cards</strong> · {s.units} Units / {s.tricks} Tricks
+        · Average {s.average}
       </p>
       <div className="curve-bars" aria-hidden="true">
         {s.curve.map((n, i) => (
@@ -49,6 +51,11 @@ export default function ManaCurve({
           </div>
         ))}
       </div>
+      {unavailable > 0 && (
+        <p className="curve-unavailable">
+          {unavailable} unavailable cards · statistics cover known cards only.
+        </p>
+      )}
       {compact ? (
         <details className="curve-details">
           <summary>Energy curve · card counts</summary>

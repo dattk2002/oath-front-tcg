@@ -3,6 +3,7 @@ import { contentName } from "../../content/english-content";
 import { useEffect, useRef, useState } from "react";
 import type { HeroId, PublicCatalog } from "@oathfront/contracts/browser";
 import { useUiMotion } from "../motion/use-ui-motion";
+import { useCollectionMotion } from "../motion/use-collection-motion";
 import HeroInspect from "./HeroInspect";
 import ArtImage from "../match/ArtImage";
 export default function HeroSelect({
@@ -16,6 +17,8 @@ export default function HeroSelect({
   const [page, setPage] = useState(0),
     [pageSize, setPageSize] = useState(6);
   const root = useRef<HTMLElement>(null);
+  const roster = useRef<HTMLDivElement>(null);
+  useCollectionMotion(roster, `${page}:${pageSize}`);
   const selectedRef = useRef(selected);
   selectedRef.current = selected;
   useEffect(() => {
@@ -68,6 +71,7 @@ export default function HeroSelect({
       <div className="hero-select-layout">
         <div className="roster-panel">
           <div
+            ref={roster}
             role="radiogroup"
             aria-label="Choose hero"
             className="hero-grid roster-grid"
