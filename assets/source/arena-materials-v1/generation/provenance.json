@@ -1,0 +1,129 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "date": "2026-10-22",
+  "postprocessing": "Pillow RGB conversion, LANCZOS resize to 1024 square, WebP quality 86 method 6; no retouching, compositing, generated textures, or edge repair",
+  "pillow_version": "12.1.0",
+  "assets": {
+    "moonroot": {
+      "original_generated_path": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-d5bb8908-40b4-4178-ad07-2149c0f7e9c4.png",
+      "prompt": {
+        "path": "assets/source/arena-materials-v1/prompts/moonroot.txt",
+        "sha256": "60e43aa0edee5284173486761f74c411cf5ba9cbc598a88bbfc2c88341b8f786",
+        "exact_prompt": "Use case: stylized-concept\nAsset type: Production diffuse/albedo material texture for the tabletop surface mesh in OathFront, an original fantasy strategy card game, rendered by Three.js.\nComposition/framing: A single square 1024 x 1024 pixel TOP-DOWN ORTHOGRAPHIC material swatch; the material uniformly fills every pixel to all four edges. It must read as a close crop of an enormous continuous floor, not as a board or scene. Broad readable variation and crisp medium-scale detail remain visible when used across a large table. Seamless repeat-compatible edges wherever possible; continue material off every edge.\nStyle/medium: Rich realistic stylized hand-painted game environment material, premium fantasy game texture art. Opaque.\nLighting: Flat diffuse neutral illumination, albedo only, even exposure across the entire image. No cast shadows, no baked highlights, no vignette, no gradients that imply a light source.\nConstraints: No characters, creatures, props, vegetation objects, scenery, architecture, sky, horizon, perspective, isometric view, frame, borders, card slots, UI, lettering, numbers, symbols that read as text, logo or watermark. No complete arena layout. No large central emblem. No glowing emissive areas.\nPrimary request: Dark worn moss-veined stone slabs of the Moonroot Conservatory floor.\nMaterials/textures: Uneven large charcoal green-gray ancient stone slabs fitted in an irregular natural pattern; thin weathered cracks and worn edges, dense fine pits and chips, sparse low earthy green lichen and threadlike olive moss embedded inside cracks. Gentle slate tonal variation with tangible medium-scale texture. Grounded dark forest palette with teal-gray stone undertones, muted earthy moss; preserve a usable calm dark playing surface. The existing original Moonroot concept features a moonlit overgrown conservatory, dark aged green stone, and restrained old brass; reinterpret ONLY its stone floor material. No plants, vines above the surface, moonlight, flowers, brass ornament, or environment elements."
+      },
+      "master": {
+        "path": "assets/source/arena-materials-v1/masters/moonroot.png",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "bytes": 3654038,
+        "sha256": "d2fcae098ebaf29b85999ff3d40f61cd1ae29e0627f6c1557c285b1d38d4ff64"
+      },
+      "runtime": {
+        "path": "apps/web/public/assets/arena-materials-v1/moonroot.webp",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "format": "WEBP",
+        "bytes": 330640,
+        "sha256": "7c43405699a01c5999d8de012b8cf47a66c7517c20b9e96d4c18c1d55623e501"
+      }
+    },
+    "cinder": {
+      "original_generated_path": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-c6bff085-ba7d-473a-83a8-69922d5a3db5.png",
+      "prompt": {
+        "path": "assets/source/arena-materials-v1/prompts/cinder.txt",
+        "sha256": "78f0030fd5176430e624787da84169f8898eab8a9bd76931feba521844479d42",
+        "exact_prompt": "Use case: stylized-concept\nAsset type: Production diffuse/albedo material texture for the tabletop surface mesh in OathFront, an original fantasy strategy card game, rendered by Three.js.\nComposition/framing: A single square 1024 x 1024 pixel TOP-DOWN ORTHOGRAPHIC material swatch; the material uniformly fills every pixel to all four edges. It must read as a close crop of an enormous continuous floor, not as a board or scene. Broad readable variation and crisp medium-scale detail remain visible when used across a large table. Seamless repeat-compatible edges wherever possible; continue material off every edge.\nStyle/medium: Rich realistic stylized hand-painted game environment material, premium fantasy game texture art. Opaque.\nLighting: Flat diffuse neutral illumination, albedo only, even exposure across the entire image. No cast shadows, no baked highlights, no vignette, no gradients that imply a light source.\nConstraints: No characters, creatures, props, vegetation objects, scenery, architecture, sky, horizon, perspective, isometric view, frame, borders, card slots, UI, lettering, numbers, symbols that read as text, logo or watermark. No complete arena layout. No large central emblem. No glowing emissive areas.\nPrimary request: Scratched forged iron and basalt floor plates of the Cinder Foundry.\nMaterials/textures: Large irregularly fitted dark charcoal forged-iron and basalt plates; visibly hammered metal grain, worn fine scratches, small chipped spots, soot and restrained rusty iron oxidation. Narrow aged muted brass seams break up plates with subtle green-brown oxidation near joints. Strong enough material detail to read on a large tabletop; charcoal, graphite, warm dark gray, muted brown brass. The existing original Cinder concept features an industrial volcanic forge, charcoal metal flooring and aged brass joins; reinterpret ONLY its surface material. No furnace, lava, orange lighting, pipes, bolt heads, giant emblem, borders or props."
+      },
+      "master": {
+        "path": "assets/source/arena-materials-v1/masters/cinder.png",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "bytes": 3515687,
+        "sha256": "8206a8e8d5bb6ecc8bb516c029ed5a732d2dcda7a6977d3e5dab4498a36f9a92"
+      },
+      "runtime": {
+        "path": "apps/web/public/assets/arena-materials-v1/cinder.webp",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "format": "WEBP",
+        "bytes": 303870,
+        "sha256": "e173b8791aa89ebbf939a52babb6ca5522facf8dc03ca3b06766482f8e5dd623"
+      }
+    },
+    "glasswater": {
+      "original_generated_path": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-93a9e4cc-ac39-4c35-bba8-2cc3cac4af14.png",
+      "prompt": {
+        "path": "assets/source/arena-materials-v1/prompts/glasswater.txt",
+        "sha256": "00b370065b5053dfbc7d5acad169363e3cfc992c8be298b58faed82f2373b5d9",
+        "exact_prompt": "Use case: stylized-concept\nAsset type: Production diffuse/albedo material texture for the tabletop surface mesh in OathFront, an original fantasy strategy card game, rendered by Three.js.\nComposition/framing: A single square 1024 x 1024 pixel TOP-DOWN ORTHOGRAPHIC material swatch; the material uniformly fills every pixel to all four edges. It must read as a close crop of an enormous continuous floor, not as a board or scene. Broad readable variation and crisp medium-scale detail remain visible when used across a large table. Seamless repeat-compatible edges wherever possible; continue material off every edge.\nStyle/medium: Rich realistic stylized hand-painted game environment material, premium fantasy game texture art. Opaque.\nLighting: Flat diffuse neutral illumination, albedo only, even exposure across the entire image. No cast shadows, no baked highlights, no vignette, no gradients that imply a light source.\nConstraints: No characters, creatures, props, vegetation objects, scenery, architecture, sky, horizon, perspective, isometric view, frame, borders, card slots, UI, lettering, numbers, symbols that read as text, logo or watermark. No complete arena layout. No large central emblem. No glowing emissive areas.\nPrimary request: Pale blue-gray marble and slate floor of the Glasswater Sanctum.\nMaterials/textures: Large cloudy blue-gray mineral areas with gentle cool pale gray variation, crystalline stone grain, fine natural hairline fractures, thin organically branching old muted-gold mineral veins tracing irregular delicate networks. Readable soft marble variation and crisp weathered grain, restrained subtly scratched stone, moderate albedo value suited to fantasy game tabletop, no mirror gloss. The existing original Glasswater concept has an aquatic sanctuary with cool marble, slate and elegant aged-gold trim; reinterpret ONLY the stone surface. No water, reflections, caustics, columns, coral, giant emblem, borders or props."
+      },
+      "master": {
+        "path": "assets/source/arena-materials-v1/masters/glasswater.png",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "bytes": 3337600,
+        "sha256": "7742406d40402e7aadcef5c0474f208112fb28de2b7332f3bfd20cdf5ef085f4"
+      },
+      "runtime": {
+        "path": "apps/web/public/assets/arena-materials-v1/glasswater.webp",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "format": "WEBP",
+        "bytes": 289144,
+        "sha256": "214a6420a1c3615cc1d800883d2a1df1f712babb18bd51dd77b14dbe4f45c91e"
+      }
+    },
+    "astral": {
+      "original_generated_path": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-aaa192ee-ec6c-463c-b04d-41bc56f6be75.png",
+      "prompt": {
+        "path": "assets/source/arena-materials-v1/prompts/astral.txt",
+        "sha256": "953b504d1a8316f4c0643de65ed8446354e414c82c9e6971bfe86dca4228b377",
+        "exact_prompt": "Use case: stylized-concept\nAsset type: Production diffuse/albedo material texture for the tabletop surface mesh in OathFront, an original fantasy strategy card game, rendered by Three.js.\nComposition/framing: A single square 1024 x 1024 pixel TOP-DOWN ORTHOGRAPHIC material swatch; the material uniformly fills every pixel to all four edges. It must read as a close crop of an enormous continuous floor, not as a board or scene. Broad readable variation and crisp medium-scale detail remain visible when used across a large table. Seamless repeat-compatible edges wherever possible; continue material off every edge.\nStyle/medium: Rich realistic stylized hand-painted game environment material, premium fantasy game texture art. Opaque.\nLighting: Flat diffuse neutral illumination, albedo only, even exposure across the entire image. No cast shadows, no baked highlights, no vignette, no gradients that imply a light source.\nConstraints: No characters, creatures, props, vegetation objects, scenery, architecture, sky, horizon, perspective, isometric view, frame, borders, card slots, UI, lettering, numbers, symbols that read as text, logo or watermark. No complete arena layout. No large central emblem. No glowing emissive areas.\nPrimary request: Dark indigo slate surface with subtle worn brass astronomical line fragments of the Astral Causeway.\nMaterials/textures: Dark blue-indigo charcoal slate, rich weathered stone grain, irregular hairline fractures, shallow chips and mineral mottling. Sparse thin muted old brass inlays in a few incomplete small circular arcs, straight astronomical construction-line fragments, tiny worn nonlinguistic points, widely dispersed and cropped naturally across the square. Keep the lines partial and restrained, with no complete central motif or coherent diagram. The existing original Astral concept features dark celestial slate and antique brass orbital engravings; reinterpret ONLY its material. No starscape, space, glowing stars, crystals, compass rose, large complete circles, central giant emblem, focal point, or arena border."
+      },
+      "master": {
+        "path": "assets/source/arena-materials-v1/masters/astral.png",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "bytes": 3578291,
+        "sha256": "9d20c0e665d9b2df5beb612f01c2d7b7c4d9a2747e5078dc8f0f112e548b4593"
+      },
+      "runtime": {
+        "path": "apps/web/public/assets/arena-materials-v1/astral.webp",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "format": "WEBP",
+        "bytes": 328676,
+        "sha256": "4303154d41aade96464c4f00f2e3550f4d3223a9ea45f30b5f9ec68d0df906d9"
+      }
+    }
+  }
+}

@@ -611,6 +611,9 @@ export function createThreeBattleScene(
       }
       canvas.dataset.renderer = "three";
       canvas.dataset.arena = arenaKey;
+      canvas.dataset.material = String(
+        environment?.userData.materialStatus ?? "fallback",
+      );
       let meshCount = 0;
       scene.traverse((o) => {
         if (o instanceof T.Mesh) meshCount++;
@@ -708,7 +711,7 @@ export function createThreeBattleScene(
       arenaKey = view
         ? stableArenaKey(view, arenaKey)
         : (arenaKey ?? "moonroot-conservatory");
-      environment = buildEnvironment(arenaKey, options.quality);
+      environment = buildEnvironment(arenaKey, options.quality, schedule);
       scene.add(environment);
       canvas.addEventListener("webglcontextlost", contextLost);
       resize = new ResizeObserver(() => schedule(true));

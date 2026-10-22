@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "intent": "generate",
+  "transparent_background": false,
+  "referenced_image_paths_omitted": true,
+  "num_last_images_to_include_omitted": true,
+  "date": "2026-10-22",
+  "assets": {
+    "moonroot": {
+      "generatedPath": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-d5bb8908-40b4-4178-ad07-2149c0f7e9c4.png",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594 as /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-d5bb8908-40b4-4178-ad07-2149c0f7e9c4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "cinder": {
+      "generatedPath": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-c6bff085-ba7d-473a-83a8-69922d5a3db5.png",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594 as /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-c6bff085-ba7d-473a-83a8-69922d5a3db5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "glasswater": {
+      "generatedPath": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-93a9e4cc-ac39-4c35-bba8-2cc3cac4af14.png",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594 as /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-93a9e4cc-ac39-4c35-bba8-2cc3cac4af14.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "astral": {
+      "generatedPath": "/home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-aaa192ee-ec6c-463c-b04d-41bc56f6be75.png",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594 as /home/bia/.codex/generated_images/01a16471-9211-7c13-bb6a-b75257f8b594/exec-aaa192ee-ec6c-463c-b04d-41bc56f6be75.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  }
+}

@@ -1,7 +1,12 @@
 import * as T from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import { CARD_WIDTH, CARD_DEPTH, cardAnchor } from "./layout";
-export function buildEnvironment(key: string, quality: "low" | "high") {
+import { attachArenaMaterial, releaseArenaMaterials } from "./materials";
+export function buildEnvironment(
+  key: string,
+  quality: "low" | "high",
+  onMaterialLoaded?: () => void,
+) {
   const group = new T.Group();
   group.name = key;
   const fire = key === "cinder-foundry",
@@ -83,13 +88,27 @@ export function buildEnvironment(key: string, quality: "low" | "high") {
       steps: 1,
     });
     geo.rotateX(-Math.PI / 2);
+    // All paving shares a single top-down map; the supplied swatches are not edge tiles.
+    const positions = geo.getAttribute("position");
+    const normals = geo.getAttribute("normal");
+    const uv = geo.getAttribute("uv");
+    for (let i = 0; i < positions.count; i++) {
+      const px = positions.getX(i) + x;
+      const py = positions.getY(i) + y - h / 2;
+      const pz = positions.getZ(i) + z;
+      if (Math.abs(normals.getY(i)) > 0.5)
+        uv.setXY(i, px / 15 + 0.5, pz / 10.5 + 0.5);
+      else if (Math.abs(normals.getX(i)) > 0.5)
+        uv.setXY(i, pz / 10.5 + 0.5, py / 4 + 0.5);
+      else uv.setXY(i, px / 15 + 0.5, py / 4 + 0.5);
+    }
     return mesh(geo, mat, x, y - h / 2, z);
   }
   function column(x: number, z: number, height: number) {
     slab(0.95, 0.24, 0.95, x, 0.3, z, dark);
     slab(0.73, 0.13, 0.73, x, 0.48, z, trim);
     mesh(
-      new T.CylinderGeometry(0.25, 0.34, height, water ? 12 : 7),
+      new T.CylinderGeometry(0.25, 0.34, height, quality === "high" ? 20 : 12),
       stone,
       x,
       0.5 + height / 2,
@@ -356,9 +375,12 @@ export function buildEnvironment(key: string, quality: "low" | "high") {
     baked.receiveShadow = material !== glow;
     group.add(baked);
   }
+  if (onMaterialLoaded)
+    attachArenaMaterial(group, key, [stone, dark], quality, onMaterialLoaded);
   return group;
 }
 export function disposeObject(root: T.Object3D) {
+  releaseArenaMaterials(root);
   const geometries = new Set<T.BufferGeometry>(),
     materials = new Set<T.Material>(),
     textures = new Set<T.Texture>();
