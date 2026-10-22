@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Ngu Lo public API v1 \u2014 proposed specification, not runtime implementation",
+  "title": "Ngu Lo public API v1 — proposed specification, not runtime implementation",
   "definitions": {
     "Uuid": {
       "type": "string",
@@ -116,7 +116,19 @@
         "S05",
         "S06",
         "S07",
-        "S08"
+        "S08",
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E10",
+        "E11",
+        "E12"
       ]
     },
     "HeroId": {
@@ -178,7 +190,23 @@
         "S_E_SAB",
         "S_E_VAN",
         "S_E_GRA",
-        "S_E_SCO"
+        "S_E_SCO",
+        "P_GROVE1",
+        "P_GROVE2",
+        "P_TERRA1",
+        "P_TERRA2",
+        "P_TIDE1",
+        "P_TIDE2",
+        "P_TEMPEST1",
+        "P_TEMPEST2",
+        "P_SOLAR1",
+        "P_SOLAR2",
+        "P_FORGE1",
+        "P_FORGE2",
+        "P_ARCANE1",
+        "P_ARCANE2",
+        "P_UMBRAL1",
+        "P_UMBRAL2"
       ]
     },
     "TokenId": {
@@ -3518,7 +3546,10 @@
             "WRONG_CLASS",
             "DUPLICATE_CARD_ID",
             "UNKNOWN_CARD",
-            "VERSION_UNSUPPORTED"
+            "VERSION_UNSUPPORTED",
+            "TOO_MANY_NEUTRALS",
+            "SYSTEM_MINIMUM",
+            "CARD_NOT_OWNED"
           ]
         },
         "cardId": {
@@ -5100,7 +5131,15 @@
         "PRISM",
         "FURNACE",
         "HEX",
-        "VEIL"
+        "VEIL",
+        "GROVE",
+        "TERRA",
+        "TIDE",
+        "TEMPEST",
+        "SOLAR",
+        "FORGE",
+        "ARCANE",
+        "UMBRAL"
       ]
     },
     "ArtKey": {
@@ -5224,6 +5263,9 @@
                 "hp"
               ],
               "additionalProperties": false
+            },
+            "rarity": {
+              "$ref": "#/definitions/CardRarity"
             }
           },
           "required": [
@@ -5308,6 +5350,9 @@
             },
             "printed": {
               "type": "null"
+            },
+            "rarity": {
+              "$ref": "#/definitions/CardRarity"
             }
           },
           "required": [
@@ -5334,7 +5379,7 @@
           "$ref": "#/definitions/PowerId"
         },
         "faction": {
-          "$ref": "#/definitions/Side"
+          "$ref": "#/definitions/ContentFaction"
         },
         "classId": {
           "anyOf": [
@@ -5582,7 +5627,8 @@
         "version": {
           "enum": [
             "core_v1",
-            "heroes_v1"
+            "heroes_v1",
+            "elements_v1"
           ]
         },
         "rulesVersion": {
@@ -5601,7 +5647,7 @@
             "$ref": "#/definitions/CardDefinitionView"
           },
           "minItems": 60,
-          "maxItems": 60
+          "maxItems": 72
         },
         "heroes": {
           "type": "array",
@@ -5617,7 +5663,7 @@
             "$ref": "#/definitions/PowerDefinitionView"
           },
           "minItems": 18,
-          "maxItems": 32
+          "maxItems": 36
         },
         "locations": {
           "type": "array",
@@ -5741,23 +5787,484 @@
                 "type": "array"
               }
             }
-          },
-          "else": {
+          }
+        },
+        {
+          "if": {
             "properties": {
+              "version": {
+                "const": "core_v1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cards": {
+                "type": "array",
+                "minItems": 60,
+                "maxItems": 60,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classId": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/LegacyClassId"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "GC01",
+                        "GC02",
+                        "GC03",
+                        "GC04",
+                        "GC05",
+                        "GC06",
+                        "B01",
+                        "B02",
+                        "B03",
+                        "B04",
+                        "B05",
+                        "B06",
+                        "B07",
+                        "B08",
+                        "V01",
+                        "V02",
+                        "V03",
+                        "V04",
+                        "V05",
+                        "V06",
+                        "V07",
+                        "V08",
+                        "P01",
+                        "P02",
+                        "P03",
+                        "P04",
+                        "P05",
+                        "P06",
+                        "P07",
+                        "P08",
+                        "EC01",
+                        "EC02",
+                        "EC03",
+                        "EC04",
+                        "EC05",
+                        "EC06",
+                        "F01",
+                        "F02",
+                        "F03",
+                        "F04",
+                        "F05",
+                        "F06",
+                        "F07",
+                        "F08",
+                        "X01",
+                        "X02",
+                        "X03",
+                        "X04",
+                        "X05",
+                        "X06",
+                        "X07",
+                        "X08",
+                        "S01",
+                        "S02",
+                        "S03",
+                        "S04",
+                        "S05",
+                        "S06",
+                        "S07",
+                        "S08"
+                      ]
+                    },
+                    "rarity": false
+                  }
+                }
+              },
               "heroes": {
-                "minItems": 20,
-                "maxItems": 20,
-                "type": "array"
+                "type": "array",
+                "minItems": 6,
+                "maxItems": 6,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/LegacyClassId"
+                      }
+                    }
+                  }
+                }
               },
               "powers": {
-                "minItems": 32,
-                "maxItems": 32,
-                "type": "array"
+                "type": "array",
+                "minItems": 18,
+                "maxItems": 18,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classId": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/LegacyClassId"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "P_B1",
+                        "P_B2",
+                        "P_V1",
+                        "P_V2",
+                        "P_P1",
+                        "P_P2",
+                        "P_F1",
+                        "P_F2",
+                        "P_X1",
+                        "P_X2",
+                        "P_S1",
+                        "P_S2",
+                        "S_G_BV",
+                        "S_G_BP",
+                        "S_G_VP",
+                        "S_E_FX",
+                        "S_E_FS",
+                        "S_E_XS",
+                        "S_G_SOL",
+                        "S_G_CAI",
+                        "S_G_ZEP",
+                        "S_G_MER",
+                        "S_G_MOS",
+                        "S_G_HAL",
+                        "S_G_ROW",
+                        "S_E_ROO",
+                        "S_E_NYX",
+                        "S_E_BRI",
+                        "S_E_SAB",
+                        "S_E_VAN",
+                        "S_E_GRA",
+                        "S_E_SCO"
+                      ]
+                    },
+                    "faction": {
+                      "$ref": "#/definitions/Side"
+                    }
+                  }
+                }
               },
               "presets": {
+                "type": "array",
+                "minItems": 6,
+                "maxItems": 6
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "version": {
+                "const": "heroes_v1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cards": {
+                "type": "array",
+                "minItems": 60,
+                "maxItems": 60,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classId": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/LegacyClassId"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "GC01",
+                        "GC02",
+                        "GC03",
+                        "GC04",
+                        "GC05",
+                        "GC06",
+                        "B01",
+                        "B02",
+                        "B03",
+                        "B04",
+                        "B05",
+                        "B06",
+                        "B07",
+                        "B08",
+                        "V01",
+                        "V02",
+                        "V03",
+                        "V04",
+                        "V05",
+                        "V06",
+                        "V07",
+                        "V08",
+                        "P01",
+                        "P02",
+                        "P03",
+                        "P04",
+                        "P05",
+                        "P06",
+                        "P07",
+                        "P08",
+                        "EC01",
+                        "EC02",
+                        "EC03",
+                        "EC04",
+                        "EC05",
+                        "EC06",
+                        "F01",
+                        "F02",
+                        "F03",
+                        "F04",
+                        "F05",
+                        "F06",
+                        "F07",
+                        "F08",
+                        "X01",
+                        "X02",
+                        "X03",
+                        "X04",
+                        "X05",
+                        "X06",
+                        "X07",
+                        "X08",
+                        "S01",
+                        "S02",
+                        "S03",
+                        "S04",
+                        "S05",
+                        "S06",
+                        "S07",
+                        "S08"
+                      ]
+                    },
+                    "rarity": false
+                  }
+                }
+              },
+              "heroes": {
+                "type": "array",
                 "minItems": 20,
                 "maxItems": 20,
-                "type": "array"
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/LegacyClassId"
+                      }
+                    }
+                  }
+                }
+              },
+              "powers": {
+                "type": "array",
+                "minItems": 32,
+                "maxItems": 32,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classId": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/LegacyClassId"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "P_B1",
+                        "P_B2",
+                        "P_V1",
+                        "P_V2",
+                        "P_P1",
+                        "P_P2",
+                        "P_F1",
+                        "P_F2",
+                        "P_X1",
+                        "P_X2",
+                        "P_S1",
+                        "P_S2",
+                        "S_G_BV",
+                        "S_G_BP",
+                        "S_G_VP",
+                        "S_E_FX",
+                        "S_E_FS",
+                        "S_E_XS",
+                        "S_G_SOL",
+                        "S_G_CAI",
+                        "S_G_ZEP",
+                        "S_G_MER",
+                        "S_G_MOS",
+                        "S_G_HAL",
+                        "S_G_ROW",
+                        "S_E_ROO",
+                        "S_E_NYX",
+                        "S_E_BRI",
+                        "S_E_SAB",
+                        "S_E_VAN",
+                        "S_E_GRA",
+                        "S_E_SCO"
+                      ]
+                    },
+                    "faction": {
+                      "$ref": "#/definitions/Side"
+                    }
+                  }
+                }
+              },
+              "presets": {
+                "type": "array",
+                "minItems": 20,
+                "maxItems": 20
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "version": {
+                "const": "elements_v1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cards": {
+                "type": "array",
+                "minItems": 72,
+                "maxItems": 72,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classId": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/SystemId"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "rarity": {
+                      "$ref": "#/definitions/CardRarity"
+                    }
+                  },
+                  "required": [
+                    "rarity"
+                  ]
+                }
+              },
+              "heroes": {
+                "type": "array",
+                "minItems": 20,
+                "maxItems": 20,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/SystemId"
+                      }
+                    }
+                  }
+                }
+              },
+              "powers": {
+                "type": "array",
+                "minItems": 36,
+                "maxItems": 36,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "classId": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/definitions/SystemId"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "id": {
+                      "enum": [
+                        "S_G_BV",
+                        "S_G_BP",
+                        "S_G_VP",
+                        "S_E_FX",
+                        "S_E_FS",
+                        "S_E_XS",
+                        "S_G_SOL",
+                        "S_G_CAI",
+                        "S_G_ZEP",
+                        "S_G_MER",
+                        "S_G_MOS",
+                        "S_G_HAL",
+                        "S_G_ROW",
+                        "S_E_ROO",
+                        "S_E_NYX",
+                        "S_E_BRI",
+                        "S_E_SAB",
+                        "S_E_VAN",
+                        "S_E_GRA",
+                        "S_E_SCO",
+                        "P_GROVE1",
+                        "P_GROVE2",
+                        "P_TERRA1",
+                        "P_TERRA2",
+                        "P_TIDE1",
+                        "P_TIDE2",
+                        "P_TEMPEST1",
+                        "P_TEMPEST2",
+                        "P_SOLAR1",
+                        "P_SOLAR2",
+                        "P_FORGE1",
+                        "P_FORGE2",
+                        "P_ARCANE1",
+                        "P_ARCANE2",
+                        "P_UMBRAL1",
+                        "P_UMBRAL2"
+                      ]
+                    }
+                  }
+                }
+              },
+              "presets": {
+                "type": "array",
+                "minItems": 20,
+                "maxItems": 20
               }
             }
           }
@@ -5886,6 +6393,48 @@
           "maximum": 2147483647
         }
       }
+    },
+    "SystemId": {
+      "type": "string",
+      "enum": [
+        "GROVE",
+        "TERRA",
+        "TIDE",
+        "TEMPEST",
+        "SOLAR",
+        "FORGE",
+        "ARCANE",
+        "UMBRAL"
+      ]
+    },
+    "LegacyClassId": {
+      "type": "string",
+      "enum": [
+        "BASTION",
+        "VERDANT",
+        "PRISM",
+        "FURNACE",
+        "HEX",
+        "VEIL"
+      ]
+    },
+    "CardRarity": {
+      "type": "string",
+      "enum": [
+        "U",
+        "R",
+        "SR",
+        "SL",
+        "E"
+      ]
+    },
+    "ContentFaction": {
+      "type": "string",
+      "enum": [
+        "GOOD",
+        "EVIL",
+        "NEUTRAL"
+      ]
     }
   }
 }

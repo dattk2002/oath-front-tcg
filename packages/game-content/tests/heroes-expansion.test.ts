@@ -31,7 +31,9 @@ it("selects only known immutable versions without silently falling back", () => 
   expect(lookup("core_v1")).toBe(coreCatalog);
   expect(lookup("heroes_v1")).toBe(expanded());
   expect(lookup("future_v9")).toBeUndefined();
-  expect(Reflect.get(content, "currentCatalog")).toBe(expanded());
+  expect(Reflect.get(content, "currentCatalog")).toBe(
+    Reflect.get(content, "elementsCatalog"),
+  );
 });
 
 it("accepts old unchanged-card decks forward but never new heroes in an old catalog", () => {

@@ -1,6 +1,6 @@
 import type {
   CardDefinitionView,
-  ClassId,
+  LegacyClassId,
   HeroDefinitionView,
   LocationDefinitionView,
   PowerDefinitionView,
@@ -90,17 +90,17 @@ type WithAbilities<T> = T extends unknown
   ? Omit<T, "abilities"> & { abilities: Ability[] }
   : never;
 export type CardDefinition = WithAbilities<CardDefinitionView> & {
-  contentVersion: "core_v1";
+  contentVersion: ContentVersion;
   abilities: Ability[];
   effects: Effect[];
   targeting: Targeting;
   sfxFamily: VfxFamily;
   vfxFamily: VfxFamily;
 };
-export type ContentVersion = "core_v1" | "heroes_v1";
+export type ContentVersion = "core_v1" | "heroes_v1" | "elements_v1";
 export type PowerDefinition = PowerDefinitionView & {
   contentVersion: ContentVersion;
-  validPhase: "GOOD_PLAY" | "EVIL_TRICKS";
+  validPhase: "GOOD_PLAY" | "EVIL_TRICKS" | "OWNER_PLAY";
   effects: Effect[];
   targeting: Targeting;
   sfxFamily: VfxFamily;
@@ -139,12 +139,17 @@ export interface Catalog {
   tokens: TokenDefinition[];
   presets: PresetDTO[];
 }
+export type LegacyPowerDefinition = PowerDefinition & {
+  faction: Side;
+  validPhase: "GOOD_PLAY" | "EVIL_TRICKS";
+};
+export type LegacyCatalog = Catalog & { powers: LegacyPowerDefinition[] };
 export interface ValidationIssue {
   path: string;
   code: string;
   message: string;
 }
-export const classFactions: Record<ClassId, Side> = {
+export const classFactions: Record<LegacyClassId, Side> = {
   BASTION: "GOOD",
   VERDANT: "GOOD",
   PRISM: "GOOD",

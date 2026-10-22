@@ -94,7 +94,19 @@ export type CardId =
   | "S05"
   | "S06"
   | "S07"
-  | "S08";
+  | "S08"
+  | "E01"
+  | "E02"
+  | "E03"
+  | "E04"
+  | "E05"
+  | "E06"
+  | "E07"
+  | "E08"
+  | "E09"
+  | "E10"
+  | "E11"
+  | "E12";
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "HeroId".
@@ -156,7 +168,23 @@ export type PowerId =
   | "S_E_SAB"
   | "S_E_VAN"
   | "S_E_GRA"
-  | "S_E_SCO";
+  | "S_E_SCO"
+  | "P_GROVE1"
+  | "P_GROVE2"
+  | "P_TERRA1"
+  | "P_TERRA2"
+  | "P_TIDE1"
+  | "P_TIDE2"
+  | "P_TEMPEST1"
+  | "P_TEMPEST2"
+  | "P_SOLAR1"
+  | "P_SOLAR2"
+  | "P_FORGE1"
+  | "P_FORGE2"
+  | "P_ARCANE1"
+  | "P_ARCANE2"
+  | "P_UMBRAL1"
+  | "P_UMBRAL2";
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "TokenId".
@@ -1023,7 +1051,21 @@ export type ErrorResponse =
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "ClassId".
  */
-export type ClassId = "BASTION" | "VERDANT" | "PRISM" | "FURNACE" | "HEX" | "VEIL";
+export type ClassId =
+  | "BASTION"
+  | "VERDANT"
+  | "PRISM"
+  | "FURNACE"
+  | "HEX"
+  | "VEIL"
+  | "GROVE"
+  | "TERRA"
+  | "TIDE"
+  | "TEMPEST"
+  | "SOLAR"
+  | "FORGE"
+  | "ARCANE"
+  | "UMBRAL";
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "ArtKey".
@@ -1057,6 +1099,7 @@ export type CardDefinitionView =
         attack: number;
         hp: number;
       };
+      rarity?: CardRarity;
     }
   | {
       id: CardId;
@@ -1078,7 +1121,28 @@ export type CardDefinitionView =
       artKey: ArtKey;
       type: "TRICK";
       printed: null;
+      rarity?: CardRarity;
     };
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "CardRarity".
+ */
+export type CardRarity = "U" | "R" | "SR" | "SL" | "E";
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "ContentFaction".
+ */
+export type ContentFaction = "GOOD" | "EVIL" | "NEUTRAL";
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "SystemId".
+ */
+export type SystemId = "GROVE" | "TERRA" | "TIDE" | "TEMPEST" | "SOLAR" | "FORGE" | "ARCANE" | "UMBRAL";
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "LegacyClassId".
+ */
+export type LegacyClassId = "BASTION" | "VERDANT" | "PRISM" | "FURNACE" | "HEX" | "VEIL";
 
 export interface NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation {
   [k: string]: unknown;
@@ -1412,7 +1476,10 @@ export interface DeckIssue {
     | "WRONG_CLASS"
     | "DUPLICATE_CARD_ID"
     | "UNKNOWN_CARD"
-    | "VERSION_UNSUPPORTED";
+    | "VERSION_UNSUPPORTED"
+    | "TOO_MANY_NEUTRALS"
+    | "SYSTEM_MINIMUM"
+    | "CARD_NOT_OWNED";
   cardId: string | null;
   messageKey: string;
 }
@@ -1653,7 +1720,7 @@ export interface AbilityView {
  */
 export interface PowerDefinitionView {
   id: PowerId;
-  faction: Side;
+  faction: ContentFaction;
   classId: ClassId | null;
   signatureOwner: HeroId | null;
   type: "SUPERPOWER";
@@ -1719,13 +1786,13 @@ export interface TokenDefinitionView {
   artKey: ArtKey;
 }
 export interface PublicCatalog {
-  version: "core_v1" | "heroes_v1";
+  version: "core_v1" | "heroes_v1" | "elements_v1";
   rulesVersion: Version;
   locationVersion: Version;
   sha256: string;
   /**
    * @minItems 60
-   * @maxItems 60
+   * @maxItems 72
    */
   cards: [
     CardDefinitionView,
@@ -1805,7 +1872,7 @@ export interface PublicCatalog {
   ];
   /**
    * @minItems 18
-   * @maxItems 32
+   * @maxItems 36
    */
   powers: [
     PowerDefinitionView,
@@ -1986,4 +2053,8 @@ export interface WireDefinitions {
   CatalogParams: CatalogParams;
   RematchConfig: RematchConfig;
   DeckVersionQuery: DeckVersionQuery;
+  SystemId: SystemId;
+  LegacyClassId: LegacyClassId;
+  CardRarity: CardRarity;
+  ContentFaction: ContentFaction;
 }

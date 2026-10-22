@@ -1,7 +1,7 @@
 import type {
-  Catalog,
+  LegacyCatalog as Catalog,
   HeroDefinition,
-  PowerDefinition,
+  LegacyPowerDefinition as PowerDefinition,
   PresetDTO,
 } from "@oathfront/contracts";
 import { coreCatalog } from "./catalog.js";

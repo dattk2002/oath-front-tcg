@@ -1,4 +1,4 @@
-import type { Catalog } from "@oathfront/contracts";
+import type { LegacyCatalog as Catalog } from "@oathfront/contracts";
 import { cards } from "./core/cards.js";
 import { heroes } from "./core/heroes.js";
 import { powers } from "./core/powers.js";

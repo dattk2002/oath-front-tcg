@@ -1,4 +1,4 @@
-import type { PowerDefinition } from "@oathfront/contracts";
+import type { LegacyPowerDefinition as PowerDefinition } from "@oathfront/contracts";
 export const powers: PowerDefinition[] = [
   {
     id: "P_B1",

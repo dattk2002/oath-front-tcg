@@ -1,3 +1,4 @@
+import { systemDefinitions } from "./systems.js";
 import {
   classFactions,
   selectors,
@@ -11,6 +12,7 @@ import type {
   Effect,
   HeroDefinition,
   LocationDefinition,
+  LegacyClassId,
   Targeting,
   ValidationIssue,
 } from "@oathfront/contracts";
@@ -240,13 +242,15 @@ export function eligibleCards(
 ): CardDefinition[] {
   return catalog.cards.filter(
     (c) =>
-      c.faction === hero.faction &&
+      (catalog.version === "elements_v1" || c.faction === hero.faction) &&
       (c.classId === null || hero.classes.includes(c.classId)),
   );
 }
 export { validateDeck } from "@oathfront/contracts";
 export function validateCatalog(catalog: Catalog): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
+  const elements = catalog?.version === "elements_v1";
+  const systemIds: readonly string[] = systemDefinitions.map((s) => s.id);
   const add = (path: string, code: string, message = code) =>
     issues.push({ path, code, message });
   if (
@@ -294,18 +298,18 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
       "tokens",
       "presets",
     ]) ||
-    !["core_v1", "heroes_v1"].includes(catalog.version) ||
+    !["core_v1", "heroes_v1", "elements_v1"].includes(catalog.version) ||
     catalog.rulesVersion !== "rules_v1" ||
     catalog.locationVersion !== "locations_v1"
   )
     add("catalog", "INVALID_VERSION_OR_FIELDS");
   for (const [name, count] of [
-    ["cards", 60],
-    ["powers", catalog.version === "heroes_v1" ? 32 : 18],
-    ["heroes", catalog.version === "heroes_v1" ? 20 : 6],
+    ["cards", elements ? 72 : 60],
+    ["powers", elements ? 36 : catalog.version === "heroes_v1" ? 32 : 18],
+    ["heroes", catalog.version !== "core_v1" ? 20 : 6],
     ["locations", 8],
     ["tokens", 3],
-    ["presets", catalog.version === "heroes_v1" ? 20 : 6],
+    ["presets", catalog.version !== "core_v1" ? 20 : 6],
   ] as const) {
     const entries = catalog[name];
     if (entries.length !== count) add(name, "INVALID_COUNT");
@@ -334,7 +338,11 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
       }
       if (effect.kind === "SUMMON_TOKEN") {
         const token = catalog.tokens.find((t) => t.id === effect.tokenId);
-        if (!token || token.tutorialOnly || token.faction !== faction)
+        if (
+          !token ||
+          token.tutorialOnly ||
+          (!elements && token.faction !== faction)
+        )
           add(p, "INVALID_TOKEN");
       }
       if (
@@ -388,14 +396,27 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
       );
     if (!validateWire("CardDefinitionView", view)) add(path, "INVALID_CARD");
     if (
-      card.contentVersion !== "core_v1" ||
+      card.contentVersion !== (elements ? "elements_v1" : "core_v1") ||
       !oneOf(card.vfxFamily, families) ||
       !oneOf(card.sfxFamily, families) ||
       !validTargeting(card.targeting)
     )
       add(path, "INVALID_METADATA");
-    if (card.classId && classFactions[card.classId] !== card.faction)
+    if (
+      card.classId &&
+      (elements
+        ? !systemIds.includes(card.classId)
+        : classFactions[card.classId as LegacyClassId] !== card.faction)
+    )
       add(path, "WRONG_CLASS_FACTION");
+    if (
+      elements
+        ? !oneOf(card.rarity, ["U", "R", "SR", "SL", "E"]) ||
+          (card.id.startsWith("E") && !card.id.startsWith("EC")) !==
+            (card.rarity === "E")
+        : card.rarity !== undefined
+    )
+      add(path, "INVALID_RARITY");
     if (card.artKey !== `cards/${card.id.toLowerCase()}.webp`)
       add(path, "INVALID_ART_KEY");
     effects(card.effects, `${path}.effects`, card.faction, card.targeting);
@@ -425,12 +446,15 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
     )
       add(path, "INVALID_TRICK");
   }
-  if (catalog.cards.filter((c) => c.type === "UNIT").length !== 38)
+  if (
+    catalog.cards.filter((c) => c.type === "UNIT").length !==
+    (elements ? 50 : 38)
+  )
     add("cards", "INVALID_UNIT_COUNT");
   for (const side of ["GOOD", "EVIL"] as const) {
     if (
       catalog.cards.filter((c) => c.faction === side && c.type === "UNIT")
-        .length !== 19 ||
+        .length !== (elements ? 25 : 19) ||
       catalog.cards.filter((c) => c.faction === side && c.type === "TRICK")
         .length !== 11 ||
       catalog.cards.filter((c) => c.faction === side && c.classId === null)
@@ -438,9 +462,31 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
     )
       add("cards", "INVALID_FACTION_COUNTS");
   }
-  for (const classId of Object.keys(classFactions))
-    if (catalog.cards.filter((c) => c.classId === classId).length !== 8)
+  for (const classId of elements ? systemIds : Object.keys(classFactions))
+    if (
+      catalog.cards.filter((c) => c.classId === classId && c.rarity !== "E")
+        .length !== (elements ? 6 : 8)
+    )
       add("cards", "INVALID_CLASS_COUNT");
+  if (elements) {
+    for (const [rarity, count] of Object.entries({
+      U: 24,
+      R: 18,
+      SR: 12,
+      SL: 6,
+      E: 12,
+    }))
+      if (catalog.cards.filter((c) => c.rarity === rarity).length !== count)
+        add("cards", "INVALID_RARITY_COUNT");
+    if (
+      new Set(
+        catalog.heroes
+          .filter((h) => Array.isArray(h.classes))
+          .map((h) => [...h.classes].sort().join("/")),
+      ).size !== 20
+    )
+      add("heroes", "DUPLICATE_SYSTEM_PAIR");
+  }
   for (const [i, power] of catalog.powers.entries()) {
     const path = `powers.${i}`;
     if (
@@ -474,7 +520,11 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
       !oneOf(power.sfxFamily, families) ||
       !oneOf(power.vfxFamily, families) ||
       power.validPhase !==
-        (power.faction === "GOOD" ? "GOOD_PLAY" : "EVIL_TRICKS")
+        (elements && power.faction === "NEUTRAL"
+          ? "OWNER_PLAY"
+          : power.faction === "GOOD"
+            ? "GOOD_PLAY"
+            : "EVIL_TRICKS")
     )
       add(path, "INVALID_METADATA");
     const expected = {
@@ -491,7 +541,9 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
     if (
       power.classId !== null
         ? power.signatureOwner !== null ||
-          classFactions[power.classId] !== power.faction
+          (elements
+            ? !systemIds.includes(power.classId) || power.faction !== "NEUTRAL"
+            : classFactions[power.classId as LegacyClassId] !== power.faction)
         : !catalog.heroes.some(
             (h) =>
               h.id === power.signatureOwner &&
@@ -521,8 +573,11 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
     )
       add(path, "INVALID_HERO");
     if (
-      hero.classes.some((c) => classFactions[c] !== hero.faction) ||
-      eligibleCards(hero, catalog).length !== 22
+      elements
+        ? hero.classes.some((c) => !systemIds.includes(c))
+        : hero.classes.some(
+            (c) => classFactions[c as LegacyClassId] !== hero.faction,
+          ) || eligibleCards(hero, catalog).length !== 22
     )
       add(path, "INVALID_HERO_CLASSES");
     if (!hero.powerIds.includes(hero.signaturePowerId))
@@ -531,7 +586,8 @@ export function validateCatalog(catalog: Catalog): ValidationIssue[] {
       const power = catalog.powers.find((p) => p.id === id);
       if (
         !power ||
-        power.faction !== hero.faction ||
+        (power.faction !== hero.faction &&
+          !(elements && power.faction === "NEUTRAL")) ||
         (power.classId !== null
           ? !hero.classes.includes(power.classId)
           : power.signatureOwner !== hero.id)

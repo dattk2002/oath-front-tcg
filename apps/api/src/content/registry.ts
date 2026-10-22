@@ -25,6 +25,7 @@ export function publicCatalog(version = "core_v1") {
       artKey: c.artKey,
       type: c.type,
       printed: c.printed,
+      ...(c.rarity ? { rarity: c.rarity } : {}),
     })),
     heroes: catalog.heroes.map((h) => ({
       id: h.id,
