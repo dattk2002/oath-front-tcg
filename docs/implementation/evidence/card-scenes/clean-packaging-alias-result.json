@@ -1,0 +1,21 @@
+{
+  "command": "node ../../scripts/prepare-web-standalone.mjs",
+  "cwd": "/home/bia/Works/Coding/oath-front-tcg/.superpowers/sdd/2026-10-22-card-scenes/release-projection-20261022-verify/apps/web",
+  "started_utc": "2026-10-22T15:28:11.779217+00:00",
+  "output_only_alias": "/home/bia/Works/Coding/oath-front-tcg/.superpowers/sdd/2026-10-22-card-scenes/release-projection-20261022-verify/apps/web/.next/standalone/apps/web",
+  "exit_code": 0,
+  "finished_utc": "2026-10-22T15:28:11.981785+00:00",
+  "server_present": true,
+  "copies": [
+    {
+      "path": "public",
+      "files": 841,
+      "all_paths_and_sha256_match": true
+    },
+    {
+      "path": ".next/static",
+      "files": 59,
+      "all_paths_and_sha256_match": true
+    }
+  ]
+}

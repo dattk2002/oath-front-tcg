@@ -1,0 +1,173 @@
+{
+  "head": "f6873495f2aa82426ffda75085141791a33a6fb3",
+  "projection": "/home/bia/Works/Coding/oath-front-tcg/.superpowers/sdd/2026-10-22-card-scenes/release-projection-20261022-verify",
+  "created_utc": "2026-10-22T15:20:42.124331+00:00",
+  "owned_code": [
+    {
+      "path": "apps/web/src/features/content/CardVisual.tsx",
+      "sha256": "8bde9217d05bbf41c30b379c46a088c294cad0bccf7895f479fa31b24cca3199"
+    },
+    {
+      "path": "apps/web/src/features/content/RarityGem.tsx",
+      "sha256": "92d21bbc7f4f3f3eb5337413daf144abec2f7b4a12402997aa7022024242ce09"
+    },
+    {
+      "path": "apps/web/src/features/content/ContentBadges.tsx",
+      "sha256": "4e9ec35b0f55be78e5821ae7be9a5350b1082cb4ea0a8c6524b531e6053c33ef"
+    },
+    {
+      "path": "apps/web/src/styles/cards.css",
+      "sha256": "b4717538eca81b34a8fb64c2f248e2253a321aaa191052e5517203b5cee30b5e"
+    },
+    {
+      "path": "apps/web/src/styles/game-theme.css",
+      "sha256": "7f5293254e0c095c8c951f183b110f248cdeed005f6972ecbb5a3ded69daf689"
+    },
+    {
+      "path": "apps/web/src/features/deck/CardCollection.tsx",
+      "sha256": "78cea9abe9f23a936c8277c7495952393506cff5270fa6c53327cef8fcd3801e"
+    },
+    {
+      "path": "apps/web/src/features/deck/DeckPreview.tsx",
+      "sha256": "f0485d8afd3f18a9856f89ddac95d5cce99fefc5fe53615cceacdc815559e334"
+    },
+    {
+      "path": "apps/web/src/features/deck/DeckBuilder.tsx",
+      "sha256": "799b1a4402f07aed8c24b535b4bbd048bd6777f07e285330789dc1210fa5b7c9"
+    },
+    {
+      "path": "apps/web/src/features/match/Hand.tsx",
+      "sha256": "787af937c241c03c57593691eab0db99234a8826c86d4ef7d5e03a43ecbefc7b"
+    },
+    {
+      "path": "apps/web/src/features/match/InspectPanel.tsx",
+      "sha256": "c741207235c2ddf437fff2ec293b73d3ef800d583b976d3c91c4928d2a35f6d4"
+    },
+    {
+      "path": "apps/web/src/features/match/rendering/asset-manifest.ts",
+      "sha256": "0b01118ba7f3845d2d917dc05c72ee431838cd7fdaa4abfe3a19dae2718342af"
+    },
+    {
+      "path": "apps/web/src/features/campaign/CampaignHome.tsx",
+      "sha256": "57a21a45e133c69805a8d8cf26df7c3502b3b3b375ed3c8b9cd1c02fc1786761"
+    },
+    {
+      "path": "apps/web/src/features/campaign/FeatureStage.tsx",
+      "sha256": "2e0613a74689957953f90022423ab5f4bd32ff0490ed3f0934ae56fb1cd63a76"
+    },
+    {
+      "path": "apps/web/src/features/events/EventHub.tsx",
+      "sha256": "4dc3d0a2fc913de197659891ed2de584cbd8f88ef4a8b54668b3969e003d458f"
+    },
+    {
+      "path": "apps/web/src/features/events/RewardSummary.tsx",
+      "sha256": "0de2c0cc0dd1c71d376e39a82449165aa4eb3c87cf2c42dbd6adb6528f948e0a"
+    },
+    {
+      "path": "apps/web/tests/card-visual.test.ts",
+      "sha256": "e141b402051165059d63db53b3a1eb0e8472e466ebb220750f4ce97dc82f74f4"
+    },
+    {
+      "path": "tests/e2e/card-scenes.spec.ts",
+      "sha256": "8d7839f9549183b455761afa37819fb6042b405fa72fa8e6c0973baf66fad9e0"
+    },
+    {
+      "path": "tests/e2e/card-touch.spec.ts",
+      "sha256": "327d2655c624713e03115785fc93845bad113d26089c004f3d4c660c7f946f96"
+    },
+    {
+      "path": "tests/e2e/input-parity.spec.ts",
+      "sha256": "00273f8e5107e521d649c48abf56697a5ae5598536833ee4807d5664778909c6"
+    },
+    {
+      "path": "tests/e2e/responsive.spec.ts",
+      "sha256": "ca5aa22e5f126d32ddb5a13559252a2d8b2b961614663475a9a5f63429a1e1af"
+    },
+    {
+      "path": "tests/e2e/fivefold-card-art.spec.ts",
+      "sha256": "b04f0eca8e6bda9eb8862606821f0846e9878d554f2c97b0448065c16bde8cb8"
+    },
+    {
+      "path": "tools/assets/export-card-scenes.py",
+      "sha256": "6cf5548000eb36cd89b6afbc055e5968a59f4996a7e60ed48133657552406c89"
+    },
+    {
+      "path": "tools/assets/inspect-card-scenes.py",
+      "sha256": "d8c3b70a2372abf44c4332ef0c05873da248c1f16b1a46e4f22d19ad01ddfc4b"
+    },
+    {
+      "path": "tools/assets/tests/card-scenes.test.ts",
+      "sha256": "1536bc1400e18353cfd691a90afa6f7b604cefb57134b41d35341cec9951757e"
+    },
+    {
+      "path": "tools/assets/tests/card_scene_safety.py",
+      "sha256": "6602dcf2019c3504edc780d5fd45ae40d1c28507a8c24f7345d35cfc6d99466c"
+    },
+    {
+      "path": "tools/assets/tests/rivals.test.ts",
+      "sha256": "4c3e24402581f2baf2ee2be8bbd360c81f0cbeeb0f73c78912d49a91230a4f75"
+    },
+    {
+      "path": "apps/web/src/features/match/motion/event-timeline.ts",
+      "sha256": "0e20c7b56e7abaa87e3e261ef86984461ec664e23a179539885f259d25ae24a6"
+    },
+    {
+      "path": "tests/e2e/elements-ui.spec.ts",
+      "sha256": "a5dff0604bd67a44e4e5c0d0865ba6cdb51fbe2c2cc9666ab7849b970298b03f"
+    },
+    {
+      "path": "tests/e2e/motion.spec.ts",
+      "sha256": "db29574de2a3eea91a92294a099c3b0a8566fd858363ddba98627e82ccee07b8"
+    }
+  ],
+  "protected_head_files": [
+    {
+      "path": "apps/web/src/app/App.tsx",
+      "sha256": "1fb659ff45cf5efcd76214a2275bf9fdb22ad69e37e3cba223b585c9f8152e69",
+      "head_match": true
+    },
+    {
+      "path": "apps/web/src/app/layout.tsx",
+      "sha256": "3009223ab7f0d32c4ea16a2f55f3fb40160d979768b71dc91481a4936becc23d",
+      "head_match": true
+    },
+    {
+      "path": "apps/web/src/features/settings/SettingsDialog.tsx",
+      "sha256": "607dd38474be5d98205abdf81e434a8317fd8a2a2700bbe9128ade2239b25a5c",
+      "head_match": true
+    },
+    {
+      "path": "apps/web/src/features/settings/audio-manager.tsx",
+      "sha256": "8fe29c4715ff52dbae89ed62df619adf80213de4a5b5a1a3d97dbf1c99f1610f",
+      "head_match": true
+    },
+    {
+      "path": "apps/web/src/styles/shell.css",
+      "sha256": "58f6d34f5e3794a71c71b4d4fafd95b309ee8debd3d7a11a95f182bc7f48b3f7",
+      "head_match": true
+    },
+    {
+      "path": "apps/api/src/auth/exchange.ts",
+      "sha256": "4689538df9fb59d1fa01402966738b4329b2644d26b018b6a0bf01e3a0e6b07e",
+      "head_match": true
+    },
+    {
+      "path": "apps/api/src/auth/neon-jwt.ts",
+      "sha256": "1573a992838df1a4bb2915012a5dad4ce5c007095ba8f2b5e03c78791ac69a60",
+      "head_match": true
+    },
+    {
+      "path": "apps/web/next-env.d.ts",
+      "sha256": "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b",
+      "head_match": true
+    }
+  ],
+  "scenes_files": 108,
+  "dependency_symlinks": [
+    "apps/web/node_modules",
+    "node_modules/* (root node_modules is a real directory; .pnpm-task-run-state-v1 is local)"
+  ],
+  "design_contract_overlay": false,
+  "projection_plumbing_note": "pnpm 11.25.0 taskRunState.validateRealDirectory rejects a symlinked root node_modules before running scripts. Retained dependency-entry symlinks inside a real local node_modules directory.",
+  "fixture_fix": "Authorized original test fixture only: DeckPreview receives publicCatalog(\"elements_v1\") with required sha256; raw card cases retain elementsCatalog. Focused vitest 7/7 passed (exit 0, 801ms)."
+}

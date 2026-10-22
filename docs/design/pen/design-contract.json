@@ -190,11 +190,16 @@
       },
       {
         "path": "apps/web/src/features/motion/use-ui-motion.ts",
-        "sha256": "0e1ce2f82b70f4ac86b3d15740801f91947a72315e773e62846c60c944fe36cd"
+        "sha256": "bac7d2e9a8bc5412560011ecba1a99a8b8da1db4a1a6f35dc3cb6ef8a150ac8d",
+        "reconciliation": {
+          "commit": "39569b560ad75b9ee5e52d822d941fe1d14027b9",
+          "reason": "Approved lobby motion adds bounded pointer depth to the hero bust. Inspected committed diff; working-tree bytes match HEAD. This reconciliation does not incorporate concurrent auth/audio changes."
+        }
       },
       {
         "path": "apps/web/src/features/match/motion/event-timeline.ts",
-        "sha256": "1a0d244f0f5e27612439e8ccdaade1b1492ae7d7c7d0f12a5f9b139b87845dfb"
+        "sha256": "0e20c7b56e7abaa87e3e261ef86984461ec664e23a179539885f259d25ae24a6",
+        "changeReason": "Authorized card-scenes UI extension: hand feedback transforms clipped artwork instead of the focusable card frame, retaining GSAP ownership and reduced-motion cleanup."
       },
       {
         "path": "apps/web/public/assets/rivals-v2/manifest.json",
@@ -2085,6 +2090,278 @@
         "Chromium/emulated sizes; no physical-device or real assistive-technology certification",
         "Full backend regression suite outside UI-only scope"
       ]
+    }
+  },
+  "cardScenesExtension": {
+    "status": "implemented_local_verified",
+    "authorization": "2026-10-22 user-approved illustrated environments for all units/tokens, Runeterra-inspired distinct unit/trick anatomy and bottom-center geometric rarity. Iterative design-contract extensions are authorized; source Pen stays frozen.",
+    "contractPath": "docs/design/card-scenes-contract.md",
+    "planPath": "docs/superpowers/plans/2026-10-22-card-scenes.md",
+    "implementationReport": "docs/implementation/card-scenes.md",
+    "sourcePenUnchanged": true,
+    "penNodeId": null,
+    "completePenFrameCoverage": false,
+    "designBasis": "Approved card-facing extension of OathFront ink/paper/slate, Barlow typography and existing system/rarity colors. Runeterra supplies anatomy/composition reference only; no editable Pen nodes exist for these card faces.",
+    "assetVersion": "card-scenes-v1",
+    "sourceInventoryPath": "assets/source/card-scenes-v1/inventory.json",
+    "sourceManifestPath": "apps/web/public/assets/card-scenes-v1/source-manifest.json",
+    "runtimeManifestPath": "apps/web/public/assets/card-scenes-v1/manifest.json",
+    "assetInventory": {
+      "collectibleUnits": 50,
+      "tokens": 3,
+      "generatedSceneMasters": 53,
+      "retainedTrickScenes": 22,
+      "cardFacingIdentities": 75,
+      "opaqueVariants": [
+        "thumb",
+        "inspect"
+      ],
+      "masterPolicy": "Individual built-in image_gen illustration edits preserve established identity in a grounded, lit environment. No baked card text, stats, logos or interface frames. Exact prompts, references, provenance, dimensions and hashes are retained.",
+      "mergePolicy": "Merge the scene layer last in resolveArt and artById, overriding only thumb/inspect; retain all battle cutout/atlas URLs, hashes and preload behavior."
+    },
+    "penNodesByContentId": {
+      "GC01": null,
+      "GC02": null,
+      "GC03": null,
+      "GC04": null,
+      "GC05": null,
+      "GC06": null,
+      "B01": null,
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B05": null,
+      "B06": null,
+      "B07": null,
+      "B08": null,
+      "V01": null,
+      "V02": null,
+      "V03": null,
+      "V04": null,
+      "V05": null,
+      "V06": null,
+      "V07": null,
+      "V08": null,
+      "P01": null,
+      "P02": null,
+      "P03": null,
+      "P04": null,
+      "P05": null,
+      "P06": null,
+      "P07": null,
+      "P08": null,
+      "EC01": null,
+      "EC02": null,
+      "EC03": null,
+      "EC04": null,
+      "EC05": null,
+      "EC06": null,
+      "F01": null,
+      "F02": null,
+      "F03": null,
+      "F04": null,
+      "F05": null,
+      "F06": null,
+      "F07": null,
+      "F08": null,
+      "X01": null,
+      "X02": null,
+      "X03": null,
+      "X04": null,
+      "X05": null,
+      "X06": null,
+      "X07": null,
+      "X08": null,
+      "S01": null,
+      "S02": null,
+      "S03": null,
+      "S04": null,
+      "S05": null,
+      "S06": null,
+      "S07": null,
+      "S08": null,
+      "E01": null,
+      "E02": null,
+      "E03": null,
+      "E04": null,
+      "E05": null,
+      "E06": null,
+      "E07": null,
+      "E08": null,
+      "E09": null,
+      "E10": null,
+      "E11": null,
+      "E12": null,
+      "TK_G_SEED": null,
+      "TK_G_LANTERN": null,
+      "TK_E_CINDER": null
+    },
+    "anatomy": {
+      "unit": {
+        "aperture": "tall_armored_portrait",
+        "energy": "upper_left",
+        "system": "upper_right",
+        "title": "centered_band",
+        "rules": "opaque_dark_plate",
+        "attack": "lower_left",
+        "health": "lower_right",
+        "rarity": "bottom_center"
+      },
+      "trick": {
+        "aperture": "circular_spell_action",
+        "body": "distinct_beveled_frame",
+        "energy": "upper_left",
+        "system": "upper_right",
+        "typeLabel": "Trick",
+        "title": "centered_band",
+        "rules": "opaque_dark_plate",
+        "statSockets": false,
+        "rarity": "bottom_center"
+      },
+      "token": {
+        "inherits": "unit",
+        "typeLabel": "Token",
+        "collectibleRarity": false,
+        "inventedCost": false,
+        "rules": "Exact token keywords and printed stats remain inspectable."
+      },
+      "raritySocket": "Centered on the card body between unit stats, not on the parent grid cell. Geometry and accessible code/name remain independent of color.",
+      "denseSurfaces": "Readable name, cost, type, relevant stats and bottom-center gem; full exact rules open in inspect. Desktop viewports 640\u2013849px high use a compact horizontal face to keep phase controls visible. Quantity avoids sockets."
+    },
+    "rarityGems": {
+      "U": {
+        "name": "Uncommon",
+        "shape": "triangle",
+        "cssToken": "--rarity-u",
+        "color": "#cbd5e1",
+        "position": "bottom_center",
+        "svgViewBox": "0 0 64 64",
+        "polygonPoints": "32,5 59,55 5,55"
+      },
+      "R": {
+        "name": "Rare",
+        "shape": "square",
+        "cssToken": "--rarity-r",
+        "color": "#f4d06f",
+        "position": "bottom_center",
+        "svgViewBox": "0 0 64 64",
+        "polygonPoints": "10,10 54,10 54,54 10,54"
+      },
+      "SR": {
+        "name": "Super Rare",
+        "shape": "pentagon",
+        "cssToken": "--rarity-sr",
+        "color": "#c5a1ff",
+        "position": "bottom_center",
+        "svgViewBox": "0 0 64 64",
+        "polygonPoints": "32,4 60,25 49,58 15,58 4,25"
+      },
+      "SL": {
+        "name": "Super Legendary",
+        "shape": "hexagon",
+        "cssToken": "--rarity-sl",
+        "color": "#e7ddff",
+        "position": "bottom_center",
+        "svgViewBox": "0 0 64 64",
+        "polygonPoints": "18,6 46,6 61,32 46,58 18,58 3,32"
+      },
+      "E": {
+        "name": "Event",
+        "shape": "notched_event_crest",
+        "cssToken": "--rarity-e",
+        "color": "#ff9875",
+        "position": "bottom_center",
+        "svgViewBox": "0 0 64 64",
+        "polygonPoints": "10,7 25,13 32,4 39,13 54,7 58,35 48,35 46,50 32,61 18,50 16,35 6,35"
+      }
+    },
+    "spectrumPolicy": {
+      "rarity": "SL",
+      "static": true,
+      "bodyTextSpectrum": false,
+      "continuousShimmer": false,
+      "gemGradientStops": [
+        {
+          "offset": 0,
+          "color": "#a9f1ee"
+        },
+        {
+          "offset": 0.35,
+          "color": "#b7a0f7"
+        },
+        {
+          "offset": 0.72,
+          "color": "#f4b3c7"
+        },
+        {
+          "offset": 1,
+          "color": "#f3eaa5"
+        }
+      ]
+    },
+    "surfaces": [
+      {
+        "logicalId": "shared_card_face",
+        "repoPath": "apps/web/src/features/content/CardVisual.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "deck_preview",
+        "repoPath": "apps/web/src/features/deck/DeckPreview.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "builder_collection",
+        "repoPath": "apps/web/src/features/deck/CardCollection.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "builder_inspection",
+        "repoPath": "apps/web/src/features/deck/DeckBuilder.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "battle_hand",
+        "repoPath": "apps/web/src/features/match/Hand.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "battle_inspection",
+        "repoPath": "apps/web/src/features/match/InspectPanel.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "revealed_event_cards",
+        "repoPath": "apps/web/src/features/events/EventHub.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "reward_cards",
+        "repoPath": "apps/web/src/features/events/RewardSummary.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "home_card_showcase",
+        "repoPath": "apps/web/src/features/campaign/CampaignHome.tsx",
+        "penNodeId": null
+      },
+      {
+        "logicalId": "features_card_showcase",
+        "repoPath": "apps/web/src/features/campaign/FeatureStage.tsx",
+        "penNodeId": null
+      }
+    ],
+    "interactionPolicy": "CardVisual is presentation-only phrasing content. Native parent actions own inspect, quantities, drag/select/mulligan and callbacks. No nested controls; native title action and item-surface pointer activation agree. Unrevealed event identities/art remain sealed.",
+    "motionPolicy": "Retain scoped GSAP, cleanup, interruption, reduced-motion behavior and .scene-art geometry hooks. Battlefield stats remain current public match values, not printed face values.",
+    "compatibility": "UI/art only. No API, database, catalog IDs/rules, deck restrictions, version bindings, authentication or gameplay changes. Powers/tokens do not gain collectible rarity.",
+    "verification": {
+      "status": "local_verified_delivery_pending",
+      "report": "docs/implementation/card-scenes.md",
+      "assetReview": "53 opaque masters plus 22 retained tricks; independent hash/provenance/opacity inspection and 16 asset tests pass.",
+      "frontendChecks": "117 frontend tests, full workspace typecheck and lint pass; public catalog fixture correction verified separately (7 tests).",
+      "browserChecks": "Collection and inspectors at four sizes; 7 focused touch/pointer/responsive flows, 8 integrated UI/motion flows and 4 live-content flows pass cumulatively.",
+      "productionBuild": "Clean committed-code projection passes Next compile/typecheck/30 static pages/traces; standalone prepare passes with output-only alias. Full wrapper reports nested-projection tracing-path limitation; remote production build pending.",
+      "scope": "Record only checks actually run after integration; physical-device and real assistive-technology certification remain separate."
     }
   }
 }

@@ -1,0 +1,17 @@
+$ next build --webpack && node ../../scripts/prepare-web-standalone.mjs
+▲ Next.js 16.4.2 (webpack)
+✓ Running next.config.ts took 21ms
+- Experiments (use with caution):
+  · extensionAlias
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 18.9s
+  Running TypeScript ...
+tests/card-visual.test.ts(101,7): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Property 'sha256' is missing in type 'Catalog' but required in type 'PublicCatalog'.
+Failed to type check.
+
+/home/bia/Works/Coding/oath-front-tcg/.superpowers/sdd/2026-10-22-card-scenes/release-projection-20261022-verify/apps/web:
+[ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] @oathfront/web@0.0.0 build: `next build --webpack && node ../../scripts/prepare-web-standalone.mjs`
+Exit status 1

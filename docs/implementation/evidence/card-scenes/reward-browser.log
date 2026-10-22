@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1/1] tests/e2e/live-news-events.spec.ts:251:1 › account wins a real prepared battle, earns its card once and retains it after interrupted reveal
+  1 passed (39.6s)

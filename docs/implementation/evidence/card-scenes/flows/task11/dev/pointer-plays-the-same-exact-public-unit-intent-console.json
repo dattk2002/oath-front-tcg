@@ -1,0 +1,5 @@
+{
+  "url": "http://localhost:3200/matches/d7cb398f-28e8-41a0-bbb4-a24c746fea45",
+  "unexpectedConsoleErrors": [],
+  "collection": "caller supplied; test-wide collector verifies all console messages"
+}

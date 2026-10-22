@@ -1,0 +1,1618 @@
+[
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 22,
+      "right": 202,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 19,
+          "right": 47,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 30,
+            "right": 36,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 80,
+          "right": 169,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 113.390625,
+            "right": 135.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 80,
+          "right": 169,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 88.5,
+            "right": 160.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 23,
+          "right": 52,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 35,
+            "right": 40,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 35,
+            "right": 40,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 31.53125,
+            "right": 43.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 31.53125,
+            "right": 43.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 172,
+          "right": 201,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 182.5,
+            "right": 190.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 182.5,
+            "right": 190.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 181.859375,
+            "right": 191.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 181.859375,
+            "right": 191.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 210,
+      "right": 390,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 207,
+          "right": 235,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 218,
+            "right": 224,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 268,
+          "right": 357,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 301.390625,
+            "right": 323.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 268,
+          "right": 357,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 276.5,
+            "right": 348.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 211,
+          "right": 240,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 223,
+            "right": 228,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 223,
+            "right": 228,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 219.53125,
+            "right": 231.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 219.53125,
+            "right": 231.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 360,
+          "right": 389,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 370.5,
+            "right": 378.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 370.5,
+            "right": 378.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 369.859375,
+            "right": 379.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 369.859375,
+            "right": 379.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 398,
+      "right": 578,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 395,
+          "right": 423,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 406,
+            "right": 412,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 456,
+          "right": 545,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 489.390625,
+            "right": 511.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 456,
+          "right": 545,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 464.5,
+            "right": 536.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 399,
+          "right": 428,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 411,
+            "right": 416,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 411,
+            "right": 416,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 407.53125,
+            "right": 419.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 407.53125,
+            "right": 419.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 548,
+          "right": 577,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 558.5,
+            "right": 566.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 558.5,
+            "right": 566.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 557.859375,
+            "right": 567.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 557.859375,
+            "right": 567.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 586,
+      "right": 766,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 583,
+          "right": 611,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 594,
+            "right": 600,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 644,
+          "right": 733,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 677.390625,
+            "right": 699.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 644,
+          "right": 733,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 652.5,
+            "right": 724.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 587,
+          "right": 616,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 599,
+            "right": 604,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 599,
+            "right": 604,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 595.53125,
+            "right": 607.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 595.53125,
+            "right": 607.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 736,
+          "right": 765,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 746.5,
+            "right": 754.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 746.5,
+            "right": 754.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 745.859375,
+            "right": 755.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 745.859375,
+            "right": 755.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 774,
+      "right": 954,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 771,
+          "right": 799,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 782,
+            "right": 788,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 832,
+          "right": 921,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 865.390625,
+            "right": 887.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 832,
+          "right": 921,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 840.5,
+            "right": 912.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 775,
+          "right": 804,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 787,
+            "right": 792,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 787,
+            "right": 792,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 783.53125,
+            "right": 795.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 783.53125,
+            "right": 795.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 924,
+          "right": 953,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 934.5,
+            "right": 942.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 934.5,
+            "right": 942.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 933.859375,
+            "right": 943.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 933.859375,
+            "right": 943.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 962,
+      "right": 1142,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 959,
+          "right": 987,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 970,
+            "right": 976,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 1020,
+          "right": 1109,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 1053.390625,
+            "right": 1075.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 1020,
+          "right": 1109,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 1028.5,
+            "right": 1100.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 963,
+          "right": 992,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 975,
+            "right": 980,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 975,
+            "right": 980,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 971.53125,
+            "right": 983.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 971.53125,
+            "right": 983.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 1112,
+          "right": 1141,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 1122.5,
+            "right": 1130.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 1122.5,
+            "right": 1130.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 1121.859375,
+            "right": 1131.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 1121.859375,
+            "right": 1131.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 1150,
+      "right": 1330,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 1147,
+          "right": 1175,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 1158,
+            "right": 1164,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 1208,
+          "right": 1297,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 1241.390625,
+            "right": 1263.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 1208,
+          "right": 1297,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 1216.5,
+            "right": 1288.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 1151,
+          "right": 1180,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 1163,
+            "right": 1168,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 1163,
+            "right": 1168,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 1159.53125,
+            "right": 1171.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 1159.53125,
+            "right": 1171.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 1300,
+          "right": 1329,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 1310.5,
+            "right": 1318.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 1310.5,
+            "right": 1318.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 1309.859375,
+            "right": 1319.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 1309.859375,
+            "right": 1319.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 1338,
+      "right": 1518,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "1",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 1335,
+          "right": 1363,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 1346,
+            "right": 1352,
+            "width": 6,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 1396,
+          "right": 1485,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 1429.390625,
+            "right": 1451.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lanternkeeper",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 1396,
+          "right": 1485,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 1404.5,
+            "right": 1476.5,
+            "width": 72,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "1ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 1339,
+          "right": 1368,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 1351,
+            "right": 1356,
+            "width": 5,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 1351,
+            "right": 1356,
+            "width": 5,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 1347.53125,
+            "right": 1359.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 1347.53125,
+            "right": 1359.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "2HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 1488,
+          "right": 1517,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 1498.5,
+            "right": 1506.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 1498.5,
+            "right": 1506.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 1497.859375,
+            "right": 1507.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 1497.859375,
+            "right": 1507.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 1526,
+      "right": 1706,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "3",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 1523,
+          "right": 1551,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 1532.5,
+            "right": 1541.5,
+            "width": 9,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Unit",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 1584,
+          "right": 1673,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 1617.390625,
+            "right": 1639.59375,
+            "width": 22.203125,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Bronze Shieldsmith",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 1584,
+          "right": 1673,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 1612,
+            "right": 1645,
+            "width": 33,
+            "height": 16
+          },
+          {
+            "top": 582,
+            "bottom": 598,
+            "left": 1599.5,
+            "right": 1657.5,
+            "width": 58,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-attack",
+        "text": "2ATK",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 1527,
+          "right": 1556,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 1537.5,
+            "right": 1545.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 1537.5,
+            "right": 1545.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 1535.53125,
+            "right": 1547.453125,
+            "width": 11.921875,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 1535.53125,
+            "right": 1547.453125,
+            "width": 11.921875,
+            "height": 10
+          }
+        ]
+      },
+      {
+        "part": "card-face-stat card-face-health",
+        "text": "3HP",
+        "bounds": {
+          "top": 599,
+          "bottom": 627,
+          "left": 1676,
+          "right": 1705,
+          "width": 29,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 600,
+            "bottom": 618,
+            "left": 1686.5,
+            "right": 1694.5,
+            "width": 8,
+            "height": 18
+          },
+          {
+            "top": 598,
+            "bottom": 620,
+            "left": 1686.5,
+            "right": 1694.5,
+            "width": 8,
+            "height": 22
+          },
+          {
+            "top": 618,
+            "bottom": 626,
+            "left": 1685.859375,
+            "right": 1695.140625,
+            "width": 9.28125,
+            "height": 8
+          },
+          {
+            "top": 617,
+            "bottom": 627,
+            "left": 1685.859375,
+            "right": 1695.140625,
+            "width": 9.28125,
+            "height": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "card": {
+      "top": 550,
+      "bottom": 628,
+      "left": 1714,
+      "right": 1894,
+      "width": 180,
+      "height": 78
+    },
+    "metadata": [
+      {
+        "part": "card-face-cost",
+        "text": "2",
+        "bounds": {
+          "top": 548,
+          "bottom": 576,
+          "left": 1711,
+          "right": 1739,
+          "width": 28,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 549.5,
+            "bottom": 574.5,
+            "left": 1720.5,
+            "right": 1729.5,
+            "width": 9,
+            "height": 25
+          }
+        ]
+      },
+      {
+        "part": "card-face-kind",
+        "text": "Trick",
+        "bounds": {
+          "top": 557,
+          "bottom": 568,
+          "left": 1772,
+          "right": 1861,
+          "width": 89,
+          "height": 11
+        },
+        "lines": [
+          {
+            "top": 556,
+            "bottom": 568,
+            "left": 1802.25,
+            "right": 1830.75,
+            "width": 28.5,
+            "height": 12
+          }
+        ]
+      },
+      {
+        "part": "card-face-title",
+        "text": "Lantern Ray",
+        "bounds": {
+          "top": 569,
+          "bottom": 597,
+          "left": 1772,
+          "right": 1861,
+          "width": 89,
+          "height": 28
+        },
+        "lines": [
+          {
+            "top": 568,
+            "bottom": 584,
+            "left": 1787,
+            "right": 1846,
+            "width": 59,
+            "height": 16
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+
+Running 8 tests using 1 worker
+
+[1/8] tests/e2e/elements-ui.spec.ts:13:1 › save a legal elements deck and enter a real match with rarity and system labels
+[2/8] tests/e2e/features-arenas.spec.ts:10:1 › Features manual tabs, interruption, artwork fallback and static reduced mode
+[3/8] tests/e2e/heroes-home-expansion.spec.ts:8:1 › expanded Home has six useful sections, keyboard phase preview and responsive art
+[4/8] tests/e2e/input-parity.spec.ts:57:3 › pointer plays the same exact public unit intent
+[5/8] tests/e2e/input-parity.spec.ts:57:3 › keyboard plays the same exact public unit intent
+[6/8] tests/e2e/input-parity.spec.ts:57:3 › drag plays the same exact public unit intent
+[7/8] tests/e2e/lobby-ui.spec.ts:108:1 › account controls are compact and deck preview shows actual card art and quantities
+[8/8] tests/e2e/motion.spec.ts:182:1 › actual WebGL signature can be interrupted and remounted, then fast-forwarded before keyboard selection
+  8 passed (1.2m)

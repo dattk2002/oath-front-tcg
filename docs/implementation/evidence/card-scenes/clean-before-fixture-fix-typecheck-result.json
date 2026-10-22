@@ -1,0 +1,7 @@
+{
+  "command": "pnpm --filter @oathfront/web typecheck",
+  "cwd": "/home/bia/Works/Coding/oath-front-tcg/.superpowers/sdd/2026-10-22-card-scenes/release-projection-20261022-verify",
+  "started_utc": "2026-10-22T15:22:46.331060+00:00",
+  "exit_code": 2,
+  "finished_utc": "2026-10-22T15:22:54.371255+00:00"
+}
