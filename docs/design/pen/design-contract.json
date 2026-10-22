@@ -2038,7 +2038,7 @@
     }
   },
   "lobbyExtension": {
-    "status": "implemented_pending_final_verification",
+    "status": "implemented_verified_scoped",
     "authorization": "2026-10-22 screenshot-led UI-only corrections: compact account, equal hero cards, profile Play, system/power insignia and visual decks",
     "contractPath": "docs/design/lobby-ui-contract.md",
     "sourcePenUnchanged": true,
@@ -2071,6 +2071,20 @@
       }
     ],
     "motion": "Scoped GSAP reveal, bounded artwork tilt and hero depth; OS/settings reduction and interruption cleanup",
-    "compatibility": "Presentation only. API, database, content catalogs, match phases, deck validation and authentication behavior unchanged. Existing preset/source callbacks retained."
+    "compatibility": "Presentation only. API, database, content catalogs, match phases, deck validation and authentication behavior unchanged. Existing preset/source callbacks retained.",
+    "verification": {
+      "report": "docs/implementation/lobby-ui.md",
+      "frontendUnitChecks": 16,
+      "focusedBrowserFlows": 17,
+      "axeScopes": [
+        "hero lobby",
+        "deck library"
+      ],
+      "review": "fresh-context review; urgent-account-message finding fixed and verified",
+      "limits": [
+        "Chromium/emulated sizes; no physical-device or real assistive-technology certification",
+        "Full backend regression suite outside UI-only scope"
+      ]
+    }
   }
 }

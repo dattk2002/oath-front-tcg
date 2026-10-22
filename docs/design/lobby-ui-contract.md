@@ -67,13 +67,13 @@ Existing public campaign profile Choose deck actions remain unchanged. Native lo
 
 ## QA checklist
 
-- [ ] Review desktop, tablet, phone and short landscape screenshots.
-- [ ] Check every hero name and equal Selected slots.
-- [ ] Check account recovery visibility and focus return.
-- [ ] Check preset, saved, draft, empty and retry states.
-- [ ] Inspect actual cards, copy counts and keyword text.
-- [ ] Verify keyboard, reduced motion, interruption and artwork failure.
-- [ ] Run focused browser checks, frontend typecheck/lint/build.
-- [ ] Preserve the Pen source hash and unrelated user changes.
+- [x] Review desktop, tablet, phone and short landscape screenshots.
+- [x] Check every hero name and equal Selected slots.
+- [x] Check account recovery visibility and focus return.
+- [x] Check preset, saved, draft, empty and retry states.
+- [x] Inspect actual cards, copy counts and keyword text.
+- [x] Verify keyboard, reduced motion, interruption and artwork failure.
+- [x] Run focused browser checks, frontend typecheck/lint/build.
+- [x] Preserve the Pen source hash and unrelated user changes.
 
 References: [React Bits Tilted Card](https://reactbits.dev/components/tilted-card), [Animated List](https://reactbits.dev/components/animated-list), [official PvZ Heroes Strategy Decks walkthrough](https://www.youtube.com/watch?v=L5qlwZscq5U). These inform visual interaction and deck discoverability; OathFront game rules remain authoritative.

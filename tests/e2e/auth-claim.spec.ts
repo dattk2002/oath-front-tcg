@@ -28,12 +28,25 @@ const evidence = evidencePath(
   ".superpowers/sdd/2026-10-20-oathfront-implementation/task-13-evidence",
 );
 const logs = new WeakMap<import("@playwright/test").Page, string[]>();
+const expectedPrivateDenials = new WeakMap<
+  import("@playwright/test").Page,
+  Set<string>
+>();
 test.beforeEach(({ page }) => {
+  expectedPrivateDenials.set(page, new Set());
   const lines: string[] = [];
   logs.set(page, lines);
   page.on("pageerror", (e) => lines.push(`pageerror: ${e.message}`));
   page.on("console", (m) => {
-    if (m.type() === "error") lines.push(m.text());
+    if (m.type() === "error") {
+      // A mounted editor may finish a read after logout; the former owner's deck must be inaccessible.
+      if (
+        /status of 404/.test(m.text()) &&
+        expectedPrivateDenials.get(page)?.has(m.location().url)
+      )
+        return;
+      lines.push(m.text());
+    }
   });
 });
 test.afterEach(async ({ page }, info) => {
@@ -97,6 +110,9 @@ async function callback(
     );
   }, session);
   await page.reload();
+  await expect(page.locator(".account-trigger")).toContainText(
+    "Tài khoản kiểm thử",
+  );
   await revealAccountControls(page);
   await expect(
     page.getByRole("button", { name: "Sign out", exact: true }),
@@ -158,6 +174,9 @@ test("signed fixture identity claims guest through Next/API/DB, preserves draft,
   await page.route("**/api/auth/sign-out", (r) =>
     r.fulfill({ json: { success: true } }),
   );
+  expectedPrivateDenials
+    .get(page)!
+    .add(`${testOrigin}/api/v1/decks/${savedDeck.id}`);
   if (await page.locator(".account-trigger").count())
     await revealAccountControls(page);
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
@@ -171,6 +190,10 @@ test("signed fixture identity claims guest through Next/API/DB, preserves draft,
   await expect(page.getByLabel("Deck name")).not.toHaveValue(
     "Bản nháp trước đăng nhập",
   );
+  expect(
+    (await page.request.get(`/api/v1/decks/${savedDeck.id}`)).status(),
+  ).toBe(404);
+
   expect(errors).toEqual([]);
   await mkdir(evidence, { recursive: true });
   await writeFile(`${evidence}/auth-console.json`, JSON.stringify(errors));
@@ -310,16 +333,27 @@ test("expired paused session exposes login inside the modal and explicitly retri
   const recoveryGate = new Promise<void>((resolve) => {
     releaseRecovery = resolve;
   });
-  let matchReads = 0;
+  let holdRecovery = true,
+    gatedRecovery = 0;
   await page.route(`**/api/v1/matches/${made.view.matchId}`, async (route) => {
-    if (++matchReads === 2) await recoveryGate;
+    // Development Strict Mode may repeat the initial read; gate recovery only after the paused UI exists.
+    if (
+      holdRecovery &&
+      (await page
+        .getByRole("dialog", { name: "Paused", exact: true })
+        .isVisible())
+    ) {
+      gatedRecovery++;
+      await recoveryGate;
+    }
     await route.continue();
   });
   await page.goto(`/matches/${made.view.matchId}`);
   const modal = page.getByRole("dialog", { name: "Paused", exact: true });
   await expect(modal).toBeVisible();
-  await expect.poll(() => matchReads).toBe(2);
+  await expect.poll(() => gatedRecovery).toBeGreaterThan(0);
   // Modal visibility precedes initial recovery; expire only once commands are available.
+  holdRecovery = false;
   releaseRecovery();
   await expect(
     modal.getByRole("button", { name: "Continue", exact: true }),
@@ -657,6 +691,9 @@ test("review: history refreshes on an in-place claim into an existing account", 
   await page.reload();
   await expect(page.getByText("No matches yet.")).toBeVisible();
   release!();
+  await expect(page.locator(".account-trigger")).toContainText(
+    "Tài khoản kiểm thử",
+  );
   await revealAccountControls(page);
   await expect(
     page.getByRole("button", { name: "Sign out", exact: true }),

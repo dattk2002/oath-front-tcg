@@ -18,11 +18,22 @@ export default function AccountDisclosure({
   useEffect(() => {
     const element = panel.current;
     if (!element) return;
-    let previous = false;
+    let previous = "";
     const check = () => {
-      const next = !!element.querySelector('[data-urgent="true"]');
-      setUrgent(next);
-      if (next && !previous) setOpen(true);
+      const urgentPanel = element.querySelector('[data-urgent="true"]');
+      const next = urgentPanel
+        ? [
+            "urgent",
+            urgentPanel.querySelector(":scope > span")?.textContent,
+            ...Array.from(
+              urgentPanel.querySelectorAll('[role="status"], [role="alert"]'),
+              (node) => node.textContent,
+            ),
+          ].join("|")
+        : "";
+      setUrgent(!!next);
+      // Dismissal survives rerenders, but a distinct recovery/error message is new attention.
+      if (next && next !== previous) setOpen(true);
       previous = next;
     };
     const observer = new MutationObserver(check);
@@ -31,6 +42,7 @@ export default function AccountDisclosure({
       attributeFilter: ["data-urgent"],
       subtree: true,
       childList: true,
+      characterData: true,
     });
     check();
     return () => observer.disconnect();
