@@ -5,7 +5,9 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./tutorial": "./src/tutorial/tutorial-v1.ts"
+    "./tutorial": "./src/tutorial/tutorial-v1.ts",
+    "./events": "./src/events/season-one.ts",
+    "./editorial": "./src/events/editorial.ts"
   },
   "dependencies": {
     "@oathfront/contracts": "workspace:*"

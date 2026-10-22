@@ -73,7 +73,8 @@ const continuation = object(
 const stateSchema = object(
   {
     matchId: ref("Uuid"),
-    mode: { enum: ["SKIRMISH", "TUTORIAL"] },
+    mode: { enum: ["SKIRMISH", "TUTORIAL", "DAILY_CHALLENGE"] },
+    challenge: ref("ChallengeView"),
     humanSide: side,
     difficulty: { enum: ["EASY", "NORMAL"] },
     versions: ref("Versions"),
@@ -143,7 +144,7 @@ const stateSchema = object(
     }),
     outcome: nullable(ref("Outcome")),
   },
-  ["endTurn", "tutorial"],
+  ["endTurn", "tutorial", "challenge"],
 );
 const ajv = new Ajv({
   strict: true,

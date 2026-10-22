@@ -365,6 +365,49 @@ export type BlockResponse =
     };
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "PlayerView".
+ */
+export type PlayerView = {
+  schemaVersion: "api_v1";
+  matchId: Uuid;
+  mode: "SKIRMISH" | "TUTORIAL" | "DAILY_CHALLENGE";
+  lifecycle: Lifecycle;
+  humanSide: Side;
+  turn: number;
+  phase: Phase;
+  activeSide: Side | null;
+  versions: Versions;
+  players: {
+    GOOD: HeroView;
+    EVIL: HeroView;
+  };
+  /**
+   * @minItems 5
+   * @maxItems 5
+   */
+  board: [LaneView, LaneView, LaneView, LaneView, LaneView, ...LaneView[]];
+  self: OwnZone;
+  /**
+   * @minItems 0
+   * @maxItems 2048
+   */
+  legalActions: PlayerAction[];
+  blockResponse: BlockResponse | null;
+  combat: {
+    laneId: LaneId;
+    stage: "BEFORE_PAIR" | "PAIR" | "BLOCK_RESPONSES" | "AFTER_LANE";
+  } | null;
+  outcome: Outcome | null;
+  tutorial: TutorialView | null;
+  challenge?: ChallengeView;
+};
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "ArenaKey".
+ */
+export type ArenaKey = "moonroot-conservatory" | "cinder-foundry" | "glasswater-sanctum" | "astral-causeway";
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
  * via the `definition` "VisibleEvent".
  */
 export type VisibleEvent =
@@ -376,7 +419,7 @@ export type VisibleEvent =
       visibility: "PUBLIC";
       ownerSide: null;
       payload: {
-        mode: "SKIRMISH" | "TUTORIAL";
+        mode: "SKIRMISH" | "TUTORIAL" | "DAILY_CHALLENGE";
         heroes: {
           GOOD: HeroId;
           EVIL: HeroId;
@@ -1143,6 +1186,11 @@ export type SystemId = "GROVE" | "TERRA" | "TIDE" | "TEMPEST" | "SOLAR" | "FORGE
  * via the `definition` "LegacyClassId".
  */
 export type LegacyClassId = "BASTION" | "VERDANT" | "PRISM" | "FURNACE" | "HEX" | "VEIL";
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "NewsCategory".
+ */
+export type NewsCategory = "NEWS" | "UPDATE" | "GUIDE" | "EVENT";
 
 export interface NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation {
   [k: string]: unknown;
@@ -1353,40 +1401,14 @@ export interface TutorialView {
 }
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
- * via the `definition` "PlayerView".
+ * via the `definition` "ChallengeView".
  */
-export interface PlayerView {
-  schemaVersion: "api_v1";
-  matchId: Uuid;
-  mode: "SKIRMISH" | "TUTORIAL";
-  lifecycle: Lifecycle;
-  humanSide: Side;
-  turn: number;
-  phase: Phase;
-  activeSide: Side | null;
-  versions: Versions;
-  players: {
-    GOOD: HeroView;
-    EVIL: HeroView;
-  };
-  /**
-   * @minItems 5
-   * @maxItems 5
-   */
-  board: [LaneView, LaneView, LaneView, LaneView, LaneView, ...LaneView[]];
-  self: OwnZone;
-  /**
-   * @minItems 0
-   * @maxItems 2048
-   */
-  legalActions: PlayerAction[];
-  blockResponse: BlockResponse | null;
-  combat: {
-    laneId: LaneId;
-    stage: "BEFORE_PAIR" | "PAIR" | "BLOCK_RESPONSES" | "AFTER_LANE";
-  } | null;
-  outcome: Outcome | null;
-  tutorial: TutorialView | null;
+export interface ChallengeView {
+  scenarioId: string;
+  eventId: string;
+  dayIndex: number;
+  manifestSha256: string;
+  arenaKey: ArenaKey;
 }
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
@@ -1654,7 +1676,7 @@ export interface ClaimGuestRequest {
  */
 export interface MatchSummary {
   matchId: Uuid;
-  mode: "SKIRMISH" | "TUTORIAL";
+  mode: "SKIRMISH" | "TUTORIAL" | "DAILY_CHALLENGE";
   lifecycle: Lifecycle;
   humanHeroId: HeroId;
   opponentHeroId: HeroId;
@@ -1971,6 +1993,157 @@ export interface CatalogParams {
 export interface DeckVersionQuery {
   revision?: number;
 }
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "LiveSlugParams".
+ */
+export interface LiveSlugParams {
+  slug: string;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "NewsQuery".
+ */
+export interface NewsQuery {
+  category?: NewsCategory;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "NewsSection".
+ */
+export interface NewsSection {
+  heading: string;
+  /**
+   * @minItems 1
+   * @maxItems 8
+   */
+  paragraphs: [string, ...string[]];
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "NewsSummary".
+ */
+export interface NewsSummary {
+  slug: string;
+  title: string;
+  summary: string;
+  category: NewsCategory;
+  publishedAt: string;
+  artKey: ArtKey;
+  revision: number;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "NewsPost".
+ */
+export interface NewsPost {
+  slug: string;
+  title: string;
+  summary: string;
+  category: NewsCategory;
+  publishedAt: string;
+  artKey: ArtKey;
+  revision: number;
+  /**
+   * @minItems 1
+   * @maxItems 12
+   */
+  sections: [NewsSection, ...NewsSection[]];
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "NewsList".
+ */
+export interface NewsList {
+  serverNow: string;
+  /**
+   * @minItems 0
+   * @maxItems 100
+   */
+  items: NewsSummary[];
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "EventSummary".
+ */
+export interface EventSummary {
+  id: string;
+  slug: string;
+  seasonId: string;
+  week: number;
+  title: string;
+  startsAt: string;
+  endsAt: string;
+  revealAt: string;
+  status: "UPCOMING" | "ACTIVE" | "ENDED";
+  revealed: boolean;
+  cardId: CardId | null;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "EventList".
+ */
+export interface EventList {
+  serverNow: string;
+  seasonTitle: string;
+  /**
+   * @minItems 0
+   * @maxItems 12
+   */
+  items: EventSummary[];
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "ScenarioSummary".
+ */
+export interface ScenarioSummary {
+  id: string;
+  dayIndex: number;
+  title: string;
+  description: string;
+  arenaKey: ArenaKey;
+  startsAt: string;
+  endsAt: string;
+  canPractice: boolean;
+  rewardOpen: boolean;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "EventRewards".
+ */
+export interface EventRewards {
+  dailyWin: number;
+  threeDays: number;
+  fiveDays: number;
+  firstCopy: number;
+  secondCopy: number;
+  pveBase: number;
+  pveSystemBonus: number;
+  pveDailyCap: number;
+  lossCooldownMs: number;
+  completionGraceMs: number;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "EventDetail".
+ */
+export interface EventDetail {
+  serverNow: string;
+  event: EventSummary;
+  description: string | null;
+  featuredHeroId: HeroId | null;
+  /**
+   * @minItems 0
+   * @maxItems 2
+   */
+  systems: SystemId[];
+  rewards: EventRewards;
+  /**
+   * @minItems 0
+   * @maxItems 7
+   */
+  scenarios: ScenarioSummary[];
+}
 
 export interface WireDefinitions {
   Uuid: Uuid;
@@ -2057,4 +2230,18 @@ export interface WireDefinitions {
   LegacyClassId: LegacyClassId;
   CardRarity: CardRarity;
   ContentFaction: ContentFaction;
+  ArenaKey: ArenaKey;
+  ChallengeView: ChallengeView;
+  LiveSlugParams: LiveSlugParams;
+  NewsCategory: NewsCategory;
+  NewsQuery: NewsQuery;
+  NewsSection: NewsSection;
+  NewsSummary: NewsSummary;
+  NewsPost: NewsPost;
+  NewsList: NewsList;
+  EventSummary: EventSummary;
+  EventList: EventList;
+  ScenarioSummary: ScenarioSummary;
+  EventRewards: EventRewards;
+  EventDetail: EventDetail;
 }

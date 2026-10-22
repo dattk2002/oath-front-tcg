@@ -1,3 +1,4 @@
+import { registerLiveReadRoutes } from "./editorial/read.js";
 import { catalogForVersion } from "@oathfront/game-content";
 import { clientIp } from "./client-ip.js";
 import type { IpTrust } from "./client-ip.js";
@@ -226,6 +227,7 @@ export function buildApp(deps: AppDependencies) {
       .header("Cache-Control", "public, max-age=31536000, immutable")
       .send(publicCatalog(params.version));
   });
+  registerLiveReadRoutes(app, deps.pool, now);
   registerDeckRoutes(
     app,
     deckService(deps.pool, now),

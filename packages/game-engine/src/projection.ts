@@ -96,6 +96,7 @@ export function projectPlayerView(
       : null,
     outcome: state.outcome ? { ...state.outcome } : null,
     tutorial: tutorialView(state),
+    ...(state.challenge ? { challenge: structuredClone(state.challenge) } : {}),
   };
   if (!validateWire("PlayerView", view))
     throw new RangeError("Invalid public view");

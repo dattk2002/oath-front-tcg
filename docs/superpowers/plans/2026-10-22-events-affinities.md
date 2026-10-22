@@ -50,19 +50,19 @@
 
 **Files:** db schema/migration0004 and journal/grants; API content registry, decks service, maintenance versions, new progression collection module; API/db tests.
 **Interfaces:** account collection counts0..2; `validateOwnedDeck(tx,principal,deck)` supplements structural validation; versioned catalog endpoints remain supported. Public news/event entities stored independently from user ledger.
-- [ ] RED: clean and existing-schema migration; role grants; legacy rows/checkpoints unchanged; account vsguest ownership, card0/1/2 constraints and forgedquantity denied; oldcatalogstillreadable.
-- [ ] Add normalized editorial_posts,weekly_events,event_scenarios,daily_attempts,weekly_progress,reward_ledger,collection_items,cosmetic_unlocks with unique source/copy/milestone keys and foreign keys. Runtime can read published schedule/editorial; admin owns publication. Add24hbound timestamps and eligibility owner to attempts/match bindings.
-- [ ] Implement current elements catalog reads and deck ownership enforcement on save/create, with original-command receipt checks first. Legacy versions retain prior no-collection behavior.
-- [ ] GREEN: isolated migration/ownership/version tests, typecheck. Commit.
+- [x] RED: clean and existing-schema migration; role grants; legacy rows/checkpoints unchanged; account vsguest ownership, card0/1/2 constraints and forgedquantity denied; oldcatalogstillreadable.
+- [x] Add normalized editorial_posts,weekly_events,event_scenarios,daily_attempts,weekly_progress,reward_ledger,collection_items,cosmetic_unlocks with unique source/copy/milestone keys and foreign keys. Runtime can read published schedule/editorial; admin owns publication. Add24hbound timestamps and eligibility owner to attempts/match bindings.
+- [x] Implement current elements catalog reads and deck ownership enforcement on save/create, with original-command receipt checks first. Legacy versions retain prior no-collection behavior.
+- [x] GREEN: isolated migration/ownership/version tests, typecheck. Commit.
 
 ### Task 4: Real editorial, twelve-week schedule and immutable daily manifests
 
 **Files:** new packages/game-content/src/events/season-one.ts, scenarios.ts; API editorial/events read modules; scripts/editorial/seed bundle; docs/design/events-season-one.md; API/scenario tests.
 **Interfaces:** twelve E01–E12 events from2026-10-26, seven scenario bindings each, `scenarioForId(id)` and canonical manifest hashes; public news list/detail, weekly roadmap/current detail filter server now.
-- [ ] RED:12consecutive nonoverlappingweeks,84scenario identities/hashes, alternatehumanfactions, nofuture published/revealcopy, unknownslugs404, end-of-seasonarchive.
-- [ ] Author six substantive OathFront news articles and twelve event entries, actual future publication dates, oldsample slug migration/redirect policy. Author seven scenario templates with concrete prebuilt board/hand/deck/seed and featured-card showcase, expand all84 bindings. Everyscenario must use legal borroweddeck and deterministic initialstate.
-- [ ] Implement pure scene bootstrap in versioned engine path separate from tutorial_v1; replay binds exact scenario hash. Store/serve published data fromDB. Never seed fake historical community activity.
-- [ ] GREEN: generate eachscenario, validateinitialstate and deterministicreplay; APIpublication/timefiltertests. Commit.
+- [x] RED:12consecutive nonoverlappingweeks,84scenario identities/hashes, alternatehumanfactions, nofuture published/revealcopy, unknownslugs404, end-of-seasonarchive.
+- [x] Author six substantive OathFront news articles and twelve event entries, actual future publication dates, oldsample slug migration/redirect policy. Author seven scenario templates with concrete prebuilt board/hand/deck/seed and featured-card showcase, expand all84 bindings. Everyscenario must use legal borroweddeck and deterministic initialstate.
+- [x] Implement pure scene bootstrap in versioned engine path separate from tutorial_v1; replay binds exact scenario hash. Store/serve published data fromDB. Never seed fake historical community activity.
+- [x] GREEN: generate eachscenario, validateinitialstate and deterministicreplay; APIpublication/timefiltertests. Commit.
 
 ## M3 — Tickets, daily play and administration
 

@@ -1402,7 +1402,8 @@
           "type": "string",
           "enum": [
             "SKIRMISH",
-            "TUTORIAL"
+            "TUTORIAL",
+            "DAILY_CHALLENGE"
           ]
         },
         "lifecycle": {
@@ -1525,6 +1526,9 @@
               "type": "null"
             }
           ]
+        },
+        "challenge": {
+          "$ref": "#/definitions/ChallengeView"
         }
       },
       "required": [
@@ -1546,7 +1550,33 @@
         "outcome",
         "tutorial"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "DAILY_CHALLENGE"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "challenge"
+            ],
+            "properties": {
+              "challenge": {
+                "$ref": "#/definitions/ChallengeView"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "challenge": false
+            }
+          }
+        }
+      ]
     },
     "DamagePacket": {
       "type": "object",
@@ -1679,7 +1709,8 @@
                   "type": "string",
                   "enum": [
                     "SKIRMISH",
-                    "TUTORIAL"
+                    "TUTORIAL",
+                    "DAILY_CHALLENGE"
                   ]
                 },
                 "heroes": {
@@ -4088,7 +4119,8 @@
           "type": "string",
           "enum": [
             "SKIRMISH",
-            "TUTORIAL"
+            "TUTORIAL",
+            "DAILY_CHALLENGE"
           ]
         },
         "lifecycle": {
@@ -6435,6 +6467,515 @@
         "EVIL",
         "NEUTRAL"
       ]
+    },
+    "ArenaKey": {
+      "enum": [
+        "moonroot-conservatory",
+        "cinder-foundry",
+        "glasswater-sanctum",
+        "astral-causeway"
+      ]
+    },
+    "ChallengeView": {
+      "type": "object",
+      "properties": {
+        "scenarioId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "dayIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "manifestSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "arenaKey": {
+          "$ref": "#/definitions/ArenaKey"
+        }
+      },
+      "required": [
+        "scenarioId",
+        "eventId",
+        "dayIndex",
+        "manifestSha256",
+        "arenaKey"
+      ],
+      "additionalProperties": false
+    },
+    "LiveSlugParams": {
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{1,99}$"
+        }
+      },
+      "required": [
+        "slug"
+      ],
+      "additionalProperties": false
+    },
+    "NewsCategory": {
+      "enum": [
+        "NEWS",
+        "UPDATE",
+        "GUIDE",
+        "EVENT"
+      ]
+    },
+    "NewsQuery": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/NewsCategory"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "NewsSection": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "paragraphs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1600
+          },
+          "minItems": 1,
+          "maxItems": 8
+        }
+      },
+      "required": [
+        "heading",
+        "paragraphs"
+      ],
+      "additionalProperties": false
+    },
+    "NewsSummary": {
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "category": {
+          "$ref": "#/definitions/NewsCategory"
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "artKey": {
+          "$ref": "#/definitions/ArtKey"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        }
+      },
+      "required": [
+        "slug",
+        "title",
+        "summary",
+        "category",
+        "publishedAt",
+        "artKey",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "NewsPost": {
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "category": {
+          "$ref": "#/definitions/NewsCategory"
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "artKey": {
+          "$ref": "#/definitions/ArtKey"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NewsSection"
+          },
+          "minItems": 1,
+          "maxItems": 12
+        }
+      },
+      "required": [
+        "slug",
+        "title",
+        "summary",
+        "category",
+        "publishedAt",
+        "artKey",
+        "revision",
+        "sections"
+      ],
+      "additionalProperties": false
+    },
+    "NewsList": {
+      "type": "object",
+      "properties": {
+        "serverNow": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NewsSummary"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "serverNow",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "EventSummary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "slug": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "seasonId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "week": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "startsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "revealAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "enum": [
+            "UPCOMING",
+            "ACTIVE",
+            "ENDED"
+          ]
+        },
+        "revealed": {
+          "type": "boolean"
+        },
+        "cardId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CardId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "slug",
+        "seasonId",
+        "week",
+        "title",
+        "startsAt",
+        "endsAt",
+        "revealAt",
+        "status",
+        "revealed",
+        "cardId"
+      ],
+      "additionalProperties": false
+    },
+    "EventList": {
+      "type": "object",
+      "properties": {
+        "serverNow": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "seasonTitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EventSummary"
+          },
+          "minItems": 0,
+          "maxItems": 12
+        }
+      },
+      "required": [
+        "serverNow",
+        "seasonTitle",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "ScenarioSummary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "dayIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "arenaKey": {
+          "$ref": "#/definitions/ArenaKey"
+        },
+        "startsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "canPractice": {
+          "type": "boolean"
+        },
+        "rewardOpen": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "dayIndex",
+        "title",
+        "description",
+        "arenaKey",
+        "startsAt",
+        "endsAt",
+        "canPractice",
+        "rewardOpen"
+      ],
+      "additionalProperties": false
+    },
+    "EventRewards": {
+      "type": "object",
+      "properties": {
+        "dailyWin": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "threeDays": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "fiveDays": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "firstCopy": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "secondCopy": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "pveBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "pveSystemBonus": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "pveDailyCap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "lossCooldownMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        },
+        "completionGraceMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400000
+        }
+      },
+      "required": [
+        "dailyWin",
+        "threeDays",
+        "fiveDays",
+        "firstCopy",
+        "secondCopy",
+        "pveBase",
+        "pveSystemBonus",
+        "pveDailyCap",
+        "lossCooldownMs",
+        "completionGraceMs"
+      ],
+      "additionalProperties": false
+    },
+    "EventDetail": {
+      "type": "object",
+      "properties": {
+        "serverNow": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "event": {
+          "$ref": "#/definitions/EventSummary"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 600
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "featuredHeroId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/HeroId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "systems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SystemId"
+          },
+          "minItems": 0,
+          "maxItems": 2
+        },
+        "rewards": {
+          "$ref": "#/definitions/EventRewards"
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ScenarioSummary"
+          },
+          "minItems": 0,
+          "maxItems": 7
+        }
+      },
+      "required": [
+        "serverNow",
+        "event",
+        "description",
+        "featuredHeroId",
+        "systems",
+        "rewards",
+        "scenarios"
+      ],
+      "additionalProperties": false
     }
   }
 }

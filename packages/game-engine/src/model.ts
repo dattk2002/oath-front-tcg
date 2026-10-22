@@ -27,7 +27,7 @@ export interface AdvanceBudget {
 }
 export interface MatchConfig {
   matchId: string;
-  mode: "SKIRMISH" | "TUTORIAL";
+  mode: "SKIRMISH" | "TUTORIAL" | "DAILY_CHALLENGE";
   humanSide: PlayerId;
   difficulty: "EASY" | "NORMAL";
   versions: Versions;
@@ -61,6 +61,7 @@ export interface LaneState {
   evil: UnitState | null;
 }
 export interface MatchState extends Omit<MatchConfig, "decks"> {
+  challenge?: import("@oathfront/contracts").ChallengeView;
   deckSnapshots: Record<PlayerId, DeckInput>;
   lifecycle: Lifecycle;
   turn: number;
