@@ -31,18 +31,18 @@
 
 **Files:** create packages/game-content/src/elements-v1.ts and systems.ts; modify registry.ts,index.ts,validate.ts; packages/contracts/src/catalog.ts,deck.ts and docs/contracts/api-v1.schema.json/generated outputs. Tests packages/game-content/tests/elements.test.ts, packages/contracts/tests/elements.test.ts.
 **Interfaces:** `elementsCatalog`, `systemDefinitions`, `catalogForVersion("elements_v1")`, `validateDeck(deck,catalog)`, `eligibleCards(hero,catalog)`; new SystemId/Rarity and CardIds E01–E12. New shared powers use neutral content ownership and OWNER_PLAY phase; battle Side stays GOOD|EVIL.
-- [ ] RED: validate exact8systems/20heroes/36powers/72cards/20presets; each hero has distinct pair and correct4ownedpowers; all free presets structurally legal; invalid neutral13, third-system card, fewer6one-system, copy3 rejected; both legacy hashes unchanged.
-- [ ] Implement immutable cloned new card/system metadata, twelve explicit event units and sixteen shared powers from spec addendum; preserve numeric baseline until measured tuning. Rebuild20presets with at most4cards costing6+ and at least8units costing<=3. Assign rarity24U/18R/12SR/6SL/12E via explicit IDs.
-- [ ] Extend generated schemas/types per-version counts/IDs/system legality; old public payloads remain valid and unchanged. Neutral content ownership is distinct from combat Side. Save new balance/content manifest in docs/design/elements-v1.md.
-- [ ] GREEN: `pnpm contracts:generate`; `pnpm exec vitest run packages/game-content/tests packages/contracts/tests`; roottsc. Commit coherent catalog/contracts.
+- [x] RED: validate exact8systems/20heroes/36powers/72cards/20presets; each hero has distinct pair and correct4ownedpowers; all free presets structurally legal; invalid neutral13, third-system card, fewer6one-system, copy3 rejected; both legacy hashes unchanged.
+- [x] Implement immutable cloned new card/system metadata, twelve explicit event units and sixteen shared powers from spec addendum; preserve numeric baseline until measured tuning. Rebuild20presets with at most4cards costing6+ and at least8units costing<=3. Assign rarity24U/18R/12SR/6SL/12E via explicit IDs.
+- [x] Extend generated schemas/types per-version counts/IDs/system legality; old public payloads remain valid and unchanged. Neutral content ownership is distinct from combat Side. Save new balance/content manifest in docs/design/elements-v1.md.
+- [x] GREEN: `pnpm contracts:generate`; `pnpm exec vitest run packages/game-content/tests packages/contracts/tests`; roottsc. Commit coherent catalog/contracts.
 
 ### Task 2: Version-bound cards, powers, bot and balance
 
 **Files:** engine catalog helper, actions/modifiers/combat/end-turn/effects/preview/setup; packages/bot source callsites; tests engine elements/replay, bot legality; tools/simulation elements run/report.
 **Interfaces:** matchCatalog(state) resolves every card/power lookup; pure engine accepts new systems and neutral-origin units; new shared power OWNER_PLAY resolves from actor side. Legacy rules remain identical.
-- [ ] RED: all12E literal outcomes and preview parity, all16sharedpowers, opposite-origin unit in new legal deck, illegalclass rejected, both sides setup/mulligan/block, legacyjournal replay.
-- [ ] Remove runtime core-only card lookup where state determines catalog; preserve core-only tutorial/location/token fixtures deliberately. Ensure summons adopt player ownership, not token's historical faction.
-- [ ] GREEN: engine/bot focused suites. Run bounded100seeded matchup simulations across all20heroes with currentfreepresets; inspect legality, faults, turns and side results. Record limited bot benchmark; make only justified new-catalog balance changes and rerun affected checks. Commit.
+- [x] RED: all12E literal outcomes and preview parity, all16sharedpowers, opposite-origin unit in new legal deck, illegalclass rejected, both sides setup/mulligan/block, legacyjournal replay.
+- [x] Remove runtime core-only card lookup where state determines catalog; preserve core-only tutorial/location/token fixtures deliberately. Ensure summons adopt player ownership, not token's historical faction.
+- [x] GREEN: engine/bot focused suites. Run bounded100seeded matchup simulations across all20heroes with currentfreepresets; inspect legality, faults, turns and side results. Record limited bot benchmark; make only justified new-catalog balance changes and rerun affected checks. Commit.
 
 ## M2 — Persistence, content and scenarios
 

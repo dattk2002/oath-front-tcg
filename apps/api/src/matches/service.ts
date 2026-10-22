@@ -1,3 +1,4 @@
+import { validateOwnedDeck } from "../progression/collection.js";
 import { createTutorialConfig, tutorialManifestHash } from "./tutorial.js";
 import { randomBytes, randomUUID } from "node:crypto";
 import { catalogForVersion, validateDeck } from "@oathfront/game-content";
@@ -141,6 +142,8 @@ export function matchService(
         });
       }
       const validation = validateDeck(deck, catalog);
+      if (validation.playable)
+        Object.assign(validation, await validateOwnedDeck(tx, principal, deck));
       if (!validation.playable)
         throw new HttpError(422, "INVALID_DECK", { validation });
       const human = catalog.heroes.find((h) => h.id === deck.heroId)!,

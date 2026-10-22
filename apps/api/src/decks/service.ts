@@ -1,9 +1,6 @@
+import { validateOwnedDeck } from "../progression/collection.js";
 import { randomUUID } from "node:crypto";
-import {
-  catalogForVersion,
-  currentCatalog,
-  validateDeck,
-} from "@oathfront/game-content";
+import { catalogForVersion, currentCatalog } from "@oathfront/game-content";
 import { validateWire } from "@oathfront/contracts";
 import type { DeckDTO, DeckInput, ListQuery } from "@oathfront/contracts";
 import type { Pool, PoolClient } from "@oathfront/db";
@@ -41,7 +38,7 @@ export function deckService(pool: Pool, now: () => Date = () => new Date()) {
       ...deck,
       id: row.id,
       revision: row.revision,
-      validation: validateDeck(deck, catalog),
+      validation: await validateOwnedDeck(tx, principal, deck),
       updatedAt: row.updated_at.toISOString(),
     });
   }
@@ -76,10 +73,14 @@ export function deckService(pool: Pool, now: () => Date = () => new Date()) {
       });
       const catalog = catalogForVersion(deck.contentVersion);
       if (!catalog) throw new HttpError(409, "VERSION_UNSUPPORTED");
-      const validation = validateDeck(deck, catalog);
+      const validation = await validateOwnedDeck(tx, principal, deck);
       if (
         validation.totalCards > 30 ||
-        validation.issues.some((i) => i.code !== "TOTAL_NOT_30")
+        validation.issues.some(
+          (i) =>
+            i.code !== "TOTAL_NOT_30" &&
+            !(i.code === "SYSTEM_MINIMUM" && validation.totalCards < 30),
+        )
       )
         throw new HttpError(422, "INVALID_DECK", { validation });
       let revision = 1;

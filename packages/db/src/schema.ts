@@ -1,4 +1,4 @@
-import type { AnyPgColumn } from "drizzle-orm/pg-core";
+import { unique, type AnyPgColumn } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -145,11 +145,10 @@ export const matches = pgTable(
       .references(() => contentReleases.version),
     locationVersion: text("location_version").notNull(),
     botVersion: text("bot_version").notNull(),
-    botIntentsThisTurn: integer("bot_intents_this_turn")
-      .notNull()
-      .default(0),
+    botIntentsThisTurn: integer("bot_intents_this_turn").notNull().default(0),
     scenarioId: text("scenario_id"),
     tutorialManifestSha256: text("tutorial_manifest_sha256"),
+    scenarioManifestSha256: text("scenario_manifest_sha256"),
     rematch: jsonb("rematch"),
     activeDurationMs: count("active_duration_ms").notNull().default(0),
     lastActivityAt: time("last_activity_at").notNull().defaultNow(),
@@ -180,11 +179,11 @@ export const matches = pgTable(
     ),
     check(
       "match_side_mode",
-      sql`${t.humanSide} IN ('GOOD','EVIL') AND ${t.mode} IN ('SKIRMISH','TUTORIAL')`,
+      sql`${t.humanSide} IN ('GOOD','EVIL') AND ${t.mode} IN ('SKIRMISH','TUTORIAL','DAILY_CHALLENGE')`,
     ),
     check(
       "match_tutorial",
-      sql`(${t.mode}='TUTORIAL' AND ${t.scenarioId} IS NOT NULL AND ${t.tutorialManifestSha256} IS NOT NULL AND ${t.tutorialManifestSha256} ~ '^[a-f0-9]{64}$') OR (${t.mode}='SKIRMISH' AND ${t.scenarioId} IS NULL AND ${t.tutorialManifestSha256} IS NULL)`,
+      sql`(${t.mode}='TUTORIAL' AND ${t.scenarioId} IS NOT NULL AND ${t.tutorialManifestSha256} IS NOT NULL AND ${t.tutorialManifestSha256} ~ '^[a-f0-9]{64}$' AND ${t.scenarioManifestSha256} IS NULL) OR (${t.mode}='SKIRMISH' AND ${t.scenarioId} IS NULL AND ${t.tutorialManifestSha256} IS NULL AND ${t.scenarioManifestSha256} IS NULL) OR (${t.mode}='DAILY_CHALLENGE' AND ${t.scenarioId} IS NOT NULL AND ${t.tutorialManifestSha256} IS NULL AND ${t.scenarioManifestSha256} IS NOT NULL AND ${t.scenarioManifestSha256} ~ '^[a-f0-9]{64}$')`,
     ),
   ],
 );
@@ -403,4 +402,299 @@ export const rateLimitWindows = pgTable(
       sql`${t.scope} IN ('COMMAND','MATCH_CREATE','GUEST_BOOTSTRAP') AND ${t.keyHash} ~ '^[a-f0-9]{64}$' AND ${t.count} >= 1`,
     ),
   ],
+);
+
+export const editorialPosts = pgTable(
+  "editorial_posts",
+  {
+    slug: text("slug").primaryKey(),
+    revision: integer("revision").notNull().default(1),
+    title: text("title").notNull(),
+    excerpt: text("excerpt").notNull(),
+    body: jsonb("body").notNull(),
+    category: text("category").notNull(),
+    artKey: text("art_key").notNull(),
+    state: text("state").notNull(),
+    publishAt: time("publish_at").notNull(),
+    sha256: text("sha256").notNull(),
+    createdAt: time("created_at").notNull().defaultNow(),
+    updatedAt: time("updated_at").notNull().defaultNow(),
+  },
+  (t) => [
+    index("editorial_publication").on(t.state, t.publishAt.desc(), t.slug),
+    check("editorial_posts_revision_check", sql`${t.revision}>=1`),
+    check(
+      "editorial_posts_title_check",
+      sql`char_length(${t.title}) BETWEEN 1 AND 160`,
+    ),
+    check("editorial_posts_body_check", sql`jsonb_typeof(${t.body})='array'`),
+    check(
+      "editorial_posts_category_check",
+      sql`${t.category} IN ('NEWS','UPDATE','GUIDE','EVENT')`,
+    ),
+    check(
+      "editorial_posts_state_check",
+      sql`${t.state} IN ('DRAFT','SCHEDULED','PUBLISHED','ARCHIVED')`,
+    ),
+    check("editorial_posts_sha256_check", sql`${t.sha256} ~ '^[a-f0-9]{64}$'`),
+  ],
+);
+export const weeklyEvents = pgTable(
+  "weekly_events",
+  {
+    id: text("id").primaryKey(),
+    seasonId: text("season_id").notNull(),
+    ordinal: integer("ordinal").notNull(),
+    slug: text("slug").notNull().unique(),
+    title: text("title").notNull(),
+    summary: text("summary").notNull(),
+    startsAt: time("starts_at").notNull(),
+    endsAt: time("ends_at").notNull(),
+    revealAt: time("reveal_at").notNull(),
+    featuredCardId: text("featured_card_id").notNull(),
+    featuredHeroId: text("featured_hero_id").notNull(),
+    systems: jsonb("systems").notNull(),
+    rewards: jsonb("rewards").notNull(),
+    revision: integer("revision").notNull().default(1),
+    state: text("state").notNull(),
+    sha256: text("sha256").notNull(),
+    createdAt: time("created_at").notNull().defaultNow(),
+  },
+  (t) => [
+    unique("weekly_events_season_id_ordinal_key").on(t.seasonId, t.ordinal),
+    unique("weekly_events_season_id_featured_card_id_key").on(
+      t.seasonId,
+      t.featuredCardId,
+    ),
+    index("events_schedule").on(t.state, t.startsAt, t.endsAt),
+    check("weekly_events_ordinal_check", sql`${t.ordinal} BETWEEN 1 AND 12`),
+    check(
+      "weekly_events_featured_card_id_check",
+      sql`${t.featuredCardId} ~ '^E(0[1-9]|1[0-2])$'`,
+    ),
+    check(
+      "weekly_events_systems_check",
+      sql`jsonb_typeof(${t.systems})='array' AND jsonb_array_length(${t.systems})=2`,
+    ),
+    check(
+      "weekly_events_rewards_check",
+      sql`jsonb_typeof(${t.rewards})='object'`,
+    ),
+    check("weekly_events_revision_check", sql`${t.revision}>=1`),
+    check(
+      "weekly_events_state_check",
+      sql`${t.state} IN ('DRAFT','PUBLISHED')`,
+    ),
+    check("weekly_events_sha256_check", sql`${t.sha256} ~ '^[a-f0-9]{64}$'`),
+    check(
+      "weekly_events_check",
+      sql`${t.endsAt}=${t.startsAt}+interval '7 days' AND ${t.revealAt}=${t.startsAt}`,
+    ),
+  ],
+);
+export const eventScenarios = pgTable(
+  "event_scenarios",
+  {
+    id: text("id").primaryKey(),
+    eventId: text("event_id")
+      .notNull()
+      .references(() => weeklyEvents.id),
+    dayIndex: integer("day_index").notNull(),
+    title: text("title").notNull(),
+    description: text("description").notNull(),
+    arenaKey: text("arena_key").notNull(),
+    contentVersion: text("content_version")
+      .notNull()
+      .references(() => contentReleases.version),
+    manifest: jsonb("manifest").notNull(),
+    sha256: text("sha256").notNull(),
+  },
+  (t) => [
+    unique("event_scenarios_event_id_day_index_key").on(t.eventId, t.dayIndex),
+    check(
+      "event_scenarios_day_index_check",
+      sql`${t.dayIndex} BETWEEN 0 AND 6`,
+    ),
+    check(
+      "event_scenarios_manifest_check",
+      sql`jsonb_typeof(${t.manifest})='object'`,
+    ),
+    check("event_scenarios_sha256_check", sql`${t.sha256} ~ '^[a-f0-9]{64}$'`),
+  ],
+);
+export const matchRewardBindings = pgTable(
+  "match_reward_bindings",
+  {
+    matchId: uuid("match_id")
+      .primaryKey()
+      .references(() => matches.id, { onDelete: "cascade" }),
+    eventId: text("event_id")
+      .notNull()
+      .references(() => weeklyEvents.id),
+    eligibleAccountId: uuid("eligible_account_id").references(
+      () => principals.id,
+    ),
+    kind: text("kind").notNull(),
+    dayIndex: integer("day_index").notNull(),
+    boundDayEndsAt: time("bound_day_ends_at").notNull(),
+    completionDeadline: time("completion_deadline").notNull(),
+  },
+  (t) => [
+    check(
+      "match_reward_bindings_kind_check",
+      sql`${t.kind} IN ('PVE','DAILY','PRACTICE')`,
+    ),
+    check(
+      "match_reward_bindings_day_index_check",
+      sql`${t.dayIndex} BETWEEN 0 AND 6`,
+    ),
+    check(
+      "match_reward_bindings_check",
+      sql`${t.completionDeadline}=${t.boundDayEndsAt}+interval '24 hours'`,
+    ),
+    check(
+      "match_reward_bindings_check1",
+      sql`${t.kind}<>'PRACTICE' OR ${t.eligibleAccountId} IS NULL`,
+    ),
+  ],
+);
+export const dailyAttempts = pgTable(
+  "daily_attempts",
+  {
+    id: uuid("id").primaryKey(),
+    matchId: uuid("match_id")
+      .unique()
+      .references(() => matches.id, { onDelete: "set null" }),
+    principalId: uuid("principal_id")
+      .notNull()
+      .references(() => principals.id, { onDelete: "cascade" }),
+    scenarioId: text("scenario_id")
+      .notNull()
+      .references(() => eventScenarios.id),
+    status: text("status").notNull(),
+    startedAt: time("started_at").notNull(),
+    endedAt: time("ended_at"),
+    retryAvailableAt: time("retry_available_at"),
+  },
+  (t) => [
+    index("attempts_principal_scenario").on(
+      t.principalId,
+      t.scenarioId,
+      t.startedAt.desc(),
+    ),
+    check(
+      "daily_attempts_status_check",
+      sql`${t.status} IN ('ACTIVE','WIN','LOSS','FAULTED')`,
+    ),
+    check(
+      "daily_attempts_check",
+      sql`(${t.status}='ACTIVE')=(${t.endedAt} IS NULL)`,
+    ),
+    check(
+      "daily_attempts_check1",
+      sql`(${t.status}='LOSS' AND ${t.retryAvailableAt}=${t.endedAt}+interval '1 hour' AND ${t.retryAvailableAt} IS NOT NULL) OR (${t.status}<>'LOSS' AND ${t.retryAvailableAt} IS NULL)`,
+    ),
+  ],
+);
+export const weeklyProgress = pgTable(
+  "weekly_progress",
+  {
+    accountId: uuid("account_id")
+      .notNull()
+      .references(() => principals.id),
+    eventId: text("event_id")
+      .notNull()
+      .references(() => weeklyEvents.id),
+    tickets: integer("tickets").notNull().default(0),
+    updatedAt: time("updated_at").notNull().defaultNow(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.accountId, t.eventId] }),
+    check(
+      "weekly_progress_tickets_check",
+      sql`${t.tickets} BETWEEN 0 AND 1000000`,
+    ),
+  ],
+);
+export const rewardLedger = pgTable(
+  "reward_ledger",
+  {
+    id: uuid("id").primaryKey(),
+    accountId: uuid("account_id")
+      .notNull()
+      .references(() => principals.id),
+    eventId: text("event_id")
+      .notNull()
+      .references(() => weeklyEvents.id),
+    sourceKey: text("source_key").notNull(),
+    kind: text("kind").notNull(),
+    tickets: integer("tickets").notNull().default(0),
+    cardId: text("card_id"),
+    cosmeticKey: text("cosmetic_key"),
+    dayIndex: integer("day_index"),
+    matchId: uuid("match_id").references(() => matches.id, {
+      onDelete: "set null",
+    }),
+    earnedAt: time("earned_at").notNull(),
+  },
+  (t) => [
+    unique("reward_ledger_account_id_event_id_source_key_key").on(
+      t.accountId,
+      t.eventId,
+      t.sourceKey,
+    ),
+    index("rewards_history").on(
+      t.accountId,
+      t.eventId,
+      t.earnedAt.desc(),
+      t.id,
+    ),
+    check(
+      "reward_ledger_kind_check",
+      sql`${t.kind} IN ('DAILY','PVE','MILESTONE','CARD','COSMETIC')`,
+    ),
+    check("reward_ledger_tickets_check", sql`${t.tickets} BETWEEN 0 AND 10000`),
+    check("reward_ledger_day_index_check", sql`${t.dayIndex} BETWEEN 0 AND 6`),
+    check(
+      "reward_ledger_check",
+      sql`(${t.kind} IN ('DAILY','PVE','MILESTONE') AND ${t.tickets}>0 AND ${t.cardId} IS NULL AND ${t.cosmeticKey} IS NULL) OR (${t.kind}='CARD' AND ${t.tickets}=0 AND ${t.cardId} IS NOT NULL AND ${t.cosmeticKey} IS NULL) OR (${t.kind}='COSMETIC' AND ${t.tickets}=0 AND ${t.cardId} IS NULL AND ${t.cosmeticKey} IS NOT NULL)`,
+    ),
+  ],
+);
+export const collectionItems = pgTable(
+  "collection_items",
+  {
+    accountId: uuid("account_id")
+      .notNull()
+      .references(() => principals.id),
+    cardId: text("card_id").notNull(),
+    quantity: integer("quantity").notNull(),
+    firstEarnedAt: time("first_earned_at").notNull().defaultNow(),
+    updatedAt: time("updated_at").notNull().defaultNow(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.accountId, t.cardId] }),
+    check(
+      "collection_items_card_id_check",
+      sql`${t.cardId} ~ '^E(0[1-9]|1[0-2])$'`,
+    ),
+    check(
+      "collection_items_quantity_check",
+      sql`${t.quantity} BETWEEN 1 AND 2`,
+    ),
+  ],
+);
+export const cosmeticUnlocks = pgTable(
+  "cosmetic_unlocks",
+  {
+    accountId: uuid("account_id")
+      .notNull()
+      .references(() => principals.id),
+    cosmeticKey: text("cosmetic_key").notNull(),
+    eventId: text("event_id")
+      .notNull()
+      .references(() => weeklyEvents.id),
+    earnedAt: time("earned_at").notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.accountId, t.cosmeticKey] })],
 );

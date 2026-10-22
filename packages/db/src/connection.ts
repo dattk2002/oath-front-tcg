@@ -94,6 +94,9 @@ export async function grantRuntimeAccess(
     "auth_claims",
     "guest_bootstraps",
     "rate_limit_windows",
+    "daily_attempts",
+    "weekly_progress",
+    "collection_items",
   ];
   const appendOnly = [
     "content_releases",
@@ -102,6 +105,9 @@ export async function grantRuntimeAccess(
     "match_events",
     "match_action_journal",
     "match_results",
+    "match_reward_bindings",
+    "reward_ledger",
+    "cosmetic_unlocks",
   ];
   await transaction(pool, async (tx) => {
     await tx.query(`GRANT USAGE ON SCHEMA public TO ${name}`);
@@ -109,6 +115,9 @@ export async function grantRuntimeAccess(
       `GRANT SELECT,INSERT,UPDATE,DELETE ON ${mutable.join(",")} TO ${name}`,
     );
     await tx.query(`GRANT SELECT,INSERT ON ${appendOnly.join(",")} TO ${name}`);
+    await tx.query(
+      `GRANT SELECT ON editorial_posts,weekly_events,event_scenarios TO ${name}`,
+    );
     await tx.query(`GRANT UPDATE(owner_id) ON match_results TO ${name}`);
   });
 }
