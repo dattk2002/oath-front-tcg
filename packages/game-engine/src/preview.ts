@@ -1,3 +1,4 @@
+import { matchCatalog } from "./catalog.js";
 import type {
   PlayerView,
   PlayerAction,
@@ -152,7 +153,9 @@ export function previewPublicAction(
     const power = view.self.reserve.find(
       (p) => p.instanceId === action.powerInstanceId,
     )!;
-    const def = coreCatalog.powers.find((p) => p.id === power.definitionId)!;
+    const def = matchCatalog(view).powers.find(
+      (p) => p.id === power.definitionId,
+    )!;
     result.energySpent = action.kind === "USE_BLOCK_POWER" ? 0 : 1;
     own.energy.current -= result.energySpent;
     own.reserveCount--;

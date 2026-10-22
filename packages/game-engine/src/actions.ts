@@ -1,3 +1,4 @@
+import { matchCatalog } from "./catalog.js";
 import { canonicalJson } from "./hash.js";
 import {
   tutorialAllowed,
@@ -87,7 +88,9 @@ function phaseLegalActions(state: MatchState, actor: PlayerId): PlayerAction[] {
   }
   if (state.phase !== "EVIL_DEPLOY" && player.energy.current >= 1)
     for (const power of player.reserve) {
-      const def = coreCatalog.powers.find((p) => p.id === power.definitionId);
+      const def = matchCatalog(state).powers.find(
+        (p) => p.id === power.definitionId,
+      );
       if (def?.faction === actor && def.validPhase === state.phase)
         for (const target of legalTargets(state, actor, def.targeting))
           actions.push({
@@ -265,7 +268,9 @@ function applyCoreAction(
     const power = state.players[actor].reserve.find(
         (p) => p.instanceId === action.powerInstanceId,
       ),
-      def = coreCatalog.powers.find((p) => p.id === power?.definitionId);
+      def = matchCatalog(state).powers.find(
+        (p) => p.id === power?.definitionId,
+      );
     if (!power || !def || def.faction !== actor)
       return error("POWER_UNAVAILABLE");
     if (def.validPhase !== state.phase) return error("WRONG_PHASE");

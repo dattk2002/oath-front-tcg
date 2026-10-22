@@ -1,5 +1,5 @@
+import { matchCatalog } from "./catalog.js";
 import type { PlayerAction } from "@oathfront/contracts";
-import { coreCatalog } from "@oathfront/game-content";
 import type {
   ActionError,
   GameEvent,
@@ -95,7 +95,7 @@ export function legalBlockActions(
   const power = state.players[actor].reserve.find(
     (p) => p.instanceId === response.powerInstanceId,
   );
-  const definition = coreCatalog.powers.find(
+  const definition = matchCatalog(state).powers.find(
     (p) => p.id === power?.definitionId,
   );
   const actions: PlayerAction[] = [{ kind: "KEEP_BLOCK_POWER" }];
@@ -126,7 +126,7 @@ export function applyBlockAction(
   const power = state.players[actor].reserve.find(
     (p) => p.instanceId === response.powerInstanceId,
   );
-  const definition = coreCatalog.powers.find(
+  const definition = matchCatalog(state).powers.find(
     (p) => p.id === power?.definitionId,
   );
   if (action.kind === "USE_BLOCK_POWER") {

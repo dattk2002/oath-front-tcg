@@ -1,7 +1,11 @@
 import { initializeTutorial } from "./tutorial.js";
 import type { DeckInput, HandCard, Side } from "@oathfront/contracts";
 import { validateWire } from "@oathfront/contracts";
-import { coreCatalog, validateDeck } from "@oathfront/game-content";
+import {
+  coreCatalog,
+  catalogForVersion,
+  validateDeck,
+} from "@oathfront/game-content";
 import type {
   GameEvent,
   MatchConfig,
@@ -23,10 +27,12 @@ function validateConfig(config: MatchConfig, random: RandomStreams): void {
     !["EASY", "NORMAL"].includes(config.difficulty)
   )
     throw new TypeError("Invalid match configuration");
+  const catalog = catalogForVersion(config.versions.content);
   if (
     !validateWire("Versions", config.versions) ||
     config.versions.rules !== coreCatalog.rulesVersion ||
-    config.versions.content !== coreCatalog.version ||
+    !catalog ||
+    (config.mode === "TUTORIAL" && catalog.version !== "core_v1") ||
     config.versions.locations !== coreCatalog.locationVersion ||
     config.versions.bot !== "bot_v1"
   )
@@ -35,10 +41,8 @@ function validateConfig(config: MatchConfig, random: RandomStreams): void {
     const deck = config.decks[side];
     if (
       !validateWire("DeckInput", deck) ||
-      !validateDeck(deck, coreCatalog).playable ||
-      !coreCatalog.heroes.some(
-        (h) => h.id === deck.heroId && h.faction === side,
-      )
+      !validateDeck(deck, catalog).playable ||
+      !catalog.heroes.some((h) => h.id === deck.heroId && h.faction === side)
     )
       throw new TypeError(`Invalid ${side} deck`);
   }

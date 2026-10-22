@@ -31,9 +31,9 @@ Interface: heroesCatalog/currentCatalog/catalogForVersion; Catalog versionunion;
 
 Files: engine `{setup,actions,preview,powers,mulligan,block}.ts` and catalog helper; relevant tests.
 Interface: lookup hero/power definitions from state.versions.content; shared card mechanics unchanged.
-- [ ] RED: setup/mulligan all20, deterministic replaycore_v1; table of14signature literal outcomes and invalid/full-lane cases.
-- [ ] Implement catalog lookup in every hero/power path including block and previews.
-- [ ] GREEN: engine/bot suites, legal actions for all20 and no duplicate power grants.
+- [x] RED: setup/mulligan all20, deterministic replaycore_v1; table of14signature literal outcomes and invalid/full-lane cases.
+- [x] Implement catalog lookup in every hero/power path including block and previews.
+- [x] GREEN: engine/bot suites, legal actions for all20 and no duplicate power grants.
 
 ## M3 — API and persistence
 

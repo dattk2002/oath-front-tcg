@@ -1,4 +1,4 @@
-import { coreCatalog } from "@oathfront/game-content";
+import { matchCatalog } from "./catalog.js";
 import type {
   ActionError,
   GameEvent,
@@ -66,7 +66,7 @@ export function applyMulligan(
   ) {
     for (const ownerSide of ["EVIL", "GOOD"] as const) {
       const p = next.players[ownerSide],
-        hero = coreCatalog.heroes.find((h) => h.id === p.heroId)!;
+        hero = matchCatalog(next).heroes.find((h) => h.id === p.heroId)!;
       const powerScope = ownerSide === "EVIL" ? "power:evil" : "power:good";
       const draw = nextInt(
         next.random.states[powerScope],

@@ -1,6 +1,6 @@
+import { matchCatalog } from "./catalog.js";
 import { tutorialPower } from "./tutorial.js";
 import type { ReservePower } from "@oathfront/contracts";
-import { coreCatalog } from "@oathfront/game-content";
 import type { GameEvent, MatchState, PlayerId } from "./model.js";
 import { nextInt } from "./rng.js";
 import { allocateInstanceId } from "./identity.js";
@@ -14,7 +14,7 @@ export function grantPowerOnDraft(
   reason: "INITIAL" | "BLOCK",
 ): ReservePower {
   const player = state.players[side];
-  const hero = coreCatalog.heroes.find((h) => h.id === player.heroId);
+  const hero = matchCatalog(state).heroes.find((h) => h.id === player.heroId);
   const available =
     hero?.powerIds.filter((id) => !player.receivedPowerIds.includes(id)) ?? [];
   if (!available.length) throw new RangeError("No unreceived hero power");
