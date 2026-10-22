@@ -1,4 +1,5 @@
 "use client";
+import AccountDisclosure from "../features/auth/AccountDisclosure";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useCampaignMotion } from "../features/campaign/use-campaign-motion";
 import { CampaignHeader } from "../features/campaign/CampaignHeader";
@@ -318,13 +319,7 @@ function AppContent({
                 History
               </Link>
             )}
-            <span className="session-label">
-              {session?.principal.kind === "ACCOUNT"
-                ? "Account"
-                : session
-                  ? "Guest session"
-                  : "Play without an account"}
-            </span>
+            {screen !== "match" && <AccountDisclosure {...(session?.principal.kind === "ACCOUNT" ? {name: session.principal.displayName} : {})}>{authPanel}</AccountDisclosure>}
           </nav>
         </header>
       )}
@@ -339,9 +334,7 @@ function AppContent({
           >
             {authPanel}
           </div>
-        ) : (
-          authPanel
-        ))}
+        ) : null)}
       <SessionRecoveryContext.Provider value={expired}>
         <PrivateStorageContext.Provider value={storage}>
           {settingsOpen && (
@@ -481,7 +474,7 @@ function AppContent({
           </main>
         </PrivateStorageContext.Provider>
       </SessionRecoveryContext.Provider>
-      {screen === "match" && authPanel}
+      {screen === "match" && <div className="match-account-access"><AccountDisclosure {...(session?.principal.kind === "ACCOUNT" ? {name: session.principal.displayName} : {})}>{authPanel}</AccountDisclosure></div>}
       {publicPage ? (
         <footer className="campaign-footer">
           <span>OathFront · The Fivefold</span>

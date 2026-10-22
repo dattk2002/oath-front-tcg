@@ -1,3 +1,5 @@
+import Link from "next/link";
+import DetailDialog from "../content/DetailDialog";
 import { SystemBadges, systemStrategy } from "../content/ContentBadges";
 import {
   contentName,
@@ -125,11 +127,19 @@ const elementsWeaknesses: Record<string, string> = {
 export default function HeroInspect({
   hero,
   catalog,
+  onPlay,
 }: {
   hero: HeroDefinitionView;
   catalog: PublicCatalog;
+  onPlay: () => void;
 }) {
   const [power, setPower] = useState<PowerDefinitionView | null>(null);
+  const [notes, setNotes] = useState(false);
+  const strategy = systemStrategy(hero) || strategies[hero.id];
+  const weakness =
+    catalog.version === "elements_v1"
+      ? (elementsWeaknesses[hero.id] ?? weaknesses[hero.id])
+      : weaknesses[hero.id];
   return (
     <aside
       className={`panel hero-detail ${hero.faction.toLowerCase()}`}
@@ -141,20 +151,33 @@ export default function HeroInspect({
           <p className="eyebrow">
             {hero.faction === "GOOD" ? "Dawnward" : "Ashen Court"}
           </p>
-          <h2 data-hero-name>{contentName(hero.id)}</h2>
+          <h2
+            data-hero-name
+            className={contentName(hero.id).length > 9 ? "long-name" : ""}
+          >
+            {contentName(hero.id)}
+          </h2>
           <p className="hero-title">{heroTitle(hero.id)}</p>
-          <p className="hero-classes">
+          <div className="hero-classes">
             <SystemBadges systems={hero.classes} />
-          </p>
-          <p>{systemStrategy(hero) || strategies[hero.id]}</p>
+          </div>
+          <p className="hero-strategy">{strategy}</p>
           <p className="hero-health">
-            <strong>20</strong> starting HP
+            <strong>20</strong>
+            <span>starting HP</span>
+            <button className="hero-notes" onClick={() => setNotes(true)}>
+              Playstyle & counters ↗
+            </button>
           </p>
-          <p className="muted">
-            {catalog.version === "elements_v1"
-              ? (elementsWeaknesses[hero.id] ?? weaknesses[hero.id])
-              : weaknesses[hero.id]}
-          </p>
+          <div className="hero-stage-actions">
+            <button className="primary hero-play" onClick={onPlay}>
+              Play <span aria-hidden="true">↗</span>
+            </button>
+            <Link href={`/heroes/${hero.id}/decks`}>Browse decks</Link>
+          </div>
+          <span className="hero-preset-note">
+            Start with a ready-to-play 30-card deck
+          </span>
         </div>
         <div className="hero-bust" data-hero-art>
           <ArtImage
@@ -166,12 +189,19 @@ export default function HeroInspect({
         </div>
       </div>
       <div className="hero-powers">
-        <h3>Four powers</h3>
+        <h3>
+          Four powers <span>Inspect a power to learn its effect</span>
+        </h3>
         <div className="power-list">
           {hero.powerIds.map((id) => {
             const p = catalog.powers.find((p) => p.id === id)!;
+            const signature = id === hero.signaturePowerId;
             return (
-              <button key={id} onClick={() => setPower(p)}>
+              <button
+                key={id}
+                onClick={() => setPower(p)}
+                className={signature ? "signature-power" : ""}
+              >
                 <span className="power-art">
                   <ArtImage
                     artKey={p.artKey}
@@ -180,21 +210,42 @@ export default function HeroInspect({
                   />
                 </span>
                 <strong>{contentName(p.id)}</strong>
-                {id === hero.signaturePowerId && <span>Signature</span>}
                 <span className="power-target">
-                  Cost 1 · {targetNames[p.targetKind]}
+                  {signature ? "Signature · " : ""}1 energy ·{" "}
+                  {targetNames[p.targetKind]}
                 </span>
               </button>
             );
           })}
         </div>
       </div>
-      {power && hero.powerIds.includes(power.id) && (
-        <section className="inspect-copy" aria-label="Power details">
-          <h3>{contentName(power.id)}</h3>
+      {power && (
+        <DetailDialog
+          title={contentName(power.id)}
+          label="Power details"
+          onClose={() => setPower(null)}
+        >
+          <p className="detail-kicker">
+            {power.id === hero.signaturePowerId
+              ? "Signature power"
+              : "Superpower"}{" "}
+            · 1 energy
+          </p>
           <p>{contentText(power.id)}</p>
-          <button onClick={() => setPower(null)}>Close power details</button>
-        </section>
+          <p className="muted">Target: {targetNames[power.targetKind]}</p>
+        </DetailDialog>
+      )}
+      {notes && (
+        <DetailDialog
+          title={`${contentName(hero.id)} · Playstyle`}
+          label="Hero strategy"
+          onClose={() => setNotes(false)}
+        >
+          <h3>Game plan</h3>
+          <p>{strategy}</p>
+          <h3>Watch for</h3>
+          <p>{weakness}</p>
+        </DetailDialog>
       )}
     </aside>
   );

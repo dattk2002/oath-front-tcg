@@ -206,7 +206,20 @@ export default function DeckScreen({
         onResume={(id) => router.push(`/matches/${id}`)}
       />
     );
-  if (screen === "setup") return <HeroSelect catalog={catalog} />;
+  if (screen === "setup")
+    return (
+      <HeroSelect
+        catalog={catalog}
+        onPlay={(id) => {
+          const preset = catalog.presets.find((p) => p.heroId === id);
+          if (preset)
+            setSelected({
+              source: { kind: "PRESET", presetId: preset.presetId },
+              heroId: id,
+            });
+        }}
+      />
+    );
   if (screen === "decks") {
     const hero = catalog.heroes.find((h) => h.id === heroId);
     if (!hero) return <p role="alert">Hero not found.</p>;
