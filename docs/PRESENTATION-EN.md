@@ -140,3 +140,26 @@ The six preset names are presentation defaults. Legacy preset records retain the
 ## Labels and tutorial identity
 
 Classes are Bastion, Verdant, Prism, Furnace, Hex, and Veil. Keywords shown in the interface include Shield, Armor, Poison, Stun, Exhausted, Pierce, and Move. Tutorial scenarios retain their stable IDs (`tutorial_v1` and `tutorial_evil_v1`), chapter/step IDs, saved progress, and rules; `apps/web/src/features/tutorial/tutorial-controller.tsx` supplies English instructions and results by step ID.
+
+## Playable hero expansion (`heroes_v1`)
+
+The following names have no historical Vietnamese alias. Each hero has 20 HP, three shared powers and one signature. Existing six heroes and all sixty cards retain their IDs and rules.
+
+| Stable ID | Hero | Title | Classes | Signature | Exact signature rules |
+| --- | --- | --- | --- | --- | --- |
+| H_G_SOL | Solenne | The Sunforged Envoy | BASTION / PRISM | S_G_SOL — Solar Accord | Give an allied unit Shield and +1/+1 permanently. |
+| H_G_CAI | Cairn | The Keystone Guardian | BASTION / VERDANT | S_G_CAI — Keystone Covenant | Give an allied unit Armor and +0/+2 permanently. |
+| H_G_ZEP | Zephyr | The Crosswind Runner | VERDANT / PRISM | S_G_ZEP — Crosswind | Move an allied unit to an empty allied lane. Give it +3 ATK this turn. Draw a card. |
+| H_G_MER | Meridian | The Dawn Archivist | BASTION / PRISM | S_G_MER — Held Dawn | Stun an enemy unit this turn. Heal your hero for 3. Draw a card. |
+| H_G_MOS | Mossweld | The Grove Mechanic | BASTION / VERDANT | S_G_MOS — Field Refit | Heal an allied unit for 4. Give it Shield. Draw a card. |
+| H_G_HAL | Halcyon | The Sky Chorus | VERDANT / PRISM | S_G_HAL — Skyward Chorus | Give all allied units +1 ATK this turn and heal them for 1. |
+| H_G_ROW | Rowan | The Grove Nomad | BASTION / VERDANT | S_G_ROW — Hearthroot | Summon a Seedling in an empty allied lane. Heal your hero for 4. |
+| H_E_ROO | Rook | The Cinder Marksman | FURNACE / VEIL | S_E_ROO — Crossfire Oath | Move an enemy unit to an empty lane on its side. Deal 2 damage to it. |
+| H_E_NYX | Nyxara | The Silk Hex | HEX / VEIL | S_E_NYX — Thread the Needle | Move an enemy unit to an empty lane on its side. Poison it. |
+| H_E_BRI | Brimstone | The Crucible Colossus | FURNACE / HEX | S_E_BRI — Crucible Break | Deal 3 damage to an enemy unit, then 1 damage to the enemy hero. |
+| H_E_SAB | Sable | The Last Adjudicator | HEX / VEIL | S_E_SAB — Final Injunction | Give an enemy unit -2 ATK this turn. Poison it. Draw a card. |
+| H_E_VAN | Vanta | The Blackglass Dancer | FURNACE / VEIL | S_E_VAN — Blackglass Waltz | Move an allied unit to an empty allied lane. Give it +1 ATK and Pierce this turn. |
+| H_E_GRA | Gravemarch | The Hollow Bell | FURNACE / HEX | S_E_GRA — Toll of Cinders | Summon a Cinderling in an empty allied lane. Deal 1 damage to all enemy units. |
+| H_E_SCO | Scoria | The Ash Alchemist | FURNACE / HEX | S_E_SCO — Ashen Remedy | Deal 2 damage to an enemy unit. Heal your hero for 3. Draw a card. |
+
+Canonical effects and preset definitions: `packages/game-content/src/heroes-v1.ts`. Runtime labels: `apps/web/src/content/english-content.ts`.

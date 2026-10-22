@@ -60,12 +60,26 @@ The Home extension is derived from the user's latest direction, not a new node i
 
 Each interactive card must have a semantic whole-surface link or button, a visible focus state and a minimum44px touch target. The Home must remain fully readable without animation or artwork. Images below the fold should load lazily. GSAP reveal/hover motion must be scoped and cleaned up; reduced-motion settings must show the complete static layout. No scroll pinning is required.
 
+## Component states and interaction
+
+| Component | Required state and input behavior |
+| --- | --- |
+| Play / Continue / Learn | Must show live English action text. During connection, Play must show “Connecting…” and game-entry actions must be disabled. Existing session/match state selects Play or Continue. Failure must leave an actionable retry banner. Enter/Space and pointer/touch must invoke the same action. |
+| Four phase buttons | Must be real buttons in a named group; the selected button must expose `aria-pressed=true`. Pointer, touch, Enter and Space must select the same phase. Focus must remain visible; selected state must have a border/text cue as well as color. The description must update through a polite live region. These local controls have no asynchronous loading/error state and must remain usable during API failure. |
+| Hero/editorial cards | Must be whole-surface semantic links with one clear destination; hover/focus may move artwork through GSAP but must preserve text legibility. Active state must retain the destination. Missing artwork must retain the linked name and fixed area. Cards do not have disabled/loading navigation states; browser navigation supplies normal link behavior. |
+| Ensemble and portraits | Must reserve geometry before decoding. Banner loads eagerly with responsive sources; offscreen portraits should load lazily. Failed artwork must render a named placeholder without hiding navigation, names or rules. Decorative images must use empty alt text when adjacent text already names the destination. |
+| Native roster | Must preserve a single radio selection, keyboard navigation and exact hero-to-deck identity. Desktop must allow scrolling the twenty entries without displacing the detail pane. Mobile must reflow the detail and powers below the roster; long names must wrap without horizontal overflow. |
+
+Hover/focus feedback must use the existing semantic tokens and scoped GSAP/CSS feedback rules. Busy/error states must not invent game actions. Empty filtered public rosters must retain faction navigation; the shipped two-faction data always contains ten heroes per faction. Editorial links must retain the existing explicitly labeled mock/archive status.
+
+At 375px the banner must precede the copy; at tablet/desktop the left copy must remain readable over the ensemble. At 200% text size, content must grow vertically without clipping. Meaningful copy must use at least the existing 12px small-text token, with 16px or larger body/rules where space permits. Keyboard focus must not be hidden by scroll containers or artwork; interactive targets must meet 44×44px. Reduced motion must remove entrance/hover movement while keeping every section visible. No game command may wait for visual effects.
+
 ## QA checklist
 
 - [x] Twenty source identities and four derivatives per hero inspected.
 - [x] HUD crops keep the complete face; full-body stages preserve alpha and silhouette.
-- [ ] Banner light space, eight recognizable identities and mobile composition verified.
-- [ ] Runtime manifest resolves all hero IDs and new signature portraits.
-- [ ] Home, roster, profiles and gameplay agree on names/artwork/counts.
-- [ ]375px, tablet and desktop checked for overflow, focus and legibility.
-- [ ] Reduced motion and image failure retain all navigation and rules.
+- [x] Banner light space, eight recognizable identities and mobile composition verified.
+- [x] Runtime manifest resolves all hero IDs and new signature portraits.
+- [x] Home, roster, profiles and gameplay agree on names/artwork/counts.
+- [x] 375px, tablet and desktop checked for overflow, focus and legibility.
+- [x] Reduced motion and image failure retain all navigation and rules.

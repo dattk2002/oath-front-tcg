@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "packId": "heroes_expansion_v1_design",
-  "status": "design_only",
-  "runtimeIntegration": "pending_user_scope_answer",
+  "status": "playable",
+  "runtimeIntegration": "implemented_heroes_v1",
   "baseContent": "core_v1_unchanged",
-  "runtimeHeroCount": 6,
+  "runtimeHeroCount": 20,
   "proposedTotalHeroCount": 20,
   "heroes": [
     {
@@ -32,7 +32,8 @@
         "orderedEffects": [
           "SHIELD target",
           "BUFF target +1 ATK +1 maxHP PERMANENT"
-        ]
+        ],
+        "id": "S_G_SOL"
       },
       "role": "Protective duelist",
       "silhouette": "slender spear triangle",
@@ -41,9 +42,12 @@
       "strategy": "Protect a valuable unit, then move it away from unfavorable exchanges.",
       "counterplay": "Hard removal and wide pressure punish investment in one unit.",
       "starterDeckTemplate": "D_G_BP",
-      "asset": "assets/source/heroes-expansion-v1/heroes/solenne.png",
+      "asset": "assets/source/heroes-v4/solenne.png",
       "alt": "Solenne, The Sunforged Envoy, a protective duelist with slender spear triangle and ivory, navy, copper gold colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_G_SOL",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/solenne.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/solenne/bust.webp"
     },
     {
       "slug": "cairn",
@@ -70,7 +74,8 @@
         "orderedEffects": [
           "ARMOR target",
           "BUFF target +0 ATK +2 maxHP PERMANENT"
-        ]
+        ],
+        "id": "S_G_CAI"
       },
       "role": "Enduring defender",
       "silhouette": "broad stone arch",
@@ -79,9 +84,12 @@
       "strategy": "Build a durable blocker and force the opponent to spend more than one card answering it.",
       "counterplay": "Movement and effects that destroy units directly bypass a defensive stat advantage.",
       "starterDeckTemplate": "D_G_BV",
-      "asset": "assets/source/heroes-expansion-v1/heroes/cairn.png",
+      "asset": "assets/source/heroes-v4/cairn.png",
       "alt": "Cairn, The Keystone Guardian, a enduring defender with broad stone arch and limestone, moss teal, gold colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_G_CAI",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/cairn.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/cairn/bust.webp"
     },
     {
       "slug": "zephyr",
@@ -109,7 +117,8 @@
           "MOVE target to destination",
           "BUFF target +3 ATK UNTIL_TURN_END",
           "DRAW self 1"
-        ]
+        ],
+        "id": "S_G_ZEP"
       },
       "role": "Mobile tempo",
       "silhouette": "lean scarf diagonal",
@@ -118,9 +127,12 @@
       "strategy": "Preserve a healthy unit and reposition it into an open attack lane.",
       "counterplay": "Full allied boards restrict movement; Stun interrupts a planned attack.",
       "starterDeckTemplate": "D_G_VP",
-      "asset": "assets/source/heroes-expansion-v1/heroes/zephyr.png",
+      "asset": "assets/source/heroes-v4/zephyr.png",
       "alt": "Zephyr, The Crosswind Runner, a mobile tempo with lean scarf diagonal and ivory, seafoam, indigo colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_G_ZEP",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/zephyr.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/zephyr/bust.webp"
     },
     {
       "slug": "meridian",
@@ -148,7 +160,8 @@
           "STUN target UNTIL_TURN_END",
           "HEAL selfHero 3",
           "DRAW self 1"
-        ]
+        ],
+        "id": "S_G_MER"
       },
       "role": "Measured control",
       "silhouette": "straight scholar rectangle",
@@ -157,9 +170,12 @@
       "strategy": "Delay a large attacker while restoring resources and finding your next answer.",
       "counterplay": "Multiple threats outpace a single Stun; Stun does not remove blockers or triggers.",
       "starterDeckTemplate": "D_G_BP",
-      "asset": "assets/source/heroes-expansion-v1/heroes/meridian.png",
+      "asset": "assets/source/heroes-v4/meridian.png",
       "alt": "Meridian, The Dawn Archivist, a measured control with straight scholar rectangle and navy, ivory, amber brass colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_G_MER",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/meridian.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/meridian/bust.webp"
     },
     {
       "slug": "mossweld",
@@ -187,7 +203,8 @@
           "HEAL target 4",
           "SHIELD target",
           "DRAW self 1"
-        ]
+        ],
+        "id": "S_G_MOS"
       },
       "role": "Field maintenance",
       "silhouette": "compact gauntlet asymmetry",
@@ -196,9 +213,12 @@
       "strategy": "Repair a damaged survivor before the next exchange and retain card advantage.",
       "counterplay": "Full-health targets waste the heal; direct destruction ignores repaired HP.",
       "starterDeckTemplate": "D_G_BV",
-      "asset": "assets/source/heroes-expansion-v1/heroes/mossweld.png",
+      "asset": "assets/source/heroes-v4/mossweld.png",
       "alt": "Mossweld, The Grove Mechanic, a field maintenance with compact gauntlet asymmetry and olive, ivory, copper, teal colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_G_MOS",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/mossweld.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/mossweld/bust.webp"
     },
     {
       "slug": "halcyon",
@@ -225,7 +245,8 @@
         "orderedEffects": [
           "BUFF ALL_ALLIED_UNITS +1 ATK UNTIL_TURN_END",
           "HEAL ALL_ALLIED_UNITS 1"
-        ]
+        ],
+        "id": "S_G_HAL"
       },
       "role": "Formation support",
       "silhouette": "tall avian feather fan",
@@ -234,9 +255,12 @@
       "strategy": "Develop several lanes before using a formation-wide combat boost.",
       "counterplay": "Board wipes and thin allied boards reduce the signature's value.",
       "starterDeckTemplate": "D_G_VP",
-      "asset": "assets/source/heroes-expansion-v1/heroes/halcyon.png",
+      "asset": "assets/source/heroes-v4/halcyon.png",
       "alt": "Halcyon, The Sky Chorus, a formation support with tall avian feather fan and ivory, indigo, pale gold colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_G_HAL",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/halcyon.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/halcyon/bust.webp"
     },
     {
       "slug": "rowan",
@@ -263,7 +287,8 @@
         "orderedEffects": [
           "SUMMON TK_G_SEED at destination",
           "HEAL selfHero 4"
-        ]
+        ],
+        "id": "S_G_ROW"
       },
       "role": "Patient sustain",
       "silhouette": "staff and layered traveling coat",
@@ -272,9 +297,12 @@
       "strategy": "Stabilize a losing board with a blocker while recovering hero health.",
       "counterplay": "A full board prevents the summon; sustained pressure can overwhelm a small token.",
       "starterDeckTemplate": "D_G_BV",
-      "asset": "assets/source/heroes-expansion-v1/heroes/rowan.png",
+      "asset": "assets/source/heroes-v4/rowan.png",
       "alt": "Rowan, The Grove Nomad, a patient sustain with staff and layered traveling coat and moss, ochre, ivory, brown colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_G_ROW",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/rowan.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/rowan/bust.webp"
     },
     {
       "slug": "rook",
@@ -301,7 +329,8 @@
         "orderedEffects": [
           "MOVE target to destination",
           "DAMAGE target 2"
-        ]
+        ],
+        "id": "S_E_ROO"
       },
       "role": "Tactical displacement",
       "silhouette": "rail-bow diagonal",
@@ -310,9 +339,12 @@
       "strategy": "Move a blocker out of the lane you want to attack, then finish a weakened target.",
       "counterplay": "A full enemy board denies movement; Armor and Shield reduce the follow-up damage.",
       "starterDeckTemplate": "D_E_FS",
-      "asset": "assets/source/heroes-expansion-v1/heroes/rook.png",
+      "asset": "assets/source/heroes-v4/rook.png",
       "alt": "Rook, The Cinder Marksman, a tactical displacement with rail-bow diagonal and charcoal, rust, bone, ember colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_E_ROO",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/rook.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/rook/bust.webp"
     },
     {
       "slug": "nyxara",
@@ -339,7 +371,8 @@
         "orderedEffects": [
           "MOVE target to destination",
           "POISON target"
-        ]
+        ],
+        "id": "S_E_NYX"
       },
       "role": "Positional attrition",
       "silhouette": "slim coat with six ribbon strands",
@@ -348,9 +381,12 @@
       "strategy": "Displace durable defenders and let Poison tax them across turns.",
       "counterplay": "Armor and Shield can absorb Poison packets; full lanes restrict her signature.",
       "starterDeckTemplate": "D_E_XS",
-      "asset": "assets/source/heroes-expansion-v1/heroes/nyxara.png",
+      "asset": "assets/source/heroes-v4/nyxara.png",
       "alt": "Nyxara, The Silk Hex, a positional attrition with slim coat with six ribbon strands and plum, charcoal, turquoise colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_E_NYX",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/nyxara.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/nyxara/bust.webp"
     },
     {
       "slug": "brimstone",
@@ -377,7 +413,8 @@
         "orderedEffects": [
           "DAMAGE target 3",
           "DAMAGE enemyHero 1"
-        ]
+        ],
+        "id": "S_E_BRI"
       },
       "role": "Removal pressure",
       "silhouette": "heavy obsidian trapezoid",
@@ -386,9 +423,12 @@
       "strategy": "Remove a medium defender while maintaining direct pressure on the enemy hero.",
       "counterplay": "Shield absorbs a damage packet; efficient healing can offset the hero damage.",
       "starterDeckTemplate": "D_E_FX",
-      "asset": "assets/source/heroes-expansion-v1/heroes/brimstone.png",
+      "asset": "assets/source/heroes-v4/brimstone.png",
       "alt": "Brimstone, The Crucible Colossus, a removal pressure with heavy obsidian trapezoid and obsidian, burnt iron, ember colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_E_BRI",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/brimstone.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/brimstone/bust.webp"
     },
     {
       "slug": "sable",
@@ -416,7 +456,8 @@
           "BUFF target -2 ATK UNTIL_TURN_END",
           "POISON target",
           "DRAW self 1"
-        ]
+        ],
+        "id": "S_E_SAB"
       },
       "role": "Suppressive control",
       "silhouette": "tall judicial rectangle",
@@ -425,9 +466,12 @@
       "strategy": "Reduce an immediate attack and establish a longer attrition threat.",
       "counterplay": "ATK penalties do not stop triggered abilities; Poison does not stack.",
       "starterDeckTemplate": "D_E_XS",
-      "asset": "assets/source/heroes-expansion-v1/heroes/sable.png",
+      "asset": "assets/source/heroes-v4/sable.png",
       "alt": "Sable, The Last Adjudicator, a suppressive control with tall judicial rectangle and charcoal, bone, plum colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_E_SAB",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/sable.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/sable/bust.webp"
     },
     {
       "slug": "vanta",
@@ -455,18 +499,22 @@
           "MOVE target to destination",
           "BUFF target +1 ATK UNTIL_TURN_END",
           "GRANT PIERCE to target UNTIL_TURN_END"
-        ]
+        ],
+        "id": "S_E_VAN"
       },
       "role": "Mobile finisher",
       "silhouette": "narrow S curve and blade hoops",
       "palette": "blackglass, plum, silver, crimson",
       "story": "Vanta learned to move through the reflections of broken glass. Every feint conceals the angle of the final strike.",
       "strategy": "Reposition a strong attacker; Pierce adds a separate full-ATK hero packet while that unit attacks a blocker.",
-      "counterplay": "Stun or removal before attack declaration stops the strike; reducing the attacker’s ATK reduces both packets. A durable blocker does not absorb Pierce’s hero packet.",
+      "counterplay": "Stun or removal before attack declaration stops the strike; reducing the attacker\u2019s ATK reduces both packets. A durable blocker does not absorb Pierce\u2019s hero packet.",
       "starterDeckTemplate": "D_E_FS",
-      "asset": "assets/source/heroes-expansion-v1/heroes/vanta.png",
+      "asset": "assets/source/heroes-v4/vanta.png",
       "alt": "Vanta, The Blackglass Dancer, a mobile finisher with narrow S curve and blade hoops and blackglass, plum, silver, crimson colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_E_VAN",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/vanta.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/vanta/bust.webp"
     },
     {
       "slug": "gravemarch",
@@ -493,7 +541,8 @@
         "orderedEffects": [
           "SUMMON TK_E_CINDER at destination",
           "DAMAGE ALL_ENEMY_UNITS 1 IN_ONE_BATCH"
-        ]
+        ],
+        "id": "S_E_GRA"
       },
       "role": "Board attrition",
       "silhouette": "blocky bell-cage automaton",
@@ -502,9 +551,12 @@
       "strategy": "Add a body while removing fragile units or consuming enemy Shields.",
       "counterplay": "Armor can negate the sweep, and a full allied board blocks the signature.",
       "starterDeckTemplate": "D_E_FX",
-      "asset": "assets/source/heroes-expansion-v1/heroes/gravemarch.png",
+      "asset": "assets/source/heroes-v4/gravemarch.png",
       "alt": "Gravemarch, The Hollow Bell, a board attrition with blocky bell-cage automaton and soot, bronze, teal patina colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_E_GRA",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/gravemarch.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/gravemarch/bust.webp"
     },
     {
       "slug": "scoria",
@@ -532,7 +584,8 @@
           "DAMAGE target 2",
           "HEAL selfHero 3",
           "DRAW self 1"
-        ]
+        ],
+        "id": "S_E_SCO"
       },
       "role": "Resource attrition",
       "silhouette": "split laboratory coat and twin vessels",
@@ -541,9 +594,15 @@
       "strategy": "Trade against a small enemy while recovering health and maintaining hand size.",
       "counterplay": "Shield and Armor weaken removal; wide boards demand more than one answer.",
       "starterDeckTemplate": "D_E_FX",
-      "asset": "assets/source/heroes-expansion-v1/heroes/scoria.png",
+      "asset": "assets/source/heroes-v4/scoria.png",
       "alt": "Scoria, The Ash Alchemist, a resource attrition with split laboratory coat and twin vessels and ash, charcoal, copper, crimson colors.",
-      "status": "design_candidate_not_playable"
+      "status": "playable",
+      "heroId": "H_E_SCO",
+      "historicalAsset": "assets/source/heroes-expansion-v1/heroes/scoria.png",
+      "runtimeBust": "/assets/heroes-v4/heroes/scoria/bust.webp"
     }
-  ]
+  ],
+  "contentVersion": "heroes_v1",
+  "artGuide": "docs/design/heroes-v4.md",
+  "runtimeAssetManifest": "apps/web/public/assets/heroes-v4/manifest.json"
 }

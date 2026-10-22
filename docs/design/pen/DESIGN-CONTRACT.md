@@ -17,7 +17,7 @@ The earlier `oathfront-rivals.pen` filename and `d23e9c…` hash describe a prev
 
 | Scope | Design basis | Implementation behavior |
 | --- | --- | --- |
-| Home | `BXxLv`, `bec8B`, `vtHuB` | Match ensemble background, logo, typography, header, composition and actions. |
+| Home | Original `BXxLv`, `bec8B`, `vtHuB`; superseded composition in `heroes_home_v2` | Preserve brand/header tokens; apply user-approved new banner and six-section Home as documented below. |
 | News, Events, features, hero list/detail | Actual nodes in `campaignExtension` | Semantic Next pages, exact visual direction and original artwork; static mock editorial content. |
 | Existing twelve gameplay families | Current runtime + approved new identity | Preserve layout, hidden information, rules, recovery, session and command semantics; apply theme and readability refinements. |
 | Missing tablet/reflow/state frames | User-approved derived work | Adapt the supplied components; record deviations and verify in browser. |
@@ -64,8 +64,12 @@ Implementation and verification evidence: [Pen implementation report](../../impl
 
 ## Hero expansion design addendum
 
-The [fourteen-hero design collection](../heroes-expansion/README.md) adds seven proposed Dawnward and seven proposed Ashen Court identities, each with original full-body artwork and a four-power design. See the [gallery](../heroes-expansion/gallery.html), [design manifest](../heroes-expansion/roster.json) and [source asset manifest](../../../assets/source/heroes-expansion-v1/manifest.json).
+The [fourteen-hero collection](../heroes-expansion/README.md) is now playable in `heroes_v1`: twenty total heroes, thirty-two powers, twenty presets and the same sixty cards. The [current art guide](../heroes-v4.md) supersedes the original portrait packs with twenty coherent superhero-inspired OathFront illustrations and one ensemble banner.
 
-This extension is **design-only, not playable**. The current runtime remains six heroes; twenty is the proposed total. Playable integration and whether to add new cards are pending the existing scope answers. Draft IDs must not be treated as current API IDs. All fourteen Pen node bindings remain null because the frozen source contains no frames for them. Existing six-profile templates provide a derived design basis only.
+The `heroes_home_v2` extension in [the machine contract](design-contract.json) records the latest user-approved Home composition: banner, interactive phase guide, featured heroes, cards/deck rules, Fivefold editorial and closing play action. It must retain the Pen logo, typography, semantic color tokens, accessible interactions and existing profile/editorial templates. Mobile must separate artwork and live copy. Hero IDs, names and four-power kits must agree across public profiles, selection, decks and matches.
 
-The extension must not alter source identity, existing runtime asset groups, core_v1, active matches or the implemented-scope readiness status. A future editable Pen revision must supply actual frames before bindings are populated. A playable version must separately cover content versioning, persistence compatibility, power semantics, decks, bot decisions, UI mapping and balance validation.
+These are derived extensions; the frozen Pen bytes and source identity remain unchanged. All fourteen new hero bindings and the new Home extension must remain null until a future editable Pen revision supplies actual nodes. The original asset groups are historical Pen baseline mappings; runtime portrait resolution uses the `heroes-v4` manifest first, for both legacy and current matches. The English content input hash is intentionally updated for the fourteen added identities and signatures.
+
+`core_v1`, `locations_v1`, `tutorial_v1`, old deck revisions, match checkpoints and command receipts must remain readable without rewriting. Pending rematch/review-create commands must retry their exact original ID/body/version before considering migration. Both units strike simultaneously within each lane; lane order is 1 to 5. Ashen-first animation ordering must not be described as first-strike damage.
+
+See the [implementation report](../../implementation/playable-heroes-home.md) for actual checks and remaining human balance/device acceptance limits.

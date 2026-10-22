@@ -187,7 +187,7 @@
       },
       {
         "path": "apps/web/src/content/english-content.ts",
-        "sha256": "7d1a54cc218f454819a2134627923927df5d4a615159fd10809278da779bc302"
+        "sha256": "57b3d0ee8988e429887c255fa953f00749ac08d9a60f0f2d21b49ae379488471"
       },
       {
         "path": "apps/web/src/features/motion/use-ui-motion.ts",
@@ -727,7 +727,7 @@
   ],
   "assetResolverPath": "apps/web/src/features/match/rendering/asset-manifest.ts",
   "assetRules": [
-    "All six heroes plus shared board in rivals-v2; all sixty distinct cards in fivefold-cards-v3.",
+    "Pinned Pen baseline: six original heroes plus board in rivals-v2; sixty cards in fivefold-cards-v3. Current runtime hero portrait override: all twenty in heroes-v4 (see heroes_home_v2 extension).",
     "Use manifests for stable ID/artKey/variant URLs; public URLs resolve under apps/web/public.",
     "Keep core power/token fallback and all eight terrain strips; no hidden-information-dependent preload.",
     "Preserve source masters/prompts/provenance; no rasterized UI text."
@@ -1892,6 +1892,14 @@
       {
         "id": "content-driven-stage-height",
         "reason": "Pen stage dimensions are minimum heights so 200% text and fallback fonts cannot overlap following sections; default composition remains source-aligned."
+      },
+      {
+        "id": "twenty-hero-art-and-roster",
+        "reason": "User requested a unified redesign of all twenty heroes. Use heroes-v4 portraits in both public and game UI. Expand the public roster to four desktop columns and native roster to a scrollable desktop grid with responsive long-name handling."
+      },
+      {
+        "id": "expanded-home-ensemble",
+        "reason": "User requested a new ensemble banner and substantial Home discovery sections inspired by Wild Rift. Home composition is an approved derived extension, retaining Pen brand tokens and live English copy; mobile separates artwork from actions."
       }
     ],
     "themeLayers": [
@@ -1902,18 +1910,18 @@
   "designExtensions": [
     {
       "id": "heroes_expansion_v1_design",
-      "status": "design_only_not_playable",
+      "status": "playable_with_superseding_art",
       "specPath": "docs/superpowers/specs/2026-10-22-hero-expansion-design.md",
       "manifestPath": "docs/design/heroes-expansion/roster.json",
       "sourceAssetManifestPath": "assets/source/heroes-expansion-v1/manifest.json",
       "guidePath": "docs/design/heroes-expansion/README.md",
       "galleryPath": "docs/design/heroes-expansion/gallery.html",
-      "currentRuntimeHeroCount": 6,
+      "currentRuntimeHeroCount": 20,
       "additionalDesignCount": 14,
       "proposedTotalHeroCount": 20,
-      "playableIntegration": "pending_user_scope_answer",
+      "playableIntegration": "implemented_heroes_v1",
       "completePenFrameCoverage": false,
-      "designBasis": "Derived proposal based on existing campaign hero list and six profile pairs. Frozen source has no frames for these fourteen heroes. No runtime asset group or API identifiers added.",
+      "designBasis": "Fourteen playable additions derive from the existing six profile pairs. Frozen Pen source has no frames for these fourteen identities; bindings remain null. Original art is historical; heroes-v4 supersedes all twenty runtime portraits.",
       "penNodesByDraftHeroId": {
         "H_G_SOL": null,
         "H_G_CAI": null,
@@ -1929,7 +1937,36 @@
         "H_E_VAN": null,
         "H_E_GRA": null,
         "H_E_SCO": null
-      }
+      },
+      "contentVersion": "heroes_v1"
+    },
+    {
+      "id": "heroes_home_v2",
+      "status": "implemented_user_approved_extension",
+      "specPath": "docs/superpowers/specs/2026-10-22-playable-heroes-home-design.md",
+      "planPath": "docs/superpowers/plans/2026-10-22-playable-heroes-home.md",
+      "guidePath": "docs/design/heroes-v4.md",
+      "contentVersion": "heroes_v1",
+      "runtimeHeroCount": 20,
+      "runtimePowerCount": 32,
+      "runtimePresetCount": 20,
+      "cardCount": 60,
+      "heroSourceManifestPath": "assets/source/heroes-v4/manifest.json",
+      "heroRuntimeManifestPath": "apps/web/public/assets/heroes-v4/manifest.json",
+      "homeSourceManifestPath": "assets/source/home-v2/manifest.json",
+      "homeRuntimeManifestPath": "apps/web/public/assets/home-v2/manifest.json",
+      "penNodeId": null,
+      "completePenFrameCoverage": false,
+      "designBasis": "Latest user-approved artwork and expanded Home override the original Home composition. Preserve Pen paper/slate/lilac/acid tokens, Barlow typography, logo, navigation and existing profile/editorial templates. No new Pen source nodes are claimed.",
+      "homeSections": [
+        "ensemble_and_play",
+        "five_lanes_four_phases",
+        "featured_heroes",
+        "real_cards_deck_rules",
+        "fivefold_editorial",
+        "closing_play"
+      ],
+      "compatibility": "core_v1, locations_v1, tutorial_v1 and old saved revisions/checkpoints/receipts remain unchanged. Uncertain create/rematch requests retry their exact original ID and content version."
     }
   ]
 }

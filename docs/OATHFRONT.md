@@ -30,3 +30,9 @@ Hosted profile uses two Vercel Hobby projects (Next and Fastify, Singapore sin1)
 The hosted Fastify root entrypoint exports a Node request handler over the shared buildApp factory; the standalone entrypoint owns listen and graceful shutdown. The Vercel adapter intercepts listen, so a top-level awaited standalone listener is not its entrypoint. waitUntil preserves accepted work only within function maxDuration; receipt/transaction semantics remain authoritative. Readiness blocks unsupported active rules/content/location/bot/tutorial bindings.
 
 Neon development migrations0002/0003 were explicitly applied and verified; production and the user's interactive database were untouched. Before the next interactive restart, run prepare-auth-db.mjs after build:api to preserve data while applying forward migrations. See implementation/release-runbook.md and release-checklist.md. M5 performance/balance/human gates remain open; no production readiness/deployment or unlimited-free claim is made.
+
+## Twenty-hero catalog and Home expansion — 2026-10-22
+
+The user approved playable integration of the fourteen new heroes and a unified redesign of all twenty illustrations plus the Home banner. `heroes_v1` is the current catalog (20 heroes, 32 powers, 20 legal starter presets, unchanged 60 cards). `core_v1` and old persisted matches/decks/tutorials remain supported without rewriting. New requests bind the selected version; old uncertain requests retain their original body/command ID until resolved.
+
+Home now has six meaningful sections, with real routes and card rules. The [art direction](design/heroes-v4.md) and [Pen contract](design/pen/DESIGN-CONTRACT.md) record derived scope; no new Pen nodes are invented. Source Pen bytes remain frozen. Existing balance/device acceptance limits remain open; no manual production deployment is part of this task. See [implementation evidence](implementation/playable-heroes-home.md).

@@ -1,6 +1,8 @@
 # OathFront — fourteen new heroes
 
-**Design package; not yet playable.** Fourteen original full-body illustrations, seven Dawnward and seven Ashen Court, extend the six existing heroes to a proposed roster of twenty. Each candidate has a distinct silhouette, identity, tactical role and four-power kit. Current runtime still has six heroes. The existing questions about playable integration and additional cards remain pending.
+**Playable in `heroes_v1`.** These fourteen original identities now extend the original six to twenty playable heroes. Each has a four-power kit, a signature and a legal starter preset. All twenty illustrations and the Home banner have been redesigned together; see the [current art guide](../heroes-v4.md). The sixty existing cards are preserved. `core_v1` remains immutable for older matches and tutorials.
+
+The descriptions, illustrations and prompts below preserve the initial design package. Current runtime art is in `heroes-v4`; `roster.json` records both current and historical paths.
 
 [Open the visual gallery](gallery.html) locally in a browser, or browse the images below. [Machine-readable roster](roster.json), [exact generation prompts](prompts.json), [asset manifest](../../../assets/source/heroes-expansion-v1/manifest.json), [scope and rule semantics](../../superpowers/specs/2026-10-22-hero-expansion-design.md).
 
@@ -77,7 +79,7 @@ A treaty keeper who carries a ward instead of a crown. Solenne holds a contested
 
 **Starter template:** `D_G_BP`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_G_SOL`, `S_G_SOL`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_G_SOL`, `S_G_SOL`.
 
 ## Cairn
 
@@ -104,7 +106,7 @@ Built to shelter a city, Cairn now walks the Fivefold carrying its last living s
 
 **Starter template:** `D_G_BV`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_G_CAI`, `S_G_CAI`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_G_CAI`, `S_G_CAI`.
 
 ## Zephyr
 
@@ -131,7 +133,7 @@ A courier who reads the broken winds between lanes. Zephyr wins by arriving wher
 
 **Starter template:** `D_G_VP`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_G_ZEP`, `S_G_ZEP`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_G_ZEP`, `S_G_ZEP`.
 
 ## Meridian
 
@@ -158,7 +160,7 @@ Meridian records the promises that survive each war. Her astronomical instrument
 
 **Starter template:** `D_G_BP`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_G_MER`, `S_G_MER`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_G_MER`, `S_G_MER`.
 
 ## Mossweld
 
@@ -185,7 +187,7 @@ Mossweld rebuilds what the front line leaves behind. Her seed kiln joins living 
 
 **Starter template:** `D_G_BV`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_G_MOS`, `S_G_MOS`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_G_MOS`, `S_G_MOS`.
 
 ## Halcyon
 
@@ -212,7 +214,7 @@ The last cantor of an airborne sanctuary, Halcyon coordinates scattered allies t
 
 **Starter template:** `D_G_VP`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_G_HAL`, `S_G_HAL`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_G_HAL`, `S_G_HAL`.
 
 ## Rowan
 
@@ -239,7 +241,7 @@ Rowan carries seeds from settlements that no longer stand. Each camp he leaves b
 
 **Starter template:** `D_G_BV`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_G_ROW`, `S_G_ROW`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_G_ROW`, `S_G_ROW`.
 
 ## Rook
 
@@ -266,7 +268,7 @@ Rook tracks the gaps between defensive lines. A single redirected target is ofte
 
 **Starter template:** `D_E_FS`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_E_ROO`, `S_E_ROO`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_E_ROO`, `S_E_ROO`.
 
 ## Nyxara
 
@@ -293,7 +295,7 @@ Nyxara weaves binding oaths into silent threads. Her control is patient, forcing
 
 **Starter template:** `D_E_XS`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_E_NYX`, `S_E_NYX`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_E_NYX`, `S_E_NYX`.
 
 ## Brimstone
 
@@ -320,7 +322,7 @@ An abandoned siege furnace given purpose, Brimstone treats every fortification a
 
 **Starter template:** `D_E_FX`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_E_BRI`, `S_E_BRI`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_E_BRI`, `S_E_BRI`.
 
 ## Sable
 
@@ -347,7 +349,7 @@ Sable enforces judgments written before the factions split. His ink seals turn p
 
 **Starter template:** `D_E_XS`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_E_SAB`, `S_E_SAB`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_E_SAB`, `S_E_SAB`.
 
 ## Vanta
 
@@ -374,7 +376,7 @@ Vanta learned to move through the reflections of broken glass. Every feint conce
 
 **Starter template:** `D_E_FS`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_E_VAN`, `S_E_VAN`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_E_VAN`, `S_E_VAN`.
 
 ## Gravemarch
 
@@ -401,7 +403,7 @@ Gravemarch once announced the return of a victorious army. Now its bell calls on
 
 **Starter template:** `D_E_FX`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_E_GRA`, `S_E_GRA`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_E_GRA`, `S_E_GRA`.
 
 ## Scoria
 
@@ -428,7 +430,7 @@ Scoria extracts useful life from the residue of battle. Her portable kilns turn 
 
 **Starter template:** `D_E_FX`, an existing legal 30-card deck with the same two classes. This is a baseline for later tuning, not an independently optimized new deck.
 
-**Draft identifiers:** `H_E_SCO`, `S_E_SCO`. Reserved design proposals only; they are not valid current API identifiers.
+**Playable identifiers in `heroes_v1`:** `H_E_SCO`, `S_E_SCO`.
 
 
 ## Pen and implementation handoff
@@ -452,8 +454,9 @@ The source Pen file contains six hero profile pairs. The fourteen new profiles m
 - [x] Actual alpha, image dimensions, solid-edge bounds and source hashes inspected.
 - [x] Full figures and primary props reviewed visually; silhouettes also reviewed over Pen paper/slate backgrounds in the gallery.
 - [x] Rule descriptions follow existing damage, movement, Poison, Armor, Shield, token and Pierce semantics.
-- [ ] Playable integration scope answered and implemented.
+- [x] Playable integration approved and implemented in `heroes_v1`.
 - [ ] Signature balance, fourteen tuned decks and human playtests.
-- [ ] New editable Pen frames and reviewed runtime thumbnail crops.
+- [x] Current runtime thumbnail/HUD crops reviewed in `heroes-v4`.
+- [ ] New editable Pen frames (the frozen source remains unchanged).
 
-The last three items are future implementation gates, not claims made by this design package.
+Human balance playtests and new editable Pen frames remain open; technical integration does not certify balance.

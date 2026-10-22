@@ -12,6 +12,8 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 4. [Kế hoạch triển khai OathFront](superpowers/plans/2026-10-20-oathfront-implementation.md): 18 task theo M1–M6.
 5. [Tiến độ implementation và các gate còn lại](implementation/milestones.md): phân biệt phần đã kiểm thử với phần chưa triển khai hoặc còn chờ bằng chứng.
 
+- [20 hero chơi được và Home mới](implementation/playable-heroes-home.md), [art direction đồng bộ](design/heroes-v4.md): `heroes_v1`, banner, roster và tương thích trận cũ.
+
 ## Gameplay và nội dung
 
 - [Quyết định thiết kế](DECISIONS.md), [luật R01–R22](RULES.md), [hợp đồng hiệu ứng](EFFECTS.md).
@@ -27,7 +29,7 @@ Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép �
 
 ## UI, motion và mockup
 
-- [Rivals redesign đang chạy](implementation/rivals-redesign.md), [quy tắc trạng thái/QA hiện tại](implementation/rivals-redesign-qa.md) và [bằng chứng theo task](implementation/evidence/rivals-redesign/README.md): token, English UI, 6 hero, 60 card, GSAP/Pixi và ranh giới nghiệm thu.
+- [Rivals redesign baseline](implementation/rivals-redesign.md), [quy tắc trạng thái/QA hiện tại](implementation/rivals-redesign-qa.md) và [bằng chứng theo task](implementation/evidence/rivals-redesign/README.md): token, English UI, 6 hero, 60 card, GSAP/Pixi và ranh giới nghiệm thu.
 - [Bộ 21 prompt nhỏ cho Pen.dev — đề xuất](design/pen/OATHFRONT-PEN-PROMPTS.md), [prompt tổng tiếng Anh](design/pen/OATHFRONT-PEN-PROMPT.md), [quy trình Pen ↔ Codex](design/pen/DESIGN-CONTRACT.md) và [contract v2](design/pen/design-contract.json): đã nhận [file Pen](design/pen/oath-front-tcg-design.pen), pin source/hash và xác minh mapping theo phạm vi triển khai đã duyệt.
 - [UI, animation, accessibility và performance budgets](UI-MOTION.md).
 - [Màn chọn hero, deck builder, block response và kết quả](SCREENS.md).

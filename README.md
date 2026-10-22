@@ -1,8 +1,10 @@
 # OathFront
 
-English presentation for an online PvE card game: Next.js frontend, Fastify authoritative API, PostgreSQL persistence, deterministic engine/bot and immutable `core_v1` content. Tutorial and skirmish support Dawnward and the Ashen Court. See the [English presentation catalog](docs/PRESENTATION-EN.md). No PvP, shop or LLM gameplay.
+English presentation for an online PvE card game: Next.js frontend, Fastify authoritative API, PostgreSQL persistence, deterministic engine/bot and versioned content. The current `heroes_v1` catalog has **20 playable heroes, 32 powers, 20 starter presets and 60 cards**; immutable `core_v1` remains supported for earlier matches and tutorials. Tutorial and skirmish support Dawnward and the Ashen Court. See the [English presentation catalog](docs/PRESENTATION-EN.md). No PvP, shop or LLM gameplay.
 
 **Release is on hold.** Technical checks are separate from the open frame-time, balance, human playtest and physical-device acceptance gates. See the [release checklist](docs/implementation/release-checklist.md) and [documentation index](docs/README.md).
+
+See the [unified hero artwork and Home design](docs/design/heroes-v4.md) and [implementation report](docs/implementation/playable-heroes-home.md).
 
 ## Run locally
 

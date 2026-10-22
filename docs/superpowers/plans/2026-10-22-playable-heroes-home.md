@@ -54,16 +54,16 @@ Files: source `heroes-v4/` and `home-v2/`, runtime public derivatives/manifests;
 
 Files: campaign model/components/motion/styles, Englishcontent, hero selector, APIclient and asset resolver; tests.
 Interface: current20metadata and existing preserved oldID mappings; actualnewruntime art; multi-section Home.
-- [ ] RED: public20andprofile four-powers parity, API current catalog, newasset resolution and all hero deck-intent routes.
-- [ ] Update metadata, dynamiccounts, native roster responsiveflow, opponentchoices and power labels.
-- [ ] Build six-section Home using new banner, phase/lanes explanation, featured heroes, cardshowcase, editorial and closingCTA.
-- [ ] Scope GSAP reveals/reducedmotion; run ui-ux-pro-max/React review.
-- [ ] GREEN: frontend/model focused checks and browserdesktop/tablet/mobile, no overflow/consoleerror.
+- [x] RED: public20andprofile four-powers parity, API current catalog, newasset resolution and all hero deck-intent routes.
+- [x] Update metadata, dynamiccounts, native roster responsiveflow, opponentchoices and power labels.
+- [x] Build six-section Home using new banner, phase/lanes explanation, featured heroes, cardshowcase, editorial and closingCTA.
+- [x] Scope GSAP reveals/reducedmotion; run ui-ux-pro-max/React review.
+- [x] GREEN: frontend/model focused checks and browserdesktop/tablet/mobile, no overflow/consoleerror.
 
 ## M6 — Integration and delivery
 
-- [ ] Typecheck,lint,contractcheck,productionbuild, one complete unit/integration run and relevant browser flow sweep.
-- [ ] Independent final review; fix objective important findings with regression evidence.
-- [ ] Update Pen contract with truthful derived scope and active design status; preserve frozen sourcehash.
+- [x] Typecheck,lint,contractcheck,productionbuild, one complete unit/integration run and relevant browser flow sweep.
+- [x] Independent final review; fix objective important findings with regression evidence.
+- [x] Update Pen contract with truthful derived scope and active design status; preserve frozen sourcehash.
 - [ ] Scoped commits/push, verify remote and CI; refresh local3000/3001 without clearing playerdata.
 - [ ] Final report links artwork/docs and actualverification; distinguish balance/deviceholds.
