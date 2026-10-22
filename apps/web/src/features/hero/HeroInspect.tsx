@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PowerIcon from "../content/PowerIcon";
 import DetailDialog from "../content/DetailDialog";
 import { SystemBadges, systemStrategy } from "../content/ContentBadges";
 import {
@@ -164,7 +165,9 @@ export default function HeroInspect({
           <p className="hero-strategy">{strategy}</p>
           <p className="hero-health">
             <strong>20</strong>
-            <span>starting HP</span>
+            <span>
+              <span className="hp-prefix">starting </span>HP
+            </span>
             <button className="hero-notes" onClick={() => setNotes(true)}>
               Playstyle & counters ↗
             </button>
@@ -203,11 +206,7 @@ export default function HeroInspect({
                 className={signature ? "signature-power" : ""}
               >
                 <span className="power-art">
-                  <ArtImage
-                    artKey={p.artKey}
-                    name={contentName(p.id)}
-                    retry={false}
-                  />
+                  <PowerIcon power={p} signature={signature} />
                 </span>
                 <strong>{contentName(p.id)}</strong>
                 <span className="power-target">

@@ -12,14 +12,16 @@ export function SystemBadge({ system }: { system: ClassId | null }) {
   return (
     <span className="system-badge" data-system={system ?? "NEUTRAL"}>
       {definition && (
-        <img
-          src={`/assets/elements-v1/systems/${system!.toLowerCase()}.svg`}
-          width={20}
-          height={20}
-          alt=""
-        />
+        <span className="system-mark" aria-hidden="true">
+          <img
+            src={`/assets/elements-v1/systems/${system!.toLowerCase()}.svg`}
+            width={20}
+            height={20}
+            alt=""
+          />
+        </span>
       )}
-      {system ? classLabel[system] : "Neutral"}
+      <span>{system ? classLabel[system] : "Neutral"}</span>
     </span>
   );
 }

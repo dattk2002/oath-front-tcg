@@ -25,6 +25,10 @@ test("hero lobby keeps equal tiles and Play in view at desktop, tablet and mobil
         .locator(".hero-stage-main")
         .getByRole("button", { name: "Play", exact: true }),
     ).toBeVisible();
+    await mkdir(".superpowers/lobby-ui", { recursive: true });
+    await page.screenshot({
+      path: `.superpowers/lobby-ui/heroes-${width}.png`,
+    });
     const boxes = await page
       .locator(".hero-tile:visible")
       .evaluateAll((nodes) =>
@@ -51,6 +55,24 @@ test("hero lobby keeps equal tiles and Play in view at desktop, tablet and mobil
         () => document.documentElement.scrollHeight <= innerHeight + 2,
       ),
     ).toBe(true);
+    const bounds = await page.locator(".hero-stage-main").evaluate((stage) => {
+      const s = stage.getBoundingClientRect();
+      return [...stage.querySelectorAll(".hero-stage-copy, .hero-bust")].map(
+        (child) => {
+          const r = child.getBoundingClientRect();
+          return {
+            bottom: r.bottom,
+            top: r.top,
+            stageBottom: s.bottom,
+            stageTop: s.top,
+          };
+        },
+      );
+    });
+    for (const b of bounds) {
+      expect(b.bottom).toBeLessThanOrEqual(b.stageBottom + 2);
+      expect(b.top).toBeGreaterThanOrEqual(b.stageTop - 2);
+    }
     const r = await play.boundingBox();
     expect(r!.y + r!.height).toBeLessThan(height!);
   }

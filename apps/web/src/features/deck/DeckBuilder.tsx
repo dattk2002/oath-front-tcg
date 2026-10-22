@@ -32,16 +32,8 @@ import { classLabel, keywordLabel } from "../match/labels";
 import { changeQuantity, normalize } from "./model";
 import { draftLocation, readDraft, writeDraft } from "./draft-storage";
 import type { DraftLocation, PendingSave } from "./draft-storage";
-const keywordCopy: Record<string, string> = {
-  SHIELD: "Blocks one positive damage packet, then consumes Shield.",
-  ARMOR: "Reduces each damage packet by 1; does not stack.",
-  POISONED: "Takes 1 damage at turn end; Poison does not stack.",
-  STUNNED:
-    "Cannot attack for the rest of this turn; still blocks the lane and triggers abilities.",
-  PIERCE:
-    "Regular attacks damage both the blocking unit and the hero behind it.",
-  MOVE: "Changes lanes while keeping HP, statuses and its attack marker.",
-};
+import { keywordCopy } from "../content/keyword-copy";
+
 function Modal({
   title,
   onClose,
