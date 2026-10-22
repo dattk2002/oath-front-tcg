@@ -1,3 +1,4 @@
+import { seasonScenarios } from "@oathfront/game-content/events";
 import { coreCatalog, supportedCatalogs } from "@oathfront/game-content";
 import type { Pool } from "@oathfront/db";
 import { tutorialManifestHash } from "../matches/tutorial.js";
@@ -6,6 +7,7 @@ export interface VersionRegistry {
   content: readonly string[];
   locations: readonly string[];
   bot: readonly string[];
+  challenges?: readonly { scenarioId: string; manifestHash: string }[];
   tutorials: readonly {
     scenarioId: string;
     manifestHash: string;
@@ -22,6 +24,7 @@ export interface ActiveVersion {
   scenarioId: string | null;
   manifestHash: string | null;
   manifestVersion: string | null;
+  challengeManifestHash?: string | null;
 }
 export interface VersionSupportReport {
   canRelease: boolean;
@@ -32,6 +35,10 @@ export const supportedRegistry: VersionRegistry = {
   content: supportedCatalogs.map((c) => c.version),
   locations: [coreCatalog.locationVersion],
   bot: ["bot_v1"],
+  challenges: seasonScenarios.map((s) => ({
+    scenarioId: s.id,
+    manifestHash: s.sha256,
+  })),
   tutorials: ["tutorial_v1", "tutorial_evil_v1"].map((scenarioId) => ({
     scenarioId,
     manifestHash: tutorialManifestHash(),
@@ -49,6 +56,7 @@ export function checkSupportedVersions(
     for (const key of ["rules", "content", "locations", "bot"] as const)
       if (!registry[key].includes(m[key])) components.push(key);
     if (
+      !m.challengeManifestHash &&
       (m.scenarioId !== null ||
         m.manifestHash !== null ||
         m.manifestVersion !== null) &&
@@ -60,6 +68,15 @@ export function checkSupportedVersions(
       )
     )
       components.push("tutorial");
+    if (
+      m.challengeManifestHash &&
+      !registry.challenges?.some(
+        (c) =>
+          c.scenarioId === m.scenarioId &&
+          c.manifestHash === m.challengeManifestHash,
+      )
+    )
+      components.push("challenge");
     if (components.length) unsupported.push({ matchId: m.id, components });
   }
   return { canRelease: unsupported.length === 0, unsupported };
@@ -69,7 +86,7 @@ export async function inspectSupportedVersions(
   registry = supportedRegistry,
 ) {
   const { rows } = await db.query<ActiveVersion>(
-    `SELECT m.id,m.status,m.rules_version AS rules,m.content_version AS content,m.location_version AS locations,m.bot_version AS bot,m.scenario_id AS "scenarioId",m.tutorial_manifest_sha256 AS "manifestHash",c.state->'state'->'tutorial'->>'manifestVersion' AS "manifestVersion" FROM matches m LEFT JOIN match_checkpoints c ON c.match_id=m.id WHERE m.status IN ('ACTIVE','PAUSED')`,
+    `SELECT m.id,m.status,m.rules_version AS rules,m.content_version AS content,m.location_version AS locations,m.bot_version AS bot,m.scenario_id AS "scenarioId",m.scenario_manifest_sha256 AS "challengeManifestHash",m.tutorial_manifest_sha256 AS "manifestHash",c.state->'state'->'tutorial'->>'manifestVersion' AS "manifestVersion" FROM matches m LEFT JOIN match_checkpoints c ON c.match_id=m.id WHERE m.status IN ('ACTIVE','PAUSED')`,
   );
   return checkSupportedVersions(registry, rows);
 }

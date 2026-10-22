@@ -29,6 +29,13 @@
       "when": 1792627200000,
       "tag": "0004_elements_events",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792627200001,
+      "tag": "0005_daily_draw",
+      "breakpoints": true
     }
   ]
 }

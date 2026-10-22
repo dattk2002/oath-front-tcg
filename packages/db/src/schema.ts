@@ -584,7 +584,7 @@ export const dailyAttempts = pgTable(
     ),
     check(
       "daily_attempts_status_check",
-      sql`${t.status} IN ('ACTIVE','WIN','LOSS','FAULTED')`,
+      sql`${t.status} IN ('ACTIVE','WIN','LOSS','DRAW','FAULTED')`,
     ),
     check(
       "daily_attempts_check",

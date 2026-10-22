@@ -90,7 +90,7 @@ it("installs from scratch and upgrades real legacy rows without rewriting deck o
           "SELECT count(*)::int AS n FROM drizzle.__drizzle_migrations",
         )
       ).rows[0].n,
-    ).toBe(4);
+    ).toBe(5);
   } finally {
     await db.end();
     await owner.query(`DROP DATABASE "${name}"`);

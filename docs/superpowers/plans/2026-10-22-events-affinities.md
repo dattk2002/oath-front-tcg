@@ -70,10 +70,10 @@
 
 **Files:** API events service/routes,rewards, match results/initialization/repository bindings; contracts newEvent/Collection/DailyCreate/Reward DTOs; engine mode metadata ifneeded; end-to-end API tests.
 **Interfaces:** `startDaily(principal,{commandId,scenarioId})`; `settleMatchRewards(tx,match,result,now)`; own progress/collection/ledger DTOs; exact original receipt beforetimegate.
-- [ ] RED: all7days,100/200/300 milestone arithmetic,1200/2400copies, PvEcap200, featured50/100/150, account-only eligibility, guestclaimnoaward, onehourloss/surrender, disconnectresume, faultretry, day/weekgrace24h, expiredstarts, duplicate/twotab/lostresponse+reload.
-- [ ] Bind eligibility andweek/dayatcreation withprincipal lock andexistingactive-match rule. Immutable dailyattempt references scenario hash andnormalengine match. Serveroutcome grantsledger+progress+collection inresulttransaction exactlyonce. Cardownershipcapped2; cosmeticmilestoneunique; no client amount/win inputs.
-- [ ] Expose progress/history and active/cooldown/complete statuses; challenge result actions returntoevent, notgenericrematch. Ensure recap/reload doesnotgrantagain.
-- [ ] GREEN: integratedAPI→DB→match→result→collection tests inclserverrestart/replay. Commit.
+- [x] RED: all7days,100/200/300 milestone arithmetic,1200/2400copies, PvEcap200, featured50/100/150, account-only eligibility, guestclaimnoaward, onehourloss/surrender, disconnectresume, faultretry, day/weekgrace24h, expiredstarts, duplicate/twotab/lostresponse+reload.
+- [x] Bind eligibility andweek/dayatcreation withprincipal lock andexistingactive-match rule. Immutable dailyattempt references scenario hash andnormalengine match. Serveroutcome grantsledger+progress+collection inresulttransaction exactlyonce. Cardownershipcapped2; cosmeticmilestoneunique; no client amount/win inputs.
+- [x] Expose progress/history and active/cooldown/complete statuses; challenge result actions returntoevent, notgenericrematch. Ensure recap/reload doesnotgrantagain.
+- [x] GREEN: integratedAPI→DB→match→result→collection tests inclserverrestart/replay. Commit.
 
 ### Task 6: Idempotent content administration
 

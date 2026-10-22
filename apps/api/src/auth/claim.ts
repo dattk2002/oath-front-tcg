@@ -195,6 +195,10 @@ export async function claimGuest(
         "UPDATE matches SET human_principal_id=$2 WHERE human_principal_id=$1",
         [guest.id, target],
       );
+      await tx.query(
+        "UPDATE daily_attempts SET principal_id=$2 WHERE principal_id=$1",
+        [guest.id, target],
+      );
       await tx.query("UPDATE match_results SET owner_id=$2 WHERE owner_id=$1", [
         guest.id,
         target,
@@ -219,7 +223,7 @@ export async function claimGuest(
       );
     }
     await tx.query(
-      "UPDATE matches SET expires_at=$2 WHERE human_principal_id=$1 AND status IN ('ACTIVE','PAUSED')",
+      "UPDATE matches SET expires_at=$2 WHERE human_principal_id=$1 AND status IN ('ACTIVE','PAUSED') AND mode<>'DAILY_CHALLENGE'",
       [target, new Date(now.getTime() + 30 * 86400000)],
     );
     await tx.query(

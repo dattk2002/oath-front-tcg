@@ -1,3 +1,4 @@
+import { registerProgressionRoutes } from "./events/routes.js";
 import { registerLiveReadRoutes } from "./editorial/read.js";
 import { catalogForVersion } from "@oathfront/game-content";
 import { clientIp } from "./client-ip.js";
@@ -227,6 +228,22 @@ export function buildApp(deps: AppDependencies) {
       .header("Cache-Control", "public, max-age=31536000, immutable")
       .send(publicCatalog(params.version));
   });
+  registerProgressionRoutes(
+    app,
+    deps.pool,
+    now,
+    async (req, mutation) => {
+      const s = await session(req);
+      if (mutation) {
+        requireCsrf(req.headers["x-csrf-token"], s.csrfHash);
+        await limit("COMMAND", s.principal.id);
+        await limit("MATCH_CREATE", s.principal.id);
+      }
+      return s.principal;
+    },
+    deadline,
+    deps.scheduler,
+  );
   registerLiveReadRoutes(app, deps.pool, now);
   registerDeckRoutes(
     app,

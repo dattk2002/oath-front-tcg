@@ -1,3 +1,4 @@
+import { bindPveMatch } from "../progression/rewards.js";
 import { validateOwnedDeck } from "../progression/collection.js";
 import { createTutorialConfig, tutorialManifestHash } from "./tutorial.js";
 import { randomBytes, randomUUID } from "node:crypto";
@@ -191,6 +192,7 @@ export function matchService(
         { expiresAt: expiry(principal), rematch },
         now(),
       );
+      await bindPveMatch(tx, principal, config.matchId, now());
       const response = commandResponse(
         result.nextState,
         0,

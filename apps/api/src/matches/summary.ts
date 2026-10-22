@@ -1,3 +1,5 @@
+import { matchRewardSummary } from "../progression/read.js";
+import { loadScenario } from "../events/scenarios.js";
 import type { Pool, PoolClient } from "@oathfront/db";
 import { safeInteger } from "@oathfront/db";
 import type { MatchSummary, ListQuery, MatchList } from "@oathfront/contracts";
@@ -30,7 +32,24 @@ export function summaryReader(pool: Pool | PoolClient, now: () => Date) {
     const current = active
       ? await readRecord(pool, principal.id, matchId, false, now())
       : null;
+    const scenario =
+      row.mode === "DAILY_CHALLENGE"
+        ? await loadScenario(pool, row.scenario_id)
+        : null;
+    const rewards = await matchRewardSummary(pool, principal.id, matchId);
     return output("MatchSummary", {
+      ...(scenario
+        ? {
+            challenge: {
+              scenarioId: scenario.id,
+              eventId: scenario.eventId,
+              dayIndex: scenario.dayIndex,
+              manifestSha256: scenario.sha256,
+              arenaKey: scenario.arenaKey,
+            },
+          }
+        : {}),
+      ...(rewards ? { rewards } : {}),
       matchId: row.id,
       mode: row.mode,
       lifecycle: row.status,
@@ -41,7 +60,9 @@ export function summaryReader(pool: Pool | PoolClient, now: () => Date) {
       difficulty:
         row.mode === "TUTORIAL"
           ? null
-          : (row.difficulty ?? row.rematch?.difficulty),
+          : (row.difficulty ??
+            current?.state.difficulty ??
+            row.rematch?.difficulty),
       outcome: row.outcome
         ? {
             result: ["ABANDONED", "FAULTED"].includes(row.outcome)

@@ -1089,6 +1089,18 @@ export type ErrorResponse =
           summaryAvailable: true;
         };
       };
+    }
+  | {
+      error: {
+        code: "DAILY_UNAVAILABLE";
+        messageKey: string;
+        requestId: Uuid;
+        retryable: boolean;
+        details: {
+          reason: "NOT_OPEN" | "COMPLETED" | "COOLDOWN" | "EXPIRED";
+          retryAvailableAt: string | null;
+        };
+      };
     };
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
@@ -1690,6 +1702,8 @@ export interface MatchSummary {
   resumable: boolean;
   blocksUsed: number;
   rematch: RematchConfig | null;
+  challenge?: ChallengeView;
+  rewards?: MatchRewardSummary;
 }
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
@@ -1700,6 +1714,34 @@ export interface RematchConfig {
   opponentHeroId: HeroId;
   difficulty: "EASY" | "NORMAL";
   expectedContentVersion: Version;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "MatchRewardSummary".
+ */
+export interface MatchRewardSummary {
+  eventId: string;
+  tickets: number;
+  /**
+   * @minItems 0
+   * @maxItems 2
+   */
+  cards: CollectionItem[];
+  /**
+   * @minItems 0
+   * @maxItems 2
+   */
+  cosmetics: string[];
+  eligibility: "ELIGIBLE" | "PRACTICE" | "EXPIRED" | "INELIGIBLE";
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "CollectionItem".
+ */
+export interface CollectionItem {
+  cardId: CardId;
+  quantity: number;
+  source: "BASE" | "EVENT";
 }
 /**
  * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
@@ -2144,6 +2186,170 @@ export interface EventDetail {
    */
   scenarios: ScenarioSummary[];
 }
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "DailyCreateRequest".
+ */
+export interface DailyCreateRequest {
+  commandId: Uuid;
+  scenarioId: string;
+  practice: boolean;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "CosmeticUnlock".
+ */
+export interface CosmeticUnlock {
+  key: string;
+  eventId: string;
+  earnedAt: string;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "CollectionView".
+ */
+export interface CollectionView {
+  serverNow: string;
+  rewardEligible: boolean;
+  /**
+   * @minItems 72
+   * @maxItems 72
+   */
+  items: [
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    CollectionItem,
+    ...CollectionItem[]
+  ];
+  /**
+   * @minItems 0
+   * @maxItems 100
+   */
+  cosmetics: CosmeticUnlock[];
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "DailyProgress".
+ */
+export interface DailyProgress {
+  scenarioId: string;
+  dayIndex: number;
+  status: "UPCOMING" | "AVAILABLE" | "ACTIVE" | "COOLDOWN" | "COMPLETED" | "CLOSED";
+  matchId: Uuid | null;
+  retryAvailableAt: string | null;
+  rewarded: boolean;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "RewardEntry".
+ */
+export interface RewardEntry {
+  id: Uuid;
+  source: string;
+  kind: "DAILY" | "PVE" | "MILESTONE" | "CARD" | "COSMETIC";
+  tickets: number;
+  cardId: CardId | null;
+  cosmeticKey: string | null;
+  earnedAt: string;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "WeeklyProgressView".
+ */
+export interface WeeklyProgressView {
+  serverNow: string;
+  eventId: string;
+  rewardEligible: boolean;
+  tickets: number;
+  ownedCopies: number;
+  /**
+   * @minItems 0
+   * @maxItems 7
+   */
+  completedDays: number[];
+  pveEarnedToday: number;
+  pveCap: 200;
+  /**
+   * @minItems 0
+   * @maxItems 7
+   */
+  daily: DailyProgress[];
+  /**
+   * @minItems 0
+   * @maxItems 100
+   */
+  history: RewardEntry[];
+  cosmeticUnlocked: boolean;
+}
 
 export interface WireDefinitions {
   Uuid: Uuid;
@@ -2244,4 +2450,12 @@ export interface WireDefinitions {
   ScenarioSummary: ScenarioSummary;
   EventRewards: EventRewards;
   EventDetail: EventDetail;
+  DailyCreateRequest: DailyCreateRequest;
+  CollectionItem: CollectionItem;
+  CosmeticUnlock: CosmeticUnlock;
+  CollectionView: CollectionView;
+  DailyProgress: DailyProgress;
+  RewardEntry: RewardEntry;
+  WeeklyProgressView: WeeklyProgressView;
+  MatchRewardSummary: MatchRewardSummary;
 }

@@ -1,3 +1,5 @@
+import { createChallengeMatch } from "@oathfront/game-engine/challenges";
+import { loadScenario } from "../events/scenarios.js";
 import { isDeepStrictEqual } from "node:util";
 import {
   createMatchWithEvents,
@@ -35,10 +37,20 @@ export async function auditReplay(tx: PoolClient, record: MatchRecord) {
     versions: state.versions,
     decks: state.deckSnapshots,
   };
-  const regenerated = createMatchWithEvents(
-    config,
-    createRandomStreams(row.private_seed),
-  );
+  const scenario =
+    state.mode === "DAILY_CHALLENGE" && state.challenge
+      ? await loadScenario(tx, state.challenge.scenarioId)
+      : null;
+  if (
+    scenario &&
+    (state.challenge?.manifestSha256 !== scenario.sha256 ||
+      Buffer.from(row.private_seed).toString("hex") !==
+        scenario.manifest.seedHex)
+  )
+    throw new PersistenceError("INVALID_INITIALIZATION");
+  const regenerated = scenario
+    ? createChallengeMatch(config.matchId, scenario)
+    : createMatchWithEvents(config, createRandomStreams(row.private_seed));
   if (
     row.rng_algorithm_version !== algorithmVersion ||
     !isDeepStrictEqual(regenerated.nextState, state) ||

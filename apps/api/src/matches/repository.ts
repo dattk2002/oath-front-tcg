@@ -1,3 +1,5 @@
+import { loadScenario } from "../events/scenarios.js";
+import { settleMatchRewards } from "../progression/rewards.js";
 import { verifyTutorialBinding } from "./tutorial.js";
 import { isDeepStrictEqual } from "node:util";
 import { hashState } from "@oathfront/game-engine";
@@ -88,6 +90,18 @@ export async function readRecord(
     } catch {
       throw new PersistenceError("VERSION_UNSUPPORTED");
     }
+  }
+  if (state.mode === "DAILY_CHALLENGE") {
+    const scenario = await loadScenario(tx, row.scenario_id);
+    if (
+      row.scenario_manifest_sha256 !== scenario.sha256 ||
+      state.challenge?.scenarioId !== scenario.id ||
+      state.challenge?.manifestSha256 !== scenario.sha256 ||
+      state.challenge?.eventId !== scenario.eventId ||
+      state.challenge?.dayIndex !== scenario.dayIndex ||
+      state.challenge?.arenaKey !== scenario.arenaKey
+    )
+      throw new PersistenceError("VERSION_UNSUPPORTED");
   }
   if (
     state.matchId !== row.id ||
@@ -242,7 +256,8 @@ export async function persistTransition(
     state.humanSide !== record.state.humanSide ||
     state.mode !== record.state.mode ||
     !isDeepStrictEqual(state.versions, record.state.versions) ||
-    !isDeepStrictEqual(state.deckSnapshots, record.state.deckSnapshots)
+    !isDeepStrictEqual(state.deckSnapshots, record.state.deckSnapshots) ||
+    !isDeepStrictEqual(state.challenge, record.state.challenge)
   )
     throw new PersistenceError("INVALID_TRANSITION");
   const envelope = encodeCheckpoint(state);
@@ -307,6 +322,7 @@ export async function persistTransition(
       rematch: record.rematch,
       now,
     });
+    await settleMatchRewards(client, record.id, now);
     await client.query(
       "UPDATE command_receipts SET expires_at=$2 WHERE principal_id=$1 AND resource_id=$3",
       [record.principalId, days(now, 30), record.id],

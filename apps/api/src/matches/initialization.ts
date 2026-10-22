@@ -1,3 +1,5 @@
+import { createChallengeMatch } from "@oathfront/game-engine/challenges";
+import { loadScenario } from "../events/scenarios.js";
 import { verifyTutorialBinding } from "./tutorial.js";
 import { createHash } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
@@ -20,6 +22,7 @@ export interface InitializationMetadata {
   rematch: RematchConfig | null;
   scenarioId?: string;
   tutorialManifestSha256?: string;
+  scenarioManifestSha256?: string;
 }
 export const hashJson = (value: unknown) =>
   createHash("sha256").update(canonicalJson(value)).digest("hex");
@@ -69,7 +72,22 @@ export async function insertInitialization(
       "tutorial_v1",
       config.humanSide,
     );
-  const transition = createMatchWithEvents(config, createRandomStreams(seed)),
+  const scenario =
+    config.mode === "DAILY_CHALLENGE" && metadata.scenarioId
+      ? await loadScenario(tx, metadata.scenarioId)
+      : null;
+  if (
+    config.mode === "DAILY_CHALLENGE" &&
+    (!scenario ||
+      scenario.sha256 !== metadata.scenarioManifestSha256 ||
+      Buffer.from(seed).toString("hex") !== scenario.manifest.seedHex ||
+      !isDeepStrictEqual(config.decks, scenario.manifest.decks) ||
+      config.humanSide !== scenario.manifest.humanSide)
+  )
+    throw new PersistenceError("INVALID_INITIALIZATION");
+  const transition = scenario
+      ? createChallengeMatch(config.matchId, scenario)
+      : createMatchWithEvents(config, createRandomStreams(seed)),
     state = transition.nextState;
   const envelope = encodeCheckpoint(state);
   const p = await tx.query(
@@ -79,7 +97,7 @@ export async function insertInitialization(
   if (p.rows[0].merged_into_principal_id)
     throw new PersistenceError("PRINCIPAL_MERGED");
   await tx.query(
-    "INSERT INTO matches(id,human_principal_id,human_side,mode,status,revision,rules_version,content_version,location_version,bot_version,scenario_id,tutorial_manifest_sha256,rematch,created_at,updated_at,last_activity_at,expires_at) VALUES($1,$2,$3,$4,$5,0,$6,$7,$8,$9,$10,$11,$12,$13,$13,$13,$14)",
+    "INSERT INTO matches(id,human_principal_id,human_side,mode,status,revision,rules_version,content_version,location_version,bot_version,scenario_id,tutorial_manifest_sha256,rematch,created_at,updated_at,last_activity_at,expires_at,scenario_manifest_sha256) VALUES($1,$2,$3,$4,$5,0,$6,$7,$8,$9,$10,$11,$12,$13,$13,$13,$14,$15)",
     [
       config.matchId,
       principalId,
@@ -95,6 +113,7 @@ export async function insertInitialization(
       JSON.stringify(metadata.rematch),
       time,
       metadata.expiresAt,
+      metadata.scenarioManifestSha256 ?? null,
     ],
   );
   await tx.query(

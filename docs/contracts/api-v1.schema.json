@@ -4201,6 +4201,12 @@
               "type": "null"
             }
           ]
+        },
+        "challenge": {
+          "$ref": "#/definitions/ChallengeView"
+        },
+        "rewards": {
+          "$ref": "#/definitions/MatchRewardSummary"
         }
       },
       "required": [
@@ -5134,6 +5140,71 @@
                   },
                   "required": [
                     "summaryAvailable"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "code",
+                "messageKey",
+                "requestId",
+                "retryable",
+                "details"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "const": "DAILY_UNAVAILABLE"
+                },
+                "messageKey": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "requestId": {
+                  "$ref": "#/definitions/Uuid"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "reason": {
+                      "enum": [
+                        "NOT_OPEN",
+                        "COMPLETED",
+                        "COOLDOWN",
+                        "EXPIRED"
+                      ]
+                    },
+                    "retryAvailableAt": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "reason",
+                    "retryAvailableAt"
                   ],
                   "additionalProperties": false
                 }
@@ -6974,6 +7045,361 @@
         "systems",
         "rewards",
         "scenarios"
+      ],
+      "additionalProperties": false
+    },
+    "DailyCreateRequest": {
+      "type": "object",
+      "properties": {
+        "commandId": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "scenarioId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "practice": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "commandId",
+        "scenarioId",
+        "practice"
+      ],
+      "additionalProperties": false
+    },
+    "CollectionItem": {
+      "type": "object",
+      "properties": {
+        "cardId": {
+          "$ref": "#/definitions/CardId"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "source": {
+          "enum": [
+            "BASE",
+            "EVENT"
+          ]
+        }
+      },
+      "required": [
+        "cardId",
+        "quantity",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "CosmeticUnlock": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "earnedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "key",
+        "eventId",
+        "earnedAt"
+      ],
+      "additionalProperties": false
+    },
+    "CollectionView": {
+      "type": "object",
+      "properties": {
+        "serverNow": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rewardEligible": {
+          "type": "boolean"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CollectionItem"
+          },
+          "minItems": 72,
+          "maxItems": 72
+        },
+        "cosmetics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CosmeticUnlock"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "serverNow",
+        "rewardEligible",
+        "items",
+        "cosmetics"
+      ],
+      "additionalProperties": false
+    },
+    "DailyProgress": {
+      "type": "object",
+      "properties": {
+        "scenarioId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "dayIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "status": {
+          "enum": [
+            "UPCOMING",
+            "AVAILABLE",
+            "ACTIVE",
+            "COOLDOWN",
+            "COMPLETED",
+            "CLOSED"
+          ]
+        },
+        "matchId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retryAvailableAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rewarded": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "scenarioId",
+        "dayIndex",
+        "status",
+        "matchId",
+        "retryAvailableAt",
+        "rewarded"
+      ],
+      "additionalProperties": false
+    },
+    "RewardEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/Uuid"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "kind": {
+          "enum": [
+            "DAILY",
+            "PVE",
+            "MILESTONE",
+            "CARD",
+            "COSMETIC"
+          ]
+        },
+        "tickets": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "cardId": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CardId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cosmeticKey": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "earnedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "kind",
+        "tickets",
+        "cardId",
+        "cosmeticKey",
+        "earnedAt"
+      ],
+      "additionalProperties": false
+    },
+    "WeeklyProgressView": {
+      "type": "object",
+      "properties": {
+        "serverNow": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "rewardEligible": {
+          "type": "boolean"
+        },
+        "tickets": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "ownedCopies": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "completedDays": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6
+          },
+          "minItems": 0,
+          "maxItems": 7
+        },
+        "pveEarnedToday": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200
+        },
+        "pveCap": {
+          "const": 200
+        },
+        "daily": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DailyProgress"
+          },
+          "minItems": 0,
+          "maxItems": 7
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RewardEntry"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "cosmeticUnlocked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "serverNow",
+        "eventId",
+        "rewardEligible",
+        "tickets",
+        "ownedCopies",
+        "completedDays",
+        "pveEarnedToday",
+        "pveCap",
+        "daily",
+        "history",
+        "cosmeticUnlocked"
+      ],
+      "additionalProperties": false
+    },
+    "MatchRewardSummary": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "tickets": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CollectionItem"
+          },
+          "minItems": 0,
+          "maxItems": 2
+        },
+        "cosmetics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "minItems": 0,
+          "maxItems": 2
+        },
+        "eligibility": {
+          "enum": [
+            "ELIGIBLE",
+            "PRACTICE",
+            "EXPIRED",
+            "INELIGIBLE"
+          ]
+        }
+      },
+      "required": [
+        "eventId",
+        "tickets",
+        "cards",
+        "cosmetics",
+        "eligibility"
       ],
       "additionalProperties": false
     }
