@@ -21,7 +21,13 @@ const locationArena: Record<string, number> = {
   ruined_arena: 3,
 };
 /** Decoration consumes public projection only; hidden location assignments are never accepted. */
-export function arenaForView(view: Pick<PlayerView, "board" | "matchId">) {
+export function arenaForView(
+  view: Pick<PlayerView, "board" | "matchId" | "challenge">,
+) {
+  const scenario = arenas.find(
+    (arena) => arena.key === view.challenge?.arenaKey,
+  );
+  if (scenario) return scenario;
   const revealed = [...view.board]
     .sort((a, b) => a.laneId - b.laneId)
     .find((lane) => lane.location.state === "REVEALED");

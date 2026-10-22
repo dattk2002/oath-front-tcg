@@ -1,24 +1,15 @@
 import { notFound } from "next/navigation";
 import App from "../../App";
-import {
-  findEditorial,
-  editorialEntries,
-} from "../../../features/campaign/editorial";
-export function generateStaticParams() {
-  return editorialEntries
-    .filter((entry) => entry.section === "news")
-    .map((entry) => ({ slug: entry.slug }));
-}
+import { readNewsPost } from "../../../server/live-content";
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-  const entry = findEditorial("news", slug);
+  const result = await readNewsPost((await params).slug);
   return {
-    title: `${entry?.title ?? "Not found"} · OathFront`,
-    description: entry?.summary,
+    title: `${result.status === "ok" ? result.data.title : "News"} · OathFront`,
+    ...(result.status === "ok" ? { description: result.data.summary } : {}),
   };
 }
 export default async function Page({
@@ -28,9 +19,9 @@ export default async function Page({
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ category?: string }>;
 }) {
-  const { slug } = await params;
-  if (!findEditorial("news", slug)) notFound();
-  const query = await searchParams;
+  const { slug } = await params,
+    query = await searchParams;
+  if ((await readNewsPost(slug)).status === "missing") notFound();
   return (
     <App
       screen="campaign"

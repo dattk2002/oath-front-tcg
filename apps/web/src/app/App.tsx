@@ -191,6 +191,31 @@ function AppContent({
       active = false;
     };
   }, [attempt, screen]);
+  async function ensureEventSession() {
+    try {
+      const current = session
+        ? await api.session()
+        : await startGuestSession(api, sessionStorage);
+      adoptSession(current);
+      return current;
+    } catch (error) {
+      if (
+        error instanceof ApiError &&
+        error.body.error.code === "SESSION_EXPIRED"
+      )
+        setExpired(true);
+      throw error;
+    }
+  }
+  function openEventSignIn() {
+    setAccountOpen(true);
+    requestAnimationFrame(() => {
+      accountArea.current?.scrollIntoView({ block: "nearest" });
+      accountArea.current
+        ?.querySelector<HTMLButtonElement>("button:not(:disabled)")
+        ?.focus();
+    });
+  }
   async function start(selectedHeroId?: string) {
     if (busy || loading) return;
     if (!catalog) {
@@ -365,6 +390,12 @@ function AppContent({
               campaign ? (
                 <CampaignPage
                   view={campaign}
+                  catalog={catalog}
+                  api={api}
+                  session={session}
+                  ready={!loading}
+                  ensureSession={ensureEventSession}
+                  onSignIn={openEventSignIn}
                   onPlay={() => void start()}
                   onChooseHero={(id) => void start(id)}
                   busy={busy || loading}
@@ -372,6 +403,7 @@ function AppContent({
                 />
               ) : (
                 <CampaignHome
+                  api={api}
                   onPlay={() => void start()}
                   onLearn={() => void startTutorial("GOOD")}
                   busy={busy || loading}

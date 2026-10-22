@@ -1,3 +1,4 @@
+import { RewardSummary } from "../events/RewardSummary";
 import { useUiMotion } from "../motion/use-ui-motion";
 import { contentName } from "../../content/english-content";
 import { TutorialEntry } from "../tutorial/tutorial-controller";
@@ -185,6 +186,7 @@ export default function ResultDialog({
         {copy.heading}
       </h2>
       <p>{copy.body}</p>
+      <RewardSummary summary={summary} api={api} />
       <div className="result-hero-art">
         <ArtImage
           artKey={

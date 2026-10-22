@@ -1,44 +1,43 @@
-import { useEffect, useState } from "react";
-import type {
-  CardDefinitionView,
-  CollectionView,
-} from "@oathfront/contracts/browser";
+import { useContext } from "react";
+import type { CardDefinitionView } from "@oathfront/contracts/browser";
 import type { ApiClient } from "../match/api-client";
-
+import { PrivateStorageContext } from "../auth/private-storage";
+import { useLiveRead } from "./use-live-read";
 export function useCollection(api: ApiClient, enabled: boolean) {
-  const [collection, setCollection] = useState<CollectionView | null>(null);
-  const [error, setError] = useState(false);
-  const [attempt, setAttempt] = useState(0);
-  useEffect(() => {
-    if (!enabled) return;
-    let active = true;
-    const refresh = () => {
-      void api.collection().then(
-        (value) => {
-          if (active) {
-            setCollection(value);
-            setError(false);
-          }
-        },
-        () => {
-          if (active) setError(true);
-        },
-      );
-    };
-    refresh();
-    window.addEventListener("focus", refresh);
-    return () => {
-      active = false;
-      window.removeEventListener("focus", refresh);
-    };
-  }, [api, enabled, attempt]);
+  const owner = useContext(PrivateStorageContext);
+  const read = useLiveRead(
+    owner,
+    async () => {
+      const [collection, events] = await Promise.all([
+        api.collection(),
+        api.weeklyEvents(),
+      ]);
+      return {
+        collection,
+        revealed: events.items.flatMap((e) =>
+          e.revealed && e.cardId ? [e.cardId] : [],
+        ),
+      };
+    },
+    enabled,
+  );
+  const collection = read.data?.collection ?? null;
   const owned = (card: CardDefinitionView) =>
     card.rarity === "E"
       ? Math.min(
           2,
-          collection?.items.find((item) => item.cardId === card.id)?.quantity ??
-            0,
+          collection?.items.find((i) => i.cardId === card.id)?.quantity ?? 0,
         )
       : 2;
-  return { collection, error, owned, retry: () => setAttempt((n) => n + 1) };
+  const isRevealed = (card: CardDefinitionView) =>
+    card.rarity !== "E" ||
+    owned(card) > 0 ||
+    !!read.data?.revealed.includes(card.id);
+  return {
+    collection,
+    error: !!read.error,
+    owned,
+    isRevealed,
+    retry: read.refresh,
+  };
 }

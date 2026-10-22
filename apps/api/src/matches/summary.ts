@@ -128,7 +128,7 @@ export function summaryReader(pool: Pool | PoolClient, now: () => Date) {
     const limit = query.limit ?? 20;
     const rows = (
       await pool.query(
-        "SELECT id,created_at FROM matches WHERE human_principal_id=$1 AND mode='SKIRMISH' AND (history_expires_at IS NULL OR history_expires_at>$2) AND ($3::timestamptz IS NULL OR (created_at,id)<($3::timestamptz,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5",
+        "SELECT id,created_at FROM matches WHERE human_principal_id=$1 AND mode IN ('SKIRMISH','DAILY_CHALLENGE') AND (history_expires_at IS NULL OR history_expires_at>$2) AND ($3::timestamptz IS NULL OR (created_at,id)<($3::timestamptz,$4::uuid)) ORDER BY created_at DESC,id DESC LIMIT $5",
         [
           principal.id,
           now(),

@@ -11,9 +11,15 @@ import {
   resetDatabase,
 } from "../../../packages/db/tests/helpers.ts";
 import { buildApp } from "../dist/app.mjs";
+import { importLiveContent, liveBundle } from "../src/editorial/admin.ts";
 const owner = ownerPool();
 await setupDatabase(owner);
 await resetDatabase(owner);
+const liveContent = process.env.OATHFRONT_E2E_LIVE_CONTENT === "1";
+let fixtureTime = Date.parse(
+  process.env.OATHFRONT_E2E_CLOCK ?? "2026-10-26T01:00:00Z",
+);
+if (liveContent) await importLiveContent(owner, liveBundle);
 const pool = new Pool({
   connectionString: process.env.TEST_DATABASE_URL,
   max: 5,
@@ -21,6 +27,7 @@ const pool = new Pool({
 const issuer = "https://identity.oathfront.test";
 const { privateKey, publicKey } = await generateKeyPair("EdDSA");
 const verifyIdentity = neonJwtVerifier({
+  ...(liveContent ? { now: () => new Date(fixtureTime) } : {}),
   baseUrl: issuer + "/db/auth",
   jwksUrl: issuer + "/db/auth/jwks",
   key: createLocalJWKSet({
@@ -28,6 +35,7 @@ const verifyIdentity = neonJwtVerifier({
   }),
 });
 const app = buildApp({
+  ...(liveContent ? { now: () => new Date(fixtureTime) } : {}),
   verifyIdentity,
   ...(process.env.OATHFRONT_E2E_INGRESS === "1"
     ? { ipTrust: { mode: "trusted-next", secret: process.env.UI_PROXY_SECRET } }
@@ -46,11 +54,21 @@ app.post("/__fixture/identity", async (req) => {
       .setSubject(subject)
       .setIssuer(issuer)
       .setAudience(issuer)
-      .setIssuedAt()
-      .setExpirationTime("15m")
+      .setIssuedAt(liveContent ? Math.floor(fixtureTime / 1000) : undefined)
+      .setExpirationTime(
+        liveContent ? Math.floor(fixtureTime / 1000) + 900 : "15m",
+      )
       .sign(privateKey),
   };
 });
+if (liveContent)
+  app.post("/__fixture/clock", async (req, reply) => {
+    const next = Date.parse(req.body?.now);
+    if (!Number.isFinite(next))
+      return reply.status(400).send({ error: "Invalid fixture time" });
+    fixtureTime = next;
+    return { serverNow: new Date(fixtureTime).toISOString() };
+  });
 await app.services.repository.registerRelease();
 await app.listen({ host: "127.0.0.1", port: testApiPort });
 console.info("Browser API fixture ready");

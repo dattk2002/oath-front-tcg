@@ -1,0 +1,413 @@
+/* Live publishing and weekly progression extend the approved Pen editorial surfaces. */
+.live-masthead {
+  background: var(--campaign-paper);
+  color: var(--campaign-ink);
+}
+.live-read-error {
+  padding: 24px;
+  border: 1px solid var(--campaign-border);
+  background: var(--campaign-slate);
+  color: var(--campaign-paper);
+}
+.live-news-art {
+  height: 260px;
+  background: var(--campaign-slate);
+}
+.live-news-art img {
+  object-fit: contain;
+}
+.live-article {
+  background: var(--campaign-paper);
+  color: var(--campaign-ink);
+}
+.live-article-art {
+  height: clamp(240px, 38vw, 480px);
+  background: var(--campaign-slate);
+  margin: 32px 0;
+}
+.live-article-art img {
+  object-fit: contain;
+}
+.live-article > section {
+  max-width: 900px;
+  margin: 40px auto;
+}
+.live-article > section h2 {
+  font-size: 36px;
+}
+.event-masthead {
+  position: relative;
+  isolation: isolate;
+  min-height: 420px;
+  padding: 80px clamp(24px, 6vw, 96px);
+  background: var(--campaign-ink);
+}
+.event-header-art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.event-masthead::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    var(--campaign-ink),
+    color-mix(in srgb, var(--campaign-ink) 55%, transparent)
+  );
+}
+.event-masthead h1 {
+  font: 900 clamp(48px, 6vw, 88px)/1 var(--campaign-display);
+  text-transform: uppercase;
+  max-width: 850px;
+  margin: 16px 0;
+  color: var(--campaign-acid);
+  text-wrap: balance;
+}
+.event-masthead p {
+  font-size: 20px;
+  max-width: 620px;
+  line-height: 1.5;
+}
+.event-roadmap {
+  padding: 40px clamp(24px, 5vw, 80px) 80px;
+}
+.event-roadmap nav {
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.weekly-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--campaign-paper);
+  background: var(--campaign-slate);
+  border: 1px solid var(--campaign-border);
+}
+.weekly-card:hover {
+  border-color: var(--campaign-acid);
+}
+.weekly-card:focus-visible {
+  outline: 3px solid var(--campaign-acid);
+  outline-offset: 4px;
+}
+.weekly-card > div:last-child {
+  padding: 24px;
+}
+.weekly-card h2 {
+  font-size: 30px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 12px 0;
+}
+.weekly-card p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.weekly-card-art {
+  height: 260px;
+  background: var(--campaign-ink);
+}
+.weekly-card-art .campaign-artwork {
+  height: 100%;
+}
+.weekly-card[data-status="ACTIVE"] {
+  border-top: 4px solid var(--rarity-e);
+}
+.unrevealed-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  background: radial-gradient(
+    ellipse,
+    var(--campaign-slate),
+    var(--campaign-ink)
+  );
+  color: var(--campaign-paper);
+  text-align: center;
+  gap: 8px;
+}
+.unrevealed-card > span {
+  font: 900 100px/1 var(--campaign-display);
+  color: var(--campaign-lilac);
+  border: 2px solid var(--campaign-border);
+  padding: 16px 40px;
+  transform: skewY(-5deg);
+}
+.unrevealed-card small {
+  font-size: 16px;
+  letter-spacing: 0.12em;
+}
+.event-archive-note {
+  padding: 64px 24px;
+  max-width: 950px;
+  margin: auto;
+}
+.event-archive-note h1 {
+  font-size: 56px;
+}
+.weekly-detail {
+  padding: 32px clamp(24px, 6vw, 96px) 80px;
+}
+.weekly-spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  margin: 40px 0;
+}
+.weekly-spotlight h1 {
+  font: 900 clamp(44px, 5vw, 76px)/1 var(--campaign-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin: 16px 0 24px;
+}
+.weekly-spotlight p {
+  font-size: 20px;
+  line-height: 1.5;
+  max-width: 740px;
+}
+.spotlight-card {
+  border: 2px solid var(--rarity-e);
+  background: var(--campaign-slate);
+  padding: 20px;
+  box-shadow: 8px 8px 0 var(--campaign-ink);
+}
+.spotlight-card > .campaign-artwork {
+  height: 320px;
+}
+.spotlight-card > h2 {
+  font-size: 30px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.event-account-gate,
+.event-account-note {
+  padding: 24px;
+  background: var(--campaign-paper);
+  color: var(--campaign-ink);
+  border-left: 4px solid var(--rarity-e);
+}
+.event-account-gate h2 {
+  font-size: 28px;
+}
+.event-account-gate p {
+  font-size: 18px;
+}
+.event-account-gate button {
+  background: var(--campaign-ink);
+  color: var(--campaign-paper);
+}
+.ticket-progress {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 32px;
+  background: var(--campaign-slate);
+  margin: 32px 0;
+  border-bottom: 3px solid var(--rarity-e);
+}
+.ticket-progress h2 {
+  font-size: 48px;
+  margin: 8px 0;
+}
+.ticket-progress h2 span {
+  font-size: 26px;
+  color: var(--campaign-muted);
+}
+.ticket-progress progress {
+  width: 100%;
+  height: 20px;
+  accent-color: var(--rarity-e);
+}
+.owned-reward {
+  font-size: 40px;
+  color: var(--rarity-e);
+}
+.daily-section {
+  margin: 64px 0;
+}
+.daily-section > header {
+  display: flex;
+  gap: 32px;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.daily-section header p {
+  max-width: 750px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.daily-section h2,
+.event-reward-rules h2,
+.reward-history h2 {
+  font-size: 40px;
+  text-transform: uppercase;
+  margin: 12px 0;
+}
+.challenge-mode {
+  padding: 16px;
+  min-width: 240px;
+  display: grid;
+  gap: 12px;
+}
+.challenge-mode label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.challenge-mode input {
+  width: 20px;
+  height: 20px;
+}
+.daily-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+.daily-rail li {
+  background: var(--campaign-slate);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--campaign-border);
+  min-width: 0;
+}
+.daily-rail li[data-status="ACTIVE"],
+.daily-rail li[data-status="AVAILABLE"] {
+  border-top: 3px solid var(--campaign-acid);
+}
+.daily-rail li[data-status="COMPLETED"] {
+  border-top: 3px solid var(--good);
+}
+.daily-rail li[data-status="COOLDOWN"] {
+  border-top: 3px solid var(--rarity-e);
+}
+.daily-rail h3 {
+  font-size: 26px;
+  line-height: 1.1;
+  margin: 12px 0;
+}
+.daily-rail p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.daily-rail .daily-status {
+  margin-top: auto;
+  padding-top: 20px;
+  color: var(--campaign-acid);
+}
+.daily-rail .campaign-button {
+  font-size: 18px;
+  min-height: 48px;
+  margin-top: 8px;
+  white-space: normal;
+}
+.event-reward-rules {
+  padding: 32px;
+  background: var(--campaign-paper);
+  color: var(--campaign-ink);
+}
+.event-reward-rules li {
+  margin: 12px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.reward-history {
+  margin-top: 48px;
+}
+.reward-history ol {
+  list-style: none;
+  padding: 0;
+}
+.reward-history li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px;
+  border-bottom: 1px solid var(--campaign-border);
+  font-size: 18px;
+}
+.result-rewards {
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid var(--rarity-e);
+}
+.result-rewards .campaign-artwork {
+  height: 180px;
+}
+@media (max-width: 1100px) {
+  .event-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .daily-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .daily-section > header {
+    flex-direction: column;
+  }
+}
+@media (max-width: 700px) {
+  .event-grid,
+  .weekly-spotlight,
+  .ticket-progress,
+  .daily-rail {
+    grid-template-columns: 1fr;
+  }
+  .weekly-detail {
+    padding: 24px 20px 48px;
+  }
+  .event-roadmap {
+    padding: 24px 20px 48px;
+  }
+  .event-masthead {
+    padding: 48px 24px;
+  }
+  .weekly-spotlight h1 {
+    font-size: 44px;
+  }
+  .daily-section {
+    margin: 40px 0;
+  }
+  .ticket-progress {
+    padding: 24px;
+    gap: 12px;
+  }
+  .spotlight-card > .campaign-artwork {
+    height: 280px;
+  }
+  .reward-history li {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.weekly-detail > .editorial-back {
+  color: var(--campaign-paper);
+}
+.event-card-stats {
+  text-align: center;
+  font-size: 20px;
+}
+.daily-rail li:last-child {
+  grid-column: span 2;
+}
+@media (max-width: 700px) {
+  .daily-rail li:last-child {
+    grid-column: auto;
+  }
+}

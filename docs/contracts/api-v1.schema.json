@@ -7337,6 +7337,14 @@
         },
         "cosmeticUnlocked": {
           "type": "boolean"
+        },
+        "practiceDaily": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 7,
+          "items": {
+            "$ref": "#/definitions/DailyProgress"
+          }
         }
       },
       "required": [
@@ -7350,7 +7358,8 @@
         "pveCap",
         "daily",
         "history",
-        "cosmeticUnlocked"
+        "cosmeticUnlocked",
+        "practiceDaily"
       ],
       "additionalProperties": false
     },

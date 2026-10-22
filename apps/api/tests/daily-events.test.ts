@@ -467,3 +467,42 @@ it("keeps a daily match readable after a fresh API startup and rejects client-su
     await restarted.close();
   }
 });
+it("reports account practice resume and cooldown independently from rewarded daily availability", async () => {
+  const g = await account();
+  const made = await daily(g, undefined, randomUUID(), true);
+  expect(made.statusCode).toBe(201);
+  const read = () =>
+    h.app.inject({
+      url: "/api/v1/events/first-light-week-01/progress",
+      headers: h.headers(g),
+    });
+  const listed = await h.app.inject({
+    url: "/api/v1/matches",
+    headers: h.headers(g),
+  });
+  expect(
+    listed.json().items.map((m: { matchId: string }) => m.matchId),
+  ).toContain(made.json().view.matchId);
+  const activeProgress = (await read()).json();
+  expect(activeProgress.daily[0].status).toBe("AVAILABLE");
+  expect(activeProgress.practiceDaily[0]).toMatchObject({
+    status: "ACTIVE",
+    matchId: made.json().view.matchId,
+  });
+  await h.app.inject({
+    method: "POST",
+    url: `/api/v1/matches/${made.json().view.matchId}/commands`,
+    headers: h.headers(g),
+    payload: {
+      commandId: randomUUID(),
+      expectedRevision: 0,
+      action: { kind: "SURRENDER" },
+    },
+  });
+  const progress = (await read()).json();
+  expect(progress.daily[0].status).toBe("AVAILABLE");
+  expect(progress.practiceDaily[0]).toMatchObject({
+    status: "COOLDOWN",
+    retryAvailableAt: "2026-10-26T02:00:00.000Z",
+  });
+});

@@ -110,8 +110,12 @@ export default function HistoryScreen({
                 )}
                 <small>
                   {new Date(m.createdAt).toLocaleString("en-US")} ·{" "}
-                  {m.difficulty === "NORMAL" ? "Normal" : "Easy"} · {m.turns}{" "}
-                  turns
+                  {m.mode === "DAILY_CHALLENGE"
+                    ? "Daily challenge"
+                    : m.difficulty === "NORMAL"
+                      ? "Normal"
+                      : "Easy"}{" "}
+                  · {m.turns} turns
                 </small>
               </span>
               <strong>{historyResultLabel(m)}</strong>

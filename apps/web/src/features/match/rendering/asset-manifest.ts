@@ -1,3 +1,4 @@
+import featurePresentation from "../../../../public/assets/features-v2/manifest.json" with { type: "json" };
 import heroRevision from "../../../../public/assets/heroes-v5/manifest.json" with { type: "json" };
 import eventPresentation from "../../../../public/assets/event-cards-v1/manifest.json" with { type: "json" };
 import heroPresentation from "../../../../public/assets/heroes-v4/manifest.json" with { type: "json" };
@@ -19,6 +20,15 @@ export function resolveArt(
   fallbackLabel: string,
   variant = "thumb",
 ): ArtReference {
+  const feature = featurePresentation.assets.find(
+    (a) => artKey === `features/${a.key}.webp`,
+  );
+  if (feature)
+    return {
+      src: variant === "thumb" ? feature.small : feature.medium,
+      fallbackLabel,
+      artKey,
+    };
   const systemPower =
     /^powers\/p_(grove|terra|tide|tempest|solar|forge|arcane|umbral)[12]\.webp$/.exec(
       artKey,

@@ -114,9 +114,9 @@
 
 **Files:** EditorialPage/dataaccess, campaignroutes/Home stories, EventHub/WeeklyDetail/DailyRail/RewardSummary, api-client/hooks; accountgate; metadata/routes; styles; tests.
 **Interfaces:** publishedAPIcontent; eventstatus/cooldown/activeattempt/ticketprogress/owncardcounts; explicitauthentry; dailycreate/resumeexactrequest.
-- [ ] RED:publishednews/category/detail/404/retry; realcurrent/upcoming/archiveevents; accountgate/guestpractice; today's challenge, countdowncomputedfromserverNow, winaward/loss1h/reconnect; interruptedrevealstillowned; copiedURL/Back/refresh andtwotabs.
-- [ ] Buildactualpageswithlabeled dates/schedules andfuturecardsilhouettes; borrowdeckexplanation, previous-dayactiveattemptresume, emptyseasonstate. Replacefake mockrecords inruntime; retainhistoricaldocs only. Eventratingframesandnewbannerassetsreused.
-- [ ] GREEN: completebrowserflows atdesktop/tablet/mobile inclAPIoutage, reducedmotion, keyboardfocus, imagefallback andno unexpectedconsoleerrors. Commit.
+- [x] RED:publishednews/category/detail/404/retry; realcurrent/upcoming/archiveevents; accountgate/guestpractice; today's challenge, countdowncomputedfromserverNow, winaward/loss1h/reconnect; interruptedrevealstillowned; copiedURL/Back/refresh andtwotabs.
+- [x] Buildactualpageswithlabeled dates/schedules andfuturecardsilhouettes; borrowdeckexplanation, previous-dayactiveattemptresume, emptyseasonstate. Replacefake mockrecords inruntime; retainhistoricaldocs only. Eventratingframesandnewbannerassetsreused.
+- [x] GREEN: completebrowserflows atdesktop/tablet/mobile inclAPIoutage, reducedmotion, keyboardfocus, imagefallback andno unexpectedconsoleerrors. Commit.
 
 ## M6 — Verification and delivery
 

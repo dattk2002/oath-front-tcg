@@ -95,8 +95,8 @@ export function progressionReader(db: Pool, now: () => Date) {
       ).rows;
       const attempts = (
         await db.query(
-          "SELECT DISTINCT ON (s.day_index) s.day_index,a.match_id,a.status,a.retry_available_at,m.status AS match_status,m.expires_at FROM daily_attempts a JOIN event_scenarios s ON s.id=a.scenario_id JOIN match_reward_bindings b ON b.match_id=a.match_id LEFT JOIN matches m ON m.id=a.match_id WHERE a.principal_id=$1 AND s.event_id=$2 AND b.kind=$3 ORDER BY s.day_index,a.started_at DESC,a.id DESC",
-          [account, event.id, eligible ? "DAILY" : "PRACTICE"],
+          "SELECT DISTINCT ON (s.day_index,b.kind) s.day_index,b.kind,a.match_id,a.status,a.retry_available_at,m.status AS match_status,m.expires_at FROM daily_attempts a JOIN event_scenarios s ON s.id=a.scenario_id JOIN match_reward_bindings b ON b.match_id=a.match_id LEFT JOIN matches m ON m.id=a.match_id WHERE a.principal_id=$1 AND s.event_id=$2 ORDER BY s.day_index,b.kind,a.started_at DESC,a.id DESC",
+          [account, event.id],
         )
       ).rows;
       const history = eligible
@@ -115,20 +115,14 @@ export function progressionReader(db: Pool, now: () => Date) {
             )
           ).rowCount
         : false;
-      return output("WeeklyProgressView", {
-        serverNow: time.toISOString(),
-        eventId: event.id,
-        rewardEligible: eligible,
-        tickets: progress?.tickets ?? 0,
-        ownedCopies: owned.get(event.featured_card_id) ?? 0,
-        completedDays: completed,
-        pveEarnedToday: pve,
-        pveCap: 200,
-        cosmeticUnlocked: badge,
-        history: history.map(rewardView),
-        daily: scenarios.map((s) => {
-          const a = attempts.find((a) => a.day_index === s.day_index),
-            rewarded = completed.includes(s.day_index),
+      const daily = (practice: boolean) =>
+        scenarios.map((s) => {
+          const a = attempts.find(
+              (a) =>
+                a.day_index === s.day_index &&
+                a.kind === (practice ? "PRACTICE" : "DAILY"),
+            ),
+            rewarded = !practice && completed.includes(s.day_index),
             active =
               a?.status === "ACTIVE" &&
               ["ACTIVE", "PAUSED"].includes(a.match_status) &&
@@ -141,11 +135,11 @@ export function progressionReader(db: Pool, now: () => Date) {
               ? "COMPLETED"
               : day < s.day_index
                 ? "UPCOMING"
-                : eligible && day > s.day_index
+                : !practice && day > s.day_index
                   ? "CLOSED"
                   : cooldown
                     ? "COOLDOWN"
-                    : day === s.day_index || (!eligible && day > s.day_index)
+                    : day === s.day_index || (!!practice && day > s.day_index)
                       ? "AVAILABLE"
                       : "CLOSED";
           return {
@@ -158,7 +152,20 @@ export function progressionReader(db: Pool, now: () => Date) {
               : null,
             rewarded,
           };
-        }),
+        });
+      return output("WeeklyProgressView", {
+        serverNow: time.toISOString(),
+        eventId: event.id,
+        rewardEligible: eligible,
+        tickets: progress?.tickets ?? 0,
+        ownedCopies: owned.get(event.featured_card_id) ?? 0,
+        completedDays: completed,
+        pveEarnedToday: pve,
+        pveCap: 200,
+        cosmeticUnlocked: badge,
+        history: history.map(rewardView),
+        daily: daily(!eligible),
+        practiceDaily: daily(true),
       });
     },
   };

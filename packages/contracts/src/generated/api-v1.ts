@@ -2349,6 +2349,11 @@ export interface WeeklyProgressView {
    */
   history: RewardEntry[];
   cosmeticUnlocked: boolean;
+  /**
+   * @minItems 0
+   * @maxItems 7
+   */
+  practiceDaily: DailyProgress[];
 }
 
 export interface WireDefinitions {

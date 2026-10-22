@@ -37,6 +37,7 @@ services:
       dockerfile: docker/ui/Dockerfile
       args: { API_ORIGIN: "http://api:3001" }
     environment:
+      API_ORIGIN: http://api:3001
       UI_PROXY_SECRET: ${UI_PROXY_SECRET:?Set proxy secret}
     ports: ["127.0.0.1:${UI_PORT:-3000}:3000"]
     depends_on:

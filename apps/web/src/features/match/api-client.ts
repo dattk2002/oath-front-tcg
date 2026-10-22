@@ -9,6 +9,8 @@ import type {
   SessionResponse,
   AuthExchangeRequest,
   ClaimGuestRequest,
+  DailyCreateRequest,
+  NewsCategory,
 } from "@oathfront/contracts";
 import { ApiError } from "./api-error";
 export function createApiClient(
@@ -72,6 +74,23 @@ export function createApiClient(
     catalog: (version = "elements_v1") =>
       request(`/catalog/${encodeURIComponent(version)}`, "PublicCatalog"),
     collection: () => request("/collection", "CollectionView"),
+    news: (category?: NewsCategory) =>
+      request(
+        `/news${category ? `?category=${encodeURIComponent(category)}` : ""}`,
+        "NewsList",
+      ),
+    newsPost: (slug: string) =>
+      request(`/news/${encodeURIComponent(slug)}`, "NewsPost"),
+    weeklyEvents: () => request("/events", "EventList"),
+    weeklyEvent: (slug: string) =>
+      request(`/events/${encodeURIComponent(slug)}`, "EventDetail"),
+    weeklyProgress: (slug: string) =>
+      request(
+        `/events/${encodeURIComponent(slug)}/progress`,
+        "WeeklyProgressView",
+      ),
+    createDaily: (body: DailyCreateRequest) =>
+      request("/events/daily-matches", "CommandResponse", body),
     decks: (cursor?: string) =>
       request(
         `/decks${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,

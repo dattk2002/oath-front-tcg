@@ -3,7 +3,8 @@ import Link from "next/link";
 import { contentName, heroTitle } from "../../content/english-content";
 import { CampaignArtwork } from "./CampaignArtwork";
 import { HeroProfile } from "./HeroProfile";
-import { EditorialPage } from "./EditorialPage";
+import { LiveNews } from "./LiveNews";
+import { EventHub, type EventSessionProps } from "../events/EventHub";
 import { GameFeatures } from "./GameFeatures";
 import {
   classNames,
@@ -17,11 +18,17 @@ import {
 
 export function CampaignPage({
   view,
+  api,
+  catalog,
+  session,
+  ready,
+  ensureSession,
+  onSignIn,
   onChooseHero,
   busy,
   resume,
   onPlay,
-}: {
+}: EventSessionProps & {
   view: CampaignView;
   onChooseHero: (id: string) => void;
   busy: boolean;
@@ -30,12 +37,19 @@ export function CampaignPage({
 }) {
   if (view.kind === "features")
     return <GameFeatures onPlay={onPlay} busy={busy} />;
-  if (view.kind === "news" || view.kind === "events")
+  if (view.kind === "news")
+    return <LiveNews api={api} slug={view.slug} filter={view.filter} />;
+  if (view.kind === "events")
     return (
-      <EditorialPage
-        section={view.kind}
-        {...(view.slug ? { slug: view.slug } : {})}
-        {...(view.filter ? { filter: view.filter } : {})}
+      <EventHub
+        api={api}
+        catalog={catalog}
+        session={session}
+        ready={ready}
+        ensureSession={ensureSession}
+        onSignIn={onSignIn}
+        slug={view.slug}
+        filter={view.filter}
       />
     );
   if (view.kind === "hero") {

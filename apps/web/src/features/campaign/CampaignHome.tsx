@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { CampaignArtwork } from "./CampaignArtwork";
 import { contentName, heroTitle } from "../../content/english-content";
-import { editorialEntries } from "./editorial";
+import { HomeNews } from "./LiveNews";
+import type { ApiClient } from "../match/api-client";
 import { classNames, factionName, heroPortrait, publicHeroes } from "./model";
 
 const phases = [
@@ -125,11 +126,13 @@ function PhaseGuide() {
   );
 }
 export function CampaignHome({
+  api,
   onPlay,
   onLearn,
   busy,
   resume,
 }: {
+  api: ApiClient;
   onPlay: () => void;
   onLearn: () => void;
   busy: boolean;
@@ -303,37 +306,7 @@ export function CampaignHome({
             All stories <span aria-hidden="true">↗</span>
           </Link>
         </div>
-        <div className="home-story-grid">
-          {editorialEntries
-            .filter((entry) => entry.section === "news")
-            .slice(0, 3)
-            .map((entry, i) => (
-              <Link
-                key={entry.slug}
-                href={`/news/${entry.slug}`}
-                className="home-story-card editorial-card"
-              >
-                <CampaignArtwork
-                  className="home-story-art"
-                  src={
-                    i === 1
-                      ? "/assets/heroes-v5/heroes/briar/inspect.webp"
-                      : i === 2
-                        ? "/assets/fivefold-cards-v3/cards/b03-inspect.webp"
-                        : "/assets/pen-v1/twilight-arena-small.webp"
-                  }
-                  alt=""
-                />
-                <div>
-                  <p className="kicker">{entry.category} / Editorial mock</p>
-                  <h3>
-                    {entry.title} <span aria-hidden="true">↗</span>
-                  </h3>
-                  <p>{entry.summary}</p>
-                </div>
-              </Link>
-            ))}
-        </div>
+        <HomeNews api={api} />
       </section>
       <section
         className="home-closing home-section campaign-paper"

@@ -59,6 +59,7 @@ export default function CardCollection({
   onChange,
   onInspect,
   owned,
+  isRevealed,
 }: {
   catalog: PublicCatalog;
   hero: HeroDefinitionView;
@@ -66,6 +67,7 @@ export default function CardCollection({
   onChange: (id: CardDefinitionView["id"], delta: number) => void;
   onInspect: (c: CardDefinitionView) => void;
   owned: (c: CardDefinitionView) => number;
+  isRevealed: (c: CardDefinitionView) => boolean;
 }) {
   const [search, setSearch] = useState(""),
     [classId, setClass] = useState("ALL"),
@@ -78,10 +80,16 @@ export default function CardCollection({
     type,
     cost,
     rarity,
-  });
+  }).filter(isRevealed);
   const total = entries.reduce((n, e) => n + e.quantity, 0);
   return (
     <section className="collection" aria-label="Collection">
+      {catalog.version === "elements_v1" && (
+        <p className="collection-reveal-note">
+          Event cards appear here after their weekly reveal.{" "}
+          <a href="/events">See the season schedule</a>.
+        </p>
+      )}
       <div className="collection-filters">
         <label>
           Search names, rules or keywords

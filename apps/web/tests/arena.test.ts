@@ -27,3 +27,19 @@ it("selects a deterministic environment from public revealed locations without r
       readFileSync(`apps/web/public${arena.medium}`).byteLength,
     ).toBeLessThan(1500000);
 });
+it("honors the public daily scenario arena over ordinary location decoration", () => {
+  const view = response().view;
+  view.challenge = {
+    scenarioId: "season01-week01-day1",
+    eventId: "season01-week01",
+    dayIndex: 0,
+    manifestSha256: "a".repeat(64),
+    arenaKey: "glasswater-sanctum",
+  };
+  view.board[0]!.location = {
+    state: "REVEALED",
+    definitionId: "volcano",
+    revealTurn: 1,
+  };
+  expect(arenaForView(view).key).toBe("glasswater-sanctum");
+});

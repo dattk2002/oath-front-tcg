@@ -708,6 +708,7 @@ export default function DeckBuilder({
             onChange={change}
             onInspect={setInspect}
             owned={inventory.owned}
+            isRevealed={inventory.isRevealed}
           />
           <div className="desktop-deck-panel">{deckPanel}</div>
         </div>

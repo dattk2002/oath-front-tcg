@@ -1,24 +1,18 @@
 import { notFound } from "next/navigation";
 import App from "../../App";
-import {
-  findEditorial,
-  editorialEntries,
-} from "../../../features/campaign/editorial";
-export function generateStaticParams() {
-  return editorialEntries
-    .filter((entry) => entry.section === "events")
-    .map((entry) => ({ slug: entry.slug }));
-}
+import { readWeeklyEvent } from "../../../server/live-content";
+import { legacyEventSlugs } from "../../../features/events/model";
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const entry = findEditorial("events", slug);
+  if (legacyEventSlugs.has(slug))
+    return { title: "Archived event concept · OathFront" };
+  const result = await readWeeklyEvent(slug);
   return {
-    title: `${entry?.title ?? "Not found"} · OathFront`,
-    description: entry?.summary,
+    title: `${result.status === "ok" ? result.data.event.title : "Weekly event"} · OathFront`,
   };
 }
 export default async function Page({
@@ -28,9 +22,13 @@ export default async function Page({
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ category?: string }>;
 }) {
-  const { slug } = await params;
-  if (!findEditorial("events", slug)) notFound();
-  const query = await searchParams;
+  const { slug } = await params,
+    query = await searchParams;
+  if (
+    !legacyEventSlugs.has(slug) &&
+    (await readWeeklyEvent(slug)).status === "missing"
+  )
+    notFound();
   return (
     <App
       screen="campaign"
