@@ -46,9 +46,9 @@ Interface: both immutable catalog endpoints; exact requested version binding; re
 ## M4 — Unified art
 
 Files: source `heroes-v4/` and `home-v2/`, runtime public derivatives/manifests; prompt/art identity document.
-- [ ] Create20original hero images and1ensemble banner using built-in tool; preserve previous source assets.
-- [ ] Inspect framing/alpha/style/identity; export contain,thumb,hud variants using existing export conventions.
-- [ ] Verify every manifest hash/path and crop; document per-hero inspiration and original identity.
+- [x] Create20original hero images and1ensemble banner using built-in tool; preserve previous source assets.
+- [x] Inspect framing/alpha/style/identity; export contain,thumb,hud variants using existing export conventions.
+- [x] Verify every manifest hash/path and crop; document per-hero inspiration and original identity.
 
 ## M5 — Roster, profiles and full Home
 

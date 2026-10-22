@@ -1,0 +1,34 @@
+{
+  "version": "home-v2",
+  "source": {
+    "path": "assets/source/home-v2/ensemble.png",
+    "sha256": "0c076418806c969fcaa45675421361f1141eac045654b0f270a2246f010c58cc"
+  },
+  "promptPath": "assets/source/home-v2/generation.json",
+  "exports": [
+    {
+      "path": "apps/web/public/assets/home-v2/ensemble-wide.webp",
+      "url": "/assets/home-v2/ensemble-wide.webp",
+      "sha256": "9132d9b56df44aa02befb69ffcee241cebd9fc6774d729668823eec427058d34",
+      "bytes": 427286,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "path": "apps/web/public/assets/home-v2/ensemble-medium.webp",
+      "url": "/assets/home-v2/ensemble-medium.webp",
+      "sha256": "0149ee6bdccd495e1b3040938798fab318a57a92e31fc3430dd05d71b47673f8",
+      "bytes": 224004,
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "path": "apps/web/public/assets/home-v2/ensemble-small.webp",
+      "url": "/assets/home-v2/ensemble-small.webp",
+      "sha256": "477c8befe8338072fbe17e46073dbce5806b84046464560e6017df9e568fd0db",
+      "bytes": 103790,
+      "width": 768,
+      "height": 432
+    }
+  ]
+}

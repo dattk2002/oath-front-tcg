@@ -1,0 +1,1126 @@
+{
+  "version": "heroes-v4",
+  "catalogVersion": "heroes_v1",
+  "assets": [
+    {
+      "id": "H_G_BV",
+      "kind": "hero",
+      "artKey": "heroes/h_g_bv/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/briar.png",
+        "sha256": "dd8ea1f4d17a829370cf6b2ba47b312d2371eed1366e245f767c42b92032b4a2",
+        "bytes": 2855804,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        389,
+        -20,
+        737,
+        328
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/briar/thumb.webp",
+          "sha256": "28a4d587ed4fa50b71f33566aac93f1a78898423f1559c5bf31d95ac3ee83856",
+          "bytes": 38468,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/briar/hud.webp",
+          "sha256": "ec96100cfe27ef599a21fa37a2e42cba6a51f46cba49e2fc6a7969fee527a051",
+          "bytes": 8646,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/briar/inspect.webp",
+          "sha256": "26bc0e831fa40a8ec1e2c54718096eb31edbd4a62071f0f1c29ada50dea2f983",
+          "bytes": 125344,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/briar/bust.webp",
+          "sha256": "bcd4e2647414b9f2d064f7d6425d618ee15d088b39cfd1fff615fc96ebaa2637",
+          "bytes": 214078,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_BP",
+      "kind": "hero",
+      "artKey": "heroes/h_g_bp/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/aster.png",
+        "sha256": "709d958984387daad94b12da659b8cac8ece73c5572b40b91a25b3dfc0cfd797",
+        "bytes": 2330203,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        492,
+        36,
+        819,
+        364
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/aster/thumb.webp",
+          "sha256": "c6f858b49c0bede6d6ee04083d1e9a7c804c2f40cbc4e1e774274e73af058a2c",
+          "bytes": 36682,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/aster/hud.webp",
+          "sha256": "7a3cb2869137d8744dcd3048a9429a9e26f100698082eae982ff01cf0aeff0ad",
+          "bytes": 11400,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/aster/inspect.webp",
+          "sha256": "7116f9ec631a779999b64fc766de173856c3f95a098f54c0ba68ebe1064a29a0",
+          "bytes": 113022,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/aster/bust.webp",
+          "sha256": "6f9a44411c70085eb90ee8532b5ab54fa1f485a5add015cd5b85e2716aea969a",
+          "bytes": 182250,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_VP",
+      "kind": "hero",
+      "artKey": "heroes/h_g_vp/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/lumen.png",
+        "sha256": "0b513d907d96af6d4ced65ce2903dbc8346aef1d398ac7eda31a19baee08f254",
+        "bytes": 2676832,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        369,
+        26,
+        717,
+        374
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/lumen/thumb.webp",
+          "sha256": "0f98985498dea155deb102394886de2f4d64700f636c93b3f10810db5b3aee9d",
+          "bytes": 41070,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/lumen/hud.webp",
+          "sha256": "d2b3c1b49b3670b23ca5c7e78e6e4edcaf43a11dc377d64b4d3d5b525efdd74d",
+          "bytes": 9760,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/lumen/inspect.webp",
+          "sha256": "cf44e047218852ead32002103cf605f02482260526ff501e028e6be84fd18d21",
+          "bytes": 125592,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/lumen/bust.webp",
+          "sha256": "b2e5d744511cd406898404bb2ac69e824b08e16a1757468103d8c6b809345009",
+          "bytes": 230944,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_FX",
+      "kind": "hero",
+      "artKey": "heroes/h_e_fx/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/cinder.png",
+        "sha256": "4afafba4fa9299d16d68ade33a3dc941a82816ef3f851fa174306fd665423217",
+        "bytes": 2713507,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        420,
+        15,
+        788,
+        384
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cinder/thumb.webp",
+          "sha256": "9d3e3cd3e5f3266447a5f34d8f07909ea842eb66f10c7815912a0bb7f772cc3a",
+          "bytes": 32472,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cinder/hud.webp",
+          "sha256": "67f774ec2c083ce64d0bf9c461db7b7a4eb53f9ed00c372814018bac654f3fa7",
+          "bytes": 9820,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cinder/inspect.webp",
+          "sha256": "99110267728ba5a18576946121c93800d9a73dcffc28e4d55a99a1d843e2f15f",
+          "bytes": 108192,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cinder/bust.webp",
+          "sha256": "0aca09d0d799bafa21a245e0424d64e579dd08afc373d5ad09f338575ea1f3df",
+          "bytes": 184374,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_FS",
+      "kind": "hero",
+      "artKey": "heroes/h_e_fs/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/vesper.png",
+        "sha256": "aeda3b2988c9a5e07fe8b6d7d5e6e5e3471b864d602b60e19faaac7ccfb8a812",
+        "bytes": 2412721,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        461,
+        -20,
+        809,
+        328
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vesper/thumb.webp",
+          "sha256": "2b4da4c5ebf2738ad0c13b213045d0fb5a468cbed7b49e4cc82868029f4e294c",
+          "bytes": 34660,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vesper/hud.webp",
+          "sha256": "f2c415746256114542c57e095ddc43d26d58c61d8f39aeb0db5f8532c8e93e54",
+          "bytes": 8652,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vesper/inspect.webp",
+          "sha256": "fe81bf0728778f005200b637c86edb4b53cb2df9c6e371f4146e03cb11683686",
+          "bytes": 103922,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vesper/bust.webp",
+          "sha256": "2872365b8f604131f4dc51b86d4fdbc6f848e2d65705869bd372d2e63b0a03db",
+          "bytes": 175608,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_XS",
+      "kind": "hero",
+      "artKey": "heroes/h_e_xs/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/morrow.png",
+        "sha256": "063601b7a0e016162e89f46283c0e7926e1b21e9a08d17fcc7e6b5f1a7370b84",
+        "bytes": 2568227,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        481,
+        36,
+        809,
+        364
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/morrow/thumb.webp",
+          "sha256": "9dc5231cbd1a1ad7bfbc1068f70e97585c8d4e9b90f18997a346a9ce347b8b91",
+          "bytes": 40508,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/morrow/hud.webp",
+          "sha256": "6a0432494f74d1803c32797ef91e15353c956f57d21f023ee705a4c5bfdc8e3a",
+          "bytes": 7456,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/morrow/inspect.webp",
+          "sha256": "132c5df1d5a9e8c2e8eab9e1f776e2650255d55e4f14996a5bab916a9524a1ee",
+          "bytes": 124002,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/morrow/bust.webp",
+          "sha256": "166309e11626a5c89a940912f05064e76098f4068c9e9ed0f0a094abedeba90a",
+          "bytes": 197488,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_SOL",
+      "kind": "hero",
+      "artKey": "heroes/h_g_sol/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/solenne.png",
+        "sha256": "b53f150bce655fd08f18bcc2b67463c0fde36ca82dcabf70e83b4e57be221847",
+        "bytes": 2375671,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        451,
+        97,
+        778,
+        425
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/solenne/thumb.webp",
+          "sha256": "a42496edcc8785054b63b04f0df8ba17b9a98dd691df37765078343e8ee130f2",
+          "bytes": 38274,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/solenne/hud.webp",
+          "sha256": "7e6ca8f1b5640940eedb18a278eafa499ccf818cf10efcf96b83c3211e170c9e",
+          "bytes": 12140,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/solenne/inspect.webp",
+          "sha256": "1e08c1cb750dcd7062898d718af8f034b451ef6f62eea4fdecb16560a3d8bdc3",
+          "bytes": 115754,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/solenne/bust.webp",
+          "sha256": "e3d98e6724484e2fb2672dab4196513592bcbc83746179e76b8b4b2a18c17375",
+          "bytes": 194566,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_CAI",
+      "kind": "hero",
+      "artKey": "heroes/h_g_cai/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/cairn.png",
+        "sha256": "8717572e7315977e6f51f908e9cd773dc9184179d0e80090dd0bdcbe00bf08f3",
+        "bytes": 2988815,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        256,
+        67,
+        645,
+        456
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cairn/thumb.webp",
+          "sha256": "f8d4edfa1f11c57fee3060d625f990e3258529c072c26478844330138983fa9a",
+          "bytes": 36126,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cairn/hud.webp",
+          "sha256": "3b307cf9f9551f559d12986bb9cee15f8105394aa0643f88d0b0160bedfaac85",
+          "bytes": 9864,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cairn/inspect.webp",
+          "sha256": "97b09e4d36ae62f7c461e6a215748cda9dd52d42024caa5aff3ce95b50d15a09",
+          "bytes": 123036,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/cairn/bust.webp",
+          "sha256": "3434f9ed93554ea8fc709e772fad7fd2d1193531c7a4c91e8fc2488f2b3ab532",
+          "bytes": 221904,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_ZEP",
+      "kind": "hero",
+      "artKey": "heroes/h_g_zep/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/zephyr.png",
+        "sha256": "a655b53fd1c9645382957ba857bb72ee6f1cb9475106f336897c3d8b5ee01ad8",
+        "bytes": 2274540,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        573,
+        26,
+        922,
+        374
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/zephyr/thumb.webp",
+          "sha256": "8ff7d84c280f32193e46a7b8118d307e5a11c27a879ace56737a232ef4eccc28",
+          "bytes": 37518,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/zephyr/hud.webp",
+          "sha256": "a4e622a7d9257d6cd17c8c5e3a41e3a1464227a24c6633d5ca75485d828207f0",
+          "bytes": 11152,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/zephyr/inspect.webp",
+          "sha256": "e668b6b5b5e950e15289138da387e4290c9a1ba2ff6a321588f978e56f84ad74",
+          "bytes": 107540,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/zephyr/bust.webp",
+          "sha256": "0516a4339f1156df04e83d8392614e32cc99fccec4fbc455106b1d98ec6d7db0",
+          "bytes": 171044,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_MER",
+      "kind": "hero",
+      "artKey": "heroes/h_g_mer/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/meridian.png",
+        "sha256": "31f2c63cf873fa4f649566b7b52131d2a4cc45d2304813022deef77c9a2e2372",
+        "bytes": 2336225,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        481,
+        36,
+        809,
+        364
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/meridian/thumb.webp",
+          "sha256": "6cbb5bceacfa2472d372f50ebe1df0770543d516549e05fe06d4159dc9dd1f12",
+          "bytes": 33084,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/meridian/hud.webp",
+          "sha256": "e857785ffd0c70a3bcccedbe4f97a5aa1010e4469e7bea334cc4c51bc46fed7d",
+          "bytes": 10242,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/meridian/inspect.webp",
+          "sha256": "ecbc1e7a5155fcb6af0d294a2a9e50e17077236a0ab29875f6f699f52c4c768d",
+          "bytes": 101218,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/meridian/bust.webp",
+          "sha256": "2bbad0955304956f915744c2e1f4f299bb12c0dbdb4c7157490a64de6b90073c",
+          "bytes": 164812,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_MOS",
+      "kind": "hero",
+      "artKey": "heroes/h_g_mos/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/mossweld.png",
+        "sha256": "c9cd4962cd4877eefa57831b955b775b52c0341217fb408c99502a38e7effec4",
+        "bytes": 2608954,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        195,
+        195,
+        727,
+        727
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/mossweld/thumb.webp",
+          "sha256": "225c857d8d38aae46271341f2fdbbc8b591d49b3f13afe7a67078ec9c79c58b3",
+          "bytes": 35876,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/mossweld/hud.webp",
+          "sha256": "b63d4ba54a66a7e0432dcf045022a9f6a27a9d6c5508f799608eca0676aebc80",
+          "bytes": 11260,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/mossweld/inspect.webp",
+          "sha256": "1ad9961549b0cb79656bd94bca4cefc7b64e77edda6e1afb43ed4e09454553dd",
+          "bytes": 113240,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/mossweld/bust.webp",
+          "sha256": "5baab913fa0c1f8f668d6e0783cd9a02bc3baaa10547f06a84fa09b3da1d8611",
+          "bytes": 187574,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_HAL",
+      "kind": "hero",
+      "artKey": "heroes/h_g_hal/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/halcyon.png",
+        "sha256": "ffc897a1e2ffe6171335295791cfcf7c5e0e28f86a9c4b85a641340929abf424",
+        "bytes": 2585811,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        369,
+        36,
+        696,
+        364
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/halcyon/thumb.webp",
+          "sha256": "9a95ffb0572cec540076843cee29b8a21eea6b18a1072422f4532b868c72d38d",
+          "bytes": 41680,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/halcyon/hud.webp",
+          "sha256": "3cbf4cfc713a278fb6b9264851b147d5572c079cf1e54b7f251fe3a9e4ca1149",
+          "bytes": 8910,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/halcyon/inspect.webp",
+          "sha256": "d99fbc362430760d09ef5d1bcaf476ae9636be31be09b56564123e47b85a9b94",
+          "bytes": 127034,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/halcyon/bust.webp",
+          "sha256": "d61ac4869904e7e2fcda14affba70090fddbfd944fec5fe3e146816ec86f0cba",
+          "bytes": 223134,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_G_ROW",
+      "kind": "hero",
+      "artKey": "heroes/h_g_row/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/rowan.png",
+        "sha256": "f3d7a8c818228749eecdb849d701263db9be3c9bfaf37e82be0beedd78596b22",
+        "bytes": 2953887,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        451,
+        113,
+        840,
+        502
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rowan/thumb.webp",
+          "sha256": "ad8c65aa346d199cc27af3342bacf93ace7f3837bbb903641cf08940144b034a",
+          "bytes": 40132,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rowan/hud.webp",
+          "sha256": "b03e69c4e500efc549459e0c0a7e7237d549d7894e389f45ebbfb0130c90124b",
+          "bytes": 8764,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rowan/inspect.webp",
+          "sha256": "3c80eb5ff82baa5e33e6f1adc057c87899487c896d9f67fbb0761266a0bf37da",
+          "bytes": 128434,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rowan/bust.webp",
+          "sha256": "28647592a532bf9051ac1df1a1b2264765e7c6a0417e497c455730e51ee3afac",
+          "bytes": 252634,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_ROO",
+      "kind": "hero",
+      "artKey": "heroes/h_e_roo/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/rook.png",
+        "sha256": "e3ce2981e4881dff174be158621f524b526842ca8f61720416227d1bcd1c34fd",
+        "bytes": 2437683,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        266,
+        41,
+        614,
+        389
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rook/thumb.webp",
+          "sha256": "55d2bf3a709d480375ce87c517a652862d4ea58d6c5a7959ad9a5cf3603998d7",
+          "bytes": 37444,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rook/hud.webp",
+          "sha256": "c0ab13b198f7cbb7fba2c865e1d5c6dba648b0458fa5f7a1a4d5493b8fa7e267",
+          "bytes": 10810,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rook/inspect.webp",
+          "sha256": "e78745ff129b7d5456f8ef56747fca905466da2e7a731b26fdb4065af60838d0",
+          "bytes": 116092,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/rook/bust.webp",
+          "sha256": "40d346f9d3d6291da31a9073903c3fe7440621a16599f310462060a43a4a5da6",
+          "bytes": 173442,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_NYX",
+      "kind": "hero",
+      "artKey": "heroes/h_e_nyx/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/nyxara.png",
+        "sha256": "709bc256f610ad2629965ecbba4e416677e89706aa960dea82a8013fa2a95358",
+        "bytes": 2599358,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        297,
+        20,
+        625,
+        348
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/nyxara/thumb.webp",
+          "sha256": "47a3809232c4934d305796fd806222f1ff977c552389e23d2f982f4c78714d6a",
+          "bytes": 44574,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/nyxara/hud.webp",
+          "sha256": "6ba90fb11526dbde2d6eceabe4224f05ec565b5e27594b864ed4309270cd5b9d",
+          "bytes": 9498,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/nyxara/inspect.webp",
+          "sha256": "4b6471fb770e87384cbf5b6541a3e17e8bb1c4af1c2abcfb4904e328a4d020a8",
+          "bytes": 132354,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/nyxara/bust.webp",
+          "sha256": "9be6c0b1531e97c4db95a6a63ccd711df099c13167a23788ef9bf015cf20eb8a",
+          "bytes": 208694,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_BRI",
+      "kind": "hero",
+      "artKey": "heroes/h_e_bri/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/brimstone.png",
+        "sha256": "aae9abf0ed23aa75988a7ef5f3629bd0b05d3151b69199074cda21bb87b9f8f1",
+        "bytes": 3047720,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        532,
+        97,
+        922,
+        486
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/brimstone/thumb.webp",
+          "sha256": "235ed21473af3e4091ea16304e1b3b31eb933916f5cd8adc31bc105831ebb9b9",
+          "bytes": 34520,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/brimstone/hud.webp",
+          "sha256": "28d225916d8978fa7e8f3789c7f49e6e4ca7d540aa75ecf341b271cf1b9f79fc",
+          "bytes": 9604,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/brimstone/inspect.webp",
+          "sha256": "5eee76df23e3601b4a5145b455185bac6925a1fd56baf8ee91dd463988449be9",
+          "bytes": 121732,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/brimstone/bust.webp",
+          "sha256": "c2fecd8ad8cdfc4385aee31cf5e4096f6c8dbe470826783eacd1a595f3f6a637",
+          "bytes": 218568,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_SAB",
+      "kind": "hero",
+      "artKey": "heroes/h_e_sab/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/sable.png",
+        "sha256": "88a32648a9e606b6b124ae541b7ab89067e9d6dc7317138a27e4fcb14633e9e4",
+        "bytes": 2350787,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        369,
+        -36,
+        717,
+        312
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/sable/thumb.webp",
+          "sha256": "3e5504e0943b70221be187d8618b1b5e3884f70ff066051ca1e7038939c17052",
+          "bytes": 35924,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/sable/hud.webp",
+          "sha256": "c72140e8bcf88fba8e994936302f441ae64238e52d0eefbc5dc4223b484aa6a7",
+          "bytes": 6498,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/sable/inspect.webp",
+          "sha256": "349338e8b6b3cf7004fb87f9c8a36357465b94177fe8274eee839402b220ad23",
+          "bytes": 102442,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/sable/bust.webp",
+          "sha256": "e517357e0acaa64a0f87efa756c079b5f43e257e708852846fce1631e167e611",
+          "bytes": 169972,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_VAN",
+      "kind": "hero",
+      "artKey": "heroes/h_e_van/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/vanta.png",
+        "sha256": "c63328c9da884d329114c5fa43bff7f42fd27b30224c1642c8199ed684eb9366",
+        "bytes": 2228053,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        420,
+        -5,
+        829,
+        404
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vanta/thumb.webp",
+          "sha256": "db6cf43f67354f3f6db2b19626812e155a8f1061b8b59507e7ea0a7991604221",
+          "bytes": 31460,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vanta/hud.webp",
+          "sha256": "0f20a91bf3bf0754eac19baac883e13cf99f6131379bda0235f04058283dc089",
+          "bytes": 10012,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vanta/inspect.webp",
+          "sha256": "1240a125d7c6130d9e19e187316f69054f377f771db61115e61168a5c961af1f",
+          "bytes": 94506,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/vanta/bust.webp",
+          "sha256": "00a0506e0cf373980942c774e7f5c058741333845ad75c9367776857d4f1901c",
+          "bytes": 142994,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_GRA",
+      "kind": "hero",
+      "artKey": "heroes/h_e_gra/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/gravemarch.png",
+        "sha256": "aadc9115be8c34a6117323a73a039c51bd9710498b710e11dcd00fe238f3aeaf",
+        "bytes": 2981528,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        451,
+        15,
+        819,
+        384
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/gravemarch/thumb.webp",
+          "sha256": "c91d5dd05537fdbbb9f33ec6836acfc1491d4cfb2b45ca47f9168538e904395e",
+          "bytes": 36590,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/gravemarch/hud.webp",
+          "sha256": "ce823b96032922fde51b6b6adf64ab8ecbb3298abe723b45d220e4df27d4e5f5",
+          "bytes": 9996,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/gravemarch/inspect.webp",
+          "sha256": "5e65a01d39eaba166ee308396d3861c71b616fc4cc272a804bbc633b1e040276",
+          "bytes": 119220,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/gravemarch/bust.webp",
+          "sha256": "895fb4be2eb356a62a12e11497352fa30b1628a7789ffcc13db0132e1e05b5ec",
+          "bytes": 213630,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    },
+    {
+      "id": "H_E_SCO",
+      "kind": "hero",
+      "artKey": "heroes/h_e_sco/portrait.webp",
+      "source": {
+        "path": "assets/source/heroes-v4/scoria.png",
+        "sha256": "939098612b2f92107f7e16dc90ba931884bf6041b893b9cc2f784583db8102b5",
+        "bytes": 2605435,
+        "width": 1024,
+        "height": 1536,
+        "alpha": true
+      },
+      "faceCrop": [
+        466,
+        72,
+        845,
+        451
+      ],
+      "promptPath": "assets/source/heroes-v4/generation.json",
+      "provenance": "Original OathFront hero generated using built-in image_gen; exact prompt and PNG retained.",
+      "license": "assets/source/LICENSE.md",
+      "exports": {
+        "thumb": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/scoria/thumb.webp",
+          "sha256": "9f699799c3a3cd5bddf074643a4bb6ba03fe944c76ad782148ab4a329bf680f2",
+          "bytes": 39762,
+          "width": 256,
+          "height": 256,
+          "alpha": true
+        },
+        "hud": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/scoria/hud.webp",
+          "sha256": "4d0053958a4327d6d6d0121ae865a2bc96e47ef444455d405986b945fc9e12e6",
+          "bytes": 11074,
+          "width": 128,
+          "height": 128,
+          "alpha": true
+        },
+        "inspect": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/scoria/inspect.webp",
+          "sha256": "06229345459e896bd53d5c8e5d63bd6d2afbcf4f972619c1ababd23941c1a41c",
+          "bytes": 125532,
+          "width": 512,
+          "height": 512,
+          "alpha": true
+        },
+        "bust": {
+          "path": "apps/web/public/assets/heroes-v4/heroes/scoria/bust.webp",
+          "sha256": "341ba36321cfa78b800375dc42108e78407cfb3c1a3c0d008cd9f5b7f478957d",
+          "bytes": 200220,
+          "width": 640,
+          "height": 960,
+          "alpha": true
+        }
+      }
+    }
+  ]
+}
