@@ -1,26 +1,7 @@
 import { useId } from "react";
 import type { CardRarity } from "@oathfront/contracts/browser";
 
-const rarities = {
-  U: { name: "Uncommon", shape: "triangle", points: "32,5 59,55 5,55" },
-  R: { name: "Rare", shape: "square", points: "10,10 54,10 54,54 10,54" },
-  SR: {
-    name: "Super Rare",
-    shape: "pentagon",
-    points: "32,4 60,25 49,58 15,58 4,25",
-  },
-  SL: {
-    name: "Super Legendary",
-    shape: "hexagon",
-    points: "18,6 46,6 61,32 46,58 18,58 3,32",
-  },
-  E: {
-    name: "Event",
-    shape: "crest",
-    points:
-      "10,7 25,13 32,4 39,13 54,7 58,35 48,35 46,50 32,61 18,50 16,35 6,35",
-  },
-} as const;
+import { rarities, rarityGradient } from "./rarity-visuals";
 
 export function rarityLabel(rarity: CardRarity) {
   return `${rarity} · ${rarities[rarity].name}`;
@@ -42,30 +23,9 @@ export function RaritySymbol({ rarity }: { rarity: CardRarity }) {
     >
       <defs>
         <linearGradient id={`gem-${id}`} x1="0" y1="0" x2="1" y2="1">
-          <stop
-            offset="0"
-            stopColor={rarity === "SL" ? "#a9f1ee" : "#fff8e6"}
-          />
-          <stop
-            offset=".35"
-            stopColor={
-              rarity === "SL"
-                ? "#b7a0f7"
-                : `var(--rarity-${rarity.toLowerCase()})`
-            }
-          />
-          <stop
-            offset=".72"
-            stopColor={
-              rarity === "SL"
-                ? "#f4b3c7"
-                : `var(--rarity-${rarity.toLowerCase()})`
-            }
-          />
-          <stop
-            offset="1"
-            stopColor={rarity === "SL" ? "#f3eaa5" : "#51445a"}
-          />
+          {rarityGradient(rarity).map(([offset, color]) => (
+            <stop key={offset} offset={offset} stopColor={color} />
+          ))}
         </linearGradient>
         <clipPath id={`facet-${id}`}>
           <polygon points={gem.points} />

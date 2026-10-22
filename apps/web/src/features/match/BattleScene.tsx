@@ -1,3 +1,4 @@
+import { arenaForView } from "./rendering/arena";
 import { useSettings } from "../settings/SettingsDialog";
 import { soundFamily } from "../settings/audio-manager";
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
@@ -27,7 +28,9 @@ export default function BattleScene({
   const [playing, setPlaying] = useState(false),
     [attempt, setAttempt] = useState(0),
     [announcement, setAnnouncement] = useState("");
-  const [progress, setProgress] = useState({ loaded: 0, total: 10 });
+  const arenaKey = useRef(
+    arenaForView(store.getSnapshot().authoritativeView).key,
+  );
   const reduced = settings.reducedMotion;
   const quality = settings.quality;
   const reducedSetting = useRef(reduced);
@@ -37,33 +40,35 @@ export default function BattleScene({
       release = () => {};
     setStatus("loading");
     void Promise.all([
-      import("./rendering/scene"),
-      import("./rendering/asset-manifest"),
+      import("./rendering/three/scene"),
       import("./motion/presentation-controller"),
       import("./motion/reduced-motion"),
       import("./motion/event-timeline"),
     ])
-      .then(async ([rendering, assets, motion, preferences, feedback]) => {
+      .then(async ([rendering, motion, preferences, feedback]) => {
         if (cancelled || !canvas.current) return;
-        const bundle = await assets.loadBattleAssets(
-          store.getSnapshot().authoritativeView.versions.content,
-          quality === "low" ||
-            (quality === "auto" &&
-              (reducedSetting.current ||
-                matchMedia(
-                  "(max-width: 1100px), (prefers-reduced-motion: reduce)",
-                ).matches))
-            ? "low"
-            : "high",
-          (loaded, total) => {
-            if (!cancelled) setProgress({ loaded, total });
+        const scene = rendering.createThreeBattleScene(
+          canvas.current,
+          catalog,
+          {
+            quality:
+              quality === "low" ||
+              (quality === "auto" && matchMedia("(max-width: 1100px)").matches)
+                ? "low"
+                : "high",
+            arenaKey: arenaKey.current,
+            reducedMotion: () =>
+              reducedSetting.current ||
+              matchMedia("(prefers-reduced-motion: reduce)").matches,
+            onFailure: () => {
+              release();
+              if (!cancelled) {
+                setStatus("fallback");
+                onView(store.getSnapshot().authoritativeView);
+              }
+            },
           },
         );
-        if (cancelled || !canvas.current) {
-          bundle.dispose();
-          return;
-        }
-        const scene = rendering.createBattleScene(canvas.current, bundle);
         const unsubscribeView = scene.subscribe(onView);
         scene.applyView(store.getSnapshot().authoritativeView);
         const os = preferences.observeReducedMotion(() =>
@@ -71,6 +76,7 @@ export default function BattleScene({
         );
         const controller = motion.createPresentationController(scene, {
           reducedMotion: () => os.matches() || reducedSetting.current,
+          maxBacklogSeconds: 8,
           getLatestView: () => store.getSnapshot().authoritativeView,
           onPlaying: setPlaying,
           onEvent: (event) => {
@@ -126,14 +132,10 @@ export default function BattleScene({
         });
         let unsubscribeStore = () => {},
           removeFeedback = () => {};
-        const media = window.matchMedia(
-          "(min-width: 1024px) and (min-height: 640px)",
-        );
         const syncPause = () => {
           if (
             document.hidden ||
             !navigator.onLine ||
-            !media.matches ||
             store.getSnapshot().authoritativeView.lifecycle === "PAUSED"
           )
             controller.pause();
@@ -152,7 +154,6 @@ export default function BattleScene({
           document.removeEventListener("visibilitychange", syncPause);
           window.removeEventListener("online", reconnect);
           window.removeEventListener("offline", syncPause);
-          media.removeEventListener("change", syncPause);
           if (presentation.current === controller) presentation.current = null;
           controller.dispose();
         };
@@ -189,7 +190,6 @@ export default function BattleScene({
           document.addEventListener("visibilitychange", syncPause);
           window.addEventListener("online", reconnect);
           window.addEventListener("offline", syncPause);
-          media.addEventListener("change", syncPause);
           syncPause();
           setStatus("ready");
         } catch {
@@ -201,7 +201,10 @@ export default function BattleScene({
         }
       })
       .catch(() => {
-        if (!cancelled) setStatus("fallback");
+        if (!cancelled) {
+          setStatus("fallback");
+          onView(store.getSnapshot().authoritativeView);
+        }
       });
     return () => {
       cancelled = true;
@@ -243,9 +246,7 @@ export default function BattleScene({
           </button>
         )}
         {status === "loading" && (
-          <span role="status">
-            Loading art · {progress.loaded} / {progress.total}
-          </span>
+          <span role="status">Preparing battlefield…</span>
         )}
         {status === "fallback" && (
           <span role="status">
