@@ -124,7 +124,7 @@ test("hero card motion settles on reduction and rapid route changes preserve con
   ).toBeVisible();
   await page.getByRole("link", { name: "All heroes" }).click();
   await page.getByRole("link", { name: "Ashen Court", exact: true }).click();
-  await expect(page.locator(".campaign-hero-card")).toHaveCount(3);
+  await expect(page.locator(".campaign-hero-card")).toHaveCount(10);
   await expect(page.locator("[data-campaign-reveal]")).toHaveCSS(
     "opacity",
     "1",

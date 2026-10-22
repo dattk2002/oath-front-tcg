@@ -142,13 +142,15 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
     ["mobile", 375, 812],
   ] as const) {
     await page.setViewportSize({ width, height });
+    for (const portrait of await page.locator(".hero-portrait img").all())
+      await portrait.scrollIntoViewIfNeeded();
     await expect
       .poll(() =>
         page
           .locator(".hero-portrait img")
           .evaluateAll(
             (images) =>
-              images.length === 6 &&
+              images.length === 20 &&
               images.every(
                 (image) =>
                   (image as HTMLImageElement).complete &&

@@ -53,12 +53,13 @@ it("returns valid presentation catalog and presets, health, history and rejects 
   const catalog = await h.app.inject({ url: "/api/v1/catalog/core_v1" });
   expect(catalog.statusCode).toBe(200);
   expect(catalog.json().cards).toHaveLength(60);
+  expect(catalog.json().heroes).toHaveLength(6);
   expect(catalog.body).not.toContain("effects");
   const g = await h.guest();
   expect(
     (await h.app.inject({ url: "/api/v1/decks", headers: h.headers(g) })).json()
       .presets,
-  ).toHaveLength(6);
+  ).toHaveLength(20);
   for (const query of ["limit=0", "limit=1.2", "cursor=invalid", "unknown=x"])
     expect(
       (

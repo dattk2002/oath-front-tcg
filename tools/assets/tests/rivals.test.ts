@@ -12,7 +12,7 @@ it("resolves all six hero identities to bounded versioned art while preserving c
   for (const hero of coreCatalog.heroes) {
     for (const variant of ["thumb", "hud", "inspect", "bust"]) {
       const art = resolveArt(hero.portraitKey, hero.id, variant);
-      expect(art.src).toMatch(/^\/assets\/rivals-v2\/heroes\//);
+      expect(art.src).toMatch(/^\/assets\/heroes-v4\/heroes\//);
       expect(existsSync(`apps/web/public${art.src}`)).toBe(true);
     }
   }

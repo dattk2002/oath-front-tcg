@@ -422,11 +422,47 @@ for (const kind of ["PRESET", "SAVED"] as const)
     await expect(page).toHaveURL(/\/matches\//);
     expect(requests).toHaveLength(1);
     expect(requests[0]).toMatchObject({
-      deck: expectedSource,
-      expectedContentVersion: "core_v1",
+      expectedContentVersion: "heroes_v1",
       opponentHeroId: original.opponentHeroId,
       difficulty: original.difficulty,
     });
+    const source = (
+      requests[0] as {
+        deck: { kind: string; deckId: string; deckRevision: number };
+      }
+    ).deck;
+    if (kind === "PRESET") expect(source).toEqual(expectedSource);
+    else {
+      // Explicit review upgrades a copy of the original revision, not the newer edited deck.
+      const oldSource = expectedSource as {
+        deckId: string;
+        deckRevision: number;
+      };
+      expect(source.kind).toBe("SAVED");
+      expect(source.deckId).not.toBe(oldSource.deckId);
+      const originalDeck = await (
+        await page.request.get(
+          `/api/v1/decks/${oldSource.deckId}?revision=${oldSource.deckRevision}`,
+        )
+      ).json();
+      const migratedDeck = await (
+        await page.request.get(
+          `/api/v1/decks/${source.deckId}?revision=${source.deckRevision}`,
+        )
+      ).json();
+      expect(originalDeck.contentVersion).toBe("core_v1");
+      expect(originalDeck.entries).toHaveLength(15);
+      expect(migratedDeck).toMatchObject({
+        heroId: originalDeck.heroId,
+        entries: originalDeck.entries,
+        contentVersion: "heroes_v1",
+      });
+      const latestOriginal = await (
+        await page.request.get(`/api/v1/decks/${oldSource.deckId}`)
+      ).json();
+      expect(latestOriginal.revision).toBe(2);
+      expect(latestOriginal.entries).toHaveLength(14);
+    }
     expect(
       (await (await page.request.get(`/api/v1/matches/${id}/summary`)).json())
         .rematch,

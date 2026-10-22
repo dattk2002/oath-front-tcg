@@ -66,7 +66,7 @@ test("Pen presentation keeps hero selection, deck, settings and battle readable 
     await page.getByRole("button", { name: "Play now · Play vs bot" }).click();
     await expect(page.locator("[data-hero-stage]")).toBeVisible();
     await page.locator('input[name="hero"]').last().check();
-    await expect(page.locator("[data-hero-name]")).toHaveText("Morrow");
+    await expect(page.locator("[data-hero-name]")).toHaveText("Scoria");
     await page.locator('input[name="hero"]').first().check();
     await capture(`heroes-${label}`);
     await page

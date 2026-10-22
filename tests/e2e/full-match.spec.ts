@@ -189,7 +189,7 @@ test("version drift shows retained source and original/current versions without 
   const review = page.getByRole("region", { name: "Review deck" });
   await expect(review).toContainText("D_G_BP");
   await expect(review).toContainText("core_v0");
-  await expect(review).toContainText("core_v1");
+  await expect(review).toContainText("heroes_v1");
   expect(creates).toBe(0);
   await captureEvidence(page, "version-review");
 });
