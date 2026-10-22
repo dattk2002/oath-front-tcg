@@ -1,0 +1,78 @@
+{
+  "origin": "http://localhost:3000",
+  "checkedAt": "2026-10-22T10:13:40.265Z",
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "FIVE LANES.\nONE OATH."
+    },
+    {
+      "path": "/explore/heroes",
+      "status": 200,
+      "title": "FIND YOUR HERO."
+    },
+    {
+      "path": "/game-features",
+      "status": 200,
+      "title": "FIVE LANES. ENDLESS DECISIONS."
+    },
+    {
+      "path": "/news",
+      "status": 200,
+      "title": "LATEST NEWS"
+    },
+    {
+      "path": "/events",
+      "status": 200,
+      "title": "ENTER THE SEASON."
+    },
+    {
+      "path": "/events/first-light-week-01",
+      "status": 200,
+      "title": "WEEK 1 · AWAITING REVEAL"
+    }
+  ],
+  "sizes": [
+    {
+      "width": 1440,
+      "fits": true
+    },
+    {
+      "width": 768,
+      "fits": true
+    },
+    {
+      "width": 375,
+      "fits": true
+    }
+  ],
+  "catalog": {
+    "version": "elements_v1",
+    "cards": 72,
+    "heroes": 20,
+    "powers": 36
+  },
+  "news": {
+    "visible": 0,
+    "serverNow": "2026-10-22T10:13:40.256Z"
+  },
+  "events": {
+    "weeks": 12,
+    "first": {
+      "cardId": null,
+      "endsAt": "2026-11-02T00:00:00.000Z",
+      "id": "season01-week01",
+      "revealAt": "2026-10-26T00:00:00.000Z",
+      "revealed": false,
+      "seasonId": "first-light-long-shadows",
+      "slug": "first-light-week-01",
+      "startsAt": "2026-10-26T00:00:00.000Z",
+      "status": "UPCOMING",
+      "title": "Week 1 · Awaiting reveal",
+      "week": 1
+    }
+  },
+  "pageErrors": [],
+  "serverFailures": []
+}

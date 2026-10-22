@@ -45,3 +45,8 @@ If a connection/response becomes uncertain, inspect the rows/checksums before re
 ## Verified during implementation
 
 Isolated checks cover duplicate imports, draft revision/publication, future-content filtering, invalid manifest rejection, runtime publication denial, safely quoted exported SQL including hostile punctuation/dollar delimiters, immutable match bindings and credential-safe CLI errors. Dry-run against the preserved local interactive DB reported that publication tables still need migration; no local player data was changed during this milestone. Actual local and Neon development application is reserved for delivery after visual integration.
+
+
+### Delivery readback
+
+On 22 October 2026 the canonical 114-record bundle was imported into preserved local `oathfront_interactive` and Neon development `br-odd-pine-a1pw77e9` / `oathfront`. Both have migrations 0001–0006. Local repeat preview returns 114 unchanged; Neon counts/checksums and restricted runtime grants match. First general news publication is 22 October 19:30 Vietnam time; the first weekly reveal is 26 October 07:00. See [delivery evidence](elements-events.md#applied-environments--22-october-2026). The earlier missing-table dry run above records the pre-delivery milestone.

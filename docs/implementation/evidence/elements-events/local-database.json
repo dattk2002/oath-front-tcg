@@ -1,0 +1,39 @@
+{
+  "database": "oathfront_interactive",
+  "preservedExistingRows": true,
+  "matchRowsPreserved": true,
+  "counts": {
+    "posts": 18,
+    "weeks": 12,
+    "scenarios": 84,
+    "migrations": 6
+  },
+  "preview": {
+    "created": 114,
+    "updated": 0,
+    "unchanged": 0
+  },
+  "imported": {
+    "created": 114,
+    "updated": 0,
+    "unchanged": 0
+  },
+  "after": {
+    "created": 0,
+    "updated": 0,
+    "unchanged": 114
+  },
+  "initialMigrationsAtDelivery": 6,
+  "migrationRun": "Forward-only prepare-auth-db completed; six migrations already present at delivery inspection.",
+  "preservedCounts": {
+    "principals": 1,
+    "app_sessions": 2,
+    "decks": 0,
+    "deck_versions": 0,
+    "matches": 1,
+    "match_checkpoints": 1,
+    "match_initializations": 1,
+    "match_results": 1,
+    "command_receipts": 74
+  }
+}
