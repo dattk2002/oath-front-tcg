@@ -1,3 +1,4 @@
+import heroPresentation from "../../../../public/assets/heroes-v4/manifest.json" with { type: "json" };
 import manifest from "../../../../public/assets/core-v1/manifest.json" with { type: "json" };
 
 import presentation from "../../../../public/assets/rivals-v2/manifest.json" with { type: "json" };
@@ -15,7 +16,19 @@ export function resolveArt(
   variant = "thumb",
 ): ArtReference {
   const core = manifest.assets.find((a) => a.artKey === artKey);
+  const signatureHero = artKey.startsWith("powers/s_")
+    ? heroPresentation.assets.find(
+        (a) =>
+          a.id.toLowerCase() ===
+          artKey
+            .split("/")[1]
+            ?.replace(/\.webp$/, "")
+            .replace(/^s_/, "h_"),
+      )
+    : undefined;
   const override =
+    heroPresentation.assets.find((a) => a.artKey === artKey) ??
+    signatureHero ??
     cardPresentation.assets.find((a) => a.artKey === artKey) ??
     presentation.assets.find((a) => a.artKey === artKey);
   const asset = { ...core, ...override };
@@ -26,13 +39,17 @@ export function resolveArt(
     artKey,
   };
 }
-export function artById(id: string) {
+export function artById(
+  id: string,
+): Record<string, string | undefined> | undefined {
   const core = manifest.assets.find((a) => a.id === id);
-  return core
+  const hero = heroPresentation.assets.find((a) => a.id === id);
+  return core || hero
     ? {
         ...core,
         ...presentation.assets.find((a) => a.id === id),
         ...cardPresentation.assets.find((a) => a.id === id),
+        ...hero,
       }
     : undefined;
 }
@@ -40,7 +57,11 @@ export function battleAssetRequests(
   catalogVersion: string,
   quality: AssetQuality,
 ): string[] {
-  if (catalogVersion !== manifest.catalogVersion)
+  if (
+    ![manifest.catalogVersion, heroPresentation.catalogVersion].includes(
+      catalogVersion,
+    )
+  )
     throw Error("Unsupported art catalog");
   // No PlayerView, lane assignment, seed or unrevealed definition is accepted here.
   return [

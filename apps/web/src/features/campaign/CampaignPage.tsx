@@ -58,9 +58,9 @@ export function CampaignPage({
     <section className="campaign-roster campaign-lilac" data-pen-node="xaC80">
       <div className="campaign-roster-heading" data-campaign-reveal>
         <div>
-          <p className="kicker">The six / All unlocked</p>
+          <p className="kicker">{publicHeroes.length} heroes / All unlocked</p>
           <h1>Find your hero.</h1>
-          <p>Two factions. Six identities. Choose the way you play.</p>
+          <p>Two factions. Twenty identities. Choose the way you play.</p>
         </div>
         <nav className="campaign-filters" aria-label="Hero factions">
           {(["ALL", "GOOD", "EVIL"] as const).map((value) => (

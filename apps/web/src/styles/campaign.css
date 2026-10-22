@@ -1410,3 +1410,594 @@
     min-height: auto;
   }
 }
+
+/* User-approved Home expansion: Pen tokens, new ensemble and twenty-hero roster. */
+.home-expanded {
+  --home-section-space: clamp(64px, 7vw, 112px);
+  --home-gutter: clamp(24px, 4.45vw, 80px);
+  --home-banner-paper: #f7f4ed;
+}
+.home-expanded .campaign-home-stage {
+  color: var(--campaign-ink);
+  background: var(--home-banner-paper);
+  min-height: clamp(590px, 54vw, 840px);
+  display: flex;
+  align-items: center;
+}
+.home-expanded .campaign-home-stage::after {
+  display: none;
+}
+.home-expanded .campaign-home-art img {
+  object-position: center;
+}
+.home-expanded .campaign-home-copy {
+  margin-left: var(--home-gutter);
+  padding: 48px 0;
+  width: 37%;
+  gap: 24px;
+}
+.home-expanded .campaign-home-copy .kicker,
+.home-expanded .campaign-home-copy .campaign-home-intro {
+  color: var(--campaign-ink);
+}
+.home-expanded .campaign-home-copy h1 {
+  font-size: clamp(64px, 6.5vw, 112px);
+}
+.home-expanded .campaign-home-copy .campaign-home-intro {
+  font-size: 20px;
+  max-width: 350px;
+}
+.home-expanded .campaign-home-copy .campaign-actions {
+  gap: 12px;
+}
+.home-expanded .campaign-home-copy .campaign-button {
+  min-width: 160px;
+  min-height: 56px;
+  font-size: 22px;
+  padding-inline: 24px;
+}
+.home-expanded .campaign-home-copy .learn-button {
+  min-width: 148px;
+  font-size: 18px;
+}
+.home-browser-note {
+  font-size: 14px;
+  margin: 0;
+}
+.home-expanded .campaign-home-summary {
+  padding: 24px var(--home-gutter);
+  background: var(--campaign-acid);
+  color: var(--campaign-ink);
+  gap: 16px;
+}
+.home-expanded .campaign-home-summary > span {
+  color: var(--campaign-ink);
+  font-size: 16px;
+}
+.home-expanded .campaign-home-summary a {
+  color: var(--campaign-ink);
+}
+.home-expanded .campaign-home-summary :focus-visible {
+  outline-color: var(--campaign-ink);
+}
+.home-section {
+  padding: var(--home-section-space) var(--home-gutter);
+}
+.home-section-heading > .kicker,
+.home-section-heading > div > .kicker {
+  margin: 0 0 16px;
+  letter-spacing: 1.5px;
+}
+.home-section-heading h2 {
+  font-size: clamp(42px, 4.8vw, 76px);
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}
+.home-section-heading p {
+  font-size: 19px;
+  max-width: 440px;
+}
+.home-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 48px;
+  color: inherit;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  text-underline-offset: 6px;
+}
+.home-text-link:hover {
+  color: var(--campaign-acid);
+}
+.home-gameplay {
+  display: grid;
+  grid-template-columns: 0.9fr 1.25fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  background: var(--campaign-ink);
+}
+.home-gameplay .kicker {
+  color: var(--campaign-acid);
+}
+.home-tactics {
+  min-width: 0;
+}
+.home-tactics-board {
+  padding: 20px;
+  background: var(--campaign-slate);
+  border: 1px solid var(--campaign-border);
+  transform: perspective(900px) rotateX(8deg);
+}
+.home-tactics-board-side {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 14px;
+  color: var(--campaign-muted);
+}
+.home-tactics-board-lanes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding: 16px 0;
+}
+.home-tactics-board-lane {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--campaign-border);
+  padding: 8px;
+  background: var(--campaign-ink);
+}
+.home-tactics-board-lane strong {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--campaign-lilac);
+}
+.home-lane-unit {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  background: var(--campaign-slate);
+}
+.home-lane-unit img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.home-tactics-board[data-phase="0"] .evil,
+.home-tactics-board[data-phase="2"] .evil {
+  border-color: var(--campaign-lilac);
+}
+.home-tactics-board[data-phase="1"] .good {
+  border-color: var(--campaign-acid);
+}
+.home-tactics-board[data-phase="3"] .home-lane-unit {
+  border-color: var(--campaign-acid);
+}
+.home-phase-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 24px;
+}
+.home-phase-buttons button {
+  border: 1px solid var(--campaign-border);
+  border-radius: 0;
+  min-height: 72px;
+  background: var(--campaign-slate);
+  color: var(--campaign-paper);
+  font: 600 16px/1.2 var(--campaign-display);
+  padding: 12px 8px;
+}
+.home-phase-buttons button span {
+  display: block;
+  font-weight: 400;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.home-phase-buttons button[aria-pressed="true"] {
+  color: var(--campaign-ink);
+  background: var(--campaign-acid);
+  border-color: var(--campaign-acid);
+}
+.home-phase-buttons button:hover:not([aria-pressed="true"]) {
+  background: var(--campaign-lilac);
+  color: var(--campaign-ink);
+}
+.home-phase-description {
+  min-height: 72px;
+  font-size: 17px;
+  margin: 20px 0 8px;
+}
+.home-small-note {
+  font-size: 13px;
+  margin: 0;
+  color: var(--campaign-muted);
+}
+.home-heroes {
+  background: var(--campaign-lilac);
+  color: var(--campaign-ink);
+}
+.home-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.home-heading-row h2 {
+  margin-bottom: 0;
+}
+.home-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.home-featured-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 0 24px 24px;
+  background: var(--campaign-paper);
+  border-bottom: 4px solid var(--campaign-ink);
+}
+.home-featured-hero::before {
+  content: "";
+  position: absolute;
+  inset: 5% -25% 30% 35%;
+  background: var(--campaign-lilac);
+  transform: skewX(-20deg);
+  z-index: -1;
+}
+.home-featured-hero.evil::before {
+  background: var(--campaign-slate);
+}
+.home-featured-number {
+  position: absolute;
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--campaign-paper-muted);
+  top: 12px;
+  left: 12px;
+  z-index: -1;
+}
+.home-featured-art {
+  height: clamp(250px, 30vw, 430px);
+}
+.home-featured-copy h3 {
+  font-size: 40px;
+  text-transform: uppercase;
+  margin: 8px 0;
+}
+.home-featured-copy h3 span {
+  float: right;
+}
+.home-featured-copy p {
+  margin: 4px 0;
+  font-size: 17px;
+}
+.home-featured-copy small {
+  font-size: 14px;
+}
+.home-featured-hero:hover {
+  border-bottom-color: var(--campaign-slate);
+}
+.home-decks {
+  color: var(--campaign-ink);
+  background: var(--campaign-paper);
+  display: grid;
+  grid-template-columns: 0.85fr 1.2fr;
+  align-items: center;
+  gap: 48px;
+}
+.home-card-fan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 30px 16px;
+}
+.home-showcase-card {
+  position: relative;
+  width: 34%;
+  flex: 0 0 34%;
+  margin: 0 -2%;
+  padding: 8px;
+  background: var(--campaign-ink);
+  color: var(--campaign-paper);
+  border: 2px solid var(--campaign-border);
+  box-shadow: 0 16px 24px #19192725;
+  transform: rotate(-10deg) translateY(20px);
+}
+.home-showcase-card:nth-child(2) {
+  transform: translateY(-10px);
+  z-index: 1;
+}
+.home-showcase-card:nth-child(3) {
+  transform: rotate(10deg) translateY(20px);
+}
+.home-showcase-card .campaign-artwork {
+  aspect-ratio: 0.82;
+  background: var(--campaign-slate);
+}
+.home-card-cost {
+  position: absolute;
+  z-index: 2;
+  left: 8px;
+  top: 8px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: var(--campaign-acid);
+  color: var(--campaign-ink);
+  font-size: 22px;
+  font-weight: 800;
+}
+.home-showcase-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 4px 8px;
+}
+.home-showcase-card figcaption strong {
+  font-size: 20px;
+  line-height: 1.1;
+}
+.home-showcase-card figcaption small {
+  color: var(--campaign-lilac);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.home-showcase-card figcaption > span {
+  font-size: 13px;
+}
+.home-world {
+  background: var(--campaign-slate);
+}
+.home-world .kicker {
+  color: var(--campaign-acid);
+}
+.home-story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.home-story-card {
+  overflow: hidden;
+  background: var(--campaign-ink);
+}
+.home-story-art {
+  height: 230px;
+  background: var(--campaign-paper-muted);
+}
+.home-story-card > div {
+  padding: 24px;
+}
+.home-story-card h3 {
+  font-size: 28px;
+  margin: 16px 0;
+}
+.home-story-card p:last-child {
+  color: var(--campaign-muted);
+  margin-bottom: 0;
+  font-size: 17px;
+}
+.home-closing {
+  text-align: center;
+  color: var(--campaign-ink);
+  background: var(--campaign-acid);
+}
+.home-closing h2 {
+  font-size: clamp(56px, 8vw, 128px);
+  margin: 20px 0;
+}
+.home-closing > p {
+  font-size: 20px;
+}
+.home-closing > .kicker {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+.home-closing .campaign-actions {
+  justify-content: center;
+  margin-top: 32px;
+}
+.campaign-profile-copy h1 {
+  font-size: clamp(64px, 7vw, 118px);
+  overflow-wrap: normal;
+}
+@media (min-width: 1200px) {
+  .campaign-roster .campaign-hero-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1100px) {
+  .home-expanded .campaign-home-copy {
+    width: 40%;
+  }
+  .home-expanded .campaign-home-copy .campaign-actions {
+    flex-direction: column;
+  }
+  .home-gameplay,
+  .home-decks {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home-section-heading p {
+    max-width: 620px;
+  }
+  .home-tactics {
+    max-width: 760px;
+    width: 100%;
+    margin: auto;
+  }
+  .home-card-fan {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 860px) {
+  .home-expanded .campaign-home-stage {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .home-expanded .campaign-home-art {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+  .home-expanded .campaign-home-copy {
+    padding: 32px 24px 40px;
+    margin: 0;
+    width: 100%;
+    background: var(--home-banner-paper);
+  }
+  .home-expanded .campaign-home-copy h1 {
+    font-size: clamp(64px, 10vw, 84px);
+  }
+  .home-expanded .campaign-home-copy .campaign-home-intro {
+    max-width: 100%;
+  }
+  .home-expanded .campaign-home-copy .campaign-actions {
+    flex-direction: row;
+  }
+  .home-expanded .campaign-home-copy .campaign-button {
+    width: auto;
+    flex: 1;
+  }
+  .home-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .home-featured-grid {
+    gap: 16px;
+  }
+  .home-featured-hero {
+    padding-inline: 12px;
+  }
+  .home-featured-art {
+    height: 250px;
+  }
+  .home-featured-copy h3 {
+    font-size: 30px;
+  }
+  .home-story-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home-story-card {
+    display: grid;
+    grid-template-columns: 35% minmax(0, 1fr);
+  }
+  .home-story-art {
+    height: 100%;
+    min-height: 220px;
+  }
+  .campaign-profile-copy h1 {
+    font-size: clamp(44px, 8.9vw, 72px);
+  }
+}
+@media (max-width: 540px) {
+  .home-featured-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home-featured-hero {
+    display: grid;
+    grid-template-columns: 47% minmax(0, 1fr);
+    padding: 12px;
+    gap: 12px;
+    align-items: center;
+  }
+  .home-featured-art {
+    height: 230px;
+  }
+  .home-featured-copy h3 {
+    font-size: 30px;
+  }
+  .home-featured-number {
+    font-size: 96px;
+  }
+  .home-tactics-board {
+    padding: 12px;
+    transform: none;
+  }
+  .home-tactics-board-lane {
+    padding: 4px;
+    gap: 8px;
+  }
+  .home-tactics-board-lanes {
+    gap: 4px;
+  }
+  .home-phase-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-phase-buttons button {
+    min-height: 64px;
+  }
+  .home-phase-description {
+    min-height: 104px;
+  }
+  .home-card-fan {
+    padding: 24px 0;
+  }
+  .home-showcase-card {
+    padding: 4px;
+  }
+  .home-showcase-card figcaption {
+    padding: 10px 2px 4px;
+  }
+  .home-showcase-card figcaption strong {
+    font-size: 16px;
+  }
+  .home-card-cost {
+    left: 4px;
+    top: 4px;
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+  }
+  .home-showcase-card figcaption > span {
+    font-size: 12px;
+  }
+  .home-story-card {
+    display: flex;
+  }
+  .home-story-art {
+    height: 220px;
+  }
+  .home-closing .campaign-actions {
+    flex-direction: column;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-tactics-board {
+    transform: none;
+  }
+}
+
+.home-expanded .campaign-home-art .campaign-art-fallback {
+  background: var(--home-banner-paper);
+  color: var(--campaign-ink);
+  padding-left: 45%;
+}
+@media (max-width: 860px) {
+  .home-expanded .campaign-home-art .campaign-art-fallback {
+    padding: 24px;
+  }
+}
+@media (max-width: 540px) {
+  .home-featured-hero::before {
+    inset: 8px 53% 8px 8px;
+    transform: none;
+  }
+}

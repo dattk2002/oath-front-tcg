@@ -1,5 +1,7 @@
 import { useEffect, type RefObject } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 import { useSettings } from "../settings/SettingsDialog";
 import { observeReducedMotion } from "../match/motion/reduced-motion";
 
@@ -26,6 +28,26 @@ export function useCampaignMotion(
     };
     if (!settings.reducedMotion && !os.matches() && !document.hidden) {
       context = gsap.context(() => {
+        root
+          .querySelectorAll<HTMLElement>("[data-home-reveal]")
+          .forEach((section) => {
+            gsap.fromTo(
+              section,
+              { y: 16, opacity: 0.75 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.4,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: section,
+                  start: "top 90%",
+                  once: true,
+                },
+                clearProps: "transform,opacity",
+              },
+            );
+          });
         const reveals = root.querySelectorAll(
           "[data-campaign-reveal] > *, .campaign-editorial-detail > h1",
         );
@@ -59,24 +81,24 @@ export function useCampaignMotion(
           .querySelectorAll<HTMLElement>(".campaign-hero-card, .editorial-card")
           .forEach((card) => {
             const target = card.querySelector(
-              "[data-campaign-card-art], .editorial-cover",
+              "[data-campaign-card-art], .editorial-cover, .home-featured-art, .home-story-art",
             );
             if (!target) return;
-          const scaleX = gsap.quickTo(target, "scaleX", {
+            const scaleX = gsap.quickTo(target, "scaleX", {
               duration: 0.16,
               ease: "power2.out",
             });
-          const scaleY = gsap.quickTo(target, "scaleY", {
-            duration: 0.16,
-            ease: "power2.out",
-          });
+            const scaleY = gsap.quickTo(target, "scaleY", {
+              duration: 0.16,
+              ease: "power2.out",
+            });
             let hovered = false;
             let focused = card.contains(document.activeElement);
-          const update = () => {
-            const value = hovered || focused ? 1.015 : 1;
-            scaleX(value);
-            scaleY(value);
-          };
+            const update = () => {
+              const value = hovered || focused ? 1.015 : 1;
+              scaleX(value);
+              scaleY(value);
+            };
             const enter = (event: PointerEvent) => {
               if (event.pointerType === "mouse") {
                 hovered = true;

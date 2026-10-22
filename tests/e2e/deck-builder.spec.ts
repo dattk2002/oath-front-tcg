@@ -62,19 +62,19 @@ async function screenshot(page: Page, name: string) {
     ),
   ).toBe(true);
 }
-test("six heroes expose exact four powers and signature without early match creation", async ({
+test("twenty heroes expose exact four powers and signature without early match creation", async ({
   page,
 }) => {
   await guest(page);
   const catalog = await (
-    await page.request.get("/api/v1/catalog/core_v1")
+    await page.request.get("/api/v1/catalog/heroes_v1")
   ).json();
   let creates = 0;
   page.on("request", (r) => {
     if (r.method() === "POST" && r.url().endsWith("/matches")) creates++;
   });
   await page.goto("/heroes");
-  await expect(page.getByRole("radio")).toHaveCount(6);
+  await expect(page.getByRole("radio")).toHaveCount(20);
   for (const hero of catalog.heroes) {
     await page.locator(`input[type="radio"][value="${hero.id}"]`).check();
     const detail = page.getByRole("complementary", { name: "Hero details" });

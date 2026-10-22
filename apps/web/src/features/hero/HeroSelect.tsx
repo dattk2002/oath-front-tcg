@@ -24,7 +24,7 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
     <section className="setup" ref={root}>
       <div className="screen-heading">
         <h1>Choose your hero</h1>
-        <p>Six heroes · All unlocked</p>
+        <p>{catalog.heroes.length} heroes · All unlocked</p>
       </div>
       <div className="hero-select-layout">
         <div
@@ -56,7 +56,7 @@ export default function HeroSelect({ catalog }: { catalog: PublicCatalog }) {
                   artKey={h.portraitKey}
                   name={contentName(h.id)}
                   variant="thumb"
-                  eager
+                  eager={i < 6}
                 />
               </span>
               <strong>{contentName(h.id)}</strong>

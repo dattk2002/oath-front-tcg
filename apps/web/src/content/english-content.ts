@@ -8,6 +8,160 @@ export const englishContent: Readonly<Record<string, EnglishContentEntry>> =
   Object.freeze(
     Object.fromEntries(
       Object.entries({
+        H_G_SOL: {
+          name: "Solenne",
+          title: "The Sunforged Envoy",
+        },
+        S_G_SOL: {
+          name: "Solar Accord",
+          text: "Give an allied unit Shield and +1/+1 permanently.",
+        },
+        D_G_SOL: {
+          name: "Solenne \u00b7 Protective duelist",
+        },
+        H_G_CAI: {
+          name: "Cairn",
+          title: "The Keystone Guardian",
+        },
+        S_G_CAI: {
+          name: "Keystone Covenant",
+          text: "Give an allied unit Armor and +0/+2 permanently.",
+        },
+        D_G_CAI: {
+          name: "Cairn \u00b7 Enduring defender",
+        },
+        H_G_ZEP: {
+          name: "Zephyr",
+          title: "The Crosswind Runner",
+        },
+        S_G_ZEP: {
+          name: "Crosswind",
+          text: "Move an allied unit to an empty allied lane. Give it +3 ATK this turn. Draw a card.",
+        },
+        D_G_ZEP: {
+          name: "Zephyr \u00b7 Mobile tempo",
+        },
+        H_G_MER: {
+          name: "Meridian",
+          title: "The Dawn Archivist",
+        },
+        S_G_MER: {
+          name: "Held Dawn",
+          text: "Stun an enemy unit this turn. Heal your hero for 3. Draw a card.",
+        },
+        D_G_MER: {
+          name: "Meridian \u00b7 Measured control",
+        },
+        H_G_MOS: {
+          name: "Mossweld",
+          title: "The Grove Mechanic",
+        },
+        S_G_MOS: {
+          name: "Field Refit",
+          text: "Heal an allied unit for 4. Give it Shield. Draw a card.",
+        },
+        D_G_MOS: {
+          name: "Mossweld \u00b7 Field maintenance",
+        },
+        H_G_HAL: {
+          name: "Halcyon",
+          title: "The Sky Chorus",
+        },
+        S_G_HAL: {
+          name: "Skyward Chorus",
+          text: "Give all allied units +1 ATK this turn and heal them for 1.",
+        },
+        D_G_HAL: {
+          name: "Halcyon \u00b7 Formation support",
+        },
+        H_G_ROW: {
+          name: "Rowan",
+          title: "The Grove Nomad",
+        },
+        S_G_ROW: {
+          name: "Hearthroot",
+          text: "Summon a Seedling in an empty allied lane. Heal your hero for 4.",
+        },
+        D_G_ROW: {
+          name: "Rowan \u00b7 Patient sustain",
+        },
+        H_E_ROO: {
+          name: "Rook",
+          title: "The Cinder Marksman",
+        },
+        S_E_ROO: {
+          name: "Crossfire Oath",
+          text: "Move an enemy unit to an empty lane on its side. Deal 2 damage to it.",
+        },
+        D_E_ROO: {
+          name: "Rook \u00b7 Tactical displacement",
+        },
+        H_E_NYX: {
+          name: "Nyxara",
+          title: "The Silk Hex",
+        },
+        S_E_NYX: {
+          name: "Thread the Needle",
+          text: "Move an enemy unit to an empty lane on its side. Poison it.",
+        },
+        D_E_NYX: {
+          name: "Nyxara \u00b7 Positional attrition",
+        },
+        H_E_BRI: {
+          name: "Brimstone",
+          title: "The Crucible Colossus",
+        },
+        S_E_BRI: {
+          name: "Crucible Break",
+          text: "Deal 3 damage to an enemy unit, then 1 damage to the enemy hero.",
+        },
+        D_E_BRI: {
+          name: "Brimstone \u00b7 Removal pressure",
+        },
+        H_E_SAB: {
+          name: "Sable",
+          title: "The Last Adjudicator",
+        },
+        S_E_SAB: {
+          name: "Final Injunction",
+          text: "Give an enemy unit -2 ATK this turn. Poison it. Draw a card.",
+        },
+        D_E_SAB: {
+          name: "Sable \u00b7 Suppressive control",
+        },
+        H_E_VAN: {
+          name: "Vanta",
+          title: "The Blackglass Dancer",
+        },
+        S_E_VAN: {
+          name: "Blackglass Waltz",
+          text: "Move an allied unit to an empty allied lane. Give it +1 ATK and Pierce this turn.",
+        },
+        D_E_VAN: {
+          name: "Vanta \u00b7 Mobile finisher",
+        },
+        H_E_GRA: {
+          name: "Gravemarch",
+          title: "The Hollow Bell",
+        },
+        S_E_GRA: {
+          name: "Toll of Cinders",
+          text: "Summon a Cinderling in an empty allied lane. Deal 1 damage to all enemy units.",
+        },
+        D_E_GRA: {
+          name: "Gravemarch \u00b7 Board attrition",
+        },
+        H_E_SCO: {
+          name: "Scoria",
+          title: "The Ash Alchemist",
+        },
+        S_E_SCO: {
+          name: "Ashen Remedy",
+          text: "Deal 2 damage to an enemy unit. Heal your hero for 3. Draw a card.",
+        },
+        D_E_SCO: {
+          name: "Scoria \u00b7 Resource attrition",
+        },
         H_G_BV: {
           name: "Briar",
           title: "The Living Bastion",

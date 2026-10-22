@@ -46,7 +46,7 @@ export default function BattleScene({
       .then(async ([rendering, assets, motion, preferences, feedback]) => {
         if (cancelled || !canvas.current) return;
         const bundle = await assets.loadBattleAssets(
-          "core_v1",
+          store.getSnapshot().authoritativeView.versions.content,
           quality === "low" ||
             (quality === "auto" &&
               (reducedSetting.current ||

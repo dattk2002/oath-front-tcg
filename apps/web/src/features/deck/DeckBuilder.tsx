@@ -452,14 +452,13 @@ export default function DeckBuilder({
         validateBrowserWire("CreateMatchRequest", body) &&
         body.mode === "SKIRMISH" &&
         body.opponentHeroId === review.config.opponentHeroId &&
-        body.difficulty === review.config.difficulty &&
-        body.expectedContentVersion === catalog.version
+        body.difficulty === review.config.difficulty
       )
         createPending.current = body;
     } catch {
       /* Memory retries. */
     }
-  }, [review, catalog.version]);
+  }, [review]);
   const rows = deck.entries
     .map((e) => ({
       entry: e,

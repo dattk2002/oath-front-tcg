@@ -60,8 +60,8 @@ export function HeroProfile({
             retry
           />
           <span className="campaign-hero-index">
-            <small>The six</small>
-            {String(index).padStart(2, "0")} / 06
+            <small>The heroes</small>
+            {String(index).padStart(2, "0")} / {publicHeroes.length}
           </span>
         </div>
         <div className="campaign-profile-actions campaign-actions">

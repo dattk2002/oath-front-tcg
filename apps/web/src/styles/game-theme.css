@@ -81,3 +81,47 @@ body {
     height: 40px;
   }
 }
+
+/* Twenty playable heroes keep the detail pane and deck action within reach. */
+@media (min-width: 861px) {
+  .roster-grid {
+    max-height: 660px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px;
+    scrollbar-color: var(--campaign-lilac) var(--campaign-ink);
+  }
+  .hero-tile strong {
+    font-size: clamp(20px, 2.2vw, 28px);
+    overflow-wrap: anywhere;
+  }
+  .hero-detail h2 {
+    font-size: clamp(48px, 5.5vw, 92px);
+  }
+}
+
+/* Names must fit even when a later roster entry is selected on a small screen. */
+.hero-tile,
+.hero-detail,
+.hero-stage-copy {
+  min-width: 0;
+}
+.hero-tile strong {
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+@media (max-width: 860px) {
+  .hero-stage-main {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .hero-stage-copy {
+    padding: 20px 0 20px 16px;
+  }
+  .hero-detail h2 {
+    font-size: clamp(28px, 7vw, 56px);
+    overflow-wrap: anywhere;
+  }
+  .hero-tile strong {
+    font-size: 21px;
+  }
+}

@@ -90,7 +90,7 @@ test("Pen Home and profiles preserve guest entry and selected hero deck intent",
     .getByRole("button", { name: "Play now · Play vs bot", exact: true })
     .click();
   await expect(page).toHaveURL(/\/heroes$/);
-  await expect(page.locator('input[name="hero"]')).toHaveCount(6);
+  await expect(page.locator('input[name="hero"]')).toHaveCount(20);
   await page.goto("/explore/heroes/H_E_FS");
   await expect(
     page.getByRole("heading", { name: "Vesper", exact: true }),
@@ -120,7 +120,7 @@ test("Public pages remain browsable when the game API is unavailable", async ({
     .getByRole("navigation", { name: "Main navigation" })
     .getByRole("link", { name: "Heroes", exact: true })
     .click();
-  await expect(page.locator(".campaign-hero-card")).toHaveCount(6);
+  await expect(page.locator(".campaign-hero-card")).toHaveCount(20);
   await page.getByRole("link", { name: "Briar — The Living Bastion" }).click();
   await expect(
     page.getByRole("heading", { name: "Briar", exact: true }),

@@ -18,6 +18,32 @@ import type { ApiClient } from "../match/api-client";
 import { ApiError } from "../match/api-error";
 import { classLabel, sideLabel } from "../match/labels";
 const strategies: Record<HeroId, string> = {
+  H_G_SOL:
+    "Protect a valuable unit, then move it away from unfavorable exchanges.",
+  H_G_CAI:
+    "Build a durable blocker and force the opponent to spend more than one card answering it.",
+  H_G_ZEP:
+    "Preserve a healthy unit and reposition it into an open attack lane.",
+  H_G_MER:
+    "Delay a large attacker while restoring resources and finding your next answer.",
+  H_G_MOS:
+    "Repair a damaged survivor before the next exchange and retain card advantage.",
+  H_G_HAL: "Develop several lanes before using a formation-wide combat boost.",
+  H_G_ROW:
+    "Stabilize a losing board with a blocker while recovering hero health.",
+  H_E_ROO:
+    "Move a blocker out of the lane you want to attack, then finish a weakened target.",
+  H_E_NYX: "Displace durable defenders and let Poison tax them across turns.",
+  H_E_BRI:
+    "Remove a medium defender while maintaining direct pressure on the enemy hero.",
+  H_E_SAB:
+    "Reduce an immediate attack and establish a longer attrition threat.",
+  H_E_VAN:
+    "Reposition a strong attacker; Pierce adds a separate full-ATK hero packet while that unit attacks a blocker.",
+  H_E_GRA:
+    "Add a body while removing fragile units or consuming enemy Shields.",
+  H_E_SCO:
+    "Trade against a small enemy while recovering health and maintaining hand size.",
   H_G_BV: "Protect units with Shield, heal, then take the board.",
   H_G_BP: "Disrupt the opponent and hold strong positions.",
   H_G_VP: "Grow your units and switch lanes to clear a path.",

@@ -72,7 +72,7 @@ test("home and roster expose intermediate motion; reduction, rapid selection and
   const artGate = new Promise<void>((resolve) => {
     releaseArt = resolve;
   });
-  await page.route("**/rivals-v2/heroes/morrow/bust.webp", async (route) => {
+  await page.route("**/heroes-v4/heroes/morrow/bust.webp", async (route) => {
     await artGate;
     await route.continue();
   });

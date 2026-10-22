@@ -108,7 +108,14 @@ export default function ResultDialog({
   const copy = resultCopy(summary);
   async function rematch() {
     if (sending.current || !summary.rematch) return;
-    if (summary.rematch.expectedContentVersion !== catalog.version) {
+    const version = summary.rematch.expectedContentVersion;
+    // An uncertain command must be resolved with its original ID/body before migration.
+    // core_v1 is still supported; heroes_v1 only adds heroes and reuses its card rules.
+    if (
+      !pending.current &&
+      version !== catalog.version &&
+      !(version === "core_v1" && catalog.version === "heroes_v1")
+    ) {
       setReview(true);
       return;
     }

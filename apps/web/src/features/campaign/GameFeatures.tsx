@@ -1,4 +1,5 @@
 "use client";
+import { publicHeroes } from "./model";
 import { contentName } from "../../content/english-content";
 import { CampaignArtwork } from "./CampaignArtwork";
 
@@ -36,7 +37,7 @@ export function GameFeatures({
       <dl className="features-facts">
         {[
           ["05", "Ordered lanes"],
-          ["06", "Unlocked heroes"],
+          [String(publicHeroes.length), "Unlocked heroes"],
           ["60", "Cards"],
           ["PvE", "Easy / Normal bots"],
         ].map(([value, label]) => (

@@ -21,7 +21,7 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
   });
   let fail = true;
   await page.route(
-    "**/assets/rivals-v2/heroes/briar/thumb.webp",
+    "**/assets/heroes-v4/heroes/briar/thumb.webp",
     async (route) => {
       if (fail)
         await route.fulfill({ status: 404, body: "intentional asset failure" });
@@ -114,7 +114,7 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
     path: `${evidence}/fix1-hero-recovered-desktop.png`,
   });
   await page.route(
-    "**/assets/rivals-v2/heroes/aster/thumb.webp",
+    "**/assets/heroes-v4/heroes/aster/thumb.webp",
     async (route) => {
       await new Promise((r) => setTimeout(r, 900));
       await route.continue();

@@ -69,7 +69,7 @@ export function createApiClient(
       ),
     session: () => request("/session", "SessionResponse"),
     guest: (body: GuestRequest) => request("/guest", "SessionResponse", body),
-    catalog: () => request("/catalog/core_v1", "PublicCatalog"),
+    catalog: () => request("/catalog/heroes_v1", "PublicCatalog"),
     decks: (cursor?: string) =>
       request(
         `/decks${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`,
