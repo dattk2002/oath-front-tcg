@@ -1,0 +1,137 @@
+{
+  "origin": "https://oathfront.vercel.app",
+  "checkedAt": "2026-10-22T15:44:52.098Z",
+  "checks": [
+    "Home → Play now → guest hero selection",
+    "Actual hero collection images loaded",
+    "unit inspector at 1440px: art, rules, stats, gem center and focus return",
+    "trick inspector at 1440px: art, rules, stats, gem center and focus return",
+    "unit inspector at 375px: art, rules, stats, gem center and focus return",
+    "trick inspector at 375px: art, rules, stats, gem center and focus return"
+  ],
+  "errors": [],
+  "resourceErrors": [],
+  "variants": [
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/ec01-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/gc01-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/b06-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/v01-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/b01-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/v08-thumb.webp",
+      "shape": "square"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/ec05-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/ec04-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/ec02-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/gc04-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/gc05-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/gc02-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/v02-thumb.webp",
+      "shape": "square"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/v06-thumb.webp",
+      "shape": "pentagon"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/b07-thumb.webp",
+      "shape": "square"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/b02-thumb.webp",
+      "shape": "square"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/ec03-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/gc03-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/ec06-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "trick",
+      "art": "/assets/fivefold-cards-v3/cards/gc06-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/v04-thumb.webp",
+      "shape": "pentagon"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/s04-thumb.webp",
+      "shape": "triangle"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/b05-thumb.webp",
+      "shape": "hexagon"
+    },
+    {
+      "kind": "unit",
+      "art": "/assets/card-scenes-v1/cards/v05-thumb.webp",
+      "shape": "hexagon"
+    }
+  ],
+  "passed": true
+}

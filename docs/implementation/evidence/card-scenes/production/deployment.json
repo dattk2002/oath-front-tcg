@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-22T15:44:36.564Z",
+  "deploymentId": "dpl_CZhufTt1jViqXJ7WvzH8FDFPxZmv",
+  "state": "READY",
+  "productionUrl": "https://oathfront.vercel.app",
+  "deploymentUrl": "https://oathfront-8f16f62la-kimdat0705gmailcoms-projects.vercel.app",
+  "commit": "15885fd4ea85d7a25f7e48cd249de04fb6203e8b",
+  "aliases": [
+    "oathfront.vercel.app",
+    "oathfront-kimdat0705gmailcoms-projects.vercel.app",
+    "oathfront-git-main-kimdat0705gmailcoms-projects.vercel.app"
+  ],
+  "scope": "Frontend card UI/art only; Git-triggered production deployment."
+}

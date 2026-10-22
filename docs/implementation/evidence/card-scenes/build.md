@@ -1,5 +1,7 @@
 # Clean release-projection build verification
 
+The later native Vercel production build for `15885fd` passed in the normal repository layout and reached READY at `oathfront.vercel.app`. See [production build log](production/vercel-build.log), [deployment metadata](production/deployment.json) and [live browser verification](production/smoke.json). The projection-specific limitation below is retained as historical local evidence.
+
 Web TypeScript, production Next compilation, all 30 static pages, and the separately verified standalone preparation pass after the authorized test-fixture correction. The full web package wrapper retains its original **exit 1**: nested projection tracing changed the emitted server path. An output-only alias enabled the unchanged preparation script to pass separately; no source/configuration change or recompile was made.
 
 - Baseline: `f6873495f2aa82426ffda75085141791a33a6fb3` via `git archive`; no branch, worktree, commit, staging, push, or API build.

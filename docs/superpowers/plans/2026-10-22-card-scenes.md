@@ -41,7 +41,7 @@
 - [x] Verify readable unit/trick differentiation, bottom-center rarity geometry, 30-card quantities, full effects/inspection, keyboard/touch, hidden event gating, missing art, 375px/768px/1024×640/1440×900 and short viewport reflow.
 - [x] Run focused frontend/asset tests, typecheck/lint and web production build; inspect screenshots/contact sheets.
 - [x] Update Pen extension and design/implementation documents, preserve original Pen hash.
-- [ ] Inspect exact owned diff, create small commits and push under existing authorization; verify Git-triggered frontend deployment.
+- [x] Inspect exact owned diff, create small commits and push under existing authorization; verify Git-triggered frontend deployment. Production commit `15885fd` is READY at `oathfront.vercel.app`; live desktop/mobile card smoke checks pass.
 
 ## Review focus
 

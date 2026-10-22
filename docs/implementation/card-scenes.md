@@ -44,4 +44,10 @@ One minor decorative limitation remains: if artwork fails after the first hover/
 
 ## Delivery
 
-Code/art commits are prepared for the existing authorized Git integration. Production deployment identity and state are recorded after remote readback. No API, database schema, catalog values or game rules are changed by this release.
+Pushed three scoped commits to `origin/main`: `75ededc` (scene artwork/export pipeline), `737c9e7` (card UI/motion), and `15885fd` (contract/evidence). User-owned auth/audio/App/layout changes remain uncommitted and excluded.
+
+The native Vercel production build passed for `15885fd4ea85d7a25f7e48cd249de04fb6203e8b`, including standalone preparation in its normal repository layout. Deployment `dpl_CZhufTt1jViqXJ7WvzH8FDFPxZmv` was read back as READY with the production alias [oathfront.vercel.app](https://oathfront.vercel.app). [Deployment metadata](evidence/card-scenes/production/deployment.json) and [build log](evidence/card-scenes/production/vercel-build.log) are retained.
+
+The [live browser smoke check](evidence/card-scenes/production/smoke.json) passed on the production alias: Home → Play now → guest hero selection → actual collection → unit/trick inspection at 1440px and 375px. Runtime art loaded, full rules/stats and centered gems were verified, keyboard focus returned after closing, and no page or unexpected resource errors occurred. [Desktop unit](evidence/card-scenes/production/unit-1440.png) and [phone trick](evidence/card-scenes/production/trick-375.png) were visually reviewed. The initial smoke script used an overly broad image selector that also matched the system icon; narrowing it to the artwork image resolved the harness error without application changes.
+
+No API, database schema, catalog values or game rules are changed by this release. GitHub's broader workspace workflow was still running when this production evidence was recorded; its completion is not claimed here.
