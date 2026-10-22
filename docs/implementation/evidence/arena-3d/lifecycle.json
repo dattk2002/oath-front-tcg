@@ -1,0 +1,53 @@
+{
+  "renderer": {
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "readinessMs": 6369,
+    "lazyResources": [
+      {
+        "path": "/_next/static/chunks/webpack.js",
+        "durationMs": 17
+      },
+      {
+        "path": "/_next/static/chunks/app-pages-internals.js",
+        "durationMs": 21
+      },
+      {
+        "path": "/_next/static/chunks/main-app.js",
+        "durationMs": 424
+      },
+      {
+        "path": "/_next/static/chunks/app/layout.js",
+        "durationMs": 42
+      },
+      {
+        "path": "/_next/static/chunks/app/not-found.js",
+        "durationMs": 19
+      },
+      {
+        "path": "/_next/static/chunks/app/matches/%5Bid%5D/page.js",
+        "durationMs": 265
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_MatchScreen_tsx.js",
+        "durationMs": 24
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_rendering_three_scene_ts.js",
+        "durationMs": 227
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_motion_presentation-controller_ts.js",
+        "durationMs": 27
+      },
+      {
+        "path": "/_next/static/chunks/_app-pages-browser_src_features_match_motion_event-timeline_ts.js",
+        "durationMs": 24
+      }
+    ]
+  },
+  "three": "0.186.1",
+  "commands": 4,
+  "pixelsDiffer": true,
+  "errors": [],
+  "fixture": "validated public presentation DTO; real API flows verified separately"
+}

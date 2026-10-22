@@ -2363,5 +2363,78 @@
       "productionBuild": "Native Vercel production build passed for 15885fd4ea85d7a25f7e48cd249de04fb6203e8b; deployment dpl_CZhufTt1jViqXJ7WvzH8FDFPxZmv is READY and serves oathfront.vercel.app. Production browser checks pass for guest entry and unit/trick collection/inspection at 1440px and 375px. Earlier local projection wrapper limitation remains documented as historical evidence.",
       "scope": "Record only checks actually run after integration; physical-device and real assistive-technology certification remain separate."
     }
+  },
+  "arena3dExtension": {
+    "status": "implemented_locally_verified",
+    "authorization": "User explicitly selected Master Duel battlefield reference with existing OathFront card design; true 3D environments, planar cards, strong cinematic camera, landscape-first mobile with usable portrait and low mode; Three.js/PixiJS permitted.",
+    "contractPath": "docs/design/arena-3d-contract.md",
+    "planPath": "docs/superpowers/plans/2026-10-22-arena-3d.md",
+    "sourcePenUnchanged": true,
+    "penNodeId": null,
+    "completePenFrameCoverage": false,
+    "consultationPolicy": "Ask user before introducing a different UI reference or visual direction; current approved source is Master Duel for battlefield/camera, existing OathFront/Runeterra-inspired card anatomy for cards.",
+    "renderer": "Three.js with GSAP presentation clock and semantic React DOM controls",
+    "environments": [
+      "moonroot-conservatory",
+      "cinder-foundry",
+      "glasswater-sanctum",
+      "astral-causeway"
+    ],
+    "composition": "Arena-dominant raised tabletop with two five-card rows, central location band, compact hero HUDs, screen-space hand and contextual inspector overlay.",
+    "geometryPolicy": "Actual raised floor, steps/edges, environment props and card planes; original perspective paintings serve as reference/backdrop, never as already-projected floor textures.",
+    "motionPolicy": "Strong bounded cinematic event camera, card lift/lunge and impact effects; same camera projects semantic hit targets; reduced motion removes camera translation/zoom/shake and decorative continuous motion.",
+    "responsivePolicy": "Desktop1440x900/1280x720, phone landscape844x390 and playable portrait375x812; retain low quality and usable WebGL-failure semantic board.",
+    "compatibility": "No API/DB/engine/catalog/auth/audio modifications. Public state and intent callbacks remain authoritative. New renderer supersedes flat battle presentation only.",
+    "verification": {
+      "status": "local_passed_production_pending",
+      "report": "docs/implementation/arena-3d.md",
+      "frontend": "116 frontend tests in27 files, full workspace typecheck and lint pass. Next production build and standalone packaging pass.",
+      "browser": "15 unique browser cases pass across final targeted runs: all4 arenas,4 viewports, exact pointer/keyboard/drag and phone actions, normal/reduced combat, paused fast-forward, signature/hidden/reconnect/remount, fallback/retry, block/pause and effect families.",
+      "evidence": "docs/implementation/evidence/arena-3d",
+      "limits": "Chromium WebGL2; physical-device GPU/Safari and universal60fps not certified."
+    },
+    "materials": {
+      "runtimeDirectory": "apps/web/public/assets/arena-materials-v1",
+      "provenance": "assets/source/arena-materials-v1/generation/provenance.json",
+      "sampling": "Single world-space map with clamped edges; color and bump textures released once, late callbacks cancelled."
+    },
+    "inputs": [
+      {
+        "path": "docs/design/arena-3d-contract.md",
+        "sha256": "d7be3697ddcf66b7f1bbb0e8984d4702de1eb5e890c00124a8d991ae91dd7dc1"
+      },
+      {
+        "path": "apps/web/src/styles/arena-3d.css",
+        "sha256": "9e37466aa829564e79b5b2a661c98ad11faf193fe69a98af5caa8d764ba3eff6"
+      },
+      {
+        "path": "apps/web/src/features/match/BattleScene.tsx",
+        "sha256": "5e3ba76822dbdbe46dc714e44cc0e22c782fd4fcfbfa76b74d98ead43a5ac178"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/three/layout.ts",
+        "sha256": "8cb78b00ea8d6ee1e5eaff11472af41e8613e4799141de29dc6be4947d8f5a92"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/three/environment.ts",
+        "sha256": "d60edd5e712f4c40f2440450a37c94b7b21cbf87d88767325fba7b3a515f8ec1"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/three/materials.ts",
+        "sha256": "cb3e2535d8c71e57d4ceecaca1a0994c4eccf1b9e9d500cf47ce261236ab4cd5"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/three/scene.ts",
+        "sha256": "41dff1e4277d57b0e50455c1bfb779fddcffe8bb2ef06bfc581ffd02a1fcbf91"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/three/card-texture.ts",
+        "sha256": "d4c930caecf183ebcce468b69a138797d093c11c4232a7dfeb8b6c7aa89ea529"
+      },
+      {
+        "path": "assets/source/arena-materials-v1/generation/provenance.json",
+        "sha256": "5ba056e21380092ee670fb57bba6285a57d59b18f68dbf4ce7a442e059ea98d6"
+      }
+    ]
   }
 }
