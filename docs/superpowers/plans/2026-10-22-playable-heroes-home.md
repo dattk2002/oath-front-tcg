@@ -65,5 +65,7 @@ Interface: current20metadata and existing preserved oldID mappings; actualnewrun
 - [x] Typecheck,lint,contractcheck,productionbuild, one complete unit/integration run and relevant browser flow sweep.
 - [x] Independent final review; fix objective important findings with regression evidence.
 - [x] Update Pen contract with truthful derived scope and active design status; preserve frozen sourcehash.
-- [ ] Scoped commits/push, verify remote and CI; refresh local3000/3001 without clearing playerdata.
-- [ ] Final report links artwork/docs and actualverification; distinguish balance/deviceholds.
+- [x] Scoped commits/push, verify remote and CI; refresh local3000/3001 without clearing playerdata.
+- [x] Final report links artwork/docs and actualverification; distinguish balance/deviceholds.
+
+Delivery: seven scoped implementation commits pushed through `9785bf0`; remote head verified. GitHub Verify run `39718483518` was in progress at handoff, not reported as passed. Local UI3000/API3001 verified and left running. This documentation-only follow-up records completion.

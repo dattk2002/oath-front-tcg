@@ -43,3 +43,7 @@ The skipped browser cases are the no-Navigation-API browser-specific test and th
 ## Acceptance boundaries
 
 Technical checks do not establish competitive balance, measured frame-time on physical devices or a human playtest result. The fourteen presets are legal class-compatible starting points; balance tuning still needs the existing simulation/playtest process. No manual production deployment is part of this change. Concurrent user audio changes are preserved and excluded from these commits.
+
+## Delivery
+
+Seven scoped commits through `9785bf0` were pushed to `main`; remote SHA was verified. [GitHub Verify](https://github.com/dattk2002/oath-front-tcg/actions/runs/39718483518) was running at handoff; local verification results above are complete, while CI success is not yet claimed. Local UI3000/API3001 remain running. The documentation-only follow-up records this delivery state. Unrelated audio work and generated Next environment typing remain outside these commits.
