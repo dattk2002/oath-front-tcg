@@ -1,3 +1,5 @@
+import { ArenaDecor } from "./ArenaDecor";
+import { arenaForView } from "./rendering/arena";
 import { contentName, contentText } from "../../content/english-content";
 import { groupArrows } from "./keyboard";
 import type {
@@ -43,6 +45,7 @@ export default function Board({
   onInspect: (unit: UnitView) => void;
   onPreview: (action: PlayerAction | null) => void;
 }) {
+  const arena = arenaForView(view);
   const enemy = view.self.side === "GOOD" ? "EVIL" : "GOOD";
   const legalAction = (target: Target) =>
     disabled
@@ -119,8 +122,10 @@ export default function Board({
     <section
       aria-label="Five-lane board"
       className="board"
+      data-arena={arena.key}
       onKeyDown={groupArrows}
     >
+      <ArenaDecor arena={arena} paused={view.lifecycle !== "ACTIVE"} />
       <ol className="lanes">
         {view.board.map((lane) => {
           const target: Target = { kind: "LANE", laneId: lane.laneId };

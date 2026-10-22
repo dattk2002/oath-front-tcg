@@ -103,7 +103,8 @@
 .hand-card .hand-meta {
   display: flex;
   grid-column: 1 / -1;
-  gap: 3px;
+  gap: 0 3px;
+  flex-wrap: wrap;
   align-items: center;
   max-width: 100%;
   min-width: 0;
@@ -111,8 +112,8 @@
 .hand-meta .system-badge,
 .hand-meta .rarity-badge {
   font-size: 12px;
-  line-height: 18px;
-  min-height: 20px;
+  line-height: 16px;
+  min-height: 18px;
   padding: 0 3px;
 }
 .hand-meta .system-badge img,
@@ -128,8 +129,8 @@
 }
 @media (min-width: 1024px) and (min-height: 640px) {
   .hand .hand-card[data-rarity] {
-    grid-template-rows: 32px 22px 24px;
-    height: 112px;
+    grid-template-rows: 28px 36px 20px;
+    height: 102px;
   }
   .hand .hand-card[data-rarity] .hand-art {
     display: none;

@@ -1,8 +1,7 @@
 "use client";
-import { publicHeroes } from "./model";
-import { contentName } from "../../content/english-content";
 import { CampaignArtwork } from "./CampaignArtwork";
-
+import { FeatureStage } from "./FeatureStage";
+import { arenas } from "../match/rendering/arena";
 export function GameFeatures({
   onPlay,
   busy,
@@ -11,83 +10,80 @@ export function GameFeatures({
   busy: boolean;
 }) {
   return (
-    <div className="campaign-features" data-pen-node="Wcfik">
-      <section className="features-hero">
-        <CampaignArtwork
-          className="features-hero-art"
-          src="/assets/pen-v1/twilight-arena.webp"
-          srcSet="/assets/pen-v1/twilight-arena-small.webp 800w, /assets/pen-v1/twilight-arena.webp 1600w"
-          sizes="100vw"
-          alt=""
-          eager
-        />
-        <div data-campaign-reveal>
-          <p className="kicker">The tactical card game</p>
-          <h1>
-            Five lanes.
-            <br />
-            Endless decisions.
-          </h1>
-          <p>Lead Dawnward or the Ashen Court. Make every card count.</p>
-          <button className="campaign-button" onClick={onPlay} disabled={busy}>
-            Play now <span aria-hidden="true">↗</span>
-          </button>
-        </div>
-      </section>
-      <dl className="features-facts">
-        {[
-          ["05", "Ordered lanes"],
-          [String(publicHeroes.length), "Unlocked heroes"],
-          ["60", "Cards"],
-          ["PvE", "Easy / Normal bots"],
-        ].map(([value, label]) => (
-          <div key={label}>
-            <dt>{label}</dt>
-            <dd>{value}</dd>
-          </div>
-        ))}
-      </dl>
-      <section className="features-deck campaign-paper">
+    <div
+      className="campaign-features features-expansion"
+      data-pen-node="Wcfik"
+      data-design-extension="elements-events-v1"
+    >
+      <FeatureStage />
+      <section className="feature-rules campaign-paper">
         <div>
-          <p className="kicker">01 / Your deck</p>
+          <p className="kicker">Read the rhythm</p>
           <h2>
-            Build your
+            Four phases.
             <br />
-            way to play.
+            One turning point.
           </h2>
           <p>
-            Choose a hero and a legal 30-card deck. Combine units and tricks,
-            with no more than two copies of each card.
+            Choose a lane, watch your opponent, and spend your energy when it
+            matters. Combat resolves from lane 1 to lane 5.
           </p>
-          <p>Start with a preset, or shape your own collection into a plan.</p>
         </div>
-        <div className="features-card-gallery">
-          {["GC01", "B03", "GC05"].map((id) => (
-            <figure key={id}>
+        <ol>
+          {[
+            ["Ashen deployment", "Ashen Court plays units first."],
+            ["Dawnward play", "Dawnward plays units and tricks."],
+            ["Ashen tricks", "Ashen Court answers with tricks."],
+            [
+              "Lane combat",
+              "In each lane, Ashen attacks, then Dawnward. Both strikes use the combat snapshot; damage resolves together.",
+            ],
+          ].map(([name, copy]) => (
+            <li key={name}>
+              <h3>{name}</h3>
+              <p>{copy}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section className="feature-arenas">
+        <header>
+          <p className="kicker">The Fivefold</p>
+          <h2>A world worth defending.</h2>
+          <p>
+            Four illustrated arenas. The environment sets the scene; revealed
+            locations carry the rules.
+          </p>
+        </header>
+        <div className="arena-gallery">
+          {arenas.map((arena) => (
+            <figure key={arena.key}>
               <CampaignArtwork
-                className="contain"
-                src={`/assets/fivefold-cards-v3/cards/${id.toLowerCase()}-inspect.webp`}
-                alt={`${contentName(id)} illustration`}
+                src={arena.medium}
+                srcSet={`${arena.small} 768w, ${arena.medium} 1200w`}
+                sizes="(min-width:768px) 50vw, 100vw"
+                alt={`${arena.name} battlefield`}
               />
-              <figcaption>{contentName(id)}</figcaption>
+              <figcaption>{arena.name}</figcaption>
             </figure>
           ))}
         </div>
       </section>
-      <section className="features-lanes">
-        <h2>02 / One shared battlefield</h2>
+      <section className="feature-play">
+        <p className="kicker">Your oath begins here</p>
+        <h2>
+          Take your place
+          <br />
+          on the front.
+        </h2>
+        <button className="campaign-button" disabled={busy} onClick={onPlay}>
+          {busy ? "Preparing…" : "Play now"}
+          <span aria-hidden="true">↗</span>
+        </button>
         <p>
-          Five lanes, left to right. Deploy units, conserve energy and choose
-          the moment to turn the battle.
+          Free browser PvE. All twenty heroes and sixty core cards are ready to
+          play.
         </p>
-        <ol aria-label="Five lanes in combat order">
-          {[1, 2, 3, 4, 5].map((lane) => (
-            <li key={lane}>
-              <strong>0{lane}</strong>
-              <span>Lane {lane}</span>
-            </li>
-          ))}
-        </ol>
       </section>
     </div>
   );

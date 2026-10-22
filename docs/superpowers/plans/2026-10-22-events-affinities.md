@@ -107,8 +107,8 @@
 
 **Files:** GameFeatures, feature-stage component/motion, BattleScene/rendererpublicthememapping, campaign/game styles; visualcontractPenextension.
 **Interfaces:**4manualfeature panels withnativebuttons/tabs; deterministicarenaForView(publicview/scenario); decorativeframes never alterengine/hitboxes.
-- [ ] ImplementprovidedvisualplanwithscopedGSAP, visibility/pause/reduced-motioncleanup. Environmentartdecoratesedgesandlaneplates;stats/phase/targetoutlinesremainaboveart. Keepmobilelistfallback.
-- [ ] Verifymanualcarouselpointer/touch/keyboard, rapidroutechange, visibleallstaticreducedmode; boardtargetparityat5supporteddesktop/tabletsizes and375fallback; screenshots/consoleerrors/contrast. Commit.
+- [x] ImplementprovidedvisualplanwithscopedGSAP, visibility/pause/reduced-motioncleanup. Environmentartdecoratesedgesandlaneplates;stats/phase/targetoutlinesremainaboveart. Keepmobilelistfallback.
+- [x] Verifymanualcarouselpointer/touch/keyboard, rapidroutechange, visibleallstaticreducedmode; boardtargetparityat5supporteddesktop/tabletsizes and375fallback; screenshots/consoleerrors/contrast. Commit.
 
 ### Task 10: DB-backed news and event/collection experience
 

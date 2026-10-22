@@ -1,4 +1,5 @@
 @import "./elements.css";
+@import "./features-arenas.css";
 /* Approved inherited game skin. Arena dimensions remain owned by match.css. */
 body {
   --bg: var(--campaign-ink);

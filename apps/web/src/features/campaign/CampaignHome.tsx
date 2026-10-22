@@ -143,8 +143,8 @@ export function CampaignHome({
       <section className="campaign-home-stage campaign-paper" data-home-stage>
         <CampaignArtwork
           className="campaign-home-art"
-          src="/assets/home-v2/ensemble-wide.webp"
-          srcSet="/assets/home-v2/ensemble-small.webp 768w, /assets/home-v2/ensemble-medium.webp 1200w, /assets/home-v2/ensemble-wide.webp 1920w"
+          src="/assets/home-v3/ensemble-wide.webp"
+          srcSet="/assets/home-v3/ensemble-small.webp 768w, /assets/home-v3/ensemble-medium.webp 1200w, /assets/home-v3/ensemble-wide.webp 1920w"
           sizes="100vw"
           alt="Eight OathFront heroes surge into the Fivefold: Briar, Aster, Lumen, Cinder, Morrow, Vanta, Mossweld and Rowan"
           eager
@@ -317,7 +317,7 @@ export function CampaignHome({
                   className="home-story-art"
                   src={
                     i === 1
-                      ? "/assets/heroes-v4/heroes/briar/inspect.webp"
+                      ? "/assets/heroes-v5/heroes/briar/inspect.webp"
                       : i === 2
                         ? "/assets/fivefold-cards-v3/cards/b03-inspect.webp"
                         : "/assets/pen-v1/twilight-arena-small.webp"
