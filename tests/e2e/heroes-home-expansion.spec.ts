@@ -117,7 +117,7 @@ test("new hero profile enters a real versioned PvE match and resumes after reloa
   const response = await created;
   expect(response.status()).toBe(201);
   const dto = await response.json();
-  expect(dto.view.versions.content).toBe("heroes_v1");
+  expect(dto.view.versions.content).toBe("elements_v1");
   expect(dto.view.players.GOOD.heroId).toBe("H_G_SOL");
   expect(dto.view.players.EVIL.heroId).toBe("H_E_VAN");
   await expect(page).toHaveURL(new RegExp(`/matches/${dto.view.matchId}$`));
@@ -132,14 +132,14 @@ test("twenty public profiles expose their original names and four powers", async
 }) => {
   test.setTimeout(120000);
   const catalog = await (
-    await page.request.get("/api/v1/catalog/heroes_v1")
+    await page.request.get("/api/v1/catalog/elements_v1")
   ).json();
   for (const hero of catalog.heroes) {
     await page.goto(`/explore/heroes/${hero.id}`);
     await expect(page.locator(".campaign-powers article")).toHaveCount(4);
     await expect(
       page.locator(".campaign-profile .profile-portrait img"),
-    ).toHaveAttribute("src", /heroes-v4/);
+    ).toHaveAttribute("src", /heroes-v[45]/);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -186,7 +186,7 @@ test("mobile hero names and banner retain visible geometry", async ({
 test("missing ensemble artwork preserves Home copy and actions", async ({
   page,
 }) => {
-  await page.route("**/assets/home-v2/**", (route) => route.abort());
+  await page.route("**/assets/home-v3/**", (route) => route.abort());
   await page.goto("/");
   await expect(
     page.locator(".campaign-home-art .campaign-art-fallback"),

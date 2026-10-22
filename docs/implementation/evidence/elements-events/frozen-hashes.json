@@ -1,0 +1,26 @@
+{
+  "catalogs": [
+    {
+      "version": "core_v1",
+      "sha256": "37ec966ce1e734e8e5f85310e384ea0d1c4a126eea4618471ea874d60546cdcc",
+      "heroes": 6,
+      "cards": 60,
+      "powers": 18
+    },
+    {
+      "version": "heroes_v1",
+      "sha256": "cb086648a206ca6e289d743a5158db8592e1b1f2733c615199d5ebc1bddb09d7",
+      "heroes": 20,
+      "cards": 60,
+      "powers": 32
+    },
+    {
+      "version": "elements_v1",
+      "sha256": "5093e791d86348765999c729247b10680cf392f1894869ba047617fa18bd832f",
+      "heroes": 20,
+      "cards": 72,
+      "powers": 36
+    }
+  ],
+  "penSha256": "a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3"
+}

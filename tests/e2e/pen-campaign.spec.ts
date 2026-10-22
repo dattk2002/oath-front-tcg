@@ -6,35 +6,31 @@ const evidence = evidencePath(
   ".superpowers/sdd/2026-10-21-pen-design-implementation/browser",
 );
 
-test("Editorial filters, detail links and empty categories are usable", async ({
+test("Empty publishing states and archived design concepts have honest destinations", async ({
   page,
 }) => {
   await page.goto("/news");
-  await expect(page.locator(".editorial-card")).toHaveCount(6);
-  await page.getByRole("link", { name: "Game updates", exact: true }).click();
-  await expect(page.locator(".editorial-card")).toHaveCount(1);
-  await page
-    .getByRole("link", { name: "READABILITY COMES FIRST", exact: true })
-    .click();
   await expect(
-    page.getByRole("heading", { name: "READABILITY COMES FIRST", exact: true }),
-  ).toBeVisible();
-  await page.getByRole("link", { name: "← All news" }).click();
-  await expect(page.locator(".editorial-card")).toHaveCount(1);
-  await page.getByRole("link", { name: "Announcements", exact: true }).click();
-  await expect(page.getByRole("status")).toContainText("No articles");
-  await page.goto("/events?category=playtests");
-  const article = page.getByRole("link", {
-    name: "FIRST OATH PLAY SESSION",
-    exact: true,
-  });
-  await article.focus();
-  await page.keyboard.press("Enter");
-  await expect(
-    page.getByText("Mock event only. Registration is not available.", {
-      exact: true,
+    page.getByRole("heading", {
+      name: "No published articles in this category yet.",
     }),
   ).toBeVisible();
+  await page.getByRole("link", { name: "Updates", exact: true }).click();
+  await expect(page).toHaveURL(/category=updates/);
+  await expect(page.locator(".live-news-card")).toHaveCount(0);
+  await page.goto("/events?category=archive");
+  await expect(
+    page.getByRole("heading", { name: "No archived events right now." }),
+  ).toBeVisible();
+  await page.goto("/events/first-oath-play-session");
+  await expect(
+    page.getByRole("heading", { name: "This was an event concept." }),
+  ).toBeVisible();
+  await page
+    .getByRole("link", { name: "Explore weekly events", exact: true })
+    .focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL("/events");
   expect((await page.goto("/news/does-not-exist"))?.status()).toBe(404);
   expect((await page.goto("/explore/heroes/not-a-hero"))?.status()).toBe(404);
 });
@@ -121,12 +117,14 @@ test("Public pages remain browsable when the game API is unavailable", async ({
     .getByRole("link", { name: "Heroes", exact: true })
     .click();
   await expect(page.locator(".campaign-hero-card")).toHaveCount(20);
-  await page.getByRole("link", { name: "Briar — The Living Bastion" }).click();
+  await page
+    .getByRole("link", { name: "Briar — The Rootbound Warden" })
+    .click();
   await expect(
     page.getByRole("heading", { name: "Briar", exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Dawn Shield", exact: true }),
+    page.getByRole("heading", { name: "Verdant Pulse", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Choose deck" }).click();
   await expect(page).toHaveURL(/\/explore\/heroes\/H_G_BV$/);

@@ -38,18 +38,21 @@ test("all sixty new card images load through the actual hero collections", async
     "H_E_FX",
     "H_E_FS",
     "H_E_XS",
+    "H_G_ROW",
   ]) {
     await page.goto(`/decks/new?hero=${hero}`);
     await expect(page.locator(".collection-card").first()).toBeVisible();
-    await page.locator(".collection-card img").evaluateAll((images) =>
-      images.forEach((image) => {
-        (image as HTMLImageElement).loading = "eager";
-      }),
-    );
+    await page
+      .locator(".collection-card img[data-art-key]")
+      .evaluateAll((images) =>
+        images.forEach((image) => {
+          (image as HTMLImageElement).loading = "eager";
+        }),
+      );
     await expect
       .poll(() =>
         page
-          .locator(".collection-card img")
+          .locator(".collection-card img[data-art-key]")
           .evaluateAll(
             (images) =>
               images.length > 0 &&
@@ -71,7 +74,7 @@ test("all sixty new card images load through the actual hero collections", async
     expect(artBounds.image.top).toBeGreaterThanOrEqual(artBounds.slot.top);
     expect(artBounds.image.bottom).toBeLessThanOrEqual(artBounds.slot.bottom);
     for (const image of await page
-      .locator(".collection-card img")
+      .locator(".collection-card img[data-art-key]")
       .evaluateAll((images) =>
         images.map((image) => ({
           key: image.getAttribute("data-art-key"),
@@ -142,7 +145,7 @@ test("a missing new card image keeps its name and retry does not open card detai
   await expect
     .poll(() =>
       card
-        .locator("img")
+        .locator("img[data-art-key]")
         .evaluate((image: HTMLImageElement) => image.naturalWidth > 0),
     )
     .toBe(true);

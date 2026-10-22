@@ -18,14 +18,14 @@ The earlier `oathfront-rivals.pen` filename and `d23e9c…` hash describe a prev
 | Scope | Design basis | Implementation behavior |
 | --- | --- | --- |
 | Home | Original `BXxLv`, `bec8B`, `vtHuB`; superseded composition in `heroes_home_v2` | Preserve brand/header tokens; apply user-approved new banner and six-section Home as documented below. |
-| News, Events, features, hero list/detail | Actual nodes in `campaignExtension` | Semantic Next pages, exact visual direction and original artwork; static mock editorial content. |
+| News, Events, features, hero list/detail | Actual nodes in `campaignExtension` | Semantic Next pages and original artwork; published DB news/events plus the approved elements extension. |
 | Existing twelve gameplay families | Current runtime + approved new identity | Preserve layout, hidden information, rules, recovery, session and command semantics; apply theme and readability refinements. |
 | Missing tablet/reflow/state frames | User-approved derived work | Adapt the supplied components; record deviations and verify in browser. |
 | Motion | Existing GSAP/Pixi + approved restrained enhancements | Preserve timing authority, cleanup, interruption and reduced motion; no gameplay command in animation callbacks. |
 
 Pen governs composition and presentation. Runtime owns phase order, stats, costs, powers, legal actions/targets, bots, persistence, receipts and revisions. Immutable core/location/tutorial data and exact English rules stay intact. User names are not translated. Public Heroes is distinct from native game selection. Browsing must not create or replace a match.
 
-News and Events remain visibly labeled editorial mocks, with no invented dates, registration, rewards or eligibility. The selected promotional images and vector wordmark are approved for this implementation; scenes do not become new gameplay locations.
+News and Events now read real published database records. Dates, weekly reveals, ticket progress, owned cards and daily availability come from the API. Old concept-event URLs remain explicitly labeled archives. New arena artwork decorates the board; the eight location mechanics are unchanged.
 
 ## Tokens, assets and mappings
 
@@ -62,7 +62,7 @@ The [single-file prompt library](OATHFRONT-PEN-PROMPTS.md) and [original full br
 
 Implementation and verification evidence: [Pen implementation report](../../implementation/pen-design.md).
 
-## Hero expansion design addendum
+## Historical hero expansion design addendum
 
 The [fourteen-hero collection](../heroes-expansion/README.md) is now playable in `heroes_v1`: twenty total heroes, thirty-two powers, twenty presets and the same sixty cards. The [current art guide](../heroes-v4.md) supersedes the original portrait packs with twenty coherent superhero-inspired OathFront illustrations and one ensemble banner.
 
@@ -73,3 +73,14 @@ These are derived extensions; the frozen Pen bytes and source identity remain un
 `core_v1`, `locations_v1`, `tutorial_v1`, old deck revisions, match checkpoints and command receipts must remain readable without rewriting. Pending rematch/review-create commands must retry their exact original ID/body/version before considering migration. Both units strike simultaneously within each lane; lane order is 1 to 5. Ashen-first animation ordering must not be described as first-strike damage.
 
 See the [implementation report](../../implementation/playable-heroes-home.md) for actual checks and remaining human balance/device acceptance limits.
+
+
+## Current elements and events extension — 2026-10-22
+
+The user-approved extension replaces new-game class rules with `elements_v1`: 20 heroes, two of eight systems each, 36 powers, 60 free base cards and 12 earned event units. Decks must contain 30 cards, at most two copies per ID, no more than 12 Neutral cards and at least six cards from each hero system. Legacy matches/decks must retain their bound catalog. Rarity must use both a readable code/shape and silver U, gold R, purple SR, rainbow SL or orange-red E.
+
+Eight overlapping hero identities were redrawn after reviewing all twenty; twelve distinct v4 heroes remain. The current runtime uses `heroes-v5` overrides, `home-v3`, `event-cards-v1`, `world-v1`, `features-v2` and `elements-v1`. The four manually navigated Features panels and four decorated arenas preserve the Pen brand. New states and surfaces are explicitly derived; their `penNodeId` is null. No new Pen source nodes or gameplay frames are claimed.
+
+`LiveNews` replaces runtime editorial mocks. `EventHub` implements prelaunch/reveal/archive, seven daily challenges, account/practice separation, server countdown, cooldown, resume and recovery. `RewardSummary` reads durable server rewards. Future E cards must stay sealed in collection/event UI until reveal or ownership; full immutable definitions remain available in the public catalog. Card ownership must be checked by the server when saving or starting a deck.
+
+The repository input hash for `english-content.ts` was deliberately reconciled for the approved hero identities and version-bound English text. Source Pen hash and baseline tokens remain unchanged. See the [visual state contract](../elements-visual-contract.md), [hero audit](../hero-distinction-audit.md), [gameplay catalog](../elements-v1.md) and [implementation/evidence report](../../implementation/elements-events.md). Existing physical-device, balance and human-playtest gates remain open.

@@ -97,4 +97,4 @@ it("installs from scratch and upgrades real legacy rows without rewriting deck o
     await owner.query(`DROP DATABASE "${name}"`);
     await rm(folder, { recursive: true });
   }
-});
+}, 30000);

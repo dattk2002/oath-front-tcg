@@ -184,15 +184,17 @@ export function matchService(
         difficulty: request.difficulty,
         expectedContentVersion: request.expectedContentVersion,
       };
+      // A reset during initialization must not change the match's reward day.
+      const createdAt = now();
       const result = await insertInitialization(
         tx,
         principal.id,
         config,
         randomBytes(32),
         { expiresAt: expiry(principal), rematch },
-        now(),
+        createdAt,
       );
-      await bindPveMatch(tx, principal, config.matchId, now());
+      await bindPveMatch(tx, principal, config.matchId, createdAt);
       const response = commandResponse(
         result.nextState,
         0,

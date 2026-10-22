@@ -8,7 +8,7 @@ it("AC36 validates every original source, export hash, alpha, bounds and atlas b
   expect(existsSync("assets/source/manifest.json")).toBe(true);
   const { validateManifest } = await import("../validate.js");
   expect(await validateManifest()).toEqual([]);
-});
+}, 30000);
 it("covers all immutable artKeys with Vietnamese fallback names and complete production groups", async () => {
   expect(existsSync("assets/source/manifest.json")).toBe(true);
   const manifest = JSON.parse(

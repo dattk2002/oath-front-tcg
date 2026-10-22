@@ -95,7 +95,7 @@ test("hero card motion settles on reduction and rapid route changes preserve con
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/explore/heroes");
-  const hero = page.getByRole("link", { name: "Briar — The Living Bastion" });
+  const hero = page.getByRole("link", { name: "Briar — The Rootbound Warden" });
   await hero.focus();
   const art = hero.locator("[data-campaign-card-art]");
   await expect

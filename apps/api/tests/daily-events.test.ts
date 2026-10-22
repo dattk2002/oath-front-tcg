@@ -1,4 +1,4 @@
-import { beforeEach, expect, it } from "vitest";
+import { beforeEach, expect, it, vi } from "vitest";
 import { randomUUID } from "node:crypto";
 import { harness, createBody } from "./http-helpers.js";
 import { seedLiveFixture } from "./live-content-fixture.js";
@@ -22,7 +22,7 @@ async function account() {
   return g;
 }
 function daily(
-  g: Awaited<ReturnType<typeof account>>,
+  g: { cookie: string; csrf: string },
   scenarioId = "season01-week01-day1",
   commandId = randomUUID(),
   practice = false,
@@ -505,4 +505,128 @@ it("reports account practice resume and cooldown independently from rewarded dai
     status: "COOLDOWN",
     retryAvailableAt: "2026-10-26T02:00:00.000Z",
   });
+});
+
+it.each([
+  ["2026-10-26T23:59:59.999Z", "2026-10-27T00:00:00Z", "season01-week01", 0],
+  ["2026-11-01T23:59:59.999Z", "2026-11-02T00:00:00Z", "season01-week01", 6],
+  ["2027-01-17T23:59:59.999Z", "2027-01-18T00:00:00Z", "season01-week12", 6],
+])(
+  "binds PvE to its persisted creation instant across reset %s",
+  async (start, after, event, day) => {
+    h.setTime(new Date(start));
+    const g = await account();
+    const initialization = await import("../src/matches/initialization.js");
+    const original = initialization.insertInitialization;
+    const spy = vi
+      .spyOn(initialization, "insertInitialization")
+      .mockImplementationOnce(async (...args) => {
+        const result = await original(...args);
+        h.setTime(new Date(after));
+        return result;
+      });
+    try {
+      const made = await h.app.inject({
+        method: "POST",
+        url: "/api/v1/matches",
+        headers: h.headers(g),
+        payload: { ...createBody(), expectedContentVersion: "elements_v1" },
+      });
+      expect(made.statusCode).toBe(201);
+      const row = (
+        await h.owner.query(
+          "SELECT m.created_at,b.event_id,b.day_index,b.bound_day_ends_at FROM matches m LEFT JOIN match_reward_bindings b ON b.match_id=m.id WHERE m.id=$1",
+          [made.json().view.matchId],
+        )
+      ).rows[0];
+      expect(row.created_at.toISOString()).toBe(start);
+      expect(row.event_id).toBe(event);
+      expect(row.day_index).toBe(day);
+      expect(+row.created_at).toBeLessThan(+row.bound_day_ends_at);
+      expect(+row.created_at).toBeGreaterThanOrEqual(
+        +row.bound_day_ends_at - 86400000,
+      );
+    } finally {
+      spy.mockRestore();
+    }
+  },
+);
+
+it("preserves the effective practice cooldown after a later guest draw is merged into the account", async () => {
+  const identityToken = "practice-merge-account";
+  const auth = await h.app.inject({
+    method: "POST",
+    url: "/api/v1/auth/exchange",
+    headers: { origin: "https://oathfront.test" },
+    payload: { commandId: randomUUID(), identityToken },
+  });
+  const a = {
+    id: auth.json().principal.id,
+    cookie: String(auth.headers["set-cookie"]).split(";")[0]!,
+    csrf: auth.json().csrfToken,
+  };
+  const lost = await daily(a, undefined, randomUUID(), true);
+  expect(lost.statusCode).toBe(201);
+  await h.app.inject({
+    method: "POST",
+    url: `/api/v1/matches/${lost.json().view.matchId}/commands`,
+    headers: h.headers(a),
+    payload: {
+      commandId: randomUUID(),
+      expectedRevision: 0,
+      action: { kind: "SURRENDER" },
+    },
+  });
+  h.setTime(new Date("2026-10-26T01:01:00Z"));
+  const g = await h.guest();
+  const later = await daily(g, undefined, randomUUID(), true);
+  expect(later.statusCode).toBe(201);
+  const id = later.json().view.matchId;
+  // Owner-authored terminal fixture isolates merge/read semantics from the already-covered engine.
+  await h.owner.query(
+    "UPDATE matches SET status='COMPLETED',ended_at=$2 WHERE id=$1",
+    [id, new Date("2026-10-26T01:01:00Z")],
+  );
+  await h.owner.query(
+    "UPDATE daily_attempts SET status='DRAW',ended_at=$2,retry_available_at=NULL WHERE match_id=$1",
+    [id, new Date("2026-10-26T01:01:00Z")],
+  );
+  const claim = await h.app.inject({
+    method: "POST",
+    url: "/api/v1/auth/claim-guest",
+    headers: h.headers(g),
+    payload: { commandId: randomUUID(), identityToken, keepMatchId: null },
+  });
+  expect(claim.statusCode).toBe(200);
+  const merged = {
+    id: a.id,
+    cookie: String(claim.headers["set-cookie"]).split(";")[0]!,
+    csrf: claim.json().csrfToken,
+  };
+  const progress = await h.app.inject({
+    url: "/api/v1/events/first-light-week-01/progress",
+    headers: h.headers(merged),
+  });
+  expect(progress.json().practiceDaily[0]).toMatchObject({
+    status: "COOLDOWN",
+    retryAvailableAt: "2026-10-26T02:00:00.000Z",
+  });
+  const blocked = await daily(merged, undefined, randomUUID(), true);
+  expect(blocked.json().error.details.retryAvailableAt).toBe(
+    progress.json().practiceDaily[0].retryAvailableAt,
+  );
+  h.setTime(new Date("2026-10-26T02:00:00Z"));
+  const refreshed = await h.app.inject({
+    method: "POST",
+    url: "/api/v1/auth/exchange",
+    headers: { origin: "https://oathfront.test" },
+    payload: { commandId: randomUUID(), identityToken },
+  });
+  const fresh = {
+    cookie: String(refreshed.headers["set-cookie"]).split(";")[0]!,
+    csrf: refreshed.json().csrfToken,
+  };
+  expect((await daily(fresh, undefined, randomUUID(), true)).statusCode).toBe(
+    201,
+  );
 });

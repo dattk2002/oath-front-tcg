@@ -479,15 +479,17 @@ function WeeklyDetail({
                   >
                     {daily.busy
                       ? "Starting…"
-                      : !open
-                        ? "Not open yet"
-                        : cooldown
-                          ? "Cooling down"
-                          : !isPractice && status === "COMPLETED"
-                            ? "Completed"
-                            : isPractice
-                              ? "Play practice"
-                              : "Play daily challenge"}
+                      : !isPractice && status === "COMPLETED"
+                        ? "Completed"
+                        : status === "CLOSED"
+                          ? "Closed"
+                          : cooldown
+                            ? "Cooling down"
+                            : !open
+                              ? "Not open yet"
+                              : isPractice
+                                ? "Play practice"
+                                : "Play daily challenge"}
                   </button>
                 )}
               </li>

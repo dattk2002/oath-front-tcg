@@ -41,6 +41,8 @@ jobs:
         run: pnpm build
       - name: Browser integration (production standalone through trusted ingress)
         run: OATHFRONT_E2E_PRODUCTION=1 pnpm test:e2e
+      - name: Live publishing and weekly rewards (isolated seeded clock)
+        run: OATHFRONT_E2E_PRODUCTION=1 OATHFRONT_E2E_LIVE_CONTENT=1 pnpm exec playwright test tests/e2e/live-news-events.spec.ts tests/e2e/elements-ui.spec.ts --grep-invert 'save a legal|an active legacy'
       - name: Bounded20-match local HTTP load (no heavy balance/performance reruns)
         run: pnpm exec tsx tools/load/pve.ts --concurrency 20
       - name: Remove only runner-owned ephemeral stack

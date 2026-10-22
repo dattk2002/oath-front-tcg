@@ -67,7 +67,7 @@ test("twenty heroes expose exact four powers and signature without early match c
 }) => {
   await guest(page);
   const catalog = await (
-    await page.request.get("/api/v1/catalog/heroes_v1")
+    await page.request.get("/api/v1/catalog/elements_v1")
   ).json();
   let creates = 0;
   page.on("request", (r) => {
@@ -115,23 +115,23 @@ test("collection filters curve copies and independent quantity controls across r
 }) => {
   await copy(page);
   const collection = page.getByRole("region", { name: "Collection" });
-  await expect(collection.getByText("22 matching cards")).toBeVisible();
+  await expect(collection.getByText("24 matching cards")).toBeVisible();
   await expect(
     page.getByRole("complementary", { name: "Deck list" }),
-  ).toContainText("22 Units / 8 Tricks · Average 2.33");
+  ).toContainText("22 Units / 8 Tricks · Average 1.93");
   await expect(page.getByRole("table").getByRole("cell")).toHaveText([
-    "8",
     "12",
-    "6",
+    "12",
     "2",
+    "4",
     "0",
-    "2",
+    "0",
   ]);
   await collection
     .getByLabel("Search names, rules or keywords")
     .fill("LEAF KNIGHT");
   await collection
-    .getByRole("combobox", { name: /^Class/ })
+    .getByRole("combobox", { name: /^System/ })
     .selectOption("COMMON");
   await collection
     .getByRole("combobox", { name: /^Type/ })
@@ -160,7 +160,7 @@ test("collection filters curve copies and independent quantity controls across r
   ).toBeVisible();
   await collection.getByLabel("Search names, rules or keywords").fill("");
   await collection
-    .getByRole("combobox", { name: /^Class/ })
+    .getByRole("combobox", { name: /^System/ })
     .selectOption("ALL");
   await collection.getByRole("combobox", { name: /^Type/ }).selectOption("ALL");
   await collection.getByRole("combobox", { name: /^Cost/ }).selectOption("ALL");
@@ -417,12 +417,43 @@ for (const kind of ["PRESET", "SAVED"] as const)
       page.getByRole("heading", { name: "Deck · 30/30" }),
     ).toBeVisible();
     expect(requests).toEqual([]);
+    let reviewedEntries: { cardId: string; quantity: number }[] | undefined;
+    if (kind === "SAVED") {
+      const accept = page.getByRole("button", {
+        name: "Accept and create match",
+      });
+      await expect(accept).toBeDisabled();
+      // Explicitly rebuild the review copy under the new law; the original stays unchanged.
+      const catalog = await (
+        await page.request.get("/api/v1/catalog/elements_v1")
+      ).json();
+      reviewedEntries = catalog.presets.find(
+        (p: { heroId: string }) => p.heroId === "H_G_BV",
+      ).entries;
+      const list = page.getByRole("complementary", { name: "Deck list" });
+      while (await list.getByRole("button", { name: /^Remove / }).count())
+        await list
+          .getByRole("button", { name: /^Remove / })
+          .first()
+          .click();
+      const collection = page.getByRole("region", { name: "Collection" });
+      for (const entry of reviewedEntries!) {
+        for (let n = 0; n < entry.quantity; n++)
+          await collection
+            .getByRole("button", {
+              name: `Add ${contentName(entry.cardId)}`,
+              exact: true,
+            })
+            .click();
+      }
+      await expect(accept).toBeEnabled();
+    }
     await screenshot(page, `review-${kind.toLowerCase()}`);
     await page.getByRole("button", { name: "Accept and create match" }).click();
     await expect(page).toHaveURL(/\/matches\//);
     expect(requests).toHaveLength(1);
     expect(requests[0]).toMatchObject({
-      expectedContentVersion: "heroes_v1",
+      expectedContentVersion: "elements_v1",
       opponentHeroId: original.opponentHeroId,
       difficulty: original.difficulty,
     });
@@ -454,9 +485,15 @@ for (const kind of ["PRESET", "SAVED"] as const)
       expect(originalDeck.entries).toHaveLength(15);
       expect(migratedDeck).toMatchObject({
         heroId: originalDeck.heroId,
-        entries: originalDeck.entries,
-        contentVersion: "heroes_v1",
+        contentVersion: "elements_v1",
       });
+      expect(
+        [...migratedDeck.entries].sort((a, b) =>
+          a.cardId.localeCompare(b.cardId),
+        ),
+      ).toEqual(
+        [...reviewedEntries!].sort((a, b) => a.cardId.localeCompare(b.cardId)),
+      );
       const latestOriginal = await (
         await page.request.get(`/api/v1/decks/${oldSource.deckId}`)
       ).json();
@@ -471,7 +508,7 @@ for (const kind of ["PRESET", "SAVED"] as const)
 test("throwing storage and rejected create retain no-reload warning and exact retry", async ({
   page,
 }) => {
-  const { id, csrf } = await create(page);
+  const { id, csrf } = await create(page, "GOOD", "elements_v1");
   await command(page, id, csrf, { kind: "SURRENDER" });
   await page.addInitScript(() => {
     Storage.prototype.setItem = () => {

@@ -15,7 +15,11 @@ test("campaign actions remain separate from following sections with enlarged or 
           ".campaign-profile-actions",
           ".campaign-power-section",
         ],
-        ["/game-features", ".features-hero > div", ".features-facts"],
+        [
+          "/game-features",
+          ".feature-panel:first-child .feature-stage-copy > .campaign-button",
+          ".feature-panel:nth-child(2)",
+        ],
         [
           "/news",
           ".editorial-masthead > div:first-child",

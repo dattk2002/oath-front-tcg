@@ -21,7 +21,7 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
   });
   let fail = true;
   await page.route(
-    "**/assets/heroes-v4/heroes/briar/thumb.webp",
+    "**/assets/heroes-v5/heroes/briar/thumb.webp",
     async (route) => {
       if (fail)
         await route.fulfill({ status: 404, body: "intentional asset failure" });
@@ -101,7 +101,7 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
   await expect
     .poll(() =>
       tile
-        .locator("img")
+        .locator("img[data-art-key]")
         .evaluate(
           (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
         ),
@@ -126,7 +126,7 @@ test("missing artwork keeps its English name and supports explicit retry; slow a
   await expect
     .poll(() =>
       slot
-        .locator("img")
+        .locator("img[data-art-key]")
         .evaluate(
           (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
         ),

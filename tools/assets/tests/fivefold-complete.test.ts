@@ -72,7 +72,7 @@ it("covers every immutable card ID with distinct verified masters and bounded ne
   }
 });
 
-it("loads one complete quality atlas with hero/token support and all eight terrain strips", () => {
+it("loads the base and supplemental quality atlases with hero/token support and all eight terrain strips", () => {
   const runtime = JSON.parse(
     readFileSync(
       "apps/web/public/assets/fivefold-cards-v3/manifest.json",
@@ -104,18 +104,26 @@ it("loads one complete quality atlas with hero/token support and all eight terra
     const requests = battleAssetRequests("core_v1", quality);
     expect(requests.filter((path) => path.includes("/atlases/"))).toEqual([
       atlas.url,
+      `/assets/event-cards-v1/atlases/cutouts-${quality}.webp`,
     ]);
     expect(
       requests.filter((path) => path.includes("/locations/")),
     ).toHaveLength(8);
     expect(requests).toContain("/assets/rivals-v2/board/scene-wide.webp");
     expect(budgets[quality].preloadBytes).toBe(
+      requests
+        .filter((path) => !path.startsWith("/assets/event-cards-v1/"))
+        .reduce(
+          (bytes, path) => bytes + statSync(`apps/web/public${path}`).size,
+          0,
+        ),
+    );
+    expect(
       requests.reduce(
         (bytes, path) => bytes + statSync(`apps/web/public${path}`).size,
         0,
       ),
-    );
-    expect(budgets[quality].preloadBytes).toBeLessThan(12_000_000);
+    ).toBeLessThan(12_000_000);
     expect(budgets[quality].terrainStrips).toBe(8);
   }
 });

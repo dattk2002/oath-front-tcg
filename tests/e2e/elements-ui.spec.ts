@@ -79,6 +79,10 @@ test("save a legal elements deck and enter a real match with rarity and system l
 test("new systems, rarity and owned copy controls remain legible at three sizes", async ({
   page,
 }) => {
+  test.skip(
+    process.env.OATHFRONT_E2E_LIVE_CONTENT !== "1",
+    "Requires the isolated revealed weekly schedule.",
+  );
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   const guest = await page.request.post("/api/v1/guest", {

@@ -1,5 +1,8 @@
 # Tài liệu OathFront
 
+Bản hiện tại: [Elements, artwork và event thật](implementation/elements-events.md), [8 hệ / luật deck / 72 card](design/elements-v1.md), [review 20 hero](design/hero-distinction-audit.md), [CLI news/event](implementation/live-content-admin.md). Các tài liệu `core_v1` và `heroes_v1` bên dưới vẫn là nguồn lịch sử cho trận cũ.
+
+
 Đây là bộ tài liệu đã thống nhất cho dự án `oath-front-tcg`. Thư mục làm việc chính là `/home/bia/Works/Coding/oath-front-tcg`; repository: [dattk2002/oath-front-tcg](https://github.com/dattk2002/oath-front-tcg).
 
 Bộ tài liệu nguồn từ `five-lane-card-battler` đã được sao chép đầy đủ, gồm Markdown, JSON contract/fixture và mockup SVG/PNG. Tên tiếng Việt trong tài liệu gốc là hồ sơ lịch sử và nguồn kiểm tra luật bất biến. Bản trình bày hiện tại là [The Fivefold, Dawnward và Ashen Court bằng tiếng Anh](PRESENTATION-EN.md); OathFront vẫn là thương hiệu.

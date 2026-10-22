@@ -18,7 +18,11 @@ import {
   validateWire,
   type CommandResponse,
 } from "../../packages/contracts/src/index.js";
-export async function create(page: Page, faction: "GOOD" | "EVIL" = "GOOD") {
+export async function create(
+  page: Page,
+  faction: "GOOD" | "EVIL" = "GOOD",
+  contentVersion: "core_v1" | "elements_v1" = "core_v1",
+) {
   // Serial browser fixtures share one trusted ingress IP; isolate only their guest quota.
   const owner = ownerPool();
   try {
@@ -38,7 +42,7 @@ export async function create(page: Page, faction: "GOOD" | "EVIL" = "GOOD") {
   expect(guest.status()).toBe(201);
   const auth = await guest.json();
   const catalog = await (
-    await page.request.get("/api/v1/catalog/core_v1")
+    await page.request.get(`/api/v1/catalog/${contentVersion}`)
   ).json();
   const preset = catalog.presets.find(
     (p: { heroId: string }) =>

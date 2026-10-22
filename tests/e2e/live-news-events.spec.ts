@@ -366,6 +366,11 @@ test("account wins a real prepared battle, earns its card once and retains it af
     await expect(page.locator(".daily-rail li").nth(4)).toContainText(
       "Completed · reward earned",
     );
+    await expect(
+      page
+        .locator(".daily-rail")
+        .getByRole("button", { name: "Completed", exact: true }),
+    ).toHaveCount(5);
     await page.emulateMedia({ reducedMotion: "reduce" });
     await expect(page.locator(".ticket-progress")).toHaveCSS(
       "transform",
@@ -433,4 +438,23 @@ test("an expired account session offers recovery before creating a daily battle"
   await expect(page.locator(".daily-section")).not.toContainText(
     "Challenge creation is unconfirmed",
   );
+});
+
+test("past uncompleted daily nodes say Closed instead of Not open yet", async ({
+  page,
+}) => {
+  await clock(page, "2026-10-28T01:00:00Z");
+  await account(page);
+  await page.goto("/events/first-light-week-01");
+  const first = page.locator(".daily-rail li").first();
+  await expect(first).toContainText("Closed for rewards");
+  await expect(
+    first.getByRole("button", { name: "Closed", exact: true }),
+  ).toBeDisabled();
+  await expect(
+    page
+      .locator(".daily-rail li")
+      .last()
+      .getByRole("button", { name: "Not open yet", exact: true }),
+  ).toBeDisabled();
 });

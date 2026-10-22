@@ -34,7 +34,7 @@ describe("English presentation over immutable stable IDs", () => {
       if (!item.id.startsWith("H_"))
         expect(contentText(item.id).length, item.id).toBeGreaterThan(0);
     }
-    expect(heroTitle("H_G_BV")).toBe("The Living Bastion");
+    expect(heroTitle("H_G_BV")).toBe("The Rootbound Warden");
   });
   it.each([
     [
@@ -107,6 +107,14 @@ describe("English presentation over immutable stable IDs", () => {
   it("labels both factions, every class and combat keyword in English", () => {
     expect(factionLabel).toEqual({ GOOD: "Dawnward", EVIL: "Ashen Court" });
     expect(Object.values(classLabel)).toEqual([
+      "Grove",
+      "Terra",
+      "Tide",
+      "Tempest",
+      "Solar",
+      "Forge",
+      "Arcane",
+      "Umbral",
       "Bastion",
       "Verdant",
       "Prism",

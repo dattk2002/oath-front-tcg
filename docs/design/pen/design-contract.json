@@ -13,7 +13,7 @@
     "inspectedAt": "2026-10-21T16:13:40.070750+00:00"
   },
   "campaignExtension": {
-    "status": "verified_source_approved_for_implementation",
+    "status": "implemented_with_approved_elements_extension",
     "authorization": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
     "inventoryPath": "docs/design/pen/campaign-design-inventory.json",
     "handoffPath": "docs/design/pen/CAMPAIGN-HANDOFF.md",
@@ -25,12 +25,12 @@
       "campaign-acid",
       "campaign-lilac"
     ],
-    "contentPolicy": "News articles and events are editorial mocks, not published announcements. No real schedule, rewards, registration or eligibility is asserted.",
+    "contentPolicy": "News and weekly events use published PostgreSQL records with server dates, eligibility, progress and ownership. No fake fallback articles or rewards. Six old concept-event URLs remain explicitly labeled archives. See elementsExtension and docs/implementation/elements-events.md.",
     "surfaces": [
       {
         "logicalId": "campaign_news",
-        "repoPath": "apps/web/src/features/campaign/EditorialPage.tsx",
-        "repoComponent": "EditorialPage",
+        "repoPath": "apps/web/src/features/campaign/LiveNews.tsx",
+        "repoComponent": "LiveNews",
         "desktop": "BsnWN",
         "mobile": "mqwt0",
         "detailDesktop": "x67YO7",
@@ -81,8 +81,8 @@
       },
       {
         "logicalId": "campaign_events",
-        "repoPath": "apps/web/src/features/campaign/EditorialPage.tsx",
-        "repoComponent": "EditorialPage",
+        "repoPath": "apps/web/src/features/events/EventHub.tsx",
+        "repoComponent": "EventHub",
         "desktop": "QXjQb",
         "mobile": "pNR5Q",
         "detailDesktop": "di6Pk",
@@ -149,7 +149,6 @@
     },
     "stateBoard": "gnUh9",
     "unresolved": [
-      "Runtime implementation and browser verification",
       "No complete original gameplay Pen frames; inherited skin authorized",
       "Derived tablet/reflow and omitted states require browser validation",
       "Full external Pen schema/renderer certification not performed"
@@ -187,7 +186,7 @@
       },
       {
         "path": "apps/web/src/content/english-content.ts",
-        "sha256": "57b3d0ee8988e429887c255fa953f00749ac08d9a60f0f2d21b49ae379488471"
+        "sha256": "fe50ba421dfe332b95483614c983fe1e7b4e59befdebc6f6ea00cec6025ddce8"
       },
       {
         "path": "apps/web/src/features/motion/use-ui-motion.ts",
@@ -1861,7 +1860,7 @@
     "derivedWork": [
       "Existing game screens retain structure and mechanics with approved new skin",
       "Campaign tablet/reflow and omitted interaction/error states",
-      "Static mock editorial detail content for listed entries"
+      "Published database news and scheduled weekly events with derived eligibility/progress/recovery states"
     ],
     "implementationStatus": "implemented_verified_scoped",
     "deviations": [
@@ -1895,11 +1894,15 @@
       },
       {
         "id": "twenty-hero-art-and-roster",
-        "reason": "User requested a unified redesign of all twenty heroes. Use heroes-v4 portraits in both public and game UI. Expand the public roster to four desktop columns and native roster to a scrollable desktop grid with responsive long-name handling."
+        "reason": "User requested a unified redesign of all twenty heroes. Use heroes-v5 overrides with twelve retained heroes-v4 portraits in both public and game UI. Expand the public roster to four desktop columns and native roster to a scrollable desktop grid with responsive long-name handling."
       },
       {
         "id": "expanded-home-ensemble",
         "reason": "User requested a new ensemble banner and substantial Home discovery sections inspired by Wild Rift. Home composition is an approved derived extension, retaining Pen brand tokens and live English copy; mobile separates artwork from actions."
+      },
+      {
+        "id": "elements-live-events-extension",
+        "reason": "User approved replacing new-game classes, unique hero redesigns, rarity, cinematic Features, arena decoration and real news/events. These derived surfaces preserve the Pen brand; no additional Pen source frames are claimed."
       }
     ],
     "themeLayers": [
@@ -1970,7 +1973,7 @@
     }
   ],
   "elementsExtension": {
-    "status": "systems_cards_features_arenas_implemented_events_pending",
+    "status": "implemented_verified_scoped",
     "authorization": "2026-10-22 user-approved elements, rarity, whole-roster redesign audit, real news and weekly events; local and Neon development only",
     "contractPath": "docs/design/elements-visual-contract.md",
     "heroAuditPath": "docs/design/hero-distinction-audit.md",
@@ -2014,7 +2017,24 @@
       "cinematic_features": "apps/web/src/features/campaign/FeatureStage.tsx",
       "decorated_battlefields": "apps/web/src/features/match/ArenaDecor.tsx",
       "publicArenaMapping": "apps/web/src/features/match/rendering/arena.ts",
-      "systems_and_rarity": "apps/web/src/features/content/ContentBadges.tsx"
+      "systems_and_rarity": "apps/web/src/features/content/ContentBadges.tsx",
+      "weekly_event_progress": "apps/web/src/features/events/EventHub.tsx",
+      "daily_challenge_rail": "apps/web/src/features/events/EventHub.tsx",
+      "real_news": "apps/web/src/features/campaign/LiveNews.tsx",
+      "reward_summary": "apps/web/src/features/events/RewardSummary.tsx",
+      "ownership": "apps/web/src/features/content/use-collection.ts"
+    },
+    "implementationReport": "docs/implementation/elements-events.md",
+    "inputReconciliation": "English presentation hash deliberately updated for approved distinct hero titles and version-bound elements_v1 text. Pen source, original catalog hashes and baseline CSS tokens are unchanged.",
+    "statePolicy": "Loading, empty, retry, session recovery, active/resume, cooldown, completed, upcoming, archived, guest practice and account rewards must be explicit. Future weekly cards must remain sealed in UI; complete versioned catalog definitions remain public. Display countdown derives from server time and revalidates at reset.",
+    "motionPolicy": "Manual FeatureStage navigation; GSAP art/copy reveal, arena motes and reward reveal are scoped and interruptible. Reduced motion displays all feature panels and static board/reward feedback. Reward persistence never depends on animation completion.",
+    "verification": {
+      "report": "docs/implementation/elements-events.md",
+      "productionBuild": true,
+      "penTests": 13,
+      "newAssetHashes": 126,
+      "trackedBrowserFlows": 116,
+      "scope": "Chromium automated/emulated and visual screenshot review; physical-device, real AT and extended balance gates remain open"
     }
   }
 }

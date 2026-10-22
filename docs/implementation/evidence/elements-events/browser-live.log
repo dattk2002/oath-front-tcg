@@ -1,0 +1,12 @@
+
+Running 7 tests using 1 worker
+
+  ✓  1 tests/e2e/asset-fallback.spec.ts:10:1 › missing artwork keeps its English name and supports explicit retry; slow art reserves its slot (6.3s)
+  ✓  2 tests/e2e/elements-ui.spec.ts:79:1 › new systems, rarity and owned copy controls remain legible at three sizes (5.8s)
+  ✓  3 tests/e2e/live-news-events.spec.ts:53:1 › published news and real weekly roadmap handle filters, refresh, future reveals and outages (2.8s)
+  ✓  4 tests/e2e/live-news-events.spec.ts:134:1 › guest practice recovers the exact uncertain create, resumes and waits one hour after surrender (5.5s)
+  ✓  5 tests/e2e/live-news-events.spec.ts:209:1 › account challenge and practice progress stay separate and future collection cards stay sealed (1.5s)
+  ✓  6 tests/e2e/live-news-events.spec.ts:251:1 › account wins a real prepared battle, earns its card once and retains it after interrupted reveal (7.2s)
+  ✓  7 tests/e2e/live-news-events.spec.ts:415:1 › an expired account session offers recovery before creating a daily battle (632ms)
+
+  7 passed (33.3s)

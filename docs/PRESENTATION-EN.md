@@ -4,6 +4,12 @@ OathFront takes place in **The Fivefold**, floating sanctuaries linked by five c
 
 This document maps stable IDs and historical Vietnamese source names to the current English presentation. `core_v1`, `locations_v1`, and `tutorial_v1` are immutable mechanics and source records. The `nameVi`/`exactTextVi`/`titleVi` field names remain in wire contracts for compatibility; the UI resolves names and rules through `apps/web/src/content/english-content.ts` by ID. Stored checkpoints, content hashes, event receipts, deck IDs, and user-entered account/deck names are not translated or rewritten. The historical source-parity tables in `docs/CONTENT.md` and earlier evidence remain reproducible.
 
+## Current `elements_v1` presentation
+
+New games use eight systems: Grove, Terra, Tide, Tempest, Solar, Forge, Arcane and Umbral. Every hero has two systems. The exact current roster, powers, card assignments, rarities and deck rules are in [the elements catalog](design/elements-v1.md); current distinct titles and silhouettes are in [the hero audit](design/hero-distinction-audit.md). The generated runtime projection is `apps/web/src/content/elements-presentation.json`, selected by the match/deck content version. UI uses U / R / SR / SL / E with readable names and shapes. News and events use real English publication records.
+
+The tables below retain the earlier `core_v1` / `heroes_v1` names, classes and effects for source parity; they do not override the current catalog or current artwork titles. Existing saved games keep their original mechanics.
+
 ## Heroes
 
 | Stable ID | Historical source name | English name | English title | Classes |

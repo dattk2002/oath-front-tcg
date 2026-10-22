@@ -1,0 +1,43 @@
+▲ Next.js 16.4.2 (webpack)
+✓ Running next.config.ts took 19ms
+- Experiments (use with caution):
+  · extensionAlias
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.5s
+  Running TypeScript ...
+  Finished TypeScript in 2.9s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/30) ...
+  Generating static pages using 11 workers (7/30) 
+  Generating static pages using 11 workers (14/30) 
+  Generating static pages using 11 workers (22/30) 
+✓ Generating static pages using 11 workers (30/30) in 1244ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/auth/[...path]
+├ ƒ /api/forward-v1/[...path]
+├ ƒ /decks/[deckId]/edit
+├ ƒ /decks/new
+├ ƒ /decks/review/[matchId]
+├ ƒ /events
+├ ƒ /events/[slug]
+├ ƒ /explore/heroes
+├ ƒ /explore/heroes/[heroId]
+├ ○ /game-features
+├ ○ /heroes
+├ ƒ /heroes/[heroId]/decks
+├ ○ /history
+├ ƒ /history/[id]
+├ ƒ /matches/[id]
+├ ƒ /news
+└ ƒ /news/[slug]
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

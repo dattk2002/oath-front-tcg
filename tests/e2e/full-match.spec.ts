@@ -23,7 +23,7 @@ for (const faction of ["GOOD", "EVIL"] as const)
     page,
   }) => {
     test.setTimeout(180000);
-    const { id } = await create(page, faction);
+    const { id } = await create(page, faction, "elements_v1");
     await page.goto(`/matches/${id}`);
     await page.getByRole("button", { name: "Confirm mulligan" }).click();
     for (let i = 0; i < 100; i++) {
@@ -189,14 +189,14 @@ test("version drift shows retained source and original/current versions without 
   const review = page.getByRole("region", { name: "Review deck" });
   await expect(review).toContainText("D_G_BP");
   await expect(review).toContainText("core_v0");
-  await expect(review).toContainText("heroes_v1");
+  await expect(review).toContainText("elements_v1");
   expect(creates).toBe(0);
   await captureEvidence(page, "version-review");
 });
 test("lost rematch response is restored after reload and retries the same exact create", async ({
   page,
 }) => {
-  const { id, csrf } = await blockFixture(page);
+  const { id, csrf } = await create(page, "GOOD", "elements_v1");
   await command(page, id, csrf, { kind: "SURRENDER" });
   const sent: unknown[] = [];
   let drop = true;
@@ -233,7 +233,7 @@ test("lost rematch response is restored after reload and retries the same exact 
 test("direct in-app rematch discards the old store and ignores a delayed old-match snapshot", async ({
   page,
 }) => {
-  const { id, csrf } = await blockFixture(page);
+  const { id, csrf } = await create(page, "GOOD", "elements_v1");
   await command(page, id, csrf, { kind: "SURRENDER" });
   await page.goto(`/matches/${id}`);
   await expect(

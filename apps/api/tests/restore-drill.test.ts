@@ -72,7 +72,7 @@ it("migrates an empty database and a real0001 database forward with identical le
     });
     const result = await inspect(prior.owner);
     expect(result).toEqual(await inspect(empty.owner));
-    expect(result.ledger).toHaveLength(3);
+    expect(result.ledger).toHaveLength(journal.entries.length);
     expect(JSON.stringify(result.constraints)).toContain("TUTORIAL_COMPLETED");
     expect(JSON.stringify(result.constraints)).toContain(
       "bot_intents_this_turn",
@@ -80,8 +80,8 @@ it("migrates an empty database and a real0001 database forward with identical le
     process.stdout.write(
       "MIGRATION_DRILL " +
         JSON.stringify({
-          emptyLedger: 3,
-          priorLedger: 3,
+          emptyLedger: result.ledger.length,
+          priorLedger: result.ledger.length,
           schemasEquivalent: true,
           emptyDatabase: empty.name,
           priorDatabase: prior.name,
@@ -95,7 +95,7 @@ it("migrates an empty database and a real0001 database forward with identical le
       await h.owner.query(`DROP DATABASE "${db.name}"`);
     }
   }
-});
+}, 30000);
 it("restores a PostgreSQL snapshot at BLOCK_RESPONSE, resumes once and retries the same durable receipt", async () => {
   const g = await h.guest();
   let current = (

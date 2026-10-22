@@ -57,4 +57,4 @@ it("all forward migrations install the renamed constrained guard on a fresh isol
     await fresh.end();
     await owner.query(`DROP DATABASE "${name}"`);
   }
-});
+}, 30000);

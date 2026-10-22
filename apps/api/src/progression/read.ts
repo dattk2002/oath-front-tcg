@@ -95,7 +95,7 @@ export function progressionReader(db: Pool, now: () => Date) {
       ).rows;
       const attempts = (
         await db.query(
-          "SELECT DISTINCT ON (s.day_index,b.kind) s.day_index,b.kind,a.match_id,a.status,a.retry_available_at,m.status AS match_status,m.expires_at FROM daily_attempts a JOIN event_scenarios s ON s.id=a.scenario_id JOIN match_reward_bindings b ON b.match_id=a.match_id LEFT JOIN matches m ON m.id=a.match_id WHERE a.principal_id=$1 AND s.event_id=$2 ORDER BY s.day_index,b.kind,a.started_at DESC,a.id DESC",
+          "SELECT DISTINCT ON (s.day_index,b.kind) s.day_index,b.kind,a.match_id,a.status,max(a.retry_available_at) OVER (PARTITION BY s.day_index,b.kind) AS retry_available_at,m.status AS match_status,m.expires_at FROM daily_attempts a JOIN event_scenarios s ON s.id=a.scenario_id JOIN match_reward_bindings b ON b.match_id=a.match_id LEFT JOIN matches m ON m.id=a.match_id WHERE a.principal_id=$1 AND s.event_id=$2 ORDER BY s.day_index,b.kind,a.started_at DESC,a.id DESC",
           [account, event.id],
         )
       ).rows;
