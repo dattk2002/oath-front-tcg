@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-22T11:27:46.059Z",
+  "origin": "https://oathfront.vercel.app",
+  "checks": [
+    {
+      "page": "/",
+      "status": 200
+    },
+    {
+      "page": "/heroes",
+      "status": 200
+    },
+    {
+      "page": "/game-features",
+      "status": 200
+    },
+    {
+      "page": "/news",
+      "status": 200
+    },
+    {
+      "page": "/events",
+      "status": 200
+    },
+    {
+      "catalog": "elements_v1",
+      "heroes": 20,
+      "cards": 72
+    },
+    {
+      "liveContent": "/api/v1/news",
+      "status": 200
+    },
+    {
+      "liveContent": "/api/v1/events",
+      "status": 200
+    },
+    {
+      "directApiRejectsForgedProxy": true
+    },
+    {
+      "guestBootstrap": 201,
+      "secureHttpOnlyCookie": true
+    },
+    {
+      "csrfOriginRejects": true
+    },
+    {
+      "matchId": "83df191b-16dd-4bdd-b9e0-6e18d0dda037",
+      "repeatedCommandReturnsSameReceipt": true
+    },
+    {
+      "pauseResumeReload": true,
+      "playedUnit": true,
+      "terminal": "COMPLETED",
+      "summaryAvailable": true
+    }
+  ]
+}
