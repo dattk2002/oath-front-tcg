@@ -3740,7 +3740,7 @@
             "$ref": "#/definitions/PresetDTO"
           },
           "minItems": 6,
-          "maxItems": 6
+          "maxItems": 20
         },
         "nextCursor": {
           "anyOf": [

@@ -1,6 +1,6 @@
 import { createTutorialConfig, tutorialManifestHash } from "./tutorial.js";
 import { randomBytes, randomUUID } from "node:crypto";
-import { coreCatalog, validateDeck } from "@oathfront/game-content";
+import { catalogForVersion, validateDeck } from "@oathfront/game-content";
 import { validateWire } from "@oathfront/contracts";
 import type {
   CommandEnvelope,
@@ -60,7 +60,7 @@ export function matchService(
       if (previous) return previous;
       if (
         request.mode === "SKIRMISH" &&
-        request.expectedContentVersion !== coreCatalog.version
+        !catalogForVersion(request.expectedContentVersion)
       )
         throw new HttpError(409, "VERSION_UNSUPPORTED");
       const active = (
@@ -110,9 +110,10 @@ export function matchService(
         });
         return response;
       }
+      const catalog = catalogForVersion(request.expectedContentVersion)!;
       let deck: DeckInput;
       if (request.deck.kind === "PRESET") {
-        const p = coreCatalog.presets.find(
+        const p = catalog.presets.find(
           (p) =>
             p.presetId ===
             (request.deck.kind === "PRESET" ? request.deck.presetId : ""),
@@ -133,28 +134,29 @@ export function matchService(
         ).rows[0];
         if (!version) throw new HttpError(404, "NOT_FOUND");
         deck = output("DeckInput", {
-          name: "Đội hình",
+          name: "Saved deck",
           heroId: version.hero_id,
           entries: version.entries,
           contentVersion: version.content_version,
         });
       }
-      const validation = validateDeck(deck, coreCatalog);
+      const validation = validateDeck(deck, catalog);
       if (!validation.playable)
         throw new HttpError(422, "INVALID_DECK", { validation });
-      const human = coreCatalog.heroes.find((h) => h.id === deck.heroId)!,
-        bot = coreCatalog.heroes.find((h) => h.id === request.opponentHeroId)!;
+      const human = catalog.heroes.find((h) => h.id === deck.heroId)!,
+        bot = catalog.heroes.find((h) => h.id === request.opponentHeroId)!;
+      if (!human || !bot) throw new HttpError(404, "NOT_FOUND");
       if (human.faction === bot.faction)
         throw new HttpError(422, "ILLEGAL_ACTION", {
           reason: "INVALID_TARGET",
           field: null,
         });
-      const preset = coreCatalog.presets.find((p) => p.heroId === bot.id)!;
+      const preset = catalog.presets.find((p) => p.heroId === bot.id)!;
       const botDeck: DeckInput = {
         name: preset.name,
         heroId: bot.id,
         entries: preset.entries,
-        contentVersion: coreCatalog.version,
+        contentVersion: catalog.version,
       };
       const config: MatchConfig = {
         matchId: randomUUID(),
@@ -162,9 +164,9 @@ export function matchService(
         humanSide: human.faction,
         difficulty: request.difficulty,
         versions: {
-          rules: coreCatalog.rulesVersion,
-          content: coreCatalog.version,
-          locations: coreCatalog.locationVersion,
+          rules: catalog.rulesVersion,
+          content: catalog.version,
+          locations: catalog.locationVersion,
           bot: "bot_v1",
         },
         decks:

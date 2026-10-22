@@ -1,5 +1,9 @@
 import { randomUUID } from "node:crypto";
-import { coreCatalog, validateDeck } from "@oathfront/game-content";
+import {
+  catalogForVersion,
+  currentCatalog,
+  validateDeck,
+} from "@oathfront/game-content";
 import { validateWire } from "@oathfront/contracts";
 import type { DeckDTO, DeckInput, ListQuery } from "@oathfront/contracts";
 import type { Pool, PoolClient } from "@oathfront/db";
@@ -31,11 +35,13 @@ export function deckService(pool: Pool, now: () => Date = () => new Date()) {
       contentVersion: row.content_version,
       entries: row.entries,
     });
+    const catalog = catalogForVersion(deck.contentVersion);
+    if (!catalog) throw new HttpError(409, "VERSION_UNSUPPORTED");
     return output("DeckDTO", {
       ...deck,
       id: row.id,
       revision: row.revision,
-      validation: validateDeck(deck, coreCatalog),
+      validation: validateDeck(deck, catalog),
       updatedAt: row.updated_at.toISOString(),
     });
   }
@@ -68,7 +74,9 @@ export function deckService(pool: Pool, now: () => Date = () => new Date()) {
         ...raw,
         name: raw.name.normalize("NFC").trim(),
       });
-      const validation = validateDeck(deck, coreCatalog);
+      const catalog = catalogForVersion(deck.contentVersion);
+      if (!catalog) throw new HttpError(409, "VERSION_UNSUPPORTED");
+      const validation = validateDeck(deck, catalog);
       if (
         validation.totalCards > 30 ||
         validation.issues.some((i) => i.code !== "TOTAL_NOT_30")
@@ -171,7 +179,7 @@ export function deckService(pool: Pool, now: () => Date = () => new Date()) {
     const last = rows[limit - 1];
     return output("DeckList", {
       items,
-      presets: publicCatalog().presets,
+      presets: publicCatalog(currentCatalog.version).presets,
       nextCursor:
         rows.length > limit
           ? Buffer.from(

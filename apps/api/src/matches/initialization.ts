@@ -9,7 +9,7 @@ import {
   algorithmVersion,
 } from "@oathfront/game-engine";
 import type { MatchConfig } from "@oathfront/game-engine";
-import { coreCatalog } from "@oathfront/game-content";
+import { supportedCatalogs } from "@oathfront/game-content";
 import { validateWire } from "@oathfront/contracts";
 import type { RematchConfig } from "@oathfront/contracts";
 import type { Pool, PoolClient } from "@oathfront/db";
@@ -24,26 +24,28 @@ export interface InitializationMetadata {
 export const hashJson = (value: unknown) =>
   createHash("sha256").update(canonicalJson(value)).digest("hex");
 export async function registerRelease(pool: Pool) {
-  const digest = hashJson(coreCatalog);
-  await pool.query(
-    "INSERT INTO content_releases(version,rules_version,location_version,manifest,sha256) VALUES($1,$2,$3,$4,$5) ON CONFLICT(version) DO NOTHING",
-    [
-      coreCatalog.version,
-      coreCatalog.rulesVersion,
-      coreCatalog.locationVersion,
-      JSON.stringify(coreCatalog),
-      digest,
-    ],
-  );
-  const r = await pool.query(
-    "SELECT sha256,manifest FROM content_releases WHERE version=$1",
-    [coreCatalog.version],
-  );
-  if (
-    r.rows[0]?.sha256 !== digest ||
-    !isDeepStrictEqual(r.rows[0]?.manifest, coreCatalog)
-  )
-    throw new PersistenceError("CONTENT_CHECKSUM_MISMATCH");
+  for (const catalog of supportedCatalogs) {
+    const digest = hashJson(catalog);
+    await pool.query(
+      "INSERT INTO content_releases(version,rules_version,location_version,manifest,sha256) VALUES($1,$2,$3,$4,$5) ON CONFLICT(version) DO NOTHING",
+      [
+        catalog.version,
+        catalog.rulesVersion,
+        catalog.locationVersion,
+        JSON.stringify(catalog),
+        digest,
+      ],
+    );
+    const r = await pool.query(
+      "SELECT sha256,manifest FROM content_releases WHERE version=$1",
+      [catalog.version],
+    );
+    if (
+      r.rows[0]?.sha256 !== digest ||
+      !isDeepStrictEqual(r.rows[0]?.manifest, catalog)
+    )
+      throw new PersistenceError("CONTENT_CHECKSUM_MISMATCH");
+  }
 }
 /** Caller holds the principal lock before any match row/FK work. */
 export async function insertInitialization(

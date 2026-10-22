@@ -1,3 +1,4 @@
+import { catalogForVersion } from "@oathfront/game-content";
 import { clientIp } from "./client-ip.js";
 import type { IpTrust } from "./client-ip.js";
 import { inspectSupportedVersions } from "./maintenance/versions.js";
@@ -219,10 +220,11 @@ export function buildApp(deps: AppDependencies) {
   );
   app.get("/api/v1/catalog/:version", async (req, reply) => {
     const params = checked("CatalogParams", req.params);
-    if (params.version !== "core_v1") throw new HttpError(404, "NOT_FOUND");
+    if (!catalogForVersion(params.version))
+      throw new HttpError(404, "NOT_FOUND");
     return reply
       .header("Cache-Control", "public, max-age=31536000, immutable")
-      .send(publicCatalog());
+      .send(publicCatalog(params.version));
   });
   registerDeckRoutes(
     app,

@@ -7,7 +7,7 @@ import type {
   TransitionResult,
   JournalEntry,
 } from "@oathfront/game-engine";
-import { coreCatalog } from "@oathfront/game-content";
+import { coreCatalog, catalogForVersion } from "@oathfront/game-content";
 import { validateWire } from "@oathfront/contracts";
 import { transaction, safeInteger } from "@oathfront/db";
 import type { Pool, PoolClient } from "@oathfront/db";
@@ -103,7 +103,7 @@ export async function readRecord(
   )
     throw new PersistenceError("INVALID_CHECKPOINT");
   if (
-    state.versions.content !== coreCatalog.version ||
+    !catalogForVersion(state.versions.content) ||
     state.versions.rules !== coreCatalog.rulesVersion ||
     state.versions.locations !== coreCatalog.locationVersion ||
     state.versions.bot !== "bot_v1"

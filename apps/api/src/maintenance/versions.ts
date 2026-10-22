@@ -1,4 +1,4 @@
-import { coreCatalog } from "@oathfront/game-content";
+import { coreCatalog, supportedCatalogs } from "@oathfront/game-content";
 import type { Pool } from "@oathfront/db";
 import { tutorialManifestHash } from "../matches/tutorial.js";
 export interface VersionRegistry {
@@ -29,7 +29,7 @@ export interface VersionSupportReport {
 }
 export const supportedRegistry: VersionRegistry = {
   rules: [coreCatalog.rulesVersion],
-  content: [coreCatalog.version],
+  content: supportedCatalogs.map((c) => c.version),
   locations: [coreCatalog.locationVersion],
   bot: ["bot_v1"],
   tutorials: ["tutorial_v1", "tutorial_evil_v1"].map((scenarioId) => ({

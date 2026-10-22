@@ -1529,7 +1529,7 @@ export interface DeckList {
   items: DeckDTO[];
   /**
    * @minItems 6
-   * @maxItems 6
+   * @maxItems 20
    */
   presets: [PresetDTO, PresetDTO, PresetDTO, PresetDTO, PresetDTO, PresetDTO, ...PresetDTO[]];
   nextCursor: string | null;

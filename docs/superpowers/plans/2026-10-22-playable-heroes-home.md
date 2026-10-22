@@ -39,9 +39,9 @@ Interface: lookup hero/power definitions from state.versions.content; shared car
 
 Files: API content registry/app, decks service, matches initialization/repository/service, maintenance versions; integration tests.
 Interface: both immutable catalog endpoints; exact requested version binding; register both manifests; old saved deck compatibility.
-- [ ] RED: new hero match/deck save, core/new catalog boundaries, persisted reload/replay/rematch and old revision preservation.
-- [ ] Implement version selection/guards, supported releases and compatible deck handling without row migrations.
-- [ ] GREEN: focused DB/API tests on isolatedDB, old fixtures still readable.
+- [x] RED: new hero match/deck save, core/new catalog boundaries, persisted reload/replay/rematch and old revision preservation.
+- [x] Implement version selection/guards, supported releases and compatible deck handling without row migrations.
+- [x] GREEN: focused DB/API tests on isolatedDB, old fixtures still readable.
 
 ## M4 — Unified art
 

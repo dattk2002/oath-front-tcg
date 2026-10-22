@@ -157,7 +157,7 @@ it("replays exact durable receipts before stale checks and rejects changed comma
   expect(stale.statusCode).toBe(409);
   expect(stale.json().error.details.deck.revision).toBe(2);
 });
-it("conceals other owners and paginates saved decks without losing six presets", async () => {
+it("conceals other owners and paginates saved decks with the current twenty presets", async () => {
   const g = await h.guest(),
     other = await h.guest();
   for (let n = 0; n < 3; n++)
@@ -177,7 +177,7 @@ it("conceals other owners and paginates saved decks without losing six presets",
   const one = (
     await h.app.inject({ url: "/api/v1/decks?limit=2", headers: h.headers(g) })
   ).json();
-  expect(one.presets).toHaveLength(6);
+  expect(one.presets).toHaveLength(20);
   expect(one.items).toHaveLength(2);
   expect(one.nextCursor).toBeTypeOf("string");
   const two = (

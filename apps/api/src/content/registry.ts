@@ -1,13 +1,15 @@
-import { coreCatalog } from "@oathfront/game-content";
+import { catalogForVersion } from "@oathfront/game-content";
 import { output } from "../http.js";
 import { hashJson } from "../matches/initialization.js";
-export function publicCatalog() {
+export function publicCatalog(version = "core_v1") {
+  const catalog = catalogForVersion(version);
+  if (!catalog) throw new RangeError("Unsupported catalog version");
   return output("PublicCatalog", {
-    version: coreCatalog.version,
-    rulesVersion: coreCatalog.rulesVersion,
-    locationVersion: coreCatalog.locationVersion,
-    sha256: hashJson(coreCatalog),
-    cards: coreCatalog.cards.map((c) => ({
+    version: catalog.version,
+    rulesVersion: catalog.rulesVersion,
+    locationVersion: catalog.locationVersion,
+    sha256: hashJson(catalog),
+    cards: catalog.cards.map((c) => ({
       id: c.id,
       faction: c.faction,
       classId: c.classId,
@@ -24,7 +26,7 @@ export function publicCatalog() {
       type: c.type,
       printed: c.printed,
     })),
-    heroes: coreCatalog.heroes.map((h) => ({
+    heroes: catalog.heroes.map((h) => ({
       id: h.id,
       faction: h.faction,
       nameVi: h.nameVi,
@@ -35,7 +37,7 @@ export function publicCatalog() {
       strategyKey: h.strategyKey,
       portraitKey: h.portraitKey,
     })),
-    powers: coreCatalog.powers.map((p) => ({
+    powers: catalog.powers.map((p) => ({
       id: p.id,
       faction: p.faction,
       classId: p.classId,
@@ -47,7 +49,7 @@ export function publicCatalog() {
       exactTextVi: p.exactTextVi,
       artKey: p.artKey,
     })),
-    locations: coreCatalog.locations.map((l) => ({
+    locations: catalog.locations.map((l) => ({
       id: l.id,
       nameVi: l.nameVi,
       group: l.group,
@@ -55,7 +57,7 @@ export function publicCatalog() {
       exactTextVi: l.exactTextVi,
       artKey: l.artKey,
     })),
-    tokens: coreCatalog.tokens.map((t) => ({
+    tokens: catalog.tokens.map((t) => ({
       id: t.id,
       faction: t.faction,
       nameVi: t.nameVi,
@@ -64,6 +66,6 @@ export function publicCatalog() {
       keywords: t.keywords,
       artKey: t.artKey,
     })),
-    presets: coreCatalog.presets,
+    presets: catalog.presets,
   });
 }
