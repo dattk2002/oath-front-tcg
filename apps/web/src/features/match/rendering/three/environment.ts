@@ -385,6 +385,7 @@ export function disposeObject(root: T.Object3D) {
     materials = new Set<T.Material>(),
     textures = new Set<T.Texture>();
   root.traverse((o) => {
+    if (o instanceof T.InstancedMesh) o.dispose();
     if (o instanceof T.Mesh || o instanceof T.Sprite || o instanceof T.Line) {
       if ("geometry" in o) geometries.add(o.geometry);
       for (const m of Array.isArray(o.material) ? o.material : [o.material]) {
@@ -400,8 +401,94 @@ export function disposeObject(root: T.Object3D) {
     )
       o.shadow.dispose();
   });
-  textures.forEach((t) => t.dispose());
+  const bitmaps = new Set<{ close: () => void }>();
+  textures.forEach((t) => {
+    t.dispose();
+    const image = t.image as { close?: () => void } | undefined;
+    if (typeof image?.close === "function")
+      bitmaps.add(image as { close: () => void });
+  });
+  bitmaps.forEach((image) => image.close());
   materials.forEach((m) => m.dispose());
   geometries.forEach((g) => g.dispose());
   root.clear();
+}
+
+/** Runtime engravings and neutral lighting around authored geometry; no socket plinths. */
+export function prepareAuthoredEnvironment(
+  group: T.Group,
+  quality: "low" | "high",
+) {
+  const engraving = new T.MeshStandardMaterial({
+    color: 0x667a68,
+    roughness: 0.72,
+    metalness: 0.22,
+    transparent: true,
+    opacity: 0.72,
+    depthWrite: false,
+  });
+  const outline = (w: number, d: number) => {
+    const shape = new T.Shape();
+    shape.moveTo(-w / 2, -d / 2);
+    shape.lineTo(w / 2, -d / 2);
+    shape.lineTo(w / 2, d / 2);
+    shape.lineTo(-w / 2, d / 2);
+    shape.closePath();
+    const hole = new T.Path();
+    const inset = 0.018;
+    hole.moveTo(-w / 2 + inset, -d / 2 + inset);
+    hole.lineTo(-w / 2 + inset, d / 2 - inset);
+    hole.lineTo(w / 2 - inset, d / 2 - inset);
+    hole.lineTo(w / 2 - inset, -d / 2 + inset);
+    hole.closePath();
+    shape.holes.push(hole);
+    const geometry = new T.ShapeGeometry(shape);
+    geometry.rotateX(-Math.PI / 2);
+    return geometry;
+  };
+  const border = outline(CARD_WIDTH + 0.13, CARD_DEPTH + 0.13),
+    circle = new T.RingGeometry(0.23, 0.245, 48);
+  circle.rotateX(-Math.PI / 2);
+  const strokes: T.BufferGeometry[] = [];
+  for (let lane = 1; lane <= 5; lane++)
+    for (const side of ["GOOD", "EVIL"] as const) {
+      const a = cardAnchor(lane, side, "GOOD");
+      a.y = 0.362;
+      const transform = new T.Matrix4().makeTranslation(a.x, a.y, a.z);
+      strokes.push(
+        border.clone().applyMatrix4(transform),
+        circle.clone().applyMatrix4(transform),
+      );
+    }
+  const engravings = mergeGeometries(strokes, false);
+  border.dispose();
+  circle.dispose();
+  strokes.forEach((stroke) => stroke.dispose());
+  if (engravings) {
+    const mesh = new T.Mesh(engravings, engraving);
+    mesh.name = "slot-engravings";
+    group.add(mesh);
+  }
+  const ambient = new T.HemisphereLight(0xd6e8ee, 0x829083, 1.85);
+  group.add(ambient);
+  const sun = new T.DirectionalLight(0xffebcc, 2.05);
+  sun.position.set(-6, 12, 4);
+  sun.castShadow = quality === "high";
+  sun.shadow.mapSize.set(1024, 1024);
+  Object.assign(sun.shadow.camera, {
+    left: -11,
+    right: 11,
+    top: 10,
+    bottom: -10,
+    near: 1,
+    far: 35,
+  });
+  sun.shadow.bias = -0.0006;
+  sun.shadow.normalBias = 0.025;
+  sun.shadow.radius = 3;
+  sun.shadow.intensity = 0.48;
+  group.add(sun);
+  const fill = new T.DirectionalLight(0xb7d9eb, 0.8);
+  fill.position.set(7, 5, -4);
+  group.add(fill);
 }

@@ -24,7 +24,7 @@ export default function HeroPanel({
   const definition = catalog.heroes.find((item) => item.id === hero.heroId);
   return (
     <section
-      className={`hero-panel panel ${side.toLowerCase()}`}
+      className={`hero-panel panel hero-medallion ${side.toLowerCase()}`}
       data-hero-side={side}
       data-own-hero={own}
       aria-label={`${own ? "Your hero" : "Opponent hero"} · ${sideLabel[side]}`}
@@ -49,7 +49,7 @@ export default function HeroPanel({
             />
           </span>
         )}
-        <strong>
+        <strong className="hero-name">
           {contentName(
             catalog.heroes.find((item) => item.id === hero.heroId)?.id ?? "",
           )}{" "}
@@ -57,24 +57,34 @@ export default function HeroPanel({
             · {own ? "You" : "Bot"} · {sideLabel[side]}
           </span>
         </strong>
-        <span>
-          <b>{hero.hp}</b> / 20 HP
+        <span className="hero-health">
+          <b>{hero.hp}</b>
+          <span> / 20 HP</span>
         </span>
       </button>
       <div className="hero-resources">
         <span
+          className="hero-energy"
           data-tutorial-focus={tutorialEnergyFocus}
           data-testid={own ? "own-energy" : "opponent-energy"}
         >
-          Energy{" "}
+          <span className="energy-pips" aria-hidden="true">
+            {Array.from(
+              { length: Math.min(10, hero.energy.max) },
+              (_, index) => (
+                <i key={index} data-filled={index < hero.energy.current} />
+              ),
+            )}
+          </span>
+          <span className="resource-label">Energy</span>{" "}
           <b>
             {hero.energy.current} / {hero.energy.max}
           </b>
         </span>
-        <span>
+        <span className="hero-block">
           Block <b>{hero.block.charge} / 8</b> · Used {hero.block.used} / 3
         </span>
-        <span className="muted">
+        <span className="muted hero-counts">
           Hand {hero.handCount} · Deck {hero.deckCount} · Power{" "}
           {hero.reserveCount}
         </span>

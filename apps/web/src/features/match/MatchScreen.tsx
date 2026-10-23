@@ -3,8 +3,7 @@ import { contentName, contentText } from "../../content/english-content";
 import TutorialOverlay from "../tutorial/TutorialOverlay";
 import ArtImage from "./ArtImage";
 import { useSettings } from "../settings/SettingsDialog";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type {
   CommandResponse,
   PlayerAction,
@@ -32,6 +31,9 @@ import { ResultDetail } from "./ResultDialog";
 import { useLoadedMatch, useMatchStore } from "./use-match";
 import MatchShell from "./MatchShell";
 import BattleScene from "./BattleScene";
+import { useCardDrag } from "./use-card-drag";
+import CardDragPreview from "./CardDragPreview";
+import type { ArenaInteractionSurface } from "./rendering/arena-interaction";
 export default function MatchScreen({
   api,
   catalog,
@@ -108,7 +110,23 @@ function MatchRuntime({
     recover,
   } = useMatchStore(initial, api);
   const authoritativeView = snapshot.authoritativeView;
-  const { audio } = useSettings();
+  const { audio, settings } = useSettings();
+  const interactionRef = useRef<ArenaInteractionSurface | null>(null);
+  const [rendererEpoch, setRendererEpoch] = useState(0);
+  const onInteractionChange = useCallback((surface: ArenaInteractionSurface | null) => {
+    if (interactionRef.current === surface) return;
+    interactionRef.current = surface;
+    setRendererEpoch((epoch) => epoch + 1);
+  }, []);
+  const cardDrag = useCardDrag({
+    view: authoritativeView,
+    revision: snapshot.revision,
+    disabled,
+    controller,
+    interactionRef,
+    rendererEpoch,
+    reducedMotion: settings.reducedMotion,
+  });
   useEffect(() => {
     audio?.setPaused(authoritativeView.lifecycle === "PAUSED");
     return () => audio?.setPaused(false);
@@ -149,6 +167,7 @@ function MatchRuntime({
     if (!disabled) void controller.selectTarget(target);
   }
   function cancel() {
+    cardDrag.cancel();
     controller.cancelSelection();
     setInspected(null);
     setForecast(null);
@@ -203,10 +222,12 @@ function MatchRuntime({
               disabled={disabled}
               onTarget={target}
               onInspect={(unit) => {
+                cardDrag.cancel();
                 controller.cancelSelection();
                 setInspected(unit);
               }}
               onPreview={setForecast}
+              cardDrag={cardDrag}
             />
             <HeroPanel
               hero={view.players[view.self.side]}
@@ -249,6 +270,7 @@ function MatchRuntime({
             />
           ) : (
             <InspectPanel
+              directCast
               view={view}
               catalog={catalog}
               selectedId={snapshot.selection?.instanceId ?? null}
@@ -317,6 +339,7 @@ function MatchRuntime({
                       snapshot.selection?.instanceId === power.instanceId
                     }
                     onClick={() => {
+                      cardDrag.cancel();
                       setInspected(null);
                       controller.selectCard(power.instanceId);
                     }}
@@ -361,6 +384,8 @@ function MatchRuntime({
             selectedId={snapshot.selection?.instanceId ?? null}
             disabled={disabled}
             mulligan={isMulligan ? mulligan : null}
+            cardDrag={cardDrag}
+            reducedMotion={settings.reducedMotion}
             onMulligan={(id) => {
               if (!disabled)
                 setMulligan((current) =>
@@ -404,7 +429,9 @@ function MatchRuntime({
           catalog={catalog}
           presentation={presentation}
           onView={setPresentationView}
+          onInteractionChange={onInteractionChange}
         />
+        <CardDragPreview drag={cardDrag} catalog={catalog} />
       </div>
       {view.lifecycle === "PAUSED" && (
         <PauseDialog

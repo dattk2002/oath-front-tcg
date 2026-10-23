@@ -6,6 +6,7 @@ import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import type { MatchViewStore } from "./view-store";
 import type { PresentationController } from "./motion/presentation-controller";
 import { eventLabel } from "./labels";
+import type { ArenaInteractionSurface } from "./rendering/arena-interaction";
 import {
   SceneFailure,
   type SceneFailureReason,
@@ -42,11 +43,13 @@ export default function BattleScene({
   presentation,
   onView,
   catalog,
+  onInteractionChange,
 }: {
   store: MatchViewStore;
   catalog: PublicCatalog;
   presentation: MutableRefObject<PresentationController | null>;
   onView: (view: PlayerView) => void;
+  onInteractionChange?: (surface: ArenaInteractionSurface | null) => void;
 }) {
   const { audio, settings, update } = useSettings();
   const sound = useRef(audio);
@@ -78,6 +81,7 @@ export default function BattleScene({
     const release = () => {
       if (released) return;
       released = true;
+      onInteractionChange?.(null);
       for (const dispose of cleanup.reverse()) dispose();
       cleanup.length = 0;
     };
@@ -257,6 +261,7 @@ export default function BattleScene({
           window.addEventListener("offline", syncPause);
           syncPause();
           if (cancelled || terminal) return;
+          onInteractionChange?.(scene.interaction);
           setStatus("ready");
         } catch (error) {
           fail(error instanceof SceneFailure ? error.reason : stage);
@@ -269,7 +274,7 @@ export default function BattleScene({
       cancelled = true;
       release();
     };
-  }, [attempt, onView, presentation, store, catalog, quality, reduced]);
+  }, [attempt, onView, onInteractionChange, presentation, store, catalog, quality, reduced]);
   useEffect(() => {
     presentation.current?.fastForward(store.getSnapshot().authoritativeView);
   }, [reduced, presentation, store]);

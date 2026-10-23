@@ -15,7 +15,7 @@ export default function PhaseControl({
   return (
     <div className="phase-controls">
       <button
-        className="primary"
+        className="primary phase-orb"
         disabled={
           disabled ||
           !legal.some(
@@ -29,13 +29,18 @@ export default function PhaseControl({
           })
         }
       >
-        {keep
-          ? "Keep for later"
-          : view.tutorial?.stepId === "E01"
-            ? "End deployment"
-            : view.tutorial?.stepId === "E02"
-              ? "End tricks"
-              : "End phase"}
+        <span className="phase-orb-label">
+          {keep
+            ? "Keep for later"
+            : view.tutorial?.stepId === "E01"
+              ? "End deployment"
+              : view.tutorial?.stepId === "E02"
+                ? "End tricks"
+                : "End phase"}
+        </span>
+        <span className="phase-orb-rune" aria-hidden="true">
+          ◇
+        </span>
       </button>
       <p className="muted">
         {snapshot.needsAdvance

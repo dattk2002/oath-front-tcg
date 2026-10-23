@@ -5,6 +5,62 @@ import type { Cue } from "../scene-state";
 export const CARD_WIDTH = 1.7;
 export const CARD_DEPTH = 2.35;
 export const SURFACE_Y = 0.36;
+export type CardFrame = { x: number; y: number; width: number; height: number };
+
+/** Largest clear rectangle for the two card rows, not for the decorative scene. */
+export function unobscuredCardFrame(
+  width: number,
+  height: number,
+  blockers: readonly CardFrame[],
+): CardFrame {
+  const gap = 8;
+  const obstacles = blockers
+    .filter((b) => b.width > 0 && b.height > 0)
+    .map((b) => ({
+      left: Math.max(0, b.x - gap),
+      right: Math.min(width, b.x + b.width + gap),
+      top: Math.max(0, b.y - gap),
+      bottom: Math.min(height, b.y + b.height + gap),
+    }))
+    .filter((b) => b.left < b.right && b.top < b.bottom);
+  let best = { x: 0, y: 0, width, height },
+    score = -1;
+  // Every maximal empty rectangle ends on a viewport or obstacle edge.
+  for (const left of [0, ...obstacles.map((b) => b.right)])
+    for (const right of [width, ...obstacles.map((b) => b.left)])
+      for (const top of [0, ...obstacles.map((b) => b.bottom)])
+        for (const bottom of [height, ...obstacles.map((b) => b.top)]) {
+          if (
+            left >= right ||
+            top >= bottom ||
+            obstacles.some(
+              (b) =>
+                left < b.right &&
+                right > b.left &&
+                top < b.bottom &&
+                bottom > b.top,
+            )
+          )
+            continue;
+          // Two rows have an approximately 2:1 projected envelope. Maximize
+          // card size first; then use the widest breathing room around them.
+          const next = Math.min((right - left) / 2, bottom - top);
+          const area = (right - left) * (bottom - top);
+          if (
+            next > score ||
+            (next === score && area > best.width * best.height)
+          ) {
+            score = next;
+            best = {
+              x: left,
+              y: top,
+              width: right - left,
+              height: bottom - top,
+            };
+          }
+        }
+  return best;
+}
 export function cardAnchor(lane: number, owner: Side, self: Side) {
   return new Vector3(
     (lane - 3) * 2.4,
@@ -36,8 +92,8 @@ export function createCamera(width: number, height: number) {
     const scale = Math.max(1, 1.72 / camera.aspect);
     camera.position.set(
       0,
-      (compact ? 12.3 : 14) * scale,
-      (compact ? 9.7 : 12.6) * scale,
+      (compact ? 14.2 : 16.8) * scale,
+      (compact ? 6.4 : 7.5) * scale,
     );
   }
   camera.lookAt(0, 0, 0);
@@ -52,22 +108,25 @@ function fitCardEnvelope(
   camera: PerspectiveCamera,
   width: number,
   height: number,
+  frame?: CardFrame,
 ) {
   const padding = Math.min(6, width * 0.012, height * 0.02);
   const horizontal = 1 - (2 * padding) / Math.max(1, width);
   const vertical = 1 - (2 * padding) / Math.max(1, height);
   let excess = 1;
+  const corners: Vector3[] = [];
   for (const lane of [1, 5])
     for (const side of ["GOOD", "EVIL"] as const) {
       const anchor = cardAnchor(lane, side, "GOOD");
       for (const x of [-CARD_WIDTH / 2, CARD_WIDTH / 2])
         for (const z of [-CARD_DEPTH / 2, CARD_DEPTH / 2])
-          for (const lift of [0.041, 0.441]) {
+          for (const lift of [0, 0.441]) {
             const corner = new Vector3(
               anchor.x + x,
               anchor.y + lift,
               anchor.z + z,
             ).project(camera);
+            corners.push(corner);
             excess = Math.max(
               excess,
               Math.abs(corner.x) / horizontal,
@@ -78,6 +137,29 @@ function fitCardEnvelope(
   if (excess > 1) {
     camera.zoom /= excess;
     camera.updateProjectionMatrix();
+  }
+  if (frame) {
+    // An off-axis frustum keeps the floor/camera/picker identical while placing
+    // the cards in the actual free screen area. The canvas still fills the stage.
+    const minX = Math.min(...corners.map((c) => c.x)),
+      maxX = Math.max(...corners.map((c) => c.x)),
+      minY = Math.min(...corners.map((c) => c.y)),
+      maxY = Math.max(...corners.map((c) => c.y));
+    const scale = Math.min(
+      (frame.width - padding * 2) / (((maxX - minX) * width) / 2),
+      (frame.height - padding * 2) / (((maxY - minY) * height) / 2),
+    );
+    camera.zoom *= scale * excess;
+    const centerX = width / 2 + ((minX + maxX) * scale * width) / 4;
+    const centerY = height / 2 - ((minY + maxY) * scale * height) / 4;
+    camera.setViewOffset(
+      width,
+      height,
+      centerX - (frame.x + frame.width / 2),
+      centerY - (frame.y + frame.height / 2),
+      width,
+      height,
+    );
   }
 }
 export function cinematicPose(
@@ -140,17 +222,23 @@ export function cameraForCue(
   event: VisibleEvent | null,
   cue: Cue | null,
   reduced = false,
+  frame?: CardFrame,
 ) {
   const camera = createCamera(width, height);
+  // A shallow landscape corridor has no spare room for camera orbit without
+  // shrinking native card targets; card and effect animation remain available.
+  const steady = reduced || Boolean(frame && frame.height < 220);
   if (
     !event ||
     !cue ||
     !["AttackDeclared", "DamageBatchResolved", "PowerUsed"].includes(event.kind)
-  )
+  ) {
+    if (frame) fitCardEnvelope(camera, width, height, frame);
     return camera;
+  }
   const pose = cinematicPose(
     cue.progress,
-    reduced || cue.reduced,
+    steady || cue.reduced,
     cue.evil > cue.good ? -1 : 1,
   );
   const signature =
@@ -158,7 +246,7 @@ export function cameraForCue(
   const amplitude = signature ? 2.7 : 1.35;
   const p = Math.max(0, Math.min(1, cue.progress));
   const shake =
-    !reduced &&
+    !steady &&
     !cue.reduced &&
     event.kind === "DamageBatchResolved" &&
     p > 0.36 &&
@@ -186,6 +274,6 @@ export function cameraForCue(
   camera.zoom *= 1 + (pose.zoom - 1) * amplitude;
   camera.updateProjectionMatrix();
   camera.updateMatrixWorld();
-  fitCardEnvelope(camera, width, height);
+  fitCardEnvelope(camera, width, height, frame);
   return camera;
 }

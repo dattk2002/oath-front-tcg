@@ -27,6 +27,7 @@ export default function InspectPanel({
   action,
   onCancel,
   onConfirm,
+  directCast = false,
 }: {
   view: PlayerView;
   catalog: PublicCatalog;
@@ -35,6 +36,7 @@ export default function InspectPanel({
   action: PlayerAction | null;
   onCancel: () => void;
   onConfirm: (action: PlayerAction) => void;
+  directCast?: boolean;
 }) {
   const [expanded, setExpanded] = useState(true);
   const selected = [...view.self.hand, ...view.self.reserve].find(
@@ -162,7 +164,7 @@ export default function InspectPanel({
             </p>
           )
         )}
-        {action && "target" in action && action.target.kind === "NONE" && (
+        {!directCast && action && "target" in action && action.target.kind === "NONE" && (
           <button className="primary" onClick={() => onConfirm(action)}>
             Confirm card use
           </button>

@@ -40,7 +40,7 @@ export default function MatchShell({
   );
   return (
     <section
-      className="match-screen arena-match"
+      className="match-screen arena-match courtyard-match"
       aria-label="Match"
       onKeyDown={(event) => {
         if (event.target instanceof Element && event.target.closest("dialog"))

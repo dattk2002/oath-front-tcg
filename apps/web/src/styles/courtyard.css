@@ -1,0 +1,1005 @@
+/* Courtyard v3: screen-space ornament and card controls around a quiet 3D field.
+   Imported after arena-3d.css; no marketing typography or alternate game skin. */
+.courtyard-match.arena-match {
+  --courtyard-gold: #ceaf6a;
+  --courtyard-gold-light: #f1dfab;
+  --courtyard-jade: #48d2c1;
+  --courtyard-ink: #10282c;
+  --courtyard-paper: #f8f0d6;
+  --courtyard-card-width: 126px;
+  --courtyard-card-height: 180px;
+  --courtyard-overlap: 23px;
+  --courtyard-hand-height: 256px;
+  --courtyard-fan-gutter: 44px;
+}
+.courtyard-match.arena-match .gameplay.arena-stage {
+  background: #0d2125;
+}
+.courtyard-match.arena-match
+  [data-battle-root]:not(:has([data-text-board="true"]))
+  .board {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.courtyard-match.arena-match [data-arena-3d="ready"] .board {
+  padding: 0;
+}
+.courtyard-match.arena-match .board .arena-decor {
+  opacity: 0.16;
+}
+
+/* Portrait frame, HP seal and gem resources retain real semantic hero targeting. */
+.courtyard-match.arena-match .hero-panel.panel {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  bottom: auto;
+  transform: translateX(-50%);
+  z-index: 16;
+  width: 292px;
+  min-height: 90px;
+  padding: 0 0 0 88px;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  color: var(--courtyard-paper);
+  background: linear-gradient(
+    90deg,
+    transparent 12%,
+    #10282ceb 32%,
+    #10282cdd 82%,
+    transparent
+  );
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.courtyard-match.arena-match .hero-panel[data-own-hero="true"] {
+  top: auto;
+  left: 18px;
+  bottom: 60px;
+  transform: none;
+  width: 256px;
+}
+.courtyard-match.arena-match .hero-target {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 8px 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--courtyard-paper);
+  text-align: left;
+  opacity: 1;
+}
+.courtyard-match.arena-match .hero-target:disabled {
+  opacity: 1;
+  color: var(--courtyard-paper);
+}
+.courtyard-match.arena-match .hero-hud-art {
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  width: 76px;
+  height: 82px;
+  overflow: visible;
+  border: 3px solid var(--courtyard-gold);
+  border-radius: 48% 48% 43% 43%;
+  background: #203f3e;
+  box-shadow:
+    inset 0 0 0 2px #533f24,
+    0 0 0 2px #392f23,
+    0 3px 10px #0009;
+}
+.courtyard-match.arena-match .hero-hud-art .asset-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 45% 45% 40% 40%;
+}
+.courtyard-match.arena-match .hero-hud-art::before,
+.courtyard-match.arena-match .hero-hud-art::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid var(--courtyard-gold-light);
+}
+.courtyard-match.arena-match .hero-hud-art::before {
+  inset: -8px -6px;
+  border-radius: 45% 45% 48% 48%;
+  box-shadow:
+    inset 0 0 0 3px #5e4b2b80,
+    0 0 0 2px #57462c;
+}
+.courtyard-match.arena-match .hero-hud-art::after {
+  width: 13px;
+  height: 13px;
+  left: calc(50% - 7px);
+  top: -16px;
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, #e6d598, #4f734e 50%, #18625a);
+  box-shadow: 0 0 0 3px #594427;
+}
+.courtyard-match.arena-match .hero-name {
+  display: block;
+  font-size: 17px;
+  line-height: 1.15;
+  color: var(--courtyard-paper);
+  text-shadow: 0 2px 3px #000;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.courtyard-match.arena-match .hero-name > span {
+  display: block;
+  font-size: 10px;
+  margin-top: 2px;
+  color: #d5d9c3;
+  letter-spacing: 0;
+}
+.courtyard-match.arena-match .hero-target .hero-health {
+  position: absolute;
+  left: 57px;
+  top: 49px;
+  display: grid;
+  place-items: center;
+  min-width: 36px;
+  height: 39px;
+  padding: 2px;
+  border: 2px solid var(--courtyard-gold-light);
+  border-radius: 45% 45% 48% 48%;
+  background: radial-gradient(ellipse at 35% 20%, #b44940, #6a1928 75%);
+  color: #fff4dc;
+  box-shadow:
+    0 0 0 2px #4b3922,
+    0 3px 6px #0007;
+}
+.courtyard-match.arena-match .hero-health b {
+  font-size: 26px;
+  line-height: 1;
+}
+.courtyard-match.arena-match .hero-health > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.courtyard-match.arena-match .hero-resources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px 9px;
+  font-size: 11px;
+  padding: 0 4px 3px 0;
+  line-height: 1.2;
+}
+.courtyard-match.arena-match .hero-resources b {
+  font-size: 13px;
+  color: #f2e9b1;
+}
+.courtyard-match.arena-match .hero-energy {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.courtyard-match.arena-match .energy-pips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-width: 112px;
+}
+.courtyard-match.arena-match .energy-pips i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid #bd9b56;
+  background: #12252b;
+  box-shadow:
+    inset 0 1px 3px #000,
+    0 1px 2px #0009;
+}
+.courtyard-match.arena-match .energy-pips i[data-filled="true"] {
+  background: radial-gradient(
+    circle at 35% 30%,
+    #d2fff9,
+    #30c4d0 42%,
+    #056573 78%
+  );
+  box-shadow: 0 0 4px #33e1e16b;
+}
+.courtyard-match.arena-match .hero-energy .resource-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.courtyard-match.arena-match .hero-block {
+  color: #ede4c8;
+}
+.courtyard-match.arena-match .hero-resources > .hero-counts {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  clip-path: none;
+  overflow: visible;
+  color: #d0d9c8;
+  font-size: 10px;
+  line-height: 1.2;
+}
+.courtyard-match.arena-match .hero-target[data-legal-target="true"] {
+  outline: 2px solid #e7f6b5;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* Fan layout and interactive lift are separate transform owners. The semantic
+   buttons remain upright and expose at least 44px of each overlapping card. */
+.courtyard-match.arena-match .hand-region {
+  position: absolute;
+  bottom: 35px;
+  left: 282px;
+  right: 150px;
+  height: var(--courtyard-hand-height);
+  padding: 0;
+  z-index: 19;
+}
+.courtyard-match.arena-match .hand-region .region-heading {
+  height: 18px;
+  margin: 0 10px;
+  opacity: 0.9;
+}
+.courtyard-match.arena-match .region-heading h2 {
+  font-size: 11px;
+  color: #fff3d3;
+  letter-spacing: 0.16em;
+}
+.courtyard-match.arena-match .region-heading > span {
+  color: #e8ebd4;
+  font-size: 11px;
+}
+.courtyard-match.arena-match .hand.courtyard-hand {
+  display: flex;
+  justify-content: safe center;
+  align-items: flex-end;
+  gap: 0;
+  height: calc(100% - 18px);
+  padding: 32px var(--courtyard-fan-gutter) 26px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-padding-inline: var(--courtyard-fan-gutter);
+  touch-action: pan-x pinch-zoom;
+  scrollbar-width: thin;
+  scrollbar-color: #cbb67766 transparent;
+  overscroll-behavior-inline: contain;
+}
+.courtyard-match.arena-match .hand-card-seat {
+  position: relative;
+  flex: 0 0 var(--courtyard-card-width);
+  width: var(--courtyard-card-width);
+  height: var(--courtyard-card-height);
+  min-width: 44px;
+  margin-left: calc(-1 * var(--courtyard-overlap));
+  z-index: calc(var(--fan-index) + 1);
+}
+.courtyard-match.arena-match .hand-card-seat:first-child {
+  margin-left: 0;
+}
+.courtyard-match.arena-match .hand-card-seat:has(:focus-visible),
+.courtyard-match.arena-match .hand-card-seat:hover,
+.courtyard-match.arena-match .hand-card-seat:has([aria-pressed="true"]) {
+  z-index: 30;
+}
+.courtyard-match.arena-match .hand .hand-card:has(.card-face) {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--courtyard-card-height);
+  min-height: 44px;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  touch-action: pan-x pinch-zoom;
+  cursor: grab;
+  border-radius: 9px;
+  box-shadow: none;
+  line-height: 0;
+  scroll-margin-inline: var(--courtyard-fan-gutter);
+}
+.courtyard-match.arena-match .hand .hand-card[data-dragging="true"] {
+  opacity: 0.25;
+  cursor: grabbing;
+}
+.courtyard-match.arena-match .hand-card-fan {
+  display: block;
+  height: 100%;
+  transform: translateY(var(--fan-rise)) rotate(var(--fan-angle));
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+.courtyard-match.arena-match .hand-card-lift {
+  display: block;
+  height: 100%;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-rows: minmax(40px, 1fr) auto 33px;
+  padding: 4px 4px 0;
+  box-shadow: 0 4px 10px #0008;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face-art {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face-title {
+  font-size: 14px;
+  line-height: 15px;
+  min-height: 30px;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face-kind {
+  display: block;
+  font-size: 9px;
+  line-height: 10px;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face-plate {
+  padding: 5px 4px;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face-footer {
+  height: 33px;
+  min-height: 33px;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face-stat {
+  height: 31px;
+  width: 30px;
+}
+.courtyard-match.arena-match .hand .hand-card .card-face-stat b {
+  font-size: 20px;
+}
+.courtyard-match.arena-match .hand .hand-card .rarity-gem {
+  height: 33px;
+}
+.courtyard-match.arena-match .hand .hand-card .rarity-gem svg {
+  width: 22px;
+  height: 22px;
+}
+.courtyard-match.arena-match .hand .hand-card:focus-visible {
+  outline: 3px solid #fff6c5;
+  outline-offset: 3px;
+}
+.courtyard-match.arena-match .hand .hand-card[aria-pressed="true"] {
+  outline: 2px solid #ddf39c;
+  outline-offset: 3px;
+}
+.courtyard-match.arena-match .hand .hand-card[data-playable="true"] .card-face {
+  box-shadow:
+    0 0 0 1px #d4ef9b,
+    0 0 12px #bfd98240,
+    0 6px 10px #0008;
+}
+
+/* One existing phase command, presented as an inset jade/brass orb. */
+.courtyard-match.arena-match .phase-controls {
+  position: absolute;
+  top: 43%;
+  right: 22px;
+  bottom: auto;
+  width: 102px;
+  z-index: 22;
+  transform: translateY(-50%);
+}
+.courtyard-match.arena-match .phase-controls .phase-orb {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 102px;
+  height: 102px;
+  min-height: 44px;
+  padding: 17px 11px;
+  border: 3px solid var(--courtyard-gold);
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 35% 20%,
+    #277780,
+    #0c353d 50%,
+    #06232e 80%
+  );
+  box-shadow:
+    inset 0 0 0 3px #102627,
+    inset 0 0 18px #3ca99844,
+    0 0 0 2px #544121,
+    0 4px 17px #0009;
+  color: #fff1c9;
+  font-size: 18px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-shadow: 0 2px #001c22;
+}
+.courtyard-match.arena-match .phase-orb::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px solid #e0c68a;
+  border-radius: 44%;
+  transform: rotate(45deg);
+  pointer-events: none;
+  box-shadow: inset 0 0 0 3px #8f6e373f;
+}
+.courtyard-match.arena-match .phase-orb-rune {
+  display: block;
+  margin-top: 5px;
+  color: #87e6dd;
+  font-size: 19px;
+}
+.courtyard-match.arena-match .phase-orb:hover:not(:disabled) {
+  background: radial-gradient(
+    ellipse at 35% 20%,
+    #3e9c9f,
+    #14535a 55%,
+    #082833
+  );
+}
+.courtyard-match.arena-match .phase-orb:disabled {
+  opacity: 0.63;
+}
+.courtyard-match.arena-match .phase-orb:focus-visible {
+  outline: 3px solid #fff5ce;
+  outline-offset: 13px;
+}
+.courtyard-match.arena-match .phase-controls:has(.primary:not(.phase-orb)) {
+  top: auto;
+  bottom: 65px;
+  transform: none;
+  width: 160px;
+}
+
+.courtyard-match.arena-match .courtyard-cast {
+  position: absolute;
+  left: var(--cast-x, 50%);
+  top: var(--cast-y, 49%);
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  min-width: 110px;
+  min-height: 44px;
+  padding: 7px 12px;
+  color: #f5f6d5;
+  background: #123b3aeb;
+  border: 2px solid #b6df9e;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #71dfc24d;
+  pointer-events: auto;
+  font-size: 14px;
+}
+.courtyard-match.arena-match .board-unit[data-move-source="true"] {
+  outline: 3px solid #f4db8f;
+  outline-offset: 4px;
+  cursor: grab;
+  touch-action: pinch-zoom;
+}
+.courtyard-match.arena-match [data-card-dragging="true"] .inspect {
+  visibility: hidden;
+}
+.courtyard-match.arena-match .gameplay .inspect {
+  top: 115px;
+  max-height: calc(100% - 340px);
+}
+.courtyard-match.arena-match .gameplay .tutorial-panel {
+  top: 110px;
+  max-height: calc(100% - 360px);
+}
+.courtyard-match.arena-match .motion-preferences {
+  background: #10282cc9;
+  padding-inline: 8px;
+  border-radius: 4px;
+}
+.courtyard-match.arena-match .motion-controls {
+  top: 12px;
+  right: 16px;
+  max-width: 190px;
+}
+.courtyard-match.arena-match :is(.reserve, .hand-list, .tablet-inspect) {
+  background: #10282ce8;
+  border-color: #c3b77b47;
+}
+
+/* The pointer preview is portalled above the stage, never part of hit testing. */
+.courtyard-drag-preview {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 104px;
+  height: 150px;
+  z-index: 90;
+  pointer-events: none;
+  will-change: transform;
+  filter: drop-shadow(0 10px 14px #0008);
+}
+.courtyard-drag-preview * {
+  pointer-events: none;
+}
+.courtyard-drag-preview .card-face {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-rows: minmax(25px, 1fr) auto 29px;
+  padding: 4px 4px 0;
+}
+.courtyard-drag-preview .card-face-art {
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+.courtyard-drag-preview .card-face-plate {
+  margin-top: -4px;
+  padding: 4px;
+}
+.courtyard-drag-preview .card-face-title {
+  font-size: 13px;
+  line-height: 14px;
+}
+.courtyard-drag-preview .card-face-kind {
+  font-size: 9px;
+  margin-bottom: 2px;
+}
+.courtyard-drag-preview .card-face-footer {
+  height: 29px;
+  min-height: 29px;
+}
+.courtyard-drag-preview .card-face-cost {
+  width: 29px;
+  font-size: 22px;
+}
+.courtyard-drag-preview .card-face-stat {
+  width: 28px;
+  height: 30px;
+}
+.courtyard-drag-preview .card-face-stat b {
+  font-size: 20px;
+}
+.courtyard-drag-preview .card-face-stat small {
+  font-size: 7px;
+}
+.courtyard-drag-preview .card-face-system {
+  display: none;
+}
+.courtyard-drag-preview .rarity-gem {
+  height: 31px;
+}
+.courtyard-drag-preview .rarity-gem svg {
+  width: 20px;
+  height: 20px;
+}
+.courtyard-drag-preview .rarity-gem > span {
+  font-size: 9px;
+  line-height: 10px;
+}
+.courtyard-drag-preview .drag-drop-status {
+  display: block;
+  margin-top: 7px;
+  text-align: center;
+  padding: 5px;
+  color: #f1e8d2;
+  background: #14272de8;
+  font: 12px var(--campaign-display);
+  border-radius: 4px;
+}
+.courtyard-drag-preview:not([data-valid="true"]) .drag-drop-status {
+  font-size: 0;
+}
+.courtyard-drag-preview:not([data-valid="true"]) .drag-drop-status::after {
+  content: "Choose a target";
+  font-size: 12px;
+}
+.courtyard-drag-preview[data-valid="true"] .card-face {
+  outline: 2px solid #daf2a9;
+  outline-offset: 3px;
+}
+.courtyard-drag-preview[data-returning="true"] .drag-drop-status {
+  visibility: hidden;
+}
+
+@media (max-width: 1200px) and (min-width: 701px) {
+  .courtyard-match.arena-match {
+    --courtyard-card-width: 110px;
+    --courtyard-card-height: 158px;
+    --courtyard-hand-height: 234px;
+    --courtyard-overlap: 22px;
+  }
+  .courtyard-match.arena-match .hand-region {
+    left: 244px;
+    right: 112px;
+  }
+  .courtyard-match.arena-match .hero-panel[data-own-hero="true"] {
+    width: 230px;
+    left: 12px;
+  }
+  .courtyard-match.arena-match .phase-controls {
+    right: 18px;
+    width: 80px;
+  }
+  .courtyard-match.arena-match .phase-controls .phase-orb {
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+@media (max-height: 500px) and (min-width: 701px) {
+  .courtyard-match.arena-match {
+    --courtyard-card-width: 84px;
+    --courtyard-card-height: 120px;
+    --courtyard-hand-height: 156px;
+    --courtyard-overlap: 20px;
+    --courtyard-fan-gutter: 24px;
+  }
+  .courtyard-match.arena-match .hero-panel.panel {
+    top: 6px;
+    left: 12px;
+    transform: none;
+    min-height: 62px;
+    width: 198px;
+    padding-left: 60px;
+  }
+  .courtyard-match.arena-match .hero-panel[data-own-hero="true"] {
+    top: auto;
+    bottom: 100px;
+    left: 12px;
+    width: 198px;
+  }
+  .courtyard-match.arena-match .hero-hud-art {
+    width: 48px;
+    height: 54px;
+    left: 3px;
+    top: 3px;
+  }
+  .courtyard-match.arena-match .hero-hud-art::before {
+    inset: -5px;
+  }
+  .courtyard-match.arena-match .hero-hud-art::after {
+    width: 9px;
+    height: 9px;
+    left: calc(50% - 5px);
+    top: -10px;
+  }
+  .courtyard-match.arena-match .hero-target {
+    min-height: 24px;
+  }
+  .courtyard-match.arena-match .hero-target .hero-health {
+    left: 35px;
+    top: 32px;
+    min-width: 27px;
+    height: 30px;
+  }
+  .courtyard-match.arena-match .hero-health b {
+    font-size: 20px;
+  }
+  .courtyard-match.arena-match .hero-name {
+    font-size: 14px;
+  }
+  .courtyard-match.arena-match .hero-name > span {
+    display: none;
+  }
+  .courtyard-match.arena-match .hero-resources {
+    gap: 2px 6px;
+    font-size: 10px;
+  }
+  .courtyard-match.arena-match .hero-resources b {
+    font-size: 12px;
+  }
+  .courtyard-match.arena-match .energy-pips {
+    gap: 2px;
+    max-width: 64px;
+  }
+  .courtyard-match.arena-match .energy-pips i {
+    width: 7px;
+    height: 7px;
+  }
+  .courtyard-match.arena-match .hero-resources > .hero-counts {
+    font-size: 9px;
+  }
+  .courtyard-match.arena-match .hand-region {
+    left: 214px;
+    right: 108px;
+    bottom: 0;
+  }
+  .courtyard-match.arena-match .hand-region .region-heading {
+    display: none;
+  }
+  .courtyard-match.arena-match .hand.courtyard-hand {
+    height: 100%;
+    padding: 26px var(--courtyard-fan-gutter) 10px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face {
+    grid-template-rows: minmax(24px, 1fr) auto 25px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-title {
+    font-size: 11px;
+    line-height: 12px;
+    min-height: 24px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-kind {
+    display: none;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-footer {
+    height: 25px;
+    min-height: 25px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-stat {
+    width: 25px;
+    height: 26px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-stat b {
+    font-size: 17px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .rarity-gem {
+    height: 26px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .rarity-gem svg {
+    width: 18px;
+    height: 18px;
+  }
+  .courtyard-match.arena-match .phase-controls {
+    top: 48%;
+    right: 16px;
+    width: 68px;
+  }
+  .courtyard-match.arena-match .phase-controls .phase-orb {
+    width: 68px;
+    height: 68px;
+    font-size: 14px;
+    padding: 10px;
+  }
+  .courtyard-match.arena-match .phase-orb-rune {
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .courtyard-match.arena-match .phase-orb::before {
+    inset: -7px;
+  }
+  .courtyard-match.arena-match .gameplay .inspect {
+    top: auto;
+    bottom: 0;
+    left: 214px;
+    right: 108px;
+    width: auto;
+    max-height: 140px;
+  }
+  .courtyard-match.arena-match .gameplay .tutorial-panel {
+    top: 80px;
+    left: 8px;
+    width: 190px;
+    max-height: calc(100% - 210px);
+  }
+  .courtyard-match.arena-match .motion-preferences {
+    top: 6px;
+    right: 8px;
+    max-width: 150px;
+    font-size: 10px;
+  }
+  .courtyard-match.arena-match .motion-controls {
+    top: 52px;
+    max-width: 136px;
+  }
+}
+@media (max-width: 700px) {
+  .courtyard-match.arena-match {
+    --courtyard-card-width: 92px;
+    --courtyard-card-height: 134px;
+    --courtyard-hand-height: 198px;
+    --courtyard-overlap: 18px;
+    --courtyard-fan-gutter: 24px;
+  }
+  .courtyard-match.arena-match .hero-panel.panel {
+    top: 14px;
+    left: 12px;
+    transform: none;
+    width: 216px;
+    padding-left: 68px;
+    min-height: 74px;
+  }
+  .courtyard-match.arena-match .hero-panel[data-own-hero="true"] {
+    top: auto;
+    bottom: 292px;
+    left: 12px;
+    width: 216px;
+  }
+  .courtyard-match.arena-match .hero-hud-art {
+    left: 3px;
+    width: 56px;
+    height: 62px;
+  }
+  .courtyard-match.arena-match .hero-hud-art::before {
+    inset: -6px -5px;
+  }
+  .courtyard-match.arena-match .hero-hud-art::after {
+    width: 10px;
+    height: 10px;
+    left: calc(50% - 5px);
+    top: -12px;
+  }
+  .courtyard-match.arena-match .hero-target {
+    min-height: 30px;
+  }
+  .courtyard-match.arena-match .hero-target .hero-health {
+    left: 40px;
+    top: 36px;
+    min-width: 29px;
+    height: 33px;
+  }
+  .courtyard-match.arena-match .hero-health b {
+    font-size: 23px;
+  }
+  .courtyard-match.arena-match .hero-name {
+    font-size: 15px;
+  }
+  .courtyard-match.arena-match .hero-name > span {
+    display: none;
+  }
+  .courtyard-match.arena-match .hero-resources {
+    flex-wrap: wrap;
+    font-size: 10px;
+    gap: 3px 6px;
+  }
+  .courtyard-match.arena-match .hero-resources b {
+    font-size: 12px;
+  }
+  .courtyard-match.arena-match .energy-pips {
+    max-width: 76px;
+  }
+  .courtyard-match.arena-match .energy-pips i {
+    width: 9px;
+    height: 9px;
+  }
+  .courtyard-match.arena-match .hero-resources > .hero-counts {
+    font-size: 9px;
+  }
+  .courtyard-match.arena-match .hand-region {
+    left: 0;
+    right: 0;
+    bottom: 82px;
+    height: var(--courtyard-hand-height);
+  }
+  .courtyard-match.arena-match .hand.courtyard-hand {
+    justify-content: flex-start;
+    padding: 26px var(--courtyard-fan-gutter) 20px;
+  }
+  .courtyard-match.arena-match .hand-card-fan {
+    transform: translateY(calc(var(--fan-rise) * 0.5))
+      rotate(calc(var(--fan-angle) * 0.55));
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face {
+    grid-template-rows: minmax(30px, 1fr) auto 27px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-title {
+    font-size: 12px;
+    line-height: 13px;
+    min-height: 26px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-kind {
+    display: none;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-footer {
+    height: 27px;
+    min-height: 27px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-stat {
+    width: 27px;
+    height: 28px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .card-face-stat b {
+    font-size: 18px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .rarity-gem {
+    height: 29px;
+  }
+  .courtyard-match.arena-match .hand .hand-card .rarity-gem svg {
+    width: 19px;
+    height: 19px;
+  }
+  .courtyard-match.arena-match .phase-controls {
+    top: auto;
+    bottom: 296px;
+    right: 20px;
+    width: 60px;
+    transform: none;
+  }
+  .courtyard-match.arena-match .phase-controls .phase-orb {
+    width: 60px;
+    height: 60px;
+    padding: 9px 6px;
+    font-size: 13px;
+  }
+  .courtyard-match.arena-match .phase-orb::before {
+    inset: -6px;
+  }
+  .courtyard-match.arena-match .phase-orb-rune {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .courtyard-match.arena-match .gameplay .inspect {
+    top: auto;
+    bottom: 82px;
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-height: 200px;
+  }
+  .courtyard-match.arena-match .gameplay .tutorial-panel {
+    top: 98px;
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-height: 100px;
+  }
+  .courtyard-match.arena-match .motion-preferences {
+    top: 94px;
+    right: 8px;
+    max-width: 136px;
+    font-size: 10px;
+  }
+  .courtyard-match.arena-match .motion-controls {
+    top: 7px;
+    right: 8px;
+    max-width: 125px;
+  }
+  .courtyard-match.arena-match .courtyard-cast {
+    font-size: 12px;
+    min-width: 90px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .courtyard-match.arena-match .hand-card-fan {
+    transform: none;
+  }
+  .courtyard-match.arena-match .hand-card-lift {
+    transform: none !important;
+  }
+}
+
+/* The old mulligan badge selector matches any last span; a fan wrapper is not a
+   badge and must retain its own transform/layout ownership. */
+.courtyard-match.arena-match
+  .hand
+  .hand-card:has(.card-face)
+  > span.hand-card-fan {
+  position: static;
+  inset: auto;
+  z-index: auto;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+}
+.courtyard-match.arena-match
+  [data-renderer="three"][data-arena-3d="ready"]
+  .board-unit
+  .unit-stats {
+  top: auto;
+  bottom: 2px;
+}
+.courtyard-match.arena-match .hero-target {
+  min-height: 44px;
+}
+.courtyard-match.arena-match
+  .hero-panel[data-drag-target="true"]
+  .hero-hud-art {
+  outline: 3px solid #e2f5ac;
+  outline-offset: 9px;
+  box-shadow: 0 0 24px #caf59b80;
+}
+
+@media (max-height: 500px) and (min-width: 701px) and (prefers-reduced-motion: no-preference) {
+  .courtyard-match.arena-match .hand-card-fan {
+    transform: translateY(calc(var(--fan-rise) * 0.35))
+      rotate(calc(var(--fan-angle) * 0.45));
+  }
+}

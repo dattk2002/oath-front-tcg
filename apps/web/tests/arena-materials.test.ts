@@ -2,6 +2,7 @@ import { expect, it } from "vitest";
 import * as T from "three";
 import {
   attachArenaMaterial,
+  prepareCourtyardMaterials,
   releaseArenaMaterials,
 } from "../src/features/match/rendering/three/materials";
 
@@ -34,10 +35,8 @@ it("installs the selected original arena texture once and releases shared maps e
   expect(surfaces.every((surface) => surface.map === texture)).toBe(true);
   expect(texture.colorSpace).toBe(T.SRGBColorSpace);
   expect(texture.wrapS).toBe(T.ClampToEdgeWrapping);
-  expect(surfaces[0]!.bumpMap?.colorSpace).toBe(T.NoColorSpace);
+  expect(surfaces[0]!.bumpMap).toBeNull();
   expect(renders).toBe(1);
-  let bumpReleases = 0;
-  surfaces[0]!.bumpMap!.addEventListener("dispose", () => bumpReleases++);
   releaseArenaMaterials(scene);
   releaseArenaMaterials(scene);
   expect(
@@ -46,7 +45,6 @@ it("installs the selected original arena texture once and releases shared maps e
     ),
   ).toBe(true);
   expect(releases).toBe(1);
-  expect(bumpReleases).toBe(1);
 });
 
 it("does not install a late arena image or request another frame after disposal", () => {
@@ -74,4 +72,46 @@ it("does not install a late arena image or request another frame after disposal"
   expect(surface.map).toBeNull();
   expect(surface.bumpMap).toBeNull();
   expect(renders).toBe(0);
+});
+
+it("adds water surface detail without replacing authored colors, maps or geometry", () => {
+  const group = new T.Group();
+  const water = new T.MeshStandardMaterial({
+    name: "water",
+    color: 0x43aead,
+    vertexColors: true,
+  });
+  const stone = new T.MeshStandardMaterial({
+    name: "stone-pale",
+    color: 0xeee8dc,
+  });
+  const geometry = new T.PlaneGeometry(2, 2);
+  group.add(new T.Mesh(geometry, water), new T.Mesh(geometry, stone));
+  const original = water.color.clone();
+  const clock = { value: 0 };
+  expect(prepareCourtyardMaterials(group, clock)).toBe(true);
+  expect(group.children).toHaveLength(2);
+  expect(water.color).toEqual(original);
+  expect(water.vertexColors).toBe(true);
+  expect(water.transparent).toBe(true);
+  expect(water.depthWrite).toBe(false);
+  expect(water.bumpMap).toBeNull();
+  expect(water.map).toBeNull();
+  const shader = {
+    uniforms: {},
+    vertexShader: T.ShaderLib.standard.vertexShader,
+    fragmentShader: T.ShaderLib.standard.fragmentShader,
+  };
+  water.onBeforeCompile(
+    shader as Parameters<typeof water.onBeforeCompile>[0],
+    {} as T.WebGLRenderer,
+  );
+  expect(shader.uniforms).toMatchObject({ arenaTime: clock });
+  expect(shader.fragmentShader).toContain("#include <normal_fragment_maps>");
+  expect(shader.fragmentShader).toContain("#include <lights_fragment_begin>");
+  // Low/reduced motion uses the identical detailed surface with a clock that stays zero.
+  expect(clock.value).toBe(0);
+  geometry.dispose();
+  water.dispose();
+  stone.dispose();
 });

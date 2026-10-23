@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { movingUnitOwner } from "./card-drop";
+import type { CardDragController } from "./use-card-drag";
 import { ArenaDecor } from "./ArenaDecor";
 import { arenaForView } from "./rendering/arena";
 import { contentName, contentText } from "../../content/english-content";
@@ -36,6 +38,7 @@ export default function Board({
   onTarget,
   onInspect,
   onPreview,
+  cardDrag,
 }: {
   view: PlayerView;
   catalog: PublicCatalog;
@@ -45,9 +48,14 @@ export default function Board({
   onTarget: (target: Target) => void;
   onInspect: (unit: UnitView) => void;
   onPreview: (action: PlayerAction | null) => void;
+  cardDrag?: CardDragController;
 }) {
   const [arena] = useState(() => arenaForView(view));
   const enemy = view.self.side === "GOOD" ? "EVIL" : "GOOD";
+  const moveSide = movingUnitOwner(
+    view,
+    cardDrag?.pendingMove?.selectedUnit ?? selectedUnit,
+  );
   const legalAction = (target: Target) =>
     disabled
       ? undefined
@@ -74,6 +82,10 @@ export default function Board({
     return (
       <button
         className={`board-unit ${unit.owner.toLowerCase()}`}
+        {...cardDrag?.getUnitBindings(unit.instanceId)}
+        data-move-source={
+          cardDrag?.pendingMove?.selectedUnit === unit.instanceId
+        }
         data-own-unit={own}
         data-slot-side={unit.owner}
         data-slot-lane={laneId}
@@ -82,7 +94,13 @@ export default function Board({
         data-legal-target={!!action}
         onFocus={() => onPreview(action ?? null)}
         onPointerEnter={() => onPreview(action ?? null)}
-        onClick={() => (action ? onTarget(target) : onInspect(unit))}
+        onClick={(event) => {
+          if (cardDrag?.consumeClick(event)) return;
+          if (cardDrag?.pendingMove?.selectedUnit === unit.instanceId) return;
+          cardDrag?.cancel();
+          if (action) onTarget(target);
+          else onInspect(unit);
+        }}
       >
         <span className="sr-only">Lane {laneId}, </span>
         <span className="scene-art" aria-hidden="true">
@@ -133,6 +151,9 @@ export default function Board({
         {view.board.map((lane) => {
           const target: Target = { kind: "LANE", laneId: lane.laneId };
           const action = legalAction(target);
+          const moveTarget =
+            !disabled &&
+            !!cardDrag?.pendingMove?.allowedDestinations.includes(lane.laneId);
           const location =
             lane.location.state === "REVEALED"
               ? catalog.locations.find(
@@ -196,23 +217,41 @@ export default function Board({
               <button
                 className="lane-target"
                 data-lane-id={lane.laneId}
+                data-slot-side={moveSide ?? undefined}
+                data-slot-lane={moveSide ? lane.laneId : undefined}
                 data-tutorial-focus={view.tutorial?.focusTargets.some(
                   (t) => t.kind === "LANE" && t.laneId === lane.laneId,
                 )}
                 data-target={JSON.stringify(target)}
-                data-legal-target={!!action}
-                disabled={!action}
+                data-legal-target={!!action || moveTarget}
+                disabled={!action && !moveTarget}
                 onFocus={() => onPreview(action ?? null)}
                 onPointerEnter={() => onPreview(action ?? null)}
-                onClick={() => onTarget(target)}
-                aria-label={`Choose lane ${lane.laneId}${action ? ", legal target" : ", unavailable"}`}
+                onClick={() => {
+                  if (!cardDrag?.dropOnLane(lane.laneId)) onTarget(target);
+                }}
+                aria-label={`Choose lane ${lane.laneId}${action || moveTarget ? ", legal target" : ", unavailable"}${moveSide ? `, ${sideLabel[moveSide]} row` : ""}`}
               >
-                {action ? "Choose this lane" : `Lane ${lane.laneId}`}
+                {action || moveTarget
+                  ? "Choose this lane"
+                  : `Lane ${lane.laneId}`}
               </button>
             </li>
           );
         })}
       </ol>
+      {(actions.some((action) => targetFor(action)?.kind === "NONE") ||
+        cardDrag?.allowedHits.some((hit) => hit.kind === "CAST")) && (
+        <button
+          className="courtyard-cast"
+          data-target={JSON.stringify({ kind: "NONE" })}
+          data-legal-target={!disabled}
+          disabled={disabled}
+          onClick={() => onTarget({ kind: "NONE" })}
+        >
+          Cast selected card
+        </button>
+      )}
     </section>
   );
 }

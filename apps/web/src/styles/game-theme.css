@@ -4,6 +4,7 @@
 @import "./lobby.css";
 @import "./cards.css";
 @import "./arena-3d.css";
+@import "./courtyard.css";
 /* Approved inherited game skin. Arena dimensions remain owned by match.css. */
 body {
   --bg: var(--campaign-ink);

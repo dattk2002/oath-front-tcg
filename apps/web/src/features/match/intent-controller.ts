@@ -143,6 +143,23 @@ export function createIntentController(
     });
   }
   return {
+    getSnapshot: store.getSnapshot,
+    /** Drag is transient; settle the table without opening the card inspector. */
+    prepareDrag() {
+      const snapshot = store.getSnapshot();
+      if (
+        snapshot.pendingCommand ||
+        snapshot.authoritativeView.lifecycle !== "ACTIVE"
+      )
+        return false;
+      if (snapshot.presentationCursor < snapshot.latestSeq) {
+        options.fastForward?.();
+        store.setPresentationCursor(snapshot.latestSeq);
+      }
+      store.setSelection(null);
+      store.setMessage(null);
+      return true;
+    },
     submitIntent,
     async retryPending() {
       const command = store.getSnapshot().pendingCommand;

@@ -248,9 +248,12 @@ it("keeps amplified signature, attack and damage cameras inside playable bounds 
   }
 });
 
-it("uses phone stage width for readable card hit areas without changing the desktop camera", () => {
+it("uses readable phone card hit areas and the approved 64–68 degree courtyard camera", () => {
   const desktop = createCamera(1440, 679);
-  expect(desktop.position.toArray()).toEqual([0, 14, 12.6]);
+  const elevation =
+    (Math.atan2(desktop.position.y, desktop.position.z) * 180) / Math.PI;
+  expect(elevation).toBeGreaterThanOrEqual(64);
+  expect(elevation).toBeLessThanOrEqual(68);
   for (const [width, height] of [
     [375, 540],
     [375, 450],

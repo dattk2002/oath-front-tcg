@@ -12,19 +12,29 @@ import { effectFamily, effectPalette } from "../vfx";
 import {
   CARD_WIDTH,
   CARD_DEPTH,
+  SURFACE_Y,
   cardAnchor,
   createCamera,
   cameraForCue,
   projectTile,
   stableArenaKey,
+  unobscuredCardFrame,
+  type CardFrame,
 } from "./layout";
-import { buildEnvironment, disposeObject } from "./environment";
+import {
+  buildEnvironment,
+  disposeObject,
+  prepareAuthoredEnvironment,
+} from "./environment";
+import { loadArenaAssets, type LoadedArena } from "./arena-assets";
+import { prepareCourtyardMaterials } from "./materials";
+import { createArenaPicker, createDragFeedback } from "./interaction";
+import type { ArenaInteractionSurface } from "../arena-interaction";
 import { createCardTexture } from "./card-texture";
 import { SceneFailure, type SceneFailureReason } from "../scene-failure";
 type Card = {
   group: T.Group;
   face: T.Mesh<T.PlaneGeometry, T.MeshBasicMaterial>;
-  body: T.Mesh;
   texture: ReturnType<typeof createCardTexture>;
   unit: UnitView;
   stats: string;
@@ -40,7 +50,7 @@ export function createThreeBattleScene(
     arenaKey?: string;
     onFailure?: (reason: SceneFailureReason) => void;
   },
-): BattleScene {
+): BattleScene & { interaction: ArenaInteractionSurface } {
   const root =
     canvas.closest<HTMLElement>("[data-battle-root]") ?? canvas.parentElement!;
   const board = root.querySelector<HTMLElement>(".board");
@@ -48,6 +58,22 @@ export function createThreeBattleScene(
   const scene = new T.Scene();
   const effects = new T.Group();
   scene.add(effects);
+  // Card thickness shares one draw and shadow pass; faces retain their own live textures.
+  const cardEdges = new T.InstancedMesh(
+    new T.BoxGeometry(CARD_WIDTH, 0.075, CARD_DEPTH),
+    new T.MeshStandardMaterial({
+      color: 0x9e9da9,
+      metalness: 0.7,
+      roughness: 0.38,
+    }),
+    12,
+  );
+  cardEdges.count = 0;
+  cardEdges.frustumCulled = false;
+  cardEdges.castShadow = true;
+  cardEdges.receiveShadow = true;
+  cardEdges.instanceMatrix.setUsage(T.DynamicDrawUsage);
+  scene.add(cardEdges);
   let renderer: T.WebGLRenderer | undefined,
     camera = createCamera(1000, 600),
     view: PlayerView | null = null,
@@ -61,6 +87,19 @@ export function createThreeBattleScene(
   let current: { event: VisibleEvent; cue: Cue } | null = null,
     arenaKey = options.arenaKey,
     environment: T.Group | undefined;
+  const assetAbort = new AbortController();
+  let loadedArena: LoadedArena | null = null,
+    cameraHeld = false;
+  let ambient: gsap.core.Tween | undefined;
+  let ambientClock: { value: number } | undefined;
+  const picker = createArenaPicker();
+  const dragFeedback = createDragFeedback(
+    catalog,
+    options.quality,
+    () => schedule(true),
+    picker,
+  );
+  scene.add(dragFeedback.group);
   const cards = new Map<string, Card>(),
     listeners = new Set<(v: PlayerView) => void>(),
     projected = new Set<HTMLElement>();
@@ -69,6 +108,8 @@ export function createThreeBattleScene(
   let bounds: DOMRect,
     width = 1,
     height = 1;
+  let cardFrame: CardFrame | undefined,
+    frameKey = "";
   const rings: T.Mesh<T.RingGeometry, T.MeshBasicMaterial>[] = [],
     trails: T.Line<T.BufferGeometry, T.LineBasicMaterial>[] = [],
     labels = new Map<string, T.Sprite>();
@@ -92,6 +133,8 @@ export function createThreeBattleScene(
         el.style.removeProperty(`--project-${name}`);
     }
     projected.clear();
+    board?.style.removeProperty("--cast-x");
+    board?.style.removeProperty("--cast-y");
     delete root.dataset.renderer;
     root.removeAttribute("data-arena-3d");
     delete canvas.dataset.renderer;
@@ -109,6 +152,26 @@ export function createThreeBattleScene(
     const r = root.getBoundingClientRect();
     width = Math.max(1, bounds.width);
     height = Math.max(1, bounds.height);
+    if (root.closest(".courtyard-match")) {
+      const blockers = Array.from(
+        root.querySelectorAll<HTMLElement>(
+          ".hand-region, .hero-panel, .phase-controls, .motion-preferences, .motion-controls",
+        ),
+      ).map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          x: rect.left - bounds.left,
+          y: rect.top - bounds.top,
+          width: rect.width,
+          height: rect.height,
+        };
+      });
+      const key = JSON.stringify([width, height, blockers]);
+      if (key !== frameKey) {
+        frameKey = key;
+        cardFrame = unobscuredCardFrame(width, height, blockers);
+      }
+    }
     Object.assign(layer.style, {
       left: `${bounds.left - r.left + root.scrollLeft}px`,
       top: `${bounds.top - r.top + root.scrollTop}px`,
@@ -159,6 +222,7 @@ export function createThreeBattleScene(
   }
   function syncCards() {
     if (!view || !renderer) return;
+    picker.update(view);
     const units = view.board
       .flatMap((l) => [l.good, l.evil])
       .filter((u): u is UnitView => !!u);
@@ -214,17 +278,6 @@ export function createThreeBattleScene(
         );
         const texture = createCardTexture(def, unit, schedule, options.quality);
         const group = new T.Group();
-        const body = new T.Mesh(
-          new T.BoxGeometry(CARD_WIDTH, 0.075, CARD_DEPTH),
-          new T.MeshStandardMaterial({
-            color: 0x9e9da9,
-            metalness: 0.7,
-            roughness: 0.38,
-          }),
-        );
-        body.castShadow = true;
-        body.receiveShadow = true;
-        group.add(body);
         const face = new T.Mesh(
           new T.PlaneGeometry(CARD_WIDTH, CARD_DEPTH),
           new T.MeshBasicMaterial({
@@ -237,7 +290,7 @@ export function createThreeBattleScene(
         face.position.y = 0.041;
         group.add(face);
         scene.add(group);
-        card = { group, face, body, texture, unit, stats, lift: 0 };
+        card = { group, face, texture, unit, stats, lift: 0 };
         cards.set(unit.instanceId, card);
       } else if (card.stats !== stats) {
         card.stats = stats;
@@ -501,6 +554,9 @@ export function createThreeBattleScene(
   }
   function project() {
     if (!view || !board) return;
+    const cast = new T.Vector3(0, SURFACE_Y + 0.02, 0).project(camera);
+    board.style.setProperty("--cast-x", `${((cast.x + 1) * width) / 2}px`);
+    board.style.setProperty("--cast-y", `${((1 - cast.y) * height) / 2}px`);
     for (const el of projected)
       if (!board.contains(el)) {
         delete el.dataset.projected;
@@ -590,20 +646,30 @@ export function createThreeBattleScene(
       camera = cameraForCue(
         width,
         height,
-        current?.event ?? null,
-        current?.cue ?? null,
+        cameraHeld ? null : (current?.event ?? null),
+        cameraHeld ? null : (current?.cue ?? null),
         reduced(),
+        cardFrame,
       );
       for (const card of cards.values()) {
         card.group.position.copy(
           cardAnchor(card.unit.laneId, card.unit.owner, view.self.side),
         );
-        card.group.position.y += reduced() ? 0 : card.lift;
+        card.group.position.y +=
+          0.04 + (reduced() || cameraHeld ? 0 : card.lift);
         card.group.rotation.set(0, 0, 0);
         card.group.scale.setScalar(1);
         card.face.material.opacity = 1;
       }
       drawEffects();
+      cardEdges.count = Math.min(cards.size, 12);
+      let instance = 0;
+      for (const card of cards.values()) {
+        if (instance >= cardEdges.count) break;
+        card.group.updateMatrixWorld(true);
+        cardEdges.setMatrixAt(instance++, card.group.matrixWorld);
+      }
+      cardEdges.instanceMatrix.needsUpdate = true;
       renderer.render(scene, camera);
       project();
       if (!readyFlag) {
@@ -622,6 +688,8 @@ export function createThreeBattleScene(
       });
       canvas.dataset.meshes = String(meshCount);
       canvas.dataset.drawCalls = String(renderer.info.render.calls);
+      canvas.dataset.textures = String(renderer.info.memory.textures);
+      canvas.dataset.ambientTime = (ambientClock?.value ?? 0).toFixed(4);
       canvas.dataset.triangles = String(renderer.info.render.triangles);
       canvas.dataset.camera = [...camera.position.toArray(), camera.zoom]
         .map((n) => n.toFixed(4))
@@ -655,6 +723,16 @@ export function createThreeBattleScene(
   function release() {
     if (released) return;
     released = true;
+    assetAbort.abort();
+    ambient?.kill();
+    picker.dispose();
+    dragFeedback.dispose();
+    scene.remove(dragFeedback.group);
+    if (loadedArena) {
+      scene.remove(loadedArena.group);
+      loadedArena.dispose();
+      loadedArena = null;
+    }
     resize?.disconnect();
     observer?.disconnect();
     board?.removeEventListener("pointerover", updateHover);
@@ -686,11 +764,12 @@ export function createThreeBattleScene(
   function notify() {
     if (view) listeners.forEach((listener) => listener(view!));
     syncCards();
+    syncAmbient();
     // A semantic fast-forward settles once without unpausing cues or hover.
     if (paused) draw(true);
     else schedule();
   }
-  const ready = Promise.resolve().then(() => {
+  const ready = Promise.resolve().then(async () => {
     if (disposed) return;
     try {
       if (!board) throw new SceneFailure("render-failed");
@@ -719,13 +798,46 @@ export function createThreeBattleScene(
       arenaKey = view
         ? stableArenaKey(view, arenaKey)
         : (arenaKey ?? "moonroot-conservatory");
+      canvas.addEventListener("webglcontextlost", contextLost);
       try {
-        environment = buildEnvironment(arenaKey, options.quality, schedule);
+        const candidate = await loadArenaAssets(arenaKey, options.quality, {
+          signal: assetAbort.signal,
+        });
+        if (failed || disposed) {
+          candidate?.dispose();
+          if (failed) throw new SceneFailure(failed);
+          return;
+        }
+        loadedArena = candidate;
+        environment =
+          candidate?.group ??
+          buildEnvironment(arenaKey, options.quality, schedule);
+        if (candidate) prepareAuthoredEnvironment(environment, options.quality);
       } catch (error) {
+        if (failed) throw new SceneFailure(failed, error);
+        if (disposed) return;
         throw new SceneFailure("scene-load-failed", error);
       }
       scene.add(environment);
-      canvas.addEventListener("webglcontextlost", contextLost);
+      if (loadedArena) {
+        renderer.toneMappingExposure = 1.02;
+        const clock = { value: 0 };
+        ambientClock = clock;
+        const hasAmbient = prepareCourtyardMaterials(environment, clock);
+        if (hasAmbient && options.quality === "high")
+          ambient = gsap.to(clock, {
+            value: Math.PI * 2,
+            duration: 8,
+            repeat: -1,
+            ease: "none",
+            paused: true,
+            onUpdate: () => {
+              if (paused || cameraHeld || reduced() || document.hidden)
+                ambient?.pause();
+              else schedule();
+            },
+          });
+      }
       resize = new ResizeObserver(() => schedule(true));
       resize.observe(board);
       resize.observe(root);
@@ -750,6 +862,7 @@ export function createThreeBattleScene(
       syncCards();
       draw();
       if (failed) throw new SceneFailure(failed);
+      syncAmbient();
     } catch (error) {
       const failure =
         error instanceof SceneFailure
@@ -759,8 +872,58 @@ export function createThreeBattleScene(
       throw failure;
     }
   });
+  function syncAmbient() {
+    if (
+      paused ||
+      view?.lifecycle !== "ACTIVE" ||
+      cameraHeld ||
+      reduced() ||
+      document.hidden ||
+      disposed ||
+      failed
+    )
+      ambient?.pause();
+    else ambient?.resume();
+  }
+  const interaction: ArenaInteractionSurface = {
+    pick(x, y, allowed) {
+      if (disposed || failed || paused || !readyFlag || !board || !view)
+        return [];
+      const rect = board.getBoundingClientRect();
+      if (rect.width !== width || rect.height !== height) draw(true);
+      return picker.pick(x, y, allowed, camera, rect);
+    },
+    setDragPreview(preview) {
+      if (disposed || failed || (preview && (paused || document.hidden)))
+        return;
+      dragFeedback.update(preview, view);
+      schedule(true);
+    },
+    holdCamera(held) {
+      if (disposed || failed) return;
+      cameraHeld = held;
+      if (held) {
+        current = null;
+        clearLabels();
+        cards.forEach((card) => {
+          card.tween?.kill();
+          card.lift = 0;
+        });
+      }
+      syncAmbient();
+      draw(true);
+    },
+    clearInteraction() {
+      if (disposed || failed) return;
+      dragFeedback.update(null, view);
+      cameraHeld = false;
+      syncAmbient();
+      draw(true);
+    },
+  };
   return {
     ready,
+    interaction,
     getView: () => view,
     subscribe(listener) {
       listeners.add(listener);
@@ -779,7 +942,7 @@ export function createThreeBattleScene(
       notify();
     },
     present(event, cue) {
-      if (disposed || paused || failed) return;
+      if (disposed || paused || cameraHeld || failed) return;
       if (current?.event.sequence !== event.sequence) clearLabels();
       current = { event, cue: { ...cue } };
       if (
@@ -799,6 +962,11 @@ export function createThreeBattleScene(
     setPaused(value) {
       if (disposed || failed) return;
       paused = value;
+      if (value) {
+        dragFeedback.update(null, view);
+        cameraHeld = false;
+      }
+      syncAmbient();
       cards.forEach((card) =>
         value ? card.tween?.pause() : card.tween?.resume(),
       );
