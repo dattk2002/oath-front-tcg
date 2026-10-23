@@ -1,4 +1,35 @@
 import type { NextConfig } from "next";
+
+function websocketOrigin(value: string) {
+  const url = new URL(value);
+  if (
+    !["https:", "http:"].includes(url.protocol) ||
+    url.hostname.includes("*") ||
+    url.username ||
+    url.password ||
+    url.pathname !== "/" ||
+    url.search ||
+    url.hash
+  )
+    throw new Error("INVALID_REALTIME_ORIGIN");
+  url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
+  return url.origin;
+}
+function realtimeConnectSources() {
+  if (process.env.OATHFRONT_HOSTED_PROXY === "1") {
+    const upstream = process.env.API_UPSTREAM_ORIGIN;
+    if (!upstream || new URL(upstream).protocol !== "https:")
+      throw new Error("INVALID_REALTIME_ORIGIN");
+    return `'self' ${websocketOrigin(upstream)}`;
+  }
+  const sources = new Set(["'self'"]);
+  if (process.env.APP_ORIGIN)
+    sources.add(websocketOrigin(process.env.APP_ORIGIN));
+  const apiOrigin = process.env.API_ORIGIN ?? "http://127.0.0.1:3001";
+  if (["localhost", "127.0.0.1", "[::1]"].includes(new URL(apiOrigin).hostname))
+    sources.add(websocketOrigin(apiOrigin));
+  return [...sources].join(" ");
+}
 const config: NextConfig = {
   output: "standalone",
   // The dev badge otherwise covers the lobby pagination on short screens.
@@ -46,8 +77,7 @@ const config: NextConfig = {
             ? [
                 {
                   key: "Content-Security-Policy",
-                  value:
-                    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+                  value: `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src ${realtimeConnectSources()}; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'`,
                 },
               ]
             : []),

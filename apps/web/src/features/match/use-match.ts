@@ -20,22 +20,33 @@ import {
 import type { ApiClient } from "./api-client";
 import { createMatchViewStore } from "./view-store";
 import { createIntentController } from "./intent-controller";
+import { createMatchSync, realtimeUnavailableMessage } from "./realtime";
+function useSessionGeneration(api: ApiClient) {
+  return useSyncExternalStore(
+    api.subscribeSession,
+    api.getSessionGeneration,
+    api.getSessionGeneration,
+  );
+}
 export function useLoadedMatch(api: ApiClient, matchId: string) {
+  const sessionGeneration = useSessionGeneration(api);
   const [initial, setInitial] = useState<CommandResponse | null>(null),
     [failed, setFailed] = useState(false),
     [expired, setExpired] = useState(false),
     [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let active = true;
-    void api.match(matchId).then(
+    const abort = new AbortController();
+    const unsubscribeSession = api.subscribeSession(() => abort.abort());
+    void api.match(matchId, abort.signal).then(
       (response) => {
-        if (active) {
+        if (active && api.getSessionGeneration() === sessionGeneration) {
           setInitial(response);
           setFailed(false);
         }
       },
       (error: unknown) => {
-        if (active) {
+        if (active && api.getSessionGeneration() === sessionGeneration) {
           setExpired(
             error instanceof ApiError &&
               error.body.error.code === "MATCH_DETAILS_EXPIRED",
@@ -46,8 +57,10 @@ export function useLoadedMatch(api: ApiClient, matchId: string) {
     );
     return () => {
       active = false;
+      abort.abort();
+      unsubscribeSession();
     };
-  }, [api, matchId, attempt]);
+  }, [api, matchId, attempt, sessionGeneration]);
   return {
     initial: initial?.view.matchId === matchId ? initial : null,
     failed,
@@ -59,6 +72,7 @@ export function useLoadedMatch(api: ApiClient, matchId: string) {
   };
 }
 export function useMatchStore(initial: CommandResponse, api: ApiClient) {
+  const sessionGeneration = useSessionGeneration(api);
   const storage = usePrivateStorage();
   const presentation = useRef<PresentationController | null>(null);
   const [store] = useState(() => createMatchViewStore(initial));
@@ -71,7 +85,8 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
   const [online, setOnline] = useState(true),
     [recovering, setRecovering] = useState(false),
     [recoveryFailed, setRecoveryFailed] = useState(false),
-    [recoveryAttempt, setRecoveryAttempt] = useState(0);
+    [realtimeUnavailable, setRealtimeUnavailable] = useState(false);
+  const retryRecovery = useRef<() => void>(() => {});
   const controller = useMemo(
     () =>
       createIntentController(store, {
@@ -108,19 +123,32 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     };
   }, [initial.view.matchId, store, storage]);
   useEffect(() => {
-    let active = true,
-      inFlight = false;
-    async function reconnect(force = false) {
-      if (!active || inFlight || document.hidden || !navigator.onLine) return;
-      inFlight = true;
-      setRecovering(true);
-      try {
+    let active = true;
+    const current = () =>
+      active && api.getSessionGeneration() === sessionGeneration;
+    setRecovering(false);
+    const sync = createMatchSync({
+      matchId: initial.view.matchId,
+      subscribeSession: api.subscribeSession,
+      ticket: (signal) => api.realtimeTicket(initial.view.matchId, signal),
+      getRevision: () => store.getSnapshot().revision,
+      onPending: (pending) => {
+        if (current()) setRecovering(pending);
+      },
+      onRecovered: () => {
+        if (current()) setRecoveryFailed(false);
+      },
+      recover: async (force, signal) => {
         const recovered = await recoverMatch(
           initial.view.matchId,
           store.getSnapshot().logCursor,
-          api,
+          {
+            match: (id) => api.match(id, signal),
+            events: (id, after, through) =>
+              api.events(id, after, through, signal),
+          },
         );
-        if (!active) return;
+        if (!current()) return;
         const before = store.getSnapshot();
         store.acceptResponse(recovered.response);
         const accepted = store.getSnapshot();
@@ -133,48 +161,41 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
           presentation.current?.fastForward(accepted.authoritativeView);
           store.setSelection(null);
         }
-        setRecoveryFailed(false);
         if (isRecoveryFailureMessage(before.message)) store.setMessage(null);
         store.mergeLog(
           recovered.logEvents,
           recovered.logCursor,
           recovered.logExpired,
         );
-      } catch {
-        if (active) {
+      },
+      onError: () => {
+        if (current()) {
           setRecoveryFailed(true);
-          store.setMessage(latestBoardRecoveryError);
         }
-      } finally {
-        inFlight = false;
-        if (active) setRecovering(false);
-      }
-    }
-    const visible = () => {
-      if (!document.hidden) void reconnect(true);
-    };
-    const poll = () => {
-      if (!document.hidden) void reconnect();
-    };
-    // Visible inactive tabs also refresh every five seconds. Hidden tabs do no I/O.
-    const timer = setInterval(poll, 5000);
-    window.addEventListener("online", visible);
-    document.addEventListener("visibilitychange", visible);
-    void reconnect(true);
+      },
+      onStatus: (status) => {
+        if (!current()) return;
+        if (status === "disconnected") setRealtimeUnavailable(true);
+        else if (status === "connected") setRealtimeUnavailable(false);
+      },
+    });
+    retryRecovery.current = sync.retry;
     return () => {
       active = false;
-      clearInterval(timer);
-      window.removeEventListener("online", visible);
-      document.removeEventListener("visibilitychange", visible);
+      retryRecovery.current = () => {};
+      sync.dispose();
     };
-  }, [api, initial.view.matchId, store, recoveryAttempt]);
+  }, [api, initial.view.matchId, store, sessionGeneration]);
   useEffect(() => {
     let active = true,
       scanning = false;
+    const abort = new AbortController();
+    const unsubscribeSession = api.subscribeSession(() => abort.abort());
     async function catchUp() {
       const current = store.getSnapshot();
       if (
         !active ||
+        api.getSessionGeneration() !== sessionGeneration ||
         scanning ||
         document.hidden ||
         !navigator.onLine ||
@@ -187,15 +208,23 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
           initial.view.matchId,
           current.logCursor,
           current.latestSeq,
-          api,
+          {
+            events: (id, after, through) =>
+              api.events(id, after, through, abort.signal),
+          },
         );
-        if (active)
+        if (active && api.getSessionGeneration() === sessionGeneration)
           store.mergeLog(log.logEvents, log.logCursor, log.logExpired);
       } catch {
-        if (active) store.setMessage(incompleteLogRecoveryError);
+        if (active && api.getSessionGeneration() === sessionGeneration)
+          store.setMessage(incompleteLogRecoveryError);
       } finally {
         scanning = false;
-        if (active && store.getSnapshot().latestSeq > current.latestSeq)
+        if (
+          active &&
+          api.getSessionGeneration() === sessionGeneration &&
+          store.getSnapshot().latestSeq > current.latestSeq
+        )
           void catchUp();
       }
     }
@@ -203,9 +232,11 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     void catchUp();
     return () => {
       active = false;
+      abort.abort();
+      unsubscribeSession();
       unsubscribe();
     };
-  }, [api, initial.view.matchId, store]);
+  }, [api, initial.view.matchId, store, sessionGeneration]);
   useEffect(() => {
     if (
       recovering ||
@@ -246,6 +277,11 @@ export function useMatchStore(initial: CommandResponse, api: ApiClient) {
     online,
     presentation,
     recovering,
-    recover: () => setRecoveryAttempt((value) => value + 1),
+    recoveryMessage: recoveryFailed
+      ? latestBoardRecoveryError
+      : realtimeUnavailable
+        ? realtimeUnavailableMessage
+        : null,
+    recover: () => retryRecovery.current(),
   };
 }

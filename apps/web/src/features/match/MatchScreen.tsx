@@ -104,6 +104,7 @@ function MatchRuntime({
     online,
     presentation,
     recovering,
+    recoveryMessage,
     recover,
   } = useMatchStore(initial, api);
   const authoritativeView = snapshot.authoritativeView;
@@ -161,6 +162,7 @@ function MatchRuntime({
       online={online}
       onCancel={cancel}
       recovering={recovering}
+      recoveryMessage={recoveryMessage}
       onRecover={recover}
     >
       <div className="gameplay arena-stage" data-battle-root>
@@ -411,6 +413,7 @@ function MatchRuntime({
           snapshot={snapshot}
           online={online}
           recovering={recovering}
+          recoveryMessage={recoveryMessage}
           onRecover={recover}
         />
       )}

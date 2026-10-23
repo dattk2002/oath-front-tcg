@@ -11,6 +11,7 @@ export default function PauseDialog({
   snapshot,
   online,
   recovering,
+  recoveryMessage,
   onRecover,
 }: RecoveryControlsProps & {
   disabled: boolean;
@@ -100,6 +101,7 @@ export default function PauseDialog({
         controller={controller}
         online={online}
         recovering={recovering}
+        recoveryMessage={recoveryMessage}
         onRecover={onRecover}
       />
     </dialog>

@@ -14,6 +14,7 @@ export default function MatchShell({
   online,
   onCancel,
   recovering,
+  recoveryMessage,
   onRecover,
   children,
 }: {
@@ -24,6 +25,7 @@ export default function MatchShell({
   online: boolean;
   onCancel: () => void;
   recovering: boolean;
+  recoveryMessage: string | null;
   onRecover: () => void;
   children: ReactNode;
 }) {
@@ -97,6 +99,7 @@ export default function MatchShell({
           controller={controller}
           online={online}
           recovering={recovering}
+          recoveryMessage={recoveryMessage}
           onRecover={onRecover}
         />
       )}

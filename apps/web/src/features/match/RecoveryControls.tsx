@@ -9,6 +9,7 @@ export interface RecoveryControlsProps {
   controller: IntentController;
   online: boolean;
   recovering: boolean;
+  recoveryMessage: string | null;
   onRecover: () => void;
 }
 
@@ -17,6 +18,7 @@ export default function RecoveryControls({
   controller,
   online,
   recovering,
+  recoveryMessage,
   onRecover,
 }: RecoveryControlsProps) {
   const expired = useContext(SessionRecoveryContext);
@@ -28,6 +30,7 @@ export default function RecoveryControls({
         !!(
           !online ||
           recovering ||
+          recoveryMessage ||
           snapshot.pendingCommand ||
           snapshot.message ||
           expired
@@ -42,16 +45,18 @@ export default function RecoveryControls({
           ? "Reconnecting…"
           : snapshot.pendingCommand?.status === "SENDING"
             ? "Checking…"
-            : (snapshot.message ??
+            : (recoveryMessage ??
+              snapshot.message ??
               (snapshot.pendingCommand?.status === "UNCERTAIN"
                 ? "A request is unconfirmed. Retry the same request."
                 : ""))}
       <SessionRecovery online={online} />
-      {online && snapshot.message?.includes("Reconnect") && (
-        <button disabled={recovering} onClick={onRecover}>
-          Reconnect
-        </button>
-      )}
+      {online &&
+        (recoveryMessage || snapshot.message?.includes("Reconnect")) && (
+          <button disabled={recovering} onClick={onRecover}>
+            Reconnect
+          </button>
+        )}
       {snapshot.pendingCommand?.status === "UNCERTAIN" && (
         <button
           disabled={!online || expired}

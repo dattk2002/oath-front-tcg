@@ -21,17 +21,22 @@ export function createApiClient(
   } = {},
 ) {
   let csrfToken = options.csrfToken;
+  let sessionGeneration = 0;
+  const sessionListeners = new Set<() => void>();
   const fetcher = options.fetcher ?? fetch;
   async function request<K extends keyof WireDefinitions>(
     path: string,
     definition: K,
     body?: unknown,
     method?: "PUT",
+    signal?: AbortSignal,
   ): Promise<WireDefinitions[K]> {
+    const requestGeneration = sessionGeneration;
     const result = await fetcher(`/api/v1${path}`, {
       method: method ?? (body === undefined ? "GET" : "POST"),
       credentials: "same-origin",
       cache: "no-store",
+      ...(signal ? { signal } : {}),
       headers: {
         ...(body === undefined ? {} : { "Content-Type": "application/json" }),
         ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {}),
@@ -43,6 +48,7 @@ export function createApiClient(
       if (validateBrowserWire("ErrorResponse", data)) {
         if (
           data.error.code === "SESSION_EXPIRED" &&
+          requestGeneration === sessionGeneration &&
           !path.startsWith("/auth/") &&
           path !== "/session"
         )
@@ -57,7 +63,20 @@ export function createApiClient(
   }
   return {
     bindSession: (session: Pick<SessionResponse, "csrfToken"> | null) => {
-      csrfToken = session?.csrfToken;
+      const nextToken = session?.csrfToken;
+      if (nextToken === csrfToken) return;
+      csrfToken = nextToken;
+      sessionGeneration++;
+      // Subscribers installed by a renewal render already belong to the new
+      // binding; do not dispose them while notifying the previous generation.
+      [...sessionListeners].forEach((listener) => listener());
+    },
+    getSessionGeneration: () => sessionGeneration,
+    subscribeSession: (listener: () => void) => {
+      sessionListeners.add(listener);
+      return () => {
+        sessionListeners.delete(listener);
+      };
     },
     exchange: (body: AuthExchangeRequest) =>
       request("/auth/exchange", "SessionResponse", body),
@@ -106,8 +125,22 @@ export function createApiClient(
       request(`/decks/${encodeURIComponent(id)}`, "DeckDTO", body, "PUT"),
     createMatch: (body: CreateMatchRequest) =>
       request("/matches", "CommandResponse", body),
-    match: (id: string) =>
-      request(`/matches/${encodeURIComponent(id)}`, "CommandResponse"),
+    match: (id: string, signal?: AbortSignal) =>
+      request(
+        `/matches/${encodeURIComponent(id)}`,
+        "CommandResponse",
+        undefined,
+        undefined,
+        signal,
+      ),
+    realtimeTicket: (id: string, signal?: AbortSignal) =>
+      request(
+        `/matches/${encodeURIComponent(id)}/realtime-ticket`,
+        "RealtimeTicket",
+        {},
+        undefined,
+        signal,
+      ),
     summary: (id: string) =>
       request(`/matches/${encodeURIComponent(id)}/summary`, "MatchSummary"),
     command: (id: string, envelope: CommandEnvelope) =>
@@ -116,10 +149,18 @@ export function createApiClient(
         "CommandResponse",
         envelope,
       ),
-    events: (id: string, afterSeq: number, throughSeq: number) =>
+    events: (
+      id: string,
+      afterSeq: number,
+      throughSeq: number,
+      signal?: AbortSignal,
+    ) =>
       request(
         `/matches/${encodeURIComponent(id)}/events?afterSeq=${afterSeq}&throughSeq=${throughSeq}`,
         "EventPage",
+        undefined,
+        undefined,
+        signal,
       ),
   };
 }
