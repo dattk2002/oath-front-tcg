@@ -4,6 +4,8 @@
 
 ## Source identity and verification
 
+The latest battlefield direction is the [courtyard and direct-drop extension](../courtyard-contract.md). Moonroot's approved concept is a visual guide, with exact artistic parity explicitly relaxed by the user. New gameplay geometry, camera framing and drag controls remain derived work with no invented Pen nodes. Release verification is recorded separately from the historical Pen implementation below.
+
 - Source: `docs/design/pen/oath-front-tcg-design.pen`, Pen version `2.20`.
 - Exact SHA256: `a696b32daf6e03d4bfe30b825a56cfc4fdd622cc1a3c3ff8b018c70bc20903b3`.
 - Immutable content-addressed revision: `sha256:` followed by that digest. Source bytes are preserved; no Pen app conversion was performed.

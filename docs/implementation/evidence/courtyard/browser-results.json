@@ -1,0 +1,79 @@
+[
+  {
+    "case": "all-four-current-arenas-keep-shared-hud-and-unit-drops-usable-at-desktop-and-portrait",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "horizontal-touch-scrolling-reaches-all-ten-cards-without-selecting-or-playing",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "keyboard-source-and-target-activation-retains-immediate-unit-and-untargeted-trick-play",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "moonroot-normal-motion-fan-keeps-its-authored-composition-across-orientations",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "moonroot-populated-courtyard-keeps-cards-and-controls-reachable-with-1-5-and-10-cards",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "mouse-unit-drop-submits-once-and-an-invalid-drop-sends-no-command",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "real-api-accepts-the-exact-moonroot-mouse-drop-once-and-removes-the-hand-card",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "trick-none-uses-direct-rendered-targets-and-the-exact-wire-action",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "trick-unit-and-lane-uses-direct-rendered-targets-and-the-exact-wire-action",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "trick-unit-uses-direct-rendered-targets-and-the-exact-wire-action",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  },
+  {
+    "case": "upward-touch-drop-plays-once-without-selecting-the-card",
+    "result": {
+      "status": "passed",
+      "browserErrors": []
+    }
+  }
+]

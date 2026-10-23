@@ -1,0 +1,1502 @@
+{
+  "records": [
+    {
+      "count": 5,
+      "width": 1440,
+      "height": 900,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 56,
+            "width": 1440,
+            "height": 844,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 258.71875,
+            "y": 166.5,
+            "width": 137.71875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 218.59375,
+            "y": 418.1875,
+            "width": 153.640625,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 594.515625,
+            "y": 166.5,
+            "width": 118.921875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 588.5,
+            "y": 418.1875,
+            "width": 131,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 764.546875,
+            "y": 418.1875,
+            "width": 139.875,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 911.546875,
+            "y": 166.5,
+            "width": 137.71875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 935.75,
+            "y": 418.1875,
+            "width": 153.640625,
+            "height": 175.234375,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 432,
+            "y": 184.140625,
+            "width": 121.296875,
+            "height": 136.21875,
+            "inside": true
+          },
+          {
+            "x": 410.046875,
+            "y": 431.296875,
+            "width": 133.828125,
+            "height": 163.6875,
+            "inside": true
+          },
+          {
+            "x": 754.671875,
+            "y": 184.140625,
+            "width": 121.296875,
+            "height": 136.21875,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 282,
+            "y": 627,
+            "width": 1008,
+            "height": 238,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 574,
+            "y": 64,
+            "width": 292,
+            "height": 90,
+            "inside": true
+          },
+          {
+            "x": 18,
+            "y": 743.8125,
+            "width": 256,
+            "height": 96.1875,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 1316,
+            "y": 367.90625,
+            "width": 102,
+            "height": 102,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 5,
+      "width": 844,
+      "height": 390,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 48,
+            "width": 844,
+            "height": 342,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 309.96875,
+            "y": 53.375,
+            "width": 54.84375,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 290.78125,
+            "y": 150.21875,
+            "width": 62.796875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 440.390625,
+            "y": 53.375,
+            "width": 46.1875,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 437.515625,
+            "y": 150.21875,
+            "width": 51.96875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 506.625,
+            "y": 150.21875,
+            "width": 56.21875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 562.171875,
+            "y": 53.375,
+            "width": 54.84375,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 573.390625,
+            "y": 150.21875,
+            "width": 62.796875,
+            "height": 69.21875,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 377.65625,
+            "y": 60.515625,
+            "width": 47.265625,
+            "height": 51.828125,
+            "inside": true
+          },
+          {
+            "x": 367.265625,
+            "y": 155.3125,
+            "width": 53.296875,
+            "height": 64.671875,
+            "inside": true
+          },
+          {
+            "x": 502.046875,
+            "y": 60.515625,
+            "width": 47.265625,
+            "height": 51.828125,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 214,
+            "y": 234,
+            "width": 522,
+            "height": 156,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 12,
+            "y": 54,
+            "width": 198,
+            "height": 90.578125,
+            "inside": true
+          },
+          {
+            "x": 12,
+            "y": 199.421875,
+            "width": 198,
+            "height": 90.578125,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 760,
+            "y": 178.15625,
+            "width": 68,
+            "height": 68,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 5,
+      "width": 375,
+      "height": 812,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 88,
+            "width": 375,
+            "height": 724,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 28.4375,
+            "y": 238.078125,
+            "width": 50.671875,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 23.53125,
+            "y": 346.40625,
+            "width": 52.328125,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 163.5625,
+            "y": 238.078125,
+            "width": 47.859375,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 162.828125,
+            "y": 346.40625,
+            "width": 49.328125,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 231.296875,
+            "y": 346.40625,
+            "width": 50.5,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 295.875,
+            "y": 238.078125,
+            "width": 50.671875,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 299.125,
+            "y": 346.40625,
+            "width": 52.328125,
+            "height": 67.9375,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 96.96875,
+            "y": 243.125,
+            "width": 48.0625,
+            "height": 60.734375,
+            "inside": true
+          },
+          {
+            "x": 94.21875,
+            "y": 350.453125,
+            "width": 49.546875,
+            "height": 64.46875,
+            "inside": true
+          },
+          {
+            "x": 229.9375,
+            "y": 243.125,
+            "width": 48.0625,
+            "height": 60.734375,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 0,
+            "y": 550,
+            "width": 375,
+            "height": 180,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 12,
+            "y": 102,
+            "width": 216,
+            "height": 92.578125,
+            "inside": true
+          },
+          {
+            "x": 12,
+            "y": 427.421875,
+            "width": 216,
+            "height": 92.578125,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 295,
+            "y": 456,
+            "width": 60,
+            "height": 60,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 1,
+      "width": 1440,
+      "height": 900,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 56,
+            "width": 1440,
+            "height": 844,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 258.71875,
+            "y": 166.5,
+            "width": 137.71875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 218.59375,
+            "y": 418.1875,
+            "width": 153.640625,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 594.515625,
+            "y": 166.5,
+            "width": 118.921875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 588.5,
+            "y": 418.1875,
+            "width": 131,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 764.546875,
+            "y": 418.1875,
+            "width": 139.875,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 911.546875,
+            "y": 166.5,
+            "width": 137.71875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 935.75,
+            "y": 418.1875,
+            "width": 153.640625,
+            "height": 175.234375,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 432,
+            "y": 184.140625,
+            "width": 121.296875,
+            "height": 136.21875,
+            "inside": true
+          },
+          {
+            "x": 410.046875,
+            "y": 431.296875,
+            "width": 133.828125,
+            "height": 163.6875,
+            "inside": true
+          },
+          {
+            "x": 754.671875,
+            "y": 184.140625,
+            "width": 121.296875,
+            "height": 136.21875,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 282,
+            "y": 627,
+            "width": 1008,
+            "height": 238,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 574,
+            "y": 64,
+            "width": 292,
+            "height": 90,
+            "inside": true
+          },
+          {
+            "x": 18,
+            "y": 743.8125,
+            "width": 256,
+            "height": 96.1875,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 1316,
+            "y": 367.90625,
+            "width": 102,
+            "height": 102,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 1,
+      "width": 844,
+      "height": 390,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 48,
+            "width": 844,
+            "height": 342,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 309.96875,
+            "y": 53.375,
+            "width": 54.84375,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 290.78125,
+            "y": 150.21875,
+            "width": 62.796875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 440.390625,
+            "y": 53.375,
+            "width": 46.1875,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 437.515625,
+            "y": 150.21875,
+            "width": 51.96875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 506.625,
+            "y": 150.21875,
+            "width": 56.21875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 562.171875,
+            "y": 53.375,
+            "width": 54.84375,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 573.390625,
+            "y": 150.21875,
+            "width": 62.796875,
+            "height": 69.21875,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 377.65625,
+            "y": 60.515625,
+            "width": 47.265625,
+            "height": 51.828125,
+            "inside": true
+          },
+          {
+            "x": 367.265625,
+            "y": 155.3125,
+            "width": 53.296875,
+            "height": 64.671875,
+            "inside": true
+          },
+          {
+            "x": 502.046875,
+            "y": 60.515625,
+            "width": 47.265625,
+            "height": 51.828125,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 214,
+            "y": 234,
+            "width": 522,
+            "height": 156,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 12,
+            "y": 54,
+            "width": 198,
+            "height": 90.578125,
+            "inside": true
+          },
+          {
+            "x": 12,
+            "y": 199.421875,
+            "width": 198,
+            "height": 90.578125,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 760,
+            "y": 178.15625,
+            "width": 68,
+            "height": 68,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 1,
+      "width": 375,
+      "height": 812,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 88,
+            "width": 375,
+            "height": 724,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 28.4375,
+            "y": 238.078125,
+            "width": 50.671875,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 23.53125,
+            "y": 346.40625,
+            "width": 52.328125,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 163.5625,
+            "y": 238.078125,
+            "width": 47.859375,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 162.828125,
+            "y": 346.40625,
+            "width": 49.328125,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 231.296875,
+            "y": 346.40625,
+            "width": 50.5,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 295.875,
+            "y": 238.078125,
+            "width": 50.671875,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 299.125,
+            "y": 346.40625,
+            "width": 52.328125,
+            "height": 67.9375,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 96.96875,
+            "y": 243.125,
+            "width": 48.0625,
+            "height": 60.734375,
+            "inside": true
+          },
+          {
+            "x": 94.21875,
+            "y": 350.453125,
+            "width": 49.546875,
+            "height": 64.46875,
+            "inside": true
+          },
+          {
+            "x": 229.9375,
+            "y": 243.125,
+            "width": 48.0625,
+            "height": 60.734375,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 0,
+            "y": 550,
+            "width": 375,
+            "height": 180,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 12,
+            "y": 102,
+            "width": 216,
+            "height": 92.578125,
+            "inside": true
+          },
+          {
+            "x": 12,
+            "y": 427.421875,
+            "width": 216,
+            "height": 92.578125,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 295,
+            "y": 456,
+            "width": 60,
+            "height": 60,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 10,
+      "width": 1440,
+      "height": 900,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 56,
+            "width": 1440,
+            "height": 844,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 258.71875,
+            "y": 166.5,
+            "width": 137.71875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 218.59375,
+            "y": 418.1875,
+            "width": 153.640625,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 594.515625,
+            "y": 166.5,
+            "width": 118.921875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 588.5,
+            "y": 418.1875,
+            "width": 131,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 764.546875,
+            "y": 418.1875,
+            "width": 139.875,
+            "height": 175.234375,
+            "inside": true
+          },
+          {
+            "x": 911.546875,
+            "y": 166.5,
+            "width": 137.71875,
+            "height": 151.34375,
+            "inside": true
+          },
+          {
+            "x": 935.75,
+            "y": 418.1875,
+            "width": 153.640625,
+            "height": 175.234375,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 432,
+            "y": 184.140625,
+            "width": 121.296875,
+            "height": 136.21875,
+            "inside": true
+          },
+          {
+            "x": 410.046875,
+            "y": 431.296875,
+            "width": 133.828125,
+            "height": 163.6875,
+            "inside": true
+          },
+          {
+            "x": 754.671875,
+            "y": 184.140625,
+            "width": 121.296875,
+            "height": 136.21875,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 282,
+            "y": 627,
+            "width": 1008,
+            "height": 238,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 574,
+            "y": 64,
+            "width": 292,
+            "height": 90,
+            "inside": true
+          },
+          {
+            "x": 18,
+            "y": 743.8125,
+            "width": 256,
+            "height": 96.1875,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 1316,
+            "y": 367.90625,
+            "width": 102,
+            "height": 102,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 180,
+            "faceHeight": 180,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 10,
+      "width": 844,
+      "height": 390,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 48,
+            "width": 844,
+            "height": 342,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 309.96875,
+            "y": 53.375,
+            "width": 54.84375,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 290.78125,
+            "y": 150.21875,
+            "width": 62.796875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 440.390625,
+            "y": 53.375,
+            "width": 46.1875,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 437.515625,
+            "y": 150.21875,
+            "width": 51.96875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 506.625,
+            "y": 150.21875,
+            "width": 56.21875,
+            "height": 69.21875,
+            "inside": true
+          },
+          {
+            "x": 562.171875,
+            "y": 53.375,
+            "width": 54.84375,
+            "height": 57.96875,
+            "inside": true
+          },
+          {
+            "x": 573.390625,
+            "y": 150.21875,
+            "width": 62.796875,
+            "height": 69.21875,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 377.65625,
+            "y": 60.515625,
+            "width": 47.265625,
+            "height": 51.828125,
+            "inside": true
+          },
+          {
+            "x": 367.265625,
+            "y": 155.3125,
+            "width": 53.296875,
+            "height": 64.671875,
+            "inside": true
+          },
+          {
+            "x": 502.046875,
+            "y": 60.515625,
+            "width": 47.265625,
+            "height": 51.828125,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 214,
+            "y": 234,
+            "width": 522,
+            "height": 156,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 12,
+            "y": 54,
+            "width": 198,
+            "height": 90.578125,
+            "inside": true
+          },
+          {
+            "x": 12,
+            "y": 199.421875,
+            "width": 198,
+            "height": 90.578125,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 760,
+            "y": 178.15625,
+            "width": 68,
+            "height": 68,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 120,
+            "faceHeight": 120,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    },
+    {
+      "count": 10,
+      "width": 375,
+      "height": 812,
+      "layout": {
+        "board": [
+          {
+            "x": 0,
+            "y": 88,
+            "width": 375,
+            "height": 724,
+            "inside": true
+          }
+        ],
+        "units": [
+          {
+            "x": 28.4375,
+            "y": 238.078125,
+            "width": 50.671875,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 23.53125,
+            "y": 346.40625,
+            "width": 52.328125,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 163.5625,
+            "y": 238.078125,
+            "width": 47.859375,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 162.828125,
+            "y": 346.40625,
+            "width": 49.328125,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 231.296875,
+            "y": 346.40625,
+            "width": 50.5,
+            "height": 67.9375,
+            "inside": true
+          },
+          {
+            "x": 295.875,
+            "y": 238.078125,
+            "width": 50.671875,
+            "height": 65.046875,
+            "inside": true
+          },
+          {
+            "x": 299.125,
+            "y": 346.40625,
+            "width": 52.328125,
+            "height": 67.9375,
+            "inside": true
+          }
+        ],
+        "slots": [
+          {
+            "x": 96.96875,
+            "y": 243.125,
+            "width": 48.0625,
+            "height": 60.734375,
+            "inside": true
+          },
+          {
+            "x": 94.21875,
+            "y": 350.453125,
+            "width": 49.546875,
+            "height": 64.46875,
+            "inside": true
+          },
+          {
+            "x": 229.9375,
+            "y": 243.125,
+            "width": 48.0625,
+            "height": 60.734375,
+            "inside": true
+          }
+        ],
+        "hand": [
+          {
+            "x": 0,
+            "y": 550,
+            "width": 375,
+            "height": 180,
+            "inside": true
+          }
+        ],
+        "heroes": [
+          {
+            "x": 12,
+            "y": 102,
+            "width": 216,
+            "height": 92.578125,
+            "inside": true
+          },
+          {
+            "x": 12,
+            "y": 427.421875,
+            "width": 216,
+            "height": 92.578125,
+            "inside": true
+          }
+        ],
+        "phase": [
+          {
+            "x": 295,
+            "y": 456,
+            "width": 60,
+            "height": 60,
+            "inside": true
+          }
+        ],
+        "handGeometry": [
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          },
+          {
+            "buttonHeight": 134,
+            "faceHeight": 134,
+            "faceOffset": 0,
+            "faceInside": true,
+            "costInside": true
+          }
+        ],
+        "occluded": [],
+        "utilityOverlaps": [],
+        "overflow": 0
+      }
+    }
+  ],
+  "errors": []
+}

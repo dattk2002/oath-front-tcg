@@ -1,0 +1,93 @@
+{
+  "records": [
+    {
+      "key": "moonroot-conservatory",
+      "width": 1440,
+      "height": 900,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    },
+    {
+      "key": "moonroot-conservatory",
+      "width": 375,
+      "height": 812,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    },
+    {
+      "key": "cinder-foundry",
+      "width": 1440,
+      "height": 900,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    },
+    {
+      "key": "cinder-foundry",
+      "width": 375,
+      "height": 812,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    },
+    {
+      "key": "glasswater-sanctum",
+      "width": 1440,
+      "height": 900,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    },
+    {
+      "key": "glasswater-sanctum",
+      "width": 375,
+      "height": 812,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    },
+    {
+      "key": "astral-causeway",
+      "width": 1440,
+      "height": 900,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    },
+    {
+      "key": "astral-causeway",
+      "width": 375,
+      "height": 812,
+      "geometry": {
+        "count": 10,
+        "readable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    }
+  ],
+  "errors": []
+}

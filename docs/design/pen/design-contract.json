@@ -14,7 +14,7 @@
   },
   "campaignExtension": {
     "status": "implemented_with_approved_elements_extension",
-    "authorization": "User approved recommendations 1A\u20137A and M1\u2013M7 sequentially; requested close Pen fidelity.",
+    "authorization": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
     "inventoryPath": "docs/design/pen/campaign-design-inventory.json",
     "handoffPath": "docs/design/pen/CAMPAIGN-HANDOFF.md",
     "visualDirection": "Comic-editorial: warm paper, slate violet, lilac and acid yellow. Original hero artwork remains full-body with contain framing.",
@@ -1858,7 +1858,7 @@
     ]
   },
   "implementationScope": {
-    "approval": "User approved recommendations 1A\u20137A and M1\u2013M7 sequentially; requested close Pen fidelity.",
+    "approval": "User approved recommendations 1A–7A and M1–M7 sequentially; requested close Pen fidelity.",
     "specPath": "docs/superpowers/specs/2026-10-21-pen-design-implementation.md",
     "planPath": "docs/superpowers/plans/2026-10-21-pen-design-implementation.md",
     "completePenGameplayCoverage": false,
@@ -2226,7 +2226,7 @@
         "rules": "Exact token keywords and printed stats remain inspectable."
       },
       "raritySocket": "Centered on the card body between unit stats, not on the parent grid cell. Geometry and accessible code/name remain independent of color.",
-      "denseSurfaces": "Readable name, cost, type, relevant stats and bottom-center gem; full exact rules open in inspect. Desktop viewports 640\u2013849px high use a compact horizontal face to keep phase controls visible. Quantity avoids sockets."
+      "denseSurfaces": "Readable name, cost, type, relevant stats and bottom-center gem; full exact rules open in inspect. Desktop viewports 640–849px high use a compact horizontal face to keep phase controls visible. Quantity avoids sockets."
     },
     "rarityGems": {
       "U": {
@@ -2402,31 +2402,38 @@
     "inputs": [
       {
         "path": "docs/design/arena-3d-contract.md",
-        "sha256": "d7be3697ddcf66b7f1bbb0e8984d4702de1eb5e890c00124a8d991ae91dd7dc1"
+        "sha256": "dd9e78621dfdd8be14ac406a2ff396c660c9978f1bce0606dd6d4e73d371d809",
+        "changeReason": "Approved courtyard/direct-drop extension, explicit WebGL recovery and measured responsive camera; historical verification remains recorded separately."
       },
       {
         "path": "apps/web/src/styles/arena-3d.css",
-        "sha256": "9e37466aa829564e79b5b2a661c98ad11faf193fe69a98af5caa8d764ba3eff6"
+        "sha256": "6ff77c2a19a4598429e0f6461af49841694d75a2aaf5e6672f77bd878ca16c7e",
+        "changeReason": "Approved courtyard/direct-drop extension, explicit WebGL recovery and measured responsive camera; historical verification remains recorded separately."
       },
       {
         "path": "apps/web/src/features/match/BattleScene.tsx",
-        "sha256": "5e3ba76822dbdbe46dc714e44cc0e22c782fd4fcfbfa76b74d98ead43a5ac178"
+        "sha256": "d50dd7a3cbece7061b0b8f5110534b12cbc7afea030616d261aa504048a13a83",
+        "changeReason": "Approved courtyard/direct-drop extension, explicit WebGL recovery and measured responsive camera; historical verification remains recorded separately."
       },
       {
         "path": "apps/web/src/features/match/rendering/three/layout.ts",
-        "sha256": "8cb78b00ea8d6ee1e5eaff11472af41e8613e4799141de29dc6be4947d8f5a92"
+        "sha256": "cab35368c46d4e672d359989a83740d60776296ebdb4677e03ef9b5902366d20",
+        "changeReason": "Approved courtyard/direct-drop extension, explicit WebGL recovery and measured responsive camera; historical verification remains recorded separately."
       },
       {
         "path": "apps/web/src/features/match/rendering/three/environment.ts",
-        "sha256": "d60edd5e712f4c40f2440450a37c94b7b21cbf87d88767325fba7b3a515f8ec1"
+        "sha256": "0ceee0b10e142a8456f47d732d2479ba8d70e72844c830f66a0ccaea86285da1",
+        "changeReason": "Approved courtyard/direct-drop extension, explicit WebGL recovery and measured responsive camera; historical verification remains recorded separately."
       },
       {
         "path": "apps/web/src/features/match/rendering/three/materials.ts",
-        "sha256": "cb3e2535d8c71e57d4ceecaca1a0994c4eccf1b9e9d500cf47ce261236ab4cd5"
+        "sha256": "e2b0f38af803f3fdc2361995b27fd14d1bb07ffdcb554c6d2f8e74c7a2880e72",
+        "changeReason": "Approved courtyard/direct-drop extension, explicit WebGL recovery and measured responsive camera; historical verification remains recorded separately."
       },
       {
         "path": "apps/web/src/features/match/rendering/three/scene.ts",
-        "sha256": "41dff1e4277d57b0e50455c1bfb779fddcffe8bb2ef06bfc581ffd02a1fcbf91"
+        "sha256": "ce0889997ba6bf8a59c4981d443cf60c202e2f5486d09bddf5e22a30883def37",
+        "changeReason": "Approved courtyard/direct-drop extension, explicit WebGL recovery and measured responsive camera; historical verification remains recorded separately."
       },
       {
         "path": "apps/web/src/features/match/rendering/three/card-texture.ts",
@@ -2435,6 +2442,76 @@
       {
         "path": "assets/source/arena-materials-v1/generation/provenance.json",
         "sha256": "5ba056e21380092ee670fb57bba6285a57d59b18f68dbf4ce7a442e059ea98d6"
+      }
+    ]
+  },
+  "courtyardExtension": {
+    "status": "implemented_locally_verified",
+    "authorization": "User approved Moonroot v3, real 3D, compact hero HUDs, fanned hand, phase orb and direct card dragging; user later explicitly relaxed perfect Moonroot art fidelity.",
+    "contractPath": "docs/design/courtyard-contract.md",
+    "specPath": "docs/superpowers/specs/2026-10-23-courtyard-design.md",
+    "planPath": "docs/superpowers/plans/2026-10-23-courtyard.md",
+    "sourcePenUnchanged": true,
+    "penNodeId": null,
+    "completePenFrameCoverage": false,
+    "visualReference": "docs/design/concepts/moonroot-battlefield-v3-concept.png",
+    "environmentScope": {
+      "moonroot-conservatory": "authored high/low GLB",
+      "cinder-foundry": "existing distinct real 3D",
+      "glasswater-sanctum": "existing distinct real 3D",
+      "astral-causeway": "existing distinct real 3D"
+    },
+    "interaction": "Direct legal drag/drop, exact existing commands; two-stage unit-and-lane movement follows selected unit owner row; invalid/stale drops send nothing; semantic keyboard/tap alternative.",
+    "framing": "Measured unobscured card frame; same off-axis camera for drawing, semantic projection and ray picking; full-stage canvas.",
+    "motion": "Scoped GSAP; camera held during drag and compact-field cinematics; reduced-motion static feedback.",
+    "verification": {
+      "status": "local_verified_production_pending",
+      "browser": "Ten interaction cases passed; focused resize matrix and four-arena smoke passed; no browser errors.",
+      "frontend": "178 tests, root types/lint and hosted-profile Next build passed.",
+      "evidence": "docs/implementation/evidence/courtyard",
+      "limits": "Physical-device GPU/Safari not certified. Stylized Moonroot; exact v3 parity explicitly not required."
+    },
+    "implementationReport": "docs/implementation/courtyard.md",
+    "inputs": [
+      {
+        "path": "docs/design/courtyard-contract.md",
+        "sha256": "e53ddfa6b1281f9018e143078addeb487290b4901e80714e1147a91e0cfef31a"
+      },
+      {
+        "path": "apps/web/public/assets/arenas-v2/manifest.json",
+        "sha256": "3beaec6a107520b8241adb5172b1bc274c9fcd7ddaf70901d6bebb9abd4dda76"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/arena-interaction.ts",
+        "sha256": "216f630a8d0438f0721550007e402a4db96ab93939a3c9f66885041f788a242f"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/three/arena-assets.ts",
+        "sha256": "bfd821a9268311bb8542d0d338a39f635730c57e5cec9071e3ab111c1bdbf17d"
+      },
+      {
+        "path": "apps/web/src/features/match/rendering/three/interaction.ts",
+        "sha256": "d6d09e10e6f3d105349cdc258a6392ff315a4998574d2c4bc9da2b3dfefafa17"
+      },
+      {
+        "path": "apps/web/src/features/match/card-drop.ts",
+        "sha256": "9834b5e7c1b964ddf9e99a7edd1356d35e2a6996487f1e0dd61825574dec953c"
+      },
+      {
+        "path": "apps/web/src/features/match/use-card-drag.ts",
+        "sha256": "e0aa794eca038ad87bbeb7273a032b31298d4b2f14e9fe6743d3cb769c38f2b8"
+      },
+      {
+        "path": "apps/web/src/features/match/Hand.tsx",
+        "sha256": "40d14dc9eca2b560c4427ce824e39d2f2d303d5dba8b357b7eefdeb368063d17"
+      },
+      {
+        "path": "apps/web/src/features/match/MatchScreen.tsx",
+        "sha256": "133c91e810d3692ac895960af610b457558a20929573a1deb9c5e7358f4090f8"
+      },
+      {
+        "path": "apps/web/src/styles/courtyard.css",
+        "sha256": "8ca11d5ec75fa6e365dbf6febce9364b157106828739b2e7826ba23ed1522d09"
       }
     ]
   }

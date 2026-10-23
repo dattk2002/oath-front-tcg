@@ -1,5 +1,7 @@
 # OathFront dimensional battlefield contract
 
+> Current extension: [courtyard and direct-drop contract](courtyard-contract.md). The user approved Moonroot v3, direct dragging and compact HUD/fan composition, then explicitly relaxed perfect art fidelity on 2026-10-23. The current extension supersedes the historical fixed camera, raised-plinth, hand-row and confirmation-first requirements below. Earlier implementation measurements remain historical evidence.
+
 ## Approved direction
 
 The user explicitly chose Master Duel as the table/camera reference, existing Runeterra-inspired card faces and OathFront identity; real 3D environment geometry; cards lying on the board with readable floating stats; strong cinematic camera movement; landscape-first phone play with usable portrait and low quality. They authorized Three.js or PixiJS. All four existing arena identities must remain. These choices supersede the old flat battle layout and the 1024×640 interaction restriction, but never change game rules or API behavior.
