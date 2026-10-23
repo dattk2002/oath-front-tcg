@@ -1,4 +1,4 @@
-// The bundled API externalizes only pg/ajv. Copy their installed production closure, never re-resolve versions.
+// The bundled API externalizes only pg/ajv/ws. Copy their installed production closure, never re-resolve versions.
 import { createRequire } from "node:module";
 import { cp, mkdir, readFile, writeFile, realpath } from "node:fs/promises";
 import { dirname, join, basename, resolve } from "node:path";
@@ -26,7 +26,8 @@ async function copy(name, from, optional = false) {
           /* search only package ancestors */
         }
         const parent = dirname(directory);
-        if (parent === directory) throw Error("Package metadata unavailable", { cause: error });
+        if (parent === directory)
+          throw Error("Package metadata unavailable", { cause: error });
         directory = parent;
       }
     } else if (optional && error.code === "MODULE_NOT_FOUND") return;
@@ -59,7 +60,7 @@ async function copy(name, from, optional = false) {
       metadata.peerDependenciesMeta?.[dep]?.optional === true,
     );
 }
-for (const name of ["pg", "ajv"])
+for (const name of ["pg", "ajv", "ws"])
   await copy(name, resolve("apps/api/package.json"));
 await writeFile(
   join(target, "package.json"),

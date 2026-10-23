@@ -2355,6 +2355,24 @@ export interface WeeklyProgressView {
    */
   practiceDaily: DailyProgress[];
 }
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "RealtimeTicket".
+ */
+export interface RealtimeTicket {
+  url: string;
+  token: string;
+  expiresAt: DateTime;
+}
+/**
+ * This interface was referenced by `NguLoPublicAPIV1ProposedSpecificationNotRuntimeImplementation`'s JSON-Schema
+ * via the `definition` "RealtimeMessage".
+ */
+export interface RealtimeMessage {
+  type: "ready" | "changed";
+  matchId: Uuid;
+  revision: number;
+}
 
 export interface WireDefinitions {
   Uuid: Uuid;
@@ -2463,4 +2481,6 @@ export interface WireDefinitions {
   RewardEntry: RewardEntry;
   WeeklyProgressView: WeeklyProgressView;
   MatchRewardSummary: MatchRewardSummary;
+  RealtimeTicket: RealtimeTicket;
+  RealtimeMessage: RealtimeMessage;
 }

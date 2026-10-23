@@ -4,7 +4,7 @@ const common = {
   target: "node24",
   format: "esm",
   bundle: true,
-  external: ["pg", "pg-native", "ajv"],
+  external: ["pg", "pg-native", "ajv", "ws"],
   banner: {
     js: "import {createRequire as oathfrontCreateRequire} from 'node:module'; const require=oathfrontCreateRequire(import.meta.url);",
   },

@@ -12,17 +12,30 @@ it("cold-starts the hosted handler without workspace source or TypeScript export
   try {
     await exec(process.execPath, ["scripts/package-api-runtime.mjs", runtime]);
     await cp("apps/api/dist/hosted.mjs", join(runtime, "hosted.mjs"));
-    const { stdout } = await exec(process.execPath, ["--input-type=module", "-e", `
-      import { createServer } from 'node:http';
-      import handler from './hosted.mjs';
-      const server = createServer(handler);
+    const { stdout } = await exec(
+      process.execPath,
+      [
+        "--input-type=module",
+        "-e",
+        `
+      import server from './hosted.mjs';
       await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
       try {
         const response = await fetch('http://127.0.0.1:' + server.address().port + '/health/live');
         console.log(JSON.stringify({status: response.status, body: await response.json()}));
       } finally { await new Promise(resolve => server.close(resolve)); }
-    `], { cwd: runtime, env: { PATH: process.env.PATH ?? "", NODE_ENV: "production" }, timeout: 10000 });
-    expect(JSON.parse(stdout)).toEqual({ status: 503, body: { error: "API_UNAVAILABLE" } });
+    `,
+      ],
+      {
+        cwd: runtime,
+        env: { PATH: process.env.PATH ?? "", NODE_ENV: "production" },
+        timeout: 10000,
+      },
+    );
+    expect(JSON.parse(stdout)).toEqual({
+      status: 503,
+      body: { error: "API_UNAVAILABLE" },
+    });
   } finally {
     await rm(temporary, { recursive: true, force: true });
   }

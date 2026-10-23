@@ -41,6 +41,10 @@ const app = buildApp({
     ? { ipTrust: { mode: "trusted-next", secret: process.env.UI_PROXY_SECRET } }
     : {}),
   pool,
+  realtime: {
+    url: `ws://127.0.0.1:${testApiPort}/realtime/matches`,
+    databaseUrl: process.env.TEST_DATABASE_URL,
+  },
   origin: testOrigin,
   secret: randomBytes(32).toString("hex"),
 });

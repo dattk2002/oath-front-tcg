@@ -19,6 +19,7 @@ services:
     environment:
       DATABASE_URL: postgresql://oathfront_runtime:${OATHFRONT_DB_RUNTIME_PASSWORD:?Set runtime password}@db:5432/oathfront
       APP_ORIGIN: ${APP_ORIGIN:?Set browser origin}
+      PUBLIC_REALTIME_URL: ${PUBLIC_REALTIME_URL:-ws://localhost:${UI_PORT:-3000}/realtime/matches}
       SESSION_SECRET: ${SESSION_SECRET:?Set session secret}
       UI_PROXY_SECRET: ${UI_PROXY_SECRET:?Set proxy secret}
       CLIENT_IP_MODE: trusted-next
@@ -35,7 +36,9 @@ services:
     build:
       context: .
       dockerfile: docker/ui/Dockerfile
-      args: { API_ORIGIN: "http://api:3001" }
+      args:
+        API_ORIGIN: "http://api:3001"
+        APP_ORIGIN: ${APP_ORIGIN:?Set browser origin}
     environment:
       API_ORIGIN: http://api:3001
       UI_PROXY_SECRET: ${UI_PROXY_SECRET:?Set proxy secret}

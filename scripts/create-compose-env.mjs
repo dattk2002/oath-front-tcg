@@ -20,7 +20,8 @@ const lines = [
 ].map((key) => `${key}=${randomBytes(32).toString("hex")}`);
 writeFileSync(
   file,
-  lines.join("\n") + `\nAPP_ORIGIN=http://localhost:${port}\nUI_PORT=${port}\n`,
+  lines.join("\n") +
+    `\nAPP_ORIGIN=http://localhost:${port}\nUI_PORT=${port}\nPUBLIC_REALTIME_URL=ws://localhost:${port}/realtime/matches\n`,
   { mode: 0o600, flag: "wx" },
 );
 console.log(

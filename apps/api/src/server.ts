@@ -23,6 +23,14 @@ try {
     origin: APP_ORIGIN,
     secret: SESSION_SECRET,
     logger: true,
+    ...(process.env.PUBLIC_REALTIME_URL
+      ? {
+          realtime: {
+            url: process.env.PUBLIC_REALTIME_URL,
+            databaseUrl: DATABASE_URL,
+          },
+        }
+      : {}),
     ipTrust: {
       mode: mode as "direct" | "hosted-proxy" | "trusted-next",
       ...(process.env.UI_PROXY_SECRET

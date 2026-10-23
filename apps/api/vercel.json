@@ -4,5 +4,6 @@
   "regions": [
     "sin1"
   ],
-  "buildCommand": "pnpm --workspace-root build:api"
+  "buildCommand": "pnpm --workspace-root build:api",
+  "fluid": true
 }

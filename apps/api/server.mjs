@@ -2,4 +2,4 @@
 // The Fastify adapter also requires an explicit import to detect this entrypoint.
 import "fastify";
 export { default } from "./dist/hosted.mjs";
-export const config = { maxDuration: 30 };
+export const config = { maxDuration: 300 };

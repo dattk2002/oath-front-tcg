@@ -1,3 +1,8 @@
+import { attachMatchRealtime } from "./realtime/server.js";
+import { realtimeUrl } from "./realtime/config.js";
+import type { RealtimeConfig } from "./realtime/config.js";
+import { issueTicket } from "./realtime/tickets.js";
+import { authorizeSubscription } from "./realtime/authorization.js";
 import { registerProgressionRoutes } from "./events/routes.js";
 import { registerLiveReadRoutes } from "./editorial/read.js";
 import { catalogForVersion } from "@oathfront/game-content";
@@ -33,6 +38,7 @@ import { exchangeIdentity } from "./auth/exchange.js";
 import { claimGuest } from "./auth/claim.js";
 import { logout } from "./auth/logout.js";
 export interface AppDependencies {
+  realtime?: RealtimeConfig;
   ipTrust?: IpTrust;
   versionRegistry?: VersionRegistry;
   extendLifetime?: (work: Promise<unknown>) => void;
@@ -57,6 +63,13 @@ export function buildApp(deps: AppDependencies) {
     genReqId: () => randomUUID(),
     requestTimeout: 5000,
   });
+  if (deps.realtime) {
+    const disposeRealtime = attachMatchRealtime(app.server, {
+      ...deps,
+      realtime: deps.realtime,
+    });
+    app.addHook("preClose", disposeRealtime);
+  }
   const deadline = mutationLifetime(
     deps.commandDeadlineMs,
     deps.extendLifetime,
@@ -114,6 +127,43 @@ export function buildApp(deps: AppDependencies) {
   async function session(req: import("fastify").FastifyRequest) {
     return authenticate(deps.pool, req.headers.cookie, deps.secret, now());
   }
+  app.post("/api/v1/matches/:id/realtime-ticket", async (req) => {
+    const authenticated = await session(req);
+    requireCsrf(req.headers["x-csrf-token"], authenticated.csrfHash);
+    checked("EmptyBody", req.body);
+    const matchId = checked("MatchParams", req.params).id;
+    await authorizeSubscription(
+      deps.pool,
+      {
+        sessionId: authenticated.sessionId,
+        principalId: authenticated.principal.id,
+        matchId,
+      },
+      now(),
+    );
+    const rate = await consumeRateLimit(
+      deps.pool,
+      "COMMAND",
+      rateLimitKey(
+        "COMMAND",
+        "realtime:" + authenticated.sessionId,
+        deps.secret,
+      ),
+      { now, limit: 30, windowMs: 60000 },
+    );
+    if (!rate.allowed)
+      throw new HttpError(429, "RATE_LIMITED", {
+        retryAfterSeconds: Math.max(
+          1,
+          Math.ceil((rate.resetAt.getTime() - now().getTime()) / 1000),
+        ),
+      });
+    if (!deps.realtime) throw new HttpError(503, "TEMPORARILY_UNAVAILABLE");
+    return output("RealtimeTicket", {
+      url: realtimeUrl(deps.realtime.url),
+      ...issueTicket(authenticated, matchId, deps.secret, now()),
+    });
+  });
   registerMatchRoutes(
     app,
     services,

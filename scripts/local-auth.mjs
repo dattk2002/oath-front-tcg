@@ -35,6 +35,7 @@ try {
     OATHFRONT_INTERACTIVE: "1",
     APP_ORIGIN: "http://localhost:3000",
     API_ORIGIN: "http://127.0.0.1:3001",
+    PUBLIC_REALTIME_URL: "ws://127.0.0.1:3001/realtime/matches",
   };
   const server = spawn(process.execPath, ["apps/api/dist/server.mjs"], {
     cwd: root,
