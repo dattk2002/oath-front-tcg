@@ -1,0 +1,194 @@
+{
+  "startedAt": "2026-10-23T13:53:26.931Z",
+  "origin": "https://oathfront.vercel.app",
+  "expectedCode": "9b3ce83",
+  "expectedAssets": "b2723a2",
+  "result": "failed",
+  "stages": [
+    {
+      "name": "production-courtyard-manifest-verified"
+    },
+    {
+      "name": "one-fresh-guest-match-created",
+      "revision": 0
+    },
+    {
+      "name": "mulligan-confirmed",
+      "arena": "cinder-foundry"
+    },
+    {
+      "name": "smoke-blocker",
+      "reason": "legal action inspection: read failed"
+    },
+    {
+      "name": "live-cleanup",
+      "result": "verified-terminal",
+      "lifecycle": "COMPLETED",
+      "reason": "SURRENDER",
+      "revision": 3
+    },
+    {
+      "name": "public-moonroot-assets-layout-and-retry-verified",
+      "layouts": [
+        {
+          "width": 1440,
+          "height": 900,
+          "targets": 10,
+          "allReachable": true,
+          "clear": true,
+          "overflow": 0
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "targets": 10,
+          "allReachable": true,
+          "clear": true,
+          "overflow": 0
+        },
+        {
+          "width": 375,
+          "height": 812,
+          "targets": 10,
+          "allReachable": true,
+          "clear": true,
+          "overflow": 0
+        }
+      ],
+      "model": {
+        "path": "/assets/arenas-v2/moonroot-conservatory/high.glb",
+        "sha256": "aea8416ea4d1960885cf2a1f736bccc70b301fd8a2dde4d5d0fa46a0f314e6e3",
+        "bytes": 5594512
+      },
+      "contextLossRetry": "ready"
+    }
+  ],
+  "live": {
+    "pageErrors": [],
+    "consoleErrors": [],
+    "apiOrigins": [
+      "https://oathfront.vercel.app"
+    ],
+    "assets": [
+      {
+        "path": "/assets/arenas-v2/manifest.json",
+        "status": 200
+      }
+    ],
+    "arena": "cinder-foundry",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "sceneStatus": "ready",
+    "phaseSteps": []
+  },
+  "fixture": {
+    "result": "passed",
+    "pageErrors": [],
+    "consoleErrors": [],
+    "apiOrigins": [
+      "https://oathfront.vercel.app"
+    ],
+    "assets": [
+      {
+        "path": "/assets/arenas-v2/manifest.json",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/moonroot-conservatory/high.glb",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/moonroot-stone.webp",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/aged-bark.webp",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/fern-frond.webp",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/moonroot-groundcover.webp",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/manifest.json",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/moonroot-conservatory/high.glb",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/moonroot-stone.webp",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/aged-bark.webp",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/fern-frond.webp",
+        "status": 200
+      },
+      {
+        "path": "/assets/arenas-v2/materials/moonroot-groundcover.webp",
+        "status": 200
+      }
+    ],
+    "source": "mocked public DTO; production product JS and public assets",
+    "productionWrites": 0,
+    "unexpectedRequests": [],
+    "arena": "moonroot-conservatory",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "sceneStatus": "ready",
+    "layouts": [
+      {
+        "width": 1440,
+        "height": 900,
+        "targets": 10,
+        "allReachable": true,
+        "clear": true,
+        "overflow": 0
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "targets": 10,
+        "allReachable": true,
+        "clear": true,
+        "overflow": 0
+      },
+      {
+        "width": 375,
+        "height": 812,
+        "targets": 10,
+        "allReachable": true,
+        "clear": true,
+        "overflow": 0
+      }
+    ],
+    "model": {
+      "path": "/assets/arenas-v2/moonroot-conservatory/high.glb",
+      "sha256": "aea8416ea4d1960885cf2a1f736bccc70b301fd8a2dde4d5d0fa46a0f314e6e3",
+      "bytes": 5594512
+    },
+    "contextLossRetry": "ready"
+  },
+  "cleanup": {
+    "result": "verified-terminal",
+    "lifecycle": "COMPLETED",
+    "reason": "SURRENDER",
+    "revision": 3
+  },
+  "browser": "156.0.8078.4",
+  "publicManifest": {
+    "version": "arenas-v2",
+    "groundcover": "/assets/arenas-v2/materials/moonroot-groundcover.webp",
+    "highSha256": "aea8416ea4d1960885cf2a1f736bccc70b301fd8a2dde4d5d0fa46a0f314e6e3",
+    "lowSha256": "7f1d6fe4e2c76afb3180de2f7adb0631bdd5f0a581404ccc80dd538b49103b7f"
+  },
+  "failure": "legal action inspection: read failed",
+  "finishedAt": "2026-10-23T13:58:56.513Z"
+}

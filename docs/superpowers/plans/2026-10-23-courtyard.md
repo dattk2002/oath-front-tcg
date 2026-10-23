@@ -54,7 +54,8 @@ Runtime/input commit: `9b3ce83`. Final ten-case browser suite passed; the later 
 - [x] Real API deployment test: exact unit, one command, one revision increment and expected energy change.
 - [x] Update derived Pen/design contracts, retain original source hash and compact evidence.
 - [x] Verify protected user files and create scoped asset/runtime commits.
-- [ ] Push the complete release to the authorized main branch.
-- [ ] Verify the ready Vercel production alias, real asset load and user-visible interaction; record release evidence.
+- [x] Push the complete release to the authorized main branch.
+- [x] Verify the ready Vercel production alias, real asset load and user-visible rendering; record release evidence.
+- Verification limit: the fresh live production match read timed out before drag. Local real-API drag passed; production DTO rendering/retry passed. No claim of a complete live production drag test.
 
 Physical-device FPS, Safari and real assistive-technology certification remain separate. Historical failed runs and their corrections are recorded in [the implementation report](../../implementation/courtyard.md).

@@ -2446,7 +2446,7 @@
     ]
   },
   "courtyardExtension": {
-    "status": "implemented_locally_verified",
+    "status": "deployed_with_verification_limit",
     "authorization": "User approved Moonroot v3, real 3D, compact hero HUDs, fanned hand, phase orb and direct card dragging; user later explicitly relaxed perfect Moonroot art fidelity.",
     "contractPath": "docs/design/courtyard-contract.md",
     "specPath": "docs/superpowers/specs/2026-10-23-courtyard-design.md",
@@ -2465,11 +2465,19 @@
     "framing": "Measured unobscured card frame; same off-axis camera for drawing, semantic projection and ray picking; full-stage canvas.",
     "motion": "Scoped GSAP; camera held during drag and compact-field cinematics; reduced-motion static feedback.",
     "verification": {
-      "status": "local_verified_production_pending",
+      "status": "deployed_rendering_verified_live_drag_incomplete",
       "browser": "Ten interaction cases passed; focused resize matrix and four-arena smoke passed; no browser errors.",
       "frontend": "178 tests, root types/lint and hosted-profile Next build passed.",
       "evidence": "docs/implementation/evidence/courtyard",
-      "limits": "Physical-device GPU/Safari not certified. Stylized Moonroot; exact v3 parity explicitly not required."
+      "limits": "Physical-device GPU/Safari not certified. Stylized Moonroot; exact v3 parity explicitly not required.",
+      "deployment": {
+        "id": "dpl_GMBWjHd6Znat9LTLkwjkWVFrzm5L",
+        "commit": "2e08dcefdc5b33015fd3546945508533a9cf0f1d",
+        "alias": "https://oathfront.vercel.app",
+        "state": "READY",
+        "verifiedVia": "Vercel MCP"
+      },
+      "production": "READY alias verified; production JS/assets Moonroot fixture at 1440/844/375 and context retry passed without browser errors. Fresh live match/mulligan succeeded; 20-second state read timed out before drag. Test match surrendered and terminal verified. Local real-API drag passed."
     },
     "implementationReport": "docs/implementation/courtyard.md",
     "inputs": [

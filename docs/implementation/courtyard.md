@@ -38,6 +38,8 @@ Compact evidence is in [evidence/courtyard](evidence/courtyard). Broader histori
 
 ## Release and limits
 
-Implementation commits: `b2723a2` (assets) and `9b3ce83` (runtime, HUD and input). Production verification is recorded after the Git deployment is ready; local build success alone does not establish that the live alias changed.
+Implementation commits: `b2723a2` (assets) and `9b3ce83` (runtime, HUD and input). Vercel deployment `dpl_GMBWjHd6Znat9LTLkwjkWVFrzm5L` for release `2e08dcefdc5b33015fd3546945508533a9cf0f1d` is READY and assigned to `https://oathfront.vercel.app`, verified through MCP. Production browser verification loaded the exact shipped Moonroot model and all four material maps. The public DTO fixture passed desktop, landscape and portrait layout checks and context-loss/retry with no browser errors. The fixture used production product JavaScript and assets, but mocked match data; it is not a database-flow test.
+
+A separate fresh live guest match reached the new UI/WebGL-ready state and accepted mulligan. A 20-second state-read request then timed out before the drag was attempted. The cause is undetermined; the live production drag remains unverified. No gameplay command was rejected. Cleanup surrendered the fresh test match once and confirmed terminal state. No existing user match was touched. The exact-command/energy/revision drag flow passed against the isolated real API locally. See [production observations](evidence/courtyard/production/courtyard-smoke.json).
 
 Physical-device GPU performance, Safari and real assistive-technology certification remain unverified. Moonroot is a functional stylized interpretation, not a claim of exact v3 or commercial AAA art parity. Further art refinement and authored replacements for the other three environments are separate work.
