@@ -1,0 +1,7 @@
+Use case: stylized-concept
+Asset type: original production diffuse/base-color texture for UV-mapped ancient sculptural tree roots in a painterly fantasy 3D game.
+Primary request: One continuous square 1024 by 1024 pixel close-up swatch of ancient root bark, orthographic facing the surface, filling the entire image. Longitudinal grain runs vertically from bottom to top along the UV axis. Graceful elongated fibers and subtly irregular sinuous grain convey old gnarled wood without depicting a whole trunk or root.
+Style/medium: detailed yet restrained hand-painted fantasy material, warm gray-brown and subdued olive-brown palette, tactile fine fibers and elegant weathering, occasional small natural fissures and fine muted olive staining.
+Composition/framing: evenly distributed fine and medium grain; no dominant knot or focal object, no border; compatible edge density and coloration for seamless-like repetition. One continuous material swatch, not a scene or atlas.
+Lighting: unlit albedo only, flat neutral diffuse color with no directional light, cast shadows, gloss highlights, dramatic grooves shaded black, ambient-occlusion gradients or baked scene lighting.
+Avoid: perspective, full trunk, root silhouette, foliage, objects, large cracks, horizontal planks, cut ends, rings, UI, symbols, text, watermark, metallic colors, orange saturation, photographic flash, scenery. Geometry supplies sculptural root depth; texture supplies only painterly surface color.

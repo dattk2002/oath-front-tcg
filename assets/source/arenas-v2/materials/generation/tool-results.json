@@ -1,0 +1,30 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "date": "2026-10-23",
+  "intent": "Original purpose-built Moonroot material inputs; no concept image used as texture",
+  "assets": {
+    "moonroot-stone": {
+      "generatedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-86957a5c-1503-4973-8efb-b38d3f41cc1f.png",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293 as /home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-86957a5c-1503-4973-8efb-b38d3f41cc1f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "promptPath": "prompts/moonroot-stone.txt",
+      "mode": "generate"
+    },
+    "aged-bark": {
+      "generatedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-e25e1be4-9468-40f9-bb20-fb90bed19197.png",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293 as /home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-e25e1be4-9468-40f9-bb20-fb90bed19197.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "promptPath": "prompts/aged-bark.txt",
+      "mode": "generate"
+    },
+    "fern-frond": {
+      "generatedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-85a33665-43dd-44e8-b267-1178b078a03d.png",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293 as /home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-85a33665-43dd-44e8-b267-1178b078a03d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "promptPath": "prompts/fern-frond.txt",
+      "mode": "edit",
+      "previous": {
+        "generatedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-174a5b1f-77bb-4e52-a084-53144f736285.png",
+        "promptPath": "prompts/fern-frond-initial.txt",
+        "reason": "Original frond top/bottom margin too small; reframe via built-in imagegen only."
+      }
+    }
+  }
+}

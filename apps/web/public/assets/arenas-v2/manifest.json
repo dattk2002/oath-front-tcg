@@ -1,0 +1,208 @@
+{
+  "version": "arenas-v2",
+  "coordinateSystem": "Y-up; world units; courtyard center origin",
+  "arenas": {
+    "moonroot-conservatory": {
+      "models": {
+        "high": {
+          "url": "/assets/arenas-v2/moonroot-conservatory/high.glb",
+          "sha256": "aea8416ea4d1960885cf2a1f736bccc70b301fd8a2dde4d5d0fa46a0f314e6e3",
+          "bytes": 5594512,
+          "triangles": 155081,
+          "drawCalls": 18
+        },
+        "low": {
+          "url": "/assets/arenas-v2/moonroot-conservatory/low.glb",
+          "sha256": "7f1d6fe4e2c76afb3180de2f7adb0631bdd5f0a581404ccc80dd538b49103b7f",
+          "bytes": 1897436,
+          "triangles": 47833,
+          "drawCalls": 18
+        }
+      },
+      "bounds": {
+        "min": [
+          -12.415793418884277,
+          -0.4399999976158142,
+          -9.199884414672852
+        ],
+        "max": [
+          12.327736854553223,
+          5.009361267089844,
+          9.133172988891602
+        ]
+      },
+      "landmarks": [
+        {
+          "name": "courtyard",
+          "bounds": {
+            "min": [
+              -7.159999847412109,
+              0.20000000298023224,
+              -5.340000152587891
+            ],
+            "max": [
+              7.159999847412109,
+              0.36250001192092896,
+              5.340000152587891
+            ]
+          }
+        },
+        {
+          "name": "boundary-masonry",
+          "bounds": {
+            "min": [
+              -11,
+              -0.3499999940395355,
+              -8.770000457763672
+            ],
+            "max": [
+              11,
+              0.9947904944419861,
+              9.133172988891602
+            ]
+          }
+        },
+        {
+          "name": "arch-west",
+          "bounds": {
+            "min": [
+              -10.086798667907715,
+              -0.07999999821186066,
+              -3.4982898235321045
+            ],
+            "max": [
+              -6.7008514404296875,
+              3.109999895095825,
+              -1.0833860635757446
+            ]
+          }
+        },
+        {
+          "name": "statue-east",
+          "bounds": {
+            "min": [
+              7.075819969177246,
+              -0.11999999731779099,
+              -4.628068923950195
+            ],
+            "max": [
+              10.334733963012695,
+              3.3974883556365967,
+              -2.0175678730010986
+            ]
+          }
+        },
+        {
+          "name": "root-banks",
+          "bounds": {
+            "min": [
+              -11.039660453796387,
+              -0.3994740843772888,
+              -7.659647464752197
+            ],
+            "max": [
+              10.844240188598633,
+              5.009361267089844,
+              7.499780654907227
+            ]
+          }
+        },
+        {
+          "name": "water-channels",
+          "bounds": {
+            "min": [
+              -9.815051078796387,
+              -0.4399999976158142,
+              -8.300000190734863
+            ],
+            "max": [
+              9.707009315490723,
+              0.7689999938011169,
+              8.300000190734863
+            ]
+          }
+        },
+        {
+          "name": "fern-banks",
+          "bounds": {
+            "min": [
+              -12.415793418884277,
+              0.27399998903274536,
+              -9.199884414672852
+            ],
+            "max": [
+              12.327736854553223,
+              2.2770071029663086,
+              8.989712715148926
+            ]
+          }
+        }
+      ],
+      "materials": {
+        "stone-pale": {
+          "color": "#ffffff",
+          "roughness": 0.94,
+          "metalness": 0,
+          "baseColorUrl": "/assets/arenas-v2/materials/moonroot-stone.webp"
+        },
+        "stone-dark": {
+          "color": "#ffffff",
+          "roughness": 1,
+          "metalness": 0,
+          "baseColorUrl": "/assets/arenas-v2/materials/moonroot-stone.webp"
+        },
+        "trim-brass": {
+          "color": "#b7a56b",
+          "roughness": 0.67,
+          "metalness": 0.58
+        },
+        "bark": {
+          "color": "#ffffff",
+          "roughness": 1,
+          "metalness": 0,
+          "baseColorUrl": "/assets/arenas-v2/materials/aged-bark.webp"
+        },
+        "foliage": {
+          "color": "#ffffff",
+          "roughness": 0.91,
+          "metalness": 0,
+          "baseColorUrl": "/assets/arenas-v2/materials/fern-frond.webp",
+          "alphaTest": 0.38,
+          "doubleSided": true
+        },
+        "groundcover": {
+          "color": "#ffffff",
+          "roughness": 1,
+          "metalness": 0,
+          "baseColorUrl": "/assets/arenas-v2/materials/moonroot-groundcover.webp",
+          "alphaTest": 0.38,
+          "doubleSided": true
+        },
+        "water": {
+          "color": "#43aead",
+          "roughness": 0.28,
+          "metalness": 0.2,
+          "opacity": 0.87
+        },
+        "emissive": {
+          "color": "#a9e5d0",
+          "roughness": 0.58,
+          "metalness": 0,
+          "emissive": "#329a88",
+          "emissiveIntensity": 0.3
+        },
+        "metal": {
+          "color": "#586e62",
+          "roughness": 0.7,
+          "metalness": 0.6
+        },
+        "crystal": {
+          "color": "#a4d2d1",
+          "roughness": 0.34,
+          "metalness": 0.12
+        }
+      },
+      "surfaceY": 0.36
+    }
+  }
+}

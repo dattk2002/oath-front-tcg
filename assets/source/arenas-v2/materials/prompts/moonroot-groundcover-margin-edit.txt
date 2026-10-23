@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Edit target: the attached transparent ivy-and-moss groundcover material image.
+Change ONLY the composition size and transparent margin. Preserve the same hand-painted top-down botanical leaf detail, jade/olive cool natural palette, irregular asymmetrical silhouette, small ivy leaves, fine moss and sparse tiny fern tips. Preserve its flat orthographic diffuse albedo treatment and genuine alpha.
+Make the entire foliage patch smaller and centered so its complete silhouette, including every tiny tendril and fringe pixel, fits inside the central 68 percent of the square canvas width and height. The top, bottom, left and right outer 16 percent strips of the image must be completely empty alpha 0, with no fringe, haze, shadows or stray leaves. This wider border is necessary for a rotating 3D cutout material.
+Keep everything else unchanged. Do not add anything. No ground, soil backing, stones, architecture, objects, flowers, perspective, lighting effects, text, UI, backdrop or fake checkerboard. Output genuine transparent RGBA square image.

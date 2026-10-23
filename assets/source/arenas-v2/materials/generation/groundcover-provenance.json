@@ -1,0 +1,129 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "date": "2026-10-23",
+  "reference": "docs/design/concepts/moonroot-battlefield-v3-concept.png visually inspected for foliage palette only; not supplied to generation or used as a runtime texture",
+  "postprocessing": "Pillow RGBA conversion, uniform LANCZOS resize from native 1254 square to 512 square, WebP quality 86 / method 6 / alpha_quality 100 / exact true. No cropping, recoloring, compositing, retouching, alpha repair, generated pixels or relief maps.",
+  "pillowVersion": "12.1.0",
+  "originalGeneratedPath": "/home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2/exec-3155a448-5215-4776-8b39-ae7fcfab2675.png",
+  "sourceOriginalSha256Matches": true,
+  "runtimeAlphaPreservedLosslesslyAfterResize": true,
+  "recommendedAlphaTest": 0.38,
+  "prompt": {
+    "path": "assets/source/arenas-v2/materials/prompts/moonroot-groundcover-margin-edit.txt",
+    "sha256": "77a14b7a787ed6138c87b13942211d98bc802f0ee06bb425f2daea09a69998d4",
+    "exactPrompt": "Use case: precise-object-edit\nEdit target: the attached transparent ivy-and-moss groundcover material image.\nChange ONLY the composition size and transparent margin. Preserve the same hand-painted top-down botanical leaf detail, jade/olive cool natural palette, irregular asymmetrical silhouette, small ivy leaves, fine moss and sparse tiny fern tips. Preserve its flat orthographic diffuse albedo treatment and genuine alpha.\nMake the entire foliage patch smaller and centered so its complete silhouette, including every tiny tendril and fringe pixel, fits inside the central 68 percent of the square canvas width and height. The top, bottom, left and right outer 16 percent strips of the image must be completely empty alpha 0, with no fringe, haze, shadows or stray leaves. This wider border is necessary for a rotating 3D cutout material.\nKeep everything else unchanged. Do not add anything. No ground, soil backing, stones, architecture, objects, flowers, perspective, lighting effects, text, UI, backdrop or fake checkerboard. Output genuine transparent RGBA square image."
+  },
+  "generationInput": {
+    "originalGeneratedPath": "/home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2/exec-48dedf94-fe66-46eb-9f46-ba31aaca760d.png",
+    "sourceOriginalSha256Matches": true,
+    "master": {
+      "path": "assets/source/arenas-v2/materials/masters/moonroot-groundcover-initial.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "format": "PNG",
+      "bytes": 2383885,
+      "sha256": "a45eed6d72d9037acf2dd7f0faed23645dc686d0b9d143adea2e9449618e0cba",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        1253,
+        1254
+      ],
+      "alphaTest038Bounds": [
+        87,
+        122,
+        1187,
+        1159
+      ],
+      "alphaTest038MarginFractions": [
+        0.06937799043062201,
+        0.09728867623604466,
+        0.05342902711323764,
+        0.07575757575757576
+      ],
+      "transparentPixels": 724833
+    },
+    "prompt": {
+      "path": "assets/source/arenas-v2/materials/prompts/moonroot-groundcover.txt",
+      "sha256": "281d58dbccca934506c1befdb860f6e510ad97c17534540d6d5ed4b9984b2e36",
+      "exactPrompt": "Use case: stylized-concept\nAsset type: one original transparent RGBA groundcover albedo texture for a real-time 3D fantasy courtyard material.\nPrimary request: a dense irregular organic patch of small jade and olive ivy leaves interwoven with delicate moss and just a few tiny fern tips. This is a flat material input mapped onto curved 3D groundcover patches, not a scene, environment picture, rendered diorama or screenshot.\nStyle/medium: exceptionally detailed hand-painted naturalistic fantasy game material, individual varied botanical leaves with fine realistic leaf veins, tiny moss filaments, restrained painterly brush texture. Keep fine leaf detail readable when resized to 512 by 512.\nComposition/framing: square image, strict orthographic top-down view looking straight down, no perspective. The foliage forms one irregular asymmetrical contiguous patch occupying only the central 72\u201376 percent of the canvas in both directions. Every leaf, stem, moss tuft and fern tip is comfortably inside the image. Leave at least 12 percent of the full image width entirely transparent on every outer edge. Ragged leafy silhouette with small gaps and tendrils within the patch, never a rectangular or circular cutout.\nScene/backdrop: genuinely transparent background, alpha zero outside the patch and through naturally open holes between leaves. No filled backdrop, ground plane or painted transparency grid.\nLighting/mood: soft diffuse ambient light, gentle intrinsic leaf shading only, no directional lighting or hard cast shadows.\nColor palette: cool natural forest greens, jade, muted deep teal-green and olive, occasional quiet pale sage leaf veins. Match the organic foliage palette of a tranquil moonlit ancient elven garden; avoid neon, oversaturation or golden glow.\nMaterials/textures: many modest small ivy leaves at varied rotations and sizes overlapping into a lush carpet, fine natural veins, moss binding the leaves, sparse minute fern tips. No single dominant large leaf or dominant fern.\nConstraints: leaf and moss material only. No figure, person, animal, face, stone, soil backing, architecture, ruins, pots, objects, flowers, text, lettering, logo, border, UI, symbols, perspective, dramatic lighting, backdrop or hard cast shadow. No scene screenshot. True alpha transparency, not a simulated checkerboard.\nRequested canvas: 1024 by 1024 square; preserve the native output."
+    },
+    "revisionReason": "Initial foliage silhouette reached within 5.3 percent of one edge; built-in edit reduced the patch to retain a clear margin above 10 percent."
+  },
+  "master": {
+    "path": "assets/source/arenas-v2/materials/masters/moonroot-groundcover.png",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "format": "PNG",
+    "bytes": 1308745,
+    "sha256": "4bfba2c3224fa5827ff12cca29878add796399319bb39a7d2845102405e6f639",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "alphaBounds": [
+      33,
+      23,
+      1152,
+      1230
+    ],
+    "alphaTest038Bounds": [
+      234,
+      254,
+      1040,
+      1010
+    ],
+    "alphaTest038MarginFractions": [
+      0.18660287081339713,
+      0.2025518341307815,
+      0.17065390749601275,
+      0.19457735247208932
+    ],
+    "transparentPixels": 1134250
+  },
+  "runtime": {
+    "path": "apps/web/public/assets/arenas-v2/materials/moonroot-groundcover.webp",
+    "dimensions": [
+      512,
+      512
+    ],
+    "mode": "RGBA",
+    "format": "WEBP",
+    "bytes": 61622,
+    "sha256": "28b12eb36d274a0795ee1d0e5f5143c0fea7c73fd6af402ad45a574cf6c5a85c",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "alphaBounds": [
+      40,
+      35,
+      470,
+      476
+    ],
+    "alphaTest038Bounds": [
+      96,
+      104,
+      424,
+      412
+    ],
+    "alphaTest038MarginFractions": [
+      0.1875,
+      0.203125,
+      0.171875,
+      0.1953125
+    ],
+    "transparentPixels": 189528
+  },
+  "runtimeRgbaBytesWithMipmaps": 1398100
+}

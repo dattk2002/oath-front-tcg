@@ -1,0 +1,183 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "date": "2026-10-23",
+  "reference": "docs/design/concepts/moonroot-battlefield-v3-concept.png visually inspected for art direction only; not an image generation input or runtime texture",
+  "postprocessing": "Pillow RGB/RGBA conversion, uniform LANCZOS resize from native 1254 square to 1024 square, WebP quality 86 / method 6 / alpha_quality 100 / exact true. No cropping, recoloring, compositing, retouching, alpha repair, generated pixels or bump/height maps.",
+  "pillowVersion": "12.1.0",
+  "runtimeSize": [
+    1024,
+    1024
+  ],
+  "assets": {
+    "moonroot-stone": {
+      "mode": "generate",
+      "originalGeneratedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-86957a5c-1503-4973-8efb-b38d3f41cc1f.png",
+      "sourceOriginalSha256Matches": true,
+      "prompt": {
+        "path": "assets/source/arenas-v2/materials/prompts/moonroot-stone.txt",
+        "sha256": "e5b19ccf4452d54fc24ee8b753150a4ff8eb4e1bacf4ad0c79b1e8ce8175d192",
+        "exactPrompt": "Use case: stylized-concept\nAsset type: original production albedo texture for the Moonroot limestone courtyard in a painterly fantasy 3D card game.\nPrimary request: A single continuous close-up material swatch of pale neutral cool limestone, exactly square 1024 by 1024 pixels, viewed perfectly orthographically straight down at the flat surface. This is a flat diffuse/base-color map, not a rendered scene. Quiet readable pale mineral color carries most of the surface.\nStyle/medium: refined hand-painted fantasy game material, rich subtle painterly mineral mottling, delicate pores and modest weathering at material scale. Fine thin controlled hairline cracks and sparse subdued jade-green moss staining only alongside tiny fissures. Restrained variation, pleasant soft gray-white stone with a cool neutral cast.\nComposition/framing: the material fills every edge of the whole image, no border; coherent even-scale detail and similar edge colors for seamless-like repetition. No singular focal point. No slab arrangement, large joint lines or perspective.\nLighting: completely unlit diffuse color under uniform neutral illumination, no cast shadows, no directional highlights, no ambient-occlusion gradients, no sunbeams or shading baked in. The real 3D geometry and runtime lights supply depth.\nAvoid: cards, slots, engravings, emblems, runes, UI, text, watermarks, cracks that divide the image into large paving polygons, checkerboard patterns, gold lines, large geometry outlines, dark gritty rubble, vivid green blanket, leaves, props, perspective, scene or object silhouette. One material only."
+      },
+      "master": {
+        "path": "assets/source/arenas-v2/materials/masters/moonroot-stone.png",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "bytes": 3284517,
+        "sha256": "c72f0245e620ec35c9c5bd3563c6fb723b266aca28416a3f8baa0f39e6d66214"
+      },
+      "runtime": {
+        "path": "apps/web/public/assets/arenas-v2/materials/moonroot-stone.webp",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "format": "WEBP",
+        "bytes": 258690,
+        "sha256": "ca86503e5b9352c8b138a2803a6e95db7af8e553a1a14e3bac554a5a2f609dde"
+      }
+    },
+    "aged-bark": {
+      "mode": "generate",
+      "originalGeneratedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-e25e1be4-9468-40f9-bb20-fb90bed19197.png",
+      "sourceOriginalSha256Matches": true,
+      "prompt": {
+        "path": "assets/source/arenas-v2/materials/prompts/aged-bark.txt",
+        "sha256": "9ea6d6dbd43e12825c67cb81714f569682150a33ce967c445ac23240a834101d",
+        "exactPrompt": "Use case: stylized-concept\nAsset type: original production diffuse/base-color texture for UV-mapped ancient sculptural tree roots in a painterly fantasy 3D game.\nPrimary request: One continuous square 1024 by 1024 pixel close-up swatch of ancient root bark, orthographic facing the surface, filling the entire image. Longitudinal grain runs vertically from bottom to top along the UV axis. Graceful elongated fibers and subtly irregular sinuous grain convey old gnarled wood without depicting a whole trunk or root.\nStyle/medium: detailed yet restrained hand-painted fantasy material, warm gray-brown and subdued olive-brown palette, tactile fine fibers and elegant weathering, occasional small natural fissures and fine muted olive staining.\nComposition/framing: evenly distributed fine and medium grain; no dominant knot or focal object, no border; compatible edge density and coloration for seamless-like repetition. One continuous material swatch, not a scene or atlas.\nLighting: unlit albedo only, flat neutral diffuse color with no directional light, cast shadows, gloss highlights, dramatic grooves shaded black, ambient-occlusion gradients or baked scene lighting.\nAvoid: perspective, full trunk, root silhouette, foliage, objects, large cracks, horizontal planks, cut ends, rings, UI, symbols, text, watermark, metallic colors, orange saturation, photographic flash, scenery. Geometry supplies sculptural root depth; texture supplies only painterly surface color."
+      },
+      "master": {
+        "path": "assets/source/arenas-v2/materials/masters/aged-bark.png",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "bytes": 2961636,
+        "sha256": "a6a6e61b39fb9e8c497b627a53819ab6c9152259aa7338f42e541ada94b25291"
+      },
+      "runtime": {
+        "path": "apps/web/public/assets/arenas-v2/materials/aged-bark.webp",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGB",
+        "format": "WEBP",
+        "bytes": 228532,
+        "sha256": "c5e6ae9644eeebfaceac34488534d744a0f1b88b329a13365b670932fb538df9"
+      }
+    },
+    "fern-frond": {
+      "mode": "edit",
+      "originalGeneratedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-85a33665-43dd-44e8-b267-1178b078a03d.png",
+      "sourceOriginalSha256Matches": true,
+      "prompt": {
+        "path": "assets/source/arenas-v2/materials/prompts/fern-frond.txt",
+        "sha256": "cae963d1761f85619fbce3b8ba547ba960db6ae6e032168bf25b1fe8498230d5",
+        "exactPrompt": "Use case: precise-object-edit\nAsset type: production transparent fern albedo cutout for a single 3D UV island.\nInput image: the existing single fern frond is the edit target.\nPrimary request: Change only the framing: make the existing frond smaller within the same square transparent canvas so every part of it has at least a 10 percent fully transparent clear margin from all four canvas edges. Preserve the exact same single frond, jade green palette, painterly leaf details, separated leaflets, central upright stem, orthographic view and neutral diffuse material treatment. Keep the whole frond from stem bottom to tip fully visible. The subject should occupy at most 80 percent of canvas height. Output square 1024 by 1024 pixels if available.\nInvariants: exactly one frond, centered upright, one UV island. Preserve genuine transparency, with alpha zero everywhere outside the leaf silhouette and between leaflets. Preserve diffuse colors with no shadow or background. No added branches, separate leaves, scene, glow, cast shadow, checkerboard pixels, text or watermark. Only reframe with larger transparent padding."
+      },
+      "master": {
+        "path": "assets/source/arenas-v2/materials/masters/fern-frond.png",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "format": "PNG",
+        "bytes": 831176,
+        "sha256": "da3c26258fb2c34fc6eeb2ff7ec024e99f6fe86a984d4ef5401966f5257059e1",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBounds": [
+          31,
+          32,
+          1200,
+          1237
+        ],
+        "alphaTest038Bounds": [
+          309,
+          143,
+          971,
+          1126
+        ],
+        "transparentPixels": 1256312
+      },
+      "runtime": {
+        "path": "apps/web/public/assets/arenas-v2/materials/fern-frond.webp",
+        "dimensions": [
+          1024,
+          1024
+        ],
+        "mode": "RGBA",
+        "format": "WEBP",
+        "bytes": 147700,
+        "sha256": "35733e9a6126dd3801bd3ead4527d4f42de9df42049622fd831bb3acb59ee707",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBounds": [
+          25,
+          26,
+          980,
+          1010
+        ],
+        "alphaTest038Bounds": [
+          252,
+          116,
+          793,
+          920
+        ],
+        "transparentPixels": 838782
+      },
+      "generationInput": {
+        "originalGeneratedPath": "/home/bia/.codex/generated_images/01a166da-572e-7c10-984c-c25a546a9293/exec-174a5b1f-77bb-4e52-a084-53144f736285.png",
+        "master": {
+          "path": "assets/source/arenas-v2/materials/masters/fern-frond-initial.png",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "format": "PNG",
+          "bytes": 1176145,
+          "sha256": "607680acae2313bf80299132454e0f3c9eaaa98fee72880f01d6957882b5c81f",
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaBounds": [
+            49,
+            18,
+            1208,
+            1238
+          ],
+          "alphaTest038Bounds": [
+            229,
+            21,
+            1051,
+            1233
+          ],
+          "transparentPixels": 1112640
+        },
+        "prompt": {
+          "path": "assets/source/arenas-v2/materials/prompts/fern-frond-initial.txt",
+          "sha256": "c28a017f59ddd422db914ffd3bec8a13929219bfc28593974efa853ce1bb8540",
+          "exactPrompt": "Use case: stylized-concept\nAsset type: original production foliage albedo cutout for one UV island on a 3D fern frond mesh in a painterly fantasy game.\nPrimary request: Exactly ONE lush jade-green fern frond isolated on a genuinely transparent background with true alpha, square 1024 by 1024 pixels. A single central slender stem travels vertically upward from its base near bottom center to the fine tip near top center, with orderly pairs of separated leaflets spreading on both sides. The entire frond and each leaflet tip is visible within a clear padded boundary of at least 6 percent.\nStyle/medium: premium hand-painted fantasy diffuse material, refined leaf-vein detail and controlled brushwork, restrained rich jade and cool forest green color variation, natural elegant slight curvature. Clear clean silhouette; readable individual separated leaflets.\nComposition/framing: centered vertically oriented single frond occupying roughly 85 percent of height and about 55 to 65 percent of width, face-on orthographic flat cutout with no perspective. Whole image is one UV island, not a collage, atlas, sprite sheet or collection. No second stem or separate plant.\nLighting: neutral even unlit diffuse color, no directional highlights, no cast shadows, no rim light, no glow or baked ambient-occlusion shadow.\nBackground and constraints: transparent true alpha everywhere outside the single frond and between leaflets. No painted background, no white or black backdrop, no checkerboard baked into image, no ground, pot, water, soil, flowers, scenery, decorative border, text or watermark."
+        },
+        "revisionReason": "Original frond top/bottom margin too small; reframe via built-in imagegen only."
+      },
+      "runtimeAlphaPreservedLosslesslyAfterResize": true
+    }
+  },
+  "runtimeCombinedBytes": 634922,
+  "runtimeRgbaBytesWithMipmaps": 16777212
+}

@@ -1,0 +1,19 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "date": "2026-10-23",
+  "assets": {
+    "moonroot-groundcover": {
+      "mode": "edit",
+      "generatedPath": "/home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2/exec-3155a448-5215-4776-8b39-ae7fcfab2675.png",
+      "promptPath": "prompts/moonroot-groundcover-margin-edit.txt",
+      "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2 as /home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2/exec-3155a448-5215-4776-8b39-ae7fcfab2675.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "previous": {
+        "mode": "generate",
+        "generatedPath": "/home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2/exec-48dedf94-fe66-46eb-9f46-ba31aaca760d.png",
+        "promptPath": "prompts/moonroot-groundcover.txt",
+        "outputHint": "Generated images are saved to /home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2 as /home/bia/.codex/generated_images/01a16830-f93a-7412-bfee-f8667cb325f2/exec-48dedf94-fe66-46eb-9f46-ba31aaca760d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "reason": "Initial foliage silhouette reached within 5.3 percent of one edge; built-in edit reduced the patch to retain a clear margin above 10 percent."
+      }
+    }
+  }
+}

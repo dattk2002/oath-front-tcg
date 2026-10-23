@@ -1,0 +1,5 @@
+Use case: precise-object-edit
+Asset type: production transparent fern albedo cutout for a single 3D UV island.
+Input image: the existing single fern frond is the edit target.
+Primary request: Change only the framing: make the existing frond smaller within the same square transparent canvas so every part of it has at least a 10 percent fully transparent clear margin from all four canvas edges. Preserve the exact same single frond, jade green palette, painterly leaf details, separated leaflets, central upright stem, orthographic view and neutral diffuse material treatment. Keep the whole frond from stem bottom to tip fully visible. The subject should occupy at most 80 percent of canvas height. Output square 1024 by 1024 pixels if available.
+Invariants: exactly one frond, centered upright, one UV island. Preserve genuine transparency, with alpha zero everywhere outside the leaf silhouette and between leaflets. Preserve diffuse colors with no shadow or background. No added branches, separate leaves, scene, glow, cast shadow, checkerboard pixels, text or watermark. Only reframe with larger transparent padding.
