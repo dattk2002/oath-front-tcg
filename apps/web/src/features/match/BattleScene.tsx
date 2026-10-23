@@ -6,6 +6,36 @@ import type { PlayerView, PublicCatalog } from "@oathfront/contracts";
 import type { MatchViewStore } from "./view-store";
 import type { PresentationController } from "./motion/presentation-controller";
 import { eventLabel } from "./labels";
+import {
+  SceneFailure,
+  type SceneFailureReason,
+} from "./rendering/scene-failure";
+
+const failureCopy: Record<
+  SceneFailureReason,
+  { title: string; detail: string }
+> = {
+  "graphics-unavailable": {
+    title: "3D graphics are unavailable",
+    detail:
+      "Your browser could not start WebGL. Try enabling graphics acceleration in your browser settings, then restart the browser. You can also retry or use the text board.",
+  },
+  "context-lost": {
+    title: "3D graphics were interrupted",
+    detail:
+      "The graphics context was lost. Retry 3D to rebuild the battlefield, or continue with the text board.",
+  },
+  "scene-load-failed": {
+    title: "The 3D battlefield could not load",
+    detail:
+      "Some battlefield resources could not load. Check your connection and retry, or continue with the text board.",
+  },
+  "render-failed": {
+    title: "The 3D battlefield stopped rendering",
+    detail:
+      "The battlefield could not finish drawing. Retry 3D, or continue with the text board.",
+  },
+};
 /** One mount owns renderer, scoped GSAP timelines, preference/listeners and disposal. */
 export default function BattleScene({
   store,
@@ -22,9 +52,13 @@ export default function BattleScene({
   const sound = useRef(audio);
   sound.current = audio;
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [status, setStatus] = useState<"loading" | "ready" | "fallback">(
+  const [status, setStatus] = useState<"loading" | "ready" | "failed">(
     "loading",
   );
+  const [failure, setFailure] = useState<SceneFailureReason>("render-failed");
+  const [textBoard, setTextBoard] = useState(false);
+  const recovery = useRef<HTMLDivElement>(null);
+  const restoreFocus = useRef(false);
   const [playing, setPlaying] = useState(false),
     [attempt, setAttempt] = useState(0),
     [announcement, setAnnouncement] = useState("");
@@ -37,8 +71,31 @@ export default function BattleScene({
   reducedSetting.current = reduced || settings.reducedMotion;
   useEffect(() => {
     let cancelled = false,
-      release = () => {};
+      terminal = false,
+      released = false,
+      stage: SceneFailureReason = "scene-load-failed";
+    const cleanup: (() => void)[] = [];
+    const release = () => {
+      if (released) return;
+      released = true;
+      for (const dispose of cleanup.reverse()) dispose();
+      cleanup.length = 0;
+    };
+    const fail = (reason: SceneFailureReason) => {
+      if (cancelled || terminal) return;
+      terminal = true;
+      const board = canvas.current
+        ?.closest("[data-battle-root]")
+        ?.querySelector(".board");
+      restoreFocus.current ||= !!board?.contains(document.activeElement);
+      release();
+      setPlaying(false);
+      setFailure(reason);
+      setStatus("failed");
+      onView(store.getSnapshot().authoritativeView);
+    };
     setStatus("loading");
+    setTextBoard(false);
     void Promise.all([
       import("./rendering/three/scene"),
       import("./motion/presentation-controller"),
@@ -47,6 +104,7 @@ export default function BattleScene({
     ])
       .then(async ([rendering, motion, preferences, feedback]) => {
         if (cancelled || !canvas.current) return;
+        stage = "render-failed";
         const scene = rendering.createThreeBattleScene(
           canvas.current,
           catalog,
@@ -60,26 +118,26 @@ export default function BattleScene({
             reducedMotion: () =>
               reducedSetting.current ||
               matchMedia("(prefers-reduced-motion: reduce)").matches,
-            onFailure: () => {
-              release();
-              if (!cancelled) {
-                setStatus("fallback");
-                onView(store.getSnapshot().authoritativeView);
-              }
-            },
+            onFailure: fail,
           },
         );
-        const unsubscribeView = scene.subscribe(onView);
+        cleanup.push(() => scene.dispose());
+        cleanup.push(scene.subscribe(onView));
         scene.applyView(store.getSnapshot().authoritativeView);
-        const os = preferences.observeReducedMotion(() =>
-          controller.fastForward(store.getSnapshot().authoritativeView),
-        );
+        const os = preferences.observeReducedMotion(() => {
+          if (!cancelled && !terminal)
+            controller.fastForward(store.getSnapshot().authoritativeView);
+        });
+        cleanup.push(() => os.dispose());
         const controller = motion.createPresentationController(scene, {
           reducedMotion: () => os.matches() || reducedSetting.current,
           maxBacklogSeconds: 8,
           getLatestView: () => store.getSnapshot().authoritativeView,
-          onPlaying: setPlaying,
+          onPlaying: (value) => {
+            if (!cancelled && !terminal) setPlaying(value);
+          },
           onEvent: (event) => {
+            if (cancelled || terminal) return;
             const family = soundFamily(event);
             if (family) sound.current?.play(family);
           },
@@ -89,6 +147,7 @@ export default function BattleScene({
               .map((card) => card.id),
           ),
           onCursor: (sequence) => {
+            if (cancelled || terminal) return;
             store.setPresentationCursor(sequence);
             const event = store
               .getSnapshot()
@@ -130,9 +189,12 @@ export default function BattleScene({
               );
           },
         });
-        let unsubscribeStore = () => {},
-          removeFeedback = () => {};
+        cleanup.push(() => {
+          if (presentation.current === controller) presentation.current = null;
+          controller.dispose();
+        });
         const syncPause = () => {
+          if (cancelled || terminal) return;
           if (
             document.hidden ||
             !navigator.onLine ||
@@ -142,69 +204,66 @@ export default function BattleScene({
           else controller.resume();
         };
         const reconnect = () => {
+          if (cancelled || terminal) return;
           controller.fastForward(store.getSnapshot().authoritativeView);
           store.setSelection(null);
           syncPause();
         };
-        release = () => {
-          unsubscribeStore();
-          unsubscribeView();
-          removeFeedback();
-          os.dispose();
-          document.removeEventListener("visibilitychange", syncPause);
-          window.removeEventListener("online", reconnect);
-          window.removeEventListener("offline", syncPause);
-          if (presentation.current === controller) presentation.current = null;
-          controller.dispose();
-        };
         try {
           await scene.ready;
-          if (cancelled) {
+          if (cancelled || terminal) {
             release();
             return;
           }
           presentation.current = controller;
           const snapshot = store.getSnapshot();
           controller.fastForward(snapshot.authoritativeView);
+          if (cancelled || terminal) return;
           store.setPresentationCursor(snapshot.latestSeq);
           let receivedRevision = snapshot.revision,
             receivedSeq = snapshot.latestSeq;
-          unsubscribeStore = store.subscribe(() => {
-            const next = store.getSnapshot();
-            if (
-              next.revision !== receivedRevision ||
-              next.latestSeq !== receivedSeq
-            ) {
-              receivedRevision = next.revision;
-              receivedSeq = next.latestSeq;
-              controller.enqueue(
-                next.events.filter((e) => e.sequence > next.presentationCursor),
-              );
-            }
-            syncPause();
-          });
-          removeFeedback = feedback.bindCardFeedback(
-            canvas.current!.closest<HTMLElement>("[data-battle-root]")!,
-            () => os.matches() || reducedSetting.current,
+          cleanup.push(
+            store.subscribe(() => {
+              if (cancelled || terminal) return;
+              const next = store.getSnapshot();
+              if (
+                next.revision !== receivedRevision ||
+                next.latestSeq !== receivedSeq
+              ) {
+                receivedRevision = next.revision;
+                receivedSeq = next.latestSeq;
+                controller.enqueue(
+                  next.events.filter(
+                    (e) => e.sequence > next.presentationCursor,
+                  ),
+                );
+              }
+              syncPause();
+            }),
           );
+          cleanup.push(
+            feedback.bindCardFeedback(
+              canvas.current!.closest<HTMLElement>("[data-battle-root]")!,
+              () => os.matches() || reducedSetting.current,
+            ),
+          );
+          cleanup.push(() => {
+            document.removeEventListener("visibilitychange", syncPause);
+            window.removeEventListener("online", reconnect);
+            window.removeEventListener("offline", syncPause);
+          });
           document.addEventListener("visibilitychange", syncPause);
           window.addEventListener("online", reconnect);
           window.addEventListener("offline", syncPause);
           syncPause();
+          if (cancelled || terminal) return;
           setStatus("ready");
-        } catch {
-          release();
-          if (!cancelled) {
-            setStatus("fallback");
-            onView(store.getSnapshot().authoritativeView);
-          }
+        } catch (error) {
+          fail(error instanceof SceneFailure ? error.reason : stage);
         }
       })
-      .catch(() => {
-        if (!cancelled) {
-          setStatus("fallback");
-          onView(store.getSnapshot().authoritativeView);
-        }
+      .catch((error: unknown) => {
+        fail(error instanceof SceneFailure ? error.reason : stage);
       });
     return () => {
       cancelled = true;
@@ -215,15 +274,43 @@ export default function BattleScene({
     presentation.current?.fastForward(store.getSnapshot().authoritativeView);
   }, [reduced, presentation, store]);
   useEffect(() => {
-    if (status !== "fallback") return;
+    if (status !== "failed") return;
     onView(store.getSnapshot().authoritativeView);
     return store.subscribe(() => onView(store.getSnapshot().authoritativeView));
   }, [status, store, onView]);
+  useEffect(() => {
+    if (!restoreFocus.current) return;
+    if (status === "loading") {
+      recovery.current?.focus();
+      return;
+    }
+    const board = canvas.current
+      ?.closest("[data-battle-root]")
+      ?.querySelector<HTMLElement>(".board");
+    let target =
+      textBoard || status === "ready"
+        ? board?.querySelector<HTMLElement>("button:not(:disabled), summary")
+        : recovery.current?.querySelector<HTMLButtonElement>("button");
+    if ((textBoard || status === "ready") && !target && board) {
+      // Empty boards have no enabled legal targets until a card is selected.
+      if (!board.hasAttribute("tabindex")) board.tabIndex = -1;
+      target = board;
+    }
+    target?.focus({ preventScroll: true });
+    restoreFocus.current = false;
+  }, [status, textBoard]);
+  const retry = () => {
+    restoreFocus.current = true;
+    setTextBoard(false);
+    setStatus("loading");
+    setAttempt((n) => n + 1);
+  };
   return (
     <>
       <div
         className="battle-scene-layer"
         data-scene-status={status}
+        data-text-board={textBoard ? "true" : "false"}
         data-presentation={playing ? "playing" : "idle"}
         aria-hidden="true"
       >
@@ -245,18 +332,44 @@ export default function BattleScene({
             Jump to current board
           </button>
         )}
-        {status === "loading" && (
-          <span role="status">Preparing battlefield…</span>
-        )}
-        {status === "fallback" && (
-          <span role="status">
-            Using the text board.{" "}
-            <button onClick={() => setAttempt((n) => n + 1)}>
-              Retry artwork
-            </button>
+        {status === "failed" && textBoard && (
+          <span className="text-board-status" role="status">
+            Text board <button onClick={retry}>Retry 3D</button>
           </span>
         )}
       </div>
+      {status !== "ready" && !textBoard && (
+        <div className="battle-scene-recovery" ref={recovery} tabIndex={-1}>
+          {status === "loading" ? (
+            <p className="battle-scene-loading" role="status">
+              Preparing battlefield…
+            </p>
+          ) : (
+            <section
+              className="battle-scene-error"
+              aria-labelledby="battle-scene-error-title"
+            >
+              <div role="status">
+                <h2 id="battle-scene-error-title">
+                  {failureCopy[failure].title}
+                </h2>
+                <p>{failureCopy[failure].detail}</p>
+              </div>
+              <div className="battle-scene-recovery-actions">
+                <button onClick={retry}>Retry 3D</button>
+                <button
+                  onClick={() => {
+                    restoreFocus.current = true;
+                    setTextBoard(true);
+                  }}
+                >
+                  Use text board
+                </button>
+              </div>
+            </section>
+          )}
+        </div>
+      )}
       <div className="motion-preferences">
         <label>
           <input

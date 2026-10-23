@@ -20,6 +20,7 @@ import {
 } from "./layout";
 import { buildEnvironment, disposeObject } from "./environment";
 import { createCardTexture } from "./card-texture";
+import { SceneFailure, type SceneFailureReason } from "../scene-failure";
 type Card = {
   group: T.Group;
   face: T.Mesh<T.PlaneGeometry, T.MeshBasicMaterial>;
@@ -37,7 +38,7 @@ export function createThreeBattleScene(
     quality: "low" | "high";
     reducedMotion: () => boolean;
     arenaKey?: string;
-    onFailure?: () => void;
+    onFailure?: (reason: SceneFailureReason) => void;
   },
 ): BattleScene {
   const root =
@@ -51,7 +52,8 @@ export function createThreeBattleScene(
     camera = createCamera(1000, 600),
     view: PlayerView | null = null,
     disposed = false,
-    failed = false,
+    failed: SceneFailureReason | null = null,
+    released = false,
     paused = false,
     queued = false,
     settledRefresh = false,
@@ -94,12 +96,12 @@ export function createThreeBattleScene(
     root.removeAttribute("data-arena-3d");
     delete canvas.dataset.renderer;
   }
-  function fail() {
+  function fail(reason: SceneFailureReason) {
     if (disposed || failed) return;
-    failed = true;
+    failed = reason;
     removeProjection();
     release();
-    options.onFailure?.();
+    options.onFailure?.(reason);
   }
   function measure() {
     if (!board) return;
@@ -625,11 +627,11 @@ export function createThreeBattleScene(
         .map((n) => n.toFixed(4))
         .join(",");
     } catch {
-      fail();
+      fail("render-failed");
     }
   }
   function updateHover() {
-    if (disposed || paused || !board) return;
+    if (disposed || failed || paused || !board) return;
     for (const card of cards.values()) {
       const el = board.querySelector<HTMLElement>(
         `[data-unit-id="${CSS.escape(card.unit.instanceId)}"]`,
@@ -651,6 +653,8 @@ export function createThreeBattleScene(
     }
   }
   function release() {
+    if (released) return;
+    released = true;
     resize?.disconnect();
     observer?.disconnect();
     board?.removeEventListener("pointerover", updateHover);
@@ -677,7 +681,7 @@ export function createThreeBattleScene(
   }
   function contextLost(e: Event) {
     e.preventDefault();
-    fail();
+    fail("context-lost");
   }
   function notify() {
     if (view) listeners.forEach((listener) => listener(view!));
@@ -688,15 +692,19 @@ export function createThreeBattleScene(
   }
   const ready = Promise.resolve().then(() => {
     if (disposed) return;
-    if (!board) throw Error("Battle board unavailable");
     try {
-      renderer = new T.WebGLRenderer({
-        canvas,
-        alpha: true,
-        antialias: options.quality === "high",
-        powerPreference:
-          options.quality === "low" ? "low-power" : "high-performance",
-      });
+      if (!board) throw new SceneFailure("render-failed");
+      try {
+        renderer = new T.WebGLRenderer({
+          canvas,
+          alpha: true,
+          antialias: options.quality === "high",
+          powerPreference:
+            options.quality === "low" ? "low-power" : "high-performance",
+        });
+      } catch (error) {
+        throw new SceneFailure("graphics-unavailable", error);
+      }
       renderer.setPixelRatio(
         Math.min(
           window.devicePixelRatio || 1,
@@ -711,7 +719,11 @@ export function createThreeBattleScene(
       arenaKey = view
         ? stableArenaKey(view, arenaKey)
         : (arenaKey ?? "moonroot-conservatory");
-      environment = buildEnvironment(arenaKey, options.quality, schedule);
+      try {
+        environment = buildEnvironment(arenaKey, options.quality, schedule);
+      } catch (error) {
+        throw new SceneFailure("scene-load-failed", error);
+      }
       scene.add(environment);
       canvas.addEventListener("webglcontextlost", contextLost);
       resize = new ResizeObserver(() => schedule(true));
@@ -737,11 +749,14 @@ export function createThreeBattleScene(
         board.addEventListener(event, updateHover);
       syncCards();
       draw();
-      if (failed) throw Error("Battle renderer failed");
+      if (failed) throw new SceneFailure(failed);
     } catch (error) {
-      removeProjection();
-      release();
-      throw error;
+      const failure =
+        error instanceof SceneFailure
+          ? error
+          : new SceneFailure("render-failed", error);
+      fail(failure.reason);
+      throw failure;
     }
   });
   return {
@@ -754,12 +769,12 @@ export function createThreeBattleScene(
       };
     },
     applyView(next) {
-      if (disposed) return;
+      if (disposed || failed) return;
       view = structuredClone(next);
       notify();
     },
     commit(event) {
-      if (disposed || !view) return;
+      if (disposed || failed || !view) return;
       view = applyVisibleEvent(view, event);
       notify();
     },
@@ -775,12 +790,14 @@ export function createThreeBattleScene(
       draw();
     },
     clearEffects() {
+      if (disposed || failed) return;
       current = null;
       clearLabels();
       syncCards();
       draw(true);
     },
     setPaused(value) {
+      if (disposed || failed) return;
       paused = value;
       cards.forEach((card) =>
         value ? card.tween?.pause() : card.tween?.resume(),

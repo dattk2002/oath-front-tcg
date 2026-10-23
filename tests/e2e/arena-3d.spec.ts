@@ -287,8 +287,12 @@ test("portrait WebGL failure preserves playable controls and retries with one re
   );
   await page.goto(`/matches/${dto.view.matchId}`);
   await expect(
-    page.getByText("Using the text board.", { exact: false }),
+    page.getByRole("button", { name: "Retry 3D", exact: true }),
   ).toBeVisible();
+  await expect(page.locator(".board")).toBeHidden();
+  await page
+    .getByRole("button", { name: "Use text board", exact: true })
+    .click();
   const board = page.getByRole("region", { name: "Five-lane board" });
   await board.locator(".board-unit").first().click();
   await expect(
@@ -298,9 +302,7 @@ test("portrait WebGL failure preserves playable controls and retries with one re
   await page.getByRole("button", { name: "End phase", exact: true }).click();
   await expect.poll(() => commands).toBe(1);
   await page.screenshot({ path: `${evidence}/portrait-fallback.png` });
-  await page
-    .getByRole("button", { name: "Retry artwork", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Retry 3D", exact: true }).click();
   await expect(page.locator('[data-arena-3d="ready"]')).toBeVisible();
   await expect(page.locator("canvas.battle-canvas")).toHaveCount(1);
   expect(commands).toBe(1);

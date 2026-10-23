@@ -1567,3 +1567,114 @@ body:has(.arena-match) .match-account-access .account-popover {
   .board:has(.terrain details[open]) {
   z-index: 46;
 }
+
+/* Keep the measured board box in place while graphics load or need recovery.
+   The semantic board is revealed only by a ready renderer or an explicit choice. */
+.arena-match
+  [data-battle-root]:not([data-arena-3d="ready"]):not(
+    :has([data-text-board="true"])
+  )
+  .board,
+.arena-match
+  [data-battle-root]:has([data-scene-status="failed"]):not(
+    :has([data-text-board="true"])
+  )
+  .board {
+  visibility: hidden;
+}
+.arena-match .battle-scene-layer:not([data-scene-status="ready"]) {
+  visibility: hidden;
+}
+.arena-match .battle-scene-recovery {
+  position: absolute;
+  inset: 90px 16px calc(var(--arena-hand) + 12px);
+  z-index: 24;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  pointer-events: none;
+  outline: none;
+}
+.arena-match .battle-scene-loading {
+  margin: auto;
+  padding: 12px 18px;
+  color: #d8e4de;
+  background: #111c28eb;
+  border: 1px solid #a7c9c847;
+  border-radius: 6px;
+  font-size: 15px;
+}
+.arena-match .battle-scene-error {
+  width: min(100%, 440px);
+  margin: auto;
+  padding: clamp(16px, 2vw, 24px);
+  border: 1px solid #a7c9c880;
+  border-radius: 8px;
+  background: #111c28f5;
+  box-shadow: 0 16px 50px #0009;
+  color: #f5efdc;
+  pointer-events: auto;
+}
+.arena-match .battle-scene-error h2 {
+  margin: 0 0 10px;
+  font-family: var(--campaign-display);
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.1;
+}
+.arena-match .battle-scene-error p {
+  margin: 0;
+  color: #c9d6cf;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.arena-match .battle-scene-recovery-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.arena-match .battle-scene-recovery-actions button,
+.arena-match .text-board-status button {
+  min-height: 44px;
+  padding: 10px 14px;
+  color: #f5efdc;
+  background: #1c2c39;
+  border: 1px solid #a7c9c880;
+  white-space: normal;
+}
+.arena-match .battle-scene-recovery-actions button:first-child {
+  color: #101923;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.arena-match .battle-scene-recovery-actions button:focus-visible,
+.arena-match .text-board-status button:focus-visible {
+  outline: 2px solid #f5efdc;
+  outline-offset: 3px;
+}
+.arena-match .text-board-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d8e4de;
+  font-size: 13px;
+}
+@media (max-height: 500px) and (min-width: 701px) {
+  .arena-match .battle-scene-recovery {
+    inset: 12px 160px calc(var(--arena-hand) + 8px);
+  }
+  .arena-match .battle-scene-error {
+    padding: 12px 16px;
+  }
+  .arena-match .battle-scene-recovery-actions {
+    margin-top: 10px;
+  }
+}
+
+.arena-match [data-battle-root]:not([data-arena-3d="ready"]) .arena-decor {
+  visibility: visible;
+}
+.arena-match .board[tabindex="-1"]:focus-visible {
+  outline: 2px solid #f5efdc;
+  outline-offset: -4px;
+}

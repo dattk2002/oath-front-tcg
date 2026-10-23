@@ -659,15 +659,17 @@ test("failed renderer keeps the latest semantic board and retries with one canva
   );
   await page.goto(`/matches/${initial.view.matchId}`);
   await expect(
-    page.getByText("Using the text board.", { exact: false }),
+    page.getByRole("button", { name: "Use text board", exact: true }),
   ).toBeVisible({ timeout: 15000 });
+  await expect(page.locator(".board")).toBeHidden();
+  await page
+    .getByRole("button", { name: "Use text board", exact: true })
+    .click();
   await requestPass(page);
   await expect(
     page.getByRole("region", { name: /Opponent hero/ }),
   ).toContainText("9");
-  await page
-    .getByRole("button", { name: "Retry artwork", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Retry 3D", exact: true }).click();
   await expect(page.locator('[data-scene-status="ready"]')).toBeVisible({
     timeout: 15000,
   });
