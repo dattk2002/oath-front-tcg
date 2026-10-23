@@ -1,0 +1,35 @@
+{
+  "idleSnapshotRequests": 0,
+  "idleWindowMs": 11000,
+  "messages": [
+    {
+      "type": "ready",
+      "revision": 0
+    },
+    {
+      "type": "changed",
+      "revision": 1
+    },
+    {
+      "type": "changed",
+      "revision": 2
+    },
+    {
+      "type": "changed",
+      "revision": 3
+    },
+    {
+      "type": "changed",
+      "revision": 4
+    },
+    {
+      "type": "ready",
+      "revision": 5
+    },
+    {
+      "type": "changed",
+      "revision": 6
+    }
+  ],
+  "errors": []
+}

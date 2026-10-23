@@ -1,0 +1,220 @@
+{
+  "startedAt": "2026-10-23T04:14:52.110Z",
+  "ui": "https://oathfront.vercel.app",
+  "apiWebsocketOrigin": "wss://oathfront-api.vercel.app",
+  "expectedDeployments": {
+    "ui": "c25294c",
+    "api": "62ebfb8"
+  },
+  "result": "passed",
+  "stages": [
+    {
+      "name": "fresh-guest-created",
+      "status": 201
+    },
+    {
+      "name": "fresh-match-created",
+      "status": 201,
+      "revision": 0
+    },
+    {
+      "name": "websocket-ready-and-csp",
+      "connectSrc": "connect-src 'self' wss://oathfront-api.vercel.app",
+      "readyFrames": 1
+    },
+    {
+      "name": "idle-without-polling",
+      "idleWindowMs": 11000,
+      "snapshotGets": 0
+    },
+    {
+      "name": "remote-invalidation-rendered",
+      "revision": 3,
+      "lifecycle": "PAUSED"
+    },
+    {
+      "name": "reconnect-recovered-offline-change",
+      "revision": 5,
+      "snapshotGets": 1
+    }
+  ],
+  "messages": [
+    {
+      "type": "ready",
+      "revision": 0
+    },
+    {
+      "type": "changed",
+      "revision": 1
+    },
+    {
+      "type": "changed",
+      "revision": 2
+    },
+    {
+      "type": "changed",
+      "revision": 3
+    },
+    {
+      "type": "changed",
+      "revision": 4
+    },
+    {
+      "type": "ready",
+      "revision": 5
+    }
+  ],
+  "websocketConnections": [
+    {
+      "origin": "wss://oathfront-api.vercel.app",
+      "path": "/realtime/matches",
+      "hasQuery": false,
+      "closed": true
+    },
+    {
+      "origin": "wss://oathfront-api.vercel.app",
+      "path": "/realtime/matches",
+      "hasQuery": false,
+      "closed": false
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "cspViolations": [
+    {
+      "directive": "script-src",
+      "blockedOrigin": "eval"
+    }
+  ],
+  "cleanup": {
+    "result": "verified-terminal",
+    "lifecycle": "COMPLETED",
+    "reason": "SURRENDER",
+    "revision": 6
+  },
+  "browser": "156.0.8078.4",
+  "testMatchId": "9e5de904-5282-4f4e-8b0f-23d773902a65",
+  "connectSrc": "connect-src 'self' wss://oathfront-api.vercel.app",
+  "idleWindowMs": 11000,
+  "idleSnapshotRequests": 0,
+  "reconnectSnapshotRequests": 1,
+  "browserApiRequests": [
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/session"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/catalog/elements_v1"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "POST",
+      "route": "/api/v1/matches/[test-match]/realtime-ticket"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "POST",
+      "route": "/api/v1/matches/[test-match]/commands"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "POST",
+      "route": "/api/v1/matches/[test-match]/commands"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "POST",
+      "route": "/api/v1/matches/[test-match]/commands"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "POST",
+      "route": "/api/v1/matches/[test-match]/realtime-ticket"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    },
+    {
+      "origin": "https://oathfront.vercel.app",
+      "method": "GET",
+      "route": "/api/v1/matches/[test-match]/events"
+    }
+  ],
+  "sceneStatus": "ready",
+  "finishedAt": "2026-10-23T04:15:42.609Z"
+}
