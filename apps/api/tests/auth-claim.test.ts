@@ -29,6 +29,22 @@ function session(r: Awaited<ReturnType<typeof claim>>) {
     id: r.json().principal.id,
   };
 }
+it("issues a 30-day account session when a guest signs in", async () => {
+  h.setTime(new Date("2026-10-22T00:00:00Z"));
+  const g = await h.guest();
+  const result = await claim(g);
+  expect(result.statusCode).toBe(200);
+  expect(result.json().sessionExpiresAt).toBe("2026-11-21T00:00:00.000Z");
+  h.setTime(new Date("2026-11-20T00:00:00Z"));
+  expect(
+    (
+      await h.app.inject({
+        url: "/api/v1/session",
+        headers: { cookie: session(result).cookie },
+      })
+    ).statusCode,
+  ).toBe(200);
+});
 it("converts guest and recovers only the completed same-subject claim without granting revoked-cookie gameplay/bootstrap", async () => {
   const g = await h.guest();
   const match = await h.app.inject({

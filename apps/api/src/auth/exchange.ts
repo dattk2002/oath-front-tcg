@@ -24,7 +24,13 @@ export async function exchangeIdentity(
   return transaction(pool, async (tx) => {
     await lockSubject(tx, identity.subject);
     const previous = source
-      ? await readSourceSession(tx, source.cookie, secret)
+      ? await readSourceSession(tx, source.cookie, secret).catch((error) => {
+          // A removed/foreign cookie is not proof of a source account. A fresh
+          // verified identity can still log in, without adopting any guest data.
+          if (error instanceof HttpError && error.code === "SESSION_EXPIRED")
+            return null;
+          throw error;
+        })
       : null;
     const existing = (
       await tx.query("SELECT id FROM principals WHERE auth_subject=$1", [
