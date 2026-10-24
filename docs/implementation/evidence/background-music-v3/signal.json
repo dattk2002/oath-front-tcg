@@ -1,0 +1,82 @@
+{
+  "method": "Independent ffmpeg decode, PCM boundary and EBU R128 checks. Original B approved by user; processed-loop listening is not claimed.",
+  "sha256": "7da98a704e989423d6a1e9bc57f02a4d090643e23b54ad0425c0ae19618624ff",
+  "durationSeconds": 180.2,
+  "channels": 2,
+  "sampleRate": 48000,
+  "bytes": 5768560,
+  "clippedSamples": 0,
+  "peakDbfs": -2.7604872874370185,
+  "truePeakDbfs": -2.6,
+  "integratedLufs": -16.0,
+  "rmsDbfs": -18.63904159334644,
+  "loopStartSeconds": 3.528,
+  "loopEndSeconds": 180.0,
+  "loopDurationSeconds": 176.472,
+  "loopPredecessorMismatch": 0.0034261196851730347,
+  "loopBefore100msRmsDbfs": -20.50144159356231,
+  "loopAfter100msRmsDbfs": -16.181872673102742,
+  "sourcePcmVerified": true,
+  "sections": [
+    {
+      "startSeconds": 0,
+      "endSeconds": 15,
+      "rmsDbfs": -19.830337864072103
+    },
+    {
+      "startSeconds": 15,
+      "endSeconds": 30,
+      "rmsDbfs": -19.840745746669363
+    },
+    {
+      "startSeconds": 30,
+      "endSeconds": 45,
+      "rmsDbfs": -18.754018245284833
+    },
+    {
+      "startSeconds": 45,
+      "endSeconds": 60,
+      "rmsDbfs": -18.107779233748477
+    },
+    {
+      "startSeconds": 60,
+      "endSeconds": 75,
+      "rmsDbfs": -18.79704158522729
+    },
+    {
+      "startSeconds": 75,
+      "endSeconds": 90,
+      "rmsDbfs": -19.178844218858927
+    },
+    {
+      "startSeconds": 90,
+      "endSeconds": 105,
+      "rmsDbfs": -18.392769967500392
+    },
+    {
+      "startSeconds": 105,
+      "endSeconds": 120,
+      "rmsDbfs": -18.57936696833047
+    },
+    {
+      "startSeconds": 120,
+      "endSeconds": 135,
+      "rmsDbfs": -18.355587590882255
+    },
+    {
+      "startSeconds": 135,
+      "endSeconds": 150,
+      "rmsDbfs": -17.967897612989333
+    },
+    {
+      "startSeconds": 150,
+      "endSeconds": 165,
+      "rmsDbfs": -17.541608571839614
+    },
+    {
+      "startSeconds": 165,
+      "endSeconds": 180,
+      "rmsDbfs": -18.933942208233887
+    }
+  ]
+}

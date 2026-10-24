@@ -123,7 +123,7 @@ Reconnect hoặc backlog>2 giây: bỏ cosmetic tween, đặt view mới nhất,
 | Token | 3 cutout; TK_G_LANTERN tutorial-only |
 | Terrain | 8 scene strips + icon; nền board dùng chung |
 | VFX | 7 family tái sử dụng; không 60 hệ particle riêng |
-| Sound | 12–20 SFX family, 2 loop nhạc; nguồn/giấy phép ghi manifest |
+| Sound | 18 SFX family và 1 bản nhạc nền dùng chung toàn web theo yêu cầu 2026-10-21; xem [background-music](implementation/background-music.md). Hai loop v1 giữ trong lịch sử asset. |
 
 Mỗi asset có ID, version, source/prompt, license/provenance, crop-safe bounds, atlas group và kích thước. Không có chữ luật/logo trong generated art. Tạo mẫu hero, 2 unit và 1 terrain trước, duyệt consistency rồi mới sản xuất cả bộ. AI chỉ hỗ trợ art; không dùng LLM để quyết định luật/bot.
 

@@ -283,6 +283,27 @@ test("real Web Audio gesture, settings restore and desktop/tablet/mobile review"
       path: `${evidence}/settings-${label}.png`,
       fullPage: true,
     });
+    const lastTutorial = page.getByRole("button", {
+      name: "Learn Ashen Court",
+    });
+    await lastTutorial.focus();
+    await expect(lastTutorial).toBeFocused();
+    await expect(lastTutorial).toBeInViewport({ ratio: 1 });
+    const focusClearance = await lastTutorial.evaluate((button) => {
+      const control = button.getBoundingClientRect();
+      const body = button.closest(".settings-content")!.getBoundingClientRect();
+      return Math.min(
+        control.left - body.left,
+        body.right - control.right,
+        control.top - body.top,
+        body.bottom - control.bottom,
+      );
+    });
+    expect(focusClearance).toBeGreaterThanOrEqual(7);
+    await page.screenshot({
+      path: `${evidence}/settings-${label}-focused.png`,
+    });
+    await page.getByRole("checkbox", { name: "Mute all audio" }).focus();
   }
   await page.keyboard.press("Escape");
   await expect(

@@ -6,7 +6,13 @@ import {
   soundFamily,
 } from "../src/features/settings/audio-manager";
 function device() {
-  const voices: { started: boolean; stopped: boolean }[] = [];
+  const voices: {
+    started: boolean;
+    stopped: boolean;
+    loopStart: number;
+    loopEnd: number;
+    offset: number;
+  }[] = [];
   const gains: {
     gain: { value: number; setTargetAtTime: (v: number) => void };
     connect: ReturnType<typeof vi.fn>;
@@ -40,15 +46,34 @@ function device() {
       return g;
     },
     createBufferSource: () => {
-      const v = { started: false, stopped: false };
+      const v = {
+        started: false,
+        stopped: false,
+        loopStart: 0,
+        loopEnd: 0,
+        offset: 0,
+      };
       voices.push(v);
       return {
         buffer: null,
         loop: false,
+        get loopStart() {
+          return v.loopStart;
+        },
+        set loopStart(value: number) {
+          v.loopStart = value;
+        },
+        get loopEnd() {
+          return v.loopEnd;
+        },
+        set loopEnd(value: number) {
+          v.loopEnd = value;
+        },
         connect: vi.fn(),
         disconnect: vi.fn(),
-        start() {
+        start(...args: number[]) {
           v.started = true;
+          v.offset = args[1] ?? 0;
         },
         stop() {
           v.stopped = true;
@@ -64,8 +89,8 @@ function device() {
     factory: () => context as unknown as AudioContext,
     assetLoader: vi.fn(async (context: AudioContext, path: string) => {
       expect(context).toBeDefined();
-      expect(path).toMatch(/^\/assets\/core-v1\/audio\//);
-      return { duration: 1 } as AudioBuffer;
+      expect(path).toMatch(/^\/assets\/(core-v1\/audio|audio-v[23])\//);
+      return { duration: path.includes("/core-v1/") ? 1 : 180 } as AudioBuffer;
     }),
   };
 }
@@ -76,7 +101,6 @@ it("never opens or plays before a gesture; independent volumes, mute and dispose
     contextFactory: factory,
     assetLoader: d.assetLoader,
   });
-  audio.setMusic("battle");
   audio.play("draw");
   expect(factory).not.toHaveBeenCalled();
   expect(d.voices).toHaveLength(0);
@@ -84,12 +108,12 @@ it("never opens or plays before a gesture; independent volumes, mute and dispose
   audio.setMusicVolume(0);
   audio.setSfxVolume(0.6);
   await audio.unlockFromGesture();
-  expect(d.assetLoader).toHaveBeenCalledTimes(20);
+  expect(d.assetLoader).toHaveBeenCalledTimes(19);
   expect(
-    d.assetLoader.mock.calls.every((call) =>
-      String(call[1]).includes("/assets/core-v1/audio/"),
+    d.assetLoader.mock.calls.filter(
+      (call) => !String(call[1]).includes("/core-v1/"),
     ),
-  ).toBe(true);
+  ).toHaveLength(1);
   expect(audio.settings.musicVolume).toBe(0);
   expect(audio.settings.sfxVolume).toBe(0.6);
   audio.play("draw");
@@ -103,6 +127,61 @@ it("never opens or plays before a gesture; independent volumes, mute and dispose
   audio.dispose();
   expect(d.voices.every((v) => v.stopped)).toBe(true);
   expect(d.context.state).toBe("closed");
+});
+it("keeps the same music source and playhead through pause, visibility, mute and volume changes", async () => {
+  const d = device();
+  const audio = createAudioManager({
+    contextFactory: d.factory,
+    assetLoader: d.assetLoader,
+  });
+  await audio.unlockFromGesture();
+  const music = d.voices[0]!;
+  expect(music.started).toBe(true);
+  // The first play includes the opening; wraps skip the head already blended into the tail.
+  expect(music.offset).toBe(0);
+  expect(music.loopStart).toBe(3.528);
+  expect(music.loopEnd).toBe(180);
+  audio.play("draw");
+  audio.setPaused(true);
+  expect(d.context.state).toBe("suspended");
+  expect(music.stopped).toBe(false);
+  expect(d.voices[1]!.stopped).toBe(true);
+  audio.setHidden(true);
+  audio.setPaused(false);
+  expect(d.context.state).toBe("suspended");
+  audio.setHidden(false);
+  await Promise.resolve();
+  expect(d.context.state).toBe("running");
+  audio.setMusicVolume(0);
+  audio.setMusicVolume(0.4);
+  audio.setMuted(true);
+  audio.setMuted(false);
+  await audio.unlockFromGesture();
+  expect(d.voices).toHaveLength(2);
+  expect(music.stopped).toBe(false);
+  audio.dispose();
+  expect(music.stopped).toBe(true);
+});
+it("starts only one loop when gestures overlap while assets decode", async () => {
+  const d = device();
+  let release = () => {};
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const audio = createAudioManager({
+    contextFactory: d.factory,
+    assetLoader: async () => {
+      await gate;
+      return { duration: 120 } as AudioBuffer;
+    },
+  });
+  const first = audio.unlockFromGesture();
+  const second = audio.unlockFromGesture();
+  release();
+  expect(await first).toBe(true);
+  expect(await second).toBe(true);
+  expect(d.voices).toHaveLength(1);
+  audio.dispose();
 });
 it("hidden/paused playback suspends, resumes after unlock only, and handles device rejection", async () => {
   const d = device(),
