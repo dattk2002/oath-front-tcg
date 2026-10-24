@@ -1,0 +1,40 @@
+{
+  "version": "cinder-authored-1",
+  "seed": 511026,
+  "theme": "Iron foundry: dark masonry blast walls, twin lava channels, corner furnace stacks, overhead iron piping, a broken crucible gantry and slag berms.",
+  "playable": {
+    "min": [
+      -6.4,
+      0.36,
+      -3.8
+    ],
+    "max": [
+      6.4,
+      0.36,
+      3.8
+    ]
+  },
+  "tools": {
+    "three": "0.186.1",
+    "exporter": "GLTFExporter",
+    "build": "pnpm exec tsx tools/assets/arenas/build-arena.ts",
+    "validate": "pnpm exec tsx tools/assets/arenas/validate-arena.ts"
+  },
+  "authorship": "Deterministically authored geometry; no image-derived displacement, baked cards, UI or painted-perspective scenery.",
+  "models": {
+    "high": {
+      "url": "/assets/arenas-v2/cinder-foundry/high.glb",
+      "sha256": "153361be7c88ac7a5fc9e5e5edc30b5e2b7ce6343a47984e9b9df1ff712a56fb",
+      "bytes": 899616,
+      "triangles": 18619,
+      "drawCalls": 20
+    },
+    "low": {
+      "url": "/assets/arenas-v2/cinder-foundry/low.glb",
+      "sha256": "2c6d18cb1a270dcf91ba9f4e2667aa171c00cd28541de47be11be4ada55a278f",
+      "bytes": 675988,
+      "triangles": 12155,
+      "drawCalls": 20
+    }
+  }
+}

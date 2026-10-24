@@ -812,7 +812,8 @@ export function createThreeBattleScene(
         environment =
           candidate?.group ??
           buildEnvironment(arenaKey, options.quality, schedule);
-        if (candidate) prepareAuthoredEnvironment(environment, options.quality);
+        if (candidate)
+          prepareAuthoredEnvironment(environment, options.quality, arenaKey);
       } catch (error) {
         if (failed) throw new SceneFailure(failed, error);
         if (disposed) return;

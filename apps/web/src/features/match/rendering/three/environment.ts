@@ -414,11 +414,20 @@ export function disposeObject(root: T.Object3D) {
   root.clear();
 }
 
-/** Runtime engravings and neutral lighting around authored geometry; no socket plinths. */
+/** Runtime engravings and themed lighting around authored geometry; no socket plinths. */
 export function prepareAuthoredEnvironment(
   group: T.Group,
   quality: "low" | "high",
+  arenaKey = "moonroot-conservatory",
 ) {
+  const theme =
+    arenaKey === "cinder-foundry"
+      ? { sky: 0xa0d8de, ground: 0x4a2a1a, sun: 0xffc28a, fill: 0xff7a3c, fillI: 1.15 }
+      : arenaKey === "glasswater-sanctum"
+        ? { sky: 0xd0edff, ground: 0x829083, sun: 0xffefcf, fill: 0x9fd9eb, fillI: 0.85 }
+        : arenaKey === "astral-causeway"
+          ? { sky: 0xc4b8ff, ground: 0x2a2940, sun: 0xd6e5ff, fill: 0xb79fff, fillI: 0.95 }
+          : { sky: 0xd6e8ee, ground: 0x829083, sun: 0xffebcc, fill: 0xb7d9eb, fillI: 0.8 };
   const engraving = new T.MeshStandardMaterial({
     color: 0x667a68,
     roughness: 0.72,
@@ -469,9 +478,9 @@ export function prepareAuthoredEnvironment(
     mesh.name = "slot-engravings";
     group.add(mesh);
   }
-  const ambient = new T.HemisphereLight(0xd6e8ee, 0x829083, 1.85);
+  const ambient = new T.HemisphereLight(theme.sky, theme.ground, 1.85);
   group.add(ambient);
-  const sun = new T.DirectionalLight(0xffebcc, 2.05);
+  const sun = new T.DirectionalLight(theme.sun, 2.05);
   sun.position.set(-6, 12, 4);
   sun.castShadow = quality === "high";
   sun.shadow.mapSize.set(1024, 1024);
@@ -488,7 +497,7 @@ export function prepareAuthoredEnvironment(
   sun.shadow.radius = 3;
   sun.shadow.intensity = 0.48;
   group.add(sun);
-  const fill = new T.DirectionalLight(0xb7d9eb, 0.8);
+  const fill = new T.DirectionalLight(theme.fill, theme.fillI);
   fill.position.set(7, 5, -4);
   group.add(fill);
 }

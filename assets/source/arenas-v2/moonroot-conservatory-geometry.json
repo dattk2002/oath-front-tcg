@@ -1,0 +1,97 @@
+{
+  "version": "moonroot-authored-3",
+  "seed": 231023,
+  "coordinateSystem": "Y-up; world units; courtyard origin [0,0,0]",
+  "playable": {
+    "min": [
+      -6.4,
+      0.36,
+      -3.8
+    ],
+    "max": [
+      6.4,
+      0.36,
+      3.8
+    ]
+  },
+  "laneX": [
+    -4.8,
+    -2.4,
+    0,
+    2.4,
+    4.8
+  ],
+  "sideZ": [
+    -2.05,
+    2.05
+  ],
+  "surfaceY": 0.36,
+  "courtyard": {
+    "min": [
+      -7.12,
+      0.2,
+      -5.3
+    ],
+    "max": [
+      7.12,
+      0.36,
+      5.3
+    ],
+    "jointWidth": 0.027,
+    "bevel": 0.013,
+    "flags": "Eight irregular courses with varied spacing and selected edge splits"
+  },
+  "face": "Single continuous anatomical relief field: closed curved lids, recessed orbits, arched brow, tapered nasal bridge/alar wings, malar planes, philtrum, separated lips and broadened jaw. Low-frequency asymmetry is geometry; albedo is not displacement. Embedded in three irregular shrine courses with finer flowing carving.",
+  "arch": {
+    "center": [
+      -8.43,
+      0,
+      -2.4
+    ],
+    "yaw": 0.32,
+    "innerRadius": 1.07,
+    "outerRadius": 1.46,
+    "springY": 1.57,
+    "depth": 0.68,
+    "voussoirs": 13
+  },
+  "roots": "Authored branching Catmull–Rom paths, elliptical tapered sections, longitudinal carved furrows and buttress flares.",
+  "spillways": {
+    "west": [
+      -5.65,
+      1.3,
+      6.15
+    ],
+    "east": [
+      -6.05,
+      -0.05,
+      5.35
+    ]
+  },
+  "planting": "Seeded irregular fern beds with three height/spread forms and smaller folded evergreen leaves. Forty shallow curved groundcover cutouts use an independently authored 512px ivy/moss map outside the playable rectangle; they replace the small modeled ivy scatter. Roots, banks, ferns and stone retain actual silhouette and depth.",
+  "uv": "Ordinary UV0: world-projected stone; longitudinal bark; full 0..1 padded fern frond; channel-local water.",
+  "tools": {
+    "three": "0.186.1",
+    "exporter": "GLTFExporter",
+    "build": "pnpm exec tsx tools/assets/arenas/build-arena.ts",
+    "validate": "pnpm exec tsx tools/assets/arenas/validate-arena.ts"
+  },
+  "artisticSource": "docs/design/concepts/moonroot-battlefield-v3-concept.png",
+  "authorship": "Deterministically authored geometry; no image-derived displacement, baked cards, UI or painted-perspective scenery.",
+  "models": {
+    "high": {
+      "url": "/assets/arenas-v2/moonroot-conservatory/high.glb",
+      "sha256": "aea8416ea4d1960885cf2a1f736bccc70b301fd8a2dde4d5d0fa46a0f314e6e3",
+      "bytes": 5594512,
+      "triangles": 155081,
+      "drawCalls": 18
+    },
+    "low": {
+      "url": "/assets/arenas-v2/moonroot-conservatory/low.glb",
+      "sha256": "7f1d6fe4e2c76afb3180de2f7adb0631bdd5f0a581404ccc80dd538b49103b7f",
+      "bytes": 1897436,
+      "triangles": 47833,
+      "drawCalls": 18
+    }
+  }
+}

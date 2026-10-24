@@ -1,0 +1,40 @@
+{
+  "version": "glasswater-authored-1",
+  "seed": 733019,
+  "theme": "Pale waterside sanctum: marble terraces, a flanking colonnade, reflecting basins and clustered crystal spires.",
+  "playable": {
+    "min": [
+      -6.4,
+      0.36,
+      -3.8
+    ],
+    "max": [
+      6.4,
+      0.36,
+      3.8
+    ]
+  },
+  "tools": {
+    "three": "0.186.1",
+    "exporter": "GLTFExporter",
+    "build": "pnpm exec tsx tools/assets/arenas/build-arena.ts",
+    "validate": "pnpm exec tsx tools/assets/arenas/validate-arena.ts"
+  },
+  "authorship": "Deterministically authored geometry; no image-derived displacement, baked cards, UI or painted-perspective scenery.",
+  "models": {
+    "high": {
+      "url": "/assets/arenas-v2/glasswater-sanctum/high.glb",
+      "sha256": "98d706d6ed8b499c4afce26eda55b06ac792943c2d4d506a73d6bab6e74c5f68",
+      "bytes": 879328,
+      "triangles": 21999,
+      "drawCalls": 15
+    },
+    "low": {
+      "url": "/assets/arenas-v2/glasswater-sanctum/low.glb",
+      "sha256": "c6e0d50ec28cd66a41827b93bd905c16b4a821617793dfa9d9937d51214e7682",
+      "bytes": 638128,
+      "triangles": 14333,
+      "drawCalls": 15
+    }
+  }
+}
