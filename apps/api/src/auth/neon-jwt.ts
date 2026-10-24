@@ -80,7 +80,6 @@ export async function verifyNeonJwt(token: string) {
 }
 export function accountExpiry(identity: VerifiedIdentity, now: Date) {
   if (identity.expiresAt <= now) throw new HttpError(401, "SESSION_EXPIRED");
-  return new Date(
-    Math.min(identity.expiresAt.getTime(), now.getTime() + 900000),
-  );
+  // The provider JWT proves this login; the revocable app session has its own lifetime.
+  return new Date(now.getTime() + 30 * 86400000);
 }
