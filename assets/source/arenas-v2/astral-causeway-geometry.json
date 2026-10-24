@@ -1,0 +1,40 @@
+{
+  "version": "astral-authored-1",
+  "seed": 919047,
+  "theme": "Broken celestial causeway: slate paving with star-chart inlays, shattered edge architecture, armillary instruments and a fractured star portal.",
+  "playable": {
+    "min": [
+      -6.4,
+      0.36,
+      -3.8
+    ],
+    "max": [
+      6.4,
+      0.36,
+      3.8
+    ]
+  },
+  "tools": {
+    "three": "0.186.1",
+    "exporter": "GLTFExporter",
+    "build": "pnpm exec tsx tools/assets/arenas/build-arena.ts",
+    "validate": "pnpm exec tsx tools/assets/arenas/validate-arena.ts"
+  },
+  "authorship": "Deterministically authored geometry; no image-derived displacement, baked cards, UI or painted-perspective scenery.",
+  "models": {
+    "high": {
+      "url": "/assets/arenas-v2/astral-causeway/high.glb",
+      "sha256": "7650c01ea47e999dd5d965a87ecc01c9aecfdd1b472c0353304a4cdfbed24a93",
+      "bytes": 706608,
+      "triangles": 16512,
+      "drawCalls": 17
+    },
+    "low": {
+      "url": "/assets/arenas-v2/astral-causeway/low.glb",
+      "sha256": "bc91877e011ed9f3a5da8bfca7ab2a59d789b6b912468c3e1dcca1993d75876c",
+      "bytes": 557992,
+      "triangles": 12500,
+      "drawCalls": 17
+    }
+  }
+}
