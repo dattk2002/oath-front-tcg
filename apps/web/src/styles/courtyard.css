@@ -380,8 +380,8 @@
 }
 .courtyard-match.arena-match .hand .hand-card[data-playable="true"] .card-face {
   box-shadow:
-    0 0 0 1px #d4ef9b,
-    0 0 12px #bfd98240,
+    0 0 0 1px #f0e9c9,
+    0 0 12px #f0e9c940,
     0 6px 10px #0008;
 }
 

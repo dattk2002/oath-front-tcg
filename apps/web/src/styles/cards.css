@@ -531,7 +531,7 @@
 .hand .hand-card[data-playable="true"] .card-face {
   box-shadow:
     inset 0 0 0 2px #252936,
-    0 0 0 2px var(--campaign-acid);
+    0 0 0 2px #f0e9c9;
 }
 .hand .hand-card[aria-pressed="true"] {
   outline: 3px solid var(--campaign-acid);
