@@ -271,7 +271,7 @@ body:has(.arena-match) .match-account-access .account-popover {
 }
 .arena-match
   [data-renderer="three"][data-arena-3d="ready"]
-  .board-unit:is(:hover, :focus-visible) {
+  .board-unit:focus-visible {
   outline: 2px solid #f0e9c9;
   outline-offset: 2px;
   background: #f3efbe12;
