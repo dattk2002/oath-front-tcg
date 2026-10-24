@@ -420,16 +420,21 @@ export function archStone(
   return geometryData(positions, indices, uvs);
 }
 
+export type RolePalette = Partial<
+  Record<Role, Partial<(typeof materialRoles)[Role]>>
+>;
+
 export class Authoring {
   readonly root = new Group();
   private readonly groups = new Map<string, Map<string, BufferGeometry[]>>();
   readonly materials = new Map<Role, MeshStandardMaterial>();
-  constructor(name: string) {
+  constructor(name: string, palette: RolePalette = {}) {
     this.root.name = name;
-    for (const [role, settings] of Object.entries(materialRoles) as [
+    for (const [role, base] of Object.entries(materialRoles) as [
       Role,
       (typeof materialRoles)[Role],
     ][]) {
+      const settings = { ...base, ...palette[role] };
       const material = new MeshStandardMaterial({
         color: settings.color,
         roughness: settings.roughness,
