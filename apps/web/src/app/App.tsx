@@ -27,9 +27,7 @@ import {
 import { readRememberedSession, rememberSession } from "./session";
 import { startGuestSession } from "./session";
 import { Brand, routes } from "./router";
-import SettingsDialog, {
-  SettingsProvider,
-} from "../features/settings/SettingsDialog";
+import SettingsDialog from "../features/settings/SettingsDialog";
 import { TutorialEntry } from "../features/tutorial/tutorial-controller";
 const DeckScreen = dynamic(() => import("../features/deck/DeckScreen"), {
   loading: () => <p role="status">Loading decks…</p>,
@@ -42,14 +40,7 @@ const MatchScreen = dynamic(() => import("../features/match/MatchScreen"), {
     </p>
   ),
 });
-export default function App(props: Parameters<typeof AppContent>[0]) {
-  return (
-    <SettingsProvider match={props.screen === "match"}>
-      <AppContent {...props} />
-    </SettingsProvider>
-  );
-}
-function AppContent({
+export default function App({
   screen = "home",
   matchId,
   heroId,

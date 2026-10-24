@@ -18,6 +18,13 @@ export const defaultSettings: Settings = {
   quality: "auto",
 };
 export const settingsKey = "oathfront.settings.v1";
+// Matches the prepared loop and encoder guard in background-music-v3.json.
+export const backgroundMusic = {
+  title: "Covert Sabotage",
+  asset: "/assets/audio-v3/covert-sabotage-b.mp3",
+  loopStart: 169344 / 48000,
+  loopEnd: 180,
+} as const;
 export function restoreSettings(raw: string | null): Settings {
   try {
     const s: unknown = JSON.parse(raw ?? "null");
@@ -124,7 +131,6 @@ export interface AudioManager {
   setMusicVolume(value: number): void;
   setSfxVolume(value: number): void;
   setMuted(value: boolean): void;
-  setMusic(track: "menu" | "battle"): void;
   setPaused(value: boolean): void;
   setHidden(value: boolean): void;
   play(family: SoundFamily): void;
@@ -145,8 +151,7 @@ export function createAudioManager(
     unlocked = false,
     disposed = false,
     paused = false,
-    hidden = false,
-    track: "menu" | "battle" = "menu";
+    hidden = false;
   let loading: Promise<void> | null = null;
   const buffers = new Map<string, AudioBuffer>();
   const voices = new Set<AudioBufferSourceNode>(),
@@ -168,6 +173,9 @@ export function createAudioManager(
       musicGain.gain.value = settings.muted ? 0 : settings.musicVolume;
     if (sfxGain) sfxGain.gain.value = settings.muted ? 0 : settings.sfxVolume;
   }
+  function stopSfx() {
+    stop(new Set([...voices].filter((source) => !music.has(source))));
+  }
   async function loadAssets() {
     if (!context) return;
     const ctx = context;
@@ -179,11 +187,13 @@ export function createAudioManager(
         return device.decodeAudioData(await response.arrayBuffer());
       });
     await Promise.all(
-      [...soundFamilies, "menu", "battle"].map(async (key) => {
+      [...soundFamilies, "background"].map(async (key) => {
         if (buffers.has(key)) return;
         const buffer = await loader(
           ctx,
-          `/assets/core-v1/audio/${key}.${key === "menu" || key === "battle" ? "wav" : "mp3"}`,
+          key === "background"
+            ? backgroundMusic.asset
+            : `/assets/core-v1/audio/${key}.mp3`,
         );
         if (!disposed) buffers.set(key, buffer);
       }),
@@ -195,6 +205,10 @@ export function createAudioManager(
     const source = context.createBufferSource();
     source.buffer = buffer;
     source.loop = loop;
+    if (loop) {
+      source.loopStart = backgroundMusic.loopStart;
+      source.loopEnd = backgroundMusic.loopEnd;
+    }
     source.connect(gain);
     voices.add(source);
     if (loop) music.add(source);
@@ -206,8 +220,8 @@ export function createAudioManager(
     source.start();
   }
   function startMusic() {
-    stop(music);
     if (
+      music.size > 0 ||
       !context ||
       !musicGain ||
       !unlocked ||
@@ -218,14 +232,15 @@ export function createAudioManager(
       settings.musicVolume === 0
     )
       return;
-    voice(track, musicGain, true);
+    voice("background", musicGain, true);
   }
   async function sync(): Promise<boolean> {
     if (!context || !unlocked || disposed) return false;
     try {
       if (paused || hidden) {
-        stop(voices);
-        music.clear();
+        // Suspending the context freezes the existing loop's playhead.
+        // Clear only one-shot effects so stale combat cues do not resume later.
+        stopSfx();
         await context.suspend();
       } else {
         await context.resume();
@@ -288,14 +303,8 @@ export function createAudioManager(
       settings.muted = v;
       gains();
       if (v) {
-        stop(voices);
-        music.clear();
+        stopSfx();
       } else startMusic();
-    },
-    setMusic(v) {
-      if (track === v) return;
-      track = v;
-      startMusic();
     },
     setPaused(v) {
       if (paused === v) return;

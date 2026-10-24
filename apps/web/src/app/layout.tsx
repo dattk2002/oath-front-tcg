@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import { SettingsProvider } from "../features/settings/SettingsDialog";
 import "../styles/fonts.css";
 import "../styles/tokens.css";
 import "../styles/shell.css";
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SettingsProvider>{children}</SettingsProvider>
+      </body>
     </html>
   );
 }

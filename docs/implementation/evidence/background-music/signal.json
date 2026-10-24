@@ -1,0 +1,62 @@
+{
+  "method": "Independent ffmpeg decode and PCM inspection; no hardware/headphone listening acceptance claimed.",
+  "sha256": "89e5be42cb92d2d46ac50068a5a548db59adca48f0bd4eca049fc254b3c473e7",
+  "durationSeconds": 120,
+  "channels": 2,
+  "sampleRate": 24000,
+  "bytes": 6169980,
+  "clippedSamples": 0,
+  "peakDbfs": -1.5147677157072617,
+  "rmsDbfs": -15.79845927963837,
+  "loopBoundaryJump": 0.0,
+  "sections": [
+    {
+      "name": "Infiltration",
+      "startSeconds": 0.0,
+      "endSeconds": 15.0,
+      "rmsDbfs": -19.622122550484733
+    },
+    {
+      "name": "Street pulse",
+      "startSeconds": 15.0,
+      "endSeconds": 30.0,
+      "rmsDbfs": -15.711687645221488
+    },
+    {
+      "name": "Arming up",
+      "startSeconds": 30.0,
+      "endSeconds": 45.0,
+      "rmsDbfs": -15.3436558970024
+    },
+    {
+      "name": "First strike",
+      "startSeconds": 45.0,
+      "endSeconds": 60.0,
+      "rmsDbfs": -13.601325515484826
+    },
+    {
+      "name": "Under cover",
+      "startSeconds": 60.0,
+      "endSeconds": 75.0,
+      "rmsDbfs": -19.68453254904545
+    },
+    {
+      "name": "Lock on",
+      "startSeconds": 75.0,
+      "endSeconds": 90.0,
+      "rmsDbfs": -15.19351061683443
+    },
+    {
+      "name": "Overdrive",
+      "startSeconds": 90.0,
+      "endSeconds": 105.0,
+      "rmsDbfs": -13.230432386742805
+    },
+    {
+      "name": "Disappear",
+      "startSeconds": 105.0,
+      "endSeconds": 120.0,
+      "rmsDbfs": -19.445471264831184
+    }
+  ]
+}

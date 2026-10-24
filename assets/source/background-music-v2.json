@@ -1,0 +1,62 @@
+{
+  "id": "nightfall-protocol",
+  "version": 2,
+  "title": "Nightfall Protocol",
+  "composer": "tools/assets/compose-background.py",
+  "sampleRate": 24000,
+  "channels": 2,
+  "frames": 2880000,
+  "durationSeconds": 120.0,
+  "tempoBpm": 128,
+  "bars": 64,
+  "meter": "4/4",
+  "key": "D minor",
+  "asset": "apps/web/public/assets/audio-v2/nightfall-protocol.flac",
+  "bytes": 6169980,
+  "sha256": "89e5be42cb92d2d46ac50068a5a548db59adca48f0bd4eca049fc254b3c473e7",
+  "license": "Project-authored original audio; repository asset license.",
+  "provenance": "Deterministic offline synthesis. Original notes, rhythms and timbres; no samples, vocals or third-party recordings. FLAC is both lossless master and runtime export.",
+  "direction": "Tactical electronic pulse, syncopated string-like plucks and breakbeats, cinematic synth-brass peaks. Broad reference direction: VALORANT, Marvel Rivals, 2XKO; no melodies or recordings copied.",
+  "sections": [
+    {
+      "name": "Infiltration",
+      "startSeconds": 0.0,
+      "endSeconds": 15.0
+    },
+    {
+      "name": "Street pulse",
+      "startSeconds": 15.0,
+      "endSeconds": 30.0
+    },
+    {
+      "name": "Arming up",
+      "startSeconds": 30.0,
+      "endSeconds": 45.0
+    },
+    {
+      "name": "First strike",
+      "startSeconds": 45.0,
+      "endSeconds": 60.0
+    },
+    {
+      "name": "Under cover",
+      "startSeconds": 60.0,
+      "endSeconds": 75.0
+    },
+    {
+      "name": "Lock on",
+      "startSeconds": 75.0,
+      "endSeconds": 90.0
+    },
+    {
+      "name": "Overdrive",
+      "startSeconds": 90.0,
+      "endSeconds": 105.0
+    },
+    {
+      "name": "Disappear",
+      "startSeconds": 105.0,
+      "endSeconds": 120.0
+    }
+  ]
+}

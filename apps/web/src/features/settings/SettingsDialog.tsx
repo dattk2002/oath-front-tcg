@@ -1,3 +1,5 @@
+"use client";
+
 import { useUiMotion } from "../motion/use-ui-motion";
 import {
   createContext,
@@ -8,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import {
+  backgroundMusic,
   createAudioManager,
   defaultSettings,
   restoreSettings,
@@ -23,13 +26,7 @@ const Context = createContext<{
   warning: string;
 }>({ audio: null, settings: defaultSettings, update: () => {}, warning: "" });
 export const useSettings = () => useContext(Context);
-export function SettingsProvider({
-  children,
-  match = false,
-}: {
-  children: ReactNode;
-  match?: boolean;
-}) {
+export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState(defaultSettings),
     [audio, setAudio] = useState<AudioManager | null>(null),
     [warning, setWarning] = useState("");
@@ -66,9 +63,6 @@ export function SettingsProvider({
       manager.current = null;
     };
   }, []);
-  useEffect(() => {
-    audio?.setMusic(match ? "battle" : "menu");
-  }, [audio, match]);
   function update(patch: Partial<Settings>) {
     const next = { ...settings, ...patch, version: 1 as const };
     if (patch.reducedMotion !== undefined)
@@ -120,91 +114,94 @@ export default function SettingsDialog({
       <h2 ref={heading} tabIndex={-1} id="settings-heading">
         Settings
       </h2>
-      <label className="setting-toggle">
-        <input
-          type="checkbox"
-          checked={settings.muted}
-          onChange={(e) => update({ muted: e.target.checked })}
-        />
-        Mute all audio
-      </label>
-      <label>
-        Music <output>{Math.round(settings.musicVolume * 100)}%</output>
-        <input
-          aria-label="Music"
-          type="range"
-          min="0"
-          max="1"
-          step="0.05"
-          value={settings.musicVolume}
-          onChange={(e) => update({ musicVolume: Number(e.target.value) })}
-        />
-      </label>
-      <label>
-        Sound effects <output>{Math.round(settings.sfxVolume * 100)}%</output>
-        <input
-          aria-label="Sound effects"
-          type="range"
-          min="0"
-          max="1"
-          step="0.05"
-          value={settings.sfxVolume}
-          onChange={(e) => update({ sfxVolume: Number(e.target.value) })}
-        />
-      </label>
-      <label className="setting-toggle">
-        <input
-          type="checkbox"
-          checked={settings.reducedMotion}
-          onChange={(e) => update({ reducedMotion: e.target.checked })}
-        />
-        Reduce motion
-      </label>
-      <p className="muted">
-        Your device's reduced-motion preference is always respected.
-      </p>
-      <label>
-        Visual quality
-        <select
-          aria-label="Visual quality"
-          value={settings.quality}
-          onChange={(e) => {
-            const quality = e.target.value;
-            if (
-              quality === "auto" ||
-              quality === "low" ||
-              quality === "standard"
-            )
-              update({ quality });
-          }}
-        >
-          <option value="auto">Automatic</option>
-          <option value="low">Low</option>
-          <option value="standard">Standard</option>
-        </select>
-      </label>
-      {onTutorial && (
-        <div className="settings-tutorial">
-          <h3>Tutorials</h3>
-          <button
-            onClick={() => {
-              onClose();
-              onTutorial("GOOD");
+      <div className="settings-content">
+        <label className="setting-toggle">
+          <input
+            type="checkbox"
+            checked={settings.muted}
+            onChange={(e) => update({ muted: e.target.checked })}
+          />
+          Mute all audio
+        </label>
+        <label>
+          Music <output>{Math.round(settings.musicVolume * 100)}%</output>
+          <input
+            aria-label="Music"
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            value={settings.musicVolume}
+            onChange={(e) => update({ musicVolume: Number(e.target.value) })}
+          />
+        </label>
+        <p className="muted">{backgroundMusic.title} · Made with ElevenMusic</p>
+        <label>
+          Sound effects <output>{Math.round(settings.sfxVolume * 100)}%</output>
+          <input
+            aria-label="Sound effects"
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            value={settings.sfxVolume}
+            onChange={(e) => update({ sfxVolume: Number(e.target.value) })}
+          />
+        </label>
+        <label className="setting-toggle">
+          <input
+            type="checkbox"
+            checked={settings.reducedMotion}
+            onChange={(e) => update({ reducedMotion: e.target.checked })}
+          />
+          Reduce motion
+        </label>
+        <p className="muted">
+          Your device's reduced-motion preference is always respected.
+        </p>
+        <label>
+          Visual quality
+          <select
+            aria-label="Visual quality"
+            value={settings.quality}
+            onChange={(e) => {
+              const quality = e.target.value;
+              if (
+                quality === "auto" ||
+                quality === "low" ||
+                quality === "standard"
+              )
+                update({ quality });
             }}
           >
-            Replay Dawnward tutorial
-          </button>
-          <button
-            onClick={() => {
-              onClose();
-              onTutorial("EVIL");
-            }}
-          >
-            Learn Ashen Court
-          </button>
-        </div>
-      )}
-      {warning && <p role="status">{warning}</p>}
+            <option value="auto">Automatic</option>
+            <option value="low">Low</option>
+            <option value="standard">Standard</option>
+          </select>
+        </label>
+        {onTutorial && (
+          <div className="settings-tutorial">
+            <h3>Tutorials</h3>
+            <button
+              onClick={() => {
+                onClose();
+                onTutorial("GOOD");
+              }}
+            >
+              Replay Dawnward tutorial
+            </button>
+            <button
+              onClick={() => {
+                onClose();
+                onTutorial("EVIL");
+              }}
+            >
+              Learn Ashen Court
+            </button>
+          </div>
+        )}
+        {warning && <p role="status">{warning}</p>}
+      </div>
       <button className="primary" onClick={onClose}>
         Close settings
       </button>

@@ -733,6 +733,22 @@ main {
   }
 }
 
+.settings-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.settings-dialog > h2,
+.settings-dialog > button {
+  flex-shrink: 0;
+}
+.settings-content {
+  min-height: 0;
+  margin-inline: -8px;
+  padding: 8px;
+  overflow-y: auto;
+  scroll-padding-block: 12px;
+}
 .settings-dialog label {
   display: block;
   margin: 1rem 0;
