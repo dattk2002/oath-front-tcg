@@ -29,6 +29,63 @@ const manifest: { version: string; arenas: Record<string, ArenaEntry> } =
     ),
   );
 assert.equal(manifest.version, "arenas-v2");
+/** Per-arena recognizable landmarks plus optional unobstructed-opening raycast. */
+const arenaExpectations: Record<
+  string,
+  {
+    landmarks: string[];
+    opening?: {
+      object: string;
+      origin: [number, number, number];
+      direction: [number, number, number];
+      far: number;
+    };
+  }
+> = {
+  "moonroot-conservatory": {
+    landmarks: [
+      "arch-west",
+      "statue-east",
+      "root-banks",
+      "water-channels",
+      "fern-banks",
+      "boundary-masonry",
+    ],
+    opening: {
+      object: "arch-west",
+      origin: [-7.486, 0.92, 0.448],
+      direction: [-0.314, 0, -0.949],
+      far: 5,
+    },
+  },
+  "cinder-foundry": {
+    landmarks: [
+      "boundary-masonry",
+      "lava-channels",
+      "furnace-towers",
+      "iron-piping",
+      "slag-berms",
+      "crucible-gantry",
+    ],
+  },
+  "glasswater-sanctum": {
+    landmarks: [
+      "boundary-masonry",
+      "colonnade",
+      "water-basins",
+      "crystal-spires",
+    ],
+  },
+  "astral-causeway": {
+    landmarks: [
+      "boundary-masonry",
+      "orbital-instruments",
+      "shattered-plinths",
+      "star-portal",
+      "starlight-motes",
+    ],
+  },
+};
 const roles = new Set([
   "stone-pale",
   "stone-dark",
@@ -182,14 +239,9 @@ for (const [arenaKey, entry] of Object.entries(manifest.arenas)) {
         );
       }
     }
-    for (const name of [
-      "arch-west",
-      "statue-east",
-      "root-banks",
-      "water-channels",
-      "fern-banks",
-      "boundary-masonry",
-    ]) {
+    const expectations = arenaExpectations[arenaKey];
+    assert(expectations, `no validation expectations for ${arenaKey}`);
+    for (const name of expectations.landmarks) {
       assert(
         parsed.scene.getObjectByName(name),
         `recognizable landmark ${name}`,
@@ -199,18 +251,22 @@ for (const [arenaKey, entry] of Object.entries(manifest.arenas)) {
         `landmark bounds for ${name}`,
       );
     }
-    const portal = parsed.scene.getObjectByName("arch-west")!;
-    const opening = new Raycaster(
-      new Vector3(-7.486, 0.92, 0.448),
-      new Vector3(-0.314, 0, -0.949).normalize(),
-      0,
-      5,
-    ).intersectObject(portal, true);
-    assert.equal(
-      opening.length,
-      0,
-      "the west arch has an unobstructed physical opening above its water channel",
-    );
+    if (expectations.opening) {
+      const { object, origin, direction, far } = expectations.opening;
+      const target = parsed.scene.getObjectByName(object);
+      assert(target, `opening landmark ${object}`);
+      const opening = new Raycaster(
+        new Vector3(...origin),
+        new Vector3(...direction).normalize(),
+        0,
+        far,
+      ).intersectObject(target, true);
+      assert.equal(
+        opening.length,
+        0,
+        `unobstructed physical opening through ${object}`,
+      );
+    }
     const bounds = new Box3().setFromObject(parsed.scene);
     const declared = new Box3(
       new Vector3(...(entry.bounds.min as [number, number, number])),
